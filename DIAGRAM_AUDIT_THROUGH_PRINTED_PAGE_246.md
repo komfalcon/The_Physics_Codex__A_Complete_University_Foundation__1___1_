@@ -46,16 +46,16 @@ The inventory contains **86 TikZ blocks** across the included front matter and C
 | 18 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1641–1656 | 0 | The Vector (Cross) Product | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
 | 19 | `chapters/part1_mechanics/ch03_kinematics.tex` | 303–334 | 1 | Displacement-Time Graphs | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
 | 20 | `chapters/part1_mechanics/ch03_kinematics.tex` | 358–396 | 1 | Velocity-Time Graph | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
-| 21 | `chapters/part1_mechanics/ch03_kinematics.tex` | 593–639 | 1 | Projectile Motion Trajectory | INVENTORIED — individual visual review still required |
-| 22 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 363–398 | 0 | Connected Bodies and Pulleys | INVENTORIED — individual visual review still required |
-| 23 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 434–469 | 0 | Forces on an Inclined Plane | INVENTORIED — individual visual review still required |
-| 24 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 597–628 | 1 | Velocity-Time Graph for Terminal Velocity | INVENTORIED — individual visual review still required |
-| 25 | `chapters/part1_mechanics/ch05_work_energy_power.tex` | 65–96 | 0 | Work Done at an Angle | INVENTORIED — individual visual review still required |
-| 26 | `chapters/part1_mechanics/ch05_work_energy_power.tex` | 329–349 | 1 | Work Done by a Spring Force | INVENTORIED — individual visual review still required |
-| 27 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 121–154 | 0 | Angular and Linear Quantities | INVENTORIED — individual visual review still required |
-| 28 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 248–278 | 0 | Centripetal Acceleration and Force | INVENTORIED — individual visual review still required |
-| 29 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 406–439 | 0 | Vertical Circle --- Forces at Key Points | INVENTORIED — individual visual review still required |
-| 30 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 144–198 | 3 | SHM Graphs --- Displacement, Velocity, Acceleration | INVENTORIED — individual visual review still required |
+| 21 | `chapters/part1_mechanics/ch03_kinematics.tex` | 593–639 | 1 | Projectile Motion Trajectory | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
+| 22 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 363–398 | 0 | Connected Bodies and Pulleys | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
+| 23 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 434–469 | 0 | Forces on an Inclined Plane | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
+| 24 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 597–628 | 1 | Velocity-Time Graph for Terminal Velocity | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
+| 25 | `chapters/part1_mechanics/ch05_work_energy_power.tex` | 65–96 | 0 | Work Done at an Angle | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
+| 26 | `chapters/part1_mechanics/ch05_work_energy_power.tex` | 329–349 | 1 | Work Done in Stretching a Spring | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
+| 27 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 121–154 | 0 | Angular and Linear Quantities | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
+| 28 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 248–278 | 0 | Centripetal Acceleration and Force | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
+| 29 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 406–439 | 0 | Vertical Circle --- Forces at Key Points | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
+| 30 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 144–198 | 3 | SHM Graphs --- Displacement, Velocity, Acceleration | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
 | 31 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 301–336 | 0 | The Simple Pendulum | INVENTORIED — individual visual review still required |
 | 32 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 497–525 | 1 | Energy vs Displacement in SHM | INVENTORIED — individual visual review still required |
 | 33 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 599–627 | 1 | Damping Comparison | INVENTORIED — individual visual review still required |
