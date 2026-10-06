@@ -1,0 +1,2249 @@
+% ============================================================
+%  CHAPTER 2: SCALARS AND VECTORS
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part1/ch02_scalars_vectors.tex
+% ============================================================
+
+\chapter{Scalars and Vectors}
+\label{ch:scalars_vectors}
+
+\chapterquote{The laws of nature are but the mathematical
+thoughts of God.}{Euclid}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Distinguish clearly between scalar and vector
+  quantities with examples
+  \item Identify and classify the different types of vectors
+  \item Represent vectors graphically using arrows
+  \item Calculate the magnitude of a vector in 2D and 3D
+  \item Add vectors using the triangle, parallelogram,
+  and polygon rules
+  \item Resolve a vector into perpendicular components
+  \item Add multiple vectors by resolving into components
+  \item Define and calculate the resultant of two or more
+  vectors
+  \item Subtract vectors and find relative velocity
+  \item Express vectors using unit vectors and position vectors
+  \item Calculate the scalar (dot) product and use it to
+  find the angle between two vectors
+  \item Calculate the vector (cross) product and apply
+  the right-hand rule
+  \item Apply vector methods to solve real physical problems
+\end{enumerate}
+\end{objectivebox}
+
+\vspace{0.4cm}
+
+\minitoc
+
+\vspace{0.5cm}
+
+% ============================================================
+\section{Revisiting Scalars and Vectors}
+% ============================================================
+
+In Chapter~1, we introduced scalars and vectors briefly.
+Now we treat them in full. This is one of the most important
+chapters in the entire textbook because \textit{every}
+subsequent topic --- forces, motion, energy, electricity,
+magnetism --- requires you to handle vectors correctly.
+
+A vector is not simply ``a number with a direction''
+attached as an afterthought. The direction is as
+fundamental as the magnitude. Two vectors with the same
+magnitude but different directions are completely different
+physical quantities --- as different as a car heading north
+at 100 km\,h$^{-1}$ is from a car heading south at the
+same speed.
+
+\begin{definitionbox}[Scalar]
+A \textbf{scalar} is a quantity fully described by a
+magnitude and a unit alone. Scalars obey ordinary
+arithmetic. Examples: mass ($m = 5.0\ \text{kg}$),
+temperature ($T = 300\ \text{K}$), energy
+($E = 200\ \text{J}$), speed ($v = 15\ \text{m\,s}^{-1}$),
+distance ($d = 40\ \text{m}$), time ($t = 5\ \text{s}$),
+pressure, density, work, power.
+\end{definitionbox}
+
+\begin{definitionbox}[Vector]
+A \textbf{vector} is a quantity requiring both magnitude,
+unit, and direction for complete description. Vectors obey
+the laws of vector algebra. Examples: displacement
+($\vect{s}$), velocity ($\vect{v}$), acceleration
+($\vect{a}$), force ($\vect{F}$), weight ($\vect{W}$),
+momentum ($\vect{p}$), electric field ($\vect{E}$),
+magnetic flux density ($\vect{B}$).
+\end{definitionbox}
+
+\begin{keybox}[Notation]
+In this textbook, vectors are written in bold:
+$\vect{F}$, $\vect{v}$, $\vect{a}$.
+The magnitude of vector $\vect{F}$ is written as $F$
+or $|\vect{F}|$. In handwriting, draw an arrow above
+the symbol: $\vec{F}$.
+\end{keybox}
+
+% ============================================================
+\section{Types of Vectors}
+\label{sec:types_of_vectors}
+% ============================================================
+
+Not all vectors are created equal. Physicists and
+mathematicians have given names to vectors with
+particular properties. Recognising these types will
+help you communicate precisely and avoid errors when
+solving problems.
+
+% ----------------------------------------------------------
+\subsection*{Equal Vectors}
+
+\textbf{Intuition:} Two vectors are equal if they are
+completely interchangeable --- same size, same direction.
+
+\begin{definitionbox}[Equal Vectors]
+Two vectors $\vect{A}$ and $\vect{B}$ are \textbf{equal}
+if and only if they have the same magnitude \textit{and}
+the same direction:
+\[
+  \vect{A} = \vect{B}
+  \iff |\vect{A}| = |\vect{B}|
+  \text{ and same direction.}
+\]
+Their position in space does not matter --- equal vectors
+can be moved anywhere (see \textit{free vectors} below).
+\end{definitionbox}
+
+\begin{diagbox}[Equal Vectors]
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  \draw[->, thick, codexblue, line width=2pt]
+    (0,0) -- (2.5,1) node[midway, below]{$\vect{A}$};
+  \draw[->, thick, codexblue, line width=2pt]
+    (3.5,0.5) -- (6,1.5) node[midway, below]{$\vect{B}$};
+  \node at (3,2) {\small Same length, same direction
+    $\Rightarrow \vect{A} = \vect{B}$};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ----------------------------------------------------------
+\subsection*{Null (Zero) Vector}
+
+\textbf{Intuition:} A displacement of zero --- you move
+nowhere. Its arrow has zero length.
+
+\begin{definitionbox}[Null Vector]
+The \textbf{null vector} $\vect{0}$ has magnitude zero.
+Its direction is indeterminate (undefined).
+\[
+  \vect{A} + (-\vect{A}) = \vect{0}
+\]
+Physical meaning: zero displacement, zero force, zero
+velocity.
+\end{definitionbox}
+
+% ----------------------------------------------------------
+\subsection*{Negative Vector}
+
+\textbf{Intuition:} Reversing a journey. Same road,
+opposite end.
+
+\begin{definitionbox}[Negative Vector]
+The \textbf{negative} of vector $\vect{A}$, written
+$-\vect{A}$, has the same magnitude as $\vect{A}$ but
+points in the exactly opposite direction:
+\[
+  |-\vect{A}| = |\vect{A}|,\quad
+  \text{direction of } {-\vect{A}}
+  = \text{direction of } \vect{A} + 180°.
+\]
+\end{definitionbox}
+
+% ----------------------------------------------------------
+\subsection*{Parallel and Anti-parallel Vectors}
+
+\begin{definitionbox}[Parallel Vectors]
+Two vectors are \textbf{parallel} if they point in
+exactly the same direction (angle between them $= 0°$).
+They may have different magnitudes.
+\end{definitionbox}
+
+\begin{definitionbox}[Anti-parallel Vectors]
+Two vectors are \textbf{anti-parallel} if they point
+in exactly opposite directions (angle between them
+$= 180°$). A negative vector is always anti-parallel
+to the original.
+\end{definitionbox}
+
+\begin{diagbox}[Parallel and Anti-parallel]
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  % Parallel
+  \draw[->, thick, codexblue, line width=2pt]
+    (0,1.5) -- (2.5,1.5) node[midway, above]{$\vect{A}$};
+  \draw[->, thick, codexred, line width=2pt]
+    (0,0.8) -- (1.5,0.8) node[midway, below]{$\vect{B}$};
+  \node at (1.25,2.2) {\small Parallel};
+
+  % Anti-parallel
+  \draw[->, thick, codexblue, line width=2pt]
+    (5,1.5) -- (7.5,1.5) node[midway, above]{$\vect{C}$};
+  \draw[->, thick, codexred, line width=2pt]
+    (7.5,0.8) -- (5,0.8) node[midway, below]{$\vect{D}$};
+  \node at (6.25,2.2) {\small Anti-parallel};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ----------------------------------------------------------
+\subsection*{Unit Vector}
+
+\begin{definitionbox}[Unit Vector]
+A \textbf{unit vector} is a vector whose magnitude is
+exactly 1. It carries direction information only ---
+no size. The hat notation $\hat{A}$ always denotes a
+unit vector in the direction of $\vect{A}$.
+\end{definitionbox}
+
+\noindent The standard Cartesian unit vectors are
+$\hat{i}$, $\hat{j}$, $\hat{k}$ along the $x$, $y$,
+$z$ axes respectively. Constructing a unit vector from
+any given vector is treated fully in
+Section~\ref{sec:unit_vectors}.
+
+% ----------------------------------------------------------
+\subsection*{Position Vector}
+
+\begin{definitionbox}[Position Vector]
+The \textbf{position vector} $\vect{r}$ of a point $P$
+is the vector drawn from the origin $O$ to $P$.
+It locates a point in space relative to a fixed
+reference origin.
+\[
+  \vect{r} = x\hat{i} + y\hat{j}
+  \quad \text{(2D)}
+  \qquad
+  \vect{r} = x\hat{i} + y\hat{j} + z\hat{k}
+  \quad \text{(3D)}
+\]
+\end{definitionbox}
+
+\noindent Position vectors are developed fully in
+Section~\ref{sec:position_vectors}.
+
+% ----------------------------------------------------------
+\subsection*{Free Vectors}
+
+\begin{definitionbox}[Free Vector]
+A \textbf{free vector} is one that can be moved to any
+position in space without changing its physical meaning,
+provided its magnitude and direction are preserved.
+\end{definitionbox}
+
+\noindent Most vectors in introductory mechanics ---
+forces (when only their net effect matters),
+displacements, velocities --- are treated as free
+vectors. This is why the triangle rule allows you to
+slide vectors around to join them head-to-tail.
+
+% ----------------------------------------------------------
+\subsection*{Localised (Bound) Vector}
+
+\begin{definitionbox}[Localised Vector]
+A \textbf{localised} (or \textbf{bound}) vector has a
+fixed point of application. Its effect depends on
+\textit{where} it acts, not just its magnitude and
+direction.
+\end{definitionbox}
+
+\noindent Example: The torque produced by a force
+depends on where the force is applied relative to
+the pivot. The same force applied at a different
+point produces a different torque. Localised vectors
+appear in rotational mechanics and structural analysis.
+
+% ----------------------------------------------------------
+\subsection*{Collinear Vectors}
+
+\begin{definitionbox}[Collinear Vectors]
+Vectors are \textbf{collinear} if they all lie along the
+same straight line (or parallel lines). Parallel and
+anti-parallel vectors are special cases of collinear
+vectors.
+\end{definitionbox}
+
+% ----------------------------------------------------------
+\subsection*{Coplanar Vectors}
+
+\begin{definitionbox}[Coplanar Vectors]
+Vectors are \textbf{coplanar} if they all lie in the
+same plane. Any two vectors are automatically coplanar.
+Three or more vectors may or may not be coplanar.
+\end{definitionbox}
+
+\noindent All vector problems in this chapter involve
+coplanar vectors (2D). Three-dimensional, non-coplanar
+vectors appear in later chapters on electromagnetism
+and rotational dynamics.
+
+\begin{keybox}[Summary of Vector Types]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Type} & \textbf{Defining property}\\
+\midrule
+Equal & Same magnitude AND same direction\\
+Null  & Magnitude $= 0$\\
+Negative & Same magnitude, opposite direction\\
+Parallel & Same direction (any magnitudes)\\
+Anti-parallel & Opposite directions (any magnitudes)\\
+Unit & Magnitude $= 1$ (direction only)\\
+Position & Drawn from the origin to a point\\
+Free & Can be translated anywhere\\
+Localised & Fixed point of application\\
+Collinear & Lie along the same line/direction\\
+Coplanar & Lie in the same plane\\
+\bottomrule
+\end{tabular}
+\end{keybox}
+
+% ============================================================
+\section{Magnitude of a Vector}
+\label{sec:magnitude}
+% ============================================================
+
+\textbf{Intuition:} Magnitude is simply the \textit{size}
+of a vector --- how long its arrow is. If you draw a
+vector to scale, the magnitude is what you measure with
+a ruler (in the appropriate units). Magnitude is always
+a non-negative scalar.
+
+% ----------------------------------------------------------
+\subsection*{Derivation from Pythagoras's Theorem}
+
+Consider a 2D vector $\vect{A} = A_x\hat{i} + A_y\hat{j}$.
+Its components $A_x$ and $A_y$ form two sides of a
+right-angled triangle, with the vector itself as the
+hypotenuse. By Pythagoras:
+
+\[
+  |\vect{A}|^2 = A_x^2 + A_y^2
+\]
+
+\begin{diagbox}[Magnitude from Pythagoras]
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  \draw[->, thick, codexblue, line width=2.5pt]
+    (0,0) -- (4,3)
+    node[above right]{$\vect{A}$};
+  \draw[->, thick, codexred, line width=2pt]
+    (0,0) -- (4,0)
+    node[below]{$A_x$};
+  \draw[->, thick, codexgreen, line width=2pt]
+    (4,0) -- (4,3)
+    node[right]{$A_y$};
+  \draw[gray, dashed] (0,3) -- (4,3);
+  \draw[gray] (3.8,0) -- (3.8,0.2) -- (4,0.2);
+  \draw[codexgold] (0.8,0) arc(0:36.87:0.8);
+  \node[codexgold] at (1.15,0.28) {$\theta$};
+  \node at (2,-0.5) {\small $|\vect{A}| = \sqrt{A_x^2 + A_y^2}$};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+In three dimensions, extend Pythagoras once more along
+the $z$-axis:
+
+\begin{lawbox}[Magnitude of a Vector]
+\textbf{2D:}\quad
+$|\vect{A}| = \sqrt{A_x^2 + A_y^2}$
+
+\vspace{0.3cm}
+
+\textbf{3D:}\quad
+$|\vect{A}| = \sqrt{A_x^2 + A_y^2 + A_z^2}$
+\end{lawbox}
+
+% ----------------------------------------------------------
+\subsection*{Range of the Resultant}
+
+A very useful theorem follows directly from the idea
+of magnitude:
+
+\begin{lawbox}[Range of the Resultant]
+For two vectors of magnitudes $A$ and $B$, the
+magnitude $R$ of their resultant must satisfy:
+\[
+  |A - B| \leq R \leq A + B
+\]
+\textbf{Maximum} $R = A + B$: when the vectors are
+parallel ($\theta = 0°$).\\
+\textbf{Minimum} $R = |A - B|$: when the vectors are
+anti-parallel ($\theta = 180°$).\\
+Any value of $R$ outside this range is physically
+impossible.
+\end{lawbox}
+
+\noindent \textit{Physical intuition:} If one person
+pulls a rope north with $10\ \text{N}$ and another
+pulls east with $6\ \text{N}$, the resultant cannot
+be $17\ \text{N}$ (that would require them to be
+pulling in the same direction) and cannot be
+$3\ \text{N}$ (that would require them to be pulling
+against each other with a difference of only $3\ \text{N}$,
+but $10 - 6 = 4\ \text{N}$ is the actual minimum).
+
+\begin{examplebox}[2.1]
+\stepcounter{workedexample}
+Find the magnitude of the vector
+$\vect{A} = 3\hat{i} + 4\hat{j}\ \text{N}$.
+\end{examplebox}
+
+\begin{solutionbox}
+\[
+  |\vect{A}| = \sqrt{A_x^2 + A_y^2}
+  = \sqrt{3^2 + 4^2}
+  = \sqrt{9 + 16}
+  = \sqrt{25} = 5\ \text{N}
+\]
+\end{solutionbox}
+
+\begin{examplebox}[2.2]
+\stepcounter{workedexample}
+A velocity vector in 3D is
+$\vect{v} = 2\hat{i} - 3\hat{j} + 6\hat{k}\ \text{m\,s}^{-1}$.
+Find its magnitude.
+\end{examplebox}
+
+\begin{solutionbox}
+\[
+  |\vect{v}| = \sqrt{2^2 + (-3)^2 + 6^2}
+  = \sqrt{4 + 9 + 36}
+  = \sqrt{49}
+  = 7\ \text{m\,s}^{-1}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Graphical Representation of Vectors}
+% ============================================================
+
+A vector is represented graphically by an arrow. The
+\textbf{length} of the arrow represents the magnitude
+(drawn to scale), and the \textbf{direction} of the arrow
+represents the direction of the vector.
+
+\begin{diagbox}[Vector Representation]
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+  % Single vector
+  \draw[->, thick, codexblue, line width=2pt]
+    (0,0) -- (4,0);
+  \node[below] at (2,0) {magnitude = 4 units};
+  \node[above] at (2,0.05) {$\vect{F}$};
+  \draw[<->, gray] (0,-0.5) -- (4,-0.5);
+  \node[below, gray] at (2,-0.5) {Scale: 1 cm = 1 N};
+
+  % Direction angle
+  \draw[->, thick, codexred, line width=2pt]
+    (6,0) -- ++(3,2);
+  \node at (7.8,0.9) {$\vect{v}$};
+  \draw[gray] (6,0) -- ++(1.5,0);
+  \draw[codexgold] (6.6,0) arc (0:33.7:0.6);
+  \node[right, codexgold] at (7.0, 0.2) {$\theta$};
+  \node[below] at (7.5,-0.2) {Direction: $\theta$ above horizontal};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Vector Addition: Triangle Rule}
+% ============================================================
+
+\begin{definitionbox}[Resultant Vector]
+The \textbf{resultant} $\vect{R}$ of two or more vectors
+is the single vector that has the same effect as all the
+original vectors acting together. It is found by vector
+addition.
+\end{definitionbox}
+
+\begin{lawbox}[Triangle Rule for Vector Addition]
+To add two vectors $\vect{A}$ and $\vect{B}$:
+\begin{enumerate}[noitemsep]
+  \item Draw $\vect{A}$ as an arrow to scale.
+  \item From the \textit{tip} (head) of $\vect{A}$, draw
+  $\vect{B}$ to scale.
+  \item The resultant $\vect{R} = \vect{A} + \vect{B}$
+  is the arrow from the \textit{tail} of $\vect{A}$ to
+  the \textit{head} of $\vect{B}$.
+\end{enumerate}
+This is called the \textbf{head-to-tail} method.
+\end{lawbox}
+
+\begin{diagbox}[Triangle Rule]
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  % Vector A
+  \draw[->, thick, codexblue, line width=2pt]
+    (0,0) -- (4,0) node[midway, below]{$\vect{A}$};
+  % Vector B from tip of A
+  \draw[->, thick, codexred, line width=2pt]
+    (4,0) -- (6,2) node[midway, right]{$\vect{B}$};
+  % Resultant
+  \draw[->, thick, codexgreen, line width=2.5pt, dashed]
+    (0,0) -- (6,2) node[midway, above left]{$\vect{R} = \vect{A}+\vect{B}$};
+  % Labels
+  \fill[codexblue] (0,0) circle (2pt) node[left]{Tail of A};
+  \fill[codexred]  (6,2) circle (2pt) node[right]{Head of B};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\textbf{Important properties of vector addition:}
+\begin{align*}
+  \vect{A} + \vect{B} &= \vect{B} + \vect{A}
+  \quad \text{(commutative)}\\
+  (\vect{A}+\vect{B})+\vect{C}
+  &= \vect{A}+(\vect{B}+\vect{C})
+  \quad \text{(associative)}
+\end{align*}
+
+% ============================================================
+\section{Vector Addition: Parallelogram Rule}
+% ============================================================
+
+\begin{lawbox}[Parallelogram Rule]
+To add vectors $\vect{A}$ and $\vect{B}$ using the
+parallelogram method:
+\begin{enumerate}[noitemsep]
+  \item Draw both vectors from the same point (tail to tail).
+  \item Complete the parallelogram.
+  \item The diagonal of the parallelogram from the common
+  tail is the resultant $\vect{R}$.
+\end{enumerate}
+\end{lawbox}
+
+\begin{diagbox}[Parallelogram Rule]
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (4,0);
+  \coordinate (B) at (1.5,2.5);
+  \coordinate (R) at (5.5,2.5);
+
+  % Parallelogram sides
+  \draw[dashed, gray] (A) -- (R);
+  \draw[dashed, gray] (B) -- (R);
+
+  % Vectors
+  \draw[->, thick, codexblue, line width=2pt]
+    (O) -- (A) node[midway, below]{$\vect{A}$};
+  \draw[->, thick, codexred, line width=2pt]
+    (O) -- (B) node[midway, left]{$\vect{B}$};
+
+  % Resultant diagonal
+  \draw[->, thick, codexgreen, line width=2.5pt]
+    (O) -- (R) node[midway, above, sloped]{$\vect{R}$};
+
+  \fill (O) circle (2.5pt) node[left]{O};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Vector Addition: Polygon Rule}
+\label{sec:polygon_rule}
+% ============================================================
+
+The triangle rule handles two vectors. What if you have
+three, four, or more? Simply extend the head-to-tail
+idea: keep chaining vectors end-to-end until all have
+been placed, then draw the resultant from the tail of
+the first to the head of the last.
+
+\begin{lawbox}[Polygon Rule for Vector Addition]
+To add $n$ vectors $\vect{F}_1, \vect{F}_2, \ldots,
+\vect{F}_n$:
+\begin{enumerate}[noitemsep]
+  \item Draw $\vect{F}_1$ to scale.
+  \item From the head of $\vect{F}_1$, draw $\vect{F}_2$.
+  \item Continue placing each vector head-to-tail.
+  \item The resultant $\vect{R}$ is the vector from the
+  tail of $\vect{F}_1$ to the head of $\vect{F}_n$.
+\end{enumerate}
+\textbf{Equilibrium condition:} If the polygon
+\textit{closes} (the head of the last vector meets the
+tail of the first), then the resultant is zero and the
+system is in equilibrium.
+\end{lawbox}
+
+\begin{diagbox}[Polygon Rule: Four Vectors]
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  \coordinate (O)  at (0,0);
+  \coordinate (P1) at (3,0);
+  \coordinate (P2) at (4.5,2);
+  \coordinate (P3) at (2.5,3.5);
+
+  % The four vectors head-to-tail
+  \draw[->, thick, codexblue, line width=2pt]
+    (O) -- (P1) node[midway, below]{$\vect{F}_1$};
+  \draw[->, thick, codexred, line width=2pt]
+    (P1) -- (P2) node[midway, right]{$\vect{F}_2$};
+  \draw[->, thick, codexgold, line width=2pt]
+    (P2) -- (P3) node[midway, right]{$\vect{F}_3$};
+  \draw[->, thick, violet, line width=2pt]
+    (P3) -- (2.5,3.5) -- (1.0,4.5)
+    node[midway, left]{$\vect{F}_4$};
+
+  % Resultant
+  \draw[->, thick, codexgreen, line width=2.5pt, dashed]
+    (O) -- (1.0,4.5)
+    node[midway, left]{$\vect{R}$};
+
+  \fill (O) circle (2.5pt) node[left]{Start};
+  \fill (1.0,4.5) circle (2.5pt) node[right]{End};
+  
+  \node at (4.5,-0.9) {\small Resultant = tail of $\vect{F}_1$
+    to head of $\vect{F}_4$};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{diagbox}[Closed Polygon: Equilibrium]
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3,0);
+  \coordinate (B) at (4,2);
+  \coordinate (C) at (1.5,3);
+
+  \draw[->, thick, codexblue, line width=2pt]
+    (O) -- (A) node[midway, below]{$\vect{F}_1$};
+  \draw[->, thick, codexred, line width=2pt]
+    (A) -- (B) node[midway, right]{$\vect{F}_2$};
+  \draw[->, thick, codexgold, line width=2pt]
+    (B) -- (C) node[midway, right]{$\vect{F}_3$};
+  \draw[->, thick, violet, line width=2pt]
+    (C) -- (O) node[midway, left]{$\vect{F}_4$};
+
+  \node at (2,-0.9)
+    {\small Polygon closes $\Rightarrow$
+    $\vect{F}_1+\vect{F}_2+\vect{F}_3+\vect{F}_4 = \vect{0}$
+    (Equilibrium)};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\noindent The polygon rule is the geometric basis
+for the analytical component method developed in
+Section~\ref{sec:component_method}. Instead of drawing
+to scale, we replace geometry with arithmetic --- but
+the logic is identical.
+
+% ============================================================
+\section{Calculating the Resultant Analytically}
+% ============================================================
+
+The graphical methods work, but for precise answers we use
+trigonometry and the cosine rule.
+
+\begin{lawbox}[Resultant of Two Vectors at Angle $\theta$]
+If two vectors $\vect{A}$ and $\vect{B}$ are at an angle
+$\theta$ to each other, the magnitude of their resultant is:
+\[
+  R = \sqrt{A^2 + B^2 + 2AB\cos\theta}
+\]
+The direction of the resultant (angle $\alpha$ from
+$\vect{A}$) is:
+\[
+  \tan\alpha = \frac{B\sin\theta}{A + B\cos\theta}
+\]
+\end{lawbox}
+
+\textbf{Special cases:}
+
+\begin{itemize}
+  \item $\theta = 0°$ (parallel, same direction):
+  $R = A + B$ (maximum resultant)
+  \item $\theta = 180°$ (antiparallel, opposite directions):
+  $R = |A - B|$ (minimum resultant)
+  \item $\theta = 90°$ (perpendicular):
+  $R = \sqrt{A^2 + B^2}$, $\tan\alpha = B/A$
+\end{itemize}
+
+\begin{examplebox}[2.3]
+\stepcounter{workedexample}
+Two forces act on a bolt. Force $\vect{F}_1 = 80\ \text{N}$
+acts horizontally to the right and force
+$\vect{F}_2 = 60\ \text{N}$ acts vertically upward.
+Find the magnitude and direction of the resultant force.
+\end{examplebox}
+
+\begin{solutionbox}
+Since the two forces are perpendicular ($\theta = 90°$):
+\[
+  R = \sqrt{F_1^2 + F_2^2}
+  = \sqrt{80^2 + 60^2}
+  = \sqrt{6400 + 3600}
+  = \sqrt{10000}
+  = 100\ \text{N}
+\]
+
+Direction (angle above horizontal):
+\[
+  \tan\alpha = \frac{F_2}{F_1} = \frac{60}{80} = 0.75
+\]
+\[
+  \alpha = \tan^{-1}(0.75) = 36.9°
+\]
+
+\textbf{Result:} The resultant force is
+$\mathbf{100\ \text{N}}$ at $\mathbf{36.9°}$ above the
+horizontal.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+  \draw[->, thick, codexblue, line width=2pt]
+    (0,0) -- (4,0) node[right]{$F_1 = 80$ N};
+  \draw[->, thick, codexred, line width=2pt]
+    (0,0) -- (0,3) node[above]{$F_2 = 60$ N};
+  \draw[->, thick, codexgreen, line width=2.5pt, dashed]
+    (0,0) -- (4,3) node[right]{$R = 100$ N};
+  \draw[gray, dashed] (4,0) -- (4,3);
+  \draw[codexgold] (0.8,0) arc(0:36.9:0.8);
+  \node[codexgold] at (1.2,0.3) {$36.9°$};
+\end{tikzpicture}
+\end{center}
+\end{solutionbox}
+
+\begin{examplebox}[2.4]
+\stepcounter{workedexample}
+Two tugboats pull a ship. Tugboat A pulls with a force of
+$15\,000\ \text{N}$ and tugboat B pulls with a force of
+$20\,000\ \text{N}$. The angle between the two tow ropes
+is $60°$. Find the magnitude of the resultant force on
+the ship.
+\end{examplebox}
+
+\begin{solutionbox}
+Using the cosine rule with $A = 15\,000\ \text{N}$,
+$B = 20\,000\ \text{N}$, $\theta = 60°$:
+\begin{align*}
+  R &= \sqrt{A^2 + B^2 + 2AB\cos\theta}\\[4pt]
+  &= \sqrt{15000^2 + 20000^2
+    + 2(15000)(20000)\cos 60°}\\[4pt]
+  &= \sqrt{225{,}000{,}000 + 400{,}000{,}000
+    + 600{,}000{,}000 \times 0.5}\\[4pt]
+  &= \sqrt{225{,}000{,}000 + 400{,}000{,}000
+    + 300{,}000{,}000}\\[4pt]
+  &= \sqrt{925{,}000{,}000}\\[4pt]
+  &= 30{,}414\ \text{N} \approx 30{,}400\ \text{N}
+\end{align*}
+
+\textbf{Result:} The resultant force on the ship is
+approximately $\mathbf{30\,400\ \text{N}}$.
+
+\begin{realworldbox}[Tugboats at Apapa Port]
+At Apapa Port in Lagos, large vessels are routinely guided
+into dock by multiple tugboats. The captains must account
+for the vector sum of all tug forces, plus water current
+and wind force, to bring a ship safely to berth.
+Understanding resultant forces is not academic --- it
+is how ships avoid hitting the dock.
+\end{realworldbox}
+\end{solutionbox}
+
+% ============================================================
+\section{Resolution of Vectors into Components}
+% ============================================================
+
+Just as we can \textit{add} vectors to find a resultant,
+we can \textit{split} any vector into two perpendicular
+components. This is called \textbf{resolution}.
+
+Resolution is arguably more useful than addition, because
+it allows us to handle any number of vectors by reducing
+the problem to straightforward arithmetic.
+
+\begin{lawbox}[Resolution of a Vector]
+Any vector $\vect{F}$ at angle $\theta$ above the
+horizontal can be resolved into:
+\[
+  F_x = F\cos\theta \quad \text{(horizontal component)}
+\]
+\[
+  F_y = F\sin\theta \quad \text{(vertical component)}
+\]
+These components are perpendicular to each other and
+together are completely equivalent to the original vector.
+\end{lawbox}
+
+\begin{diagbox}[Resolution of a Vector]
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  % Axes
+  \draw[->, gray] (-0.3,0) -- (4.5,0) node[right]{$x$};
+  \draw[->, gray] (0,-0.3) -- (0,3.5) node[above]{$y$};
+
+  % Original vector
+  \draw[->, thick, codexblue, line width=2.5pt]
+    (0,0) -- (4,3)
+    node[above right]{$\vect{F}$};
+
+  % Components
+  \draw[->, thick, codexred, line width=2pt]
+    (0,0) -- (4,0)
+    node[below]{$F_x = F\cos\theta$};
+  \draw[->, thick, codexgreen, line width=2pt]
+    (0,0) -- (0,3)
+    node[left]{$F_y = F\sin\theta$};
+
+  % Dashed completion
+  \draw[dashed, gray] (4,0) -- (4,3);
+  \draw[dashed, gray] (0,3) -- (4,3);
+
+  % Angle
+  \draw[codexgold] (0.8,0) arc(0:36.87:0.8);
+  \node[codexgold] at (1.1,0.25) {$\theta$};
+
+  % Right angle mark
+  \draw[gray] (3.8,0) -- (3.8,0.2) -- (4,0.2);
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[2.5]
+\stepcounter{workedexample}
+A force of $250\ \text{N}$ acts at $35°$ above the
+horizontal. Find the horizontal and vertical components.
+\end{examplebox}
+
+\begin{solutionbox}
+\begin{align*}
+  F_x &= F\cos\theta = 250\cos 35°
+       = 250 \times 0.8192
+       = 204.8\ \text{N}\\[6pt]
+  F_y &= F\sin\theta = 250\sin 35°
+       = 250 \times 0.5736
+       = 143.4\ \text{N}
+\end{align*}
+
+\textbf{Check:} $\sqrt{F_x^2 + F_y^2}
+= \sqrt{204.8^2 + 143.4^2}
+= \sqrt{41\,943 + 20\,564}
+= \sqrt{62\,507} \approx 250\ \text{N}$ ✓
+\end{solutionbox}
+
+% ============================================================
+\section{Adding Multiple Vectors by Components}
+\label{sec:component_method}
+% ============================================================
+
+When more than two vectors must be added, the most
+powerful method is to resolve each vector into $x$ and $y$
+components, sum the components separately, then combine
+the sums.
+
+\begin{lawbox}[Component Method for Multiple Vectors]
+To find the resultant of vectors
+$\vect{F}_1, \vect{F}_2, \ldots, \vect{F}_n$:
+\begin{enumerate}[noitemsep]
+  \item Resolve each vector into $x$ and $y$ components:
+  $F_{ix} = F_i\cos\theta_i$,
+  $F_{iy} = F_i\sin\theta_i$
+  \item Sum all $x$-components: $R_x = \sum F_{ix}$
+  \item Sum all $y$-components: $R_y = \sum F_{iy}$
+  \item Find the resultant magnitude:
+  $R = \sqrt{R_x^2 + R_y^2}$
+  \item Find the resultant direction:
+  $\alpha = \tan^{-1}\!\left(\dfrac{|R_y|}{|R_x|}\right)$
+  (in the correct quadrant)
+\end{enumerate}
+\end{lawbox}
+
+\begin{examplebox}[2.6]
+\stepcounter{workedexample}
+Three forces act on a particle simultaneously:
+\begin{itemize}[noitemsep]
+  \item $\vect{F}_1 = 40\ \text{N}$ at $0°$ (east)
+  \item $\vect{F}_2 = 30\ \text{N}$ at $90°$ (north)
+  \item $\vect{F}_3 = 50\ \text{N}$ at $210°$
+  (southwest)
+\end{itemize}
+Find the magnitude and direction of the resultant.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{Step 1:} Resolve each force into components
+(taking east as $+x$, north as $+y$):
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Force} & \textbf{Magnitude (N)} &
+$\mathbf{F_x}$ \textbf{(N)} &
+$\mathbf{F_y}$ \textbf{(N)}\\
+\midrule
+$\vect{F}_1$ & 40 &
+  $40\cos 0° = +40.0$ &
+  $40\sin 0° = 0.0$\\
+$\vect{F}_2$ & 30 &
+  $30\cos 90° = 0.0$ &
+  $30\sin 90° = +30.0$\\
+$\vect{F}_3$ & 50 &
+  $50\cos 210° = -43.3$ &
+  $50\sin 210° = -25.0$\\
+\midrule
+\textbf{Sum} & & $R_x = -3.3$ & $R_y = +5.0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Step 2:} Find resultant magnitude:
+\[
+  R = \sqrt{(-3.3)^2 + (5.0)^2}
+  = \sqrt{10.89 + 25.0}
+  = \sqrt{35.89}
+  = 5.99 \approx 6.0\ \text{N}
+\]
+
+\textbf{Step 3:} Find direction. Since $R_x < 0$ and
+$R_y > 0$, the resultant is in the second quadrant
+(northwest):
+\[
+  \alpha = \tan^{-1}\!\left(\frac{5.0}{3.3}\right)
+  = \tan^{-1}(1.515) = 56.6°
+\]
+
+Angle from east (measuring anticlockwise):
+$180° - 56.6° = 123.4°$
+
+\textbf{Result:} $R \approx 6.0\ \text{N}$ at $123.4°$
+from east (i.e.\ $56.6°$ west of north).
+\end{solutionbox}
+
+% ============================================================
+\section{Vector Subtraction and Relative Velocity}
+% ============================================================
+
+\begin{definitionbox}[Vector Subtraction]
+Subtracting vector $\vect{B}$ from $\vect{A}$ is equivalent
+to adding the negative of $\vect{B}$:
+\[
+  \vect{A} - \vect{B} = \vect{A} + (-\vect{B})
+\]
+The negative of a vector has the same magnitude but
+opposite direction.
+\end{definitionbox}
+
+\begin{definitionbox}[Relative Velocity]
+The \textbf{velocity of A relative to B} is the velocity
+of A as observed by B:
+\[
+  \vect{v}_{A\,\text{relative to}\,B}
+  = \vect{v}_A - \vect{v}_B
+\]
+\end{definitionbox}
+
+\begin{examplebox}[2.7]
+\stepcounter{workedexample}
+Car A travels due north at $60\ \text{km\,h}^{-1}$ and
+car B travels due east at $80\ \text{km\,h}^{-1}$.
+Find the velocity of car A as seen by a passenger
+in car B.
+\end{examplebox}
+
+\begin{solutionbox}
+\[
+  \vect{v}_{A\,\text{rel}\,B}
+  = \vect{v}_A - \vect{v}_B
+\]
+
+Taking north as $+y$ and east as $+x$:
+\[
+  \vect{v}_A = (0,\, 60)\ \text{km\,h}^{-1}
+\]
+\[
+  \vect{v}_B = (80,\, 0)\ \text{km\,h}^{-1}
+\]
+\[
+  \vect{v}_{A\,\text{rel}\,B}
+  = (0 - 80,\; 60 - 0)
+  = (-80,\, 60)\ \text{km\,h}^{-1}
+\]
+
+Magnitude:
+\[
+  |\vect{v}_{A\,\text{rel}\,B}|
+  = \sqrt{80^2 + 60^2}
+  = \sqrt{6400 + 3600} = 100\ \text{km\,h}^{-1}
+\]
+
+Direction: $\tan\alpha = 60/80 = 0.75$,
+so $\alpha = 36.9°$ north of west.
+
+\textbf{Result:} To the passenger in car B, car A appears
+to move at $100\ \text{km\,h}^{-1}$ in a direction
+$36.9°$ north of west.
+\end{solutionbox}
+
+\begin{realworldbox}[Danfo on Lagos Expressway]
+When a danfo (minibus) overtakes you on the Lagos-Ibadan
+Expressway, the relative velocity of the danfo with
+respect to your car determines the rate at which it
+appears to move past you. If you are doing 100 km\,h$^{-1}$
+and the danfo is doing 120 km\,h$^{-1}$ in the same
+direction, it appears to move past you at only
+20 km\,h$^{-1}$ --- slow enough to read its side
+advertisements. If it were coming toward you in the
+opposite lane at 100 km\,h$^{-1}$, the relative velocity
+would be 200 km\,h$^{-1}$ --- which is why head-on
+collisions are so catastrophic.
+\end{realworldbox}
+
+% ============================================================
+\section{Position Vectors}
+\label{sec:position_vectors}
+% ============================================================
+
+\textbf{Intuition:} A position vector answers a very
+specific question: \textit{where is this point relative
+to the origin?} It is an arrow drawn from the fixed
+reference point $O$ (the origin) to the point in
+question.
+
+\begin{definitionbox}[Position Vector]
+The \textbf{position vector} $\vect{r}_P$ of a point
+$P(x,\,y)$ is:
+\[
+  \vect{r}_P = x\hat{i} + y\hat{j}
+  \quad \text{(2D)}
+\]
+\[
+  \vect{r}_P = x\hat{i} + y\hat{j} + z\hat{k}
+  \quad \text{(3D)}
+\]
+Its magnitude $|\vect{r}_P|$ is the distance from the
+origin to $P$.
+\end{definitionbox}
+
+\begin{diagbox}[Position Vectors in 2D]
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  % Axes
+  \draw[->, gray] (-0.5,0) -- (5.5,0) node[right]{$x$};
+  \draw[->, gray] (0,-0.5) -- (0,4.0) node[above]{$y$};
+
+  % Point A
+  \coordinate (A) at (1.5,3.0);
+  \fill[codexblue] (A) circle (3pt) node[above right]{$A(1.5,\,3.0)$};
+  \draw[->, thick, codexblue, line width=2pt]
+    (0,0) -- (A) node[midway, left]{$\vect{r}_A$};
+
+  % Point B
+  \coordinate (B) at (4.5,1.5);
+  \fill[codexred] (B) circle (3pt) node[above right]{$B(4.5,\,1.5)$};
+  \draw[->, thick, codexred, line width=2pt]
+    (0,0) -- (B) node[midway, below]{$\vect{r}_B$};
+
+  % Vector from A to B
+  \draw[->, thick, codexgreen, line width=2pt, dashed]
+    (A) -- (B) node[midway, below right]{$\vect{AB}$};
+
+  \fill (0,0) circle (3pt) node[below left]{$O$};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ----------------------------------------------------------
+\subsection*{Vector Between Two Points}
+
+To find the vector pointing from point $A$ to point $B$,
+subtract the position vector of $A$ from that of $B$:
+
+\begin{lawbox}[Vector Between Two Points]
+\[
+  \vect{AB} = \vect{r}_B - \vect{r}_A
+\]
+This gives the displacement vector from $A$ to $B$.
+Its magnitude $|\vect{AB}|$ is the distance between $A$ and $B$.
+\end{lawbox}
+
+\begin{examplebox}[2.8]
+\stepcounter{workedexample}
+Point $A$ has coordinates $(2,\,5)$ and point $B$ has
+coordinates $(7,\,2)$ (in metres).\\
+(a) Write down the position vectors $\vect{r}_A$ and
+$\vect{r}_B$.\\
+(b) Find the vector $\vect{AB}$ from $A$ to $B$.\\
+(c) Find the distance $|AB|$.
+\end{examplebox}
+
+\begin{solutionbox}
+(a) Position vectors:
+\[
+  \vect{r}_A = 2\hat{i} + 5\hat{j}\ \text{m},\qquad
+  \vect{r}_B = 7\hat{i} + 2\hat{j}\ \text{m}
+\]
+
+(b) Vector from $A$ to $B$:
+\[
+  \vect{AB} = \vect{r}_B - \vect{r}_A
+  = (7-2)\hat{i} + (2-5)\hat{j}
+  = 5\hat{i} - 3\hat{j}\ \text{m}
+\]
+
+(c) Distance:
+\[
+  |AB| = |\vect{AB}| = \sqrt{5^2 + (-3)^2}
+  = \sqrt{25 + 9} = \sqrt{34} \approx 5.83\ \text{m}
+\]
+
+\textbf{Note:} $\vect{BA} = -\vect{AB} = -5\hat{i} + 3\hat{j}$
+--- same distance, opposite direction.
+\end{solutionbox}
+
+% ============================================================
+\section{Unit Vectors}
+\label{sec:unit_vectors}
+% ============================================================
+
+\begin{definitionbox}[Unit Vector]
+A \textbf{unit vector} is a vector with magnitude exactly
+equal to 1. Its sole purpose is to specify a direction.
+The standard unit vectors in three dimensions are:
+\[
+  \hat{i} \text{ (east/x-direction)},\quad
+  \hat{j} \text{ (north/y-direction)},\quad
+  \hat{k} \text{ (upward/z-direction)}
+\]
+Any vector can be written as:
+$\vect{F} = F_x\hat{i} + F_y\hat{j} + F_z\hat{k}$
+\end{definitionbox}
+
+\begin{examplebox}[2.9]
+\stepcounter{workedexample}
+A displacement is $\vect{s} = 3\hat{i} + 4\hat{j}$
+metres. Find its magnitude and direction.
+\end{examplebox}
+
+\begin{solutionbox}
+Magnitude:
+\[
+  s = |\vect{s}| = \sqrt{3^2 + 4^2}
+  = \sqrt{9 + 16} = \sqrt{25} = 5\ \text{m}
+\]
+Direction:
+\[
+  \theta = \tan^{-1}\!\left(\frac{4}{3}\right)
+  = \tan^{-1}(1.333) = 53.1°
+  \text{ above the } x\text{-axis (north of east)}
+\]
+\end{solutionbox}
+
+% ----------------------------------------------------------
+\subsection*{Constructing a Unit Vector from Any Vector}
+
+\textbf{Intuition:} To extract the direction from a
+vector while discarding its size, divide every component
+by the magnitude. This scales the arrow down to length 1
+without rotating it.
+
+\begin{lawbox}[Unit Vector from a Given Vector]
+The unit vector in the direction of $\vect{A}$ is:
+\[
+  \hat{A} = \frac{\vect{A}}{|\vect{A}|}
+\]
+\textbf{Verification:} $|\hat{A}|
+= \dfrac{|\vect{A}|}{|\vect{A}|} = 1$ always. $\checkmark$
+\end{lawbox}
+
+\begin{examplebox}[2.10]
+\stepcounter{workedexample}
+Find the unit vector in the direction of
+$\vect{F} = 6\hat{i} + 8\hat{j}\ \text{N}$.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{Step 1:} Find the magnitude:
+\[
+  |\vect{F}| = \sqrt{6^2 + 8^2}
+  = \sqrt{36 + 64} = \sqrt{100} = 10\ \text{N}
+\]
+
+\textbf{Step 2:} Divide by the magnitude:
+\[
+  \hat{F} = \frac{\vect{F}}{|\vect{F}|}
+  = \frac{6\hat{i} + 8\hat{j}}{10}
+  = 0.6\hat{i} + 0.8\hat{j}
+\]
+
+\textbf{Verification:}
+$|\hat{F}| = \sqrt{0.6^2 + 0.8^2}
+= \sqrt{0.36 + 0.64} = \sqrt{1.00} = 1$ ✓
+\end{solutionbox}
+
+\begin{examplebox}[2.11]
+\stepcounter{workedexample}
+Find the unit vector in the direction of
+$\vect{v} = 2\hat{i} - 3\hat{j} + 6\hat{k}\ \text{m\,s}^{-1}$.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{Step 1:} Magnitude (from Example~2.2):
+\[
+  |\vect{v}| = \sqrt{4 + 9 + 36} = 7\ \text{m\,s}^{-1}
+\]
+
+\textbf{Step 2:} Unit vector:
+\[
+  \hat{v} = \frac{2\hat{i} - 3\hat{j} + 6\hat{k}}{7}
+  = \frac{2}{7}\hat{i} - \frac{3}{7}\hat{j}
+  + \frac{6}{7}\hat{k}
+\]
+
+\textbf{Verification:}
+$|\hat{v}| = \sqrt{(2/7)^2+(-3/7)^2+(6/7)^2}
+= \sqrt{4+9+36}/7 = 7/7 = 1$ ✓
+\end{solutionbox}
+
+% ============================================================
+\section{Equilibrium of Forces}
+% ============================================================
+
+\begin{definitionbox}[Equilibrium]
+A particle is in \textbf{equilibrium} when the resultant
+of all forces acting on it is zero:
+\[
+  \sum \vect{F} = \vect{0}
+\]
+This means $\sum F_x = 0$ AND $\sum F_y = 0$
+simultaneously.
+\end{definitionbox}
+
+\begin{lawbox}[Lami's Theorem]
+If three concurrent coplanar forces $F_1$, $F_2$, $F_3$
+are in equilibrium, then each force is proportional to
+the sine of the angle between the other two:
+\[
+  \frac{F_1}{\sin\alpha_1}
+  = \frac{F_2}{\sin\alpha_2}
+  = \frac{F_3}{\sin\alpha_3}
+\]
+where $\alpha_1$, $\alpha_2$, $\alpha_3$ are the angles
+\textit{opposite} to $F_1$, $F_2$, $F_3$ respectively.
+\end{lawbox}
+
+\begin{examplebox}[2.12]
+\stepcounter{workedexample}
+A traffic light of weight $W = 400\ \text{N}$ is
+suspended from two cables. Cable 1 makes an angle of
+$30°$ with the vertical and cable 2 makes an angle of
+$45°$ with the vertical. Find the tension in each cable.
+\end{examplebox}
+
+\begin{solutionbox}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  % Ceiling
+  \fill[gray!30] (-3,2) rectangle (3,2.3);
+  \draw[thick] (-3,2) -- (3,2);
+  % Cables
+  \draw[thick, codexblue] (0,0) -- (-2.5, 2)
+    node[midway, left]{$T_1$};
+  \draw[thick, codexred] (0,0) -- (2,2)
+    node[midway, right]{$T_2$};
+  % Weight
+  \draw[->, thick, codexgreen, line width=2pt]
+    (0,0) -- (0,-1.5) node[below]{$W = 400$ N};
+  % Angles
+  \draw[dashed, gray] (0,0) -- (0,2.5);
+  \draw[codexblue] (-0.1, 0.5) arc(90:122:0.5);
+  \node[left, codexblue, font=\small] at (-0.0,0.8)
+    {$30°$};
+  \draw[codexred] (0.1,0.5) arc(90:45:0.5);
+  \node[right, codexred, font=\small] at (0.0,0.8)
+    {$45°$};
+  \fill (0,0) circle (3pt);
+\end{tikzpicture}
+\end{center}
+
+For equilibrium, resolve horizontally and vertically:
+\begin{align*}
+  \sum F_x = 0&:\quad
+  T_2\sin 45° - T_1\sin 30° = 0\\
+  \sum F_y = 0&:\quad
+  T_1\cos 30° + T_2\cos 45° - 400 = 0
+\end{align*}
+
+From the first equation:
+\[
+  T_2 = T_1 \frac{\sin 30°}{\sin 45°}
+  = T_1 \times \frac{0.500}{0.707} = 0.707 T_1
+\]
+
+Substituting into the second equation:
+\[
+  T_1(0.866) + 0.707 T_1(0.707) = 400
+\]
+\[
+  0.866 T_1 + 0.500 T_1 = 400
+\]
+\[
+  1.366 T_1 = 400
+\]
+\[
+  \boxed{T_1 = 293\ \text{N}}
+\]
+\[
+  \boxed{T_2 = 0.707 \times 293 = 207\ \text{N}}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{The Scalar (Dot) Product}
+\label{sec:dot_product}
+% ============================================================
+
+\textbf{Intuition:} Imagine two forces acting on a box
+at an angle to each other. You want to know how much
+of one force acts \textit{in the direction} of the
+other --- i.e.\ how much of $\vect{A}$ is projected
+onto $\vect{B}$. That projection, multiplied by the
+magnitude of $\vect{B}$, is the dot product.
+
+More concretely: if you push a box at an angle to its
+direction of motion, only the component of your push
+\textit{along} the motion does useful work. Work is
+the classic physical realisation of the dot product.
+
+\begin{definitionbox}[Scalar (Dot) Product]
+The \textbf{scalar product} (also called the
+\textbf{dot product}) of two vectors $\vect{A}$ and
+$\vect{B}$ is defined as:
+\[
+  \vect{A} \cdot \vect{B}
+  = AB\cos\theta
+\]
+where $A = |\vect{A}|$, $B = |\vect{B}|$, and $\theta$
+is the angle between the two vectors
+($0° \leq \theta \leq 180°$).
+
+The result is a \textbf{scalar} --- a single number
+with no direction.
+\end{definitionbox}
+
+\begin{diagbox}[Geometric Meaning of the Dot Product]
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  % Vectors
+  \draw[->, thick, codexblue, line width=2pt]
+    (0,0) -- (4,0) node[right]{$\vect{B}$};
+  \draw[->, thick, codexred, line width=2pt]
+    (0,0) -- (3.5,2.5) node[above right]{$\vect{A}$};
+
+  % Angle
+  \draw[codexgold] (0.9,0) arc(0:35.5:0.9);
+  \node[codexgold] at (1.3,0.3) {$\theta$};
+
+  % Projection of A onto B
+  \draw[dashed, gray] (3.5,2.5) -- (3.5,0);
+  \draw[->, thick, codexgreen, line width=2pt]
+    (0,0) -- (3.5,0)
+    node[below]{$A\cos\theta$ (projection of $\vect{A}$ onto $\vect{B}$)};
+
+  \node at (2,-1.0)
+    {\small $\vect{A}\cdot\vect{B}
+    = B \times (A\cos\theta)
+    = $ (magnitude of $\vect{B}$)
+    $\times$ (projection of $\vect{A}$ onto $\vect{B}$)};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ----------------------------------------------------------
+\subsection*{Component Form}
+
+When vectors are expressed in component form, the dot
+product is computed without needing the angle:
+
+\begin{lawbox}[Dot Product in Component Form]
+\textbf{2D:}
+$\vect{A}\cdot\vect{B}
+= A_x B_x + A_y B_y$
+
+\vspace{0.2cm}
+
+\textbf{3D:}
+$\vect{A}\cdot\vect{B}
+= A_x B_x + A_y B_y + A_z B_z$
+\end{lawbox}
+
+\textit{Why does this work?} Expand using the
+distributive law and the unit vector dot products
+($\hat{i}\cdot\hat{i} = 1$,
+$\hat{i}\cdot\hat{j} = 0$, etc.) and you recover
+the component formula directly.
+
+% ----------------------------------------------------------
+\subsection*{Properties and Special Results}
+
+\begin{keybox}[Unit Vector Dot Products]
+\centering
+\begin{tabular}{ccccc}
+$\hat{i}\cdot\hat{i}=1$ &
+$\hat{j}\cdot\hat{j}=1$ &
+$\hat{k}\cdot\hat{k}=1$ \\[4pt]
+$\hat{i}\cdot\hat{j}=0$ &
+$\hat{j}\cdot\hat{k}=0$ &
+$\hat{k}\cdot\hat{i}=0$ \\
+\end{tabular}
+
+\vspace{0.2cm}
+\textit{Same basis vectors} $\to$ dot product = 1.
+\textit{Different basis vectors} $\to$ dot product = 0.
+\end{keybox}
+
+\textbf{Properties:}
+\begin{align*}
+  \vect{A}\cdot\vect{B}
+  &= \vect{B}\cdot\vect{A}
+  \quad \text{(commutative)}\\
+  \vect{A}\cdot(\vect{B}+\vect{C})
+  &= \vect{A}\cdot\vect{B}
+  + \vect{A}\cdot\vect{C}
+  \quad \text{(distributive)}\\
+  \vect{A}\cdot\vect{A}
+  &= A^2
+  \quad \text{(magnitude squared)}
+\end{align*}
+
+\textbf{Special cases:}
+\begin{itemize}[noitemsep]
+  \item \textbf{Perpendicular vectors:}
+  $\vect{A}\cdot\vect{B} = 0$
+  (since $\cos 90° = 0$) ---
+  use this to \textit{test} for perpendicularity.
+  \item \textbf{Parallel vectors:}
+  $\vect{A}\cdot\vect{B} = AB$
+  (since $\cos 0° = 1$).
+  \item \textbf{Anti-parallel vectors:}
+  $\vect{A}\cdot\vect{B} = -AB$
+  (since $\cos 180° = -1$).
+\end{itemize}
+
+% ----------------------------------------------------------
+\subsection*{Finding the Angle Between Two Vectors}
+
+Rearranging the definition $\vect{A}\cdot\vect{B}
+= AB\cos\theta$ gives a powerful formula:
+
+\begin{lawbox}[Angle Between Two Vectors]
+\[
+  \theta
+  = \cos^{-1}\!\left(
+    \frac{\vect{A}\cdot\vect{B}}{|\vect{A}||\vect{B}|}
+  \right)
+\]
+This formula works in both 2D and 3D.
+\end{lawbox}
+
+% ----------------------------------------------------------
+\subsection*{Physical Application: Work}
+
+\begin{keybox}[Work as a Dot Product]
+When a constant force $\vect{F}$ displaces an object
+by $\vect{s}$, the work done is:
+\[
+  W = \vect{F}\cdot\vect{s} = Fs\cos\theta
+\]
+Only the component of force \textit{along} the
+displacement does work. If $\theta = 90°$, no
+work is done --- regardless of how large the force is.
+\end{keybox}
+
+\begin{examplebox}[2.13]
+\stepcounter{workedexample}
+Two forces are
+$\vect{F}_1 = 3\hat{i} + 4\hat{j}\ \text{N}$ and
+$\vect{F}_2 = 5\hat{i} - 3\hat{j}\ \text{N}$.\\
+(a) Find $\vect{F}_1 \cdot \vect{F}_2$.\\
+(b) Find the angle between the two forces.\\
+(c) Are the forces perpendicular?
+\end{examplebox}
+
+\begin{solutionbox}
+(a) Component form:
+\[
+  \vect{F}_1 \cdot \vect{F}_2
+  = (3)(5) + (4)(-3)
+  = 15 - 12 = 3\ \text{N}^2
+\]
+
+(b) Magnitudes:
+\[
+  |\vect{F}_1| = \sqrt{9+16} = 5\ \text{N},\qquad
+  |\vect{F}_2| = \sqrt{25+9} = \sqrt{34}\ \text{N}
+\]
+Angle:
+\[
+  \theta = \cos^{-1}\!\left(\frac{3}{5\sqrt{34}}\right)
+  = \cos^{-1}\!\left(\frac{3}{29.15}\right)
+  = \cos^{-1}(0.1029)
+  = 84.1°
+\]
+
+(c) Since $\vect{F}_1 \cdot \vect{F}_2 = 3 \neq 0$,
+the forces are \textbf{not} perpendicular.
+\end{solutionbox}
+
+\begin{examplebox}[2.14]
+\stepcounter{workedexample}
+A force $\vect{F} = 4\hat{i} + 3\hat{j}\ \text{N}$
+acts on an object that undergoes a displacement
+$\vect{s} = 5\hat{i} + 2\hat{j}\ \text{m}$.
+Find the work done by the force.
+\end{examplebox}
+
+\begin{solutionbox}
+\[
+  W = \vect{F}\cdot\vect{s}
+  = (4)(5) + (3)(2)
+  = 20 + 6
+  = 26\ \text{J}
+\]
+
+\textbf{Note:} Using $W = Fs\cos\theta$ would give
+the same answer but requires more steps. The component
+formula is faster when vectors are already in
+component form.
+\end{solutionbox}
+
+% ============================================================
+\section{The Vector (Cross) Product}
+\label{sec:cross_product}
+% ============================================================
+
+\textbf{Intuition:} The cross product asks a different
+question to the dot product. Instead of ``how aligned
+are these two vectors?'', it asks ``how
+\textit{perpendicular} are they?'' and produces a
+brand-new vector that points \textit{out of} the plane
+containing the original two.
+
+Think of tightening a bolt with a spanner. The force
+on the spanner and the arm of the spanner are both
+vectors. The \textit{torque} (turning effect) is
+perpendicular to both --- it points along the axis
+of rotation. That perpendicular vector is the cross
+product.
+
+\begin{definitionbox}[Vector (Cross) Product]
+The \textbf{vector product} (also called the
+\textbf{cross product}) of $\vect{A}$ and $\vect{B}$
+is a vector $\vect{C}$ defined by:
+\[
+  \vect{C} = \vect{A}\times\vect{B}
+\]
+\[
+  |\vect{C}| = AB\sin\theta
+\]
+where $\theta$ is the angle between $\vect{A}$ and
+$\vect{B}$ ($0° \leq \theta \leq 180°$).
+
+The \textbf{direction} of $\vect{C}$ is perpendicular
+to the plane containing $\vect{A}$ and $\vect{B}$,
+determined by the right-hand rule.
+
+The result is a \textbf{vector}.
+\end{definitionbox}
+
+\begin{keybox}[Geometric Meaning]
+$|\vect{A}\times\vect{B}| = AB\sin\theta$
+is the \textbf{area of the parallelogram} formed by
+$\vect{A}$ and $\vect{B}$ as adjacent sides.
+\end{keybox}
+
+% ----------------------------------------------------------
+\subsection*{The Right-Hand Rule}
+
+The right-hand rule gives the direction of
+$\vect{A}\times\vect{B}$:
+
+\begin{lawbox}[Right-Hand Rule]
+\begin{enumerate}[noitemsep]
+  \item Point the fingers of your right hand in the
+  direction of $\vect{A}$.
+  \item Curl them towards $\vect{B}$ (through the
+  smaller angle $\theta$).
+  \item Your extended right thumb points in the
+  direction of $\vect{A}\times\vect{B}$.
+\end{enumerate}
+\end{lawbox}
+
+\begin{diagbox}[Right-Hand Rule]
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+  % Draw A and B in xy-plane
+  \draw[->, thick, codexblue, line width=2pt]
+    (0,0) -- (3,0) node[right]{$\vect{A}$};
+  \draw[->, thick, codexred, line width=2pt]
+    (0,0) -- (1.5,2.5) node[above right]{$\vect{B}$};
+
+  % Cross product direction (out of page = upward z)
+  \draw[->, thick, codexgreen, line width=2.5pt]
+    (0,0) -- (0,0) ;
+  % Indicate z direction with circled dot
+  \node[draw, circle, thick, codexgreen,
+    inner sep=3pt] at (-1.5,1.5) {$\cdot$};
+  \draw[->, thick, codexgreen, line width=1.5pt]
+    (-1.5,1.5) -- (-1.5,2.5)
+    node[above]{\small $\vect{A}\times\vect{B}$ (out of page)};
+
+  \draw[codexgold] (0.7,0) arc(0:59:0.7);
+  \node[codexgold] at (1.0,0.35) {$\theta$};
+
+  \node at (1.5,-0.6)
+    {\small Right-hand fingers: $\vect{A}\to\vect{B}$,
+    thumb: $\vect{A}\times\vect{B}$};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ----------------------------------------------------------
+\subsection*{Anti-commutativity}
+
+\begin{lawbox}[Anti-commutativity of Cross Product]
+\[
+  \vect{A}\times\vect{B}
+  = -(\vect{B}\times\vect{A})
+\]
+Reversing the order flips the direction of the result.
+The cross product is \textbf{not} commutative.
+\end{lawbox}
+
+This makes physical sense: if $\vect{A}\times\vect{B}$
+points upward (out of the page), then
+$\vect{B}\times\vect{A}$ points downward (into the page).
+
+% ----------------------------------------------------------
+\subsection*{Unit Vector Cross Products: The Cyclic Rule}
+
+\begin{keybox}[Cyclic Rule for Unit Vectors]
+\centering
+\begin{tikzpicture}[scale=0.8]
+  \node[draw, circle, codexblue, thick,
+    inner sep=4pt] (i) at (0,0) {$\hat{k}$};
+  \node[draw, circle, codexred, thick,
+    inner sep=4pt] (j) at (2.5,0) {$\hat{j}$};
+  \node[draw, circle, codexgreen, thick,
+    inner sep=4pt] (k) at (1.25,2) {$\hat{i}$};
+
+  \draw[<-, thick, codexblue] (i) -- (j);
+  \draw[<-, thick, codexred]  (j) -- (k);
+  \draw[<-, thick, codexgreen](k) -- (i);
+
+  \node at (1.25,-1.0)
+    {\small Anti-Clockwise: negative product};
+    
+\end{tikzpicture}
+
+\vspace{0.3cm}
+\begin{tabular}{lll}
+$\hat{i}\times\hat{j} = \hat{k}$ &
+$\hat{j}\times\hat{k} = \hat{i}$ &
+$\hat{k}\times\hat{i} = \hat{j}$ \\[4pt]
+$\hat{j}\times\hat{i} = -\hat{k}$ &
+$\hat{k}\times\hat{j} = -\hat{i}$ &
+$\hat{i}\times\hat{k} = -\hat{j}$ \\[4pt]
+\multicolumn{3}{l}{$\hat{i}\times\hat{i}
+= \hat{j}\times\hat{j}
+= \hat{k}\times\hat{k} = \vect{0}$
+\quad (parallel $\Rightarrow$ $\sin 0° = 0$)}
+\end{tabular}
+\end{keybox}
+
+% ----------------------------------------------------------
+\subsection*{Component Form via the Determinant}
+
+For vectors in component form, compute the cross product
+using the $3\times 3$ determinant expansion:
+
+\vspace{2.0cm}
+\begin{lawbox}[Cross Product in Component Form]
+\[
+  \vect{A}\times\vect{B}
+  = \begin{vmatrix}
+    \hat{i} & \hat{j} & \hat{k}\\
+    A_x & A_y & A_z\\
+    B_x & B_y & B_z
+  \end{vmatrix}
+\]
+
+Expanding along the top row:
+\begin{align*}
+  \vect{A}\times\vect{B}
+  =\;
+  &(A_y B_z - A_z B_y)\,\hat{i}\\
+  -\;&(A_x B_z - A_z B_x)\,\hat{j}\\
+  +\;&(A_x B_y - A_y B_x)\,\hat{k}
+\end{align*}
+
+\textit{Memory aid:} For each component, multiply the
+two remaining components diagonally and subtract
+(``cross-multiply and subtract'').
+\end{lawbox}
+
+% ----------------------------------------------------------
+\subsection*{Special Cases}
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Parallel vectors} ($\theta = 0°$ or
+  $180°$): $\vect{A}\times\vect{B} = \vect{0}$
+  (since $\sin 0° = \sin 180° = 0$) ---
+  use this to \textit{test} for parallelism.
+  \item \textbf{Perpendicular vectors} ($\theta = 90°$):
+  $|\vect{A}\times\vect{B}| = AB$ (maximum cross product
+  magnitude).
+\end{itemize}
+
+% ----------------------------------------------------------
+\subsection*{Physical Applications}
+
+\begin{keybox}[Torque as a Cross Product]
+The torque (moment) $\vect{\tau}$ produced by a force
+$\vect{F}$ applied at position $\vect{r}$ from the
+pivot is:
+\[
+  \vect{\tau} = \vect{r}\times\vect{F}
+\]
+$|\vect{\tau}| = rF\sin\theta$, where $\theta$ is the
+angle between $\vect{r}$ and $\vect{F}$.
+The direction of $\vect{\tau}$ (given by the right-hand
+rule) is along the axis of rotation.
+\end{keybox}
+
+\begin{keybox}[Magnetic Force as a Cross Product]
+The force on a charge $q$ moving with velocity
+$\vect{v}$ in a magnetic field $\vect{B}$ is:
+\[
+  \vect{F} = q\vect{v}\times\vect{B}
+\]
+This force is always perpendicular to both $\vect{v}$
+and $\vect{B}$, which is why magnetic fields curve
+moving charges into circular paths.
+\end{keybox}
+
+\begin{examplebox}[2.15]
+\stepcounter{workedexample}
+Find the cross product $\vect{A}\times\vect{B}$ where
+$\vect{A} = 3\hat{i} + 2\hat{j} - \hat{k}$ and
+$\vect{B} = \hat{i} - 3\hat{j} + 2\hat{k}$.
+Also find the magnitude of the cross product.
+\end{examplebox}
+
+\begin{solutionbox}
+Applying the determinant formula:
+\begin{align*}
+  \vect{A}\times\vect{B}
+  &= \bigl[(2)(2) - (-1)(-3)\bigr]\hat{i}
+   - \bigl[(3)(2) - (-1)(1)\bigr]\hat{j}
+   + \bigl[(3)(-3) - (2)(1)\bigr]\hat{k}\\[6pt]
+  &= [4 - 3]\hat{i}
+   - [6 - (-1)]\hat{j}
+   + [-9 - 2]\hat{k}\\[6pt]
+  &= \hat{i} - 7\hat{j} - 11\hat{k}
+\end{align*}
+
+Magnitude:
+\[
+  |\vect{A}\times\vect{B}|
+  = \sqrt{1^2 + (-7)^2 + (-11)^2}
+  = \sqrt{1 + 49 + 121}
+  = \sqrt{171}
+  \approx 13.1
+\]
+
+\textbf{Verification (perpendicularity check):}
+$(\vect{A}\times\vect{B})\cdot\vect{A}
+= (1)(3)+(-7)(2)+(-11)(-1)
+= 3 - 14 + 11 = 0$ ✓\\
+$(\vect{A}\times\vect{B})\cdot\vect{B}
+= (1)(1)+(-7)(-3)+(-11)(2)
+= 1 + 21 - 22 = 0$ ✓
+
+The result is perpendicular to both original vectors,
+as expected.
+\end{solutionbox}
+
+\begin{examplebox}[2.16]
+\stepcounter{workedexample}
+A spanner applies a force $\vect{F} = 20\hat{j}\ \text{N}$
+at a position $\vect{r} = 0.3\hat{i}\ \text{m}$ from
+the pivot. Find the torque vector.
+\end{examplebox}
+
+\begin{solutionbox}
+\[
+  \vect{\tau} = \vect{r}\times\vect{F}
+  = (0.3\hat{i})\times(20\hat{j})
+  = (0.3)(20)(\hat{i}\times\hat{j})
+  = 6\hat{k}\ \text{N\,m}
+\]
+
+The torque is $6\ \text{N\,m}$ in the $+\hat{k}$ direction
+(i.e.\ upward, out of the page), corresponding to an
+anticlockwise rotation. This matches the physical
+expectation: pushing up on a horizontal spanner arm
+produces an anticlockwise torque about the bolt.
+\end{solutionbox}
+
+% ============================================================
+\section{Dot Product vs.\ Cross Product: A Decision Guide}
+\label{sec:dot_vs_cross}
+% ============================================================
+
+Students sometimes confuse when to apply each product.
+The key is to ask: \textit{what type of answer does the
+physics require?}
+
+\begin{keybox}[Dot vs.\ Cross Product Comparison]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lll}
+\toprule
+\textbf{Feature} &
+\textbf{Dot Product} $\vect{A}\cdot\vect{B}$ &
+\textbf{Cross Product} $\vect{A}\times\vect{B}$\\
+\midrule
+Result type & Scalar & Vector\\
+Formula & $AB\cos\theta$ & $AB\sin\theta$\\
+Zero when & Perpendicular ($\theta=90°$)
+  & Parallel ($\theta=0°$ or $180°$)\\
+Maximum when & Parallel ($\theta=0°$)
+  & Perpendicular ($\theta=90°$)\\
+Commutative? & Yes: $\vect{A}\cdot\vect{B}
+  = \vect{B}\cdot\vect{A}$
+  & No: $\vect{A}\times\vect{B}
+  = -\vect{B}\times\vect{A}$\\
+Measures & Alignment / projection
+  & Perpendicularity / rotation\\
+Physics use & Work, projections, angles
+  & Torque, magnetic force, area\\
+\bottomrule
+\end{tabular}
+\end{keybox}
+
+\textbf{Decision logic:}
+\begin{itemize}[noitemsep]
+  \item If the answer is a \textit{scalar} (a number:
+  work done, power, angle between vectors) $\to$
+  use the \textbf{dot product}.
+  \item If the answer is a \textit{vector} perpendicular
+  to both inputs (torque, magnetic force, angular
+  momentum) $\to$ use the \textbf{cross product}.
+  \item If you need to \textit{test for perpendicularity}
+  $\to$ compute the dot product and check for zero.
+  \item If you need to \textit{test for parallelism}
+  $\to$ compute the cross product and check for
+  the zero vector.
+\end{itemize}
+
+\vspace{3.5cm}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+
+\textbf{Scalar:} Magnitude and unit only. Adds algebraically.
+
+\textbf{Vector:} Magnitude, unit, and direction. Adds
+by vector laws.
+
+\vspace{0.2cm}
+
+\textbf{Types of vectors:} Equal, null, negative,
+parallel, anti-parallel, unit, position, free,
+localised, collinear, coplanar.
+
+\vspace{0.2cm}
+
+\textbf{Magnitude:}
+2D: $|\vect{A}| = \sqrt{A_x^2+A_y^2}$;\quad
+3D: $|\vect{A}| = \sqrt{A_x^2+A_y^2+A_z^2}$
+
+\textbf{Range of resultant:}
+$|A-B| \leq R \leq A+B$
+
+\vspace{0.2cm}
+
+\textbf{Vector addition:}
+\begin{itemize}[noitemsep]
+  \item Triangle (head-to-tail) rule
+  \item Parallelogram rule
+  \item Polygon rule (extended head-to-tail; closed
+  polygon $\Rightarrow$ equilibrium)
+  \item Analytical (cosine rule):
+  $R = \sqrt{A^2+B^2+2AB\cos\theta}$
+\end{itemize}
+
+\textbf{Resolution:}
+$F_x = F\cos\theta$, $F_y = F\sin\theta$
+
+\textbf{Component method:}
+$R_x = \sum F_{ix}$, $R_y = \sum F_{iy}$,
+$R = \sqrt{R_x^2 + R_y^2}$
+
+\textbf{Vector subtraction:}
+$\vect{A}-\vect{B} = \vect{A}+(-\vect{B})$
+
+\textbf{Relative velocity:}
+$\vect{v}_{A\,\text{rel}\,B} = \vect{v}_A - \vect{v}_B$
+
+\textbf{Position vector:}
+$\vect{r}_P = x\hat{i}+y\hat{j}$;\quad
+$\vect{AB} = \vect{r}_B - \vect{r}_A$
+
+\textbf{Unit vector from $\vect{A}$:}
+$\hat{A} = \dfrac{\vect{A}}{|\vect{A}|}$,\quad
+$|\hat{A}|=1$ always.
+
+\textbf{Equilibrium:}
+$\sum F_x = 0$ and $\sum F_y = 0$ simultaneously.
+
+\textbf{Dot product:}
+$\vect{A}\cdot\vect{B} = AB\cos\theta
+= A_xB_x + A_yB_y + A_zB_z$
+(scalar; zero when perpendicular)
+
+\textbf{Angle between vectors:}
+$\theta = \cos^{-1}\!\left(\dfrac{\vect{A}\cdot\vect{B}}{AB}\right)$
+
+\textbf{Cross product:}
+$|\vect{A}\times\vect{B}| = AB\sin\theta$;
+direction by right-hand rule
+(vector; zero when parallel)
+
+\textbf{Cyclic rule:}
+$\hat{i}\times\hat{j}=\hat{k}$,
+$\hat{j}\times\hat{k}=\hat{i}$,
+$\hat{k}\times\hat{i}=\hat{j}$
+
+\textbf{Torque:} $\vect{\tau}=\vect{r}\times\vect{F}$;\quad
+\textbf{Work:} $W=\vect{F}\cdot\vect{s}$
+
+\end{summarybox}
+
+% ============================================================
+% EXERCISES
+% ============================================================
+\newpage
+
+\begin{exercisebox}[2]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} Which pair consists of two vector quantities?
+
+\mcoption{A}{Speed and velocity}
+\mcoption{B}{Displacement and velocity}
+\mcoption{C}{Distance and mass}
+\mcoption{D}{Power and force}
+\ansref{Ch2-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} A force of $8\ \text{N}$ and a force of
+$6\ \text{N}$ act on a particle. Which of the following
+cannot be the magnitude of the resultant?
+
+\mcoption{A}{$2\ \text{N}$}
+\mcoption{B}{$8\ \text{N}$}
+\mcoption{C}{$14\ \text{N}$}
+\mcoption{D}{$15\ \text{N}$}
+\ansref{Ch2-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A vector $\vect{F}$ of magnitude $100\ \text{N}$
+acts at $60°$ to the horizontal. The horizontal component
+of $\vect{F}$ is:
+
+\mcoption{A}{$50\ \text{N}$}
+\mcoption{B}{$57.7\ \text{N}$}
+\mcoption{C}{$86.6\ \text{N}$}
+\mcoption{D}{$100\ \text{N}$}
+\ansref{Ch2-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} Three forces of $5\ \text{N}$, $12\ \text{N}$
+and $13\ \text{N}$ act at a point. For these forces to be
+in equilibrium, the angle between the $5\ \text{N}$ and
+$12\ \text{N}$ forces must be:
+
+\mcoption{A}{$30°$}
+\mcoption{B}{$60°$}
+\mcoption{C}{$90°$}
+\mcoption{D}{$120°$}
+\ansref{Ch2-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} A vector has components
+$F_x = -3\ \text{N}$ and $F_y = -4\ \text{N}$.
+Its magnitude is:
+
+\mcoption{A}{$1\ \text{N}$}
+\mcoption{B}{$5\ \text{N}$}
+\mcoption{C}{$7\ \text{N}$}
+\mcoption{D}{$-5\ \text{N}$}
+\ansref{Ch2-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} Car P moves north at $40\ \text{km\,h}^{-1}$
+and car Q moves south at $40\ \text{km\,h}^{-1}$. The
+velocity of P relative to Q is:
+
+\mcoption{A}{$0\ \text{km\,h}^{-1}$}
+\mcoption{B}{$40\ \text{km\,h}^{-1}$ north}
+\mcoption{C}{$80\ \text{km\,h}^{-1}$ north}
+\mcoption{D}{$80\ \text{km\,h}^{-1}$ south}
+\ansref{Ch2-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} The resultant of two forces is maximum when
+the angle between them is:
+
+\mcoption{A}{$0°$}
+\mcoption{B}{$90°$}
+\mcoption{C}{$120°$}
+\mcoption{D}{$180°$}
+\ansref{Ch2-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} A displacement is given as
+$\vect{s} = 5\hat{i} - 12\hat{j}\ \text{m}$.
+The magnitude of this displacement is:
+
+\mcoption{A}{$7\ \text{m}$}
+\mcoption{B}{$13\ \text{m}$}
+\mcoption{C}{$17\ \text{m}$}
+\mcoption{D}{$\sqrt{7}\ \text{m}$}
+\ansref{Ch2-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} Two equal forces $F$ act at right angles to
+each other. Their resultant has magnitude:
+
+\mcoption{A}{$F$}
+\mcoption{B}{$F\sqrt{2}$}
+\mcoption{C}{$2F$}
+\mcoption{D}{$F/\sqrt{2}$}
+\ansref{Ch2-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} A particle is in equilibrium under three
+concurrent forces. This means:
+
+\mcoption{A}{All three forces must have the same magnitude}
+\mcoption{B}{The resultant of any two forces equals the
+third in magnitude but opposite in direction}
+\mcoption{C}{All three forces must be parallel}
+\mcoption{D}{The magnitude of the largest force must equal
+the sum of the other two}
+\ansref{Ch2-A10}
+
+\vspace{0.4cm}
+
+\textbf{A11.} The dot product $\vect{A}\cdot\vect{B}$
+is zero when:
+
+\mcoption{A}{$\vect{A}$ and $\vect{B}$ are parallel}
+\mcoption{B}{$\vect{A}$ and $\vect{B}$ are perpendicular}
+\mcoption{C}{$|\vect{A}| = |\vect{B}|$}
+\mcoption{D}{$\vect{A}$ and $\vect{B}$ are anti-parallel}
+\ansref{Ch2-A11}
+
+\vspace{0.4cm}
+
+\textbf{A12.} If $\vect{A} = 2\hat{i} + 3\hat{j}$ and
+$\vect{B} = 4\hat{i} - \hat{j}$, then
+$\vect{A}\cdot\vect{B}$ equals:
+
+\mcoption{A}{$11$}
+\mcoption{B}{$5$}
+\mcoption{C}{$-5$}
+\mcoption{D}{$8\hat{i} - 3\hat{j}$}
+\ansref{Ch2-A12}
+
+\vspace{0.4cm}
+
+\textbf{A13.} The cross product $\vect{A}\times\vect{B}$
+is a vector that is:
+
+\mcoption{A}{Parallel to $\vect{A}$}
+\mcoption{B}{Parallel to $\vect{B}$}
+\mcoption{C}{Perpendicular to both $\vect{A}$ and $\vect{B}$}
+\mcoption{D}{In the same plane as $\vect{A}$ and $\vect{B}$}
+\ansref{Ch2-A13}
+
+\vspace{0.4cm}
+
+\textbf{A14.} $\hat{j}\times\hat{k}$ equals:
+
+\mcoption{A}{$\hat{j}$}
+\mcoption{B}{$-\hat{i}$}
+\mcoption{C}{$\hat{i}$}
+\mcoption{D}{$\hat{k}$}
+\ansref{Ch2-A14}
+
+\vspace{0.4cm}
+
+\textbf{A15.} The unit vector in the direction of
+$\vect{v} = 3\hat{i} + 4\hat{j}$ is:
+
+\mcoption{A}{$3\hat{i} + 4\hat{j}$}
+\mcoption{B}{$\dfrac{3}{5}\hat{i} + \dfrac{4}{5}\hat{j}$}
+\mcoption{C}{$\dfrac{3}{7}\hat{i} + \dfrac{4}{7}\hat{j}$}
+\mcoption{D}{$\hat{i} + \hat{j}$}
+\ansref{Ch2-A15}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.}
+(a) Explain why two students cannot meaningfully add a
+displacement vector and a force vector, even if both have
+the same numerical value.\\[4pt]
+(b) A hiker walks $4.0\ \text{km}$ due east, then
+$3.0\ \text{km}$ due north, then $2.0\ \text{km}$ at
+$45°$ north of east. Using the component method, find
+the hiker's total displacement from the starting point
+(magnitude and direction).
+\hfill\ansref{Ch2-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A kite string makes an angle of $55°$ with
+the ground. The tension in the string is $85\ \text{N}$.
+A horizontal wind also pushes the kite with a force of
+$30\ \text{N}$.\\[4pt]
+(a) Find the horizontal and vertical components of the
+string tension.\\
+(b) Find the resultant of the string tension and the
+wind force.\\
+(c) In which direction does this resultant act?
+\hfill\ansref{Ch2-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A boat that can travel at $5.0\ \text{m\,s}^{-1}$
+in still water needs to cross a river $120\ \text{m}$ wide.
+The river current flows at $3.0\ \text{m\,s}^{-1}$ due east.\\[4pt]
+(a) If the boat points due north, what is its velocity
+relative to the riverbank (magnitude and direction)?\\
+(b) How far downstream does the boat land from its
+intended destination?\\
+(c) In what direction should the boat point to travel
+directly north across the river, and how long does the
+crossing take?
+\hfill\ansref{Ch2-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} Four forces act simultaneously on a metal
+bracket:
+\begin{itemize}[noitemsep]
+  \item $\vect{F}_1 = 120\ \text{N}$ due east
+  \item $\vect{F}_2 = 90\ \text{N}$ at $30°$ north of east
+  \item $\vect{F}_3 = 150\ \text{N}$ due north
+  \item $\vect{F}_4 = 80\ \text{N}$ at $45°$ south of west
+\end{itemize}
+(a) Resolve each force into $x$ (east) and $y$ (north)
+components.\\
+(b) Find the resultant force: magnitude and direction.\\
+(c) What single fifth force would keep the bracket in
+equilibrium?
+\hfill\ansref{Ch2-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A $50\ \text{kg}$ traffic sign is suspended
+by two cables attached to a horizontal beam. The left cable
+makes an angle of $40°$ with the horizontal and the right
+cable makes an angle of $55°$ with the horizontal.
+(Take $g = 10\ \text{m\,s}^{-2}$.)\\[4pt]
+(a) Draw a clear force diagram showing all forces on the
+junction point.\\
+(b) Write the equilibrium conditions ($\sum F_x = 0$ and
+$\sum F_y = 0$).\\
+(c) Solve for the tension in each cable.\\
+(d) Which cable carries more tension? Explain why this
+makes physical sense from the geometry of the problem.
+\hfill\ansref{Ch2-B5}
+
+\vspace{0.4cm}
+
+\textbf{B6.} (Dot product application)\\
+Two displacement vectors are
+$\vect{d}_1 = 4\hat{i} + 3\hat{j}\ \text{m}$ and
+$\vect{d}_2 = -2\hat{i} + 5\hat{j}\ \text{m}$.\\[4pt]
+(a) Find $\vect{d}_1 \cdot \vect{d}_2$.\\
+(b) Find the angle between $\vect{d}_1$ and $\vect{d}_2$.\\
+(c) A constant force $\vect{F} = 10\hat{i} + 4\hat{j}\ \text{N}$
+moves an object through displacement $\vect{d}_1$.
+Find the work done by the force.\\
+(d) Is there a direction in the $xy$-plane perpendicular
+to $\vect{d}_1$? Write its unit vector.
+\hfill\ansref{Ch2-B6}
+
+\vspace{0.4cm}
+
+\textbf{B7.} (Cross product application)\\
+A rigid bar is pinned at the origin. A force
+$\vect{F} = 8\hat{i} + 6\hat{j}\ \text{N}$
+is applied at the point
+$\vect{r} = 0.5\hat{i} - 0.2\hat{j}\ \text{m}$.\\[4pt]
+(a) Calculate the torque $\vect{\tau} = \vect{r}\times\vect{F}$.\\
+(b) State the magnitude of the torque and its direction
+(clockwise or anticlockwise about the $z$-axis).\\
+(c) Verify that $\vect{\tau}$ is perpendicular to $\vect{r}$
+by computing $\vect{\tau}\cdot\vect{r}$.
+\hfill\ansref{Ch2-B7}
+
+\vspace{0.4cm}
+
+\textbf{B8.} (Mixed vector operations)\\
+Three vectors are given:
+$\vect{A} = 2\hat{i} - \hat{j} + 2\hat{k}$,\;
+$\vect{B} = \hat{i} + 3\hat{j} - \hat{k}$,\;
+$\vect{C} = -\hat{i} + 2\hat{j} + 3\hat{k}$.\\[4pt]
+(a) Find the unit vector $\hat{A}$ in the direction of
+$\vect{A}$.\\
+(b) Find $\vect{A}\cdot\vect{B}$ and hence the angle
+between $\vect{A}$ and $\vect{B}$.\\
+(c) Find $\vect{A}\times\vect{B}$.\\
+(d) Verify that your answer to (c) is perpendicular to
+both $\vect{A}$ and $\vect{B}$.\\
+(e) Is $\vect{C}$ coplanar with $\vect{A}$ and $\vect{B}$?
+(Hint: compute $\vect{C}\cdot(\vect{A}\times\vect{B})$;
+zero means coplanar.)
+\hfill\ansref{Ch2-B8}
+
+\end{exercisebox}

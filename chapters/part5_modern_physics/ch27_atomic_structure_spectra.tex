@@ -1,0 +1,1160 @@
+% ============================================================
+%  CHAPTER 27: ATOMIC STRUCTURE AND SPECTRA
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part5/ch27_atomic_structure.tex
+% ============================================================
+
+\chapter{Atomic Structure and Spectra}
+\label{ch:atomic_structure}
+\minitoc
+\newpage
+
+\chapterquote{If you thought that science was certain ---
+well, that is just an error on your part.}{Richard Feynman}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Describe the evidence for atomic structure from
+  Rutherford's alpha-scattering experiment
+  \item Explain the nuclear model of the atom and
+  its limitations
+  \item Describe Bohr's model of the hydrogen atom
+  \item Calculate the energy levels and spectral
+  line wavelengths of hydrogen
+  \item Explain line emission and absorption spectra
+  and their origins
+  \item Define and apply the concept of the
+  electron-volt
+  \item Describe the photoelectric effect and
+  explain why classical physics fails to account
+  for it
+  \item State and apply Einstein's photoelectric
+  equation
+  \item Describe wave-particle duality and de
+  Broglie's hypothesis
+  \item State the Heisenberg uncertainty principle
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: What is an Atom?}
+% ============================================================
+
+Ancient Greek philosophers proposed that matter could
+be divided only so far before reaching an indivisible
+unit --- the \textit{atomos}, meaning uncuttable. For
+two thousand years this was philosophy, not physics.
+Then, in the nineteenth century, chemists began to
+compile evidence that matter behaved as though it
+really was made of discrete, indivisible particles.
+John Dalton formalised the atomic theory in 1808.
+
+But the atom turned out to be far from simple. It has
+structure. It contains smaller particles. It can be
+understood only through quantum mechanics, a framework
+of physics so radical that it forced physicists to
+abandon their most basic intuitions about how nature
+works.
+
+This chapter traces the development of our
+understanding of atomic structure: from Thomson's
+plum-pudding model, to Rutherford's planetary model,
+to Bohr's quantised orbits, to the modern quantum
+mechanical picture. Each step was forced by
+experimental evidence that the previous model could
+not explain.
+
+% ============================================================
+\section{Models of the Atom}
+% ============================================================
+
+\subsection{Thomson's Plum-Pudding Model (1897)}
+
+J.J. Thomson discovered the electron in 1897 by
+studying cathode rays. He measured the charge-to-mass
+ratio of electrons and showed they were far lighter
+than any atom. Since atoms are electrically neutral
+and contain electrons (negative), they must also
+contain positive charge. Thomson proposed the
+\textbf{plum-pudding model}: a sphere of diffuse
+positive charge with electrons embedded in it like
+plums in a pudding.
+
+\subsection{Rutherford's Nuclear Model (1911)}
+
+\begin{historybox}[Rutherford's Gold Foil Experiment, 1909--1911]
+Ernest Rutherford (1871--1937) directed Hans Geiger
+and Ernest Marsden to fire alpha particles at a thin
+gold foil and observe where they went.
+
+\textbf{Expected (plum-pudding model):} The positive
+charge is spread diffusely throughout the atom. Alpha
+particles, being much heavier than electrons, should
+pass straight through with at most small deflections.
+
+\textbf{Observed:}
+\begin{itemize}[noitemsep]
+  \item Most alpha particles passed straight through
+  (as expected).
+  \item A small fraction were deflected by large angles.
+  \item A tiny fraction ($\sim 1$ in $8000$) bounced
+  almost straight back.
+\end{itemize}
+
+Rutherford described his astonishment: ``It was as if
+you fired artillery shells at tissue paper and they
+came back and hit you.''
+
+\textbf{Conclusion:} The positive charge and almost
+all the mass must be concentrated in an extremely
+small, dense \textbf{nucleus}. The electrons orbit
+far outside. The atom is mostly empty space.
+\end{historybox}
+
+\begin{diagbox}[Rutherford's Gold Foil Experiment]
+\begin{center}
+\begin{tikzpicture}[scale=0.95, font=\small]
+
+  % Alpha source
+  \fill[gray!50] (-3.5,2.0) rectangle (-3.0,3.0);
+  \draw[thick] (-3.5,2.0) rectangle (-3.0,3.0);
+  \node[left, font=\small] at (-3.6,2.5)
+    {$\alpha$ source};
+
+  % Gold foil
+  \fill[codexgold!40] (-0.1,-0.5) rectangle (0.1,5.5);
+  \draw[very thick, codexgold] (-0.1,-0.5) -- (-0.1,5.5);
+  \draw[very thick, codexgold] (0.1,-0.5) -- (0.1,5.5);
+  \node[above, codexgold] at (0,5.6) {Gold foil};
+
+  % Alpha beam (parallel rays from source)
+  \foreach \y in {1.8,2.5,3.2} {
+    \draw[->, thick, codexred]
+      (-3.0,\y) -- (-0.2,\y);
+  }
+
+  % Straight-through (most particles)
+  \draw[->, very thick, codexred!80]
+    (0.2,2.5) -- (4.0,2.5);
+  \node[right, codexred!80] at (4.1,2.5)
+    {Most: straight through};
+
+  % Small angle deflections
+  \draw[->, thick, codexred!60]
+    (0.2,1.8) -- (4.0,0.8);
+  \draw[->, thick, codexred!60]
+    (0.2,3.2) -- (4.0,4.2);
+
+  % Large angle deflections
+  \draw[->, thick, codexorange]
+    (0.2,2.5) -- (2.0,5.0);
+  \draw[->, thick, codexorange]
+    (0.2,2.5) -- (2.0,0.0);
+  \node[above, font=\tiny, codexorange] at (2.0,5.1)
+    {Large deflection};
+
+  % Backscatter
+  \draw[->, very thick, codexblue]
+    (0.1,2.5) -- (-2.5,3.5);
+  \node[above, codexblue, font=\small]
+    at (-1.5,3.7) {Back-scatter\\($\sim$1 in 8000)};
+
+  % Gold nucleus (tiny dot)
+  \fill[codexgold] (0.0,2.5) circle (5pt);
+  \node[above, font=\tiny] at (0.2,2.8)
+    {Nucleus};
+
+  % Detector screen (circular arc)
+  \draw[thick, gray, dashed] (0,2.5) circle (4cm);
+  \node[gray, font=\tiny] at (3.0,5.0)
+    {Detector\\screen};
+
+  % Conclusions box
+  \node[align=left, font=\small,
+    draw=codexblue, rounded corners, fill=cyan!5,
+    inner sep=6pt] at (6.0,2.5)
+    {\textbf{Conclusions:}\\
+    $\bullet$ Most passes straight through\\
+    \quad $\Rightarrow$ atom is mostly empty space\\
+    $\bullet$ Few large deflections\\
+    \quad $\Rightarrow$ nucleus is very small\\
+    $\bullet$ Some back-scatter\\
+    \quad $\Rightarrow$ nucleus is very dense\\
+    \quad\quad and positively charged};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{defbox}[The Nuclear Model of the Atom]
+\begin{itemize}[noitemsep]
+  \item The atom consists of a tiny, dense, positively
+  charged \textbf{nucleus} at the centre.
+  \item Electrons orbit the nucleus at relatively
+  large distances (atomic radius $\sim 10^{-10}\ \text{m}$;
+  nuclear radius $\sim 10^{-15}\ \text{m}$).
+  \item The atom is therefore $\sim 10^5$ times larger
+  than its nucleus in linear dimensions --- mostly
+  empty space.
+  \item The nucleus contains most of the atom's mass.
+\end{itemize}
+
+\textbf{Problem with the nuclear model:} Classical
+electromagnetism predicts that a circular orbit
+requires centripetal acceleration, and an accelerating
+charge must radiate energy. The electron should spiral
+into the nucleus in $\sim 10^{-11}\ \text{s}$. Atoms
+are obviously stable. The model is incomplete.
+\end{defbox}
+
+% ============================================================
+\section{Bohr's Model of Hydrogen}
+% ============================================================
+
+\begin{historybox}[Niels Bohr, 1913]
+Niels Bohr (1885--1962) solved the stability problem
+by a bold postulate: electrons can only exist in
+certain specific orbits without radiating. These are
+called \textbf{stationary states}. An electron in a
+stationary state does not radiate despite its
+acceleration. It can only emit or absorb radiation
+when it \textit{jumps} from one orbit to another.
+Bohr was essentially grafting quantum ideas onto
+classical mechanics in a way he could not fully justify
+--- but it worked astonishingly well for hydrogen.
+\end{historybox}
+
+\begin{lawbox}[Bohr's Postulates for the Hydrogen Atom]
+\begin{enumerate}[noitemsep]
+  \item Electrons orbit the nucleus in specific
+  circular orbits called \textbf{stationary states}
+  without radiating energy.
+  \item The allowed orbits are those in which the
+  angular momentum of the electron is an integer
+  multiple of $h/(2\pi)$:
+  \[
+    mv_nr_n = n\frac{h}{2\pi} = n\hbar
+    \quad (n = 1, 2, 3, \ldots)
+  \]
+  where $n$ is the \textbf{principal quantum number}.
+  \item When an electron jumps from orbit $n_2$ to
+  orbit $n_1$ (where $n_2 > n_1$), a photon is
+  emitted with energy:
+  \[
+    hf = E_{n_2} - E_{n_1}
+  \]
+  When a photon of the right energy is absorbed, the
+  electron jumps to a higher orbit.
+\end{enumerate}
+\end{lawbox}
+
+\begin{processbox}[Energy Levels of Hydrogen]
+Combining Bohr's quantisation condition with the
+Coulomb force providing centripetal force gives the
+energy of the $n$th orbit:
+\[
+  E_n = -\frac{13.6}{n^2}\ \text{eV}
+  \quad (n = 1, 2, 3, \ldots)
+\]
+The ground state ($n=1$): $E_1 = -13.6\ \text{eV}$
+
+First excited state ($n=2$): $E_2 = -3.40\ \text{eV}$
+
+Second excited state ($n=3$): $E_3 = -1.51\ \text{eV}$
+
+\textbf{Ionisation energy} = energy needed to remove
+the electron from ground state = $+13.6\ \text{eV}$
+
+The negative sign means the electron is bound to the
+nucleus. Zero energy corresponds to an electron at
+rest at infinity (just barely free).
+
+Photon emitted when electron drops from $n_i$ to $n_f$:
+\[
+  hf = E_{n_i} - E_{n_f}
+  = 13.6\left(\frac{1}{n_f^2} - \frac{1}{n_i^2}\right)
+  \text{eV}
+\]
+\end{processbox}
+
+\begin{definitionbox}[The Electron-Volt]
+The \textbf{electron-volt} (eV) is the kinetic energy
+gained by an electron when accelerated through a
+potential difference of $1\ \text{V}$:
+\[
+  1\ \text{eV} = 1.6\times10^{-19}\ \text{J}
+\]
+Useful for atomic-scale energies. Convert to joules
+when using SI equations ($E = hf$, $E = kT$, etc.).
+\end{definitionbox}
+
+\begin{diagbox}[Energy Level Diagram of Hydrogen and Spectral Series]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Energy levels (to scale approximately)
+  % n=1: -13.6 eV; n=2: -3.4; n=3: -1.51; n=4: -0.85; n=inf: 0
+
+  % Draw levels
+  \foreach \n/\E/\y in {
+    1/{-13.6}/{0},
+    2/{-3.40}/{3.5},
+    3/{-1.51}/{4.6},
+    4/{-0.85}/{5.2},
+    5/{-0.54}/{5.55},
+    inf/{0}/{6.2}} {
+    \draw[thick] (1.5,\y) -- (5.5,\y);
+    \node[left, font=\small] at (1.4,\y)
+      {$n=\n$};
+    \node[right, font=\small] at (5.6,\y)
+      {$E=\E$ eV};
+  }
+
+  % Ionisation label
+  \node[above, codexblue, font=\small]
+    at (3.5,6.3) {$E=0$: Ionisation limit};
+
+  % === LYMAN SERIES (UV): drops to n=1 ===
+  % n=2 to n=1
+  \draw[->, very thick, codexblue]
+    (2.0,3.5) -- (2.0,0.1);
+  % n=3 to n=1
+  \draw[->, thick, codexblue!80]
+    (2.3,4.6) -- (2.3,0.1);
+  % n=4 to n=1
+  \draw[->, thick, codexblue!60]
+    (2.6,5.2) -- (2.6,0.1);
+  \node[left, codexblue, font=\small, align=right]
+    at (1.3,2.0) {Lyman\\series\\(UV)};
+
+  % === BALMER SERIES (visible/UV): drops to n=2 ===
+  % n=3 to n=2
+  \draw[->, very thick, codexred]
+    (3.5,4.6) -- (3.5,3.6);
+  % n=4 to n=2
+  \draw[->, thick, codexred!80]
+    (3.8,5.2) -- (3.8,3.6);
+  % n=5 to n=2
+  \draw[->, thick, codexred!60]
+    (4.1,5.55) -- (4.1,3.6);
+  \node[right, codexred, font=\small, align=left]
+    at (5.7,4.3) {Balmer\\series\\(visible/UV)};
+
+  % === PASCHEN SERIES (IR): drops to n=3 ===
+  \draw[->, very thick, codexgreen]
+    (4.7,5.2) -- (4.7,4.7);
+  \draw[->, thick, codexgreen!80]
+    (5.0,5.55) -- (5.0,4.7);
+  \node[right, codexgreen, font=\small]
+    at (5.7,5.0) {Paschen\\(IR)};
+
+  % Visible light annotation for Balmer
+  \draw[codexred, thick, decorate,
+    decoration={brace, mirror, amplitude=4pt}]
+    (3.4,3.5) -- (3.4,4.6);
+  \node[left, codexred, font=\tiny]
+    at (3.2,4.0) {H$\alpha$\\656 nm};
+
+\end{tikzpicture}
+\end{center}
+\small Each series corresponds to transitions ending
+at a particular level. The Balmer series falls partly
+in the visible spectrum (400--700 nm) and is the most
+commonly observed in astronomy.
+\end{diagbox}
+
+\begin{examplebox}[27.1]
+\stepcounter{workedexample}
+Calculate the wavelength of the photon emitted when
+a hydrogen electron transitions from $n = 3$ to
+$n = 2$ (the H$\alpha$ line, the first line of the
+Balmer series).\\
+($h = 6.63\times10^{-34}\ \text{J\,s}$,
+$c = 3.0\times10^8\ \text{m\,s}^{-1}$,
+$1\ \text{eV} = 1.6\times10^{-19}\ \text{J}$)
+\end{examplebox}
+
+\begin{solutionbox}
+Energy difference:
+\[
+  \Delta E = E_3 - E_2 = -1.51 - (-3.40)
+  = 1.89\ \text{eV}
+  = 1.89 \times 1.6\times10^{-19}
+  = 3.024\times10^{-19}\ \text{J}
+\]
+
+Using $E = hf = hc/\lambda$:
+\[
+  \lambda = \frac{hc}{\Delta E}
+  = \frac{6.63\times10^{-34} \times 3.0\times10^8}
+    {3.024\times10^{-19}}
+  = \frac{1.989\times10^{-25}}{3.024\times10^{-19}}
+  = 6.58\times10^{-7}\ \text{m}
+  = 658\ \text{nm}
+\]
+
+This is in the red part of the visible spectrum.
+The accepted value is $656\ \text{nm}$ ---
+excellent agreement. The H$\alpha$ line is the
+strong red emission seen in photographs of hydrogen
+nebulae across the galaxy.
+\end{solutionbox}
+
+% ============================================================
+\section{Emission and Absorption Spectra}
+% ============================================================
+
+\begin{defbox}[Line Emission and Absorption Spectra]
+\textbf{Line emission spectrum:} When a gas is heated
+or excited electrically, atoms are excited to higher
+energy levels. As electrons fall back to lower levels,
+photons of specific wavelengths are emitted. When the
+emitted light is passed through a prism or diffraction
+grating, a series of \textbf{bright coloured lines}
+on a dark background is observed. Each element has a
+unique set of spectral lines --- a fingerprint.
+
+\textbf{Line absorption spectrum:} When white light
+passes through a cool gas, the atoms absorb photons
+of the same specific wavelengths they would emit.
+The transmitted light shows \textbf{dark lines}
+(Fraunhofer lines) at the same wavelengths as the
+emission spectrum.
+
+\textbf{Continuous spectrum:} A hot solid or dense
+gas emits light of all wavelengths (a rainbow).
+This is the blackbody spectrum from Chapter 16.
+\end{defbox}
+
+\begin{diagbox}[Emission and Absorption Spectra Compared]
+\begin{center}
+\begin{tikzpicture}[scale=0.95, font=\small]
+
+  % === CONTINUOUS SPECTRUM ===
+  \begin{scope}[shift={(0,5)}]
+    \node[font=\bfseries] at (4.0,1.6)
+      {Continuous spectrum (hot solid)};
+    % Gradient bar from violet to red
+    \foreach \x/\col in {
+      0.2/violet, 0.6/blue, 1.2/cyan, 2.0/green,
+      3.0/codexgold, 4.0/orange, 5.0/codexred,
+      5.8/codexred} {
+      % Keep \col a base color; apply the tint here.
+      \fill[\col!60] (\x,0) rectangle (\x+0.6,1.0);
+    }
+    \draw[thick] (0,0) rectangle (6.2,1.0);
+    \node[below, font=\tiny] at (0.5,-0.1) {400 nm};
+    \node[below, font=\tiny] at (5.7,-0.1) {700 nm};
+    \node[below, font=\tiny] at (3.1,-0.1) {Wavelength};
+  \end{scope}
+
+  % === EMISSION SPECTRUM ===
+  \begin{scope}[shift={(0,2.5)}]
+    \node[font=\bfseries] at (4.0,1.6)
+      {Emission spectrum (hot hydrogen gas)};
+    % Dark background
+    \fill[black] (0,0) rectangle (6.2,1.0);
+    \draw[thick] (0,0) rectangle (6.2,1.0);
+    % H-alpha 656 nm (red)
+    \draw[very thick, codexred]
+      (5.4,0) -- (5.4,1.0);
+    % H-beta 486 nm (blue-green)
+    \draw[very thick, cyan!80]
+      (3.2,0) -- (3.2,1.0);
+    % H-gamma 434 nm (violet)
+    \draw[very thick, blue!70]
+      (2.0,0) -- (2.0,1.0);
+    % H-delta 410 nm (violet)
+    \draw[very thick, violet]
+      (1.4,0) -- (1.4,1.0);
+    % Labels
+    \node[above, codexred, font=\tiny] at (5.4,1.05)
+      {656};
+    \node[above, cyan, font=\tiny] at (3.2,1.05)
+      {486};
+    \node[above, blue, font=\tiny] at (2.0,1.05)
+      {434};
+    \node[above, violet, font=\tiny] at (1.4,1.05)
+      {410 nm};
+  \end{scope}
+
+  % === ABSORPTION SPECTRUM ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries] at (4.0,1.6)
+      {Absorption spectrum (cool hydrogen)};
+    % Rainbow background (approximate)
+    \foreach \x/\col in {
+      0.2/violet, 0.6/blue, 1.2/cyan, 2.0/green,
+      3.0/codexgold, 4.0/orange, 5.0/codexred,
+      5.8/codexred} {
+      % Keep \col a base color; apply the tint here.
+      \fill[\col!60] (\x,0) rectangle (\x+0.6,1.0);
+    }
+    \draw[thick] (0,0) rectangle (6.2,1.0);
+    % Dark lines at same positions as emission
+    \fill[black] (5.3,0) rectangle (5.5,1.0);
+    \fill[black] (3.1,0) rectangle (3.3,1.0);
+    \fill[black] (1.9,0) rectangle (2.1,1.0);
+    \fill[black] (1.3,0) rectangle (1.5,1.0);
+    % Labels
+    \node[below, font=\tiny] at (5.4,-0.1) {656};
+    \node[below, font=\tiny] at (3.2,-0.1) {486};
+    \node[below, font=\tiny] at (2.0,-0.1) {434};
+    \node[below, font=\tiny] at (1.4,-0.1) {410 nm};
+  \end{scope}
+
+  % Key observation
+  \node[align=center, font=\small, codexblue]
+    at (4.0,-1.0)
+    {Same wavelengths appear as bright lines
+    in emission and dark lines in absorption.\\
+    This is used in stellar spectroscopy to identify
+    elements in stars.};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{The Photoelectric Effect}
+% ============================================================
+
+\begin{processbox}[The Photoelectric Effect: Observations]
+When light of sufficiently high frequency shines on a
+metal surface, electrons are emitted from the surface.
+This is the \textbf{photoelectric effect}.
+
+Key experimental observations:
+\begin{enumerate}[noitemsep]
+  \item Electrons are only emitted if the frequency of
+  the light exceeds a minimum value called the
+  \textbf{threshold frequency} $f_0$. Below $f_0$,
+  no electrons are emitted, however bright the light.
+  \item Above $f_0$, electrons are emitted
+  \textit{immediately}, even in very faint light. There
+  is no time delay.
+  \item The maximum kinetic energy of the emitted
+  electrons depends only on the \textit{frequency}
+  of the light, not on its intensity.
+  \item Increasing the intensity (brightness) of the
+  light above $f_0$ increases the \textit{number} of
+  emitted electrons per second, but not their energy.
+\end{enumerate}
+
+\textbf{Why classical wave physics fails:}
+Classical wave theory predicts that (1) any frequency
+should work if the light is bright enough, (2) electrons
+should take time to accumulate enough energy, and (3)
+brighter light should produce more energetic electrons.
+All three predictions are wrong. Classical theory
+completely fails to explain the photoelectric effect.
+\end{processbox}
+
+\begin{historybox}[Einstein's Explanation, 1905]
+Albert Einstein (1879--1955) explained the photoelectric
+effect by proposing that light comes in discrete packets
+of energy called \textbf{photons}. Each photon carries
+energy $E = hf$ (where $h$ is Planck's constant). This
+was Einstein's Nobel Prize paper (1921), not relativity.
+
+The explanation: One photon interacts with one electron.
+If the photon energy $hf$ is less than the work
+function $\phi$ (the minimum energy needed to escape the
+metal surface), no electron can escape. If $hf > \phi$,
+the electron escapes with kinetic energy
+$KE_{max} = hf - \phi$. Brighter light means more
+photons per second, so more electrons per second --- but
+each photon still has the same energy, so the maximum
+KE is unchanged.
+\end{historybox}
+
+\begin{lawbox}[Einstein's Photoelectric Equation]
+\[
+  hf = \phi + \frac{1}{2}mv_{max}^2
+\]
+or equivalently:
+\[
+  KE_{max} = hf - \phi
+\]
+where:
+\begin{itemize}[noitemsep]
+  \item $h = 6.63\times10^{-34}\ \text{J\,s}$
+  (Planck's constant)
+  \item $f$ = frequency of incident light (Hz)
+  \item $\phi = hf_0$ = work function of the metal (J or eV)
+  \item $f_0$ = threshold frequency
+  \item $KE_{max} = \frac{1}{2}mv_{max}^2$ = maximum
+  kinetic energy of emitted electrons
+\end{itemize}
+
+\textbf{Stopping potential} $V_s$: the minimum
+reverse potential needed to stop all emitted electrons:
+\[
+  eV_s = KE_{max} = hf - \phi
+\]
+\end{lawbox}
+
+\begin{diagbox}[Photoelectric Effect: Experimental Setup and Graph]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % === APPARATUS ===
+  \begin{scope}[shift={(0,0)}]
+    % Vacuum tube
+    \fill[cyan!5] (0.3,0.3) rectangle (5.7,4.7);
+    \draw[thick] (0.3,0.3) rectangle (5.7,4.7);
+    \node[gray, font=\small] at (3.0,4.2)
+      {Evacuated tube};
+
+    % Photocathode (metal surface)
+    \fill[gray!50] (0.3,1.0) rectangle (1.0,4.0);
+    \draw[thick] (0.3,1.0) rectangle (1.0,4.0);
+    \node[below, font=\tiny] at (0.65,0.8)
+      {Metal\\cathode};
+
+    % Anode
+    \fill[gray!30] (4.8,1.5) rectangle (5.3,3.5);
+    \draw[thick] (4.8,1.5) rectangle (5.3,3.5);
+    \node[below, font=\tiny] at (5.0,1.3)
+      {Anode};
+
+    % Incident light
+    \foreach \y in {1.5,2.0,2.5,3.0,3.5} {
+      \draw[->, thick, codexgold]
+        (-0.8,\y) -- (0.2,\y);
+    }
+    \node[left, codexgold] at (-0.9,2.5)
+      {Light\\($f > f_0$)};
+
+    % Emitted electrons
+    \draw[->, thick, codexred]
+      (1.1,2.0) -- (4.7,2.5);
+    \draw[->, thick, codexred]
+      (1.1,2.5) -- (4.7,2.5);
+    \draw[->, thick, codexred]
+      (1.1,3.0) -- (4.7,2.5);
+    \node[above, codexred, font=\tiny]
+      at (2.9,2.8) {Electrons};
+
+    % Galvanometer
+    \draw[thick] (1.0,0.3) -- (1.0,-0.5);
+    \draw[thick] (1.0,-0.5) -- (3.5,-0.5);
+    \fill[white] (3.2,-0.8) rectangle (3.8,-0.2);
+    \draw[thick] (3.2,-0.8) rectangle (3.8,-0.2);
+    \node[font=\tiny] at (3.5,-0.5) {G};
+    \draw[thick] (3.5,-0.8) -- (3.5,-1.2);
+    \draw[thick] (3.5,-1.2) -- (5.0,-1.2);
+    \draw[thick] (5.0,-1.2) -- (5.0,0.3);
+  \end{scope}
+
+  % === KE vs FREQUENCY GRAPH ===
+  \begin{axis}[
+    at={(200pt,0pt)},
+    width=7cm, height=6cm,
+    xlabel={Frequency $f$ (Hz)},
+    ylabel={$KE_{max}$ (eV)},
+    xmin=0, xmax=10,
+    ymin=-2, ymax=3,
+    grid=major, grid style={gray!15},
+    xtick={0,3,5,7,10},
+    xticklabels={0,,$f_0$,,},
+    ytick={-2,-1,0,1,2,3},
+    yticklabels={,,0,,,},
+  ]
+    % KE line: starts at f0, slope = h
+    \addplot[codexblue, very thick, domain=3:10]
+      {0.5*(x-3)};
+    % Below threshold: KE = 0 (no emission)
+    \addplot[gray, dashed, domain=0:3]{0};
+    % Mark threshold
+    \fill[codexred] (axis cs:3,0) circle (3pt);
+    \node[above right, codexred, font=\tiny]
+      at (axis cs:3,0.1) {$f_0$ (threshold)};
+    % Work function annotation
+    \draw[<->, codexgold, thick]
+      (axis cs:0,-1.5) -- (axis cs:3,-1.5);
+    \node[below, codexgold, font=\tiny]
+      at (axis cs:1.5,-1.6) {$\phi = hf_0$};
+    % Extension of line to y-intercept
+    \addplot[codexblue, dashed, domain=0:3]
+      {0.5*(x-3)};
+    \fill[codexgold] (axis cs:0,-1.5) circle (3pt);
+    \node[left, codexgold, font=\tiny]
+      at (axis cs:0,-1.5) {$y$-intercept $= -\phi$};
+    % Slope annotation
+    \node[codexblue, font=\tiny, rotate=27]
+      at (axis cs:7,2.0) {gradient $= h$};
+  \end{axis}
+
+\end{tikzpicture}
+\end{center}
+\small The graph of $KE_{max}$ vs frequency is a
+straight line with gradient equal to Planck's constant
+$h$. This provides an experimental way to measure $h$.
+\end{diagbox}
+
+\begin{examplebox}[27.2]
+\stepcounter{workedexample}
+Ultraviolet light of wavelength $250\ \text{nm}$
+falls on a zinc surface with work function
+$4.3\ \text{eV}$.\\
+(a) Calculate the energy of each photon in eV.\\
+(b) Calculate the maximum kinetic energy of the
+emitted electrons.\\
+(c) Calculate the maximum speed of the emitted
+electrons.\\
+(d) Calculate the stopping potential.\\
+($h = 6.63\times10^{-34}\ \text{J\,s}$,
+$c = 3.0\times10^8\ \text{m\,s}^{-1}$,
+$m_e = 9.11\times10^{-31}\ \text{kg}$,
+$e = 1.6\times10^{-19}\ \text{C}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Photon energy:
+\[
+  E = \frac{hc}{\lambda}
+  = \frac{6.63\times10^{-34} \times 3.0\times10^8}
+    {250\times10^{-9}}
+  = \frac{1.989\times10^{-25}}{2.5\times10^{-7}}
+  = 7.956\times10^{-19}\ \text{J}
+  = \frac{7.956\times10^{-19}}{1.6\times10^{-19}}
+  = 4.97\ \text{eV}
+\]
+
+\textbf{(b)} Maximum kinetic energy:
+\[
+  KE_{max} = hf - \phi = 4.97 - 4.3
+  = 0.67\ \text{eV}
+  = 0.67 \times 1.6\times10^{-19}
+  = 1.072\times10^{-19}\ \text{J}
+\]
+
+\textbf{(c)} Maximum speed:
+\[
+  \frac{1}{2}m_e v_{max}^2 = 1.072\times10^{-19}
+\]
+\[
+  v_{max} = \sqrt{\frac{2 \times 1.072\times10^{-19}}
+    {9.11\times10^{-31}}}
+  = \sqrt{2.354\times10^{11}}
+  = 4.85\times10^5\ \text{m\,s}^{-1}
+\]
+
+\textbf{(d)} Stopping potential:
+\[
+  V_s = \frac{KE_{max}}{e}
+  = \frac{1.072\times10^{-19}}{1.6\times10^{-19}}
+  = 0.67\ \text{V}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Wave-Particle Duality}
+% ============================================================
+
+The photoelectric effect demonstrates that light,
+which we know is a wave (it diffracts, interferes,
+etc.), also behaves as discrete particles (photons).
+This is wave-particle duality for light.
+
+In 1924, Louis de Broglie proposed that matter
+(which we know consists of particles) also has
+wave properties.
+
+\begin{lawbox}[De Broglie's Hypothesis]
+Every particle with momentum $p$ has an associated
+\textbf{de Broglie wavelength}:
+\[
+  \lambda = \frac{h}{p} = \frac{h}{mv}
+\]
+where $h$ is Planck's constant, $m$ is the particle's
+mass and $v$ its speed.
+
+This was confirmed experimentally by Davisson and
+Germer in 1927: a beam of electrons was diffracted
+by a crystal lattice, producing an interference
+pattern exactly like X-rays of the same wavelength.
+Particles diffract --- they have wave properties.
+\end{lawbox}
+
+\begin{examplebox}[27.3]
+\stepcounter{workedexample}
+Calculate the de Broglie wavelength of:
+(a) An electron accelerated through $1000\ \text{V}$.\\
+(b) A cricket ball of mass $0.16\ \text{kg}$ moving
+at $30\ \text{m\,s}^{-1}$.\\
+Comment on whether wave behaviour is observable
+in each case.\\
+($h = 6.63\times10^{-34}\ \text{J\,s}$,
+$m_e = 9.11\times10^{-31}\ \text{kg}$,
+$e = 1.6\times10^{-19}\ \text{C}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Electron accelerated through $1000\ \text{V}$:
+
+Kinetic energy gained: $KE = eV = 1.6\times10^{-19}
+\times 1000 = 1.6\times10^{-16}\ \text{J}$
+
+Speed: $v = \sqrt{2KE/m_e} = \sqrt{2 \times 1.6\times10^{-16}
+/ 9.11\times10^{-31}} = 1.876\times10^7\ \text{m\,s}^{-1}$
+
+Momentum: $p = m_e v = 9.11\times10^{-31}
+\times 1.876\times10^7 = 1.709\times10^{-23}\ \text{kg\,m\,s}^{-1}$
+
+De Broglie wavelength:
+\[
+  \lambda = \frac{h}{p}
+  = \frac{6.63\times10^{-34}}{1.709\times10^{-23}}
+  = 3.88\times10^{-11}\ \text{m} = 0.0388\ \text{nm}
+\]
+This is comparable to atomic spacings ($\sim 0.1\ \text{nm}$),
+so electron diffraction from crystals is readily
+observed. Electron microscopes exploit this.
+
+\textbf{(b)} Cricket ball:
+\[
+  p = mv = 0.16 \times 30 = 4.8\ \text{kg\,m\,s}^{-1}
+\]
+\[
+  \lambda = \frac{6.63\times10^{-34}}{4.8}
+  = 1.38\times10^{-34}\ \text{m}
+\]
+This is $10^{19}$ times smaller than a proton
+($\sim 10^{-15}\ \text{m}$). Completely undetectable.
+Macroscopic objects have de Broglie wavelengths so
+small that quantum wave effects are entirely
+negligible --- this is why classical physics works
+for everyday objects.
+\end{solutionbox}
+
+% ============================================================
+\section{The Heisenberg Uncertainty Principle}
+% ============================================================
+
+\begin{lawbox}[Heisenberg Uncertainty Principle]
+It is impossible to simultaneously know both the
+exact position and the exact momentum of a particle.
+The uncertainties are related by:
+\[
+  \Delta x \cdot \Delta p \geq \frac{h}{4\pi}
+  \approx \frac{\hbar}{2}
+\]
+where $\Delta x$ is the uncertainty in position and
+$\Delta p$ is the uncertainty in momentum.
+
+Similarly, for energy and time:
+\[
+  \Delta E \cdot \Delta t \geq \frac{h}{4\pi}
+\]
+
+This is not a limitation of our instruments ---
+it is a fundamental feature of nature. A particle
+does not \textit{have} a precise position and precise
+momentum simultaneously. The act of measuring one
+disturbs the other.
+
+This is why the Bohr model, which assumes precise
+electron orbits, is ultimately incomplete. Electrons
+do not orbit in fixed paths --- they exist as
+probability clouds (orbitals) described by quantum
+mechanics.
+\end{lawbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Thomson:} plum-pudding model (electrons
+embedded in diffuse positive charge).
+
+\textbf{Rutherford's scattering experiment:}
+most $\alpha$ pass through; some deflect greatly;
+rare back-scatter $\Rightarrow$ tiny, dense, positive nucleus;
+atom mostly empty space.
+
+\textbf{Bohr model:} electrons in fixed orbits;
+quantised angular momentum; energy levels of H:
+$E_n = -13.6/n^2$ eV.
+Photon emitted/absorbed on transition:
+$hf = E_{n_2} - E_{n_1}$.
+
+\textbf{1 eV $= 1.6\times10^{-19}$ J}
+
+\textbf{Spectral lines:} each element has unique
+emission/absorption spectrum (fingerprint).
+Balmer series (visible): transitions to $n=2$.
+
+\textbf{Photoelectric effect:}
+$hf = \phi + KE_{max}$;
+threshold frequency $f_0 = \phi/h$.
+Proves light is quantised (photons).
+
+\textbf{Photon energy:} $E = hf = hc/\lambda$
+
+\textbf{De Broglie wavelength:} $\lambda = h/p = h/(mv)$
+Particles have wave properties; waves have particle
+properties --- wave-particle duality.
+
+\textbf{Heisenberg:}
+$\Delta x\,\Delta p \geq h/4\pi$
+(position and momentum cannot both be precisely known).
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[27]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} Rutherford's alpha-scattering experiment
+showed that:
+
+\mcoption{A}{Atoms contain electrons}
+\mcoption{B}{Most of the atom's mass is spread
+uniformly through its volume}
+\mcoption{C}{The atom has a tiny, dense, positively
+charged nucleus surrounded by mostly empty space}
+\mcoption{D}{The atom is made of protons only}
+\ansref{Ch27-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} According to Bohr's model, the energy
+of the $n=4$ level of hydrogen is:
+
+\mcoption{A}{$-3.40\ \text{eV}$}
+\mcoption{B}{$-1.51\ \text{eV}$}
+\mcoption{C}{$-0.85\ \text{eV}$}
+\mcoption{D}{$-0.54\ \text{eV}$}
+\ansref{Ch27-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} The minimum frequency of light needed
+to cause photoelectric emission from a metal surface is:
+
+\mcoption{A}{The resonant frequency}
+\mcoption{B}{The threshold frequency}
+\mcoption{C}{The Lyman frequency}
+\mcoption{D}{The Balmer frequency}
+\ansref{Ch27-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} In the photoelectric effect, increasing
+the intensity of light above the threshold frequency
+increases:
+
+\mcoption{A}{The maximum kinetic energy of
+photoelectrons}
+\mcoption{B}{The threshold frequency}
+\mcoption{C}{The number of photoelectrons emitted
+per second}
+\mcoption{D}{The work function of the metal}
+\ansref{Ch27-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} The de Broglie wavelength of a particle
+is:
+
+\mcoption{A}{$\lambda = hf$}
+\mcoption{B}{$\lambda = h/p$}
+\mcoption{C}{$\lambda = p/h$}
+\mcoption{D}{$\lambda = hv$}
+\ansref{Ch27-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} An electron transition from $n=4$
+to $n=2$ in hydrogen produces a photon of energy:
+
+\mcoption{A}{$0.66\ \text{eV}$}
+\mcoption{B}{$2.55\ \text{eV}$}
+\mcoption{C}{$3.40\ \text{eV}$}
+\mcoption{D}{$4.91\ \text{eV}$}
+\ansref{Ch27-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} The stopping potential in a
+photoelectric experiment measures:
+
+\mcoption{A}{The work function of the metal}
+\mcoption{B}{The threshold frequency}
+\mcoption{C}{The maximum kinetic energy of
+emitted electrons divided by the electron charge}
+\mcoption{D}{The intensity of the light}
+\ansref{Ch27-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} Which of the following provides
+evidence that light has particle properties?
+
+\mcoption{A}{Young's double slit experiment}
+\mcoption{B}{Diffraction of light through a slit}
+\mcoption{C}{The photoelectric effect}
+\mcoption{D}{Refraction of light through glass}
+\ansref{Ch27-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} A hydrogen atom emitting light in
+the Lyman series produces photons ending on
+the level:
+
+\mcoption{A}{$n=1$}
+\mcoption{B}{$n=2$}
+\mcoption{C}{$n=3$}
+\mcoption{D}{$n=4$}
+\ansref{Ch27-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} The Heisenberg Uncertainty Principle
+states that:
+
+\mcoption{A}{We cannot measure position and
+momentum simultaneously with arbitrary precision,
+due to instrument limitations}
+\mcoption{B}{A particle does not simultaneously
+possess definite position and definite momentum ---
+this is a fundamental property of nature}
+\mcoption{C}{Speed and frequency cannot be
+measured simultaneously}
+\mcoption{D}{Only applies to photons, not to
+massive particles}
+\ansref{Ch27-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} In Rutherford's gold-foil experiment,
+a beam of alpha particles ($q = +2e$,
+$m = 6.64\times10^{-27}\ \text{kg}$) with kinetic
+energy $7.7\ \text{MeV}$ is fired at gold nuclei
+($Z = 79$).\\[4pt]
+(a) Convert $7.7\ \text{MeV}$ to joules.\\
+(b) The distance of closest approach $d$ for a
+head-on collision is found from
+$KE = kZq_\alpha q_{Au}/d$.
+($k = 9.0\times10^9\ \text{N\,m}^2\text{C}^{-2}$,
+$q_{Au} = Ze = 79 \times 1.6\times10^{-19}\ \text{C}$)
+Calculate $d$ and compare with the nuclear radius
+($\sim 7\times10^{-15}\ \text{m}$).\\
+(c) Why do most alpha particles pass straight
+through the gold foil? Give a quantitative
+argument using atomic and nuclear radii.\\
+(d) Explain what is meant by the statement that
+the atom is ``mostly empty space.''
+\hfill\ansref{Ch27-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A hydrogen atom in the ground state
+absorbs a photon and is excited.\\
+($h = 6.63\times10^{-34}\ \text{J\,s}$,
+$c = 3.0\times10^8\ \text{m\,s}^{-1}$,
+$1\ \text{eV} = 1.6\times10^{-19}\ \text{J}$)\\[4pt]
+(a) Calculate the energy in eV of a photon of
+wavelength $97.2\ \text{nm}$ (ultraviolet).\\
+(b) Which Bohr transition does this photon cause?
+(Use $E_n = -13.6/n^2$ eV)\\
+(c) Calculate the wavelength of the photon emitted
+when the electron returns from $n=4$ to $n=2$.\\
+(d) Is this wavelength in the visible range? What
+colour would it appear?\\
+(e) Calculate the wavelength of the photon that
+would just ionise a hydrogen atom from the ground
+state.
+\hfill\ansref{Ch27-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A zinc photoelectric cell has work
+function $\phi = 4.3\ \text{eV}$.
+($h = 6.63\times10^{-34}\ \text{J\,s}$,
+$c = 3.0\times10^8\ \text{m\,s}^{-1}$,
+$m_e = 9.11\times10^{-31}\ \text{kg}$,
+$e = 1.6\times10^{-19}\ \text{C}$)\\[4pt]
+(a) Calculate the threshold frequency and
+threshold wavelength for zinc.\\
+(b) A lamp emits UV light of wavelength $200\ \text{nm}$.
+Calculate the maximum kinetic energy and maximum
+speed of photoelectrons.\\
+(c) Calculate the stopping potential.\\
+(d) The lamp's intensity is doubled. State and
+explain what happens to: (i) the maximum kinetic
+energy; (ii) the rate of electron emission.\\
+(e) A second metal has threshold wavelength
+$500\ \text{nm}$ (green light). Calculate its
+work function. Which requires higher-energy photons
+to cause emission, zinc or this metal?
+\hfill\ansref{Ch27-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} An electron is accelerated from rest
+through a potential difference of $V$.\\
+($h = 6.63\times10^{-34}\ \text{J\,s}$,
+$m_e = 9.11\times10^{-31}\ \text{kg}$,
+$e = 1.6\times10^{-19}\ \text{C}$)\\[4pt]
+(a) Show that the de Broglie wavelength of the
+accelerated electron is:
+\[
+  \lambda = \frac{h}{\sqrt{2m_e eV}}
+\]
+(b) Calculate $\lambda$ for $V = 50\ \text{V}$,
+$200\ \text{V}$, and $10\,000\ \text{V}$.\\
+(c) Typical crystal lattice spacings are
+$0.1$--$0.5\ \text{nm}$. For which of these voltages
+would you expect electron diffraction?\\
+(d) Compare your wavelengths in (b) with the
+wavelength of visible light ($400$--$700\ \text{nm}$)
+and explain why electron microscopes can resolve
+features far smaller than optical microscopes.\\
+(e) A proton is accelerated through $200\ \text{V}$.
+Calculate its de Broglie wavelength and compare
+with the electron at the same voltage.
+($m_p = 1.67\times10^{-27}\ \text{kg}$)
+\hfill\ansref{Ch27-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} This question compares classical and
+quantum descriptions of the hydrogen atom.\\[4pt]
+(a) In the Bohr model, the electron in the ground
+state orbits at radius $r_1 = 5.29\times10^{-11}\ \text{m}$.
+Using the centripetal force and Coulomb force:
+\[
+  \frac{m_e v^2}{r} = \frac{ke^2}{r^2}
+\]
+calculate the speed of the electron in the ground state.\\
+(b) Calculate the de Broglie wavelength of this
+electron and compare with the circumference of
+the Bohr orbit ($2\pi r_1$). What do you notice?\\
+(c) The classical model predicts the electron
+should radiate and spiral into the nucleus in
+about $10^{-11}\ \text{s}$. Estimate the rate of
+energy loss (power radiated) using the classical
+formula for an accelerating charge:
+$P = e^2a^2/(6\pi\varepsilon_0 c^3)$,
+given the electron acceleration is
+$9.0\times10^{22}\ \text{m\,s}^{-2}$.
+Comment on why atoms are actually stable.\\
+(d) Explain in your own words why the Bohr model,
+despite correctly predicting hydrogen spectral
+lines, was known to be incomplete even when
+Bohr proposed it.
+\hfill\ansref{Ch27-B5}
+
+\end{exercisebox}

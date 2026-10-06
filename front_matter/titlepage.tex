@@ -1,0 +1,62 @@
+% ============================================================
+% TITLE PAGE
+% front_matter/titlepage.tex
+% ============================================================
+
+\begin{titlepage}
+\centering
+
+\vspace*{2cm}
+
+% Series name
+{\large\color{codexgold}\textsc{The Aurikrex Codex Series}}\\[0.5cm]
+\color{codexblue}\rule{0.5\textwidth}{0.8pt}\\[1.5cm]
+
+% Main title
+{\fontsize{36}{42}\selectfont\bfseries\color{codexblue} THE PHYSICS CODEX}\\[0.6cm]
+
+% Rule
+\color{codexgold}\rule{0.8\textwidth}{2pt}\\[0.6cm]
+
+% Subtitle
+{\Large\color{darkgray}\textit{A Complete University Foundation}}\\[2.5cm]
+
+% Decorative TikZ emblem
+\begin{tikzpicture}
+  % Outer circle
+  \draw[codexblue, thick, line width=2pt] (0,0) circle (2cm);
+  % Inner circle
+  \draw[codexgold, line width=1pt] (0,0) circle (1.5cm);
+  % Atom-like orbits
+  \draw[codexblue!60, rotate=0]   (0,0) ellipse (1.4cm and 0.5cm);
+  \draw[codexblue!60, rotate=60]  (0,0) ellipse (1.4cm and 0.5cm);
+  \draw[codexblue!60, rotate=120] (0,0) ellipse (1.4cm and 0.5cm);
+  % Nucleus
+  \fill[codexgold] (0,0) circle (0.2cm);
+  % Electrons
+  \fill[codexblue] (1.4,0) circle (0.1cm);
+  \fill[codexblue] (-0.7, 1.21) circle (0.1cm);
+  \fill[codexblue] (-0.7,-1.21) circle (0.1cm);
+\end{tikzpicture}
+
+\vspace{1.5cm}
+
+% Author
+{\Large\bfseries\color{codexblue} Korede Samuel Omotosho}\\[0.3cm]
+{\normalsize\color{darkgray}\textit{(Falcon)}}\\[0.3cm]
+{\small\color{darkgray} Founder, Aurikrex Learning Systems}\\[1cm]
+
+% Publisher
+\color{codexblue}\rule{0.4\textwidth}{0.5pt}\\[0.4cm]
+{\normalsize\color{darkgray}
+\textsc{Aurikrex Learning Systems}\\[0.2cm]
+Lagos, Nigeria\\[0.2cm]
+\texttt{\href{mailto:aurikrexacademy@gmail.com}{aurikrexacademy@gmail.com}}\\[0.3cm]
+\color{codexblue}\rule{0.4\textwidth}{0.5pt}
+}
+
+\vfill
+
+{\small\color{darkgray} First Edition \textbullet\ 2026}
+
+\end{titlepage}

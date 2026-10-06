@@ -1,0 +1,811 @@
+% ============================================================
+%  CHAPTER 6: CIRCULAR MOTION
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part1/ch06_circular_motion.tex
+% ============================================================
+
+\chapter{Circular Motion}
+\label{ch:circular_motion}
+
+\chapterquote{The most beautiful thing we can experience
+is the mysterious. It is the source of all true art
+and science.}{Albert Einstein}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Define angular displacement, angular velocity
+  and angular acceleration
+  \item Relate linear and angular quantities
+  \item Explain why uniform circular motion requires
+  a centripetal acceleration and force
+  \item Calculate centripetal acceleration and
+  centripetal force
+  \item Apply circular motion equations to banked
+  roads, conical pendulums, and vertical circles
+  \item Explain the concept of centrifugal force as
+  a pseudo-force
+  \item Solve problems involving objects moving in
+  vertical circles
+\end{enumerate}
+\end{objectivebox}
+
+\vspace{0.4cm}
+
+\minitoc
+
+\vspace{0.5cm}
+
+% ============================================================
+\section{Why Circular Motion is Accelerated Motion}
+% ============================================================
+
+Here is a fact that surprises many students: a car
+travelling around a roundabout at perfectly constant
+speed is \textit{accelerating}. This seems contradictory
+--- acceleration means changing velocity, and if the
+speed is constant, how can velocity be changing?
+
+The answer lies in the vector nature of velocity.
+\textbf{Velocity is not just speed --- it is speed in
+a specific direction.} As the car goes around the
+roundabout, its direction changes continuously. A
+changing direction means a changing velocity vector,
+and a changing velocity means acceleration. This
+acceleration is called \textbf{centripetal acceleration},
+and it always points toward the centre of the circle.
+
+\begin{misconceptionbox}
+Many students confuse centripetal force with a real
+outward force on the rotating object. There is no
+outward force on a car going around a bend. The car
+is pulled \textit{inward} by friction. What you feel
+pressed against the car door is your own body's
+inertia (Newton's First Law) --- your body wants to
+continue in a straight line, but the car door forces
+you to turn. This apparent outward force is called
+\textbf{centrifugal force} and it is a \textit{pseudo-force}
+--- it only appears to exist in the rotating reference
+frame.
+\end{misconceptionbox}
+
+% ============================================================
+\section{Angular Quantities}
+% ============================================================
+
+\begin{definitionbox}[Angular Displacement]
+The \textbf{angular displacement} $\theta$ is the angle
+swept out by the radius vector as the object moves along
+the circular path. Measured in \textbf{radians} (rad).
+
+One full circle $= 360° = 2\pi\ \text{rad}$\\
+$1\ \text{rad} = 180°/\pi \approx 57.3°$
+\end{definitionbox}
+
+\begin{definitionbox}[Angular Velocity]
+The \textbf{angular velocity} $\omega$ is the rate of
+change of angular displacement:
+\[
+  \omega = \frac{\Delta\theta}{\Delta t}
+\]
+SI unit: rad\,s$^{-1}$.
+
+For uniform circular motion (period $T$, frequency $f$):
+\[
+  \omega = \frac{2\pi}{T} = 2\pi f
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Relationship Between Linear and
+Angular Quantities]
+For a body moving in a circle of radius $r$:
+\[
+  s = r\theta \quad \text{(arc length)}
+\]
+\[
+  v = r\omega \quad \text{(linear speed)}
+\]
+\[
+  a_{tangential} = r\alpha \quad
+  \text{(tangential acceleration, if } \omega
+  \text{ is changing)}
+\]
+where $\alpha = d\omega/dt$ is the angular acceleration.
+\end{definitionbox}
+
+\begin{diagbox}[Angular and Linear Quantities]
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+  % Circle
+  \draw[thick, codexblue!40] (0,0) circle (2cm);
+
+  % Radius to position 1
+  \draw[thick, codexblue] (0,0) -- (2,0)
+    node[right]{$P_1$};
+  \fill[codexblue] (2,0) circle (2.5pt);
+
+  % Radius to position 2
+  \draw[thick, codexred] (0,0) -- (1.41,1.41)
+    node[above right]{$P_2$};
+  \fill[codexred] (1.41,1.41) circle (2.5pt);
+
+  % Angle
+  \draw[codexgold, thick] (0.6,0) arc(0:45:0.6);
+  \node[codexgold] at (0.85,0.25) {$\theta$};
+
+  % Arc
+  \draw[codexgreen, very thick]
+    (2,0) arc(0:45:2);
+  \node[codexgreen] at (2.3,0.8) {$s = r\theta$};
+
+  % Radius label
+  \node[below] at (1,-0.1) {$r$};
+
+  % Velocity vector
+  \draw[->, very thick, codexred]
+    (1.41,1.41) -- ++(-1.0, 1.0)
+    node[above left]{$v = r\omega$};
+
+  % Centre
+  \fill (0,0) circle (2pt) node[below left]{O};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[6.1]
+\stepcounter{workedexample}
+A wheel of radius $0.40\ \text{m}$ rotates at
+$300\ \text{rpm}$ (revolutions per minute).
+Find: (a) the angular velocity in rad\,s$^{-1}$;
+(b) the linear speed of a point on the rim;
+(c) the period of rotation.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Convert rpm to rad\,s$^{-1}$:
+\[
+  \omega = 300\ \frac{\text{rev}}{\text{min}}
+  \times \frac{2\pi\ \text{rad}}{\text{rev}}
+  \times \frac{1\ \text{min}}{60\ \text{s}}
+  = \frac{300 \times 2\pi}{60}
+  = 10\pi \approx 31.4\ \text{rad\,s}^{-1}
+\]
+
+\textbf{(b)} Linear speed of rim:
+\[
+  v = r\omega = 0.40 \times 10\pi
+  = 4\pi \approx 12.6\ \text{m\,s}^{-1}
+\]
+
+\textbf{(c)} Period:
+\[
+  T = \frac{2\pi}{\omega} = \frac{2\pi}{10\pi}
+  = 0.20\ \text{s}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Centripetal Acceleration and Force}
+% ============================================================
+
+\begin{lawbox}[Centripetal Acceleration]
+For an object moving at constant speed $v$ in a
+circle of radius $r$, the centripetal acceleration
+always points toward the centre of the circle:
+\[
+  a_c = \frac{v^2}{r} = \omega^2 r = \frac{v^2}{r}
+\]
+This is not an additional force --- it is the
+\textit{resultant} of all real forces on the object,
+directed toward the centre.
+\end{lawbox}
+
+\begin{lawbox}[Centripetal Force]
+The \textbf{centripetal force} is the net force that
+produces centripetal acceleration:
+\[
+  F_c = ma_c = \frac{mv^2}{r} = m\omega^2 r
+\]
+It always points toward the centre of the circle.
+It is \textbf{not} a new type of force --- it is
+provided by whatever real force is acting: tension,
+gravity, friction, normal force, or a combination.
+\end{lawbox}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Situation} & \textbf{What provides centripetal force}\\
+\midrule
+Ball on a string (horizontal) & Tension in the string\\
+Planet orbiting the Sun & Gravitational force of the Sun\\
+Car turning a corner & Friction between tyres and road\\
+Electron orbiting nucleus & Electrostatic attraction\\
+Clothes in washing machine & Normal force from drum wall\\
+Pilot banking an aircraft & Component of lift force\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{examplebox}[6.2]
+\stepcounter{workedexample}
+A $0.50\ \text{kg}$ ball is attached to a string of
+length $1.2\ \text{m}$ and swings in a horizontal
+circle. The string makes an angle of $30°$ with the
+vertical. Find: (a) the tension in the string;
+(b) the speed of the ball; (c) the period of revolution.
+($g = 10\ \text{m\,s}^{-2}$)
+\end{examplebox}
+
+\begin{solutionbox}
+This is a conical pendulum. The ball moves in a
+horizontal circle of radius $r = L\sin\theta$.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  % String
+  \draw[thick] (0,3) -- (1.2*0.5,3-1.2*0.866);
+  \fill (0,3) circle (2.5pt);
+
+  % Ball
+  \fill[codexblue!50] (0.6,3-1.039) circle (5pt)
+    node[right, font=\small]{$m$};
+
+  % Forces
+  \draw[->, very thick, codexred]
+    (0.6,3-1.039) -- (0.6, 3-1.039+1.5)
+    node[right]{$T$};
+  \draw[->, very thick, codexblue]
+    (0.6,3-1.039) -- (0.6, 3-1.039-1.2)
+    node[below]{$mg$};
+  \draw[->, very thick, codexgreen]
+    (0.6,3-1.039) -- (0.6-1.0, 3-1.039)
+    node[left]{$F_c$};
+
+  % Angle
+  \draw[dashed, gray] (0,3) -- (0,1.5);
+  \draw[codexgold] (0,2.7) arc(270:240:0.3);
+  \node[codexgold, left, font=\small] at (-0.05,2.55)
+    {$30°$};
+
+  % Radius
+  \draw[<->, dashed, gray] (0,0.9) -- (0.6,0.9);
+  \node[below, gray, font=\small] at (0.3,0.9)
+    {$r$};
+\end{tikzpicture}
+\end{center}
+
+Resolving forces on the ball:
+
+\textbf{Vertical equilibrium:}
+\[
+  T\cos 30° = mg
+\]
+\[
+  T = \frac{mg}{\cos 30°}
+  = \frac{0.50 \times 10}{0.866}
+  = 5.77\ \text{N}
+\]
+
+\textbf{Horizontal (centripetal direction):}
+\[
+  T\sin 30° = \frac{mv^2}{r}
+  = m\omega^2 r
+\]
+\[
+  r = L\sin 30° = 1.2 \times 0.5 = 0.60\ \text{m}
+\]
+\[
+  v^2 = \frac{T\sin 30° \cdot r}{m}
+  = \frac{5.77 \times 0.5 \times 0.60}{0.50}
+  = 3.46\ \text{m}^2\text{s}^{-2}
+\]
+\[
+  v = 1.86\ \text{m\,s}^{-1}
+\]
+
+\textbf{Period:}
+\[
+  T_{period} = \frac{2\pi r}{v}
+  = \frac{2\pi \times 0.60}{1.86}
+  = 2.03\ \text{s}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Motion on Banked Roads and Curves}
+% ============================================================
+
+When a vehicle goes around a curve, the required
+centripetal force is provided by friction (on a flat
+road) or by a component of the normal force (on a
+banked road). Banking allows higher speeds without
+relying on friction.
+
+\begin{lawbox}[Ideal Banking Angle]
+For a road banked at angle $\theta$, the ideal speed
+$v$ (no friction needed) for a curve of radius $r$ is:
+\[
+  \tan\theta = \frac{v^2}{rg}
+  \implies v = \sqrt{rg\tan\theta}
+\]
+\end{lawbox}
+
+\begin{examplebox}[6.3]
+\stepcounter{workedexample}
+A racing circuit has a banked curve of radius
+$200\ \text{m}$ banked at $18°$. Find the ideal
+speed for this curve. ($g = 10\ \text{m\,s}^{-2}$,
+$\tan 18° = 0.3249$)
+\end{examplebox}
+
+\begin{solutionbox}
+\[
+  v = \sqrt{rg\tan\theta}
+  = \sqrt{200 \times 10 \times 0.3249}
+  = \sqrt{649.8}
+  = 25.5\ \text{m\,s}^{-1}
+  \approx 91.8\ \text{km\,h}^{-1}
+\]
+At this speed, no friction is needed on the banked road.
+\end{solutionbox}
+
+\begin{realworldbox}[Lagos--Ibadan Expressway Curves]
+Highway engineers in Nigeria must account for the
+banking angle, speed limit, and coefficient of friction
+when designing curves. The Lagos--Ibadan Expressway
+has several curves where inadequate banking combined
+with high speeds causes accidents, especially when
+roads are wet and friction is reduced. Understanding
+circular motion directly informs road safety design.
+\end{realworldbox}
+
+% ============================================================
+\section{Motion in a Vertical Circle}
+% ============================================================
+
+When an object moves in a vertical circle, both gravity
+and the centripetal force requirement change with
+position, making the analysis richer than the
+horizontal case.
+
+\begin{processbox}[Object on a String in a Vertical Circle]
+Consider a ball of mass $m$ on a string of length $r$
+moving in a vertical circle. Let $v$ be the speed at
+the bottom and $v'$ the speed at the top.
+
+\textbf{At the BOTTOM of the circle:}
+The tension $T_B$ must support the weight AND provide
+centripetal force (both point in the same direction
+--- toward the centre which is above):
+\[
+  T_B - mg = \frac{mv_B^2}{r}
+  \implies T_B = mg + \frac{mv_B^2}{r}
+\]
+
+\textbf{At the TOP of the circle:}
+Both tension and weight point downward (toward centre):
+\[
+  T_T + mg = \frac{mv_T^2}{r}
+  \implies T_T = \frac{mv_T^2}{r} - mg
+\]
+
+\textbf{Minimum speed at the top} (string just stays
+taut, $T_T = 0$):
+\[
+  0 = \frac{mv_{T,min}^2}{r} - mg
+  \implies v_{T,min} = \sqrt{gr}
+\]
+\end{processbox}
+
+\begin{diagbox}[Vertical Circle --- Forces at Key Points]
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+  % Circle
+  \draw[thick, gray!50] (0,0) circle (2cm);
+  \fill (0,0) circle (2pt) node[right, font=\small]{O};
+
+  % Bottom point
+  \fill[codexblue] (0,-2) circle (4pt)
+    node[below]{Bottom};
+  \draw[->, very thick, codexred]
+    (0,-2) -- (0,-2+1.8) node[right, font=\small]{$T_B$};
+  \draw[->, very thick, codexblue]
+    (0,-2) -- (0,-2-0.8) node[below, font=\small]{$mg$};
+
+  % Top point
+  \fill[codexgreen] (0,2) circle (4pt)
+    node[above]{Top};
+  \draw[->, very thick, codexred]
+    (0,2) -- (0,2-0.8) node[right, font=\small]{$T_T$};
+  \draw[->, very thick, codexblue]
+    (0,2) -- (0,2-0.5) node[right=0.1cm, font=\small]{$mg$};
+
+  % Speed vectors
+  \draw[->, very thick, codexgold]
+    (0,-2) -- (1.2,-2)
+    node[right, font=\small]{$v_B$ (max speed)};
+  \draw[->, very thick, codexgold]
+    (0,2) -- (-1.2,2)
+    node[left, font=\small]{$v_T$ (min speed)};
+
+  % Note
+  \node[font=\tiny, align=center] at (0,-3.2)
+    {At bottom: $T_B > mg$ (feels heavier)\\
+    At top: $T_T + mg$ both centripetal};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[6.4]
+\stepcounter{workedexample}
+A $0.40\ \text{kg}$ ball on a $0.80\ \text{m}$ string
+moves in a vertical circle. The speed at the bottom
+is $5.0\ \text{m\,s}^{-1}$.\\
+(a) Find the tension at the bottom.\\
+(b) Find the speed at the top using energy conservation.\\
+(c) Find the tension at the top.\\
+(d) Can the ball complete the full circle?
+($g = 10\ \text{m\,s}^{-2}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Tension at the bottom:
+\[
+  T_B = mg + \frac{mv_B^2}{r}
+  = 0.40(10) + \frac{0.40(5.0)^2}{0.80}
+  = 4.0 + 12.5 = 16.5\ \text{N}
+\]
+
+\textbf{(b)} Speed at top (energy conservation,
+height difference $= 2r = 1.6\ \text{m}$):
+\[
+  \frac{1}{2}mv_T^2 = \frac{1}{2}mv_B^2 - mg(2r)
+\]
+\[
+  v_T^2 = v_B^2 - 4gr
+  = 25 - 4(10)(0.80) = 25 - 32 = -7
+\]
+
+$v_T^2$ is negative --- this is impossible.
+The ball \textbf{cannot} reach the top.
+
+\textbf{Alternative check using minimum speed:}
+\[
+  v_{T,min} = \sqrt{gr} = \sqrt{10 \times 0.80}
+  = \sqrt{8} = 2.83\ \text{m\,s}^{-1}
+\]
+Required speed at top would need:
+\[
+  v_B^2 \geq v_{T,min}^2 + 4gr
+  = 8 + 32 = 40
+  \implies v_B \geq \sqrt{40} = 6.32\ \text{m\,s}^{-1}
+\]
+Since $v_B = 5.0\ \text{m\,s}^{-1} < 6.32\ \text{m\,s}^{-1}$,
+the ball cannot complete the circle. The string
+goes slack before the top is reached.
+\end{solutionbox}
+
+% ============================================================
+\section{Satellites and Orbital Motion}
+% ============================================================
+
+A satellite in a circular orbit is in a state of
+continuous free fall --- it is falling toward the
+Earth, but its horizontal speed is so high that the
+Earth curves away beneath it at the same rate it
+falls. Gravity provides the centripetal force.
+
+\begin{lawbox}[Orbital Speed and Period]
+For a satellite orbiting at radius $r$ from Earth's
+centre (mass $M_E$):
+\[
+  \frac{GMm}{r^2} = \frac{mv^2}{r}
+  \implies v = \sqrt{\frac{GM}{r}}
+\]
+\[
+  T = \frac{2\pi r}{v} = 2\pi r\sqrt{\frac{r}{GM}}
+  = 2\pi\sqrt{\frac{r^3}{GM}}
+\]
+This is Kepler's Third Law: $T^2 \propto r^3$.
+\end{lawbox}
+
+\begin{examplebox}[6.5]
+\stepcounter{workedexample}
+A satellite orbits Earth at a height of
+$400\ \text{km}$ above the surface. Find the orbital
+speed and period. ($R_E = 6.4 \times 10^6\ \text{m}$,
+$g_s = 9.81\ \text{m\,s}^{-2}$,
+$GM = gR_E^2 = 9.81 \times (6.4\times10^6)^2$)
+\end{examplebox}
+
+\begin{solutionbox}
+Orbital radius:
+\[
+  r = R_E + h = 6.4\times10^6 + 4\times10^5
+  = 6.8\times10^6\ \text{m}
+\]
+
+$GM = g_s R_E^2 = 9.81 \times (6.4\times10^6)^2
+= 4.016\times10^{14}\ \text{m}^3\text{s}^{-2}$
+
+Orbital speed:
+\[
+  v = \sqrt{\frac{GM}{r}}
+  = \sqrt{\frac{4.016\times10^{14}}{6.8\times10^6}}
+  = \sqrt{5.906\times10^7}
+  = 7685\ \text{m\,s}^{-1}
+  \approx 7.7\ \text{km\,s}^{-1}
+\]
+
+Period:
+\[
+  T = \frac{2\pi r}{v}
+  = \frac{2\pi \times 6.8\times10^6}{7685}
+  = 5556\ \text{s}
+  \approx 92.6\ \text{min}
+\]
+
+This matches the International Space Station's
+actual orbital period of approximately 92 minutes.
+\end{solutionbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Angular velocity:}
+$\omega = \Delta\theta/\Delta t = 2\pi f = 2\pi/T$
+(rad\,s$^{-1}$)
+
+\textbf{Linear--angular relations:}
+$v = r\omega$, $s = r\theta$
+
+\textbf{Centripetal acceleration:}
+$a_c = v^2/r = \omega^2 r$ (toward centre)
+
+\textbf{Centripetal force:}
+$F_c = mv^2/r = m\omega^2 r$ (net inward force)
+
+\textbf{Centrifugal force:} pseudo-force in rotating
+frame only --- not a real force.
+
+\textbf{Conical pendulum:}
+$\tan\theta = v^2/(rg)$,
+$T\cos\theta = mg$, $T\sin\theta = mv^2/r$
+
+\textbf{Banking angle:}
+$\tan\theta = v^2/(rg)$ (ideal, no friction)
+
+\textbf{Vertical circle:}
+$T_{bottom} = mg + mv^2/r$;
+$T_{top} = mv^2/r - mg$;
+minimum speed at top $= \sqrt{gr}$
+
+\textbf{Orbital speed:}
+$v = \sqrt{GM/r}$;
+$T^2 \propto r^3$ (Kepler's Third Law)
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[6]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A body moves at constant speed in a
+circle. Which of the following is true?
+
+\mcoption{A}{Its velocity and acceleration are both
+constant}
+\mcoption{B}{Its speed is constant but velocity
+changes direction}
+\mcoption{C}{No force acts on it}
+\mcoption{D}{Its kinetic energy continuously increases}
+\ansref{Ch6-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} A stone of mass $0.2\ \text{kg}$ is
+whirled in a horizontal circle of radius $0.5\ \text{m}$
+at $4\ \text{m\,s}^{-1}$. The centripetal force is:
+
+\mcoption{A}{$1.6\ \text{N}$}
+\mcoption{B}{$3.2\ \text{N}$}
+\mcoption{C}{$6.4\ \text{N}$}
+\mcoption{D}{$12.8\ \text{N}$}
+\ansref{Ch6-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A satellite orbits at radius $r$ from
+Earth's centre with period $T$. If it moves to orbit
+at radius $4r$, its new period is:
+
+\mcoption{A}{$2T$}
+\mcoption{B}{$4T$}
+\mcoption{C}{$8T$}
+\mcoption{D}{$16T$}
+\ansref{Ch6-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} A car moves around a flat circular bend
+of radius $50\ \text{m}$. The maximum speed before
+sliding occurs is (coefficient of friction $= 0.4$,
+$g = 10\ \text{m\,s}^{-2}$):
+
+\mcoption{A}{$10\ \text{m\,s}^{-1}$}
+\mcoption{B}{$14.1\ \text{m\,s}^{-1}$}
+\mcoption{C}{$20\ \text{m\,s}^{-1}$}
+\mcoption{D}{$200\ \text{m\,s}^{-1}$}
+\ansref{Ch6-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} The minimum speed at the top of a
+vertical circle of radius $r$ for a ball on a
+string to maintain tension is:
+
+\mcoption{A}{$\sqrt{rg/2}$}
+\mcoption{B}{$\sqrt{rg}$}
+\mcoption{C}{$\sqrt{2rg}$}
+\mcoption{D}{$\sqrt{5rg}$}
+\ansref{Ch6-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} A wheel rotates at $10\ \text{rad\,s}^{-1}$.
+The angular displacement in $5\ \text{s}$ is:
+
+\mcoption{A}{$2\ \text{rad}$}
+\mcoption{B}{$10\ \text{rad}$}
+\mcoption{C}{$50\ \text{rad}$}
+\mcoption{D}{$100\ \text{rad}$}
+\ansref{Ch6-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} For circular motion on a banked road
+at the correct (ideal) speed, the frictional force
+on the car is:
+
+\mcoption{A}{Directed toward the centre}
+\mcoption{B}{Directed away from the centre}
+\mcoption{C}{Zero}
+\mcoption{D}{Equal to the normal reaction}
+\ansref{Ch6-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} The centripetal acceleration of the Moon
+in its orbit is approximately $0.0027\ \text{m\,s}^{-2}$.
+The distance from the Earth to the Moon is
+$3.84 \times 10^8\ \text{m}$. The orbital speed of the
+Moon is approximately:
+
+\mcoption{A}{$720\ \text{m\,s}^{-1}$}
+\mcoption{B}{$1020\ \text{m\,s}^{-1}$}
+\mcoption{C}{$1560\ \text{m\,s}^{-1}$}
+\mcoption{D}{$2440\ \text{m\,s}^{-1}$}
+\ansref{Ch6-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} A car of mass $1000\ \text{kg}$ travels
+over a hill that has a circular cross-section of
+radius $40\ \text{m}$. The maximum speed at the top
+of the hill without leaving the road is
+($g = 10\ \text{m\,s}^{-2}$):
+
+\mcoption{A}{$10\ \text{m\,s}^{-1}$}
+\mcoption{B}{$20\ \text{m\,s}^{-1}$}
+\mcoption{C}{$40\ \text{m\,s}^{-1}$}
+\mcoption{D}{$400\ \text{m\,s}^{-1}$}
+\ansref{Ch6-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} A ball on a string of length $L$ is
+swung in a vertical circle. At the top of the circle,
+both gravity and tension act downward. If the tension
+at the top is equal to the weight $mg$, the speed
+at the top is:
+
+\mcoption{A}{$\sqrt{gL}$}
+\mcoption{B}{$\sqrt{2gL}$}
+\mcoption{C}{$\sqrt{gL/2}$}
+\mcoption{D}{$2\sqrt{gL}$}
+\ansref{Ch6-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A $0.30\ \text{kg}$ ball is attached
+to a string of length $0.60\ \text{m}$ and swings
+as a conical pendulum, making an angle of $45°$ with
+the vertical. ($g = 10\ \text{m\,s}^{-2}$,
+$\tan 45° = 1$, $\cos 45° = 0.707$)\\[4pt]
+(a) Calculate the tension in the string.\\
+(b) Calculate the radius of the circular path.\\
+(c) Calculate the speed of the ball.\\
+(d) Calculate the period of revolution.\\
+(e) If the string can withstand a maximum tension
+of $10\ \text{N}$, what is the maximum angle
+$\theta$ before the string breaks?
+\hfill\ansref{Ch6-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A car of mass $1200\ \text{kg}$ travels
+around a circular track of radius $150\ \text{m}$.
+The track is banked at $12°$ and the coefficient of
+static friction is $0.35$. ($g = 10\ \text{m\,s}^{-2}$,
+$\sin 12° = 0.208$, $\cos 12° = 0.978$,
+$\tan 12° = 0.213$)\\[4pt]
+(a) Find the ideal speed for the banked track
+(no friction needed).\\
+(b) Find the maximum safe speed on this track.
+(Hint: at maximum speed, friction acts down the slope
+to prevent the car sliding outward.)\\
+(c) Find the minimum safe speed
+(friction acts up the slope).
+\hfill\ansref{Ch6-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A $0.25\ \text{kg}$ ball on a
+$1.5\ \text{m}$ string moves in a vertical circle.
+($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+(a) Find the minimum speed at the top for the
+string to remain taut.\\
+(b) Using energy conservation, find the minimum
+speed at the bottom for the ball to complete
+the full circle.\\
+(c) At this minimum bottom speed, calculate the
+tension at the bottom.\\
+(d) Calculate the tension at a point where the
+string is horizontal (side), using energy
+conservation to find the speed there.
+\hfill\ansref{Ch6-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A geostationary satellite orbits Earth
+with a period equal to Earth's rotation period
+(24 hours). ($G = 6.67\times10^{-11}\ \text{N\,m}^2\text{kg}^{-2}$,
+$M_E = 5.97\times10^{24}\ \text{kg}$)\\[4pt]
+(a) Show that the orbital radius of a geostationary
+satellite is given by
+$r = \left(\frac{GM_E T^2}{4\pi^2}\right)^{1/3}$.\\
+(b) Calculate the orbital radius.\\
+(c) Calculate the orbital speed.\\
+(d) Explain why a geostationary satellite must orbit
+above the equator and why this is useful for
+telecommunications.
+\hfill\ansref{Ch6-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} In a theme park ride, passengers sit in
+cars that travel in a vertical circle of radius
+$12\ \text{m}$. The cars complete one revolution
+every $6.0\ \text{s}$.
+($g = 10\ \text{m\,s}^{-2}$, $\pi^2 \approx 10$)\\[4pt]
+(a) Calculate the angular velocity of the cars.\\
+(b) Calculate the linear speed.\\
+(c) Calculate the centripetal acceleration.\\
+(d) A $70\ \text{kg}$ passenger sits in the car.
+Find the normal force (apparent weight) at the
+bottom and at the top of the circle.\\
+(e) At the top, does the passenger feel heavier
+or lighter than normal? Explain using Newton's
+Second Law.
+\hfill\ansref{Ch6-B5}
+
+\end{exercisebox}

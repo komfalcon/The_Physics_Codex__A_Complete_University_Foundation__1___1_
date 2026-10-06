@@ -1,0 +1,1169 @@
+% ============================================================
+%  CHAPTER 26: ELECTROMAGNETIC INDUCTION
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part4/ch26_electromagnetic_induction.tex
+% ============================================================
+
+\chapter{Electromagnetic Induction}
+\label{ch:em_induction}
+\minitoc
+\newpage
+
+\chapterquote{Nothing is too wonderful to be true, if it
+be consistent with the laws of nature; and in such things
+as these, experiment is the best test of such
+consistency.}{Michael Faraday}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Describe the phenomenon of electromagnetic
+  induction with experimental evidence
+  \item State and apply Faraday's Law of induction
+  \item State and apply Lenz's Law
+  \item Calculate the EMF induced in a moving
+  conductor
+  \item Explain and calculate mutual inductance
+  and self-inductance
+  \item Describe the construction and operation of
+  an AC generator
+  \item Explain back-EMF in a motor
+  \item Describe eddy currents, their causes,
+  effects, and uses
+  \item Apply electromagnetic induction to practical
+  devices including the transformer and generator
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: Electricity from Motion}
+% ============================================================
+
+In 1831, Michael Faraday made a discovery that would
+transform civilisation. He showed that a moving magnet
+near a wire could drive a current through it ---
+without any battery, without any chemical reaction,
+without any contact. Motion itself was generating
+electricity.
+
+The device he built was simple: a coil of wire, a
+galvanometer, and a bar magnet. When he pushed the
+magnet into the coil, the needle deflected. When he
+held it still, nothing happened. When he pulled it
+out, the needle deflected in the opposite direction.
+
+The key word is \textit{change}. A static magnetic
+field produces nothing. A \textit{changing} magnetic
+field induces an EMF. This is the entire basis of
+modern electrical power generation --- every power
+station on Earth, every dynamo, every generator
+operates on exactly this principle that Faraday
+demonstrated in his laboratory with a magnet and
+a coil.
+
+% ============================================================
+\section{Faraday's Experiments}
+% ============================================================
+
+\begin{diagbox}[Faraday's Induction Experiments]
+\begin{center}
+\begin{tikzpicture}[scale=0.95, font=\small]
+
+  % === EXPERIMENT 1: Moving magnet into coil ===
+  \begin{scope}[shift={(0,5)}]
+    \node[font=\bfseries] at (4.0,3.5)
+      {Magnet moving into coil $\Rightarrow$ induced current};
+
+    % Coil
+    \draw[very thick, gray] (2.0,0.5) -- (2.0,3.0);
+    \draw[very thick, gray] (5.0,0.5) -- (5.0,3.0);
+    \draw[very thick, gray] (2.0,0.5) -- (5.0,0.5);
+    \draw[very thick, gray] (2.0,3.0) -- (5.0,3.0);
+    % Coil windings
+    \foreach \y in {0.8,1.2,1.6,2.0,2.4,2.8} {
+      \draw[gray, thick]
+        (2.0,\y) .. controls (2.5,\y+0.15) and
+        (4.5,\y+0.15) .. (5.0,\y);
+    }
+    \node[font=\small] at (3.5,1.7) {Coil};
+
+    % Magnet (N end entering from left)
+    \fill[codexred!60] (-0.5,1.2) rectangle (0.5,2.3);
+    \fill[codexblue!60] (0.5,1.2) rectangle (1.5,2.3);
+    \draw[thick] (-0.5,1.2) rectangle (1.5,2.3);
+    \node[white, font=\bfseries] at (0.0,1.75) {N};
+    \node[white, font=\bfseries] at (1.0,1.75) {S};
+    \draw[->, very thick, codexgold] (1.5,1.75) -- (2.0,1.75);
+    \node[above, codexgold, font=\small] at (1.75,1.9)
+      {$v$};
+
+    % Galvanometer
+    \draw[thick] (3.5,0.5) -- (3.5,-0.3);
+    \draw[thick] (3.5,-0.3) -- (7.0,-0.3);
+    \draw[thick] (7.0,-0.3) -- (7.0,1.75);
+    \draw[thick] (7.0,1.75) -- (5.0,1.75);
+    \fill[white] (6.5,1.5) circle (0.5);
+    \draw[thick] (6.5,1.5) circle (0.5);
+    \node[font=\tiny] at (6.5,1.5) {G};
+    % Needle deflects right
+    \draw[->, thick, codexred] (6.5,1.5) -- (6.9,1.7);
+
+    \node[codexblue, font=\small] at (3.5,-0.8)
+      {Needle deflects $\Rightarrow$ induced current};
+  \end{scope}
+
+  % === EXPERIMENT 2: Magnet held still ===
+  \begin{scope}[shift={(9.5,5)}]
+    \node[font=\bfseries] at (3.5,3.5)
+      {Magnet stationary $\Rightarrow$ no current};
+
+    % Coil
+    \draw[very thick, gray] (2.0,0.5) -- (2.0,3.0);
+    \draw[very thick, gray] (5.0,0.5) -- (5.0,3.0);
+    \draw[very thick, gray] (2.0,0.5) -- (5.0,0.5);
+    \draw[very thick, gray] (2.0,3.0) -- (5.0,3.0);
+    \foreach \y in {0.8,1.2,1.6,2.0,2.4,2.8} {
+      \draw[gray, thick]
+        (2.0,\y) .. controls (2.5,\y+0.15) and
+        (4.5,\y+0.15) .. (5.0,\y);
+    }
+
+    % Magnet static inside coil
+    \fill[codexred!60] (1.5,1.2) rectangle (2.5,2.3);
+    \fill[codexblue!60] (2.5,1.2) rectangle (3.5,2.3);
+    \draw[thick] (1.5,1.2) rectangle (3.5,2.3);
+    \node[white, font=\bfseries] at (2.0,1.75) {N};
+    \node[white, font=\bfseries] at (3.0,1.75) {S};
+    \node[above, gray, font=\small] at (2.5,2.4)
+      {stationary};
+
+    % Galvanometer (no deflection)
+    \draw[thick] (3.5,0.5) -- (3.5,-0.3);
+    \draw[thick] (3.5,-0.3) -- (6.5,-0.3);
+    \draw[thick] (6.5,-0.3) -- (6.5,1.75);
+    \fill[white] (6.0,1.5) circle (0.5);
+    \draw[thick] (6.0,1.5) circle (0.5);
+    \node[font=\tiny] at (6.0,1.5) {G};
+    % Needle vertical (no deflection)
+    \draw[-, thick, gray] (6.0,1.5) -- (6.0,1.9);
+
+    \node[gray, font=\small] at (3.5,-0.8)
+      {No deflection $\Rightarrow$ no current};
+  \end{scope}
+
+  % === EXPERIMENT 3: Magnet withdrawing ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries] at (4.0,3.5)
+      {Magnet withdrawing $\Rightarrow$ opposite current};
+
+    % Coil
+    \draw[very thick, gray] (2.0,0.5) -- (2.0,3.0);
+    \draw[very thick, gray] (5.0,0.5) -- (5.0,3.0);
+    \draw[very thick, gray] (2.0,0.5) -- (5.0,0.5);
+    \draw[very thick, gray] (2.0,3.0) -- (5.0,3.0);
+    \foreach \y in {0.8,1.2,1.6,2.0,2.4,2.8} {
+      \draw[gray, thick]
+        (2.0,\y) .. controls (2.5,\y+0.15) and
+        (4.5,\y+0.15) .. (5.0,\y);
+    }
+
+    % Magnet withdrawing
+    \fill[codexred!60] (1.5,1.2) rectangle (2.5,2.3);
+    \fill[codexblue!60] (2.5,1.2) rectangle (3.5,2.3);
+    \draw[thick] (1.5,1.2) rectangle (3.5,2.3);
+    \node[white, font=\bfseries] at (2.0,1.75) {N};
+    \node[white, font=\bfseries] at (3.0,1.75) {S};
+    \draw[->, very thick, codexgold]
+      (1.5,1.75) -- (0.8,1.75);
+    \node[above, codexgold] at (1.15,1.9) {$v$};
+
+    % Galvanometer (opposite deflection)
+    \draw[thick] (3.5,0.5) -- (3.5,-0.3);
+    \draw[thick] (3.5,-0.3) -- (7.0,-0.3);
+    \draw[thick] (7.0,-0.3) -- (7.0,1.75);
+    \draw[thick] (7.0,1.75) -- (5.0,1.75);
+    \fill[white] (6.5,1.5) circle (0.5);
+    \draw[thick] (6.5,1.5) circle (0.5);
+    \node[font=\tiny] at (6.5,1.5) {G};
+    % Needle deflects left (opposite)
+    \draw[->, thick, codexblue] (6.5,1.5) -- (6.1,1.7);
+
+    \node[codexred, font=\small] at (3.5,-0.8)
+      {Opposite deflection $\Rightarrow$ reversed current};
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\small The \textbf{key observation}: it is the
+\textit{change} in magnetic flux that induces EMF ---
+not the flux itself.
+\end{diagbox}
+
+% ============================================================
+\section{Faraday's Law}
+% ============================================================
+
+\begin{lawbox}[Faraday's Law of Electromagnetic Induction]
+The induced EMF in a circuit is proportional to the
+rate of change of magnetic flux linkage through the
+circuit:
+\[
+  \mathcal{E} = -N\frac{d\Phi}{dt}
+\]
+where:
+\begin{itemize}[noitemsep]
+  \item $\mathcal{E}$ = induced EMF (volts)
+  \item $N$ = number of turns in the coil
+  \item $\Phi$ = magnetic flux through one turn
+  ($= BA\cos\theta$, in Wb)
+  \item $N\Phi$ = total magnetic flux linkage (Wb-turns)
+  \item $d\Phi/dt$ = rate of change of flux (Wb\,s$^{-1}$)
+\end{itemize}
+The magnitude of the induced EMF:
+\[
+  |\mathcal{E}| = N\frac{\Delta\Phi}{\Delta t}
+\]
+For a coil with area $A$ in a changing field $B$:
+\[
+  |\mathcal{E}| = N\frac{\Delta(BA)}{\Delta t}
+  = NA\frac{\Delta B}{\Delta t}
+  \quad \text{(if area is constant)}
+\]
+\end{lawbox}
+
+\begin{historybox}[Michael Faraday, 1831]
+Michael Faraday (1791--1867) was the son of a
+blacksmith and had virtually no formal education ---
+he taught himself science by reading books while
+working as a bookbinder's apprentice. He became one
+of the greatest experimental physicists in history.
+His discovery of electromagnetic induction in 1831
+led directly to the electric generator and
+transformer. He also discovered the laws of
+electrolysis, the rotation of polarised light by
+magnetic fields, and contributed enormously to
+electrochemistry. The unit of capacitance (farad) is
+named after him. James Clerk Maxwell, who later
+mathematised all of Faraday's experimental findings
+into four elegant equations, said Faraday's ideas
+were worth more than all the mathematics of the
+physicists who came before him.
+\end{historybox}
+
+% ============================================================
+\section{Lenz's Law}
+% ============================================================
+
+\begin{lawbox}[Lenz's Law]
+The direction of the induced current is always such
+that it \textbf{opposes the change} that caused it.
+
+Equivalently: the induced current creates a magnetic
+field that opposes the change in flux through the
+circuit.
+
+The negative sign in Faraday's Law ($\mathcal{E}
+= -N\,d\Phi/dt$) is a mathematical statement of
+Lenz's Law. It reflects conservation of energy ---
+if the induced current aided the change, it would
+amplify itself indefinitely, creating energy from
+nothing, which is impossible.
+\end{lawbox}
+
+\begin{diagbox}[Lenz's Law: Direction of Induced Current]
+\begin{center}
+\begin{tikzpicture}[scale=0.95, font=\small]
+
+  % === MAGNET APPROACHING ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries] at (3.5,5.5)
+      {N pole approaching coil};
+
+    % Coil face
+    \draw[very thick] (2.0,1.5) ellipse (1.5cm and 0.5cm);
+    \draw[very thick] (2.0,3.5) ellipse (1.5cm and 0.5cm);
+    \draw[very thick] (0.5,1.5) -- (0.5,3.5);
+    \draw[very thick] (3.5,1.5) -- (3.5,3.5);
+
+    % Magnet approaching from below
+    \fill[codexred!60] (1.3,-0.5) rectangle (2.7,0.5);
+    \fill[codexblue!60] (1.3,-1.5) rectangle (2.7,-0.5);
+    \draw[thick] (1.3,-1.5) rectangle (2.7,0.5);
+    \node[white, font=\bfseries] at (2.0,0.0) {N};
+    \node[white, font=\bfseries] at (2.0,-1.0) {S};
+    \draw[->, very thick, codexgold] (2.0,0.5) -- (2.0,1.3);
+    \node[right, codexgold] at (2.1,0.9) {approaching};
+
+    % Increasing flux upward through coil
+    \foreach \x in {1.5,2.0,2.5} {
+      \draw[->, thick, codexblue!50]
+        (\x,0.6) -- (\x,4.0);
+    }
+    \node[right, codexblue!70, font=\tiny]
+      at (3.0,2.5) {Flux $\uparrow$\\(increasing)};
+
+    % Induced current opposes increase:
+    % creates field opposing (downward) inside coil
+    % By right hand rule: current flows clockwise (viewed from top)
+    \draw[->, very thick, codexred]
+      (2.0,3.5) arc(0:270:0.8 and 0.3)
+      node[left, font=\tiny]{Induced\\current};
+    \node[above, codexred, font=\small] at (2.0,4.0)
+      {Current: clockwise (from top)};
+    \node[codexred, font=\tiny] at (2.0,4.5)
+      {Creates B field DOWNWARD inside coil\\
+      (opposing incoming N pole --- repels magnet)};
+  \end{scope}
+
+  % === MAGNET WITHDRAWING ===
+  \begin{scope}[shift={(8,0)}]
+    \node[font=\bfseries] at (3.5,5.5)
+      {N pole withdrawing from coil};
+
+    % Coil
+    \draw[very thick] (2.0,1.5) ellipse (1.5cm and 0.5cm);
+    \draw[very thick] (2.0,3.5) ellipse (1.5cm and 0.5cm);
+    \draw[very thick] (0.5,1.5) -- (0.5,3.5);
+    \draw[very thick] (3.5,1.5) -- (3.5,3.5);
+
+    % Magnet withdrawing
+    \fill[codexred!60] (1.3,0.5) rectangle (2.7,1.5);
+    \fill[codexblue!60] (1.3,-0.5) rectangle (2.7,0.5);
+    \draw[thick] (1.3,-0.5) rectangle (2.7,1.5);
+    \node[white, font=\bfseries] at (2.0,1.0) {N};
+    \node[white, font=\bfseries] at (2.0,0.0) {S};
+    \draw[->, very thick, codexgold]
+      (2.0,1.3) -- (2.0,0.5);
+    \node[right, codexgold] at (2.1,0.9) {withdrawing};
+
+    % Decreasing flux through coil
+    \foreach \x in {1.5,2.0,2.5} {
+      \draw[->, thick, codexblue!30, dashed]
+        (\x,1.6) -- (\x,4.0);
+    }
+    \node[right, codexblue!50, font=\tiny]
+      at (3.0,2.5) {Flux $\uparrow$\\(decreasing)};
+
+    % Induced current tries to maintain flux:
+    % creates upward field, so anticlockwise (from top)
+    \draw[->, very thick, codexblue]
+      (2.0,3.5) arc(0:-270:0.8 and 0.3)
+      node[left, font=\tiny]{Induced\\current};
+    \node[above, codexblue, font=\small] at (2.0,4.0)
+      {Current: anticlockwise (from top)};
+    \node[codexblue, font=\tiny] at (2.0,4.5)
+      {Creates B field UPWARD inside coil\\
+      (tries to maintain flux --- attracts magnet)};
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[26.1]
+\stepcounter{workedexample}
+A coil of $200$ turns and area $50\ \text{cm}^2$
+is placed in a uniform magnetic field of
+$0.40\ \text{T}$. The field is then reduced to
+zero uniformly in $0.10\ \text{s}$.\\
+(a) Calculate the initial magnetic flux through
+the coil.\\
+(b) Calculate the induced EMF.\\
+(c) Using Lenz's Law, state the direction of the
+induced current relative to the original flux.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Initial flux:
+\[
+  \Phi_i = BA = 0.40 \times 50\times10^{-4}
+  = 2.0\times10^{-3}\ \text{Wb}
+\]
+Final flux: $\Phi_f = 0$ (field reduced to zero)
+
+\textbf{(b)} Induced EMF:
+\[
+  |\mathcal{E}| = N\frac{\Delta\Phi}{\Delta t}
+  = 200 \times \frac{2.0\times10^{-3} - 0}{0.10}
+  = 200 \times 0.020 = 4.0\ \text{V}
+\]
+
+\textbf{(c)} The flux is decreasing. By Lenz's Law,
+the induced current must \textit{oppose this decrease}
+--- it must create a magnetic field in the \textit{same
+direction} as the original field, trying to maintain
+the flux. Using the right-hand rule, the induced
+current flows in the same sense as the current that
+would originally have produced the decreasing field.
+\end{solutionbox}
+
+% ============================================================
+\section{EMF Induced in a Moving Conductor}
+% ============================================================
+
+When a conductor of length $L$ moves with velocity $v$
+perpendicular to a magnetic field $B$, the free
+electrons in the conductor experience a Lorentz force
+($F = Bqv$), causing them to accumulate at one end.
+This creates a potential difference (EMF) across the
+conductor.
+
+\begin{lawbox}[Motional EMF]
+For a conductor of length $L$ moving at velocity $v$
+perpendicular to a field $B$:
+\[
+  \mathcal{E} = BLv
+\]
+This is consistent with Faraday's Law: in time $\Delta t$,
+the conductor sweeps out an area $A = Lv\Delta t$,
+giving $\Delta\Phi = BLv\Delta t$, so
+$\mathcal{E} = \Delta\Phi/\Delta t = BLv$.
+\end{lawbox}
+
+\begin{diagbox}[Motional EMF: Conductor Moving in a Field]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Magnetic field (into page -- crosses)
+  \foreach \x in {0.5,1.5,2.5,3.5,4.5,5.5,6.5} {
+    \foreach \y in {0.5,1.5,2.5,3.5,4.5} {
+      \node[gray!60, font=\small] at (\x,\y) {$\times$};
+    }
+  }
+  \node[gray, font=\small] at (1.5,5.0)
+    {$\vect{B}$ (into page)};
+
+  % Conducting rod (vertical, moving right)
+  \draw[very thick, codexblue, line width=4pt]
+    (3.0,0) -- (3.0,5.0);
+  \node[left, codexblue] at (2.8,2.5) {Rod (length $L$)};
+
+  % Velocity arrow (right)
+  \draw[->, very thick, codexgold, line width=2pt]
+    (3.2,2.5) -- (4.5,2.5);
+  \node[above, codexgold] at (3.85,2.6) {$v$};
+
+  % Force on positive charges (upward, by F=qv×B)
+  \draw[->, thick, codexred]
+    (3.0,1.5) -- (3.0,3.5);
+  \node[right, codexred, font=\tiny] at (3.1,2.5)
+    {$F=qvB$\\on $+$ charges\\(upward)};
+
+  % Charge accumulation
+  \node[codexred, font=\bfseries] at (3.0,4.7) {$+$};
+  \node[codexred, font=\bfseries] at (3.0,4.4) {$+$};
+  \node[codexblue, font=\bfseries] at (3.0,0.6) {$-$};
+  \node[codexblue, font=\bfseries] at (3.0,0.3) {$-$};
+
+  % EMF label
+  \draw[<->, codexgreen, thick]
+    (3.3,0.4) -- (3.3,4.6);
+  \node[right, codexgreen] at (3.4,2.5)
+    {$\mathcal{E} = BLv$};
+
+  % Rails (horizontal guide)
+  \draw[thick, gray] (0,0) -- (7,0);
+  \draw[thick, gray] (0,5.0) -- (7,5.0);
+
+  % External circuit
+  \draw[thick] (0.5,0) -- (0.5,5.0);
+  \fill[white] (0.2,2.2) rectangle (0.8,2.8);
+  \draw[thick] (0.2,2.2) rectangle (0.8,2.8);
+  \node[font=\tiny] at (0.5,2.5) {R};
+
+  % Current arrow in external circuit
+  \draw[->, thick, codexred]
+    (0.5,3.5) -- (0.5,4.8);
+  \node[left, codexred, font=\tiny] at (0.4,4.2)
+    {$I$};
+
+\end{tikzpicture}
+\end{center}
+\small The rod acts as a source of EMF. Current
+flows through the external circuit from $-$ to $+$
+(through the rod from bottom to top, following the
+force on positive charges). The rod is the ``battery''
+in this circuit.
+\end{diagbox}
+
+\begin{examplebox}[26.2]
+\stepcounter{workedexample}
+An aircraft with a wingspan of $60\ \text{m}$ flies
+horizontally at $250\ \text{m\,s}^{-1}$. The vertical
+component of the Earth's magnetic field is
+$5.0\times10^{-5}\ \text{T}$.\\
+(a) Calculate the EMF induced between the wingtips.\\
+(b) If the circuit resistance between wingtips (through
+the aircraft body) is $0.50\ \Omega$, find the
+induced current.\\
+(c) Would this current be practically significant?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Motional EMF:
+\[
+  \mathcal{E} = BLv = 5.0\times10^{-5}
+  \times 60 \times 250
+  = 0.75\ \text{V}
+\]
+
+\textbf{(b)} Current:
+\[
+  I = \frac{\mathcal{E}}{R} = \frac{0.75}{0.50}
+  = 1.5\ \text{A}
+\]
+
+\textbf{(c)} For an aircraft carrying hundreds of
+amperes in its electrical systems, $1.5\ \text{A}$
+is negligible. However, the effect is real ---
+aircraft do develop charge differences between
+wingtips. More significantly, the principle scales
+dramatically: conducting bars on ships moving
+through the ocean's magnetic field, ocean tidal
+water moving through Earth's field, and plasma
+flows in the Sun all generate EMFs by exactly
+this mechanism.
+\end{solutionbox}
+
+% ============================================================
+\section{Self-Inductance}
+% ============================================================
+
+\begin{definitionbox}[Self-Inductance]
+When the current in a coil changes, the changing
+magnetic flux through the coil induces an EMF in the
+coil itself. This is called \textbf{self-induction}.
+
+The \textbf{self-inductance} $L$ of a coil is defined by:
+\[
+  \mathcal{E} = -L\frac{dI}{dt}
+\]
+SI unit: henry (H) where
+$1\ \text{H} = 1\ \text{V\,s\,A}^{-1}
+= 1\ \text{Wb\,A}^{-1}$.
+
+The self-inductance of a solenoid of $N$ turns,
+cross-sectional area $A$, and length $\ell$:
+\[
+  L = \frac{\mu_0 N^2 A}{\ell} = \mu_0 n^2 A\ell
+\]
+where $n = N/\ell$ is the turn density.
+
+\textbf{Energy stored in an inductor:}
+\[
+  W = \frac{1}{2}LI^2
+\]
+(analogous to $\frac{1}{2}mv^2$ for kinetic energy)
+\end{definitionbox}
+
+\begin{keybox}[Self-Inductance and Back-EMF in a Motor]
+When a motor spins, the rotating coil generates its
+own EMF (by Faraday's Law) that \textbf{opposes}
+the applied voltage. This \textbf{back-EMF}
+$\mathcal{E}_{back}$ is the same physics as
+self-inductance.
+
+When the motor first starts, the back-EMF is zero
+(coil not yet moving), so the current is very large:
+$I_{start} = V/R_{coil}$.
+
+At full speed, $I = (V - \mathcal{E}_{back})/R_{coil}$.
+
+This is why motors draw very large currents on
+startup and why motors burn out when mechanically
+stalled (back-EMF $= 0$, only coil resistance limits
+current).
+\end{keybox}
+
+% ============================================================
+\section{Mutual Inductance}
+% ============================================================
+
+\begin{definitionbox}[Mutual Inductance]
+When two coils are near each other, a changing current
+in one coil (primary) induces an EMF in the other
+(secondary) through mutual induction.
+
+The \textbf{mutual inductance} $M$ is:
+\[
+  \mathcal{E}_2 = -M\frac{dI_1}{dt}
+\]
+SI unit: henry (H).
+
+The transformer is a practical application of mutual
+inductance. The mutual inductance between the coils
+is maximised by the iron core, which channels all
+the flux from the primary through the secondary.
+\end{definitionbox}
+
+% ============================================================
+\section{The AC Generator}
+% ============================================================
+
+\begin{processbox}[How an AC Generator Works]
+A rectangular coil of $N$ turns and area $A$ rotates
+at angular velocity $\omega$ in a uniform magnetic
+field $B$.
+
+The flux through the coil at angle $\theta = \omega t$
+from the field:
+\[
+  \Phi = NBA\cos(\omega t)
+\]
+
+By Faraday's Law:
+\[
+  \mathcal{E} = -N\frac{d\Phi}{dt}
+  = NBA\omega\sin(\omega t)
+\]
+\[
+  \boxed{\mathcal{E} = \mathcal{E}_0\sin(\omega t)}
+\]
+where $\mathcal{E}_0 = NBA\omega$ is the \textbf{peak EMF}.
+
+\textbf{Key features:}
+\begin{itemize}[noitemsep]
+  \item EMF is zero when the coil is perpendicular
+  to the field (flux is maximum but rate of change
+  is zero).
+  \item EMF is maximum when the coil is parallel to
+  the field (flux is zero but rate of change is
+  maximum).
+  \item \textbf{Slip rings} (not commutator) allow
+  the coil to rotate continuously while maintaining
+  electrical contact --- this gives AC output.
+  \item A \textbf{commutator} converts AC to
+  pulsating DC (used in DC generators and motors).
+\end{itemize}
+\end{processbox}
+
+\begin{diagbox}[AC Generator: Construction and Output]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % === GENERATOR DIAGRAM ===
+  \begin{scope}[shift={(0,4)}]
+    \node[font=\bfseries] at (3.5,4.5)
+      {AC Generator};
+
+    % Magnets
+    \fill[codexred!40] (0.0,1.0) rectangle (1.5,4.0);
+    \fill[codexblue!40] (5.5,1.0) rectangle (7.0,4.0);
+    \draw[thick] (0.0,1.0) rectangle (1.5,4.0);
+    \draw[thick] (5.5,1.0) rectangle (7.0,4.0);
+    \node[white, font=\bfseries] at (0.75,2.5) {N};
+    \node[white, font=\bfseries] at (6.25,2.5) {S};
+
+    % Field lines
+    \foreach \y in {1.5,2.5,3.5} {
+      \draw[->, thick, codexgold]
+        (1.5,\y) -- (5.5,\y);
+    }
+
+    % Rotating coil (shown at angle)
+    \draw[very thick, codexblue, line width=2.5pt]
+      (2.8,1.0) -- (4.2,4.0);
+    \draw[very thick, codexred, line width=2.5pt]
+      (4.2,1.0) -- (2.8,4.0);
+    \node[above, codexblue, font=\tiny]
+      at (3.0,4.1) {$I$ out};
+    \node[below, codexred, font=\tiny]
+      at (4.2,0.9) {$I$ in};
+
+    % Rotation arrow
+    \draw[->, very thick, codexgreen, dashed]
+      (3.5,2.5) arc(0:70:1.2);
+    \node[codexgreen, font=\small] at (3.0,4.0)
+      {$\omega$};
+
+    % Axle
+    \fill[gray!50] (3.3,0.3) rectangle (3.7,1.0);
+    \fill[gray!50] (3.3,4.0) rectangle (3.7,4.7);
+
+    % Slip rings (circles on axle)
+    \draw[thick] (3.5,0.1) ellipse (0.5 and 0.15);
+    \draw[thick] (3.5,-0.3) ellipse (0.5 and 0.15);
+    \node[below, font=\tiny] at (3.5,-0.5)
+      {Slip rings (give AC)};
+
+    % Brushes and external circuit
+    \draw[thick] (4.0,0.1) -- (5.0,0.1);
+    \draw[thick] (4.0,-0.3) -- (5.0,-0.3);
+    \draw[thick] (5.0,0.1) -- (5.0,-1.5);
+    \draw[thick] (5.0,-0.3) -- (6.0,-0.3) -- (6.0,-1.5);
+    \fill[white] (5.3,-1.5) rectangle (5.7,-2.0);
+    \draw[thick] (5.3,-1.5) rectangle (5.7,-2.0);
+    \node[right, font=\tiny] at (5.8,-1.75) {External $R$};
+    \draw[thick] (5.0,-2.0) -- (5.0,-1.5);
+    \draw[thick] (6.0,-2.0) -- (6.0,-1.5);
+    \draw[thick] (5.0,-2.0) -- (6.0,-2.0);
+  \end{scope}
+
+  % === EMF OUTPUT GRAPH ===
+  \begin{axis}[
+    at={(220pt,-10pt)},
+    width=9cm, height=5cm,
+    xlabel={Time ($t$)},
+    ylabel={EMF ($\mathcal{E}$)},
+    xmin=0, xmax=4*pi,
+    ymin=-1.3, ymax=1.5,
+    grid=major, grid style={gray!15},
+    xtick={0,pi/2,pi,3*pi/2,2*pi,5*pi/2,3*pi,7*pi/2,4*pi},
+    xticklabels={0,$T/4$,$T/2$,$3T/4$,$T$,$5T/4$,
+      $3T/2$,$7T/4$,$2T$},
+    ytick={-1,0,1},
+    yticklabels={$-\mathcal{E}_0$,0,$+\mathcal{E}_0$},
+    title={AC Output: $\mathcal{E} = \mathcal{E}_0\sin(\omega t)$}
+  ]
+    \addplot[codexblue, very thick, domain=0:4*pi,
+      samples=200]
+      {sin(deg(x))};
+
+    % Mark where coil is parallel/perpendicular to field
+    \fill[codexred] (axis cs:pi/2,1.0) circle (3pt);
+    \fill[codexred] (axis cs:3*pi/2,-1.0) circle (3pt);
+    \node[above, codexred, font=\tiny]
+      at (axis cs:pi/2,1.05)
+      {Coil parallel to $B$\\($\mathcal{E}$ max)};
+
+    \fill[codexblue!60] (axis cs:pi,0) circle (3pt);
+    \node[above, codexblue, font=\tiny]
+      at (axis cs:pi,0.1)
+      {Coil $\perp$ to $B$\\($\mathcal{E} = 0$)};
+
+  \end{axis}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[26.3]
+\stepcounter{workedexample}
+An AC generator has a coil of $80$ turns,
+area $120\ \text{cm}^2$, rotating at
+$50\ \text{rev\,s}^{-1}$ in a field of
+$0.15\ \text{T}$.\\
+(a) Calculate the peak EMF.\\
+(b) Calculate the RMS EMF.\\
+(c) Find the instantaneous EMF at $t = 2.0\ \text{ms}$.
+\end{examplebox}
+
+\begin{solutionbox}
+$N = 80$, $A = 120\times10^{-4}\ \text{m}^2$,
+$f = 50\ \text{Hz}$, $B = 0.15\ \text{T}$
+
+$\omega = 2\pi f = 2\pi \times 50
+= 314\ \text{rad\,s}^{-1}$
+
+\textbf{(a)} Peak EMF:
+\[
+  \mathcal{E}_0 = NBA\omega
+  = 80 \times 0.15 \times 120\times10^{-4}
+  \times 314
+  = 80 \times 0.15 \times 0.012 \times 314
+  = 45.2\ \text{V}
+\]
+
+\textbf{(b)} RMS EMF:
+\[
+  \mathcal{E}_{rms} = \frac{\mathcal{E}_0}{\sqrt{2}}
+  = \frac{45.2}{\sqrt{2}} = 31.97\ \text{V}
+  \approx 32.0\ \text{V}
+\]
+
+\textbf{(c)} At $t = 2.0\ \text{ms}
+= 2.0\times10^{-3}\ \text{s}$:
+\[
+  \mathcal{E} = 45.2\sin(314 \times 2.0\times10^{-3})
+  = 45.2\sin(0.628)
+  = 45.2 \times 0.588
+  = 26.6\ \text{V}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Eddy Currents}
+% ============================================================
+
+\begin{definitionbox}[Eddy Currents]
+When a conducting material (not just a wire) moves
+through a magnetic field, or when a changing field
+passes through it, induced currents circulate within
+the bulk of the conductor. These are called
+\textbf{eddy currents} (or Foucault currents).
+
+\textbf{Effects of eddy currents:}
+\begin{enumerate}[noitemsep]
+  \item They dissipate energy as heat in the
+  conductor (by $P = I^2R$).
+  \item They create a braking force opposing the
+  motion (Lenz's Law) --- this is called
+  \textbf{magnetic braking}.
+\end{enumerate}
+
+\textbf{Reducing unwanted eddy currents:}
+The core of a transformer is made of thin,
+electrically insulated laminations (sheets) stacked
+together. Eddy currents are confined to thin layers,
+greatly reducing their magnitude and the associated
+energy loss.
+
+\textbf{Useful applications of eddy currents:}
+\begin{itemize}[noitemsep]
+  \item Induction heating (induction cookers)
+  \item Electromagnetic braking (trains, roller
+  coasters, braking systems)
+  \item Eddy current testing (non-destructive
+  testing of metal components for cracks)
+  \item Speedometers in vehicles
+\end{itemize}
+\end{definitionbox}
+
+\begin{diagbox}[Eddy Currents in a Solid vs Laminated Core]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % === SOLID CORE ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries, codexred] at (2.5,5.0)
+      {Solid Core: Large eddy currents};
+
+    % Solid iron block
+    \fill[gray!40] (0.5,0.5) rectangle (4.5,4.5);
+    \draw[very thick] (0.5,0.5) rectangle (4.5,4.5);
+
+    % Large eddy current loops
+    \draw[->, very thick, codexred]
+      (1.5,1.5) -- (3.5,1.5) -- (3.5,3.5)
+      -- (1.5,3.5) -- (1.5,1.5);
+    \draw[->, thick, codexred!70]
+      (1.0,1.0) -- (4.0,1.0) -- (4.0,4.0)
+      -- (1.0,4.0) -- (1.0,1.0);
+    \node[codexred, font=\small] at (2.5,2.5)
+      {Large $I$\\large $I^2R$\\loss};
+
+    % Changing flux arrows
+    \draw[->, very thick, codexblue]
+      (2.5,-0.2) -- (2.5,0.4);
+    \node[below, codexblue, font=\tiny]
+      at (2.5,-0.3) {changing $\vect{B}$};
+  \end{scope}
+
+  % === LAMINATED CORE ===
+  \begin{scope}[shift={(7,0)}]
+    \node[font=\bfseries, codexgreen] at (2.5,5.0)
+      {Laminated Core: Small eddy currents};
+
+    % Laminated iron (thin slices with insulation)
+    \foreach \x in {0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0} {
+      \fill[gray!40] (\x,0.5) rectangle (\x+0.3,4.5);
+      \draw[thin, white] (\x+0.3,0.5) -- (\x+0.3,4.5);
+    }
+    \draw[very thick] (0.5,0.5) rectangle (4.5,4.5);
+
+    % Small eddy currents (confined to thin sheets)
+    \foreach \x in {0.6,1.1,1.6,2.1,2.6,3.1,3.6} {
+      \draw[->, thin, codexgreen]
+        (\x,1.5) -- (\x+0.2,1.5) -- (\x+0.2,3.5)
+        -- (\x,3.5) -- (\x,1.5);
+    }
+    \node[codexgreen, font=\small] at (2.5,2.5)
+      {Small $I$\\small $I^2R$\\loss};
+
+    % Changing flux
+    \draw[->, very thick, codexblue]
+      (2.5,-0.2) -- (2.5,0.4);
+    \node[below, codexblue, font=\tiny]
+      at (2.5,-0.3) {changing $\vect{B}$};
+  \end{scope}
+
+  % Explanation
+  \node[align=center, font=\small] at (7.0,-1.2)
+    {Laminations confine eddy currents to thin strips.\\
+    Higher resistance path $\Rightarrow$ lower current
+    $\Rightarrow$ far less energy loss.};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Faraday's Law:}
+$|\mathcal{E}| = N\,\Delta\Phi/\Delta t$
+
+The induced EMF equals the rate of change of
+magnetic flux linkage.
+
+\textbf{Lenz's Law:} Induced current opposes the
+change causing it (negative sign in Faraday's Law).
+Consequence of energy conservation.
+
+\textbf{Motional EMF:} $\mathcal{E} = BLv$
+(conductor of length $L$ moving at velocity $v$
+perpendicular to field $B$)
+
+\textbf{Self-inductance:} $\mathcal{E} = -L\,dI/dt$;
+$L = \mu_0 N^2 A/\ell$ (solenoid);
+Energy: $W = \frac{1}{2}LI^2$.
+
+\textbf{Back-EMF in motor:}
+reduces steady-state current; zero at startup
+(causes high starting current).
+
+\textbf{AC Generator:}
+$\mathcal{E} = NBA\omega\sin(\omega t)
+= \mathcal{E}_0\sin(\omega t)$;
+peak EMF: $\mathcal{E}_0 = NBA\omega$.
+Slip rings give AC; commutator gives DC.
+
+\textbf{Eddy currents:} induced in bulk conductors;
+cause braking and heating.
+Reduced by lamination in transformer cores.
+Used in induction heating, electromagnetic braking.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[26]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A coil is placed in a changing magnetic
+field. The induced EMF is greatest when:
+
+\mcoption{A}{The flux through the coil is greatest}
+\mcoption{B}{The rate of change of flux is greatest}
+\mcoption{C}{The flux is zero}
+\mcoption{D}{The coil is stationary}
+\ansref{Ch26-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} A bar magnet is dropped through a
+copper tube. Compared with free fall, the magnet
+falls:
+
+\mcoption{A}{Faster, due to the magnetic force}
+\mcoption{B}{At the same rate, since copper is
+non-magnetic}
+\mcoption{C}{Slower, because eddy currents create
+a braking force}
+\mcoption{D}{It stops completely}
+\ansref{Ch26-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A straight conductor of length
+$0.40\ \text{m}$ moves at $15\ \text{m\,s}^{-1}$
+perpendicular to a field of $0.25\ \text{T}$. The
+induced EMF is:
+
+\mcoption{A}{$0.10\ \text{V}$}
+\mcoption{B}{$0.60\ \text{V}$}
+\mcoption{C}{$1.5\ \text{V}$}
+\mcoption{D}{$15\ \text{V}$}
+\ansref{Ch26-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} Lenz's Law is a consequence of:
+
+\mcoption{A}{Coulomb's Law}
+\mcoption{B}{Newton's Third Law}
+\mcoption{C}{Conservation of energy}
+\mcoption{D}{Conservation of charge}
+\ansref{Ch26-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} The peak EMF of an AC generator is
+$\mathcal{E}_0 = NBA\omega$. To double the peak
+EMF, without changing $B$ or $A$, you could:
+
+\mcoption{A}{Halve $N$ and double $\omega$}
+\mcoption{B}{Double $N$, keeping $\omega$ constant}
+\mcoption{C}{Halve $N$ and halve $\omega$}
+\mcoption{D}{Double $A$}
+\ansref{Ch26-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} Transformer cores are laminated in
+order to:
+
+\mcoption{A}{Increase the flux linkage}
+\mcoption{B}{Reduce hysteresis losses}
+\mcoption{C}{Reduce eddy current losses}
+\mcoption{D}{Increase the mutual inductance}
+\ansref{Ch26-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} An inductor of self-inductance $L$
+carries current $I$. The energy stored in it is:
+
+\mcoption{A}{$LI$}
+\mcoption{B}{$LI^2$}
+\mcoption{C}{$\frac{1}{2}LI^2$}
+\mcoption{D}{$\frac{1}{2}LI$}
+\ansref{Ch26-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} The back-EMF in an electric motor
+is greatest when:
+
+\mcoption{A}{The motor first starts}
+\mcoption{B}{The motor is stalled}
+\mcoption{C}{The motor runs at full speed}
+\mcoption{D}{The supply voltage is minimum}
+\ansref{Ch26-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} A coil of 100 turns has flux through
+it changing from $0.02\ \text{Wb}$ to
+$0.08\ \text{Wb}$ in $0.05\ \text{s}$. The induced
+EMF is:
+
+\mcoption{A}{$1.2\ \text{V}$}
+\mcoption{B}{$12\ \text{V}$}
+\mcoption{C}{$120\ \text{V}$}
+\mcoption{D}{$0.12\ \text{V}$}
+\ansref{Ch26-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} An AC generator uses slip rings
+instead of a commutator because:
+
+\mcoption{A}{Slip rings are cheaper}
+\mcoption{B}{Slip rings allow the coil to rotate
+continuously and deliver alternating current without
+reversing it}
+\mcoption{C}{Slip rings produce DC output}
+\mcoption{D}{Commutators are only used in
+transformers}
+\ansref{Ch26-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A flat circular coil of 150 turns
+and radius $4.0\ \text{cm}$ is placed with its
+plane perpendicular to a uniform magnetic field.
+The field changes uniformly from $0.60\ \text{T}$
+to $0.10\ \text{T}$ in $0.20\ \text{s}$.\\[4pt]
+(a) Calculate the initial and final magnetic flux
+through the coil.\\
+(b) Calculate the magnitude of the induced EMF.\\
+(c) If the coil has resistance $5.0\ \Omega$, find
+the induced current.\\
+(d) State the direction of the induced current
+relative to the decreasing field (use Lenz's Law).\\
+(e) If instead of the field changing, the coil is
+rotated $90°$ in $0.20\ \text{s}$ while the field
+remains at $0.60\ \text{T}$, calculate the average
+EMF induced.
+\hfill\ansref{Ch26-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A pair of horizontal conducting rails
+are $50\ \text{cm}$ apart in a vertical magnetic
+field of $0.80\ \text{T}$ (perpendicular to the
+rails). A conducting rod of mass $30\ \text{g}$ and
+resistance $0.40\ \Omega$ lies across the rails and
+is free to slide. The rails have negligible resistance.\\[4pt]
+(a) The rod is pushed at a constant speed of
+$2.5\ \text{m\,s}^{-1}$ along the rails.
+Calculate the induced EMF and current.\\
+(b) Calculate the force required to push the rod
+at this constant speed (the magnetic braking force
+equals the applied force at constant velocity).\\
+(c) Calculate the power input by the pushing force
+and the power dissipated in the rod. Comment on
+the relationship between them.\\
+(d) If the external force is removed, the rod
+decelerates due to the braking force. Write the
+equation of motion ($F = ma$) and explain why the
+deceleration decreases as the rod slows down.\\
+(e) This system is a linear generator. At what
+rod speed would it generate $1.0\ \text{V}$ across
+the rails?
+\hfill\ansref{Ch26-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} An AC generator consists of a coil
+with 500 turns of area $80\ \text{cm}^2$ rotating
+in a field of $0.20\ \text{T}$. The coil makes
+$25$ complete revolutions per second.\\[4pt]
+(a) Calculate the angular frequency $\omega$.\\
+(b) Calculate the peak EMF.\\
+(c) Calculate the RMS EMF.\\
+(d) The coil has resistance $2.0\ \Omega$ and is
+connected to an external load of $50\ \Omega$.
+Calculate the peak current, RMS current, and
+average power delivered to the load.\\
+(e) Explain why the coil requires a torque to keep
+it rotating at constant speed against the
+electromagnetic braking force.\\
+(f) The rotational speed is increased to
+$50\ \text{rev\,s}^{-1}$. Find the new peak EMF.
+\hfill\ansref{Ch26-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A solenoid has $600$ turns, length
+$25\ \text{cm}$ and cross-sectional area
+$8.0\ \text{cm}^2$.
+($\mu_0 = 4\pi\times10^{-7}\ \text{T\,m\,A}^{-1}$)\\[4pt]
+(a) Calculate the self-inductance of the solenoid.\\
+(b) The current in the solenoid increases uniformly
+from $0$ to $4.0\ \text{A}$ in $50\ \text{ms}$.
+Calculate the back-EMF.\\
+(c) Calculate the energy stored in the solenoid
+when the current is $4.0\ \text{A}$.\\
+(d) A second identical solenoid is wound coaxially
+around the first and the mutual inductance between
+them is $M = 0.72\ \mu\text{H}$. When the current
+in solenoid 1 changes at $200\ \text{A\,s}^{-1}$,
+calculate the induced EMF in solenoid 2.\\
+(e) Explain how an iron core increases the
+self-inductance of the solenoid, referring to the
+formula $L = \mu_r\mu_0 N^2A/\ell$.
+\hfill\ansref{Ch26-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} An electric motor runs on a $240\ \text{V}$
+DC supply. Its armature coil has resistance
+$2.0\ \Omega$. When running at full speed, it draws
+a current of $3.0\ \text{A}$.\\[4pt]
+(a) Calculate the back-EMF of the motor at full
+speed.\\
+(b) Calculate the power input, power dissipated as
+heat in the coil, and mechanical power output.\\
+(c) Calculate the efficiency of the motor.\\
+(d) When the motor is first switched on (before it
+starts spinning), calculate the current drawn.
+Explain why this is potentially damaging.\\
+(e) A starter resistor of $18\ \Omega$ is connected
+in series with the motor at startup. Calculate the
+current on startup with the starter resistor and
+the power dissipated in it. At what fraction of
+full speed would you remove the starter resistor,
+given that you want the motor current not to exceed
+$6.0\ \text{A}$?
+\hfill\ansref{Ch26-B5}
+
+\end{exercisebox}

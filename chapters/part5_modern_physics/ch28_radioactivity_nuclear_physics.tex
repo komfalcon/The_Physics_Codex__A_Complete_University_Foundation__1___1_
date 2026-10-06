@@ -1,0 +1,1343 @@
+% ============================================================
+%  CHAPTER 28: RADIOACTIVITY AND NUCLEAR PHYSICS
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part5/ch28_radioactivity.tex
+% ============================================================
+
+\chapter{Radioactivity and Nuclear Physics}
+\label{ch:radioactivity}
+\minitoc
+\newpage
+
+\chapterquote{We are all made of stardust. The heavy
+elements inside you --- the iron in your blood, the
+calcium in your bones --- were forged in the cores of
+stars that exploded before our solar system was born.}{Carl Sagan}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Describe the structure of the nucleus using
+  proton and neutron numbers
+  \item Describe the three types of radioactive
+  emission and their properties
+  \item Write and balance nuclear equations for
+  alpha decay, beta decay and gamma emission
+  \item Explain radioactive decay as a random,
+  spontaneous process
+  \item Define and apply the concept of half-life
+  and the decay constant
+  \item Apply the exponential decay law
+  \item Define and apply nuclear binding energy
+  and the mass-energy equivalence $E = mc^2$
+  \item Describe and distinguish between nuclear
+  fission and fusion
+  \item Describe the operation of a nuclear reactor
+  \item Apply knowledge of radioactivity to
+  practical uses including medical imaging, carbon
+  dating and radiation safety
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: Energy from the Nucleus}
+% ============================================================
+
+The Sun converts $600$ million tonnes of hydrogen into
+helium \textit{every second}. In doing so, it releases
+energy equivalent to the annihilation of 4 million
+tonnes of matter per second via Einstein's formula
+$E = mc^2$. This energy has sustained life on Earth
+for 4.6 billion years and will continue for another
+5 billion.
+
+On Earth, we have discovered how to release nuclear
+energy in controlled and uncontrolled ways. Nuclear
+weapons release energy in microseconds. Nuclear power
+stations release it over months and years. Both exploit
+the same fundamental physics: the extraordinarily large
+binding energy per nucleon in atomic nuclei.
+
+Radioactivity --- the spontaneous emission of radiation
+from unstable nuclei --- is the natural version of the
+same process. Understanding it is essential for medicine,
+energy generation, archaeology, and safety.
+
+% ============================================================
+\section{Nuclear Structure}
+% ============================================================
+
+\begin{definitionbox}[Nuclear Terminology]
+The \textbf{nucleus} of an atom contains
+\textbf{protons} and \textbf{neutrons}, collectively
+called \textbf{nucleons}.
+
+\textbf{Proton number} (atomic number) $Z$: the
+number of protons in the nucleus. Determines the
+element (e.g.\ $Z = 6$ is always carbon).
+
+\textbf{Nucleon number} (mass number) $A$: the total
+number of protons plus neutrons.
+
+\textbf{Neutron number} $N = A - Z$.
+
+Standard notation:
+\[
+  {}^{A}_{Z}\text{X}
+\]
+where X is the chemical symbol.
+
+\textbf{Isotopes:} atoms of the same element (same $Z$)
+with different numbers of neutrons (different $A$).
+Example: ${}^{12}_{6}\text{C}$, ${}^{13}_{6}\text{C}$,
+${}^{14}_{6}\text{C}$ are all isotopes of carbon.
+
+\textbf{Nuclear radius:} approximately
+$R = R_0 A^{1/3}$ where $R_0 \approx 1.2\times10^{-15}\ \text{m}$.
+Nuclear density is approximately constant for all
+nuclei: $\sim 10^{17}\ \text{kg\,m}^{-3}$.
+\end{definitionbox}
+
+\begin{keybox}[The Four Fundamental Forces in the Nucleus]
+The nucleus is incredibly dense. Protons are packed
+together despite their mutual electrostatic repulsion.
+What holds them together?
+
+The \textbf{strong nuclear force} --- one of the four
+fundamental forces. It is:
+\begin{itemize}[noitemsep]
+  \item About 100 times stronger than the
+  electromagnetic force
+  \item Very short range ($\sim 10^{-15}\ \text{m}$
+  --- only acts between neighbouring nucleons)
+  \item Acts equally between proton-proton,
+  neutron-neutron, and proton-neutron pairs
+  \item Attractive at short range; repulsive at
+  even shorter range (prevents nucleons merging)
+\end{itemize}
+For large nuclei, the long-range electrostatic
+repulsion between protons begins to overwhelm the
+short-range strong force, making heavy nuclei
+increasingly unstable.
+\end{keybox}
+
+% ============================================================
+\section{Radioactive Emissions}
+% ============================================================
+
+Some nuclei are unstable and spontaneously emit
+radiation to reach a more stable configuration. This
+process is \textbf{radioactive decay}. There are
+three main types of emission.
+
+\begin{table}[H]
+\centering
+\caption{Properties of Alpha, Beta and Gamma Radiation}
+\label{tab:radiation_types}
+\small
+\begin{tabular}{llllll}
+\toprule
+\textbf{Type} & \textbf{Symbol} &
+\textbf{Composition} & \textbf{Charge} &
+\textbf{Mass} & \textbf{Penetration}\\
+\midrule
+Alpha & $\alpha$ & 2 protons + 2 neutrons (${}^4_2\text{He}$) &
+  $+2e$ & $\sim 4$ u & Few cm air; stopped by paper\\
+Beta-minus & $\beta^-$ & Fast electron & $-e$ &
+  $\sim 0$ & Few mm aluminium\\
+Beta-plus & $\beta^+$ & Fast positron & $+e$ &
+  $\sim 0$ & Few mm aluminium\\
+Gamma & $\gamma$ & High-energy photon & 0 &
+  0 & Several cm lead; never fully stopped\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Ionising Power and Deflection in Fields}
+\label{tab:radiation_properties}
+\small
+\begin{tabular}{llll}
+\toprule
+\textbf{Type} & \textbf{Ionising power} &
+\textbf{In electric field} & \textbf{In magnetic field}\\
+\midrule
+Alpha & Strongly ionising & Deflected toward $-$ plate &
+  Deflected; large radius\\
+Beta-minus & Moderately ionising & Deflected toward $+$ plate &
+  Deflected; small radius, opposite to $\alpha$\\
+Gamma & Weakly ionising & Not deflected &
+  Not deflected\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{diagbox}[Alpha, Beta and Gamma in Electric and Magnetic Fields]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % === ELECTRIC FIELD DEFLECTION ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries] at (4.0,6.5)
+      {Deflection in Electric Field};
+
+    % Plates
+    \fill[codexred!30] (1.5,5.5) rectangle (6.5,6.0);
+    \fill[codexblue!30] (1.5,0.5) rectangle (6.5,1.0);
+    \draw[thick] (1.5,5.5) -- (6.5,5.5);
+    \draw[thick] (1.5,1.0) -- (6.5,1.0);
+    \node[right, codexred] at (6.6,5.75) {$+$};
+    \node[right, codexblue] at (6.6,0.75) {$-$};
+
+    % Source
+    \fill[gray!50] (0.5,2.8) rectangle (1.2,3.7);
+    \draw[thick] (0.5,2.8) rectangle (1.2,3.7);
+    \node[left, font=\tiny] at (0.4,3.25)
+      {Source};
+
+    % Radiation beams
+    % Alpha (deflected upward toward - plate)
+    \draw[->, very thick, codexred]
+      (1.2,3.25) -- (6.0,4.5);
+    \node[right, codexred] at (6.1,4.5)
+      {$\alpha$ (toward $-$ plate)};
+
+    % Gamma (straight through)
+    \draw[->, very thick, codexgold]
+      (1.2,3.25) -- (6.5,3.25);
+    \node[right, codexgold] at (6.6,3.25)
+      {$\gamma$ (undeflected)};
+
+    % Beta-minus (deflected toward + plate, opposite to alpha)
+    \draw[->, very thick, codexblue]
+      (1.2,3.25) -- (6.0,2.0);
+    \node[right, codexblue] at (6.1,2.0)
+      {$\beta^-$ (toward $+$ plate)};
+
+    % Electric field arrows
+    \foreach \x in {2,3,4,5,6} {
+      \draw[->, gray!50] (\x,5.5) -- (\x,1.0);
+    }
+    \node[codexred, font=\tiny] at (2.0,5.3)
+      {$\vect{E}$};
+  \end{scope}
+
+  % === MAGNETIC FIELD DEFLECTION ===
+  \begin{scope}[shift={(9,0)}]
+    \node[font=\bfseries] at (4.0,6.5)
+      {Deflection in Magnetic Field ($\vect{B}$ into page)};
+
+    % Field region (crosses)
+    \fill[gray!10] (1.5,1.0) rectangle (6.5,5.5);
+    \draw[thick] (1.5,1.0) rectangle (6.5,5.5);
+    \foreach \x in {2,3,4,5,6} {
+      \foreach \y in {1.5,2.5,3.5,4.5} {
+        \node[gray!50, font=\small] at (\x,\y) {$\times$};
+      }
+    }
+    \node[gray, font=\tiny] at (2.0,5.2)
+      {$\vect{B}$ into page};
+
+    % Source
+    \fill[gray!50] (0.5,2.8) rectangle (1.2,3.7);
+    \draw[thick] (0.5,2.8) rectangle (1.2,3.7);
+
+    % Alpha curves upward (large radius)
+    \draw[->, very thick, codexred]
+      (1.2,3.25) .. controls (3,4.5) and (5,4.5)
+      .. (6.5,3.25);
+    \node[above, codexred] at (3.5,4.7) {$\alpha$};
+
+    % Gamma (straight)
+    \draw[->, very thick, codexgold]
+      (1.2,3.25) -- (6.5,3.25);
+    \node[above, codexgold] at (5.0,3.35) {$\gamma$};
+
+    % Beta-minus curves downward (small radius, opposite)
+    \draw[->, very thick, codexblue]
+      (1.2,3.25) .. controls (2.0,1.5) and (4.0,1.5)
+      .. (6.5,3.25);
+    \node[below, codexblue] at (3.5,1.4) {$\beta^-$};
+
+    \node[align=center, font=\tiny, gray]
+      at (4.0,0.5)
+      {$\alpha$ and $\beta$ curve in opposite directions\\
+      (opposite charges). $\gamma$ is unaffected.};
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Nuclear Decay Equations}
+% ============================================================
+
+\begin{lawbox}[Conservation Laws in Nuclear Decay]
+In every nuclear decay:
+\begin{itemize}[noitemsep]
+  \item Total \textbf{nucleon number} $A$ is
+  conserved (sum of mass numbers is constant).
+  \item Total \textbf{proton number} $Z$ is
+  conserved (sum of atomic numbers is constant).
+  \item Total \textbf{energy-momentum} is conserved.
+  \item Total \textbf{charge} is conserved.
+\end{itemize}
+\end{lawbox}
+
+\begin{definitionbox}[Alpha Decay]
+Alpha decay: the nucleus emits an alpha particle
+(${}^4_2\text{He}$). The parent nucleus loses 2
+protons and 2 neutrons:
+\[
+  {}^A_Z\text{X} \rightarrow {}^{A-4}_{Z-2}\text{Y}
+  + {}^4_2\text{He}
+\]
+Example: Radium-226 decays to Radon-222:
+\[
+  {}^{226}_{88}\text{Ra} \rightarrow
+  {}^{222}_{86}\text{Rn} + {}^{4}_{2}\text{He}
+\]
+Check: $A$: $226 = 222 + 4$ ✓ \quad $Z$: $88 = 86 + 2$ ✓
+
+Alpha emission typically occurs in heavy nuclei
+($A > 200$) where the nucleus is too large to be
+held together by the short-range strong force.
+\end{definitionbox}
+
+\begin{definitionbox}[Beta-Minus Decay]
+Beta-minus ($\beta^-$) decay: a neutron in the nucleus
+converts to a proton, emitting a fast electron and an
+antineutrino $\bar{\nu}_e$:
+\[
+  n \rightarrow p + e^- + \bar{\nu}_e
+\]
+The nucleus gains one proton and loses one neutron:
+\[
+  {}^A_Z\text{X} \rightarrow {}^{A}_{Z+1}\text{Y}
+  + {}^{0}_{-1}e + \bar{\nu}_e
+\]
+Example: Carbon-14 decays to Nitrogen-14:
+\[
+  {}^{14}_{6}\text{C} \rightarrow
+  {}^{14}_{7}\text{N} + {}^{0}_{-1}e + \bar{\nu}_e
+\]
+Beta-minus occurs when the nucleus has too many
+neutrons relative to protons.
+\end{definitionbox}
+
+\begin{definitionbox}[Beta-Plus Decay and Gamma Emission]
+\textbf{Beta-plus} ($\beta^+$) decay: a proton converts
+to a neutron, emitting a positron and neutrino:
+\[
+  {}^A_Z\text{X} \rightarrow {}^{A}_{Z-1}\text{Y}
+  + {}^{0}_{+1}e + \nu_e
+\]
+Occurs when nucleus has too many protons.
+
+\textbf{Gamma emission:} After alpha or beta decay,
+the daughter nucleus is often left in an excited
+energy state. It releases excess energy as a gamma
+photon, without changing $A$ or $Z$:
+\[
+  {}^A_Z\text{X}^* \rightarrow {}^A_Z\text{X} + \gamma
+\]
+Gamma emission almost always accompanies alpha or
+beta decay.
+\end{definitionbox}
+
+\begin{examplebox}[28.1]
+\stepcounter{workedexample}
+Complete the following nuclear equations:
+
+(a) ${}^{238}_{92}\text{U} \rightarrow {}^{?}_{?}\text{Th}
++ {}^{4}_{2}\text{He}$
+
+(b) ${}^{131}_{53}\text{I} \rightarrow {}^{?}_{?}\text{Xe}
++ {}^{0}_{-1}e + \bar{\nu}_e$
+
+(c) ${}^{22}_{11}\text{Na} \rightarrow {}^{?}_{?}\text{Ne}
++ {}^{0}_{+1}e + \nu_e$
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Alpha decay: $A: 238-4=234$;
+$Z: 92-2=90$ (Thorium):
+\[
+  {}^{238}_{92}\text{U} \rightarrow
+  {}^{234}_{90}\text{Th} + {}^{4}_{2}\text{He}
+\]
+
+\textbf{(b)} Beta-minus: $A: 131$ (unchanged);
+$Z: 53+1=54$ (Xenon):
+\[
+  {}^{131}_{53}\text{I} \rightarrow
+  {}^{131}_{54}\text{Xe} + {}^{0}_{-1}e
+  + \bar{\nu}_e
+\]
+
+\textbf{(c)} Beta-plus: $A: 22$ (unchanged);
+$Z: 11-1=10$ (Neon):
+\[
+  {}^{22}_{11}\text{Na} \rightarrow
+  {}^{22}_{10}\text{Ne} + {}^{0}_{+1}e + \nu_e
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Radioactive Decay: The Statistical Nature}
+% ============================================================
+
+\begin{defbox}[Radioactive Decay: Random and Spontaneous]
+Radioactive decay is:
+\begin{itemize}[noitemsep]
+  \item \textbf{Spontaneous:} It cannot be triggered
+  or prevented by chemical, physical or environmental
+  conditions (temperature, pressure, chemical state).
+  \item \textbf{Random:} It is impossible to predict
+  which particular nucleus in a sample will decay next
+  or when. Only statistical averages are meaningful.
+\end{itemize}
+
+The \textbf{decay constant} $\lambda$ is the
+probability of a given nucleus decaying per unit time.
+For a sample of $N$ nuclei, the \textbf{activity}
+$A$ (decays per second) is:
+\[
+  A = -\frac{dN}{dt} = \lambda N
+\]
+SI unit of activity: becquerel (Bq),
+where $1\ \text{Bq} = 1\ \text{decay per second}$.
+Older unit: curie (Ci), $1\ \text{Ci}
+= 3.7\times10^{10}\ \text{Bq}$.
+\end{defbox}
+
+% ============================================================
+\section{Half-Life and Exponential Decay}
+% ============================================================
+
+\begin{definitionbox}[Half-Life]
+The \textbf{half-life} $t_{1/2}$ of a radioactive
+isotope is the time for:
+\begin{itemize}[noitemsep]
+  \item Half of the original number of nuclei to
+  decay, OR
+  \item The activity of the sample to halve, OR
+  \item The number of undecayed nuclei to halve.
+\end{itemize}
+
+Relationship between half-life and decay constant:
+\[
+  t_{1/2} = \frac{\ln 2}{\lambda} = \frac{0.693}{\lambda}
+\]
+\end{definitionbox}
+
+\begin{lawbox}[Exponential Decay Law]
+The number of undecayed nuclei at time $t$:
+\[
+  N = N_0\,e^{-\lambda t}
+  = N_0\left(\frac{1}{2}\right)^{t/t_{1/2}}
+\]
+The activity at time $t$:
+\[
+  A = A_0\,e^{-\lambda t}
+  = \lambda N_0\,e^{-\lambda t}
+\]
+where $N_0$ is the initial number of nuclei and
+$A_0 = \lambda N_0$ is the initial activity.
+\end{lawbox}
+
+\begin{diagbox}[Radioactive Decay: Exponential Decay Curve and Half-Lives]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=13cm, height=7cm,
+  xlabel={Time $t$ (in half-lives)},
+  ylabel={Fraction remaining ($N/N_0$)},
+  xmin=0, xmax=5,
+  ymin=0, ymax=1.05,
+  grid=major, grid style={gray!15},
+  xtick={0,1,2,3,4,5},
+  xticklabels={0,$t_{1/2}$,$2t_{1/2}$,$3t_{1/2}$,
+    $4t_{1/2}$,$5t_{1/2}$},
+  ytick={0,0.0625,0.125,0.25,0.5,1.0},
+  yticklabels={0,$1/16$,$1/8$,$1/4$,$1/2$,1},
+]
+  % Exponential decay curve
+  \addplot[codexblue, very thick, domain=0:5,
+    samples=100]
+    {exp(-0.693*x)};
+
+  % Horizontal dashed lines at each half-life fraction
+  \addplot[dashed, codexred!50, domain=0:1]{0.5};
+  \addplot[dashed, codexred!50, domain=0:2]{0.25};
+  \addplot[dashed, codexred!50, domain=0:3]{0.125};
+  \addplot[dashed, codexred!50, domain=0:4]{0.0625};
+
+  % Vertical dashed lines
+  \draw[dashed, codexred!50]
+    (axis cs:1,0) -- (axis cs:1,0.5);
+  \draw[dashed, codexred!50]
+    (axis cs:2,0) -- (axis cs:2,0.25);
+  \draw[dashed, codexred!50]
+    (axis cs:3,0) -- (axis cs:3,0.125);
+  \draw[dashed, codexred!50]
+    (axis cs:4,0) -- (axis cs:4,0.0625);
+
+  % Data points (use a pgfplots-native plot to avoid macro-scope issues)
+  \addplot[only marks, mark=*, mark size=2.2pt, codexblue]
+    coordinates {(0,1) (1,0.5) (2,0.25) (3,0.125) (4,0.0625) (5,0.03125)};
+
+  % Annotations
+  \node[above right, codexblue, font=\small]
+    at (axis cs:0,1.0) {$N_0$};
+  \node[right, codexblue, font=\small]
+    at (axis cs:1,0.52) {$N_0/2$};
+  \node[right, codexblue, font=\small]
+    at (axis cs:2,0.27) {$N_0/4$};
+  \node[right, codexblue, font=\small]
+    at (axis cs:3,0.14) {$N_0/8$};
+
+  % Table in corner
+  \node[align=left, font=\tiny, fill=white,
+    draw=gray, inner sep=4pt]
+    at (axis cs:4,0.7)
+    {After $n$ half-lives:\\$N = N_0(1/2)^n$};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[28.2]
+\stepcounter{workedexample}
+Iodine-131 has a half-life of $8.0$ days. A hospital
+receives a sample with initial activity
+$4.0\times10^8\ \text{Bq}$.\\
+(a) Calculate the decay constant.\\
+(b) Calculate the activity after $24$ days.\\
+(c) Calculate the number of ${}^{131}$I atoms
+initially present.\\
+(d) How long before the activity falls to
+$5.0\times10^6\ \text{Bq}$?
+\end{examplebox}
+
+\begin{solutionbox}
+$t_{1/2} = 8.0\ \text{days} = 8.0 \times 86400
+= 6.912\times10^5\ \text{s}$
+
+\textbf{(a)} Decay constant:
+\[
+  \lambda = \frac{\ln 2}{t_{1/2}}
+  = \frac{0.693}{6.912\times10^5}
+  = 1.003\times10^{-6}\ \text{s}^{-1}
+\]
+
+\textbf{(b)} After $24$ days $= 3 \times t_{1/2}$:
+\[
+  A = A_0\left(\frac{1}{2}\right)^3
+  = 4.0\times10^8 \times \frac{1}{8}
+  = 5.0\times10^7\ \text{Bq}
+\]
+
+\textbf{(c)} Initial number of atoms:
+\[
+  N_0 = \frac{A_0}{\lambda}
+  = \frac{4.0\times10^8}{1.003\times10^{-6}}
+  = 3.99\times10^{14}\ \text{atoms}
+  \approx 4.0\times10^{14}\ \text{atoms}
+\]
+
+\textbf{(d)} Time to reach $5.0\times10^6\ \text{Bq}$:
+\[
+  \frac{A}{A_0} = \frac{5.0\times10^6}{4.0\times10^8}
+  = 0.0125 = \left(\frac{1}{2}\right)^n
+\]
+\[
+  n = \frac{\ln(0.0125)}{\ln(0.5)}
+  = \frac{-4.382}{-0.693} = 6.32\ \text{half-lives}
+\]
+\[
+  t = 6.32 \times 8.0 = 50.6\ \text{days}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Applications of Radioactivity}
+% ============================================================
+
+\subsection{Radiocarbon Dating}
+
+\begin{processbox}[Carbon-14 Dating]
+${}^{14}$C is continuously produced in the upper
+atmosphere by cosmic ray neutrons colliding with
+nitrogen:
+\[
+  {}^{14}_{7}\text{N} + {}^{1}_{0}\text{n}
+  \rightarrow {}^{14}_{6}\text{C}
+  + {}^{1}_{1}\text{H}
+\]
+${}^{14}$C (half-life $= 5730$ years) is absorbed
+by living organisms from atmospheric CO$_2$. While
+alive, organisms maintain a constant ratio of
+${}^{14}$C to ${}^{12}$C in equilibrium with the
+atmosphere. When they die, no more ${}^{14}$C is
+absorbed and the existing ${}^{14}$C decays.
+
+By measuring the current activity of a sample and
+comparing with the expected activity for a living
+organism, the age can be calculated:
+\[
+  t = \frac{t_{1/2}}{\ln 2}\ln\left(\frac{A_0}{A}\right)
+\]
+Reliable for organic material up to about $50{,}000$
+years old.
+\end{processbox}
+
+\subsection{Medical Applications}
+
+\begin{table}[H]
+\centering
+\caption{Medical Uses of Radioactive Isotopes}
+\label{tab:medical_radioactivity}
+\begin{tabular}{llll}
+\toprule
+\textbf{Isotope} & \textbf{Type} & \textbf{Half-life} &
+\textbf{Medical Use}\\
+\midrule
+Technetium-99m & $\gamma$ & 6 hours & Diagnostic imaging
+(SPECT scans)\\
+Iodine-131 & $\beta^-$, $\gamma$ & 8 days &
+  Thyroid cancer treatment\\
+Fluorine-18 & $\beta^+$ & 110 min & PET scans\\
+Cobalt-60 & $\gamma$ & 5.27 years & Radiotherapy\\
+Iridium-192 & $\beta^-$, $\gamma$ & 74 days &
+  Brachytherapy (cancer)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+\section{Nuclear Binding Energy and $E = mc^2$}
+% ============================================================
+
+\begin{definitionbox}[Mass-Energy Equivalence]
+Einstein's special theory of relativity (1905) shows
+that mass and energy are interconvertible:
+\[
+  E = mc^2
+\]
+where $c = 3.0\times10^8\ \text{m\,s}^{-1}$.
+
+The \textbf{atomic mass unit} (u):
+$1\ \text{u} = 1.661\times10^{-27}\ \text{kg}$,
+which corresponds to energy:
+\[
+  1\ \text{u} \times c^2 = 931.5\ \text{MeV}
+\]
+
+Particle masses:
+\begin{itemize}[noitemsep]
+  \item Proton: $m_p = 1.007276\ \text{u}$
+  \item Neutron: $m_n = 1.008665\ \text{u}$
+  \item Electron: $m_e = 0.000549\ \text{u}$
+\end{itemize}
+\end{definitionbox}
+
+\begin{definitionbox}[Nuclear Binding Energy]
+The \textbf{mass defect} $\Delta m$ of a nucleus is
+the difference between the sum of the masses of its
+constituent nucleons and the actual mass of the nucleus:
+\[
+  \Delta m = Zm_p + (A-Z)m_n - m_{nucleus}
+\]
+The \textbf{binding energy} is the energy equivalent
+of this mass defect:
+\[
+  E_B = \Delta m \cdot c^2
+\]
+The \textbf{binding energy per nucleon} $E_B/A$ is a
+measure of nuclear stability. It peaks near iron
+(${}^{56}\text{Fe}$) at about $8.8\ \text{MeV}$ per
+nucleon, which is therefore the most stable nucleus.
+
+\textbf{Physical meaning:} The binding energy is the
+energy that must be supplied to completely separate
+all the nucleons in a nucleus. Equivalently, it is
+the energy released when those nucleons come together
+to form the nucleus from scratch.
+\end{definitionbox}
+
+\begin{diagbox}[Binding Energy Per Nucleon vs Mass Number]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=13cm, height=6.5cm,
+  xlabel={Mass number $A$ (nucleon number)},
+  ylabel={Binding energy per nucleon (MeV)},
+  xmin=0, xmax=240,
+  ymin=0, ymax=10,
+  grid=major, grid style={gray!15},
+  xtick={0,20,40,60,80,100,120,140,160,180,200,220,240},
+  ytick={0,1,2,3,4,5,6,7,8,9,10},
+]
+  % Approximate binding energy curve
+  % Rises steeply from H, peaks near Fe (A=56)
+  % then slowly falls for heavy elements
+
+  % Low A region (sharp rise)
+  \addplot[codexblue, very thick, domain=1:4,
+    samples=20]
+    {1.1*x - 0.3};
+  % H-1 at 0
+  \fill[codexblue] (axis cs:1,0) circle (3pt);
+  \node[above, font=\tiny] at (axis cs:1,0.2)
+    {$^1$H (0)};
+  % He-4 at 7.07
+  \fill[codexblue] (axis cs:4,7.07) circle (3pt);
+  \node[above, font=\tiny] at (axis cs:6,7.2)
+    {$^4$He};
+
+  % Rise to peak
+  \addplot[codexblue, very thick, domain=4:56,
+    samples=50]
+    {7.07 + (8.8-7.07)*(1-exp(-(x-4)/20))};
+
+  % Peak at Fe-56
+  \fill[codexred] (axis cs:56,8.8) circle (5pt);
+  \node[above, codexred, font=\small]
+    at (axis cs:56,8.85) {${}^{56}$Fe (most stable)};
+
+  % Slow decline for heavy nuclei
+  \addplot[codexblue, very thick, domain=56:240,
+    samples=100]
+    {8.8 - 0.008*(x-56)};
+
+  % Key nuclei marked
+  \fill[codexgold] (axis cs:12,7.68) circle (3pt);
+  \node[below, codexgold, font=\tiny]
+    at (axis cs:12,7.6) {${}^{12}$C};
+  \fill[codexgold] (axis cs:238,7.6) circle (3pt);
+  \node[below, codexgold, font=\tiny]
+    at (axis cs:228,7.5) {${}^{238}$U};
+
+  % Fission annotation
+  \draw[->, thick, codexred, dashed]
+    (axis cs:235,7.61) -- (axis cs:120,8.4);
+  \node[above, codexred, font=\small]
+    at (axis cs:160,8.1)
+    {Fission: heavy $\to$ medium\\releases energy};
+
+  % Fusion annotation
+  \draw[->, thick, codexblue, dashed]
+    (axis cs:2,1.1) -- (axis cs:20,7.4);
+  \node[below, codexblue, font=\small, align=center]
+    at (axis cs:10,5.5)
+    {Fusion: light $\to$ medium\\releases energy};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\small Energy is released both by fusing light nuclei
+(moving up the curve from the left) and by splitting
+heavy nuclei (moving up from the right). In both cases,
+the products have higher binding energy per nucleon
+than the reactants --- the ``extra'' binding energy
+is released as kinetic energy and radiation.
+\end{diagbox}
+
+\begin{examplebox}[28.3]
+\stepcounter{workedexample}
+Calculate the binding energy of helium-4
+(${}^4_2\text{He}$) in MeV.\\
+Given: $m({}^4\text{He}) = 4.002602\ \text{u}$,
+$m_p = 1.007276\ \text{u}$,
+$m_n = 1.008665\ \text{u}$,
+$1\ \text{u} = 931.5\ \text{MeV}/c^2$.
+\end{examplebox}
+
+\begin{solutionbox}
+Helium-4 has 2 protons and 2 neutrons.
+
+Mass of constituents:
+\[
+  m_{parts} = 2m_p + 2m_n
+  = 2(1.007276) + 2(1.008665)
+  = 2.014552 + 2.017330
+  = 4.031882\ \text{u}
+\]
+
+Mass defect:
+\[
+  \Delta m = m_{parts} - m({}^4\text{He})
+  = 4.031882 - 4.002602
+  = 0.029280\ \text{u}
+\]
+
+Binding energy:
+\[
+  E_B = \Delta m \times 931.5\ \text{MeV/u}
+  = 0.029280 \times 931.5
+  = 27.28\ \text{MeV}
+\]
+
+Binding energy per nucleon:
+\[
+  E_B/A = 27.28/4 = 6.82\ \text{MeV per nucleon}
+\]
+
+This is significantly lower than iron ($8.8\ \text{MeV}$),
+consistent with the curve. Helium-4 is stable but
+not the most stable nucleus.
+\end{solutionbox}
+
+% ============================================================
+\section{Nuclear Fission}
+% ============================================================
+
+\begin{definitionbox}[Nuclear Fission]
+\textbf{Nuclear fission} is the splitting of a heavy
+nucleus into two lighter nuclei (fission fragments)
+of roughly equal mass, releasing energy and typically
+2--3 neutrons.
+
+Example: thermal neutron-induced fission of Uranium-235:
+\[
+  {}^{1}_{0}\text{n} + {}^{235}_{92}\text{U}
+  \rightarrow {}^{236}_{92}\text{U}^*
+  \rightarrow {}^{141}_{56}\text{Ba}
+  + {}^{92}_{36}\text{Kr}
+  + 3{}^{1}_{0}\text{n}
+\]
+Energy released per fission: $\sim 200\ \text{MeV}$
+(enormous compared to $\sim 1\ \text{eV}$ per chemical
+reaction).
+
+\textbf{Chain reaction:} The 2--3 neutrons released
+can each trigger further fission events. If on average
+more than one neutron from each fission causes another
+fission (the multiplication factor $k > 1$), the
+reaction is supercritical and the number of fissions
+grows exponentially --- this is a nuclear explosion.
+
+\textbf{Critical mass:} The minimum mass of fissile
+material needed to sustain a self-sustaining chain
+reaction ($k = 1$).
+\end{definitionbox}
+
+% ============================================================
+\section{The Nuclear Reactor}
+% ============================================================
+
+\begin{processbox}[How a Nuclear Fission Reactor Works]
+In a controlled fission reactor ($k = 1$):
+
+\textbf{Fuel:} Enriched uranium (${}^{235}$U,
+typically 3--5\% for power reactors).
+
+\textbf{Moderator:} Slows down fast neutrons to
+thermal speeds (slow neutrons are more effective
+at causing fission). Common moderators: water,
+heavy water (D$_2$O), graphite.
+
+\textbf{Control rods:} Absorb neutrons to control
+the reaction rate. Made of boron or cadmium. Inserted
+deeper $\Rightarrow$ fewer neutrons $\Rightarrow$
+slower reaction. This is how reactor power is
+regulated.
+
+\textbf{Coolant:} Carries heat from the reactor core
+to a heat exchanger (steam generator). Common
+coolants: water, CO$_2$, helium.
+
+\textbf{Heat exchanger:} Transfers heat to produce
+steam to drive turbines and generators.
+
+\textbf{Containment:} Thick concrete and steel
+shielding to absorb neutrons and gamma radiation.
+\end{processbox}
+
+\begin{diagbox}[Schematic of a Pressurised Water Reactor (PWR)]
+\begin{center}
+\begin{tikzpicture}[scale=0.85, font=\small]
+
+  % === Reactor vessel ===
+  \fill[gray!20] (0,0) rectangle (4.5,6.5);
+  \draw[very thick] (0,0) rectangle (4.5,6.5);
+  \node[font=\bfseries] at (2.25,7.0)
+    {Reactor Vessel};
+
+  % Fuel rods
+  \foreach \x in {0.6,1.2,1.8,2.4,3.0,3.6} {
+    \fill[codexgold!60] (\x,0.5) rectangle (\x+0.3,5.5);
+    \draw[thick, codexgold] (\x,0.5) rectangle
+      (\x+0.3,5.5);
+  }
+  \node[codexgold, font=\tiny] at (2.0,3.0)
+    {Fuel rods};
+  \node[codexgold, font=\tiny] at (2.0,2.5)
+    {(${}^{235}$U)};
+
+  % Control rods (partially inserted from top)
+  \foreach \x in {0.9,1.5,2.1,2.7,3.3} {
+    \fill[codexblue!60] (\x,3.5) rectangle
+      (\x+0.2,6.5);
+    \draw[thick, codexblue] (\x,3.5) rectangle
+      (\x+0.2,6.5);
+  }
+  \node[codexblue, font=\tiny] at (2.2,6.2)
+    {Control rods};
+
+  % Coolant (water as moderator+coolant)
+  \fill[codexblue!15] (0.3,0.3) rectangle (4.2,6.2);
+  % Fuel rods on top
+  \foreach \x in {0.6,1.2,1.8,2.4,3.0,3.6} {
+    \fill[codexgold!60] (\x,0.5) rectangle
+      (\x+0.3,5.5);
+    \draw[thick, codexgold] (\x,0.5) rectangle
+      (\x+0.3,5.5);
+  }
+  \node[codexblue, font=\tiny] at (4.0,1.0)
+    {Pressurised\\water\\(coolant +\\moderator)};
+
+  % Hot coolant out
+  \draw[->, very thick, codexred]
+    (4.5,4.5) -- (6.5,4.5);
+  \node[above, codexred, font=\small] at (5.5,4.6)
+    {Hot coolant};
+
+  % Cool coolant in
+  \draw[->, very thick, codexblue]
+    (6.5,1.5) -- (4.5,1.5);
+  \node[below, codexblue, font=\small] at (5.5,1.4)
+    {Cool coolant};
+
+  % === Heat exchanger ===
+  \fill[gray!15] (6.5,0.5) rectangle (9.5,6.0);
+  \draw[thick] (6.5,0.5) rectangle (9.5,6.0);
+  \node[font=\bfseries] at (8.0,6.5)
+    {Heat Exchanger};
+  % Coil tubes (simplified)
+  \draw[codexred, thick]
+    (7.0,1.5) .. controls (7.0,3.5) and (9.0,3.5)
+    .. (9.0,4.5);
+  \draw[codexblue, thick]
+    (9.0,1.5) .. controls (9.0,2.5) and (7.0,2.5)
+    .. (7.0,4.5);
+  \node[font=\tiny] at (8.0,3.0) {Steam\\generated};
+
+  % Steam to turbine
+  \draw[->, very thick, codexred!70]
+    (9.5,5.0) -- (11.5,5.0);
+  \node[above, font=\small] at (10.5,5.1) {Steam};
+
+  % === Turbine ===
+  \fill[gray!30] (11.5,4.0) rectangle (13.0,6.0);
+  \draw[thick] (11.5,4.0) rectangle (13.0,6.0);
+  \node[font=\small] at (12.25,5.0) {Turbine};
+
+  % Generator
+  \fill[gray!30] (13.0,4.0) rectangle (14.5,6.0);
+  \draw[thick] (13.0,4.0) rectangle (14.5,6.0);
+  \node[font=\small] at (13.75,5.0) {Generator};
+
+  % Electricity out
+  \draw[->, very thick, codexgold]
+    (14.5,5.0) -- (15.5,5.0);
+  \node[right, codexgold, font=\small] at (15.6,5.0)
+    {Electricity};
+
+  % Condenser (cooling water in)
+  \draw[->, gray] (12.25,4.0) -- (12.25,3.0);
+  \node[below, gray, font=\tiny] at (12.25,2.9)
+    {Condenser\\(cooling water)};
+
+  % Return water to heat exchanger
+  \draw[->, codexblue!60]
+    (9.5,1.0) -- (11.5,1.0) -- (11.5,4.0);
+
+  % Shielding
+  \draw[very thick, brown!70, dashed]
+    (-0.5,-0.5) rectangle (5.0,7.5);
+  \node[brown!70, font=\tiny] at (-0.3,7.8)
+    {Concrete\\shielding};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Nuclear Fusion}
+% ============================================================
+
+\begin{definitionbox}[Nuclear Fusion]
+\textbf{Nuclear fusion} is the joining of two light
+nuclei to form a heavier nucleus, releasing energy.
+Energy is released because the product has higher
+binding energy per nucleon than the reactants.
+
+The most promising fusion reactions for power
+generation involve isotopes of hydrogen:
+\[
+  {}^2_1\text{H} + {}^3_1\text{H}
+  \rightarrow {}^4_2\text{He} + {}^1_0\text{n}
+  + 17.6\ \text{MeV}
+\]
+(Deuterium + Tritium $\rightarrow$ Helium-4
++ neutron + $17.6\ \text{MeV}$)
+
+\textbf{Why fusion is difficult on Earth:}
+Nuclei are positively charged and repel each other
+strongly at normal temperatures. To overcome this
+Coulomb barrier, temperatures of $\sim 10^8\ \text{K}$
+are required (hotter than the Sun's core). At such
+temperatures, matter exists as a \textbf{plasma} ---
+all electrons stripped from nuclei. Confining a
+plasma at $10^8\ \text{K}$ is the central engineering
+challenge of fusion power.
+
+\textbf{Advantages of fusion:}
+\begin{itemize}[noitemsep]
+  \item Fuel (deuterium) abundant in seawater
+  \item No long-lived radioactive waste
+  \item Much more energy per unit mass than fission
+  \item No risk of runaway chain reaction
+\end{itemize}
+\end{definitionbox}
+
+\begin{realworldbox}[Nuclear Power and Nigeria]
+Nigeria does not currently operate any nuclear power
+plants but has expressed long-term interest in
+nuclear energy through the Nigerian Atomic Energy
+Commission (NAEC). The argument for nuclear power
+in Nigeria rests on its ability to deliver large,
+reliable base-load power independent of weather
+(unlike solar or wind) and without the carbon
+emissions of natural gas. The argument against
+centres on cost, safety infrastructure, long
+construction times, and the availability of
+abundant domestic gas reserves.
+
+The physics of nuclear power in this chapter ---
+binding energy, chain reactions, critical mass, and
+waste decay --- is the technical foundation any
+informed person needs to evaluate these arguments.
+\end{realworldbox}
+
+% ============================================================
+\section{Radiation Safety and Biological Effects}
+% ============================================================
+
+\begin{defbox}[Radiation Dose and Safety]
+\textbf{Absorbed dose} (gray, Gy):
+energy deposited per unit mass of tissue.
+$1\ \text{Gy} = 1\ \text{J\,kg}^{-1}$.
+
+\textbf{Equivalent dose} (sievert, Sv):
+absorbed dose weighted by the type of radiation
+(alpha is $\sim 20\times$ more damaging per unit
+energy than beta/gamma):
+$H = wD$ where $w$ is the radiation weighting factor.
+
+\textbf{Background radiation sources:}
+Radon gas ($\sim 50\%$), medical X-rays ($\sim 15\%$),
+cosmic rays, naturally radioactive materials in
+food and ground. Annual UK/Nigerian average:
+$\sim 2$--$3\ \text{mSv\,year}^{-1}$.
+
+\textbf{Radiation protection principles:}
+\begin{itemize}[noitemsep]
+  \item \textbf{Distance:} Intensity falls as $1/r^2$.
+  \item \textbf{Shielding:} Paper (alpha), aluminium
+  (beta), lead/concrete (gamma/neutrons).
+  \item \textbf{Time:} Minimise exposure time.
+\end{itemize}
+\end{defbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Nucleus:} protons ($Z$) + neutrons ($N$);
+$A = Z + N$. Nuclear radius $R = R_0 A^{1/3}$.
+
+\textbf{Radioactive emissions:}
+$\alpha$: ${}^4_2\text{He}$, $Z-2$, $A-4$;
+$\beta^-$: electron, $Z+1$; $\beta^+$: positron, $Z-1$;
+$\gamma$: photon, $Z$ and $A$ unchanged.
+
+\textbf{Conservation:} $A$ and $Z$ conserved in all
+nuclear equations.
+
+\textbf{Decay is spontaneous and random.}
+
+Activity: $A = \lambda N$;
+$\lambda = \ln 2/t_{1/2}$.
+
+\textbf{Exponential decay:}
+$N = N_0 e^{-\lambda t}$; $A = A_0 e^{-\lambda t}$.
+
+\textbf{Binding energy:}
+$E_B = \Delta m \cdot c^2$; $1\ \text{u} = 931.5\ \text{MeV}$.
+Peaks at ${}^{56}$Fe ($8.8\ \text{MeV/nucleon}$).
+
+\textbf{Fission:} heavy nucleus splits;
+$\sim 200\ \text{MeV}$ per event; chain reaction
+(controlled in reactor, uncontrolled in bomb).
+
+\textbf{Fusion:} light nuclei join; $10^8\ \text{K}$
+required; huge energy per unit mass; clean fuel;
+still under development for power.
+
+\textbf{${}^{14}$C dating:} $t_{1/2} = 5730$ years;
+for organic material up to $\sim 50{,}000$ years.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[28]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} An alpha particle has the same composition
+as:
+
+\mcoption{A}{A helium-3 nucleus}
+\mcoption{B}{A helium-4 nucleus}
+\mcoption{C}{Two protons only}
+\mcoption{D}{A hydrogen-2 nucleus}
+\ansref{Ch28-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} In beta-minus ($\beta^-$) decay:
+
+\mcoption{A}{A proton is emitted from the nucleus}
+\mcoption{B}{The proton number $Z$ decreases by 1}
+\mcoption{C}{A neutron converts to a proton and
+an electron is emitted}
+\mcoption{D}{The mass number $A$ decreases by 1}
+\ansref{Ch28-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A radioactive sample has a half-life
+of $20$ minutes. After $1$ hour, the fraction of
+the original activity remaining is:
+
+\mcoption{A}{$1/3$}
+\mcoption{B}{$1/4$}
+\mcoption{C}{$1/8$}
+\mcoption{D}{$1/6$}
+\ansref{Ch28-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} Which radiation is most penetrating?
+
+\mcoption{A}{Alpha}
+\mcoption{B}{Beta-minus}
+\mcoption{C}{Gamma}
+\mcoption{D}{They all have equal penetration}
+\ansref{Ch28-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} The binding energy per nucleon is
+greatest for:
+
+\mcoption{A}{Hydrogen-1}
+\mcoption{B}{Helium-4}
+\mcoption{C}{Iron-56}
+\mcoption{D}{Uranium-238}
+\ansref{Ch28-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} In a nuclear reactor, the function
+of the moderator is to:
+
+\mcoption{A}{Absorb excess neutrons to control
+the chain reaction}
+\mcoption{B}{Slow down fast neutrons to thermal
+speeds}
+\mcoption{C}{Cool the reactor core}
+\mcoption{D}{Shield workers from radiation}
+\ansref{Ch28-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} Nuclear fusion releases energy because:
+
+\mcoption{A}{The product nucleus is heavier than
+the reactants}
+\mcoption{B}{The product nucleus has lower binding
+energy per nucleon than the reactants}
+\mcoption{C}{The product has higher binding energy
+per nucleon, so it has less mass-energy, and the
+difference is released}
+\mcoption{D}{Light nuclei repel each other,
+releasing potential energy}
+\ansref{Ch28-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} A nucleus ${}^A_Z\text{X}$ undergoes
+alpha decay followed by two beta-minus decays.
+The final proton number is:
+
+\mcoption{A}{$Z-2$}
+\mcoption{B}{$Z-4$}
+\mcoption{C}{$Z$}
+\mcoption{D}{$Z+2$}
+\ansref{Ch28-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} The decay constant $\lambda$ of a
+radioactive nuclide is related to its half-life
+$t_{1/2}$ by:
+
+\mcoption{A}{$\lambda = t_{1/2}/\ln 2$}
+\mcoption{B}{$\lambda = \ln 2 \times t_{1/2}$}
+\mcoption{C}{$\lambda = \ln 2 / t_{1/2}$}
+\mcoption{D}{$\lambda = 1/t_{1/2}$}
+\ansref{Ch28-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} Radiocarbon dating uses carbon-14
+because:
+
+\mcoption{A}{It is the most abundant isotope of carbon}
+\mcoption{B}{Its half-life of 5730 years is
+appropriate for dating objects thousands of years old}
+\mcoption{C}{It emits alpha particles, which are
+easily detected}
+\mcoption{D}{It is produced only in living organisms}
+\ansref{Ch28-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} Uranium-238 undergoes a decay series
+to eventually reach stable lead-206.\\[4pt]
+(a) Determine how many alpha decays and how many
+beta-minus decays are involved. (Hint: write $A$
+and $Z$ equations using the fact that each
+$\alpha$ reduces $A$ by 4 and $Z$ by 2, while
+each $\beta^-$ increases $Z$ by 1 with $A$
+unchanged.)\\
+(b) Write the nuclear equation for the first decay
+in the series: ${}^{238}_{92}$U to ${}^{234}_{90}$Th.\\
+(c) Thorium-234 then undergoes two consecutive
+$\beta^-$ decays. Identify the nuclides produced
+after each decay.\\
+(d) The half-life of ${}^{238}$U is $4.47\times10^9$
+years. Calculate the decay constant in s$^{-1}$.\\
+(e) Calculate the activity of $1.00\ \text{g}$ of
+${}^{238}$U (Avogadro's number $= 6.02\times10^{23}$
+mol$^{-1}$, molar mass $= 238\ \text{g\,mol}^{-1}$).
+\hfill\ansref{Ch28-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A sample of radioactive iodine-131
+(half-life $= 8.04$ days) has an initial activity
+of $3.7\times10^9\ \text{Bq}$.
+($N_A = 6.02\times10^{23}\ \text{mol}^{-1}$,
+molar mass of I-131 = 131 g\,mol$^{-1}$)\\[4pt]
+(a) Calculate the decay constant in s$^{-1}$.\\
+(b) Calculate the initial number of ${}^{131}$I
+atoms.\\
+(c) Calculate the initial mass of ${}^{131}$I.\\
+(d) Calculate the activity after $32.16$ days.\\
+(e) Plot (sketch) the decay curve of activity vs
+time, labelling the axes and marking the values
+at $t = 0$, $t_{1/2}$, $2t_{1/2}$, $3t_{1/2}$.\\
+(f) Iodine-131 is used for thyroid treatment. A
+patient needs to receive an effective dose over
+$32$ days. Why does the doctor arrange for the
+patient to receive the dose immediately rather
+than waiting to administer it later?
+\hfill\ansref{Ch28-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} (a) Calculate the binding energy of
+${}^{56}_{26}$Fe (iron-56), often called the most
+stable nucleus.\\
+Given: $m({}^{56}$Fe$) = 55.934939\ \text{u}$;
+$m_p = 1.007276\ \text{u}$;
+$m_n = 1.008665\ \text{u}$;
+$1\ \text{u} = 931.5\ \text{MeV}/c^2$.\\[4pt]
+(b) Calculate the binding energy per nucleon.\\
+(c) Compare with ${}^4_2$He
+($E_B = 28.3\ \text{MeV}$, $A = 4$).
+Which has greater binding energy per nucleon?\\
+(d) Use the binding energy curve (Figure in chapter)
+to explain qualitatively:\\
+(i) Why nuclear fission of ${}^{235}$U releases energy.\\
+(ii) Why nuclear fusion of hydrogen releases energy.\\
+(iii) Why neither fission of ${}^{56}$Fe nor fusion
+of ${}^{56}$Fe releases energy.
+\hfill\ansref{Ch28-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} An archaeologist finds a piece of
+ancient wood. She measures the activity of the
+carbon-14 in $10\ \text{g}$ of the wood sample
+to be $1.5\ \text{Bq}$.
+A living tree gives $6.5\ \text{Bq}$ per $10\ \text{g}$
+of carbon.
+($t_{1/2}$ of ${}^{14}$C $= 5730$ years,
+$\ln 2 = 0.693$)\\[4pt]
+(a) Calculate the fraction of ${}^{14}$C remaining.\\
+(b) Calculate the age of the wood.\\
+(c) The measurement uncertainty in the activity
+is $\pm 0.2\ \text{Bq}$. Estimate the uncertainty
+in the calculated age.\\
+(d) Explain why radiocarbon dating is not reliable
+for samples older than about 50,000 years.\\
+(e) The sample is from an ancient Yoruba wooden
+carving. If the age calculated is $1200$ years,
+place this in historical context (what period of
+Yoruba history might this correspond to?).
+\hfill\ansref{Ch28-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A nuclear power reactor produces
+$1000\ \text{MW}$ of electrical power at an
+efficiency of $35\%$.
+(Energy per fission of ${}^{235}$U $= 200\ \text{MeV}$;
+$1\ \text{MeV} = 1.6\times10^{-13}\ \text{J}$;
+$N_A = 6.02\times10^{23}\ \text{mol}^{-1}$;
+molar mass of ${}^{235}$U $= 235\ \text{g\,mol}^{-1}$)\\[4pt]
+(a) Calculate the thermal power (heat power) that
+the reactor must produce.\\
+(b) Calculate the number of fissions per second.\\
+(c) Calculate the mass of ${}^{235}$U consumed per
+day.\\
+(d) Compare the mass of ${}^{235}$U needed to power
+this reactor for one year with the mass of coal
+needed to produce the same electrical energy from
+a coal power station (efficiency $40\%$, energy
+density of coal $\approx 24\ \text{MJ\,kg}^{-1}$).\\
+(e) One concern about nuclear power is the
+disposal of radioactive waste. A spent fuel rod
+contains fission fragments including ${}^{90}$Sr
+(half-life $= 29$ years). Calculate how many
+half-lives must pass before the ${}^{90}$Sr
+activity falls to $0.1\%$ of its initial value.
+How many years is this?
+\hfill\ansref{Ch28-B5}
+
+\end{exercisebox}

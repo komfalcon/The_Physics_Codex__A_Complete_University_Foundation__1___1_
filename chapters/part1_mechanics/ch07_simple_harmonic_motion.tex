@@ -1,0 +1,911 @@
+% ============================================================
+%  CHAPTER 7: SIMPLE HARMONIC MOTION
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part1/ch07_simple_harmonic_motion.tex
+% ============================================================
+
+\chapter{Simple Harmonic Motion}
+\label{ch:shm}
+
+\chapterquote{Nature is not only queerer than we suppose,
+but queerer than we can suppose.}{J.B.S. Haldane}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Define simple harmonic motion and state its
+  conditions
+  \item Derive and apply the equations for displacement,
+  velocity and acceleration in SHM
+  \item Sketch and interpret graphs of displacement,
+  velocity and acceleration against time
+  \item Calculate the period and frequency of a simple
+  pendulum and a mass-spring system
+  \item Apply energy conservation to SHM problems
+  \item Distinguish between free, damped and forced
+  oscillations
+  \item Explain resonance and give real examples
+\end{enumerate}
+\end{objectivebox}
+
+\vspace{0.4cm}
+
+\minitoc
+
+\vspace{0.5cm}
+
+% ============================================================
+\section{What is Oscillatory Motion?}
+% ============================================================
+
+Look around you and you will find oscillation everywhere.
+A tree branch swaying in the wind. A child on a swing.
+The pendulum of a grandfather clock. The strings of a
+guitar. The atoms in every solid vibrating about their
+equilibrium positions. Your own heartbeat. All of these
+are examples of \textbf{oscillatory motion} --- motion
+that repeats itself in time about a fixed position.
+
+The simplest and most important type of oscillatory
+motion is \textbf{Simple Harmonic Motion} (SHM). It is
+the foundation of wave theory, acoustics, optics,
+quantum mechanics, and electrical circuits. Understanding
+SHM is not optional in Physics --- it is fundamental.
+
+% ============================================================
+\section{Defining Simple Harmonic Motion}
+% ============================================================
+
+\begin{definitionbox}[Simple Harmonic Motion]
+\textbf{Simple Harmonic Motion} (SHM) is a type of
+oscillatory motion in which the acceleration of the
+body is:
+\begin{enumerate}[noitemsep]
+  \item Directly proportional to the displacement
+  from the equilibrium position
+  \item Always directed toward the equilibrium
+  position (opposite to displacement)
+\end{enumerate}
+\[
+  a = -\omega^2 x
+\]
+where $x$ is displacement from equilibrium and
+$\omega$ is the angular frequency. The negative sign
+confirms the acceleration always opposes displacement.
+\end{definitionbox}
+
+\begin{keybox}[The Restoring Force]
+For SHM to occur, there must be a \textbf{restoring force}
+--- a force that always acts toward the equilibrium
+position and is proportional to displacement:
+\[
+  F = -kx
+\]
+where $k$ is the restoring force constant. From
+$F = ma$: $a = -kx/m$, so $\omega^2 = k/m$.
+\end{keybox}
+
+\begin{historybox}[Galileo and the Pendulum]
+According to legend, in 1583 the 19-year-old Galileo
+sat in Pisa Cathedral watching a chandelier swinging.
+He noticed that no matter how wide or narrow the swing,
+each oscillation took the same time (he timed it with
+his own pulse). This property --- period independent
+of amplitude --- became one of the defining features
+of SHM. Galileo went on to propose using pendulums
+as timekeepers, an idea Huygens turned into the first
+pendulum clock in 1656.
+\end{historybox}
+
+% ============================================================
+\section{Equations of Simple Harmonic Motion}
+% ============================================================
+
+The defining equation $a = -\omega^2 x$ is a
+differential equation whose solution gives displacement
+as a sinusoidal function of time.
+
+\begin{lawbox}[Equations of SHM]
+For a body oscillating with angular frequency $\omega$
+and amplitude $A$:
+
+\textbf{Displacement} (starting from equilibrium):
+\[
+  x = A\sin(\omega t) \quad \text{or} \quad
+  x = A\cos(\omega t)
+\]
+(Use sine if $x=0$ at $t=0$; cosine if $x=A$ at $t=0$)
+
+\textbf{Velocity:}
+\[
+  v = A\omega\cos(\omega t)
+  = \omega\sqrt{A^2 - x^2}
+\]
+
+\textbf{Acceleration:}
+\[
+  a = -A\omega^2\sin(\omega t) = -\omega^2 x
+\]
+
+\textbf{Maximum values:}
+\[
+  v_{max} = A\omega \quad \text{(at equilibrium, } x=0\text{)}
+\]
+\[
+  a_{max} = A\omega^2 \quad \text{(at amplitude, } x=\pm A\text{)}
+\]
+\end{lawbox}
+
+\begin{diagbox}[SHM Graphs --- Displacement, Velocity, Acceleration]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  name=plot1,
+  width=12cm, height=3.5cm,
+  xlabel={}, ylabel={$x$},
+  xmin=0, xmax=6.28, ymin=-1.3, ymax=1.3,
+  xtick={0,1.571,3.142,4.712,6.283},
+  xticklabels={$0$,$T/4$,$T/2$,$3T/4$,$T$},
+  ytick={-1,0,1},
+  yticklabels={$-A$,$0$,$A$},
+  grid=major, grid style={gray!20},
+  title={Displacement: $x = A\sin(\omega t)$}
+]
+  \addplot[codexblue, very thick, domain=0:6.28,
+    samples=100]{sin(deg(x))};
+\end{axis}
+
+\begin{axis}[
+  name=plot2,
+  at={(plot1.below south west)},
+  anchor=above north west,
+  yshift=-0.3cm,
+  width=12cm, height=3.5cm,
+  xlabel={}, ylabel={$v$},
+  xmin=0, xmax=6.28, ymin=-1.3, ymax=1.3,
+  xtick={0,1.571,3.142,4.712,6.283},
+  xticklabels={$0$,$T/4$,$T/2$,$3T/4$,$T$},
+  ytick={-1,0,1},
+  yticklabels={$-A\omega$,$0$,$A\omega$},
+  grid=major, grid style={gray!20},
+  title={Velocity: $v = A\omega\cos(\omega t)$}
+]
+  \addplot[codexred, very thick, domain=0:6.28,
+    samples=100]{cos(deg(x))};
+\end{axis}
+
+\begin{axis}[
+  name=plot3,
+  at={(plot2.below south west)},
+  anchor=above north west,
+  yshift=-0.3cm,
+  width=12cm, height=3.5cm,
+  xlabel={Time}, ylabel={$a$},
+  xmin=0, xmax=6.28, ymin=-1.3, ymax=1.3,
+  xtick={0,1.571,3.142,4.712,6.283},
+  xticklabels={$0$,$T/4$,$T/2$,$3T/4$,$T$},
+  ytick={-1,0,1},
+  yticklabels={$-A\omega^2$,$0$,$A\omega^2$},
+  grid=major, grid style={gray!20},
+  title={Acceleration: $a = -A\omega^2\sin(\omega t)$}
+]
+  \addplot[codexgreen, very thick, domain=0:6.28,
+    samples=100]{-sin(deg(x))};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\small Note: acceleration is always $180°$ out of phase
+with displacement.
+\end{diagbox}
+
+\begin{examplebox}[7.1]
+\stepcounter{workedexample}
+A particle undergoes SHM with amplitude $0.08\ \text{m}$
+and period $2.0\ \text{s}$.\\
+(a) Find the angular frequency.\\
+(b) Find the maximum speed.\\
+(c) Find the maximum acceleration.\\
+(d) Find the speed and acceleration when
+$x = 0.05\ \text{m}$.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Angular frequency:
+\[
+  \omega = \frac{2\pi}{T} = \frac{2\pi}{2.0}
+  = \pi\ \text{rad\,s}^{-1} \approx 3.14\ \text{rad\,s}^{-1}
+\]
+
+\textbf{(b)} Maximum speed:
+\[
+  v_{max} = A\omega = 0.08 \times \pi
+  = 0.08\pi \approx 0.251\ \text{m\,s}^{-1}
+\]
+
+\textbf{(c)} Maximum acceleration:
+\[
+  a_{max} = A\omega^2 = 0.08 \times \pi^2
+  = 0.08\pi^2 \approx 0.789\ \text{m\,s}^{-2}
+\]
+
+\textbf{(d)} At $x = 0.05\ \text{m}$:
+\[
+  v = \omega\sqrt{A^2-x^2}
+  = \pi\sqrt{0.08^2-0.05^2}
+  = \pi\sqrt{0.0064-0.0025}
+\]
+\[
+  v = \pi\sqrt{0.0039}
+  = \pi \times 0.0624
+  = 0.196\ \text{m\,s}^{-1}
+\]
+\[
+  a = -\omega^2 x = -\pi^2 \times 0.05
+  = -0.493\ \text{m\,s}^{-2}
+\]
+The negative sign confirms acceleration is directed
+back toward equilibrium (opposite to positive $x$).
+\end{solutionbox}
+
+% ============================================================
+\section{The Simple Pendulum}
+% ============================================================
+
+\begin{processbox}[Derivation of Pendulum Period]
+Consider a bob of mass $m$ on a string of length $L$
+displaced by angle $\theta$ from vertical.
+
+The restoring force (tangential component of gravity):
+\[
+  F = -mg\sin\theta
+\]
+
+For small angles ($\theta < 10°$), $\sin\theta \approx \theta$
+(in radians), and the arc length $s = L\theta$:
+\[
+  F \approx -mg\theta = -mg\frac{s}{L}
+  = -\left(\frac{mg}{L}\right)s
+\]
+
+This has the form $F = -ks$ with $k = mg/L$. Therefore
+the pendulum undergoes SHM with:
+\[
+  \omega^2 = \frac{k}{m} = \frac{g}{L}
+\]
+\[
+  \boxed{T = 2\pi\sqrt{\frac{L}{g}}}
+\]
+\end{processbox}
+
+\begin{keybox}[Pendulum Period --- Key Properties]
+\[
+  T = 2\pi\sqrt{\frac{L}{g}}
+\]
+\begin{itemize}[noitemsep]
+  \item $T$ depends on $L$ and $g$ only
+  \item $T$ is \textbf{independent of mass}
+  \item $T$ is \textbf{independent of amplitude}
+  (for small angles)
+  \item Longer pendulum $\implies$ longer period
+  \item Stronger gravity $\implies$ shorter period
+  \item A pendulum clock runs \textbf{slow} at higher
+  altitude (smaller $g$)
+\end{itemize}
+\end{keybox}
+
+\begin{diagbox}[The Simple Pendulum]
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+  % Pivot
+  \fill[gray!40] (-0.5,4) rectangle (0.5,4.3);
+  \draw[thick] (-0.5,4) -- (0.5,4);
+  \fill (0,4) circle (3pt);
+
+  % String (equilibrium)
+  \draw[thick, gray, dashed] (0,4) -- (0,1.5);
+
+  % String (displaced)
+  \draw[thick, codexblue] (0,4) -- (1.2,1.8);
+  \fill[codexblue!50] (1.2,1.8) circle (8pt)
+    node[right, black]{$m$};
+
+  % Length label
+  \draw[<->, gray] (-0.3,4) -- (-0.3,1.8);
+  \node[left, gray] at (-0.3,2.9) {$L$};
+
+  % Angle
+  \draw[codexgold, thick] (0,3.2) arc(270:298:0.8);
+  \node[codexgold] at (0.2,3.1) {$\theta$};
+
+  % Forces on bob
+  \draw[->, very thick, codexred]
+    (1.2,1.8) -- (1.2,0.6) node[below]{$mg$};
+  \draw[->, very thick, codexgreen]
+    (1.2,1.8) -- (1.0,3.0) node[above left]{$T$};
+  \draw[->, thick, codexblue, dashed]
+    (1.2,1.8) -- (-0.2,1.8)
+    node[left, font=\small, align=left]{$mg\sin\theta$\\(restoring)};
+
+  % Period formula
+  \node[align=center, codexblue, font=\small]
+    at (-2.0, 0.5)
+    {$T = 2\pi\sqrt{\dfrac{L}{g}}$};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[7.2]
+\stepcounter{workedexample}
+A simple pendulum makes 20 complete oscillations in
+$34\ \text{s}$.\\
+(a) Find the period and frequency.\\
+(b) Find the length of the pendulum.\\
+(c) The pendulum is taken to a planet where
+$g = 4.0\ \text{m\,s}^{-2}$.
+What is the new period?
+($g = 10\ \text{m\,s}^{-2}$ on Earth)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Period and frequency:
+\[
+  T = \frac{34}{20} = 1.70\ \text{s}
+  \qquad
+  f = \frac{1}{T} = \frac{1}{1.70} = 0.588\ \text{Hz}
+\]
+
+\textbf{(b)} Length:
+\[
+  T = 2\pi\sqrt{\frac{L}{g}}
+  \implies T^2 = 4\pi^2\frac{L}{g}
+  \implies L = \frac{gT^2}{4\pi^2}
+\]
+\[
+  L = \frac{10 \times 1.70^2}{4\pi^2}
+  = \frac{10 \times 2.89}{39.48}
+  = \frac{28.9}{39.48} = 0.732\ \text{m}
+\]
+
+\textbf{(c)} On the new planet:
+\[
+  T' = 2\pi\sqrt{\frac{L}{g'}}
+  = 2\pi\sqrt{\frac{0.732}{4.0}}
+  = 2\pi\sqrt{0.183}
+  = 2\pi \times 0.428 = 2.69\ \text{s}
+\]
+
+The pendulum swings more slowly because gravity
+is weaker.
+\end{solutionbox}
+
+% ============================================================
+\section{The Mass-Spring System}
+% ============================================================
+
+\begin{processbox}[Period of a Mass-Spring System]
+A mass $m$ on a spring of spring constant $k$ is
+displaced by $x$ from equilibrium. By Hooke's Law,
+the restoring force is:
+\[
+  F = -kx
+\]
+From Newton's second law $F = ma$:
+\[
+  a = -\frac{k}{m}x
+\]
+Comparing with $a = -\omega^2 x$: $\omega^2 = k/m$
+\[
+  \boxed{T = 2\pi\sqrt{\frac{m}{k}}}
+  \qquad
+  f = \frac{1}{2\pi}\sqrt{\frac{k}{m}}
+\]
+\end{processbox}
+
+\begin{keybox}[Mass-Spring System --- Key Properties]
+\[
+  T = 2\pi\sqrt{\frac{m}{k}}
+\]
+\begin{itemize}[noitemsep]
+  \item Heavier mass $\implies$ longer period (more
+  inertia to oscillate)
+  \item Stiffer spring (larger $k$) $\implies$ shorter
+  period (stronger restoring force)
+  \item \textbf{Period is independent of gravity} ---
+  a spring clock works identically in space, on the
+  Moon, and on Earth
+  \item Period is independent of amplitude (for SHM
+  conditions)
+\end{itemize}
+\end{keybox}
+
+\begin{examplebox}[7.3]
+\stepcounter{workedexample}
+A $0.40\ \text{kg}$ mass hangs from a spring of
+spring constant $100\ \text{N\,m}^{-1}$ and oscillates
+vertically.\\
+(a) Find the period and frequency.\\
+(b) Find the amplitude if the maximum speed is
+$0.60\ \text{m\,s}^{-1}$.\\
+(c) Find the maximum acceleration.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Period:
+\[
+  T = 2\pi\sqrt{\frac{m}{k}}
+  = 2\pi\sqrt{\frac{0.40}{100}}
+  = 2\pi\sqrt{0.004}
+  = 2\pi \times 0.0632
+  = 0.397\ \text{s}
+\]
+\[
+  f = \frac{1}{T} = \frac{1}{0.397} = 2.52\ \text{Hz}
+\]
+
+\textbf{(b)} Angular frequency:
+$\omega = 2\pi f = 2\pi \times 2.52 = 15.8\ \text{rad\,s}^{-1}$
+
+From $v_{max} = A\omega$:
+\[
+  A = \frac{v_{max}}{\omega} = \frac{0.60}{15.8}
+  = 0.038\ \text{m} = 3.8\ \text{cm}
+\]
+
+\textbf{(c)} Maximum acceleration:
+\[
+  a_{max} = A\omega^2 = 0.038 \times 15.8^2
+  = 0.038 \times 249.6
+  = 9.5\ \text{m\,s}^{-2}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Energy in Simple Harmonic Motion}
+% ============================================================
+
+\begin{lawbox}[Energy in SHM]
+In SHM, energy continuously converts between kinetic
+and potential forms while total mechanical energy
+remains constant.
+
+\textbf{Kinetic energy:}
+\[
+  KE = \frac{1}{2}mv^2
+  = \frac{1}{2}m\omega^2(A^2 - x^2)
+\]
+
+\textbf{Potential energy:}
+\[
+  PE = \frac{1}{2}m\omega^2 x^2
+\]
+
+\textbf{Total energy:}
+\[
+  E_{total} = KE + PE = \frac{1}{2}m\omega^2 A^2
+  = \text{constant}
+\]
+
+At equilibrium ($x=0$): $KE = E_{total}$, $PE = 0$\\
+At amplitude ($x=A$): $KE = 0$, $PE = E_{total}$
+\end{lawbox}
+
+\begin{diagbox}[Energy vs Displacement in SHM]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=10cm, height=6cm,
+  xlabel={Displacement $x$},
+  ylabel={Energy},
+  xmin=-1.3, xmax=1.3,
+  ymin=0, ymax=1.3,
+  xtick={-1,0,1},
+  xticklabels={$-A$,$0$,$A$},
+  ytick={0,0.5,1},
+  yticklabels={$0$,$\frac{1}{2}E$,$E_{total}$},
+  grid=major, grid style={gray!20},
+  legend pos=north east
+]
+  % Total energy (horizontal line)
+  \addplot[black, thick, domain=-1.3:1.3]{1.0};
+  \addlegendentry{$E_{total}$}
+
+  % PE = (1/2)m*omega^2*x^2 (parabola)
+  \addplot[codexred, thick, domain=-1.1:1.1,
+    samples=50]{x^2};
+  \addlegendentry{PE}
+
+  % KE = E - PE
+  \addplot[codexblue, thick, domain=-1:1,
+    samples=50]{1 - x^2};
+  \addlegendentry{KE}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\small At $x = A/\sqrt{2}$: KE = PE = $E_{total}/2$
+\end{diagbox}
+
+\begin{examplebox}[7.4]
+\stepcounter{workedexample}
+A particle of mass $0.20\ \text{kg}$ oscillates with
+SHM of amplitude $0.10\ \text{m}$ and period
+$1.5\ \text{s}$.\\
+(a) Calculate the total energy.\\
+(b) Find the displacement at which KE = PE.\\
+(c) Find the KE and PE when $x = 0.06\ \text{m}$.
+\end{examplebox}
+
+\begin{solutionbox}
+$\omega = 2\pi/T = 2\pi/1.5 = 4.19\ \text{rad\,s}^{-1}$
+
+\textbf{(a)} Total energy:
+\[
+  E = \frac{1}{2}m\omega^2 A^2
+  = \frac{1}{2}(0.20)(4.19)^2(0.10)^2
+  = 0.1 \times 17.56 \times 0.01
+  = 0.0176\ \text{J}
+\]
+
+\textbf{(b)} KE = PE means each $= E/2$:
+\[
+  PE = \frac{1}{2}m\omega^2 x^2 = \frac{E}{2}
+\]
+\[
+  x^2 = \frac{A^2}{2} \implies x = \frac{A}{\sqrt{2}}
+  = \frac{0.10}{\sqrt{2}} = 0.0707\ \text{m}
+\]
+
+\textbf{(c)} At $x = 0.06\ \text{m}$:
+\[
+  PE = \frac{1}{2}m\omega^2 x^2
+  = \frac{1}{2}(0.20)(17.56)(0.06)^2
+  = 0.1 \times 17.56 \times 0.0036
+  = 0.00632\ \text{J}
+\]
+\[
+  KE = E - PE = 0.0176 - 0.00632 = 0.0113\ \text{J}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Damped and Forced Oscillations}
+% ============================================================
+
+\begin{definitionbox}[Damping]
+\textbf{Damping} is the reduction in amplitude of
+oscillation over time due to energy dissipation
+(usually through friction or viscous drag).
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Light damping:} Amplitude decreases
+  gradually. The system oscillates many times before
+  stopping. Example: a guitar string.
+  \item \textbf{Heavy damping:} Amplitude decreases
+  rapidly. The system returns slowly to equilibrium
+  without oscillating. Example: a car shock absorber.
+  \item \textbf{Critical damping:} The system returns
+  to equilibrium as quickly as possible without
+  oscillating. Example: door dampers, galvanometers.
+  \item \textbf{Overdamping:} Returns to equilibrium
+  slowly, without oscillating (but slower than
+  critical damping).
+\end{itemize}
+\end{definitionbox}
+
+\begin{diagbox}[Damping Comparison]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=6cm,
+  xlabel={Time $t$},
+  ylabel={Displacement $x$},
+  xmin=0, xmax=12, ymin=-1.3, ymax=1.3,
+  grid=major, grid style={gray!20},
+  legend pos=north east,
+  xtick=\empty, ytick=\empty
+]
+  % Light damping (oscillates, decays slowly)
+  \addplot[codexblue, thick, domain=0:12, samples=200]
+    {exp(-0.2*x)*sin(deg(2*x))};
+  \addlegendentry{Light damping}
+
+  % Heavy damping (slow return, no oscillation)
+  \addplot[codexred, thick, domain=0:12, samples=100]
+    {exp(-0.9*x)};
+  \addlegendentry{Heavy damping}
+
+  % Critical damping (fastest return without oscillation)
+  \addplot[codexgreen, thick, domain=0:12, samples=100]
+    {(1+3*x)*exp(-3*x)};
+  \addlegendentry{Critical damping}
+
+  % Equilibrium line
+  \addplot[black, dashed, domain=0:12]{0};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{definitionbox}[Forced Oscillations and Resonance]
+\textbf{Forced oscillations} occur when a periodic
+external force drives a system to oscillate.
+The system oscillates at the \textbf{driving frequency},
+not its natural frequency.
+
+\textbf{Resonance} occurs when the driving frequency
+equals the \textbf{natural frequency} of the system.
+At resonance:
+\begin{itemize}[noitemsep]
+  \item Amplitude of oscillation is maximum
+  \item Energy transfer from driver to system
+  is most efficient
+  \item Can be destructive (Tacoma Narrows Bridge,
+  1940 --- destroyed by wind-induced resonance)
+  or useful (MRI machines, radio tuning, microwave
+  ovens)
+\end{itemize}
+\end{definitionbox}
+
+\begin{realworldbox}[Resonance in Bridges and Buildings]
+On April 4, 2014, a suspension footbridge in Houphouet-Boigny,
+Abidjan, Côte d'Ivoire, collapsed as crowds returning
+from Easter mass marched in step across it. The rhythmic
+footfall created a driving frequency close to the
+bridge's natural frequency, producing resonance.
+Engineers now design bridges to have natural
+frequencies well away from typical human marching
+frequencies, and instruct crowds to break step on
+suspension bridges.
+\end{realworldbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{SHM condition:} $a = -\omega^2 x$
+(acceleration proportional to and opposite to
+displacement)
+
+\textbf{Equations:}
+$x = A\sin(\omega t)$;
+$v = A\omega\cos(\omega t) = \omega\sqrt{A^2-x^2}$;
+$a = -\omega^2 x$
+
+\textbf{Maxima:}
+$v_{max} = A\omega$ (at $x=0$);
+$a_{max} = A\omega^2$ (at $x=\pm A$)
+
+\textbf{Simple pendulum:}
+$T = 2\pi\sqrt{L/g}$
+(independent of mass and amplitude)
+
+\textbf{Mass-spring:}
+$T = 2\pi\sqrt{m/k}$
+(independent of amplitude and gravity)
+
+\textbf{Energy:}
+$E_{total} = \frac{1}{2}m\omega^2 A^2$;
+$KE = \frac{1}{2}m\omega^2(A^2-x^2)$;
+$PE = \frac{1}{2}m\omega^2 x^2$
+
+\textbf{Damping:} reduces amplitude; critical damping
+gives fastest return without oscillation.
+
+\textbf{Resonance:} maximum amplitude when driving
+frequency $=$ natural frequency.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[7]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} Which condition defines SHM?
+
+\mcoption{A}{Constant velocity}
+\mcoption{B}{Acceleration proportional to and in
+the same direction as displacement}
+\mcoption{C}{Acceleration proportional to and
+opposite to displacement}
+\mcoption{D}{Constant kinetic energy}
+\ansref{Ch7-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} A simple pendulum has period $T$ on Earth.
+On a planet where $g$ is four times larger, the period is:
+
+\mcoption{A}{$4T$}
+\mcoption{B}{$2T$}
+\mcoption{C}{$T/2$}
+\mcoption{D}{$T/4$}
+\ansref{Ch7-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} In SHM, the velocity is maximum when:
+
+\mcoption{A}{Displacement is maximum}
+\mcoption{B}{Displacement is zero}
+\mcoption{C}{Acceleration is maximum}
+\mcoption{D}{Potential energy is maximum}
+\ansref{Ch7-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} A mass-spring system has period $T$.
+If the mass is doubled and the spring constant is
+halved, the new period is:
+
+\mcoption{A}{$T$}
+\mcoption{B}{$2T$}
+\mcoption{C}{$T/2$}
+\mcoption{D}{$T\sqrt{2}$}
+\ansref{Ch7-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} A particle oscillates with SHM of
+amplitude $0.04\ \text{m}$ and angular frequency
+$5\ \text{rad\,s}^{-1}$. Its maximum acceleration is:
+
+\mcoption{A}{$0.20\ \text{m\,s}^{-2}$}
+\mcoption{B}{$0.80\ \text{m\,s}^{-2}$}
+\mcoption{C}{$1.00\ \text{m\,s}^{-2}$}
+\mcoption{D}{$1.25\ \text{m\,s}^{-2}$}
+\ansref{Ch7-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} At which point in SHM are KE and PE equal?
+
+\mcoption{A}{At the equilibrium position}
+\mcoption{B}{At the amplitude}
+\mcoption{C}{At $x = A/\sqrt{2}$}
+\mcoption{D}{At $x = A/2$}
+\ansref{Ch7-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} Critical damping is best described as:
+
+\mcoption{A}{The system oscillates with decreasing
+amplitude}
+\mcoption{B}{The system returns to equilibrium
+as quickly as possible without oscillating}
+\mcoption{C}{The system never returns to equilibrium}
+\mcoption{D}{The amplitude remains constant}
+\ansref{Ch7-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} Resonance occurs when:
+
+\mcoption{A}{The driving frequency is zero}
+\mcoption{B}{The driving frequency equals the
+natural frequency}
+\mcoption{C}{Damping is maximum}
+\mcoption{D}{The amplitude is minimum}
+\ansref{Ch7-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} A pendulum of length $1.0\ \text{m}$
+has period (take $\pi^2 = 10$,
+$g = 10\ \text{m\,s}^{-2}$):
+
+\mcoption{A}{$1.0\ \text{s}$}
+\mcoption{B}{$2.0\ \text{s}$}
+\mcoption{C}{$\pi\ \text{s}$}
+\mcoption{D}{$0.5\ \text{s}$}
+\ansref{Ch7-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} In SHM, the phase difference between
+displacement and acceleration is:
+
+\mcoption{A}{$0°$}
+\mcoption{B}{$90°$}
+\mcoption{C}{$180°$}
+\mcoption{D}{$270°$}
+\ansref{Ch7-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A particle oscillates with SHM given by
+$x = 0.12\sin(8\pi t)$ metres, where $t$ is in seconds.\\[4pt]
+(a) Write down the amplitude, angular frequency,
+period and frequency.\\
+(b) Find the maximum speed and maximum acceleration.\\
+(c) Find the displacement, speed and acceleration
+at $t = 0.10\ \text{s}$.\\
+(d) At what displacement is the speed equal to half
+the maximum speed?
+\hfill\ansref{Ch7-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A student uses a simple pendulum to
+determine $g$. She measures the following periods
+for different lengths:
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+$L$ (m) & $T$ (s)\\
+\midrule
+0.25 & 1.00\\
+0.50 & 1.41\\
+0.75 & 1.73\\
+1.00 & 2.00\\
+1.25 & 2.24\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+(a) Explain why a graph of $T^2$ against $L$ gives
+a straight line, and state the gradient in terms of $g$.\\
+(b) Plot $T^2$ against $L$ (or use the data to find
+the gradient algebraically) and determine $g$.\\
+(c) The accepted value of $g$ is $9.81\ \text{m\,s}^{-2}$.
+Calculate the percentage error in your answer.\\
+(d) State two sources of experimental error in this
+method.
+\hfill\ansref{Ch7-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A $0.50\ \text{kg}$ mass hangs from
+a spring. When pulled down $3.0\ \text{cm}$ from
+equilibrium and released, it oscillates with period
+$0.80\ \text{s}$.\\[4pt]
+(a) Find the spring constant.\\
+(b) Find the total energy of the oscillation.\\
+(c) Find the maximum speed.\\
+(d) Find the speed and KE when the displacement is
+$2.0\ \text{cm}$.\\
+(e) A second identical spring is attached in parallel
+(i.e.\ both support the same mass). What is the new
+period?
+\hfill\ansref{Ch7-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.}
+(a) Explain with a diagram what is meant by
+(i) light damping, (ii) critical damping, and
+(iii) heavy damping, giving one practical application
+of each.\\[4pt]
+(b) A car suspension spring has spring constant
+$k = 25\,000\ \text{N\,m}^{-1}$. The car body it
+supports has mass $m = 400\ \text{kg}$.\\
+(i) Find the natural frequency of vertical oscillation.\\
+(ii) Explain why the shock absorbers in a car should
+produce critical (or near-critical) damping.\\
+(iii) If the shock absorbers fail (no damping),
+what happens when the car hits a pothole?
+\hfill\ansref{Ch7-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A particle of mass $0.10\ \text{kg}$
+undergoes SHM with amplitude $A = 0.15\ \text{m}$
+and frequency $f = 3.0\ \text{Hz}$.\\[4pt]
+(a) Calculate the total mechanical energy.\\
+(b) Calculate the KE and PE at $x = 0.09\ \text{m}$.\\
+(c) At what displacement is the KE equal to twice
+the PE?\\
+(d) A resistive force of $0.05\ \text{N}$ acts on
+the particle throughout one complete oscillation.
+Calculate the work done by this resistive force and
+explain how this affects the subsequent motion.
+\hfill\ansref{Ch7-B5}
+
+\end{exercisebox}

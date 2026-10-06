@@ -1,0 +1,1015 @@
+% ============================================================
+%  CHAPTER 10: SIMPLE MACHINES
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part1/ch10_simple_machines.tex
+% ============================================================
+
+\chapter{Simple Machines}
+\label{ch:simple_machines}
+\minitoc
+\newpage
+
+\chapterquote{Give me a lever long enough and a fulcrum
+on which to place it, and I shall move the world.}{Archimedes}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Define mechanical advantage, velocity ratio
+  and efficiency of a machine
+  \item Explain why efficiency is always less than
+  100\% in practice
+  \item Analyse the lever and classify lever classes
+  with real examples
+  \item Derive and apply the velocity ratio for the
+  inclined plane, pulley systems, wheel and axle,
+  screw jack, gear wheels and wedge
+  \item Apply the principle of moments to levers and
+  other machines
+  \item Solve problems involving overcoming friction
+  and calculating actual efficiency
+  \item Explain why simple machines are useful even
+  when they cannot create energy
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{What is a Machine?}
+% ============================================================
+
+A machine is any device that makes work easier to
+do. The word ``easier'' here has a precise meaning:
+a machine allows us to apply a smaller force over a
+larger distance to achieve the same result as a larger
+force over a smaller distance. Or it allows us to
+change the \textit{direction} of the applied force.
+
+\begin{keybox}[The Fundamental Truth About Machines]
+No machine can create energy. A machine can only
+\textit{redirect} or \textit{redistribute} the energy
+you put into it. In an ideal (frictionless) machine,
+energy out equals energy in. In a real machine,
+energy out is always \textit{less} than energy in
+because some energy is always lost to friction and
+heat. \textbf{Machines save effort, not energy.}
+\end{keybox}
+
+\begin{historybox}[Archimedes and the Simple Machine]
+Archimedes of Syracuse (287--212 BC) was the first
+person to give a rigorous mathematical treatment of
+simple machines. He analysed the lever, the pulley,
+and the screw with extraordinary precision. His
+boast about moving the world with a long enough
+lever was not mere rhetoric --- it was a mathematically
+sound statement about the principle of the lever.
+He famously helped defend Syracuse against Roman
+ships by designing giant cranes that could lift
+ships out of the water using pulley systems, and
+catapults that could hurl enormous stones. Engineering
+has not fundamentally changed since: we still use
+the same simple machines, just combined in more
+complex ways.
+\end{historybox}
+
+% ============================================================
+\section{Key Definitions}
+% ============================================================
+
+\begin{definitionbox}[Effort, Load and Mechanical Advantage]
+\df{Effort ($E$)}{The force \textit{applied} to the
+machine by the operator.}
+
+\df{Load ($L$)}{The force exerted \textit{by} the
+machine on the object being moved (the useful output
+force).}
+
+\df{Mechanical Advantage (MA)}{The ratio of the load
+to the effort:}
+\[
+  MA = \frac{L}{E}
+\]
+MA has \textbf{no unit}. $MA > 1$ means the machine
+multiplies force (load $>$ effort). This is the most
+common reason for using a machine.
+\end{definitionbox}
+
+\begin{definitionbox}[Velocity Ratio]
+The \textbf{velocity ratio} (VR) is the ratio of the
+distance moved by the effort to the distance moved
+by the load in the same time:
+\[
+  VR = \frac{d_E}{d_L}
+\]
+It is also equal to the ratio of the speed of the
+effort point to the speed of the load point.
+VR has \textbf{no unit}.
+
+VR is determined purely by the geometry of the
+machine --- it does not depend on friction, efficiency,
+or the magnitude of the forces.
+\end{definitionbox}
+
+\begin{definitionbox}[Efficiency]
+The \textbf{efficiency} $\eta$ of a machine is the
+ratio of useful work output to total work input:
+\[
+  \eta = \frac{\text{Work output}}{\text{Work input}}
+  \times 100\%
+  = \frac{L \times d_L}{E \times d_E} \times 100\%
+  = \frac{MA}{VR} \times 100\%
+\]
+Efficiency is always less than 100\% in real machines
+because some energy is always dissipated as heat
+through friction. In an ideal (frictionless) machine,
+$\eta = 100\%$ and $MA = VR$.
+\end{definitionbox}
+
+\begin{keybox}[Relationship Between MA, VR and Efficiency]
+\[
+  \eta = \frac{MA}{VR} \implies MA = \eta \times VR
+\]
+For a real machine: $MA < VR$ (because $\eta < 1$)\\
+For an ideal machine: $MA = VR$ (because $\eta = 1$)
+\end{keybox}
+
+\begin{examplebox}[10.1]
+\stepcounter{workedexample}
+A machine lifts a $600\ \text{N}$ load through
+$2.0\ \text{m}$ when an effort of $150\ \text{N}$ is
+applied through $10\ \text{m}$.\\
+(a) Calculate the mechanical advantage.\\
+(b) Calculate the velocity ratio.\\
+(c) Calculate the efficiency.\\
+(d) Calculate the work done against friction.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Mechanical advantage:
+\[
+  MA = \frac{L}{E} = \frac{600}{150} = 4.0
+\]
+
+\textbf{(b)} Velocity ratio:
+\[
+  VR = \frac{d_E}{d_L} = \frac{10}{2.0} = 5.0
+\]
+
+\textbf{(c)} Efficiency:
+\[
+  \eta = \frac{MA}{VR} \times 100\%
+  = \frac{4.0}{5.0} \times 100\% = 80\%
+\]
+
+\textbf{(d)} Work done against friction:
+\[
+  W_{input} = E \times d_E = 150 \times 10 = 1500\ \text{J}
+\]
+\[
+  W_{output} = L \times d_L = 600 \times 2.0 = 1200\ \text{J}
+\]
+\[
+  W_{friction} = W_{input} - W_{output} = 1500 - 1200
+  = 300\ \text{J}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{The Lever}
+% ============================================================
+
+The lever is the simplest machine --- a rigid bar
+that pivots about a fixed point called the
+\textbf{fulcrum}. The principle behind it is the
+\textbf{principle of moments}.
+
+\begin{lawbox}[Principle of Moments]
+For a body in equilibrium, the sum of the clockwise
+moments about any point equals the sum of the
+anticlockwise moments about the same point:
+\[
+  \sum (\text{clockwise moments})
+  = \sum (\text{anticlockwise moments})
+\]
+For a simple lever with effort arm $d_E$ and load
+arm $d_L$:
+\[
+  E \times d_E = L \times d_L
+\]
+Therefore:
+\[
+  MA = \frac{L}{E} = \frac{d_E}{d_L} = VR
+  \quad \text{(for an ideal lever)}
+\]
+\end{lawbox}
+
+\subsection{Classes of Levers}
+
+Levers are classified by the relative positions of
+the Effort (E), Fulcrum (F), and Load (L).
+
+\begin{diagbox}[The Three Classes of Lever]
+\begin{center}
+\begin{tikzpicture}[scale=0.85, font=\small]
+
+  % === FIRST CLASS ===
+  \node[font=\bfseries] at (3.5,7.5) {1st Class: F between E and L};
+  % Beam
+  \fill[gray!30] (0,6.5) rectangle (7,6.8);
+  % Fulcrum (triangle at centre)
+  \fill[codexgold] (3.5,5.8) -- (3.0,6.5) -- (4.0,6.5) -- cycle;
+  % Effort (left)
+  \draw[->, very thick, codexblue] (0.8,6.8) -- (0.8,7.8);
+  \node[above, codexblue] at (0.8,7.8) {E};
+  % Load (right, down)
+  \draw[->, very thick, codexred] (6.2,6.8) -- (6.2,5.8);
+  \node[below, codexred] at (6.2,5.8) {L};
+  % Labels
+  \node[below, gray] at (3.5,5.7) {F};
+  \draw[<->, gray] (0.8,5.2) -- (3.5,5.2);
+  \node[below, gray] at (2.1,5.1) {$d_E$};
+  \draw[<->, gray] (3.5,5.2) -- (6.2,5.2);
+  \node[below, gray] at (4.85,5.1) {$d_L$};
+
+  % === SECOND CLASS ===
+  \node[font=\bfseries] at (3.5,4.5) {2nd Class: L between F and E};
+  % Beam
+  \fill[gray!30] (0,3.5) rectangle (7,3.8);
+  % Fulcrum (triangle at left)
+  \fill[codexgold] (0.5,2.8) -- (0,3.5) -- (1.0,3.5) -- cycle;
+  % Load (centre, down)
+  \draw[->, very thick, codexred] (3.5,3.8) -- (3.5,2.8);
+  \node[below, codexred] at (3.5,2.8) {L};
+  % Effort (right, up)
+  \draw[->, very thick, codexblue] (6.5,3.8) -- (6.5,4.8);
+  \node[above, codexblue] at (6.5,4.8) {E};
+  % Labels
+  \node[below, gray] at (0.5,2.7) {F};
+  \draw[<->, gray] (0.5,2.2) -- (6.5,2.2);
+  \node[below, gray] at (3.5,2.1) {$d_E$};
+  \draw[<->, gray] (0.5,1.7) -- (3.5,1.7);
+  \node[below, gray] at (2.0,1.6) {$d_L$};
+
+  % === THIRD CLASS ===
+  \node[font=\bfseries] at (3.5,1.4) {3rd Class: E between F and L};
+  % Beam
+  \fill[gray!30] (0,0.5) rectangle (7,0.8);
+  % Fulcrum (triangle at left)
+  \fill[codexgold] (0.5,-0.2) -- (0,0.5) -- (1.0,0.5) -- cycle;
+  % Effort (centre, up)
+  \draw[->, very thick, codexblue] (2.5,0.8) -- (2.5,1.8);
+  \node[above, codexblue] at (2.5,1.8) {E};
+  % Load (right, down)
+  \draw[->, very thick, codexred] (6.2,0.8) -- (6.2,-0.2);
+  \node[below, codexred] at (6.2,-0.2) {L};
+  % Labels
+  \node[below, gray] at (0.5,-0.3) {F};
+  \draw[<->, gray] (0.5,-0.8) -- (2.5,-0.8);
+  \node[below, gray] at (1.5,-0.9) {$d_E$};
+  \draw[<->, gray] (0.5,-1.3) -- (6.2,-1.3);
+  \node[below, gray] at (3.35,-1.4) {$d_L$};
+  
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{defbox}[Lever Classes --- Summary]
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+\textbf{Class} & \textbf{Arrangement} & \textbf{MA} &
+\textbf{Examples}\\
+\midrule
+1st & F between E and L & Can be  $\gtreqqless 1$ & See-saw, crowbar, scissors, pliers\\
+2nd & L between F and E & Always $>1$ &
+Wheelbarrow, nutcracker, bottle opener\\
+3rd & E between F and L & Always $<1$ &
+Tweezers, forearm, fishing rod, broom\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{defbox}
+
+\begin{realworldbox}[The Human Forearm as a Third-Class Lever]
+Your forearm is a third-class lever. The fulcrum is
+the elbow joint, the effort is the biceps muscle
+attached close to the elbow, and the load is whatever
+you are holding in your hand. Since the effort arm
+is much shorter than the load arm, $MA < 1$ --- the
+muscle must exert a much larger force than the weight
+of the object being held. When you hold a $1\ \text{kg}$
+book in your hand ($\approx 30\ \text{cm}$ from elbow)
+and your biceps attaches $4\ \text{cm}$ from the elbow,
+the biceps must exert $30/4 = 7.5$ times the weight
+of the book --- about $75\ \text{N}$ to hold a $10\ \text{N}$
+load. The advantage of third-class levers is speed
+and range of movement, not force multiplication.
+\end{realworldbox}
+
+\begin{examplebox}[10.2]
+\stepcounter{workedexample}
+A crowbar (first-class lever) has its fulcrum
+$15\ \text{cm}$ from the load and $90\ \text{cm}$
+from where the effort is applied. A $720\ \text{N}$
+load is to be lifted.\\
+(a) Calculate the velocity ratio.\\
+(b) Calculate the effort required if the crowbar
+is 90\% efficient.\\
+(c) Calculate the mechanical advantage.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} VR (for a lever):
+\[
+  VR = \frac{d_E}{d_L} = \frac{90}{15} = 6.0
+\]
+
+\textbf{(b)} From $\eta = MA/VR$:
+\[
+  MA = \eta \times VR = 0.90 \times 6.0 = 5.4
+\]
+From $MA = L/E$:
+\[
+  E = \frac{L}{MA} = \frac{720}{5.4}
+  = 133.3\ \text{N} \approx 133\ \text{N}
+\]
+
+\textbf{(c)} Mechanical advantage already found:
+$MA = 5.4$
+\end{solutionbox}
+
+% ============================================================
+\section{The Inclined Plane}
+% ============================================================
+
+\begin{processbox}[Inclined Plane Analysis]
+An inclined plane allows a heavy object to be raised
+to a height $h$ by pushing it along a longer slope
+of length $\ell$, reducing the required force.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  % Incline
+  \fill[gray!20] (0,0) -- (6,0) -- (6,3) -- cycle;
+  \draw[thick] (0,0) -- (6,0) -- (6,3) -- (0,0);
+
+  % Object
+  \begin{scope}[rotate around={26.6:(2.5,1.25)}]
+    \fill[codexblue!40] (2.0,1.1) rectangle (3.0,1.6);
+  \end{scope}
+  \node[font=\small] at (2.5,1.4) {$m$};
+
+  % Effort arrow (along slope)
+  \draw[->, very thick, codexred]
+    (2.5,1.4) -- ++(1.5,0.75)
+    node[above, font=\small]{$E$};
+
+  % Height and length labels
+  \draw[<->, gray] (6.3,0) -- (6.3,3);
+  \node[right, gray] at (6.4,1.5) {$h$};
+  \draw[<->, gray] (0,-0.4) -- (6,-0.4);
+  \node[below, gray] at (3,-0.4) {$\ell \sin\theta = h$};
+
+  % Slope length
+  \draw[<->, codexgold] (-0.2,0) -- (5.8,2.9);
+  \node[left, codexgold] at (2.5,1.8) {$\ell$};
+
+  % Angle
+  \draw[codexgold] (0.8,0) arc(0:26.6:0.8);
+  \node[codexgold] at (1.2,0.18) {$\theta$};
+\end{tikzpicture}
+\end{center}
+
+The effort moves through distance $\ell$ (length of
+slope) while the load is raised by $h$ (vertical height):
+\[
+  VR = \frac{d_E}{d_L} = \frac{\ell}{h}
+  = \frac{1}{\sin\theta}
+\]
+For an ideal inclined plane (no friction):
+\[
+  E \times \ell = L \times h
+  \implies E = L\sin\theta
+\]
+The shallower the incline, the smaller the effort
+required, but the longer the distance pushed.
+\end{processbox}
+
+\begin{examplebox}[10.3]
+\stepcounter{workedexample}
+A ramp is $5.0\ \text{m}$ long and raises a load
+to a height of $1.5\ \text{m}$.
+A $200\ \text{N}$ effort is used to push a
+$600\ \text{N}$ load up the ramp.\\
+(a) Find the VR and the angle of the incline.\\
+(b) Find the efficiency.\\
+(c) Find the friction force acting on the load.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} VR and angle:
+\[
+  VR = \frac{\ell}{h} = \frac{5.0}{1.5} = 3.33
+\]
+\[
+  \sin\theta = \frac{h}{\ell} = \frac{1.5}{5.0} = 0.30
+  \implies \theta = 17.5°
+\]
+
+\textbf{(b)} MA $= L/E = 600/200 = 3.0$
+\[
+  \eta = \frac{MA}{VR} \times 100\%
+  = \frac{3.0}{3.33} \times 100\% = 90.1\%
+\]
+
+\textbf{(c)} Work input $= 200 \times 5.0 = 1000\ \text{J}$\\
+Work output $= 600 \times 1.5 = 900\ \text{J}$\\
+Work lost to friction $= 1000 - 900 = 100\ \text{J}$\\
+\[
+  f = \frac{W_{friction}}{d_E}
+  = \frac{100}{5.0} = 20\ \text{N}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Pulleys}
+% ============================================================
+
+A pulley is a wheel with a grooved rim over which a
+rope or chain runs. A single fixed pulley only changes
+the \textit{direction} of force, not its magnitude
+($VR = 1$). Combining multiple pulleys reduces the
+required effort.
+
+\begin{lawbox}[Pulley Systems]
+For a pulley system, the VR equals the number of
+rope segments \textbf{supporting the load} (i.e.\
+the number of sections of rope attached to or
+supporting the lower (movable) block):
+\[
+  VR = n \quad \text{(number of load-supporting ropes)}
+\]
+For an ideal pulley system:
+\[
+  MA = VR = n
+  \implies E = \frac{L}{n}
+\]
+\end{lawbox}
+
+\begin{diagbox}[Pulley Systems]
+\begin{center}
+\begin{tikzpicture}[scale=0.8, font=\small]
+
+  % SINGLE FIXED PULLEY (VR = 1)
+  \node[font=\bfseries, align=center] at (1.5,10.0) {Single fixed\\($VR=1$)};
+  \draw[thick, fill=gray!30] (1.5,7.5) circle (0.5cm);
+  \fill (1.5,7.5) circle (2pt);
+  % Rope
+  \draw[thick] (1.0,7.5) -- (1.0,6.0);
+  \draw[thick] (2.0,7.5) -- (2.0,9.0);
+  % Load
+  \fill[codexblue!40] (0.6,5.5) rectangle (1.4,6.0);
+  \node at (1.0,5.75) {$L$};
+  % Effort
+  \draw[->, thick, codexred] (2.0,8.5) -- (2.0,9.0)
+    node[right]{$E=L$};
+  % Ceiling
+  \fill[gray!30] (1.0,7.8) rectangle (2.0,8.1);
+  \draw[thick] (1.0,7.8) -- (2.0,7.8);
+
+  % MOVABLE PULLEY SYSTEM (VR = 2)
+  \node[font=\bfseries, align=center] at (6,10.0) {One movable\\($VR=2$)};
+  % Fixed pulley
+  \draw[thick, fill=gray!30] (6,7.5) circle (0.4cm);
+  \fill (6,7.5) circle (2pt);
+  % Movable pulley
+  \draw[thick, fill=gray!30] (6,5.8) circle (0.4cm);
+  \fill (6,5.8) circle (2pt);
+  % Ropes
+  \draw[thick] (5.6,5.8) -- (5.6,7.5);  % left rope
+  \draw[thick] (6.4,5.8) -- (6.4,7.0);  % right rope (attached to ceiling)
+  \draw[thick] (5.6,7.5) -- (6.0,7.1);  % over fixed pulley
+  \draw[thick] (6.0,7.9) -- (6.0,8.6);  % effort rope
+  % Ceiling
+  \fill[gray!30] (5.0,7.8) rectangle (7.0,8.1);
+  \draw[thick] (5.0,7.8) -- (7.0,7.8);
+  \draw[thick] (6.4,7.8) -- (6.4,7.0); % right support to ceiling
+  % Load
+  \fill[codexblue!40] (5.4,5.2) rectangle (6.6,5.6);
+  \node at (6.0,5.4) {$L$};
+  % Effort
+  \draw[->, thick, codexred]
+    (6.0,8.3) -- (6.0,9.0) node[right]{$E = L/2$};
+  % Labels
+  \node[codexblue, font=\tiny] at (5.2,6.6) {1};
+  \node[codexblue, font=\tiny] at (6.65,6.6) {2};
+
+  % VR labels
+  \node[codexgreen, font=\small] at (1.5,5.0)
+    {$VR = 1$};
+  \node[codexgreen, font=\small] at (6.0,4.8)
+    {$VR = 2$};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[10.4]
+\stepcounter{workedexample}
+A pulley system has 4 load-supporting ropes.
+An effort of $250\ \text{N}$ lifts a load of
+$800\ \text{N}$ through $2.0\ \text{m}$.\\
+(a) Find the VR.\\
+(b) Find the MA.\\
+(c) Find the efficiency.\\
+(d) Find the effort rope distance moved.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} $VR = 4$ (four load-supporting ropes)
+
+\textbf{(b)} $MA = L/E = 800/250 = 3.2$
+
+\textbf{(c)} $\eta = MA/VR \times 100\%
+= 3.2/4 \times 100\% = 80\%$
+
+\textbf{(d)} From $VR = d_E/d_L$:
+\[
+  d_E = VR \times d_L = 4 \times 2.0 = 8.0\ \text{m}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{The Wheel and Axle}
+% ============================================================
+
+\begin{processbox}[Wheel and Axle]
+A wheel of radius $R$ is mounted on an axle of
+radius $r$. The effort is applied at the rim of
+the wheel, and the load is lifted by a rope wound
+around the axle.
+
+The effort moves through a circumference of the
+wheel, the load moves through a circumference of
+the axle (in one turn):
+\[
+  VR = \frac{2\pi R}{2\pi r} = \frac{R}{r}
+\]
+Examples: steering wheel and steering column;
+winch handle and drum; screwdriver handle and shaft.
+\end{processbox}
+
+\begin{examplebox}[10.5]
+\stepcounter{workedexample}
+A well windlass (wheel and axle) has a wheel
+radius of $35\ \text{cm}$ and an axle radius of
+$5\ \text{cm}$. An effort of $80\ \text{N}$ raises
+a $400\ \text{N}$ bucket of water.\\
+(a) Find the VR.\\
+(b) Find the MA.\\
+(c) Find the efficiency.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} $VR = R/r = 35/5 = 7.0$
+
+\textbf{(b)} $MA = L/E = 400/80 = 5.0$
+
+\textbf{(c)} $\eta = MA/VR \times 100\%
+= 5.0/7.0 \times 100\% = 71.4\%$
+
+\begin{realworldbox}[The Well Windlass in Rural Nigeria]
+The traditional hand-operated well windlass is still
+widely used for drawing water in rural Nigerian
+communities, particularly in the North where deep
+wells are common. The windlass is a direct application
+of the wheel-and-axle principle: the handle is the
+``wheel'' (large radius), and the drum around which
+the rope winds is the ``axle'' (small radius).
+The mechanical advantage allows a woman or child to
+lift a $20\ \text{kg}$ bucket of water with a fraction
+of the force that would be required without the machine.
+\end{realworldbox}
+\end{solutionbox}
+
+% ============================================================
+\section{The Screw Jack}
+% ============================================================
+
+\begin{processbox}[Screw Jack]
+A screw jack converts rotational motion into linear
+motion. The effort is applied at the end of a handle
+of length $r$, and the load advances by one
+\textbf{pitch} $p$ (the distance between adjacent
+threads) per complete rotation.
+
+Per one complete turn of the handle:
+\begin{itemize}[noitemsep]
+  \item Effort moves through: $2\pi r$ (circumference
+  of circle traced by handle)
+  \item Load moves through: $p$ (one pitch)
+\end{itemize}
+\[
+  VR = \frac{2\pi r}{p}
+\]
+\end{processbox}
+
+\begin{examplebox}[10.6]
+\stepcounter{workedexample}
+A screw jack has a handle of length $30\ \text{cm}$
+and a pitch of $5.0\ \text{mm}$. An effort of
+$50\ \text{N}$ is applied.\\
+(a) Find the VR.\\
+(b) Find the load that can be lifted if the
+efficiency is $35\%$.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)}
+\[
+  VR = \frac{2\pi r}{p}
+  = \frac{2\pi \times 0.30}{0.005}
+  = \frac{1.885}{0.005} = 377
+\]
+
+\textbf{(b)}
+\[
+  MA = \eta \times VR = 0.35 \times 377 = 132
+\]
+\[
+  L = MA \times E = 132 \times 50 = 6600\ \text{N}
+\]
+
+A $50\ \text{N}$ effort lifts $6600\ \text{N}$
+($\approx 673\ \text{kg}$). This is why car jacks
+can lift a vehicle: the screw mechanism provides
+an enormous VR.
+\end{solutionbox}
+
+% ============================================================
+\section{Gear Wheels}
+% ============================================================
+
+\begin{processbox}[Gear Wheels]
+When two meshed gear wheels (driver and driven)
+rotate together, each tooth on the driver engages
+one tooth on the driven wheel. The number of teeth
+on each wheel determines the speed ratio.
+
+If the driver gear has $N_1$ teeth and the driven
+gear has $N_2$ teeth:
+\[
+  VR = \frac{N_2}{N_1}
+  = \frac{\text{teeth on driven gear}}
+  {\text{teeth on driver gear}}
+\]
+If $N_2 > N_1$: driven gear rotates more slowly but
+with more torque (force amplification).\\
+If $N_2 < N_1$: driven gear rotates faster but with
+less torque (speed amplification).
+\end{processbox}
+
+\begin{realworldbox}[Gears in Cars and Okada Bikes]
+Every bicycle and motorcycle (okada) on Nigerian
+roads uses gear systems. In low gear (large VR),
+the wheel turns slowly but with great force ---
+ideal for climbing hills. In high gear (small VR),
+the wheel turns fast with less force --- ideal for
+flat roads at speed. The rider selects the gear
+that matches the terrain, optimising the trade-off
+between speed and force --- exactly the principle
+of simple machines.
+\end{realworldbox}
+
+% ============================================================
+\section{The Wedge}
+% ============================================================
+
+\begin{processbox}[Wedge]
+A wedge is a double inclined plane. The effort
+is applied to the blunt end and the wedge is
+driven forward, splitting or lifting the load
+sideways.
+
+For a wedge of length $\ell$ and thickness $t$:
+\[
+  VR = \frac{\ell}{t}
+  = \frac{\text{slant length}}{\text{thickness}}
+\]
+A thin, sharp wedge has a high VR and requires
+less effort but must be driven further.
+Applications: axes, chisels, knives, ploughs,
+door wedges.
+\end{processbox}
+
+% ============================================================
+\section{Summary Table of Simple Machines}
+% ============================================================
+
+\begin{table}[H]
+\centering
+\caption{Summary of Simple Machines and Their Velocity Ratios}
+\label{tab:machines_summary}
+\begin{tabular}{lll}
+\toprule
+\textbf{Machine} & \textbf{VR Formula} & \textbf{Example}\\
+\midrule
+Lever (1st class) &
+  $\dfrac{d_E}{d_L}$ &
+  Crowbar, scissors\\[8pt]
+Lever (2nd class) &
+  $\dfrac{d_E}{d_L} > 1$ (always) &
+  Wheelbarrow\\[8pt]
+Lever (3rd class) &
+  $\dfrac{d_E}{d_L} < 1$ (always) &
+  Tweezers, forearm\\[8pt]
+Inclined plane &
+  $\dfrac{\ell}{h} = \dfrac{1}{\sin\theta}$ &
+  Ramp, road cutting\\[8pt]
+Pulley system &
+  $n$ (number of support ropes) &
+  Block and tackle\\[8pt]
+Wheel and axle &
+  $\dfrac{R}{r}$ &
+  Windlass, steering wheel\\[8pt]
+Screw jack &
+  $\dfrac{2\pi r}{p}$ &
+  Car jack, bolt\\[8pt]
+Gear wheels &
+  $\dfrac{N_2}{N_1}$ &
+  Bicycle, gearbox\\[8pt]
+Wedge &
+  $\dfrac{\ell}{t}$ &
+  Axe, chisel, knife\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Mechanical Advantage:} $MA = L/E$ (no unit)
+
+\textbf{Velocity Ratio:} $VR = d_E/d_L$ (no unit,
+geometry only)
+
+\textbf{Efficiency:}
+$\eta = (MA/VR) \times 100\% < 100\%$ (always)
+
+\textbf{No machine creates energy:}
+$W_{out} \leq W_{in}$ always.
+
+\textbf{Lever classes:}
+1st (FEL between E-F-L);
+2nd (L between E and F, $MA > 1$ always);
+3rd (E between F and L, $MA < 1$ always)
+
+\textbf{Principle of moments:}
+$E \times d_E = L \times d_L$ (ideal lever)
+
+\textbf{VR formulae:}
+Inclined plane: $1/\sin\theta$;
+Pulley: $n$;
+Wheel and axle: $R/r$;
+Screw jack: $2\pi r/p$;
+Gears: $N_2/N_1$;
+Wedge: $\ell/t$
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[10]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A machine has $VR = 6$ and efficiency
+$= 75\%$. Its mechanical advantage is:
+
+\mcoption{A}{$8.0$}
+\mcoption{B}{$4.5$}
+\mcoption{C}{$6.0$}
+\mcoption{D}{$0.75$}
+\ansref{Ch10-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} Which of the following always has
+$MA < 1$?
+
+\mcoption{A}{First class lever}
+\mcoption{B}{Second class lever}
+\mcoption{C}{Third class lever}
+\mcoption{D}{Inclined plane}
+\ansref{Ch10-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A pulley system uses 5 load-supporting
+rope segments. An ideal machine of this type lifts
+a $1000\ \text{N}$ load with an effort of:
+
+\mcoption{A}{$50\ \text{N}$}
+\mcoption{B}{$100\ \text{N}$}
+\mcoption{C}{$200\ \text{N}$}
+\mcoption{D}{$500\ \text{N}$}
+\ansref{Ch10-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} A screw jack has pitch $4\ \text{mm}$
+and handle length $20\ \text{cm}$.
+The velocity ratio is (take $\pi = 3.14$):
+
+\mcoption{A}{$50$}
+\mcoption{B}{$157$}
+\mcoption{C}{$314$}
+\mcoption{D}{$628$}
+\ansref{Ch10-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} An inclined plane is $8\ \text{m}$ long
+and $2\ \text{m}$ high. Its velocity ratio is:
+
+\mcoption{A}{$2$}
+\mcoption{B}{$4$}
+\mcoption{C}{$6$}
+\mcoption{D}{$16$}
+\ansref{Ch10-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} In a wheel-and-axle system, the wheel
+radius is $40\ \text{cm}$ and the axle radius is
+$8\ \text{cm}$. To lift a $600\ \text{N}$ load with
+an ideal machine, the effort required is:
+
+\mcoption{A}{$75\ \text{N}$}
+\mcoption{B}{$120\ \text{N}$}
+\mcoption{C}{$150\ \text{N}$}
+\mcoption{D}{$240\ \text{N}$}
+\ansref{Ch10-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} Which statement about machines is
+correct?
+
+\mcoption{A}{A machine can create energy if designed
+carefully}
+\mcoption{B}{The efficiency of an ideal machine is
+always $100\%$}
+\mcoption{C}{$MA$ can exceed $VR$ in a real machine}
+\mcoption{D}{A single fixed pulley has $MA > 1$}
+\ansref{Ch10-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} A wheelbarrow (second class lever) has
+its wheel (fulcrum) $0.3\ \text{m}$ from the load
+and handles $1.5\ \text{m}$ from the load. The MA is:
+
+\mcoption{A}{$0.2$}
+\mcoption{B}{$1.2$}
+\mcoption{C}{$5.0$}
+\mcoption{D}{$6.0$}
+\ansref{Ch10-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} A gear system has a driver gear with
+$20$ teeth and a driven gear with $80$ teeth.
+If the driver rotates at $400\ \text{rpm}$, the
+driven gear rotates at:
+
+\mcoption{A}{$1600\ \text{rpm}$}
+\mcoption{B}{$400\ \text{rpm}$}
+\mcoption{C}{$100\ \text{rpm}$}
+\mcoption{D}{$80\ \text{rpm}$}
+\ansref{Ch10-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} The efficiency of a machine is $60\%$
+and its $VR = 5$. An effort of $200\ \text{N}$ is
+applied. The load that can be lifted is:
+
+\mcoption{A}{$240\ \text{N}$}
+\mcoption{B}{$400\ \text{N}$}
+\mcoption{C}{$600\ \text{N}$}
+\mcoption{D}{$1000\ \text{N}$}
+\ansref{Ch10-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A first-class lever has its fulcrum
+$20\ \text{cm}$ from a $500\ \text{N}$ load and
+$80\ \text{cm}$ from where the effort is applied.
+($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+(a) Calculate the ideal (frictionless) effort needed.\\
+(b) The actual effort required is $140\ \text{N}$.
+Calculate the actual MA and efficiency.\\
+(c) Calculate the work done against friction when the
+load is raised by $0.5\ \text{m}$.\\
+(d) A person of mass $60\ \text{kg}$ stands on one
+end of a $3.0\ \text{m}$ see-saw (first-class lever)
+with the fulcrum at the centre. At what distance from
+the fulcrum must an $80\ \text{kg}$ person sit on the
+other side for the see-saw to balance?
+\hfill\ansref{Ch10-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A block-and-tackle pulley system has
+3 pulleys in the upper (fixed) block and 2 pulleys
+in the lower (movable) block. A $1800\ \text{N}$
+load is lifted $3.0\ \text{m}$ by an effort of
+$420\ \text{N}$.\\[4pt]
+(a) State the number of load-supporting rope segments
+and hence the VR.\\
+(b) Calculate the MA and efficiency.\\
+(c) Calculate the effort distance moved.\\
+(d) Calculate the energy wasted due to friction during
+this lift.\\
+(e) If the efficiency could be improved to $90\%$,
+what effort would be needed to lift the same load?
+\hfill\ansref{Ch10-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A screw jack is used to lift a car of
+mass $1200\ \text{kg}$ off the ground.
+The jack has a handle of length $25\ \text{cm}$
+and a pitch of $4\ \text{mm}$.
+($g = 10\ \text{m\,s}^{-2}$, $\pi = 3.14$)\\[4pt]
+(a) Calculate the weight of the car.\\
+(b) Calculate the VR of the screw jack.\\
+(c) If the efficiency is $30\%$, calculate the MA.\\
+(d) Calculate the effort required to lift the car.\\
+(e) How far must the handle move to raise the car
+by $10\ \text{cm}$? Express in metres.\\
+(f) Explain why the efficiency of a screw jack is
+so low and why this low efficiency is actually
+useful in practice.
+\hfill\ansref{Ch10-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A bicycle has a pedal gear with
+$40$ teeth and a rear wheel sprocket with $16$ teeth.
+The rear wheel has a diameter of $70\ \text{cm}$.
+The cyclist applies a force of $120\ \text{N}$ on
+each pedal. The pedal crank radius is $18\ \text{cm}$.\\[4pt]
+(a) Calculate the velocity ratio of the gear system.\\
+(b) How far does the bicycle travel per complete
+revolution of the pedals?\\
+(c) If the efficiency of the chain-gear system is
+$95\%$, calculate the driving force at the rear
+wheel rim.\\
+(d) At a pedalling rate of $80\ \text{rpm}$,
+calculate the cyclist's speed in km\,h$^{-1}$.\\
+(e) Calculate the power output of the cyclist.
+\hfill\ansref{Ch10-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A student investigates a pulley system
+and records the following data:
+
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+Load (N) & Effort (N) & Efficiency (\%)\\
+\midrule
+100 & 35 & 57.1\\
+200 & 60 & 66.7\\
+300 & 85 & 70.6\\
+400 & 110 & 72.7\\
+500 & 135 & 74.1\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The system has $VR = 5$.\\[4pt]
+(a) Verify the VR from the first row of data and
+identify why the efficiency is not $100\%$.\\
+(b) Explain the trend: why does efficiency increase
+as the load increases?\\
+(c) Plot effort against load and use the graph
+to find:\\
+\quad (i) The effort needed to overcome friction
+alone (y-intercept).\\
+\quad (ii) The effort needed to lift a $700\ \text{N}$
+load (extrapolation).\\
+(d) Derive the relationship:
+$E = \dfrac{L}{\eta \times VR}$ and show that for
+this system $E = aL + b$ (linear), identifying
+the physical meaning of $a$ and $b$.
+\hfill\ansref{Ch10-B5}
+
+\end{exercisebox}

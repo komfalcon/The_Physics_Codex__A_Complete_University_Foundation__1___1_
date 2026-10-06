@@ -1,0 +1,1356 @@
+% ============================================================
+%  CHAPTER 13: TEMPERATURE, THERMOMETERS AND THERMAL EXPANSION
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part2/ch13_temperature_expansion.tex
+% ============================================================
+
+\chapter{Temperature, Thermometers and Thermal Expansion}
+\label{ch:temperature_expansion}
+\minitoc
+\newpage
+
+\chapterquote{Heat, like gravity, penetrates every
+substance of the universe; its rays occupy all parts
+of space.}{Joseph Fourier}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Explain what temperature measures at the
+  molecular level and distinguish it from heat
+  \item Convert between Celsius, Fahrenheit and
+  Kelvin scales
+  \item Describe how different thermometers work
+  and their thermometric properties
+  \item State the desirable properties of a
+  thermometric substance
+  \item Calibrate a thermometer using fixed points
+  and interpolation
+  \item Calculate linear, area and volume expansion
+  of solids and liquids
+  \item Explain the bimetallic strip and its
+  applications, including the thermostat
+  \item Describe and explain the anomalous expansion
+  of water and its consequences
+  \item Distinguish between real and apparent
+  expansion of a liquid
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: What is Temperature?}
+% ============================================================
+
+Place your hand on a metal table and then on a wooden
+table that has been sitting in the same room. The metal
+feels colder. Yet both are at exactly the same
+temperature --- room temperature. Touch them with a
+thermometer and both read the same value.
+
+The difference is not temperature. The difference is
+\textit{thermal conductivity} --- metal conducts heat
+away from your hand faster than wood, so your hand
+loses energy faster, and you interpret that faster
+energy loss as coldness.
+
+This reveals something important: your sense of ``hot''
+and ``cold'' is not a reliable measure of temperature.
+It measures heat flow, not temperature itself. For
+that, we need instruments and precise definitions.
+
+Temperature, at the molecular level, is a measure of
+the \textbf{average kinetic energy} of the molecules
+in a substance. A hot object has faster-moving molecules.
+A cold object has slower-moving molecules. When two
+objects at different temperatures are placed in contact,
+energy flows from the faster (hotter) molecules to the
+slower (colder) ones until the averages are equal ---
+until \textbf{thermal equilibrium} is reached.
+
+\begin{definitionbox}[Temperature, Heat and Thermal Equilibrium]
+\textbf{Temperature} is a measure of the average
+translational kinetic energy of the molecules in a
+substance. It is a \textit{state property} of a body ---
+it tells us how energetic the molecules are, and
+determines the direction of heat flow.
+
+\textbf{Heat} is energy in transit between two bodies
+at different temperatures. It is not a property stored
+in a body; it only exists during a transfer process.
+A large block of ice contains more internal (thermal)
+energy than a tiny hot spark, yet the spark has a far
+higher temperature. Temperature and heat are
+fundamentally different quantities.
+
+\textbf{Thermal equilibrium} exists between two
+objects when there is no net flow of heat between
+them. They are at the same temperature.
+
+\textbf{Zeroth Law of Thermodynamics:} If object A
+is in thermal equilibrium with object C, and object
+B is also in thermal equilibrium with C, then A and
+B are in thermal equilibrium with each other.
+(This law justifies the use of thermometers: a
+thermometer in equilibrium with your body reads your
+body temperature.)
+\end{definitionbox}
+
+% ============================================================
+\section{Temperature Scales}
+% ============================================================
+
+Three temperature scales are in common use in science
+and everyday life.
+
+\begin{definitionbox}[The Three Temperature Scales]
+\textbf{Celsius scale (°C):}
+\begin{itemize}[noitemsep]
+  \item Lower fixed point (ice point): $0\,°\text{C}$
+  (pure melting ice and water in equilibrium at 1 atm)
+  \item Upper fixed point (steam point): $100\,°\text{C}$
+  (pure water and steam in equilibrium at 1 atm)
+\end{itemize}
+
+\textbf{Kelvin scale (K)} --- the SI base unit of
+thermodynamic temperature:
+\begin{itemize}[noitemsep]
+  \item Absolute zero: $0\ \text{K}$ (theoretical
+  minimum --- all molecular motion ceases; unattainable
+  in practice per the Third Law of Thermodynamics)
+  \item Triple point of water: $273.16\ \text{K}$
+  \item $0\,°\text{C} = 273.15\ \text{K}
+  \approx 273\ \text{K}$
+\end{itemize}
+\[
+  T(\text{K}) = T(°\text{C}) + 273.15
+\]
+\begin{notebox}
+The Kelvin is a unit, not a degree. Write $300\ \text{K}$,
+\textbf{not} $300\,°\text{K}$. The degree symbol is
+never used with Kelvin. Note also that a temperature
+\emph{difference} of $1\,°\text{C}$ equals a difference
+of $1\ \text{K}$; only the zero points differ.
+\end{notebox}
+
+\textbf{Fahrenheit scale (°F):}
+\[
+  T(°\text{F}) = \frac{9}{5}T(°\text{C}) + 32
+\]
+\[
+  T(°\text{C}) = \frac{5}{9}\left[T(°\text{F}) - 32\right]
+\]
+For direct conversion from Fahrenheit to Kelvin,
+combine both relationships:
+\[
+  T(\text{K}) = \frac{5}{9}\left[T(°\text{F})
+  + 459.67\right] \approx \frac{5}{9}
+  \left[T(°\text{F}) + 460\right]
+\]
+\end{definitionbox}
+
+\begin{diagbox}[Comparing Temperature Scales]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Three vertical axes
+  % Kelvin axis
+  \draw[very thick, codexblue] (1,0) -- (1,9);
+  \node[codexblue, font=\bfseries] at (1,9.5) {Kelvin (K)};
+
+  % Celsius axis
+  \draw[very thick, codexred] (5,0) -- (5,9);
+  \node[codexred, font=\bfseries] at (5,9.5) {Celsius (°C)};
+
+  % Fahrenheit axis
+  \draw[very thick, codexgold] (9,0) -- (9,9);
+  \node[codexgold, font=\bfseries] at (9,9.5) {Fahrenheit (°F)};
+
+  % Key temperatures with tick marks and connectors
+  % --- Absolute zero ---
+  \draw[thick, codexblue] (0.7,0.5) -- (1.3,0.5);
+  \node[left, codexblue] at (0.7,0.5) {0 K};
+  \draw[thick, codexred] (4.7,0.5) -- (5.3,0.5);
+  \node[right, codexred] at (5.3,0.5) {$-273.15°$C};
+  \draw[thick, codexgold] (8.7,0.5) -- (9.3,0.5);
+  \node[right, codexgold] at (9.3,0.5) {$-459.67°$F};
+  \draw[dashed, gray] (1.3,0.5) -- (8.7,0.5);
+
+  % --- Ice point ---
+  \draw[thick, codexblue] (0.7,3.5) -- (1.3,3.5);
+  \node[left, codexblue] at (0.7,3.5) {273.15 K};
+  \draw[thick, codexred] (4.7,3.5) -- (5.3,3.5);
+  \node[right, codexred] at (5.3,3.5) {0°C};
+  \draw[thick, codexgold] (8.7,3.5) -- (9.3,3.5);
+  \node[right, codexgold] at (9.3,3.5) {32°F};
+  \draw[dashed, gray] (1.3,3.5) -- (8.7,3.5);
+  \node[above, gray, font=\tiny] at (5,3.6)
+    {Ice point};
+
+  % --- Body temperature ---
+  \draw[thick, codexblue] (0.7,5.2) -- (1.3,5.2);
+  \node[left, codexblue] at (0.7,5.2) {310.15 K};
+  \draw[thick, codexred] (4.7,5.2) -- (5.3,5.2);
+  \node[right, codexred] at (5.3,5.2) {37°C};
+  \draw[thick, codexgold] (8.7,5.2) -- (9.3,5.2);
+  \node[right, codexgold] at (9.3,5.2) {98.6°F};
+  \draw[dashed, gray] (1.3,5.2) -- (8.7,5.2);
+  \node[above, gray, font=\tiny] at (5,5.3)
+    {Body temp.};
+
+  % --- Steam point ---
+  \draw[thick, codexblue] (0.7,7.0) -- (1.3,7.0);
+  \node[left, codexblue] at (0.7,7.0) {373.15 K};
+  \draw[thick, codexred] (4.7,7.0) -- (5.3,7.0);
+  \node[right, codexred] at (5.3,7.0) {100°C};
+  \draw[thick, codexgold] (8.7,7.0) -- (9.3,7.0);
+  \node[right, codexgold] at (9.3,7.0) {212°F};
+  \draw[dashed, gray] (1.3,7.0) -- (8.7,7.0);
+  \node[above, gray, font=\tiny] at (5,7.1)
+    {Steam point};
+
+  % Scale markings (K has larger intervals)
+  \foreach \y in {0.5,1.0,...,8.5} {
+    \draw[gray!30] (0.8,\y) -- (1.2,\y);
+  }
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[13.1]
+\stepcounter{workedexample}
+Convert the following temperatures:\\
+(a) $37\,°\text{C}$ (body temperature) to Kelvin and
+Fahrenheit.\\
+(b) $-40\,°\text{F}$ to Celsius (this is the one
+temperature where the two scales coincide).\\
+(c) The surface of the Sun is approximately
+$5778\ \text{K}$. Express in Celsius.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)}
+$T(\text{K}) = 37 + 273 = 310\ \text{K}$\\
+$T(°\text{F}) = \frac{9}{5}(37) + 32 = 66.6 + 32
+= 98.6\,°\text{F}$
+
+\textbf{(b)}
+$T(°\text{C}) = \frac{5}{9}(-40 - 32)
+= \frac{5}{9}(-72) = -40\,°\text{C}$\\
+Indeed, $-40\,°\text{F} = -40\,°\text{C}$ --- the unique
+crossing point of the two scales.
+
+\textbf{(c)}
+$T(°\text{C}) = 5778 - 273 = 5505\,°\text{C}$\\
+The surface of the Sun is about $5500\,°\text{C}$.
+\end{solutionbox}
+
+% ============================================================
+\section{Thermometers and Thermometric Properties}
+% ============================================================
+
+\begin{definitionbox}[Thermometric Property]
+A \textbf{thermometric property} is any physical
+property that changes measurably, continuously and
+reproducibly with temperature and can be used as the
+basis for a thermometer.
+
+\textbf{Desirable properties of a thermometric
+substance:}
+\begin{itemize}[noitemsep]
+  \item \textbf{Sensitivity:} the property should
+  change sufficiently for small changes in temperature
+  to be detectable.
+  \item \textbf{Linearity:} ideally, the property
+  varies linearly with temperature, so that
+  interpolation between fixed points is accurate.
+  \item \textbf{Reproducibility:} the same temperature
+  always produces the same value of the property.
+  \item \textbf{Wide range:} the thermometric substance
+  should remain in a usable state over as wide a
+  temperature range as possible.
+  \item \textbf{Response time:} the thermometer should
+  reach thermal equilibrium with the body being
+  measured quickly.
+  \item \textbf{Safety and practicality:} the substance
+  should be non-corrosive, non-toxic if possible, and
+  easy to work with.
+\end{itemize}
+\end{definitionbox}
+
+\begin{table}[H]
+\centering
+\caption{Types of Thermometer and Their Thermometric Properties}
+\label{tab:thermometers}
+\begin{tabular}{llll}
+\toprule
+\textbf{Thermometer} & \textbf{Property} & \textbf{Range} &
+\textbf{Application}\\
+\midrule
+Liquid-in-glass & Volume of liquid &
+  $-10$ to $110\,°$C & Everyday use\\
+Resistance (platinum) & Electrical resistance &
+  $-200$ to $1200\,°$C & Precision measurement\\
+Thermocouple & EMF (voltage) &
+  $-250$ to $1400\,°$C & Industry, engines\\
+Gas thermometer & Pressure/volume of gas &
+  $-270$ to $1500\,°$C & Standard reference\\
+Pyrometer & Radiation intensity &
+  $>600\,°$C & Furnaces, stars\\
+Clinical & Mercury/galinstan volume &
+  $35$ to $42\,°$C & Medical\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The Liquid-in-Glass Thermometer}
+
+\begin{diagbox}[Liquid-in-Glass Thermometer: Cross-Section]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Main tube
+  \fill[gray!20] (0,0.3) rectangle (8.5,0.7);
+  \draw[thick] (0,0.3) rectangle (8.5,0.7);
+
+  % Capillary tube (inner)
+  \fill[white] (0.5,0.38) rectangle (8.0,0.62);
+  \draw[thick] (0.5,0.38) -- (8.0,0.38);
+  \draw[thick] (0.5,0.62) -- (8.0,0.62);
+
+  % Liquid column (mercury or alcohol)
+  \fill[codexred!60] (0.5,0.38) rectangle (4.5,0.62);
+
+  % Bulb at left end
+  \fill[codexred!60] (0,0.0) .. controls (-0.3,0.0) and
+    (-0.3,1.0) .. (0,1.0) -- (0.5,1.0) --
+    (0.5,0.0) -- cycle;
+  \draw[thick] (0.5,0.0) -- (0,0.0) .. controls
+    (-0.3,0.0) and (-0.3,1.0) .. (0,1.0) -- (0.5,1.0);
+
+  % Sealed end at right
+  \draw[thick] (8.5,0.3) arc(-90:90:0.2);
+
+  % Scale markings
+  \foreach \x in {1,2,...,7} {
+    \draw[thick] (\x+0.5, 0.62) -- (\x+0.5, 0.75);
+  }
+  \foreach \x in {1,3,5,7} {
+    \node[above, font=\tiny] at (\x+0.5, 0.75)
+      {\pgfmathparse{int(\x*10+20)}\pgfmathresult};
+  }
+  \node[above, font=\tiny] at (1.5,0.75) {10};
+  \node[above, font=\tiny] at (3.5,0.75) {30};
+  \node[above, font=\tiny] at (5.5,0.75) {50};
+  \node[above, font=\tiny] at (7.5,0.75) {70};
+
+  % Labels
+  \node[below] at (0.2,0.0) {\small Bulb};
+  \node[below] at (4.0,-0.3) {\small Liquid column};
+  \node[below] at (7.5,0.3) {\small Capillary tube};
+
+  % Constriction (clinical thermometer feature)
+  \fill[white] (2.4,0.38) rectangle (2.6,0.62);
+  \fill[gray!30] (2.45,0.38) rectangle (2.55,0.62);
+  \draw[thick] (2.45,0.38) -- (2.45,0.62);
+  \draw[thick] (2.55,0.38) -- (2.55,0.62);
+  \node[below, font=\tiny, align=center] at (2.5,0.3)
+    {\small constriction\\(clinical only)};
+
+  % Mercury label
+  \node[codexred, font=\small] at (2.0,1.3)
+    {Mercury (or coloured alcohol)};
+  \draw[->, codexred] (2.0,1.15) -- (2.0,0.65);
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{notebox}[Mercury vs.\ Alcohol]
+\textbf{Mercury} is preferred for general-purpose
+thermometers because it is a good thermal conductor,
+does not wet (stick to) glass, and remains liquid
+from $-38.8\,°\text{C}$ to $356.7\,°\text{C}$.
+Its expansion is nearly linear with temperature.
+However, mercury is toxic, and its use in clinical
+thermometers is being phased out in many countries
+in favour of \textit{galinstan} (a non-toxic gallium
+alloy) or digital sensors.
+
+\textbf{Alcohol} (coloured red or blue with dye)
+stays liquid down to about $-115\,°\text{C}$,
+making it essential for low-temperature measurements
+--- far below mercury's freezing point. Its main
+drawbacks are a low boiling point ($\approx 78\,°\text{C}$
+for ethanol), which limits its upper range, and the
+fact that alcohol wets glass and tends to separate
+in the tube if cooled too rapidly.
+\end{notebox}
+
+\subsection{Calibration and Scale Interpolation}
+
+\begin{processbox}[Calibrating a Thermometer]
+To calibrate any thermometer:
+\begin{enumerate}[noitemsep]
+  \item Immerse in melting pure ice at 1 atm.
+  Record the thermometric property value $X_0$.
+  Mark this as $0\,°\text{C}$.
+  \item Immerse in steam above boiling water at 1 atm.
+  Record the property value $X_{100}$.
+  Mark this as $100\,°\text{C}$.
+  \item Interpolate: for any property value $X_\theta$:
+\end{enumerate}
+\[
+  \theta = \frac{X_\theta - X_0}{X_{100} - X_0}
+  \times 100\,°\text{C}
+\]
+This formula assumes the thermometric property varies
+\textit{linearly} with temperature between the two
+fixed points. Different thermometric properties do
+not, in general, vary in exactly the same way, so
+two thermometers calibrated by this method may give
+slightly different readings between the fixed points.
+The \textit{ideal gas thermometer} is the primary
+standard because an ideal gas expands perfectly
+linearly (by definition of the thermodynamic
+temperature scale).
+\end{processbox}
+
+\begin{diagbox}[Thermometer Calibration]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Axes
+  \draw[->, thick] (0,0) -- (9,0)
+    node[right]{Thermometric property $X$};
+  \draw[->, thick] (0,0) -- (0,7)
+    node[above]{Temperature $\theta$ (°C)};
+
+  % Key points
+  \fill[codexblue] (1.5,0) circle (4pt);
+  \fill[codexblue] (1.5,1.0) circle (2pt);
+  \draw[dashed, codexblue] (1.5,0) -- (1.5,1.0)
+    -- (0,1.0);
+  \node[below, codexblue] at (1.5,0) {$X_0$};
+  \node[left, codexblue] at (0,1.0) {$0\,°$C};
+
+  \fill[codexred] (7.0,0) circle (4pt);
+  \fill[codexred] (7.0,6.0) circle (2pt);
+  \draw[dashed, codexred] (7.0,0) -- (7.0,6.0)
+    -- (0,6.0);
+  \node[below, codexred] at (7.0,0) {$X_{100}$};
+  \node[left, codexred] at (0,6.0) {$100\,°$C};
+
+  % Unknown point
+  \fill[codexgold] (4.3,0) circle (4pt);
+  \fill[codexgold] (4.3,3.5) circle (3pt);
+  \draw[dashed, codexgold] (4.3,0) -- (4.3,3.5)
+    -- (0,3.5);
+  \node[below, codexgold] at (4.3,0) {$X_\theta$};
+  \node[left, codexgold] at (0,3.5) {$\theta$};
+
+  % Linear relationship line
+  \draw[very thick, codexblue]
+    (1.5,1.0) -- (7.0,6.0);
+
+  % Formula annotation
+  \node[align=center, font=\small, codexblue]
+    at (10.0,3.0)
+    {$\theta = \dfrac{X_\theta - X_0}
+    {X_{100} - X_0} \times 100\,°\text{C}$};
+
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[13.2]
+\stepcounter{workedexample}
+A platinum resistance thermometer has resistance
+$25.0\ \Omega$ at the ice point and $35.4\ \Omega$
+at the steam point. At an unknown temperature, the
+resistance is $29.6\ \Omega$.\\
+(a) Calculate the unknown temperature on the
+platinum scale.\\
+(b) If a mercury thermometer simultaneously reads
+$43.5\,°\text{C}$, explain why there is a discrepancy
+and which reading is more reliable.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)}
+\[
+  \theta = \frac{X_\theta - X_0}{X_{100} - X_0}
+  \times 100
+  = \frac{29.6 - 25.0}{35.4 - 25.0} \times 100
+  = \frac{4.6}{10.4} \times 100
+  = 44.2\,°\text{C}
+\]
+
+\textbf{(b)} Different thermometers use different
+thermometric properties. The interpolation formula
+assumes a linear relationship between the property
+and temperature, but this is only truly satisfied by
+the ideal gas thermometer (which defines the
+thermodynamic scale). Platinum resistance and mercury
+volume both change with temperature, but not in
+exactly the same way across all temperatures. The
+discrepancy ($44.2$ vs $43.5\,°$C) reflects this
+non-linearity in one or both properties. The platinum
+resistance thermometer is generally more reliable,
+more stable, and more reproducible than the
+liquid-in-glass thermometer, and it covers a far
+wider temperature range.
+\end{solutionbox}
+
+% ============================================================
+\section{Thermal Expansion of Solids}
+% ============================================================
+
+When a solid is heated, the molecules vibrate more
+vigorously about their equilibrium positions. Due to
+the asymmetry of intermolecular potential energy
+curves, the \textit{average} separation between
+molecules increases. The solid expands.
+
+\begin{diagbox}[Molecular Origin of Thermal Expansion]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+  % Potential energy vs separation curve
+  \begin{axis}[
+    width=10cm, height=6cm,
+    xlabel={Molecular separation $r$},
+    ylabel={Potential energy $E_p$},
+    xmin=0.5, xmax=3.5,
+    ymin=-1.3, ymax=1.0,
+    ytick={-1.0,0},
+    yticklabels={min $E_p$,0},
+    xtick={1.2},
+    xticklabels={$r_0$},
+    grid=major, grid style={gray!15},
+    clip=false,
+    restrict y to domain=-2:3,
+    unbounded coords=jump
+  ]
+    % Potential energy curve (Lennard-Jones like)
+    \addplot[codexblue, very thick, domain=0.7:3.5,
+      samples=100]
+      {4*(1/x^12 - 1/x^6) + 0.2};
+    % Equilibrium position
+    \addplot[dashed, codexgold, domain=0.7:3.5]{0.2-1.0};
+    \fill[codexgold] (axis cs:1.12,-0.8) circle (3pt);
+    \draw[dashed, codexgold, thick]
+      (axis cs:1.12,-2) -- (axis cs:1.12,-0.8);
+    % Low temperature energy level
+    \addplot[codexgreen, thick, domain=0.95:1.34]{-0.65};
+    \fill[codexgreen] (axis cs:0.95,-0.65) circle (2pt);
+    \fill[codexgreen] (axis cs:1.34,-0.65) circle (2pt);
+    \node[codexgreen, right, align=left, font=\tiny]
+      at (axis cs:1.35,-0.65) {Low $T$\\avg $r_1$};
+    % High temperature energy level
+    \addplot[codexred, thick, domain=0.88:1.75]{-0.3};
+    \fill[codexred] (axis cs:0.88,-0.3) circle (2pt);
+    \fill[codexred] (axis cs:1.75,-0.3) circle (2pt);
+    \node[codexred, right, align=left, font=\tiny]
+      at (axis cs:1.76,-0.3) {High $T$\\avg $r_2 > r_1$};
+    % Arrows showing average positions (own well-separated rows below the frame)
+    \draw[<->, codexgreen, dashed]
+      (axis cs:0.95,-1.6) -- (axis cs:1.34,-1.6);
+    \node[codexgreen, below, font=\tiny]
+      at (axis cs:1.145,-1.6) {$\langle r \rangle_1$};
+    \draw[<->, codexred, dashed]
+      (axis cs:0.88,-2.0) -- (axis cs:1.75,-2.0);
+    \node[codexred, below, font=\tiny]
+      at (axis cs:1.315,-2.0) {$\langle r \rangle_2$};
+    % Note: asymmetric curve causes net expansion
+    \node[align=center, font=\tiny, gray]
+      at (axis cs:2.8,0.6)
+      {Asymmetric curve:\\left side steep\\right side gentle\\
+      $\Rightarrow$ avg separation\\increases with energy};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+\small The asymmetry of the potential energy curve
+means that as energy increases (higher temperature),
+the average separation increases --- the solid expands.
+If the curve were symmetric, the average position
+would not shift and there would be no thermal expansion.
+\end{diagbox}
+
+\subsection{Linear Expansion}
+
+\begin{lawbox}[Linear Expansion]
+When a solid rod of original length $L_0$ is heated
+through a temperature change $\Delta\theta$, its
+length increases by:
+\[
+  \Delta L = \alpha L_0 \Delta\theta
+\]
+\[
+  L = L_0(1 + \alpha\Delta\theta)
+\]
+where $\alpha$ is the \textbf{coefficient of linear
+expansion} (also written $\alpha_L$). Unit:
+$\text{K}^{-1}$ or $°\text{C}^{-1}$.
+
+\begin{notebox}
+Strictly, $\alpha$ is itself temperature-dependent.
+The formula $\Delta L = \alpha L_0 \Delta\theta$
+treats $\alpha$ as constant, which is an excellent
+approximation for small temperature ranges
+($\Delta\theta \lesssim 100\,\text{K}$) and the
+temperature ranges encountered in most engineering
+problems. For very large temperature changes, a
+temperature-averaged value of $\alpha$ should be used.
+\end{notebox}
+\end{lawbox}
+
+\begin{table}[H]
+\centering
+\caption{Coefficients of Expansion of Common Materials}
+\label{tab:expansion}
+\begin{tabular}{lll}
+\toprule
+\textbf{Material} & \textbf{Linear $\alpha$
+(×10$^{-6}$ K$^{-1}$)} & \textbf{Volume $\gamma$
+(×10$^{-6}$ K$^{-1}$)}\\
+\midrule
+Invar (steel alloy) & 1.2 & 3.6\\
+Glass (Pyrex) & 3.2 & 9.6\\
+Concrete & 12 & 36\\
+Steel & 12 & 36\\
+Copper & 17 & 51\\
+Brass & 19 & 57\\
+Aluminium & 23 & 69\\
+Lead & 29 & 87\\
+Mercury (liquid) & --- & 182\\
+Water at 20°C & --- & 207\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Area and Volume Expansion}
+
+\begin{lawbox}[Area and Volume Expansion]
+\textbf{Area expansion:}
+\[
+  \Delta A = \beta A_0 \Delta\theta, \quad
+  A = A_0(1 + \beta\Delta\theta), \quad
+  \beta = 2\alpha
+\]
+
+\textbf{Volume expansion:}
+\[
+  \Delta V = \gamma V_0 \Delta\theta, \quad
+  V = V_0(1 + \gamma\Delta\theta), \quad
+  \gamma = 3\alpha
+\]
+where $\beta$ is the coefficient of area expansion
+and $\gamma$ is the coefficient of volume expansion.
+
+\textbf{Derivation of $\beta = 2\alpha$:}
+For a square of side $L$, area $A_0 = L^2$:
+\[
+  A = L^2(1+\alpha\Delta\theta)^2
+  \approx L^2(1+2\alpha\Delta\theta)
+  = A_0(1+2\alpha\Delta\theta)
+\]
+(ignoring $\alpha^2(\Delta\theta)^2$ since $\alpha$
+is of order $10^{-5}\ \text{K}^{-1}$, so this term
+is negligibly small)
+
+\textbf{Key insight --- holes expand too:}
+A hole in a solid expands just as if it were filled
+with the same solid material. This is because
+thermal expansion is uniform --- every linear
+dimension scales by the same factor
+$(1 + \alpha\Delta\theta)$.
+\end{lawbox}
+
+\begin{diagbox}[Linear, Area and Volume Expansion Illustrated]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+  % === LINEAR ===
+  \begin{scope}[shift={(0,5)}]
+    \node[font=\bfseries] at (2.5,1.5) {Linear ($\alpha$)};
+    % Before
+    \fill[codexblue!30] (0,0.3) rectangle (2.5,0.7);
+    \draw[thick] (0,0.3) rectangle (2.5,0.7);
+    \draw[<->, gray] (0,-0.1) -- (2.5,-0.1);
+    \node[below, gray] at (1.25,-0.15) {$L_0$};
+    % Arrow
+    \draw[->, very thick, codexred] (3.0,0.5) -- (3.7,0.5)
+      node[above, font=\tiny]{heat};
+    % After
+    \fill[codexred!30] (4.0,0.3) rectangle (7.0,0.7);
+    \draw[thick] (4.0,0.3) rectangle (7.0,0.7);
+    \draw[<->, gray] (4.0,-0.1) -- (7.0,-0.1);
+    \node[below, gray, font=\tiny] at (5.5,-0.15) {$L_0(1+\alpha\Delta\theta)$};
+    % Extension marker, with thin connector guides tying the
+    % ΔL bracket visually back to the highlighted segment it labels
+    \fill[codexred!60] (6.4,0.3) rectangle (7.0,0.7);
+    \draw[codexred!50, thin] (6.4,0.3) -- (6.4,-0.55);
+    \draw[codexred!50, thin] (7.0,0.3) -- (7.0,-0.55);
+    \draw[<->, codexred] (6.4,-0.55) -- (7.0,-0.55);
+    \node[below, codexred, font=\tiny] at (6.7,-0.65)
+      {$\Delta L$};
+  \end{scope}
+  % === AREA ===
+  \begin{scope}[shift={(0,1.5)}]
+    \node[font=\bfseries] at (2.0,2.3) {Area ($\beta = 2\alpha$)};
+    % Before
+    \fill[codexblue!30] (0,0) rectangle (1.5,1.5);
+    \draw[thick] (0,0) rectangle (1.5,1.5);
+    \node[font=\tiny] at (0.75,0.75) {$A_0$};
+    % Arrow
+    \draw[->, very thick, codexred] (2.0,0.75) -- (2.7,0.75)
+      node[above, font=\tiny]{heat};
+    % After
+    \fill[codexblue!20] (3.0,0) rectangle (4.8,1.8);
+    \fill[codexred!30] (3.0,0) rectangle (4.8,1.8);
+    \draw[thick] (3.0,0) rectangle (4.8,1.8);
+    \node[font=\tiny] at (3.9,2.0) {$A_0(1+\beta\Delta\theta)$};
+    % Extension markers
+    \draw[<->, codexred] (3.0,-0.3) -- (4.8,-0.3);
+    \node[below, codexred, font=\tiny] at (3.9,-0.4)
+      {expands in both dimensions};
+  \end{scope}
+  % === VOLUME ===
+  \begin{scope}[shift={(6,1.0)}]
+    \node[font=\bfseries] at (2.2,2.8) {Volume ($\gamma = 3\alpha$)};
+    % Cube before (3D)
+    \fill[codexblue!30] (0,0) -- (1.5,0) -- (1.5,1.5) -- (0,1.5) -- cycle;
+    \fill[codexblue!20] (0,1.5) -- (0.5,2.0) -- (2.0,2.0) -- (1.5,1.5) -- cycle;
+    \fill[codexblue!25] (1.5,0) -- (2.0,0.5) -- (2.0,2.0) -- (1.5,1.5) -- cycle;
+    \draw[thick] (0,0)--(1.5,0)--(1.5,1.5)--(0,1.5)--(0,0);
+    \draw[thick] (0,1.5)--(0.5,2.0)--(2.0,2.0)--(1.5,1.5);
+    \draw[thick] (1.5,0)--(2.0,0.5)--(2.0,2.0);
+    \node[font=\tiny] at (0.75,0.75) {$V_0$};
+    % Arrow
+    \draw[->, very thick, codexred]
+      (2.3,1.0) -- (2.75,1.0)
+      node[above, font=\tiny]{heat};
+    % Cube after (larger, 3D)
+    \fill[codexred!20] (3.2,0) -- (5.2,0) -- (5.2,2.0) -- (3.2,2.0) -- cycle;
+    \fill[codexred!10] (3.2,2.0) -- (3.8,2.6) -- (5.8,2.6) -- (5.2,2.0) -- cycle;
+    \fill[codexred!15] (5.2,0) -- (5.8,0.6) -- (5.8,2.6) -- (5.2,2.0) -- cycle;
+    \draw[thick] (3.2,0)--(5.2,0)--(5.2,2.0)--(3.2,2.0)--(3.2,0);
+    \draw[thick] (3.2,2.0)--(3.8,2.6)--(5.8,2.6)--(5.2,2.0);
+    \draw[thick] (5.2,0)--(5.8,0.6)--(5.8,2.6);
+    \node[font=\tiny] at (4.2,1.0) {$V_0(1+\gamma\Delta\theta)$};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[13.3]
+\stepcounter{workedexample}
+A steel railway track has a length of $25.0\ \text{m}$
+at $20\,°\text{C}$.
+($\alpha_{\text{steel}} = 12\times10^{-6}\ \text{K}^{-1}$)\\
+(a) Calculate its length at $55\,°\text{C}$.\\
+(b) Calculate the expansion.\\
+(c) What gap must be left between tracks so they
+do not buckle when the temperature rises from
+$10\,°\text{C}$ (winter) to $55\,°\text{C}$ (hot
+Nigerian afternoon)?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Length at $55\,°\text{C}$:
+\[
+  \Delta\theta = 55 - 20 = 35\ \text{K}
+\]
+\[
+  L = L_0(1 + \alpha\Delta\theta)
+  = 25.0\left(1 + 12\times10^{-6} \times 35\right)
+\]
+\[
+ = 25.0(1 + 4.2\times10^{-4})
+  = 25.0 \times 1.00042
+  = 25.0105\ \text{m}
+\]
+
+\textbf{(b)} Expansion:
+$\Delta L = 25.0105 - 25.0 = 0.0105\ \text{m}
+= 10.5\ \text{mm}$
+
+\textbf{(c)} Temperature range: $\Delta\theta = 55 - 10
+= 45\ \text{K}$
+\[
+  \Delta L = \alpha L_0 \Delta\theta
+  = 12\times10^{-6} \times 25.0 \times 45
+  = 0.0135\ \text{m} = 13.5\ \text{mm}
+\]
+The expansion gap must be at least $13.5\ \text{mm}$
+per $25\ \text{m}$ track section. Modern rail systems
+use \textit{continuously welded rail} (CWR) where the
+track is held under tension, but the calculation
+still underpins the design specification. Similar
+principles apply to expansion joints in long bridges,
+concrete highways, and building structures.
+\end{solutionbox}
+
+% ============================================================
+\section{The Bimetallic Strip}
+% ============================================================
+
+\begin{diagbox}[The Bimetallic Strip: Principle and Applications]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % === AT ROOM TEMPERATURE ===
+  \begin{scope}[shift={(0,4.5)}]
+    \node[font=\bfseries] at (4,1.8) {At room temperature: straight};
+    % Brass strip (top, higher $\alpha$)
+    \fill[codexgold!60] (0,0.5) rectangle (7,1.0);
+    \draw[thick] (0,0.5) rectangle (7,1.0);
+    \node[codexgold, font=\tiny] at (3.5,0.75) {Brass ($\alpha$ larger)};
+    % Steel strip (bottom, lower $\alpha$)
+    \fill[gray!40] (0,0) rectangle (7,0.5);
+    \draw[thick] (0,0) rectangle (7,0.5);
+    \node[gray, font=\tiny] at (3.5,0.25) {Steel ($\alpha$ smaller)};
+    % Fixed end
+    \fill[gray!70] (-0.3,-0.2) rectangle (0,1.2);
+    \draw[thick] (-0.3,-0.2) rectangle (0,1.2);
+    \node[below, font=\tiny] at (-0.15,-0.3) {fixed};
+  \end{scope}
+
+  % === WHEN HEATED ===
+  \begin{scope}[shift={(0,1.5)}]
+    \node[font=\bfseries] at (4.5,2.3) {When heated: curves downward (brass expands more)};
+    % Fixed end
+    \fill[gray!70] (-0.3,-0.2) rectangle (0,1.2);
+    \draw[thick] (-0.3,-0.2) rectangle (0,1.2);
+    % Curved brass (top, longer, on outside of curve)
+    \draw[codexgold!80, very thick, fill=codexgold!50]
+      (0,0.5) .. controls (2,0.9) and (5,1.4) ..
+      (7,2.0) -- (7,1.5) ..
+      controls (5,0.9) and (2,0.4) ..
+      (0,0.0) -- cycle;
+    \node[codexgold, font=\tiny] at (3.5,1.0)
+      {Brass (outer, longer)};
+    % Curved steel (bottom, shorter, inside of curve)
+    \draw[gray!60, very thick, fill=gray!40]
+      (0,0.0) .. controls (2,0.4) and (5,0.9) ..
+      (7,1.5) -- (7,1.1) ..
+      controls (5,0.5) and (2,0.1) ..
+      (0,-0.4) -- cycle;
+    \node[gray, font=\tiny] at (3.5,0.5)
+      {Steel (inner, shorter)};
+    % Curvature arrow
+    \draw[->, very thick, codexred]
+      (7.2,1.5) -- (7.2,0.5)
+      node[right, align=center]{bends\\down};
+  \end{scope}
+
+  % === APPLICATIONS ===
+  \begin{scope}[shift={(0,-1.5)}]
+    \node[font=\bfseries] at (4.5,2.3) {Applications:};
+    \node[font=\small, align=left] at (4.0,0.9)
+      {$\bullet$ Thermostats (heating/cooling control)\\
+       $\bullet$ Fire alarms (circuit breaks when heated)\\
+       $\bullet$ Electrical circuit breakers\\
+       $\bullet$ Oven temperature indicators\\
+       $\bullet$ Bimetallic thermometers};
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{realworldbox}[The Bimetallic Thermostat]
+In a simple thermostat, a bimetallic strip acts as a
+temperature-sensitive switch. At room temperature
+(below the set point), the strip is straight and
+presses against an electrical contact, completing
+the circuit that powers the heater. As the room
+warms above the set point, the strip bends away from
+the contact, breaking the circuit and switching the
+heater off. When the room cools again, the strip
+straightens and re-makes the contact. This
+on--off cycling maintains the room near the desired
+temperature. An adjusting screw moves the contact
+point closer or further, setting the trigger
+temperature. More modern thermostats use electronic
+sensors and relays, but bimetallic strips remain
+common in simple, inexpensive applications such as
+electric kettles, toasters, and car engine cooling
+fans.
+\end{realworldbox}
+
+% ============================================================
+\section{Expansion of Liquids}
+% ============================================================
+
+Liquids only expand in volume (they have no fixed shape).
+The apparent expansion of a liquid in a container is
+less than its real expansion because the container also
+expands.
+
+\begin{lawbox}[Real and Apparent Expansion of a Liquid]
+\[
+  \gamma_{\text{real}} = \gamma_{\text{apparent}}
+  + \gamma_{\text{container}}
+\]
+where:
+\begin{itemize}[noitemsep]
+  \item $\gamma_{\text{real}}$ = true coefficient of
+  volume expansion of the liquid
+  \item $\gamma_{\text{apparent}}$ = observed coefficient
+  (expansion of liquid relative to the container)
+  \item $\gamma_{\text{container}}$ = volume expansion
+  coefficient of the container material
+  ($= 3\alpha_{\text{container}}$)
+\end{itemize}
+\textbf{Physical interpretation:} When the liquid is
+heated, both the liquid and the container expand.
+The container grows larger, providing more room, so
+the liquid's rise in the container understates its
+true expansion. What we observe is the excess
+expansion of the liquid over and above that of the
+container.
+\end{lawbox}
+
+\begin{examplebox}[13.4]
+\stepcounter{workedexample}
+Mercury in a glass flask appears to expand by
+$1.72\times10^{-5}\ \text{m}^3$ when heated from
+$20\,°\text{C}$ to $120\,°\text{C}$. The original
+volume of mercury is $1.00\times10^{-3}\ \text{m}^3$.
+($\alpha_{\text{glass}} = 3.2\times10^{-6}\ \text{K}^{-1}$)\\
+(a) Calculate the apparent coefficient of expansion
+of mercury.\\
+(b) Calculate the real coefficient of expansion and
+compare it with the value in Table~\ref{tab:expansion}.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Apparent coefficient:
+\[
+  \gamma_{\text{app}}
+  = \frac{\Delta V_{\text{apparent}}}{V_0 \Delta\theta}
+  = \frac{1.72\times10^{-5}}{1.00\times10^{-3} \times 100}
+  = 1.72\times10^{-4}\ \text{K}^{-1}
+\]
+
+\textbf{(b)}
+$\gamma_{\text{container}} = 3\alpha_{\text{glass}}
+= 3 \times 3.2\times10^{-6}
+= 9.6\times10^{-6}\ \text{K}^{-1}$
+
+\[
+  \gamma_{\text{real}}
+  = \gamma_{\text{app}} + \gamma_{\text{container}}
+  = 1.72\times10^{-4} + 9.6\times10^{-6}
+  = 1.816\times10^{-4}
+  \approx 1.82\times10^{-4}\ \text{K}^{-1}
+\]
+This agrees with the table value of
+$182\times10^{-6}\ \text{K}^{-1}$ for mercury.
+The true expansion of mercury is slightly larger than
+what is observed because the glass container also
+expanded (enlarging the space), partially masking
+the mercury's expansion. This is precisely the
+correction that must be applied when using a
+mercury-in-glass thermometer to measure absolute
+volumes of expansion.
+\end{solutionbox}
+
+% ============================================================
+\section{Anomalous Expansion of Water}
+% ============================================================
+
+Water behaves unlike all other liquids in one crucial
+respect: it does not expand uniformly as it is heated
+from $0\,°\text{C}$.
+
+\begin{processbox}[The Anomalous Behaviour of Water]
+\begin{itemize}[noitemsep]
+  \item From $0\,°\text{C}$ to $4\,°\text{C}$: water
+  \textbf{contracts} (density increases)
+  \item At $4\,°\text{C}$: water has its
+  \textbf{maximum density}
+  ($\approx 1000\ \text{kg\,m}^{-3}$)
+  \item Above $4\,°\text{C}$: water expands normally
+  (density decreases)
+  \item Ice is \textbf{less dense} than liquid water
+  ($\rho_{\text{ice}} \approx 917\ \text{kg\,m}^{-3}$),
+  so ice floats --- unusual for a solid
+\end{itemize}
+\textbf{Molecular explanation:} In the liquid state,
+water molecules are held together by \textit{hydrogen
+bonds} --- relatively strong intermolecular
+attractions between the partial positive charge on a
+hydrogen atom of one molecule and the partial negative
+charge on the oxygen atom of a neighbour. Ice has a
+rigid, open hexagonal lattice structure maintained by
+these hydrogen bonds, with large empty spaces between
+molecules; this open structure is less dense than the
+disordered liquid. Just above $0\,°\text{C}$, some of
+this open ice-like hydrogen-bonded structure persists
+in the liquid. As the liquid is warmed from
+$0\,°\text{C}$, these residual structures collapse,
+packing the molecules more closely together and
+causing the water to contract. By $4\,°\text{C}$, the
+ice-like clusters have substantially broken down and
+the water is at its most compact. Above $4\,°\text{C}$,
+normal thermal expansion (increasing molecular
+separation due to greater vibrational energy) takes
+over, and the density falls as in any ordinary liquid.
+\end{processbox}
+
+\begin{diagbox}[Density of Water vs Temperature]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=11cm, height=6cm,
+  xlabel={Temperature (\textdegree C)},
+  ylabel={Density (kg\,m$^{-3}$)},
+  xmin=-5, xmax=25,
+  ymin=998.0, ymax=1001.0,
+  grid=major, grid style={gray!20},
+  xtick={-4,0,4,8,12,16,20,24},
+  ytick={998.0,998.5,999.0,999.5,1000.0,1000.5},
+  clip=false,
+]
+  % Ice region shading
+  \fill[cyan!10] (axis cs:-5,998.0) rectangle (axis cs:0,1001.0);
+  % Ice label
+  \node[font=\tiny, align=center, cyan!60!black]
+    at (axis cs:-2.5,998.4) {Ice\\$\rho < 1000$};
+  % Water density curve — peak verified at exactly 4°C:
+  % rho(T) = 999.840 + 0.066T - 0.00825T^2
+  % Peak: d/dT = 0.066 - 2(0.00825)T = 0 => T = 4.000°C exactly
+  % rho(4) = 999.840 + 0.264 - 0.132 = 999.972 kg/m^3 (real value)
+  \addplot[codexblue, very thick, domain=0:25, samples=100]
+    {999.840 + 0.066*x - 0.00825*x^2};
+  % Max density marker
+  \addplot[only marks, mark=*, codexred, mark size=4pt]
+    coordinates {(4, 999.972)};
+  \draw[dashed, codexred, thick]
+    (axis cs:4,998.0) -- (axis cs:4,999.972);
+  \node[codexred, above right, font=\small, align=center]
+    at (axis cs:4,999.972) {Max density\\at 4\textdegree C};
+  % Annotation arrows (nodes separated from draw so align= works cleanly)
+  \draw[->, codexblue, thick]
+    (axis cs:1,999.6) -- (axis cs:3.5,999.93);
+  \node[above left, font=\tiny, align=center, codexblue]
+    at (axis cs:1,999.6) {contracting\\(0 to 4\textdegree C)};
+  \draw[->, codexgreen, thick]
+    (axis cs:8,999.75) -- (axis cs:14,999.35);
+  \node[above right, font=\tiny, align=center, codexgreen]
+    at (axis cs:8,999.75) {expanding\\(above 4\textdegree C)};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{realworldbox}[Why Fish Survive Winter]
+In a lake during cold weather, the surface water cools
+first. As it cools from above $4\,°\text{C}$ toward
+$4\,°\text{C}$, it becomes denser and sinks, replaced
+by warmer water from below (convection). At
+$4\,°\text{C}$, the water is at maximum density and
+stops sinking. Further cooling of the surface toward
+$0\,°\text{C}$ makes the surface water less dense, so
+it stays on top. The surface eventually freezes.
+The ice layer acts as an insulator --- ice is a poor
+conductor of heat --- and the water beneath, at
+$4\,°\text{C}$ or above, remains liquid. Fish and other
+aquatic life survive the winter in this liquid water
+beneath the ice. Without the anomalous expansion of
+water, lakes would freeze solid from the bottom up,
+killing all aquatic life.
+
+Beyond ecology, the anomalous expansion has important
+geological consequences. Water seeps into cracks in
+rocks and, as it freezes, expands by about $9\%$ in
+volume. This generates enormous pressures (sufficient
+to split granite) and is the primary mechanism of
+\textit{frost weathering} or \textit{freeze--thaw
+action} --- the process that over geological time
+breaks rocks apart, contributes to soil formation,
+and shapes mountain landscapes. Water pipes, road
+surfaces, and concrete structures are also vulnerable
+to freeze--thaw damage for the same reason.
+\end{realworldbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Temperature vs.\ heat:} Temperature is a measure
+of average molecular KE (a state property). Heat is
+energy in transit between bodies at different
+temperatures. They are not the same thing.
+
+\textbf{Zeroth Law:} if A $\leftrightarrow$ C and
+B $\leftrightarrow$ C (thermal equilibrium), then
+A $\leftrightarrow$ B. Justifies thermometers.
+
+\textbf{Scale conversions:}
+$T(\text{K}) = T(°\text{C}) + 273$;
+$T(°\text{F}) = \frac{9}{5}T(°\text{C}) + 32$;
+$T(\text{K}) = \frac{5}{9}[T(°\text{F}) + 460]$.
+Note: write $300\ \text{K}$, \textbf{not}
+$300\,°\text{K}$.
+
+\textbf{Calibration:}
+$\theta = \frac{X_\theta - X_0}{X_{100}-X_0}
+\times 100\,°\text{C}$
+
+\textbf{Linear expansion:}
+$\Delta L = \alpha L_0\Delta\theta$
+($\alpha$ treated as constant for small $\Delta\theta$)
+
+\textbf{Area expansion:}
+$\beta = 2\alpha$
+
+\textbf{Volume expansion:}
+$\gamma = 3\alpha$
+
+\textbf{Real vs apparent:}
+$\gamma_{\text{real}} = \gamma_{\text{app}}
++ \gamma_{\text{container}}$
+
+\textbf{Bimetallic strip:} two metals with different
+$\alpha$ bonded together; curves toward the metal
+with the smaller $\alpha$ when heated.
+Used in thermostats, circuit breakers, fire alarms.
+
+\textbf{Anomalous water:} maximum density at
+$4\,°\text{C}$; ice less dense than water ($\rho_{\text{ice}}
+\approx 917\ \text{kg\,m}^{-3}$). Life and geology
+depend on this.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[13]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} The temperature $-40\,°\text{C}$ in
+Kelvin is:
+
+\mcoption{A}{$233\ \text{K}$}
+\mcoption{B}{$-313\ \text{K}$}
+\mcoption{C}{$313\ \text{K}$}
+\mcoption{D}{$40\ \text{K}$}
+\ansref{Ch13-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} A mercury thermometer has length
+$2.0\ \text{cm}$ at $0\,°\text{C}$ and
+$12.0\ \text{cm}$ at $100\,°\text{C}$. At
+$25\,°\text{C}$, the length is:
+
+\mcoption{A}{$3.0\ \text{cm}$}
+\mcoption{B}{$4.5\ \text{cm}$}
+\mcoption{C}{$4.8\ \text{cm}$}
+\mcoption{D}{$5.0\ \text{cm}$}
+\ansref{Ch13-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A steel rod has length $2.0\ \text{m}$
+at $20\,°\text{C}$. At $70\,°\text{C}$, its length is
+($\alpha_{\text{steel}} = 12\times10^{-6}\ \text{K}^{-1}$):
+
+\mcoption{A}{$2.0012\ \text{m}$}
+\mcoption{B}{$2.00012\ \text{m}$}
+\mcoption{C}{$2.0120\ \text{m}$}
+\mcoption{D}{$2.0006\ \text{m}$}
+\ansref{Ch13-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} The coefficient of volume expansion
+$\gamma$ is related to the linear expansion
+coefficient $\alpha$ by:
+
+\mcoption{A}{$\gamma = \alpha$}
+\mcoption{B}{$\gamma = 2\alpha$}
+\mcoption{C}{$\gamma = 3\alpha$}
+\mcoption{D}{$\gamma = \alpha^3$}
+\ansref{Ch13-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} Water has its maximum density at:
+
+\mcoption{A}{$0\,°\text{C}$}
+\mcoption{B}{$4\,°\text{C}$}
+\mcoption{C}{$10\,°\text{C}$}
+\mcoption{D}{$100\,°\text{C}$}
+\ansref{Ch13-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} A bimetallic strip curves when heated
+because:
+
+\mcoption{A}{Both metals expand by the same amount}
+\mcoption{B}{The two metals have different
+coefficients of linear expansion}
+\mcoption{C}{One metal melts before the other}
+\mcoption{D}{The strip loses mass on heating}
+\ansref{Ch13-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} The apparent expansion of a liquid is
+\textit{less than} the real expansion because:
+
+\mcoption{A}{Some liquid evaporates}
+\mcoption{B}{The container also expands}
+\mcoption{C}{Gravity compresses the liquid}
+\mcoption{D}{The liquid contracts when heated}
+\ansref{Ch13-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} Which temperature scale has its zero
+point at absolute zero and is the SI base unit of
+thermodynamic temperature?
+
+\mcoption{A}{Celsius}
+\mcoption{B}{Fahrenheit}
+\mcoption{C}{Kelvin}
+\mcoption{D}{Newton scale}
+\ansref{Ch13-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} A circular hole in a metal plate is
+heated. The hole:
+
+\mcoption{A}{Gets smaller (metal expands inward)}
+\mcoption{B}{Gets larger (the metal around it
+expands outward)}
+\mcoption{C}{Stays the same size}
+\mcoption{D}{Depends on whether the hole is in
+the centre or edge of the plate}
+\ansref{Ch13-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} The Zeroth Law of Thermodynamics
+justifies:
+
+\mcoption{A}{The impossibility of perpetual motion}
+\mcoption{B}{The use of thermometers to measure
+temperature}
+\mcoption{C}{The fact that heat flows from hot to cold}
+\mcoption{D}{The expansion of gases on heating}
+\ansref{Ch13-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A concrete bridge span is $120\ \text{m}$
+long at $15\,°\text{C}$. The bridge must withstand
+temperatures ranging from $-5\,°\text{C}$ (cold night)
+to $55\,°\text{C}$ (hot day).
+($\alpha_{\text{concrete}} = 12\times10^{-6}\ \text{K}^{-1}$)\\[4pt]
+(a) Calculate the total change in length over this
+temperature range.\\
+(b) Expansion joints are placed at each end of the
+span. How wide must each joint be to accommodate the
+full expansion?\\
+(c) Modern bridges use prestressed concrete with
+steel reinforcement. If a steel rod of length
+$120\ \text{m}$
+($\alpha_{\text{steel}} = 12\times10^{-6}\ \text{K}^{-1}$)
+is embedded in the concrete and both heat up together,
+explain why there is no cracking due to differential
+expansion.\\
+(d) If a glass bridge beam ($\alpha_{\text{glass}}
+= 3.2\times10^{-6}\ \text{K}^{-1}$) were embedded
+instead, what problem would arise? Calculate the
+differential expansion.
+\hfill\ansref{Ch13-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A resistance thermometer has resistance
+$50.0\ \Omega$ at $0\,°\text{C}$ and $68.4\ \Omega$
+at $100\,°\text{C}$.
+A thermocouple thermometer simultaneously reads
+$45.0\,°\text{C}$ when the resistance thermometer
+reads $58.3\ \Omega$.\\[4pt]
+(a) Calculate the temperature indicated by the
+resistance thermometer.\\
+(b) Explain why the two readings differ.\\
+(c) The resistance at a very high temperature is
+$130.0\ \Omega$. Calculate the temperature on the
+platinum resistance scale.\\
+(d) Explain why gas thermometers are used as
+primary standards rather than liquid-in-glass or
+resistance thermometers.
+\hfill\ansref{Ch13-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A glass bottle of volume
+$500\ \text{cm}^3$ is filled completely with
+glycerol at $20\,°\text{C}$.
+($\gamma_{\text{glycerol}} = 4.85\times10^{-4}\ \text{K}^{-1}$,
+$\alpha_{\text{glass}} = 3.2\times10^{-6}\ \text{K}^{-1}$)\\[4pt]
+(a) Calculate the volume expansion coefficient of
+the glass bottle.\\
+(b) When heated to $80\,°\text{C}$, calculate the
+volume of glycerol that overflows.\\
+(c) Calculate the apparent coefficient of expansion
+of glycerol in glass.\\
+(d) Why does liquid overflow from a completely full
+container when heated, even though both the liquid
+and container expand?
+\hfill\ansref{Ch13-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} (a) Draw a careful sketch of the
+density-temperature graph for water from
+$-2\,°\text{C}$ to $20\,°\text{C}$, labelling the
+key features.\\[4pt]
+(b) Explain at the molecular level why ice is less
+dense than liquid water.\\
+(c) A lake is $10\ \text{m}$ deep and cools uniformly.
+Describe, step by step, the convection process that
+occurs as the lake cools from $10\,°\text{C}$ toward
+$0\,°\text{C}$, and explain why the bottom of the
+lake remains at $4\,°\text{C}$ even when the surface
+is frozen.\\
+(d) Suggest two consequences of the anomalous
+expansion of water for life on Earth, beyond the
+fish survival example.
+\hfill\ansref{Ch13-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} An aluminium sphere of diameter
+$5.0\ \text{cm}$ has a hole of diameter
+$2.0\ \text{cm}$ drilled through its centre. The
+sphere is heated from $20\,°\text{C}$ to $200\,°\text{C}$.
+($\alpha_{\text{Al}} = 23\times10^{-6}\ \text{K}^{-1}$)\\[4pt]
+(a) Calculate the new outer diameter of the sphere.\\
+(b) Calculate the new diameter of the hole.\\
+(c) Calculate the new volume of the sphere
+(including the hole volume).\\
+(d) A steel rod of diameter $2.002\ \text{cm}$ at
+$20\,°\text{C}$ is pushed into the hole.
+($\alpha_{\text{steel}} = 12\times10^{-6}\ \text{K}^{-1}$)\\
+At what temperature will the rod just fit through
+the hole? (Hint: set the hole diameter equal to the
+rod diameter and solve for $T$.)
+\hfill\ansref{Ch13-B5}
+
+\end{exercisebox}

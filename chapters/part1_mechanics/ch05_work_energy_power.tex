@@ -1,0 +1,803 @@
+% ============================================================
+%  CHAPTER 5: WORK, ENERGY AND POWER
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part1/ch05_work_energy_power.tex
+% ============================================================
+
+\chapter{Work, Energy and Power}
+\label{ch:work_energy_power}
+
+\chapterquote{Energy cannot be created or destroyed;
+it can only be changed from one form to another.}{Albert Einstein}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Define work and calculate it for constant and
+  variable forces
+  \item State and apply the work-energy theorem
+  \item Define kinetic and potential energy and apply
+  conservation of mechanical energy
+  \item Calculate power and relate it to force and
+  velocity
+  \item Define efficiency and apply it to machines and
+  energy transfers
+  \item Identify different forms of energy and their
+  interconversions
+  \item Solve problems involving springs and elastic
+  potential energy
+\end{enumerate}
+\end{objectivebox}
+
+\vspace{0.4cm}
+
+\minitoc
+
+\vspace{0.5cm}
+
+% ============================================================
+\section{The Concept of Work}
+% ============================================================
+
+In everyday language, ``work'' means any effortful
+activity --- studying, walking, thinking. In Physics,
+work has a precise and narrower meaning. You can push
+against a wall with all your strength for an hour and
+do zero work in the Physics sense, because the wall
+did not move.
+
+\begin{definitionbox}[Work Done by a Constant Force]
+The \textbf{work} $W$ done by a constant force $\vect{F}$
+when an object moves through displacement $\vect{s}$ is:
+\[
+  W = Fs\cos\theta
+\]
+where $\theta$ is the angle between the force and the
+displacement. Work is a \textbf{scalar}. SI unit:
+joule (J) where $1\ \text{J} = 1\ \text{N\,m}$.
+\end{definitionbox}
+
+\begin{diagbox}[Work Done at an Angle]
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  % Ground
+  \fill[gray!20] (0,-0.3) rectangle (8,0);
+  \draw[thick] (0,0) -- (8,0);
+
+  % Object
+  \fill[codexblue!30] (1,0) rectangle (2.5,0.8);
+  \fill[codexblue!30] (5.5,0) rectangle (7,0.8);
+  \node[font=\small] at (1.75,0.4) {$m$};
+  \draw[->, dashed, gray, thick] (2.5,0.4) -- (5.5,0.4);
+  \node[above, gray] at (4,0.4) {$s$};
+
+  % Force arrow
+  \draw[->, very thick, codexred]
+    (1.75,0.8) -- ++(3,1.5)
+    node[right]{$\vect{F}$};
+
+  % Angle
+  \draw[->, dashed, gray] (1.75,0.8) -- ++(3,0);
+  \draw[codexgold] (2.55,0.8) arc(0:26.6:0.8);
+  \node[codexgold, right] at (2.9,1.0) {$\theta$};
+
+  % Horizontal component
+  \draw[->, thick, codexblue, dashed]
+    (1.75,0.8) -- ++(3,0)
+    node[below right]{$F\cos\theta$};
+
+  % Work formula
+  \node[align=center, font=\small] at (4,-0.8)
+    {Work $= F\cos\theta \times s$\\
+    (only the component along displacement does work)};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{keybox}[When is Work Zero?]
+Work done is zero when:
+\begin{itemize}[noitemsep]
+  \item The force is zero ($F = 0$)
+  \item The displacement is zero ($s = 0$) --- no
+  movement
+  \item The force is perpendicular to displacement
+  ($\theta = 90°$, so $\cos 90° = 0$)
+\end{itemize}
+Example: A waiter carrying a tray horizontally does
+\textbf{zero work} on the tray with the upward
+force of his hand (force is vertical, displacement
+is horizontal, $\theta = 90°$). The effort he feels
+is from maintaining the force, not from doing work
+in the Physics sense.
+\end{keybox}
+
+\begin{examplebox}[5.1]
+\stepcounter{workedexample}
+A person drags a $20\ \text{kg}$ box across a floor
+with a rope at $35°$ above the horizontal. The tension
+in the rope is $80\ \text{N}$. The box moves $5.0\ \text{m}$.
+Find:\\
+(a) the work done by the tension;\\
+(b) the work done by gravity;\\
+(c) the work done by the normal reaction.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Work by tension:
+\[
+  W_T = F\cos\theta \cdot s
+  = 80 \times \cos 35° \times 5.0
+  = 80 \times 0.819 \times 5.0
+  = 327.6 \approx 328\ \text{J}
+\]
+
+\textbf{(b)} Work by gravity: Gravity acts downward
+($-y$), displacement is horizontal. The angle between
+gravity and displacement is $90°$.
+\[
+  W_g = mg\cos 90° \times s = 0\ \text{J}
+\]
+
+\textbf{(c)} Work by normal reaction: Normal reaction
+acts upward ($+y$), displacement is horizontal.
+Angle is $90°$.
+\[
+  W_N = N\cos 90° \times s = 0\ \text{J}
+\]
+
+Only the applied force does work in this problem.
+\end{solutionbox}
+
+% ============================================================
+\section{Kinetic Energy}
+% ============================================================
+
+\begin{definitionbox}[Kinetic Energy]
+The \textbf{kinetic energy} (KE) of a body is the energy
+it possesses due to its motion:
+\[
+  KE = \frac{1}{2}mv^2
+\]
+KE is a \textbf{scalar}, always positive or zero.
+SI unit: joule (J).
+\end{definitionbox}
+
+\begin{lawbox}[Work-Energy Theorem]
+The \textbf{net work} done on a body equals the change
+in its kinetic energy:
+\[
+  W_{net} = \Delta KE = \frac{1}{2}mv^2 - \frac{1}{2}mu^2
+\]
+This is one of the most powerful results in classical
+mechanics. It connects forces and motion directly,
+bypassing the need to know acceleration explicitly.
+\end{lawbox}
+
+\textbf{Derivation:}
+From Newton's second law with constant force:
+$F = ma$, and from kinematics: $v^2 = u^2 + 2as$,
+so $as = (v^2-u^2)/2$. Then:
+\[
+  W = Fs = (ma)s = m(as) = m\cdot\frac{v^2-u^2}{2}
+  = \tfrac{1}{2}mv^2 - \tfrac{1}{2}mu^2 = \Delta KE
+\]
+
+\begin{examplebox}[5.2]
+\stepcounter{workedexample}
+A $1000\ \text{kg}$ car accelerates from
+$10\ \text{m\,s}^{-1}$ to $25\ \text{m\,s}^{-1}$
+while a net force acts on it over $150\ \text{m}$.\\
+(a) Find the net work done.\\
+(b) Find the net force.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Net work = change in KE:
+\[
+  W_{net} = \tfrac{1}{2}(1000)(25^2)
+  - \tfrac{1}{2}(1000)(10^2)
+\]
+\[
+  = 312\,500 - 50\,000 = 262\,500\ \text{J}
+  \approx 263\ \text{kJ}
+\]
+
+\textbf{(b)} From $W = Fs$:
+\[
+  F = \frac{W_{net}}{s}
+  = \frac{262\,500}{150} = 1\,750\ \text{N}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Gravitational Potential Energy}
+% ============================================================
+
+\begin{definitionbox}[Gravitational Potential Energy]
+The \textbf{gravitational potential energy} (GPE) of
+a body at height $h$ above a reference level is:
+\[
+  GPE = mgh
+\]
+It is the work that must be done against gravity to
+raise the body from the reference level to height $h$.
+GPE depends on the choice of reference level (usually
+the ground or lowest point in the problem).
+\end{definitionbox}
+
+\begin{lawbox}[Conservation of Mechanical Energy]
+In the absence of friction and air resistance, the
+total mechanical energy (KE + GPE) of a system is
+conserved:
+\[
+  E_{mechanical} = KE + GPE
+  = \frac{1}{2}mv^2 + mgh = \text{constant}
+\]
+\[
+  \frac{1}{2}mu^2 + mgh_1
+  = \frac{1}{2}mv^2 + mgh_2
+\]
+What is lost in KE is gained in GPE, and vice versa.
+\end{lawbox}
+
+\begin{examplebox}[5.3]
+\stepcounter{workedexample}
+A ball is released from rest at the top of a smooth
+ramp $3.2\ \text{m}$ above the ground.
+Find the speed of the ball at the bottom of the ramp.
+($g = 10\ \text{m\,s}^{-2}$)
+\end{examplebox}
+
+\begin{solutionbox}
+At the top: $KE = 0$, $GPE = mgh = mg(3.2)$\\
+At the bottom: $KE = \frac{1}{2}mv^2$, $GPE = 0$
+
+By conservation of energy:
+\[
+  mgh = \frac{1}{2}mv^2
+\]
+\[
+  v^2 = 2gh = 2 \times 10 \times 3.2 = 64
+\]
+\[
+  v = 8.0\ \text{m\,s}^{-1}
+\]
+
+Note: the mass cancels. The speed at the bottom is
+independent of the mass --- exactly as Galileo showed
+for free fall.
+\end{solutionbox}
+
+\begin{examplebox}[5.4]
+\stepcounter{workedexample}
+A $500\ \text{g}$ ball is thrown vertically upward
+with speed $14\ \text{m\,s}^{-1}$. Using energy
+conservation, find:\\
+(a) the maximum height;\\
+(b) the speed when it is at height $5.0\ \text{m}$.
+($g = 10\ \text{m\,s}^{-2}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} At maximum height, $v = 0$:
+\[
+  \frac{1}{2}mv^2 + mgh_{max}
+  = \frac{1}{2}mu^2 + 0
+\]
+\[
+  0 + mgh_{max} = \frac{1}{2}mu^2
+\]
+\[
+  h_{max} = \frac{u^2}{2g}
+  = \frac{14^2}{2 \times 10} = \frac{196}{20}
+  = 9.8\ \text{m}
+\]
+
+\textbf{(b)} At $h = 5.0\ \text{m}$:
+\[
+  \frac{1}{2}mv^2 = \frac{1}{2}mu^2 - mgh
+\]
+\[
+  v^2 = u^2 - 2gh = 196 - 2(10)(5.0) = 96
+\]
+\[
+  v = \sqrt{96} = 9.8\ \text{m\,s}^{-1}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Elastic Potential Energy}
+% ============================================================
+
+\begin{definitionbox}[Elastic Potential Energy]
+When a spring (or any elastic material) is compressed
+or stretched by extension $x$ from its natural length,
+energy is stored as \textbf{elastic potential energy}:
+\[
+  E_{elastic} = \frac{1}{2}kx^2
+\]
+where $k$ is the spring constant (N\,m$^{-1}$).
+This stored energy equals the work done in compressing
+or stretching the spring.
+\end{definitionbox}
+
+\begin{diagbox}[Work Done by a Spring Force]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=8cm, height=5cm,
+  xlabel={Extension $x$ (m)},
+  ylabel={Force $F$ (N)},
+  xmin=0, xmax=5, ymin=0, ymax=30,
+  grid=major, grid style={gray!20},
+]
+  % F = kx line (k=5)
+  \addplot[codexblue, very thick, domain=0:5]{5*x};
+  \addlegendentry{$F = kx$}
+
+  % Shaded area = work done = elastic PE
+  \addplot[fill=codexblue!20, opacity=0.6, domain=0:5]
+    {5*x} \closedcycle;
+
+  % Annotation
+  \node[codexblue, font=\small] at (axis cs:2.5,8)
+    {Area $= \frac{1}{2}kx^2 = E_{elastic}$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\small The area under a force-extension graph equals
+the work done (and elastic PE stored).
+\end{diagbox}
+
+% ============================================================
+\section{Power}
+% ============================================================
+
+\begin{definitionbox}[Power]
+\textbf{Power} is the rate of doing work, or the rate
+of energy transfer:
+\[
+  P = \frac{W}{t} = \frac{\Delta E}{\Delta t}
+\]
+For a force $F$ acting on a body moving at velocity $v$:
+\[
+  P = Fv\cos\theta
+\]
+If the force is parallel to the velocity:
+$P = Fv$.
+
+SI unit: watt (W) where $1\ \text{W} = 1\ \text{J\,s}^{-1}$.
+Also used: kilowatt (kW = $10^3$ W),
+megawatt (MW = $10^6$ W), horsepower (1 hp $\approx$ 746 W).
+\end{definitionbox}
+
+\begin{historybox}[The Watt and James Watt]
+The unit of power is named after James Watt (1736--1819),
+the Scottish engineer who dramatically improved the steam
+engine and powered the Industrial Revolution. Watt
+himself introduced the unit ``horsepower'' to describe
+his engines' output in terms that horse-owners could
+relate to. He estimated that a horse could do
+33,000 foot-pounds of work per minute, and used this
+to market his engines. One horsepower is approximately
+746 watts.
+\end{historybox}
+
+\begin{examplebox}[5.5]
+\stepcounter{workedexample}
+A motor lifts a $200\ \text{kg}$ load through
+$15\ \text{m}$ in $10\ \text{s}$.\\
+(a) Find the minimum power of the motor.\\
+(b) If the motor is $80\%$ efficient, what is the
+actual power input?
+($g = 10\ \text{m\,s}^{-2}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Work done against gravity:
+\[
+  W = mgh = 200 \times 10 \times 15 = 30\,000\ \text{J}
+\]
+Minimum power (assuming 100\% efficiency):
+\[
+  P_{out} = \frac{W}{t} = \frac{30\,000}{10}
+  = 3\,000\ \text{W} = 3.0\ \text{kW}
+\]
+
+\textbf{(b)} Efficiency $\eta = P_{out}/P_{in}$:
+\[
+  P_{in} = \frac{P_{out}}{\eta}
+  = \frac{3000}{0.80} = 3\,750\ \text{W} = 3.75\ \text{kW}
+\]
+\end{solutionbox}
+
+\begin{examplebox}[5.6]
+\stepcounter{workedexample}
+A car engine produces a driving force of $4000\ \text{N}$
+when the car moves at $30\ \text{m\,s}^{-1}$ at constant
+speed. Calculate the power output of the engine.
+\end{examplebox}
+
+\begin{solutionbox}
+At constant speed, the driving force equals the
+resistance. Power:
+\[
+  P = Fv = 4000 \times 30 = 120\,000\ \text{W}
+  = 120\ \text{kW}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Efficiency}
+% ============================================================
+
+\begin{definitionbox}[Efficiency]
+The \textbf{efficiency} $\eta$ of an energy transfer
+or machine is the ratio of useful output to total input,
+expressed as a percentage:
+\[
+  \eta = \frac{\text{useful output energy}}
+  {\text{total input energy}} \times 100\%
+  = \frac{P_{out}}{P_{in}} \times 100\%
+\]
+Efficiency is always less than 100\% in practice,
+because some energy is always dissipated (usually
+as heat and sound) due to friction and other losses.
+\end{definitionbox}
+
+\begin{realworldbox}[Generator Efficiency in Nigeria]
+A typical petrol generator commonly used in Nigerian
+homes has an efficiency of around 20--30\%. This means
+that for every $1\,000\ \text{J}$ of chemical energy
+burned in petrol, only $200$--$300\ \text{J}$ is
+converted to electrical energy. The remaining 70--80\%
+is lost as heat in the engine and exhaust. This is why
+generators feel very hot when running --- they are
+radiating enormous amounts of wasted energy.
+\end{realworldbox}
+
+% ============================================================
+\section{Forms of Energy and Energy Conservation}
+% ============================================================
+
+Energy exists in many forms. The principle of
+conservation of energy states that energy can never
+be created or destroyed --- only converted from one
+form to another.
+
+\begin{defbox}[Forms of Energy]
+\begin{itemize}[noitemsep]
+  \item \textbf{Kinetic energy:} energy of motion
+  \item \textbf{Gravitational potential energy:}
+  energy due to position in gravitational field
+  \item \textbf{Elastic potential energy:} energy
+  stored in deformed elastic materials
+  \item \textbf{Chemical energy:} stored in chemical
+  bonds (food, fuel, batteries)
+  \item \textbf{Nuclear energy:} stored in atomic
+  nuclei (fission, fusion)
+  \item \textbf{Thermal (heat) energy:} internal
+  energy due to random molecular motion
+  \item \textbf{Electrical energy:} energy of moving
+  charges
+  \item \textbf{Radiant (light/EM) energy:}
+  energy carried by electromagnetic waves
+  \item \textbf{Sound energy:} mechanical wave energy
+  in a medium
+\end{itemize}
+\end{defbox}
+
+\begin{realworldbox}[Energy Chains in a Hydroelectric Dam]
+At Kainji Dam on the Niger River (Nigeria's first
+hydroelectric power station, commissioned 1968),
+the energy conversion chain is:
+\[
+  \underbrace{\text{Gravitational PE}}_{\text{water at height}}
+  \to \underbrace{\text{KE}}_{\text{falling water}}
+  \to \underbrace{\text{Kinetic (turbine)}}_{\text{spinning}}
+  \to \underbrace{\text{Electrical}}_{\text{generator}}
+  \to \underbrace{\text{Light, heat, work}}_{\text{in homes}}
+\]
+Each conversion loses some energy as heat, which is why
+the efficiency of the whole chain is well below 100\%.
+\end{realworldbox}
+
+% ============================================================
+\section{Energy Dissipation by Friction}
+% ============================================================
+
+When friction acts, kinetic energy is converted to heat.
+The work done against friction is:
+\[
+  W_{friction} = f \times d = \mu mg\cos\theta \times d
+\]
+
+By the work-energy theorem, including friction:
+\[
+  KE_{final} = KE_{initial} + W_{net forces}
+  - W_{friction}
+\]
+Or equivalently:
+\[
+  \frac{1}{2}mv_2^2 = \frac{1}{2}mv_1^2
+  + mgh - W_{friction}
+\]
+
+\begin{examplebox}[5.7]
+\stepcounter{workedexample}
+A $2.0\ \text{kg}$ block slides $4.0\ \text{m}$ down
+a rough incline of $30°$ from rest. The coefficient
+of kinetic friction is $0.25$. Find the speed at the
+bottom. ($g = 10\ \text{m\,s}^{-2}$)
+\end{examplebox}
+
+\begin{solutionbox}
+Height descended: $h = 4.0\sin 30° = 2.0\ \text{m}$\\
+Normal force: $N = mg\cos 30° = 2.0(10)(0.866) = 17.3\ \text{N}$\\
+Friction force: $f = \mu N = 0.25 \times 17.3 = 4.33\ \text{N}$\\
+Work done by friction: $W_f = -4.33 \times 4.0 = -17.3\ \text{J}$
+
+Energy conservation with friction:
+\[
+  \frac{1}{2}mv^2 = mgh - W_f
+\]
+\[
+  \frac{1}{2}(2.0)v^2 = (2.0)(10)(2.0) - 17.3
+  = 40 - 17.3 = 22.7\ \text{J}
+\]
+\[
+  v^2 = \frac{22.7}{1.0} = 22.7
+  \implies v = 4.8\ \text{m\,s}^{-1}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Work:} $W = Fs\cos\theta$ (scalar, J).
+Zero when force $\perp$ displacement.
+
+\textbf{Work-energy theorem:}
+$W_{net} = \Delta KE = \frac{1}{2}mv^2 - \frac{1}{2}mu^2$
+
+\textbf{KE:} $\frac{1}{2}mv^2$ \quad
+\textbf{GPE:} $mgh$ \quad
+\textbf{Elastic PE:} $\frac{1}{2}kx^2$
+
+\textbf{Conservation of mechanical energy}
+(no friction):
+$\frac{1}{2}mv^2 + mgh = \text{constant}$
+
+\textbf{Power:}
+$P = W/t = Fv$ (watts, W)
+
+\textbf{Efficiency:}
+$\eta = (P_{out}/P_{in}) \times 100\%$
+
+\textbf{Energy} cannot be created or destroyed,
+only converted. Friction converts KE to heat.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[5]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A force of $50\ \text{N}$ acts at $60°$
+to the direction of motion of an object. The work done
+when the object moves $8.0\ \text{m}$ is:
+
+\mcoption{A}{$200\ \text{J}$}
+\mcoption{B}{$346\ \text{J}$}
+\mcoption{C}{$400\ \text{J}$}
+\mcoption{D}{$692\ \text{J}$}
+\ansref{Ch5-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} A body falls freely from rest and reaches
+speed $v$ after time $t$. Its kinetic energy at this
+point is:
+
+\mcoption{A}{$mgv$}
+\mcoption{B}{$\frac{1}{2}mg^2t^2$}
+\mcoption{C}{$\frac{1}{2}mv^2$}
+\mcoption{D}{$mgt$}
+\ansref{Ch5-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A spring with spring constant
+$400\ \text{N\,m}^{-1}$ is compressed by $5.0\ \text{cm}$.
+The elastic potential energy stored is:
+
+\mcoption{A}{$0.25\ \text{J}$}
+\mcoption{B}{$0.50\ \text{J}$}
+\mcoption{C}{$10\ \text{J}$}
+\mcoption{D}{$20\ \text{J}$}
+\ansref{Ch5-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} A pump lifts water at a rate of
+$50\ \text{kg\,s}^{-1}$ through a height of $10\ \text{m}$.
+The minimum power of the pump is
+($g = 10\ \text{m\,s}^{-2}$):
+
+\mcoption{A}{$500\ \text{W}$}
+\mcoption{B}{$5\,000\ \text{W}$}
+\mcoption{C}{$50\,000\ \text{W}$}
+\mcoption{D}{$500\,000\ \text{W}$}
+\ansref{Ch5-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} A car engine exerts a force of
+$3\,000\ \text{N}$ against a resistance of
+$1\,000\ \text{N}$. At speed $20\ \text{m\,s}^{-1}$,
+the power of the engine is:
+
+\mcoption{A}{$20\,000\ \text{W}$}
+\mcoption{B}{$40\,000\ \text{W}$}
+\mcoption{C}{$60\,000\ \text{W}$}
+\mcoption{D}{$80\,000\ \text{W}$}
+\ansref{Ch5-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} A machine has input power $2\ \text{kW}$
+and output power $1.5\ \text{kW}$. Its efficiency is:
+
+\mcoption{A}{$25\%$}
+\mcoption{B}{$50\%$}
+\mcoption{C}{$75\%$}
+\mcoption{D}{$133\%$}
+\ansref{Ch5-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} Which of the following does zero work
+on a planet in circular orbit around the Sun?
+
+\mcoption{A}{Gravity}
+\mcoption{B}{The planet's velocity}
+\mcoption{C}{Atmospheric drag}
+\mcoption{D}{Gravity does zero work because it acts
+perpendicular to the orbital displacement at all times}
+\ansref{Ch5-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} A ball of mass $m$ rolls from the top of
+a smooth hill of height $H$ with initial speed $v_0$.
+Its speed at the bottom is:
+
+\mcoption{A}{$\sqrt{v_0^2 + gH}$}
+\mcoption{B}{$\sqrt{v_0^2 + 2gH}$}
+\mcoption{C}{$\sqrt{2gH}$}
+\mcoption{D}{$v_0 + \sqrt{2gH}$}
+\ansref{Ch5-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} The kinetic energy of an object is
+doubled. Its speed is multiplied by a factor of:
+
+\mcoption{A}{$\sqrt{2}$}
+\mcoption{B}{$2$}
+\mcoption{C}{$4$}
+\mcoption{D}{$\sqrt{4} = 2$, same as B}
+\ansref{Ch5-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} A $70\ \text{kg}$ student climbs a
+staircase of vertical height $12\ \text{m}$ in
+$18\ \text{s}$. The power output of the student is
+($g = 10\ \text{m\,s}^{-2}$):
+
+\mcoption{A}{$350\ \text{W}$}
+\mcoption{B}{$467\ \text{W}$}
+\mcoption{C}{$580\ \text{W}$}
+\mcoption{D}{$840\ \text{W}$}
+\ansref{Ch5-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A $3.0\ \text{kg}$ block is pulled
+$6.0\ \text{m}$ along a rough horizontal surface
+by a horizontal force of $25\ \text{N}$. The
+coefficient of kinetic friction is $0.30$.
+($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+(a) Find the work done by the applied force.\\
+(b) Find the work done by friction.\\
+(c) Find the net work done on the block.\\
+(d) If the block started from rest, find its speed
+after $6.0\ \text{m}$ using the work-energy theorem.\\
+(e) Verify your answer using the equations of motion.
+\hfill\ansref{Ch5-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A ball of mass $0.50\ \text{kg}$ is
+attached to a string and swings in a vertical circle
+of radius $1.2\ \text{m}$. At the lowest point of
+the circle it has speed $6.0\ \text{m\,s}^{-1}$.
+($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+(a) Calculate the KE and GPE at the lowest point
+(take lowest point as reference level).\\
+(b) Using energy conservation, find the speed at
+the highest point.\\
+(c) What is the minimum speed at the highest point
+for the string to remain taut? (Hint: at minimum
+speed, tension = 0 and gravity alone provides
+centripetal force.)\\
+(d) Does the ball have sufficient energy to complete
+the full circle?
+\hfill\ansref{Ch5-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A petrol-powered water pump on a farm
+in Ogun State lifts water from a well $8.0\ \text{m}$
+deep and delivers it at $0.025\ \text{m}^3\text{s}^{-1}$
+(density of water $= 1000\ \text{kg\,m}^{-3}$,
+$g = 10\ \text{m\,s}^{-2}$).\\[4pt]
+(a) Calculate the mass of water lifted per second.\\
+(b) Calculate the useful power output of the pump.\\
+(c) The pump engine produces $3.5\ \text{kW}$ of
+input power. Calculate the efficiency.\\
+(d) If petrol costs ₦700 per litre and the engine
+consumes $0.8\ \text{L\,h}^{-1}$, calculate the
+cost of running the pump for 4 hours.\\
+(e) How much water (in cubic metres) is lifted in
+the 4-hour period?
+\hfill\ansref{Ch5-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A $0.20\ \text{kg}$ ball is dropped
+from rest onto a spring of spring constant
+$800\ \text{N\,m}^{-1}$. The spring is initially
+uncompressed, and the ball falls $0.50\ \text{m}$
+before first touching the spring.
+($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+(a) Find the speed of the ball just before it
+touches the spring.\\
+(b) Set up an energy equation for the moment of
+maximum compression $x$ of the spring (at that
+point the ball momentarily stops).\\
+(c) Solve for $x$.\\
+(d) What is the maximum elastic PE stored in the
+spring?
+\hfill\ansref{Ch5-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A cyclist and her bicycle have a
+combined mass of $75\ \text{kg}$. She rides along
+a horizontal road at a constant speed of
+$8.0\ \text{m\,s}^{-1}$ against a total resistance
+of $40\ \text{N}$.\\[4pt]
+(a) Calculate the power she exerts.\\
+(b) She then climbs a hill inclined at $5.0°$ to
+the horizontal, still at $8.0\ \text{m\,s}^{-1}$
+with the same resistance. Find her new power output.\\
+(c) At the top of the hill she stops pedalling.
+If the same resistance acts, how far does she
+travel before stopping? (Use energy methods.)\\
+(d) What percentage of her original KE is used
+overcoming resistance, and what percentage raises
+her height, during the climb of part (b) if she
+climbs for $200\ \text{m}$ along the slope?
+\hfill\ansref{Ch5-B5}
+
+\end{exercisebox}

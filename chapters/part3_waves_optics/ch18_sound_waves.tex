@@ -1,0 +1,1109 @@
+% ============================================================
+%  CHAPTER 18: SOUND WAVES
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part3/ch18_sound.tex
+% ============================================================
+
+\chapter{Sound Waves}
+\label{ch:sound}
+\minitoc
+\newpage
+
+\chapterquote{Music is the arithmetic of sounds as
+optics is the geometry of light.}{Claude Debussy}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Describe the nature of sound as a longitudinal
+  mechanical wave
+  \item Explain how sound is produced and detected
+  \item Calculate the speed of sound in different
+  media and apply it to problems
+  \item Define and calculate frequency, pitch, loudness
+  and quality of sound
+  \item Explain and calculate the Doppler effect
+  \item Describe echoes and use them to calculate
+  distances
+  \item Explain resonance in sound and give practical
+  examples
+  \item Define the decibel scale and perform basic
+  calculations
+  \item Distinguish between ultrasound and infrasound
+  and describe their applications
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: The Nature of Sound}
+% ============================================================
+
+Strike a tuning fork and hold it near your ear. The
+sound you hear is produced by the vibrating prongs of
+the fork. Each prong pushes the air molecules in front
+of it, creating a region of higher pressure (a
+\textbf{compression}). As the prong swings back, it
+leaves a region of lower pressure (a
+\textbf{rarefaction}). These pressure oscillations
+travel outward through the air at approximately
+$340\ \text{m\,s}^{-1}$, reach your eardrum, cause it
+to vibrate at the same frequency, and your brain
+interprets this as sound.
+
+Sound is a \textbf{longitudinal mechanical wave} of
+pressure variations travelling through a medium. Three
+things are absolutely essential:
+\begin{enumerate}[noitemsep]
+  \item A vibrating source
+  \item A material medium to carry the wave
+  \item A detector (ear, microphone, instrument)
+\end{enumerate}
+
+Without a medium, there is no sound. The famous
+tagline from the film \textit{Alien} --- ``In space,
+no one can hear you scream'' --- is physically accurate.
+Sound cannot travel through a vacuum.
+
+% ============================================================
+\section{Production and Propagation of Sound}
+% ============================================================
+
+\begin{diagbox}[Tuning Fork Producing Sound Waves]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Tuning fork
+  \fill[gray!60] (0,3.5) rectangle (0.4,6.5);
+  \fill[gray!60] (0,5.5) .. controls (-0.5,5.5) and
+    (-0.5,7.5) .. (0,7.5) -- (0.3,7.5) ..
+    controls (-0.2,7.5) and (-0.2,5.5) .. (0.3,5.5);
+  \fill[gray!60] (0.4,5.5) .. controls (0.9,5.5)
+    and (0.9,7.5) .. (0.4,7.5) -- (0.7,7.5) ..
+    controls (1.2,7.5) and (1.2,5.5) .. (0.7,5.5);
+  \fill[gray!60] (0.3,3.5) rectangle (0.7,5.5);
+
+  % Prong vibration arrow
+  \draw[->, thick, codexred] (-0.3,7.0) -- (-0.7,7.0);
+  \draw[->, thick, codexblue] (1.0,7.0) -- (1.4,7.0);
+  \node[codexred, font=\tiny] at (-0.5,7.3)
+    {compress};
+  \node[codexblue, font=\tiny] at (1.2,7.3)
+    {rarefy};
+
+  % Compressions (C) and rarefactions (R) spreading right
+  % Compression 1
+  \foreach \x in {2.0, 2.1, 2.2} {
+    \fill[codexblue!60] (\x, 4.5) circle (3pt);
+    \fill[codexblue!60] (\x, 5.0) circle (3pt);
+    \fill[codexblue!60] (\x, 5.5) circle (3pt);
+    \fill[codexblue!60] (\x, 6.0) circle (3pt);
+    \fill[codexblue!60] (\x, 6.5) circle (3pt);
+  }
+  \node[codexblue, font=\tiny] at (2.1,4.1) {C};
+
+  % Rarefaction 1 (sparse)
+  \foreach \x in {3.0, 3.5} {
+    \fill[codexblue!30] (\x, 4.5) circle (2pt);
+    \fill[codexblue!30] (\x, 5.5) circle (2pt);
+    \fill[codexblue!30] (\x, 6.5) circle (2pt);
+  }
+  \node[gray, font=\tiny] at (3.25,4.1) {R};
+
+  % Compression 2
+  \foreach \x in {4.2, 4.3, 4.4} {
+    \fill[codexblue!60] (\x, 4.5) circle (3pt);
+    \fill[codexblue!60] (\x, 5.0) circle (3pt);
+    \fill[codexblue!60] (\x, 5.5) circle (3pt);
+    \fill[codexblue!60] (\x, 6.0) circle (3pt);
+    \fill[codexblue!60] (\x, 6.5) circle (3pt);
+  }
+  \node[codexblue, font=\tiny] at (4.3,4.1) {C};
+
+  % Rarefaction 2
+  \foreach \x in {5.2, 5.7} {
+    \fill[codexblue!30] (\x, 4.5) circle (2pt);
+    \fill[codexblue!30] (\x, 5.5) circle (2pt);
+    \fill[codexblue!30] (\x, 6.5) circle (2pt);
+  }
+  \node[gray, font=\tiny] at (5.45,4.1) {R};
+
+  % Compression 3
+  \foreach \x in {6.4, 6.5, 6.6} {
+    \fill[codexblue!60] (\x, 4.5) circle (3pt);
+    \fill[codexblue!60] (\x, 5.0) circle (3pt);
+    \fill[codexblue!60] (\x, 5.5) circle (3pt);
+    \fill[codexblue!60] (\x, 6.0) circle (3pt);
+    \fill[codexblue!60] (\x, 6.5) circle (3pt);
+  }
+  \node[codexblue, font=\tiny] at (6.5,4.1) {C};
+
+  % Wave direction arrow
+  \draw[->, very thick, codexgold]
+    (2.0,3.7) -- (7.5,3.7)
+    node[right]{direction of travel};
+
+  % Pressure graph below
+  \begin{scope}[shift={(1.5,0)}]
+  \begin{axis}[
+    at={(0pt,-30pt)},
+    width=9cm, height=3.5cm,
+    xlabel={Distance from source},
+    ylabel={Pressure},
+    xmin=0, xmax=6,
+    ymin=-1.3, ymax=1.3,
+    grid=major, grid style={gray!15},
+    xtick=\empty,
+    ytick={-1,0,1},
+    yticklabels={low $P$,$P_0$,high $P$},
+  ]
+    \addplot[codexblue, very thick, domain=0:6,
+      samples=100]
+      {sin(deg(x*3.14159))};
+    \node[font=\tiny, codexblue] at (axis cs:0.5,0.8)
+      {C};
+    \node[font=\tiny, gray] at (axis cs:1.5,-0.8)
+      {R};
+    \node[font=\tiny, codexblue] at (axis cs:2.5,0.8)
+      {C};
+    \node[font=\tiny, gray] at (axis cs:3.5,-0.8)
+      {R};
+    \node[font=\tiny, codexblue] at (axis cs:4.5,0.8)
+      {C};
+    \node[font=\tiny, gray] at (axis cs:5.5,-0.8)
+      {R};
+  \end{axis}
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\small Sound is a longitudinal wave: the air molecules
+oscillate back and forth (parallel to the direction
+of travel), creating alternating compressions (high
+pressure) and rarefactions (low pressure) that
+propagate outward.
+\end{diagbox}
+
+% ============================================================
+\section{Speed of Sound}
+% ============================================================
+
+Sound travels at different speeds through different
+materials. In general, sound travels fastest through
+solids (tightly packed molecules transmit vibrations
+quickly), slower through liquids, and slowest through
+gases (molecules are far apart and collide less
+frequently).
+
+\begin{table}[H]
+\centering
+\caption{Speed of Sound in Various Media}
+\label{tab:sound_speed}
+\begin{tabular}{ll}
+\toprule
+\textbf{Medium} & \textbf{Speed of Sound (m\,s$^{-1}$)}\\
+\midrule
+Air at 0°C & 331\\
+Air at 20°C & 343\\
+Air at 30°C & 349\\
+Water (fresh, 20°C) & 1480\\
+Seawater & 1520\\
+Wood (oak) & 3850\\
+Concrete & 3400\\
+Steel & 5100\\
+Glass & 5000\\
+Aluminium & 6320\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{keybox}[Speed of Sound in Air and Temperature]
+The speed of sound in air increases with temperature:
+\[
+  v \approx 331 + 0.6\theta\ \text{m\,s}^{-1}
+\]
+where $\theta$ is the temperature in °C. At $20°\text{C}$:
+$v \approx 331 + 0.6(20) = 343\ \text{m\,s}^{-1}$
+
+The speed of sound is \textbf{independent of frequency}
+and \textbf{independent of pressure} (for ideal gases).
+It depends only on the properties of the medium
+(temperature, density, and elasticity).
+\end{keybox}
+
+\begin{examplebox}[18.1]
+\stepcounter{workedexample}
+During a thunderstorm, a student sees a lightning
+flash and hears the thunder $4.5\ \text{s}$ later.
+The temperature is $30°\text{C}$.\\
+(a) Calculate the speed of sound.\\
+(b) Calculate the distance to the lightning strike.\\
+(c) Why does the student see the lightning before
+hearing the thunder?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Speed of sound at $30°\text{C}$:
+\[
+  v = 331 + 0.6(30) = 331 + 18 = 349\ \text{m\,s}^{-1}
+\]
+
+\textbf{(b)} Distance:
+\[
+  d = v \times t = 349 \times 4.5
+  = 1570.5\ \text{m} \approx 1.57\ \text{km}
+\]
+
+\textbf{(c)} Light travels at $3\times10^8\ \text{m\,s}^{-1}$,
+approximately $10^6$ times faster than sound. The light from
+the lightning reaches the student almost instantaneously
+($\sim 5\times10^{-6}\ \text{s}$), while the sound
+takes $4.5\ \text{s}$. This is why you always see
+lightning before hearing thunder.
+
+\begin{realworldbox}[Counting Seconds for Safety]
+The $3$-second rule: count the seconds between seeing
+lightning and hearing thunder, then divide by $3$ to
+get the approximate distance in kilometres. At
+$3\ \text{seconds}$, the storm is about $1\ \text{km}$
+away. At $3\ \text{seconds}$ or less, lightning is close
+enough to be dangerous --- shelter immediately. This
+simple rule uses $v_{sound} \approx 333\ \text{m\,s}^{-1}
+\approx 1\ \text{km per 3 seconds}$. It works well in
+tropical temperatures like those across Nigeria.
+\end{realworldbox}
+\end{solutionbox}
+
+% ============================================================
+\section{Characteristics of Sound}
+% ============================================================
+
+\begin{defbox}[Pitch, Loudness and Quality]
+\textbf{Pitch} is the perceived highness or lowness
+of a sound. It is determined primarily by the
+\textbf{frequency} of the sound wave.
+Higher frequency $\implies$ higher pitch.
+The human ear can detect frequencies from about
+$20\ \text{Hz}$ to $20\,000\ \text{Hz}$.
+
+\textbf{Loudness} (volume) is the perceived intensity
+of a sound. It is determined by the \textbf{amplitude}
+of the sound wave. Greater amplitude $\implies$ louder
+sound. Loudness is measured in decibels (dB).
+
+\textbf{Quality} (timbre) is what makes a trumpet
+sound different from a violin even when both play the
+same note at the same loudness. It is determined by
+the \textbf{waveform} of the sound --- specifically,
+the mixture of harmonics (overtones) present in the
+sound. A pure tone (single frequency) has a sinusoidal
+waveform. A rich musical tone contains many harmonics.
+\end{defbox}
+
+\begin{diagbox}[Pitch, Loudness and Quality as Waveforms]
+\begin{center}
+\begin{tikzpicture}
+  % High pitch vs low pitch
+  \begin{axis}[
+    name=p1,
+    width=11cm, height=3cm,
+    title={Pitch: High frequency = high pitch},
+    xlabel={}, ylabel={},
+    xmin=0, xmax=4*pi,
+    ymin=-1.5, ymax=1.5,
+    xtick=\empty, ytick=\empty,
+    grid=major, grid style={gray!10},
+  ]
+    \addplot[codexblue, very thick, domain=0:4*pi,
+      samples=200]{sin(deg(4*x))};
+    \addlegendentry{High frequency (high pitch)};
+    \addplot[codexred, thick, dashed, domain=0:4*pi,
+      samples=100]{sin(deg(1.5*x))};
+    \addlegendentry{Low frequency (low pitch)};
+  \end{axis}
+
+  % Loud vs quiet
+  \begin{axis}[
+    name=p2,
+    at={(p1.below south west)},
+    anchor=above north west,
+    yshift=-0.1cm,
+    width=11cm, height=3cm,
+    title={Loudness: Large amplitude = loud sound},
+    xlabel={}, ylabel={},
+    xmin=0, xmax=4*pi,
+    ymin=-1.5, ymax=1.5,
+    xtick=\empty, ytick=\empty,
+    grid=major, grid style={gray!10},
+  ]
+    \addplot[codexblue, very thick, domain=0:4*pi,
+      samples=200]{1.2*sin(deg(2*x))};
+    \addlegendentry{Large amplitude (loud)};
+    \addplot[codexred, thick, dashed, domain=0:4*pi,
+      samples=200]{0.4*sin(deg(2*x))};
+    \addlegendentry{Small amplitude (quiet)};
+  \end{axis}
+
+  % Quality (timbre) - pure vs complex
+  \begin{axis}[
+    name=p3,
+    at={(p2.below south west)},
+    anchor=above north west,
+    yshift=-0.1cm,
+    width=11cm, height=3cm,
+    title={Quality: Different waveforms, same frequency},
+    xlabel={Time}, ylabel={},
+    xmin=0, xmax=4*pi,
+    ymin=-1.5, ymax=1.5,
+    xtick=\empty, ytick=\empty,
+    grid=major, grid style={gray!10},
+  ]
+    \addplot[codexblue, very thick, domain=0:4*pi,
+      samples=200]{sin(deg(2*x))};
+    \addlegendentry{Pure tone (sine wave)};
+    \addplot[codexred, thick, dashed, domain=0:4*pi,
+      samples=200]
+      {0.7*sin(deg(2*x)) + 0.3*sin(deg(4*x))
+      + 0.15*sin(deg(6*x))};
+    \addlegendentry{Rich tone (harmonics added)};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{The Decibel Scale}
+% ============================================================
+
+\begin{definitionbox}[The Decibel Scale]
+The human ear responds to sound intensity over an
+enormous range --- from the threshold of hearing
+($I_0 = 10^{-12}\ \text{W\,m}^{-2}$) to the threshold
+of pain ($\approx 1\ \text{W\,m}^{-2}$), a ratio of
+$10^{12}$. To handle this, sound level $L$ is measured
+in \textbf{decibels (dB)}:
+\[
+  L = 10\log_{10}\left(\frac{I}{I_0}\right)\ \text{dB}
+\]
+where $I$ is the intensity and $I_0 = 10^{-12}\ \text{W\,m}^{-2}$
+is the reference (threshold of hearing).
+
+Key values:
+\begin{itemize}[noitemsep]
+  \item Every \textbf{10 dB increase} corresponds to
+  a \textbf{10-fold increase in intensity}
+  \item Every \textbf{3 dB increase} corresponds to
+  approximately a \textbf{doubling of intensity}
+\end{itemize}
+\end{definitionbox}
+
+\begin{table}[H]
+\centering
+\caption{Typical Sound Levels}
+\label{tab:sound_levels}
+\begin{tabular}{lll}
+\toprule
+\textbf{Sound} & \textbf{Level (dB)} &
+\textbf{Intensity (W\,m$^{-2}$)}\\
+\midrule
+Threshold of hearing & 0 & $10^{-12}$\\
+Rustling leaves & 10 & $10^{-11}$\\
+Whisper & 30 & $10^{-9}$\\
+Quiet conversation & 50 & $10^{-7}$\\
+Normal conversation & 60 & $10^{-6}$\\
+Lagos traffic & 80 & $10^{-4}$\\
+Generator (nearby) & 90 & $10^{-3}$\\
+Live concert & 110 & $10^{-1}$\\
+Threshold of pain & 120--130 & $1$--$10$\\
+Jet engine (nearby) & 140 & $100$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{examplebox}[18.2]
+\stepcounter{workedexample}
+A generator produces a sound level of $90\ \text{dB}$.
+A second identical generator is switched on next to it.\\
+(a) What is the new sound level?\\
+(b) A third identical generator is added. What is
+the level now?\\
+(c) How many generators would be needed to raise the
+level to $100\ \text{dB}$?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Each generator has intensity
+$I = 10^{-3}\ \text{W\,m}^{-2}$ (from Table).
+
+Two generators: $I_{total} = 2 \times 10^{-3}\ \text{W\,m}^{-2}$
+\[
+  L = 10\log_{10}\left(\frac{2\times10^{-3}}{10^{-12}}\right)
+  = 10\log_{10}(2\times10^9)
+  = 10(9 + \log_{10}2)
+  = 10(9 + 0.301) = 93.0\ \text{dB}
+\]
+
+\textbf{(b)} Three generators: $I = 3\times10^{-3}$
+\[
+  L = 10\log_{10}(3\times10^9) = 10(9+0.477)
+  = 94.8\ \text{dB}
+\]
+
+\textbf{(c)} For $100\ \text{dB}$, need intensity
+$I = 10^{-2}\ \text{W\,m}^{-2}$:
+\[
+  n = \frac{10^{-2}}{10^{-3}} = 10\ \text{generators}
+\]
+You need \textit{ten} generators to raise the level
+by just $10\ \text{dB}$. This illustrates why simply
+adding more generators is an inefficient way to
+increase loudness.
+\end{solutionbox}
+
+% ============================================================
+\section{Echoes and Reverberation}
+% ============================================================
+
+\begin{definitionbox}[Echo and Reverberation]
+An \textbf{echo} is a reflected sound that is heard
+distinctly as a separate sound from the original.
+For an echo to be perceived as separate, the reflected
+sound must arrive at least $\frac{1}{10}\ \text{s}$
+after the direct sound (the ear's persistence of
+sound is about $0.1\ \text{s}$).
+
+Minimum distance for an echo:
+\[
+  d_{min} = \frac{v \times t_{min}}{2}
+  = \frac{340 \times 0.1}{2} = 17\ \text{m}
+\]
+
+\textbf{Reverberation} is the persistence of sound
+in an enclosed space due to multiple reflections.
+Unlike an echo (which has a clear time separation),
+reverberation produces a gradual decay of sound.
+Desirable in concert halls; undesirable in classrooms
+(where it reduces speech clarity).
+\end{definitionbox}
+
+\begin{examplebox}[18.3]
+\stepcounter{workedexample}
+A ship uses an echo sounder (SONAR) to measure
+the depth of the ocean. An ultrasound pulse is
+transmitted downward and the echo is received
+$0.24\ \text{s}$ later. The speed of sound in
+seawater is $1520\ \text{m\,s}^{-1}$.\\
+(a) Calculate the depth of the ocean at this point.\\
+(b) The ship moves and the echo now takes $0.48\ \text{s}$.
+Has the ocean floor sloped up or down? By how much?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} The sound travels down to the ocean
+floor and back (total distance $= 2d$):
+\[
+  d = \frac{v \times t}{2}
+  = \frac{1520 \times 0.24}{2}
+  = \frac{364.8}{2} = 182.4\ \text{m}
+\]
+
+\textbf{(b)} New depth:
+\[
+  d' = \frac{1520 \times 0.48}{2}
+  = \frac{729.6}{2} = 364.8\ \text{m}
+\]
+
+The ocean floor has sloped \textbf{down} by:
+$364.8 - 182.4 = 182.4\ \text{m}$
+\end{solutionbox}
+
+% ============================================================
+\section{The Doppler Effect}
+% ============================================================
+
+Stand near a road and listen as an ambulance approaches
+with its siren on. The pitch of the siren is noticeably
+higher as the ambulance approaches than it is after
+it has passed. The frequency of the sound \textit{heard}
+by a listener is different from the frequency emitted
+by the source when there is relative motion between
+the source and the listener. This is the
+\textbf{Doppler effect}.
+
+\begin{keybox}[Intuition: Why the Doppler Effect Occurs]
+Imagine a source emitting $f$ waves per second. As it
+moves toward you, it is chasing the wavefronts it has
+already emitted --- they bunch up in front of it,
+reducing the wavelength you receive. Shorter wavelength
+at the same wave speed means higher frequency --- higher
+pitch.
+
+As it moves away, the source stretches the wavefronts
+behind it, increasing the wavelength you receive.
+Longer wavelength means lower frequency --- lower pitch.
+\end{keybox}
+
+\begin{diagbox}[Doppler Effect: Moving Source]
+\begin{center}
+\begin{tikzpicture}[scale=0.95, font=\small]
+
+  % Observer A (front)
+  \fill[codexgreen] (-3.5,0) circle (6pt);
+  \node[left, codexgreen, align=left] at (-3.7,0) {Observer A\\(hears higher pitch)};
+
+  % Observer B (rear)
+  \fill[codexred] (4.5,0) circle (6pt);
+  \node[right, codexred, align=left] at (4.7,0) {Observer B\\(hears lower pitch)};
+
+  % Source (moving right)
+  \fill[codexblue] (0,0) circle (8pt);
+  \node[above, codexblue] at (0,0.2) {Source};
+  \draw[->, very thick, codexblue] (0.2,0) -- (1.5,0)
+    node[right, font=\small]{$v_s$};
+
+  % Wavefronts (compressed in front, stretched behind)
+  % Front wavefronts (closer together)
+  \draw[codexblue, thick] (-0.5,0) circle (0.5);
+  \draw[codexblue, thick] (-1.2,0) circle (1.2);
+  \draw[codexblue, thick] (-2.1,0) circle (2.1);
+  \draw[codexblue, thick] (-3.2,0) circle (3.2);
+
+  % Label wavelengths
+  \draw[<->, codexgreen, thick] (-1.2,-1.0) -- (-0.5,-1.0);
+  \node[below, codexgreen, font=\tiny] at (-0.85,-1.1)
+    {$\lambda'$ (short)};
+
+  \draw[<->, codexred, thick] (1.2,-1.0) -- (3.2,-1.0);
+  \node[below, codexred, font=\tiny] at (2.2,-1.1)
+    {$\lambda''$ (long)};
+
+  % Arrow for source motion
+  \node[below, codexblue, font=\small] at (0,-2.5)
+    {Source moving to the right at speed $v_s$};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{lawbox}[Doppler Effect Formula]
+For a source of frequency $f_0$ moving at speed $v_s$
+and an observer moving at speed $v_o$, with the speed
+of sound $v$:
+
+\[
+  f_{observed} = f_0 \times
+  \frac{v \pm v_o}{v \mp v_s}
+\]
+
+\textbf{Sign convention:}
+\begin{itemize}[noitemsep]
+  \item Use $+v_o$ (numerator) when observer moves
+  \textit{toward} source
+  \item Use $-v_o$ (numerator) when observer moves
+  \textit{away from} source
+  \item Use $-v_s$ (denominator) when source moves
+  \textit{toward} observer
+  \item Use $+v_s$ (denominator) when source moves
+  \textit{away from} observer
+\end{itemize}
+
+For a \textbf{stationary observer} and \textbf{moving
+source}:
+\[
+  f_{obs} = f_0 \times \frac{v}{v \mp v_s}
+\]
+(use $-$ when source approaches, $+$ when it recedes)
+\end{lawbox}
+
+\begin{examplebox}[18.4]
+\stepcounter{workedexample}
+An ambulance travelling at $30\ \text{m\,s}^{-1}$
+sounds its siren at $800\ \text{Hz}$. The speed of
+sound is $340\ \text{m\,s}^{-1}$.\\
+(a) What frequency does a stationary pedestrian
+hear as the ambulance approaches?\\
+(b) What frequency does the pedestrian hear as the
+ambulance moves away?\\
+(c) What is the change in frequency as the
+ambulance passes?
+\end{examplebox}
+
+\begin{solutionbox}
+$f_0 = 800\ \text{Hz}$, $v_s = 30\ \text{m\,s}^{-1}$,
+$v = 340\ \text{m\,s}^{-1}$, $v_o = 0$
+
+\textbf{(a)} Ambulance approaching
+(use $-v_s$ in denominator):
+\[
+  f_{approach} = 800 \times \frac{340}{340 - 30}
+  = 800 \times \frac{340}{310}
+  = 800 \times 1.0968
+  = 877.4\ \text{Hz} \approx 877\ \text{Hz}
+\]
+
+\textbf{(b)} Ambulance receding
+(use $+v_s$ in denominator):
+\[
+  f_{recede} = 800 \times \frac{340}{340 + 30}
+  = 800 \times \frac{340}{370}
+  = 800 \times 0.9189
+  = 735.1\ \text{Hz} \approx 735\ \text{Hz}
+\]
+
+\textbf{(c)} Change in frequency:
+\[
+  \Delta f = 877 - 735 = 142\ \text{Hz}
+\]
+
+The pedestrian hears a dramatic drop of $142\ \text{Hz}$
+as the ambulance passes --- from a noticeably high pitch
+to a noticeably low pitch. This is the classic sound
+every Nigerian (and everyone else) recognises when
+an emergency vehicle passes at speed.
+\end{solutionbox}
+
+\begin{realworldbox}[Doppler in Medicine and Astronomy]
+The Doppler effect is used in \textbf{Doppler
+ultrasound} to measure blood flow in medical
+diagnostics. Ultrasound pulses reflect off moving
+red blood cells; the frequency shift reveals the
+speed and direction of blood flow. Cardiologists use
+this to detect blocked arteries and abnormal heart
+valve function --- entirely non-invasive, no surgery
+required.
+
+In astronomy, the \textbf{redshift} of light from
+distant galaxies (a Doppler shift toward lower
+frequencies as galaxies recede) was the evidence
+that first convinced scientists the universe is
+expanding. Edwin Hubble measured this in 1929. Every
+galaxy is moving away from us, and the more distant
+it is, the faster it recedes. The Doppler effect
+connects a tuning fork on a road to the expansion
+of the universe.
+\end{realworldbox}
+
+% ============================================================
+\section{Resonance in Sound}
+% ============================================================
+
+When a sound wave of the right frequency is applied to
+an air column or string, the system vibrates with very
+large amplitude --- it \textbf{resonates}. This occurs
+at the natural frequencies (harmonics) of the system.
+
+\begin{examplebox}[18.5]
+\stepcounter{workedexample}
+A resonance tube (closed at one end) is found to
+resonate at $17\ \text{cm}$ and $51\ \text{cm}$
+when a tuning fork of frequency $500\ \text{Hz}$
+is held over it. The speed of sound is
+$340\ \text{m\,s}^{-1}$.\\
+(a) Explain why resonance occurs at these two lengths.\\
+(b) Calculate the wavelength from the resonance
+lengths.\\
+(c) Calculate the speed of sound and compare with
+the given value.\\
+(d) Calculate the end correction.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} A closed pipe has a node at the closed
+end and an antinode at the open end. The first
+resonance occurs at $L_1 = \lambda/4$ and the
+second at $L_2 = 3\lambda/4$ (1st and 3rd harmonics
+of the closed pipe).
+
+\textbf{(b)} From $L_2 - L_1 = \lambda/2$:
+\[
+  \lambda = 2(L_2 - L_1) = 2(51 - 17)
+  = 2 \times 34 = 68\ \text{cm} = 0.68\ \text{m}
+\]
+
+\textbf{(c)} Speed of sound:
+\[
+  v = f\lambda = 500 \times 0.68
+  = 340\ \text{m\,s}^{-1}
+\]
+Exact agreement. The calculation is self-consistent.
+
+\textbf{(d)} For a closed pipe with end correction $e$:
+\[
+  L_1 + e = \frac{\lambda}{4}
+  \implies e = \frac{\lambda}{4} - L_1
+  = \frac{0.68}{4} - 0.17 = 0.17 - 0.17 = 0\ \text{m}
+\]
+
+In this idealised problem, the end correction is zero.
+In real experiments, the antinode is slightly beyond
+the open end, giving $e \approx 0.3r$ where $r$ is
+the tube radius.
+\end{solutionbox}
+
+% ============================================================
+\section{Ultrasound and Infrasound}
+% ============================================================
+
+\begin{defbox}[Ultrasound and Infrasound]
+\textbf{Audible sound:} $20\ \text{Hz}$
+to $20\,000\ \text{Hz}$ (20 kHz)
+
+\textbf{Infrasound:} frequency $< 20\ \text{Hz}$.
+Produced by earthquakes, volcanoes, large animals
+(elephants, whales). Travels very long distances
+with little attenuation. Used by elephants to
+communicate over many kilometres.
+
+\textbf{Ultrasound:} frequency $> 20\,000\ \text{Hz}$.
+Produced by bats, dolphins, dogs.
+Applications:
+\begin{itemize}[noitemsep]
+  \item Medical imaging (foetal scans, organ imaging)
+  \item SONAR (depth measurement, submarine detection)
+  \item Industrial flaw detection (cracks in metals)
+  \item Cleaning delicate instruments
+  \item Measuring speed of blood flow (Doppler
+  ultrasound)
+\end{itemize}
+\textbf{Advantage of ultrasound for imaging:} short
+wavelength means high resolution (features smaller
+than the wavelength cannot be resolved).
+\end{defbox}
+
+\begin{diagbox}[Medical Ultrasound Imaging: Principle]
+\begin{center}
+\begin{tikzpicture}[scale=0.95, font=\small]
+
+  % Transducer
+  \fill[gray!60] (0,3.5) rectangle (1.5,4.5);
+  \draw[thick] (0,3.5) rectangle (1.5,4.5);
+  \node[font=\small, align=center] at (0.75,4.0)
+    {Transducer\\(sends \& receives)};
+
+  % Tissue layers
+  \fill[codexblue!10] (1.5,0) rectangle (8,5);
+  \draw[thick] (1.5,0) -- (1.5,5);
+
+  % Boundary 1 (e.g. skin-muscle interface)
+  \fill[gray!30] (3.0,0) rectangle (3.3,5);
+  \node[font=\tiny, rotate=90] at (3.15,2.5) {skin/muscle};
+
+  % Boundary 2 (e.g. organ surface)
+  \fill[codexgold!30] (5.5,0) rectangle (5.8,5);
+  \node[font=\tiny, rotate=90] at (5.65,2.5) {organ wall};
+
+  % Ultrasound pulse
+  \draw[->, very thick, codexblue]
+    (1.5,4.0) -- (3.0,4.0)
+    node[above, midway, font=\tiny]{pulse};
+
+  % Reflection 1
+  \draw[->, thick, codexred, dashed]
+    (3.0,3.8) -- (1.6,3.8)
+    node[above, midway, font=\tiny]{echo 1};
+
+  % Transmitted pulse continues
+  \draw[->, thick, codexblue]
+    (3.3,4.0) -- (5.5,4.0);
+
+  % Reflection 2
+  \draw[->, thick, codexred, dashed]
+    (5.5,3.6) -- (1.6,3.6)
+    node[below, midway, font=\tiny]{echo 2};
+
+  % Time of flight labels
+  \draw[<->, gray] (1.6,1.5) -- (3.0,1.5);
+  \node[below, gray, font=\tiny] at (2.3,1.4) {$t_1$};
+  \draw[<->, gray] (1.6,0.8) -- (5.5,0.8);
+  \node[below, gray, font=\tiny] at (3.55,0.7) {$t_2$};
+
+  % Depth formula
+  \node[font=\small, align=center] at (5,1.8)
+    {$d_1 = \frac{v \times t_1}{2}$\\[4pt]
+    $d_2 = \frac{v \times t_2}{2}$};
+
+  % Screen output (simplified)
+  \fill[black] (9.0,0) rectangle (11.0,5);
+  \draw[codexgreen, thick] (9.0,2.5) -- (9.8,2.5);
+  \fill[codexgreen] (9.8,2.5) circle (3pt);
+  \draw[codexgreen, thick] (9.8,2.5) -- (9.8,1.0);
+  \fill[codexgreen] (9.8,1.0) circle (3pt);
+  \draw[codexgreen, thick] (9.8,1.0) -- (11.0,1.0);
+  \node[white, font=\tiny, align=center] at (10,4.5)
+    {Display\\(time vs\\amplitude)};
+  \node[codexgreen, font=\tiny] at (10.3,2.5)
+    {echo 1};
+  \node[codexgreen, font=\tiny] at (10.3,1.0)
+    {echo 2};
+
+\end{tikzpicture}
+\end{center}
+\small The transducer emits a pulse and then listens
+for echoes. The time delay of each echo reveals the
+depth of the reflecting boundary: $d = vt/2$. Building
+up many such measurements creates a cross-sectional
+image of internal organs.
+\end{diagbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Sound:} longitudinal mechanical wave (pressure
+variations); cannot travel in a vacuum.
+
+\textbf{Speed:} $v_{air} \approx 331 + 0.6\theta$
+m\,s$^{-1}$; faster in denser/stiffer media.
+Fastest in solids, slowest in gases.
+
+\textbf{Pitch:} determined by frequency.
+\textbf{Loudness:} determined by amplitude.
+\textbf{Quality (timbre):} determined by harmonic
+content (waveform).
+
+\textbf{Decibel:} $L = 10\log_{10}(I/I_0)$ dB;
+$I_0 = 10^{-12}\ \text{W\,m}^{-2}$.
+$+10\ \text{dB} \equiv \times 10$ intensity.
+
+\textbf{Echo:} reflected sound; $d = vt/2$.
+Distinct echo requires $t > 0.1\ \text{s}$,
+$d > 17\ \text{m}$.
+
+\textbf{Doppler effect:}
+$f_{obs} = f_0 \frac{v \pm v_o}{v \mp v_s}$
+
+Source approaching: $f_{obs} > f_0$.
+Source receding: $f_{obs} < f_0$.
+
+\textbf{Resonance:} maximum amplitude at natural
+frequency.
+
+\textbf{Ultrasound} ($>20\ \text{kHz}$): medical
+imaging, SONAR, flaw detection.
+Short wavelength $\implies$ high resolution.
+
+\textbf{Infrasound} ($<20\ \text{Hz}$): earthquakes,
+large animals; travels very long distances.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[18]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} Sound travels fastest through:
+
+\mcoption{A}{Air at 0°C}
+\mcoption{B}{Water}
+\mcoption{C}{Steel}
+\mcoption{D}{A vacuum}
+\ansref{Ch18-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} The pitch of a musical note is
+determined primarily by its:
+
+\mcoption{A}{Amplitude}
+\mcoption{B}{Speed}
+\mcoption{C}{Frequency}
+\mcoption{D}{Wavelength in the instrument}
+\ansref{Ch18-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A sound of intensity $10^{-8}\ \text{W\,m}^{-2}$
+has a sound level of
+($I_0 = 10^{-12}\ \text{W\,m}^{-2}$):
+
+\mcoption{A}{$4\ \text{dB}$}
+\mcoption{B}{$8\ \text{dB}$}
+\mcoption{C}{$40\ \text{dB}$}
+\mcoption{D}{$80\ \text{dB}$}
+\ansref{Ch18-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} A fire engine siren emits $600\ \text{Hz}$.
+As it approaches at $40\ \text{m\,s}^{-1}$, a
+stationary observer hears a frequency of
+($v_{sound} = 340\ \text{m\,s}^{-1}$):
+
+\mcoption{A}{$526\ \text{Hz}$}
+\mcoption{B}{$600\ \text{Hz}$}
+\mcoption{C}{$680\ \text{Hz}$}
+\mcoption{D}{$740\ \text{Hz}$}
+\ansref{Ch18-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} An echo is heard $0.6\ \text{s}$ after
+a clap. The reflecting wall is
+($v = 340\ \text{m\,s}^{-1}$):
+
+\mcoption{A}{$34\ \text{m}$ away}
+\mcoption{B}{$51\ \text{m}$ away}
+\mcoption{C}{$102\ \text{m}$ away}
+\mcoption{D}{$204\ \text{m}$ away}
+\ansref{Ch18-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} Which of the following correctly
+describes ultrasound?
+
+\mcoption{A}{Sound above the speed of sound}
+\mcoption{B}{Sound with frequency below 20 Hz}
+\mcoption{C}{Sound with frequency above 20 kHz}
+\mcoption{D}{Very loud sound above 120 dB}
+\ansref{Ch18-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} In the Doppler effect, if a source
+of sound is moving away from a stationary observer:
+
+\mcoption{A}{The observed frequency is higher than
+the emitted frequency}
+\mcoption{B}{The observed frequency equals the
+emitted frequency}
+\mcoption{C}{The observed frequency is lower than
+the emitted frequency}
+\mcoption{D}{The speed of sound increases}
+\ansref{Ch18-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} Sound cannot travel through a vacuum
+because:
+
+\mcoption{A}{There is no gravity in a vacuum}
+\mcoption{B}{There are no molecules to vibrate
+and transmit the pressure wave}
+\mcoption{C}{The temperature is too low}
+\mcoption{D}{Electromagnetic waves cancel sound
+waves in a vacuum}
+\ansref{Ch18-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} Ten identical sound sources together
+produce $70\ \text{dB}$. One source alone produces:
+
+\mcoption{A}{$7\ \text{dB}$}
+\mcoption{B}{$60\ \text{dB}$}
+\mcoption{C}{$63\ \text{dB}$}
+\mcoption{D}{$700\ \text{dB}$}
+\ansref{Ch18-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} In a resonance tube experiment (closed
+pipe), the first and second resonance positions are
+at $L_1$ and $L_2$. The wavelength of the sound is:
+
+\mcoption{A}{$L_1$}
+\mcoption{B}{$2L_1$}
+\mcoption{C}{$L_2 - L_1$}
+\mcoption{D}{$2(L_2 - L_1)$}
+\ansref{Ch18-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A student stands $85\ \text{m}$ from
+a large wall and claps her hands. She then claps
+rhythmically so that each clap coincides with the
+echo of the previous clap. The temperature is
+$25°\text{C}$.\\[4pt]
+(a) Calculate the speed of sound at $25°\text{C}$.\\
+(b) Calculate the time between successive claps.\\
+(c) Calculate the number of claps per second
+(the frequency of clapping).\\
+(d) She moves $10\ \text{m}$ closer to the wall
+and repeats the experiment. What is the new frequency
+of clapping?
+\hfill\ansref{Ch18-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A train sounds its whistle at
+$720\ \text{Hz}$ while travelling at
+$25\ \text{m\,s}^{-1}$ toward a stationary
+station. The speed of sound is $340\ \text{m\,s}^{-1}$.\\[4pt]
+(a) Find the frequency heard by a stationary person
+on the platform as the train approaches.\\
+(b) Find the frequency heard after the train has
+passed and is moving away.\\
+(c) Find the change in frequency as the train passes.\\
+(d) The train is still approaching but now the
+person is running away from the station at
+$5\ \text{m\,s}^{-1}$. Find the frequency heard.\\
+(e) Both the train and the person are moving toward
+each other: train at $25\ \text{m\,s}^{-1}$ and
+person at $5\ \text{m\,s}^{-1}$. Find the observed
+frequency.
+\hfill\ansref{Ch18-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} In a resonance tube experiment, a
+closed pipe is used with a tuning fork of
+$440\ \text{Hz}$. Resonances are observed at
+$L_1 = 18.6\ \text{cm}$ and $L_2 = 56.8\ \text{cm}$.\\[4pt]
+(a) Calculate the wavelength of the sound.\\
+(b) Calculate the speed of sound.\\
+(c) Calculate the end correction for this pipe.\\
+(d) What temperature does your calculated speed
+correspond to?\\
+(e) Predict the length of the third resonance
+position.
+\hfill\ansref{Ch18-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A police radar gun emits microwave
+radiation at $24.0\ \text{GHz}$ and detects a
+Doppler-shifted reflection from an approaching car.
+The reflected frequency is $24.000\,48\ \text{GHz}$.
+The speed of microwaves is $3.0\times10^8\ \text{m\,s}^{-1}$.\\[4pt]
+(a) Calculate the frequency shift ($\Delta f$).\\
+(b) For electromagnetic waves reflected from a
+moving object, the Doppler formula gives:
+$\Delta f/f_0 = 2v_{car}/c$.
+Calculate the speed of the car.\\
+(c) Convert the car speed to km\,h$^{-1}$.\\
+(d) If the speed limit is $100\ \text{km\,h}^{-1}$,
+is the driver speeding?\\
+(e) State one advantage of using microwaves rather
+than sound waves for speed measurement in traffic
+enforcement.
+\hfill\ansref{Ch18-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A diagnostic ultrasound machine
+operates at $5.0\ \text{MHz}$. The speed of
+ultrasound in soft tissue is $1540\ \text{m\,s}^{-1}$.\\[4pt]
+(a) Calculate the wavelength of the ultrasound
+in tissue.\\
+(b) What is the smallest feature that can be
+resolved by this ultrasound? (Assume resolution
+$\approx \lambda/2$.)\\
+(c) A pulse is transmitted and an echo is received
+$80\ \mu\text{s}$ later from an organ boundary.
+Calculate the depth of the boundary.\\
+(d) Explain why higher-frequency ultrasound gives
+better resolution but poorer penetration.\\
+(e) Calculate the frequency of the ultrasound
+reflected from a blood vessel in which blood flows
+at $0.30\ \text{m\,s}^{-1}$ directly toward the
+transducer. (Use $\Delta f/f_0 = 2v_{blood}/v_{sound}$)
+\hfill\ansref{Ch18-B5}
+
+\end{exercisebox}

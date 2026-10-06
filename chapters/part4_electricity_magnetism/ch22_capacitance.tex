@@ -1,0 +1,1019 @@
+% ============================================================
+%  CHAPTER 22: CAPACITANCE
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part4/ch22_capacitance.tex
+% ============================================================
+
+\chapter{Capacitance}
+\label{ch:capacitance}
+\minitoc
+\newpage
+
+\chapterquote{The art of doing mathematics consists in
+finding that special case which contains all the germs
+of generality.}{David Hilbert}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Define capacitance and the farad
+  \item Derive and apply the formula for the
+  capacitance of a parallel plate capacitor
+  \item Calculate the energy stored in a capacitor
+  \item Combine capacitors in series and parallel
+  \item Describe the effect of a dielectric on
+  capacitance
+  \item Describe charging and discharging of a
+  capacitor through a resistor
+  \item Apply the exponential decay equations for
+  capacitor discharge
+  \item Describe practical applications of capacitors
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: Storing Electric Charge}
+% ============================================================
+
+A torch battery stores chemical energy and releases it
+as electrical energy. But batteries take time to
+recharge and cannot release energy very quickly. A
+\textbf{capacitor} stores energy in a completely
+different way --- as electric charge on conducting
+plates separated by an insulator --- and can release
+that energy almost instantaneously.
+
+The camera flash in your phone uses a capacitor.
+During the seconds between flashes, the battery slowly
+charges the capacitor. When you take a photograph,
+the capacitor discharges in a fraction of a millisecond,
+releasing a burst of energy far more powerful than the
+battery could sustain continuously. The power is
+borrowed from the future --- stored over seconds,
+released in microseconds.
+
+Capacitors are in every electronic device ever made.
+Understanding them is not optional for anyone who wants
+to understand electronics.
+
+% ============================================================
+\section{Definition of Capacitance}
+% ============================================================
+
+\begin{definitionbox}[Capacitance]
+The \textbf{capacitance} $C$ of a conductor (or pair
+of conductors) is the ratio of the charge stored to
+the potential difference applied:
+\[
+  C = \frac{Q}{V}
+  \implies Q = CV
+\]
+SI unit: farad (F) where $1\ \text{F}
+= 1\ \text{C\,V}^{-1}$.
+
+Practical capacitors range from picofarads (pF)
+to millifarads (mF):
+\[
+  1\ \text{pF} = 10^{-12}\ \text{F},\quad
+  1\ \text{nF} = 10^{-9}\ \text{F},\quad
+  1\ \mu\text{F} = 10^{-6}\ \text{F},\quad
+  1\ \text{mF} = 10^{-3}\ \text{F}
+\]
+
+Capacitance depends only on the \textit{geometry}
+of the conductors and the material between them ---
+not on the charge or voltage.
+\end{definitionbox}
+
+\begin{historybox}[The Leyden Jar --- First Capacitor]
+The first capacitor was invented in 1745 by Ewald
+von Kleist and independently by Pieter van Musschenbroek
+in Leiden, Netherlands. It consisted of a glass jar
+coated inside and out with metal foil. A metal rod
+through the stopper connected to the inner foil.
+When charged from an electrostatic machine and then
+touched, it gave a violent shock. Benjamin Franklin
+used Leyden jars in his famous kite experiment.
+The Leyden jar is a simple parallel plate capacitor
+with the glass acting as the dielectric.
+\end{historybox}
+
+% ============================================================
+\section{The Parallel Plate Capacitor}
+% ============================================================
+
+\begin{processbox}[Capacitance of a Parallel Plate Capacitor]
+Two parallel conducting plates, each of area $A$,
+separated by distance $d$, with vacuum (or air)
+between them.
+
+The surface charge density on each plate:
+$\sigma = Q/A$
+
+Electric field between the plates (from Chapter 21):
+$E = \sigma/\varepsilon_0 = Q/(A\varepsilon_0)$
+
+Potential difference across the gap:
+$V = Ed = Qd/(A\varepsilon_0)$
+
+Capacitance:
+\[
+  C = \frac{Q}{V} = \frac{Q}{Qd/(A\varepsilon_0)}
+\]
+\[
+  \boxed{C = \frac{\varepsilon_0 A}{d}}
+\]
+$C$ increases with larger area $A$ (more charge
+stored per volt) and decreases with larger separation
+$d$ (weaker field per unit distance, less charge
+per volt).
+\end{processbox}
+
+\begin{diagbox}[Parallel Plate Capacitor: Geometry and Parameters]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Positive plate (top)
+  \fill[codexred!30] (0,3.5) rectangle (7,4.0);
+  \draw[very thick] (0,3.5) -- (7,3.5);
+  \draw[very thick] (0,4.0) -- (7,4.0);
+  \foreach \x in {0.4,1.0,1.6,2.2,2.8,3.4,4.0,4.6,5.2,5.8,6.4} {
+    \node[codexred, font=\bfseries] at (\x,3.75) {$+$};
+  }
+  \node[right, codexred] at (7.1,3.75) {$+Q$};
+
+  % Negative plate (bottom)
+  \fill[codexblue!30] (0,0.5) rectangle (7,1.0);
+  \draw[very thick] (0,0.5) -- (7,0.5);
+  \draw[very thick] (0,1.0) -- (7,1.0);
+  \foreach \x in {0.4,1.0,1.6,2.2,2.8,3.4,4.0,4.6,5.2,5.8,6.4} {
+    \node[codexblue, font=\bfseries] at (\x,0.75) {$-$};
+  }
+  \node[right, codexblue] at (7.1,0.75) {$-Q$};
+
+  % Electric field lines (downward, uniform)
+  \foreach \x in {0.8,1.8,2.8,3.8,4.8,5.8,6.8} {
+    \draw[->, thick, codexgold]
+      (\x,3.5) -- (\x,1.0);
+  }
+  \node[codexgold, font=\small] at (3.5,2.25)
+    {$\vect{E} = V/d$};
+
+  % Area label
+  \draw[<->, gray, thick] (0,4.3) -- (7,4.3);
+  \node[above, gray] at (3.5,4.4) {Area $A$};
+
+  % Separation label
+  \draw[<->, gray, thick] (7.8,1.0) -- (7.8,3.5);
+  \node[right, gray] at (7.9,2.25) {$d$};
+
+  % Voltage
+  \draw[thick, dashed, gray] (-0.5,3.75) -- (0,3.75);
+  \draw[thick, dashed, gray] (-0.5,0.75) -- (0,0.75);
+  \draw[<->, gray, thick] (-0.5,0.75) -- (-0.5,3.75);
+  \node[left, gray] at (-0.6,2.25) {$V$};
+
+  % Formula
+  \node[codexblue, font=\large, align=center]
+    at (3.5,-0.5)
+    {$C = \dfrac{\varepsilon_0 A}{d}$};
+
+  % With dielectric
+  \node[font=\small, align=center] at (3.5,-1.3)
+    {With dielectric (relative permittivity
+    $\varepsilon_r$):
+    $C = \dfrac{\varepsilon_r\varepsilon_0 A}{d}$};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[22.1]
+\stepcounter{workedexample}
+A parallel plate capacitor has square plates of side
+$15\ \text{cm}$ separated by $2.0\ \text{mm}$ of air.
+($\varepsilon_0 = 8.85\times10^{-12}\ \text{F\,m}^{-1}$)\\
+(a) Calculate the capacitance.\\
+(b) A potential difference of $400\ \text{V}$ is
+applied. Find the charge stored.\\
+(c) The separation is halved. What is the new
+capacitance?\\
+(d) What p.d.\ would be needed to store the same
+charge as in (b) with the new separation?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} $A = (0.15)^2 = 0.0225\ \text{m}^2$;
+$d = 2.0\times10^{-3}\ \text{m}$:
+\[
+  C = \frac{\varepsilon_0 A}{d}
+  = \frac{8.85\times10^{-12} \times 0.0225}
+    {2.0\times10^{-3}}
+  = \frac{1.991\times10^{-13}}{2.0\times10^{-3}}
+  = 9.95\times10^{-11}\ \text{F}
+  \approx 99.5\ \text{pF}
+\]
+
+\textbf{(b)} Charge:
+\[
+  Q = CV = 9.95\times10^{-11} \times 400
+  = 3.98\times10^{-8}\ \text{C}
+  \approx 40\ \text{nC}
+\]
+
+\textbf{(c)} Halving $d$ doubles $C$:
+$C' = 2 \times 99.5 = 199\ \text{pF}$
+
+\textbf{(d)} Same charge $Q = 40\ \text{nC}$:
+\[
+  V' = \frac{Q}{C'} = \frac{3.98\times10^{-8}}
+  {1.99\times10^{-10}} = 200\ \text{V}
+\]
+Halving the separation halves the required voltage ---
+the capacitor is more efficient at storing charge.
+\end{solutionbox}
+
+% ============================================================
+\section{Dielectrics}
+% ============================================================
+
+\begin{definitionbox}[Dielectric]
+A \textbf{dielectric} is an insulating material placed
+between the plates of a capacitor. It increases
+capacitance by a factor called the \textbf{relative
+permittivity} (dielectric constant) $\varepsilon_r$:
+\[
+  C = \frac{\varepsilon_r\varepsilon_0 A}{d}
+\]
+$\varepsilon_r \geq 1$ always.
+Air: $\varepsilon_r \approx 1$.
+Glass: $\varepsilon_r \approx 5$--$10$.
+Ceramic: $\varepsilon_r \approx 10$--$10000$.
+Water: $\varepsilon_r \approx 80$.
+\end{definitionbox}
+
+\begin{keybox}[Why Dielectrics Increase Capacitance]
+When a dielectric is placed in an electric field,
+its molecules become \textbf{polarised} --- the
+positive and negative charges within each molecule
+separate slightly, aligning with the field. This
+creates an internal electric field that \textit{opposes}
+the applied field. The net field between the plates
+is weaker. A weaker field means a lower potential
+difference for the same charge. Since $C = Q/V$,
+a lower $V$ for the same $Q$ means a \textit{higher}
+capacitance.
+
+Dielectrics also allow higher voltages before
+breakdown (sparking), enabling more compact capacitors.
+\end{keybox}
+
+% ============================================================
+\section{Energy Stored in a Capacitor}
+% ============================================================
+
+\begin{processbox}[Deriving the Energy Stored in a Capacitor]
+When a capacitor is charged from $Q=0$ to $Q=Q_0$,
+work must be done against the increasing potential
+difference. At intermediate charge $q$, the voltage
+is $v = q/C$. The work done adding a small charge
+$dq$ is $dW = v\,dq = (q/C)\,dq$.
+
+Total work done (= energy stored):
+\[
+  W = \int_0^Q \frac{q}{C}\,dq
+  = \frac{1}{C}\cdot\frac{Q^2}{2}
+  = \frac{Q^2}{2C}
+\]
+\end{processbox}
+
+\begin{lawbox}[Energy Stored in a Capacitor]
+\[
+  E = \frac{Q^2}{2C} = \frac{1}{2}QV = \frac{1}{2}CV^2
+\]
+All three forms are equivalent (use the form that
+matches the given information).
+
+The energy is stored in the \textbf{electric field}
+between the plates:
+\[
+  E = \frac{1}{2}\varepsilon_0 E_{field}^2 \times \text{Volume}
+  = \frac{1}{2}\varepsilon_0 E_{field}^2 \times Ad
+\]
+Energy density $= \frac{1}{2}\varepsilon_0 E_{field}^2$
+(J\,m$^{-3}$).
+\end{lawbox}
+
+\begin{examplebox}[22.2]
+\stepcounter{workedexample}
+A $100\ \mu\text{F}$ capacitor is charged to
+$12\ \text{V}$ by a battery.\\
+(a) Find the charge stored.\\
+(b) Find the energy stored.\\
+(c) The capacitor is disconnected from the battery
+and connected to an uncharged $100\ \mu\text{F}$
+capacitor. Find the final voltage and total energy.\\
+(d) Account for the energy difference between (b)
+and (c).
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} $Q = CV = 100\times10^{-6} \times 12
+= 1.2\times10^{-3}\ \text{C} = 1.2\ \text{mC}$
+
+\textbf{(b)} Energy stored:
+\[
+  E = \frac{1}{2}CV^2 = \frac{1}{2}
+  \times 100\times10^{-6} \times 144
+  = 7.2\times10^{-3}\ \text{J} = 7.2\ \text{mJ}
+\]
+
+\textbf{(c)} When connected, charge redistributes.
+Total charge is conserved:
+$Q_{total} = 1.2\ \text{mC}$.
+Total capacitance (parallel): $C_{total} = 200\ \mu\text{F}$.
+\[
+  V_{final} = \frac{Q_{total}}{C_{total}}
+  = \frac{1.2\times10^{-3}}{200\times10^{-6}}
+  = 6\ \text{V}
+\]
+Total energy:
+\[
+  E_{final} = \frac{1}{2}C_{total}V_{final}^2
+  = \frac{1}{2} \times 200\times10^{-6} \times 36
+  = 3.6\ \text{mJ}
+\]
+
+\textbf{(d)} Energy lost $= 7.2 - 3.6 = 3.6\ \text{mJ}$.
+This energy is dissipated as heat in the connecting
+wires (even with zero resistance, a spark occurs
+during connection which radiates energy). This
+result holds regardless of resistance --- exactly
+half the initial energy is always lost when two
+equal capacitors are connected this way. It is a
+consequence of charge conservation combined with
+energy minimisation.
+\end{solutionbox}
+
+% ============================================================
+\section{Capacitors in Series and Parallel}
+% ============================================================
+
+\begin{lawbox}[Capacitors in Parallel]
+Capacitors in parallel share the same voltage.
+The total charge is the sum of charges on each:
+\[
+  Q_{total} = Q_1 + Q_2 + \ldots
+\]
+\[
+  C_{parallel}V = C_1V + C_2V + \ldots
+\]
+\[
+  \boxed{C_{parallel} = C_1 + C_2 + C_3 + \ldots}
+\]
+Parallel combination gives a \textbf{larger}
+effective capacitance.
+\end{lawbox}
+
+\begin{lawbox}[Capacitors in Series]
+Capacitors in series carry the same charge.
+The total voltage is the sum of voltages across each:
+\[
+  V_{total} = V_1 + V_2 + \ldots
+\]
+\[
+  \frac{Q}{C_{series}} = \frac{Q}{C_1}
+  + \frac{Q}{C_2} + \ldots
+\]
+\[
+  \boxed{\frac{1}{C_{series}}
+  = \frac{1}{C_1} + \frac{1}{C_2} + \frac{1}{C_3}
+  + \ldots}
+\]
+Series combination gives a \textbf{smaller}
+effective capacitance.
+\end{lawbox}
+
+\begin{diagbox}[Capacitors in Series and Parallel]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % === PARALLEL ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries] at (3.5,4.5)
+      {Parallel: $C_p = C_1 + C_2 + C_3$};
+
+    % Bus wires
+    \draw[very thick] (0,1.5) -- (0,3.5);
+    \draw[very thick] (7,1.5) -- (7,3.5);
+    \draw[very thick] (0,3.5) -- (7,3.5);
+    \draw[very thick] (0,1.5) -- (7,1.5);
+
+    % Voltage labels
+    \node[left] at (-0.2,2.5) {$V$};
+    \draw[->, gray] (-0.2,2.5) -- (0,2.5);
+
+    % Three capacitors in parallel
+    \foreach \x/\label in {1.2/$C_1$,3.5/$C_2$,5.8/$C_3$} {
+      % Wires
+      \draw[thick] (\x,3.5) -- (\x,3.0);
+      \draw[thick] (\x,2.0) -- (\x,1.5);
+      % Plates
+      \draw[very thick, codexblue]
+        (\x-0.4,3.0) -- (\x+0.4,3.0);
+      \draw[very thick, codexred]
+        (\x-0.4,2.0) -- (\x+0.4,2.0);
+      % Gap
+      \node[font=\small] at (\x,2.5) {\label};
+    }
+
+    % Same V across each
+    \foreach \x in {1.2,3.5,5.8} {
+      \node[gray, font=\tiny] at (\x+0.6,2.5) {$V$};
+    }
+  \end{scope}
+
+  % === SERIES ===
+  \begin{scope}[shift={(0,-4)}]
+    \node[font=\bfseries] at (5,4.5)
+      {Series: $\frac{1}{C_s} = \frac{1}{C_1}
+      + \frac{1}{C_2} + \frac{1}{C_3}$};
+
+    % Wire
+    \draw[very thick] (0,2.5) -- (1.0,2.5);
+    \draw[very thick] (9.5,2.5) -- (10.5,2.5);
+
+    % Three capacitors in series
+    \foreach \x/\label/\offset in {
+      1.0/$C_1$/0, 4.0/$C_2$/3.0, 7.0/$C_3$/6.0} {
+      \draw[thick] (\x+\offset,2.5) -- (\x+\offset+0.5,2.5);
+      \draw[very thick, codexblue]
+        (\x+\offset+0.5,2.1) -- (\x+\offset+0.5,2.9);
+      \draw[very thick, codexred]
+        (\x+\offset+1.0,2.1) -- (\x+\offset+1.0,2.9);
+      \draw[thick]
+        (\x+\offset+1.0,2.5) -- (\x+\offset+1.5,2.5);
+      \node[above, font=\small] at (\x+\offset+0.75,2.9)
+        {\label};
+    }
+
+    % Voltage labels
+    \node[left] at (-0.2,2.5) {$V$};
+    \draw[->, gray] (-0.2,2.5) -- (0,2.5);
+    \node[below, gray, font=\tiny] at (2.75,2.1)
+      {$V_1$};
+    \node[below, gray, font=\tiny] at (5.75,2.1)
+      {$V_2$};
+    \node[below, gray, font=\tiny] at (8.75,2.1)
+      {$V_3$};
+
+    % Same Q annotation
+    \node[codexgold, font=\small] at (5.25,3.5)
+      {Same charge $Q$ on each capacitor};
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[22.3]
+\stepcounter{workedexample}
+Three capacitors, $C_1 = 4.0\ \mu\text{F}$,
+$C_2 = 6.0\ \mu\text{F}$, $C_3 = 12\ \mu\text{F}$,
+are connected: $C_1$ in series with the parallel
+combination of $C_2$ and $C_3$. A $24\ \text{V}$
+battery is connected across the whole arrangement.\\
+(a) Find the equivalent capacitance of the network.\\
+(b) Find the total charge from the battery.\\
+(c) Find the voltage across $C_1$.\\
+(d) Find the charge on $C_2$.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} First: $C_2$ and $C_3$ in parallel:
+$C_{23} = 6 + 12 = 18\ \mu\text{F}$
+
+Then $C_1$ in series with $C_{23}$:
+\[
+  \frac{1}{C_{eq}} = \frac{1}{C_1}
+  + \frac{1}{C_{23}} = \frac{1}{4} + \frac{1}{18}
+  = \frac{9}{36} + \frac{2}{36} = \frac{11}{36}
+\]
+\[
+  C_{eq} = \frac{36}{11} = 3.27\ \mu\text{F}
+\]
+
+\textbf{(b)} Total charge:
+\[
+  Q_{total} = C_{eq} \times V
+  = 3.27\times10^{-6} \times 24
+  = 78.5\ \mu\text{C}
+\]
+
+\textbf{(c)} In series, $C_1$ carries
+$Q = 78.5\ \mu\text{C}$:
+\[
+  V_1 = \frac{Q}{C_1}
+  = \frac{78.5\times10^{-6}}{4\times10^{-6}}
+  = 19.6\ \text{V}
+\]
+Voltage across $C_{23}$: $24 - 19.6 = 4.4\ \text{V}$
+
+\textbf{(d)} Charge on $C_2$ (parallel, so same
+voltage $4.4\ \text{V}$ as $C_{23}$):
+\[
+  Q_2 = C_2 \times V_{23}
+  = 6\times10^{-6} \times 4.4
+  = 26.4\ \mu\text{C}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Charging and Discharging a Capacitor}
+% ============================================================
+
+When a capacitor is charged or discharged through a
+resistor, the voltage, charge and current do not change
+instantly --- they change \textbf{exponentially}.
+
+\begin{processbox}[Deriving the Discharge Equation]
+A capacitor of capacitance $C$ is fully charged to
+voltage $V_0$ and then discharged through resistance $R$.
+At time $t$, let the voltage be $V$.
+
+The discharge current: $I = V/R$ (Ohm's Law)
+
+The rate of charge loss: $I = -dQ/dt = -C\,dV/dt$
+
+(Negative because charge decreases during discharge.)
+
+Setting equal:
+\[
+  \frac{V}{R} = -C\frac{dV}{dt}
+  \implies \frac{dV}{dt} = -\frac{V}{RC}
+\]
+
+This is a separable ODE with solution:
+\[
+  \boxed{V = V_0\,e^{-t/RC}}
+\]
+Similarly: $Q = Q_0\,e^{-t/RC}$ and
+$I = I_0\,e^{-t/RC}$ where $I_0 = V_0/R$.
+\end{processbox}
+
+\begin{definitionbox}[Time Constant]
+The \textbf{time constant} $\tau = RC$ is the time
+for the voltage (or charge) to fall to $1/e
+\approx 37\%$ of its initial value.
+\[
+  \tau = RC \quad [\text{seconds, when }
+  R \text{ in ohms and } C \text{ in farads}]
+\]
+After $\tau$: $V = 0.368\,V_0$ (37\%)\\
+After $2\tau$: $V = 0.135\,V_0$ (14\%)\\
+After $5\tau$: $V = 0.0067\,V_0$ (0.7\% ---
+effectively fully discharged)
+\end{definitionbox}
+
+\begin{diagbox}[Charging and Discharging Curves]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  name=plot1,
+  width=13cm, height=6cm,
+  xlabel={Time $t$ (in units of $\tau = RC$)},
+  ylabel={Voltage $V$ (fraction of $V_0$)},
+  xmin=0, xmax=5,
+  ymin=0, ymax=1.1,
+  grid=major, grid style={gray!15},
+  xtick={0,1,2,3,4,5},
+  xticklabels={$0$,$\tau$,$2\tau$,$3\tau$,$4\tau$,$5\tau$},
+  ytick={0,0.368,0.632,1.0},
+  yticklabels={0,0.37,0.63,$V_0$},
+  legend pos=outer north east,
+]
+  % Discharging: V = V0 * exp(-t/tau)
+  \addplot[codexred, very thick, domain=0:5,
+    samples=100]
+    {exp(-x)};
+  \addlegendentry{Discharge: $V = V_0e^{-t/\tau}$};
+
+  % Charging: V = V0 * (1 - exp(-t/tau))
+  \addplot[codexblue, very thick, domain=0:5,
+    samples=100]
+    {1 - exp(-x)};
+  \addlegendentry{Charge: $V = V_0(1-e^{-t/\tau})$};
+
+  % 37% marker (discharge)
+  \addplot[dashed, codexred!50, domain=0:1]{0.368};
+  \draw[dashed, codexred!50]
+    (axis cs:1,0) -- (axis cs:1,0.368);
+  \fill[codexred] (axis cs:1,0.368) circle (3pt);
+  \node[right, codexred, font=\tiny]
+    at (axis cs:1.05,0.368)
+    {37\% at $t=\tau$};
+
+  % 63% marker (charging)
+  \addplot[dashed, codexblue!50, domain=0:1]{0.632};
+  \draw[dashed, codexblue!50]
+    (axis cs:1,0) -- (axis cs:1,0.632);
+  \fill[codexblue] (axis cs:1,0.632) circle (3pt);
+  \node[right, codexblue, font=\tiny]
+    at (axis cs:1.05,0.632)
+    {63\% at $t=\tau$};
+
+  % V0 line
+  \addplot[black, dashed, domain=0:5]{1.0};
+  \node[right, black, font=\tiny]
+    at (axis cs:4.5,1.05) {$V_0$ (battery voltage)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\small During \textbf{charging}: $V = V_0(1-e^{-t/\tau})$;
+$Q = Q_0(1-e^{-t/\tau})$.
+During \textbf{discharging}: $V = V_0 e^{-t/\tau}$;
+$Q = Q_0 e^{-t/\tau}$.
+\end{diagbox}
+
+\begin{examplebox}[22.4]
+\stepcounter{workedexample}
+A $220\ \mu\text{F}$ capacitor is charged to
+$9.0\ \text{V}$ and discharged through a
+$47\ \text{k}\Omega$ resistor.\\
+(a) Calculate the time constant.\\
+(b) Find the voltage after $5.0\ \text{s}$.\\
+(c) Find the time at which the voltage has fallen
+to $3.0\ \text{V}$.\\
+(d) Calculate the initial discharge current.
+\end{examplebox}
+
+\begin{solutionbox}
+$C = 220\times10^{-6}\ \text{F}$,
+$R = 47\times10^3\ \Omega$,
+$V_0 = 9.0\ \text{V}$
+
+\textbf{(a)} Time constant:
+\[
+  \tau = RC = 47\times10^3
+  \times 220\times10^{-6}
+  = 10.34\ \text{s}
+\]
+
+\textbf{(b)} Voltage at $t = 5.0\ \text{s}$:
+\[
+  V = 9.0\,e^{-5.0/10.34}
+  = 9.0\,e^{-0.4836}
+  = 9.0 \times 0.617
+  = 5.55\ \text{V}
+\]
+
+\textbf{(c)} When $V = 3.0\ \text{V}$:
+\[
+  3.0 = 9.0\,e^{-t/10.34}
+  \implies e^{-t/10.34} = \frac{1}{3}
+  \implies -\frac{t}{10.34} = \ln\!\left(\frac{1}{3}\right)
+  = -1.099
+\]
+\[
+  t = 1.099 \times 10.34 = 11.36\ \text{s}
+  \approx 11.4\ \text{s}
+\]
+
+\textbf{(d)} Initial current:
+\[
+  I_0 = \frac{V_0}{R}
+  = \frac{9.0}{47\times10^3}
+  = 1.91\times10^{-4}\ \text{A}
+  = 0.191\ \text{mA}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Practical Applications of Capacitors}
+% ============================================================
+
+\begin{table}[H]
+\centering
+\caption{Applications of Capacitors}
+\label{tab:capacitor_apps}
+\begin{tabular}{lll}
+\toprule
+\textbf{Application} & \textbf{Capacitor role} &
+\textbf{Example}\\
+\midrule
+Camera flash & Store energy, release rapidly &
+  Smartphone flash\\
+Radio tuning & Select resonant frequency &
+  AM/FM radio receiver\\
+Smoothing & Filter ripple from rectified AC &
+  Power supply units\\
+Timing circuits & Control $RC$ time delay &
+  Timer switches, oscillators\\
+Memory (DRAM) & Store bits as charge &
+  Computer RAM\\
+Defibrillator & Deliver precise energy pulse &
+  Hospital heart restart\\
+Touch screens & Detect finger capacitance &
+  Smartphones, tablets\\
+Motor starting & Provide phase shift to start &
+  Air conditioner, fan\\
+Signal coupling & Pass AC, block DC &
+  Audio amplifiers\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{realworldbox}[Capacitors in Nigerian Electronics]
+Every inverter used for home backup power during
+NEPA outages contains large electrolytic capacitors
+(typically $1000$--$10000\ \mu\text{F}$) to smooth
+the output of the rectified DC. The UPS (Uninterruptible
+Power Supply) in offices across Lagos and Abuja uses
+a bank of capacitors to handle the transition between
+mains power and battery. The capacitors in Nigerian
+power inverters must withstand voltage spikes from
+the erratic grid --- capacitor failure is one of the
+most common causes of inverter breakdown.
+\end{realworldbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Capacitance:} $C = Q/V$ (farads, F).
+Stores charge at a given voltage.
+
+\textbf{Parallel plate:}
+$C = \varepsilon_0 A/d$ (vacuum);
+$C = \varepsilon_r\varepsilon_0 A/d$ (with dielectric)
+
+$C$ increases with larger area, smaller separation,
+higher $\varepsilon_r$.
+
+\textbf{Energy stored:}
+$E = \frac{1}{2}CV^2 = \frac{1}{2}QV = \frac{Q^2}{2C}$
+
+\textbf{Parallel:} $C_p = C_1 + C_2 + \ldots$
+(larger; same voltage)
+
+\textbf{Series:}
+$\frac{1}{C_s} = \frac{1}{C_1} + \frac{1}{C_2}
++ \ldots$ (smaller; same charge)
+
+\textbf{Discharge:}
+$V = V_0 e^{-t/RC}$;
+$Q = Q_0 e^{-t/RC}$;
+$I = I_0 e^{-t/RC}$
+
+\textbf{Charging:}
+$V = V_0(1-e^{-t/RC})$
+
+\textbf{Time constant:} $\tau = RC$
+(time to reach $37\%$ of initial value during
+discharge; $63\%$ of final value during charging)
+
+After $5\tau$: effectively fully charged or
+discharged.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[22]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A capacitor stores $60\ \mu\text{C}$
+at $12\ \text{V}$. Its capacitance is:
+
+\mcoption{A}{$5.0\ \mu\text{F}$}
+\mcoption{B}{$6.0\ \mu\text{F}$}
+\mcoption{C}{$720\ \mu\text{F}$}
+\mcoption{D}{$0.2\ \mu\text{F}$}
+\ansref{Ch22-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} Three $6\ \mu\text{F}$ capacitors are
+connected in series. The effective capacitance is:
+
+\mcoption{A}{$18\ \mu\text{F}$}
+\mcoption{B}{$6\ \mu\text{F}$}
+\mcoption{C}{$3\ \mu\text{F}$}
+\mcoption{D}{$2\ \mu\text{F}$}
+\ansref{Ch22-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} The energy stored in a $50\ \mu\text{F}$
+capacitor charged to $200\ \text{V}$ is:
+
+\mcoption{A}{$0.1\ \text{J}$}
+\mcoption{B}{$1.0\ \text{J}$}
+\mcoption{C}{$10\ \text{J}$}
+\mcoption{D}{$100\ \text{J}$}
+\ansref{Ch22-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} A capacitor is connected to a battery
+and fully charged. The battery is then disconnected.
+A dielectric is inserted between the plates. The
+voltage across the capacitor:
+
+\mcoption{A}{Increases}
+\mcoption{B}{Stays the same}
+\mcoption{C}{Decreases}
+\mcoption{D}{Drops to zero}
+\ansref{Ch22-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} A $10\ \mu\text{F}$ capacitor is
+charged to $5.0\ \text{V}$ and then connected to
+an uncharged $40\ \mu\text{F}$ capacitor. The final
+common voltage is:
+
+\mcoption{A}{$1.0\ \text{V}$}
+\mcoption{B}{$2.5\ \text{V}$}
+\mcoption{C}{$4.0\ \text{V}$}
+\mcoption{D}{$5.0\ \text{V}$}
+\ansref{Ch22-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} During the discharge of a capacitor
+through a resistor, the current:
+
+\mcoption{A}{Increases exponentially}
+\mcoption{B}{Is constant}
+\mcoption{C}{Decreases exponentially}
+\mcoption{D}{Decreases linearly}
+\ansref{Ch22-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} The time constant of a circuit with
+$C = 470\ \mu\text{F}$ and $R = 10\ \text{k}\Omega$ is:
+
+\mcoption{A}{$0.047\ \text{s}$}
+\mcoption{B}{$4.7\ \text{s}$}
+\mcoption{C}{$47\ \text{s}$}
+\mcoption{D}{$470\ \text{s}$}
+\ansref{Ch22-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} For a parallel plate capacitor with
+a dielectric, doubling the plate area while halving
+the plate separation:
+
+\mcoption{A}{Doubles $C$}
+\mcoption{B}{Quadruples $C$}
+\mcoption{C}{Halves $C$}
+\mcoption{D}{Has no effect on $C$}
+\ansref{Ch22-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} After three time constants ($3\tau$),
+a discharging capacitor retains approximately:
+
+\mcoption{A}{$37\%$ of initial voltage}
+\mcoption{B}{$14\%$ of initial voltage}
+\mcoption{C}{$5\%$ of initial voltage}
+\mcoption{D}{$50\%$ of initial voltage}
+\ansref{Ch22-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} Two capacitors in parallel both have
+voltage $V$ across them. Compared to a single
+capacitor of capacitance $C$ at the same voltage,
+the total energy stored in two capacitors (each
+of capacitance $C$) in parallel is:
+
+\mcoption{A}{The same}
+\mcoption{B}{Half}
+\mcoption{C}{Double}
+\mcoption{D}{Four times}
+\ansref{Ch22-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A parallel plate capacitor has plates
+of area $200\ \text{cm}^2$ separated by an air gap
+of $1.5\ \text{mm}$.
+($\varepsilon_0 = 8.85\times10^{-12}\ \text{F\,m}^{-1}$)\\[4pt]
+(a) Calculate the capacitance.\\
+(b) A potential difference of $600\ \text{V}$ is
+applied. Find the charge and energy stored.\\
+(c) A dielectric of relative permittivity $4.5$
+is inserted (battery still connected). Find the
+new capacitance, charge and energy.\\
+(d) Explain why the energy stored increases when
+a dielectric is inserted with the battery connected,
+even though the voltage stays the same. Where does
+the extra energy come from?
+\hfill\ansref{Ch22-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} Four capacitors are arranged as shown:
+$C_1 = 3\ \mu\text{F}$ and $C_2 = 6\ \mu\text{F}$
+in parallel, then this combination in series with
+$C_3 = 4\ \mu\text{F}$, then this combination in
+parallel with $C_4 = 8\ \mu\text{F}$.
+A $20\ \text{V}$ supply is connected.\\[4pt]
+(a) Find the capacitance of $C_1$ and $C_2$ in
+parallel.\\
+(b) Find the capacitance of this with $C_3$ in series.\\
+(c) Find the total effective capacitance.\\
+(d) Find the total charge from the supply.\\
+(e) Find the voltage across $C_3$ and hence the
+charge on $C_3$.
+\hfill\ansref{Ch22-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A $1000\ \mu\text{F}$ capacitor is
+charged to $15\ \text{V}$ by a battery and then
+discharged through a $5.0\ \text{k}\Omega$ resistor.\\[4pt]
+(a) Calculate the initial charge, initial current
+and initial energy.\\
+(b) Calculate the time constant.\\
+(c) How long does it take for the voltage to fall
+to $5.0\ \text{V}$?\\
+(d) What is the current at $t = 10\ \text{s}$?\\
+(e) Sketch, with numerical labels on the axes,
+the discharge curve for voltage vs time from
+$t = 0$ to $t = 4\tau$.\\
+(f) The resistor is replaced with one of
+$10\ \text{k}\Omega$. How does this affect:\\
+(i) The initial current; (ii) The time constant;
+(iii) The total charge delivered to the resistor.
+\hfill\ansref{Ch22-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A defibrillator capacitor bank stores
+energy to deliver a shock to a patient's heart.
+The capacitors are charged to $5000\ \text{V}$.
+The required energy is $360\ \text{J}$.\\[4pt]
+(a) Calculate the required capacitance.\\
+(b) Calculate the charge stored.\\
+(c) If the defibrillator discharges through the
+patient's chest resistance of $50\ \Omega$ with a
+time constant of $5.0\ \text{ms}$, find the
+capacitance (using $\tau = RC$) and check against
+your answer to (a).\\
+(d) The current through the patient peaks at the
+moment of discharge. Calculate this peak current.\\
+(e) Calculate the power delivered at the instant
+of discharge.\\
+(f) After $5\tau$, what fraction of the energy
+has been delivered? Comment on the design
+implication.
+\hfill\ansref{Ch22-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A student investigates the discharge
+of a capacitor by measuring the voltage at equal
+time intervals:
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+$t$ (s) & $V$ (V)\\
+\midrule
+0 & 8.00\\
+5 & 5.90\\
+10 & 4.35\\
+15 & 3.20\\
+20 & 2.36\\
+25 & 1.74\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+(a) Taking natural logs: show that
+$\ln V = \ln V_0 - t/\tau$.
+Calculate $\ln V$ for each row.\\
+(b) Plot $\ln V$ against $t$ and draw the best
+fit straight line.\\
+(c) From the gradient of the line, determine
+the time constant $\tau$.\\
+(d) From the $y$-intercept, determine $V_0$.\\
+(e) The resistor used was $R = 33\ \text{k}\Omega$.
+Calculate the capacitance. Compare with the labelled
+value of $C = 470\ \mu\text{F}$.
+\hfill\ansref{Ch22-B5}
+
+\end{exercisebox}

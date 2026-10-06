@@ -1,0 +1,1239 @@
+% ============================================================
+%  CHAPTER 23: CURRENT ELECTRICITY
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part4/ch23_current_electricity.tex
+% ============================================================
+
+\chapter{Current Electricity}
+\label{ch:current_electricity}
+\minitoc
+\newpage
+
+\chapterquote{The science of today is the technology
+of tomorrow.}{Edward Teller}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Define electric current, potential difference
+  and resistance
+  \item State and apply Ohm's Law
+  \item Define resistivity and calculate resistance
+  from geometry
+  \item Describe how resistance varies with temperature
+  for metals, thermistors and semiconductors
+  \item Combine resistors in series and parallel
+  \item Apply Kirchhoff's laws to complex circuits
+  \item Define EMF and internal resistance and apply
+  them to circuit problems
+  \item Define and apply the potential divider
+  \item Describe the Wheatstone bridge and its use
+  \item Apply the potentiometer principle
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: What is Electric Current?}
+% ============================================================
+
+Imagine water flowing through a pipe. The rate of
+flow --- litres per second --- tells you how much
+water is moving. Electric current is exactly analogous:
+it is the rate of flow of electric charge through a
+conductor.
+
+In a metal wire, the ``water'' is the sea of free
+electrons. The electrons drift slowly in one direction
+(from negative to positive terminal, though by
+convention current flows the other way), colliding
+repeatedly with the metal ions as they move. The
+\textit{drift velocity} of electrons in a wire is
+surprisingly slow --- typically a fraction of a
+millimetre per second. But there are so many electrons
+that even this slow drift constitutes a very significant
+rate of charge flow.
+
+The reason a light switch works instantly --- far faster
+than the electrons could physically travel from the
+switch to the bulb --- is that the electric field
+propagates almost at the speed of light through the
+wire. Every electron in the circuit starts moving
+almost simultaneously.
+
+% ============================================================
+\section{Electric Current}
+% ============================================================
+
+\begin{definitionbox}[Electric Current]
+\textbf{Electric current} $I$ is the rate of flow
+of electric charge:
+\[
+  I = \frac{\Delta Q}{\Delta t}
+  \implies Q = It
+\]
+SI unit: ampere (A) where
+$1\ \text{A} = 1\ \text{C\,s}^{-1}$.
+
+\textbf{Conventional current} flows from positive
+to negative terminal (outside the source). This is
+opposite to the direction of electron flow.
+
+\textbf{Drift velocity} $v_d$ of charge carriers:
+\[
+  I = nqAv_d
+\]
+where $n$ = number density of charge carriers
+(m$^{-3}$), $q$ = charge per carrier (C), $A$ =
+cross-sectional area of conductor (m$^2$),
+$v_d$ = drift velocity (m\,s$^{-1}$).
+\end{definitionbox}
+
+\begin{examplebox}[23.1]
+\stepcounter{workedexample}
+A copper wire carries a current of $3.0\ \text{A}$.
+The wire has a cross-sectional area of
+$1.5\ \text{mm}^2$ and copper has a free electron
+density of $8.5\times10^{28}\ \text{m}^{-3}$.\\
+(a) Calculate the drift velocity of electrons.\\
+(b) How long does it take for one electron to travel
+$1.0\ \text{m}$ along the wire?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} $A = 1.5\times10^{-6}\ \text{m}^2$,
+$q = 1.6\times10^{-19}\ \text{C}$:
+\[
+  v_d = \frac{I}{nqA}
+  = \frac{3.0}{8.5\times10^{28}
+    \times 1.6\times10^{-19}
+    \times 1.5\times10^{-6}}
+  = \frac{3.0}{2.04\times10^4}
+  = 1.47\times10^{-4}\ \text{m\,s}^{-1}
+\]
+About $0.15\ \text{mm\,s}^{-1}$ --- slower than a
+snail!
+
+\textbf{(b)} Time to travel $1.0\ \text{m}$:
+\[
+  t = \frac{d}{v_d}
+  = \frac{1.0}{1.47\times10^{-4}}
+  = 6800\ \text{s} \approx 113\ \text{min}
+\]
+Almost two hours for an electron to drift $1\ \text{m}$.
+This is why understanding drift velocity versus signal
+propagation speed is crucial in electronics.
+\end{solutionbox}
+
+% ============================================================
+\section{Ohm's Law and Resistance}
+% ============================================================
+
+\begin{lawbox}[Ohm's Law]
+For a metallic conductor at \textbf{constant
+temperature}, the current through the conductor is
+directly proportional to the potential difference
+across it:
+\[
+  V \propto I \implies V = IR
+\]
+where $R$ is the \textbf{resistance} of the
+conductor. SI unit: ohm ($\Omega$) where
+$1\ \Omega = 1\ \text{V\,A}^{-1}$.
+
+This defines resistance for any component:
+\[
+  R = \frac{V}{I}
+\]
+A component that obeys Ohm's Law is called
+\textbf{ohmic}. One that does not is \textbf{non-ohmic}.
+\end{lawbox}
+
+\begin{diagbox}[$I$-$V$ Characteristics: Ohmic and Non-ohmic]
+\begin{center}
+\begin{tikzpicture}
+  % Ohmic resistor
+  \begin{axis}[
+    name=p1,
+    width=5.5cm, height=5cm,
+    xlabel={$V$ (V)}, ylabel={$I$ (A)},
+    xmin=0, xmax=5, ymin=0, ymax=5,
+    grid=major, grid style={gray!15},
+    xtick={0,1,2,3,4,5},
+    ytick={0,1,2,3,4,5},
+    title={Ohmic Resistor}
+  ]
+    \addplot[codexblue, very thick, domain=0:5]{x};
+    \node[codexblue, font=\small] at (axis cs:2,3.5)
+      {Straight line:\\$R = $ const};
+  \end{axis}
+
+  % Filament bulb
+  \begin{axis}[
+    name=p2,
+    at={(p1.right of south east)},
+    anchor=left of south west,
+    xshift=0.5cm,
+    width=5.5cm, height=5cm,
+    xlabel={$V$ (V)}, ylabel={$I$ (A)},
+    xmin=0, xmax=5, ymin=0, ymax=5,
+    grid=major, grid style={gray!15},
+    xtick=\empty, ytick=\empty,
+    title={Filament Bulb (non-ohmic)}
+  ]
+    \addplot[codexred, very thick, domain=0:5,
+      samples=60]{2*sqrt(x)};
+    \node[codexred, font=\small, align=center]
+      at (axis cs:1.5,4.0)
+      {Curve: $R$ increases\\with temperature};
+  \end{axis}
+
+  % Diode
+  \begin{axis}[
+    name=p3,
+    at={(p2.right of south east)},
+    anchor=left of south west,
+    xshift=0.5cm,
+    width=5.5cm, height=5cm,
+    xlabel={$V$ (V)}, ylabel={$I$ (A)},
+    xmin=-2, xmax=3, ymin=-0.5, ymax=5,
+    grid=major, grid style={gray!15},
+    xtick={-2,-1,0,1,2,3},
+    ytick={0,1,2,3,4,5},
+    title={Semiconductor Diode (non-ohmic)}
+  ]
+    % Forward bias (exponential)
+    \addplot[codexgreen, very thick, domain=0:2,
+      samples=60]{0.5*(exp(1.5*x)-1)};
+    % Reverse bias (tiny current, then breakdown)
+    \addplot[codexgreen, very thick, domain=-2:0]{0};
+    \node[codexgreen, font=\tiny, align=center]
+      at (axis cs:1.0,3.5)
+      {Conducts in\\one direction only};
+    \node[codexred, font=\tiny]
+      at (axis cs:-1.0,0.3) {Reverse bias:\\no current};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Resistivity}
+% ============================================================
+
+\begin{definitionbox}[Resistivity]
+The \textbf{resistivity} $\rho$ of a material is
+its inherent resistance per unit length per unit
+cross-sectional area:
+\[
+  R = \frac{\rho L}{A}
+\]
+where $L$ is the length of the conductor and $A$
+is its cross-sectional area.
+
+SI unit: $\Omega$\,m (ohm-metre).
+
+Resistivity is a \textbf{material property};
+resistance is a \textbf{property of a specific
+component}. Two wires of different lengths made
+from the same material have different resistances
+but the same resistivity.
+\end{definitionbox}
+
+\begin{table}[H]
+\centering
+\caption{Resistivities of Common Materials at 20°C}
+\label{tab:resistivity}
+\begin{tabular}{lll}
+\toprule
+\textbf{Material} & \textbf{Resistivity ($\Omega$\,m)} &
+\textbf{Type}\\
+\midrule
+Silver & $1.59\times10^{-8}$ & Conductor\\
+Copper & $1.72\times10^{-8}$ & Conductor\\
+Gold & $2.44\times10^{-8}$ & Conductor\\
+Aluminium & $2.82\times10^{-8}$ & Conductor\\
+Iron & $1.0\times10^{-7}$ & Conductor\\
+Nichrome & $1.1\times10^{-6}$ & Alloy (heating elements)\\
+Carbon (graphite) & $3.5\times10^{-5}$ & Semi-conductor\\
+Silicon & $6.4\times10^{2}$ & Semiconductor\\
+Glass & $10^{10}$--$10^{14}$ & Insulator\\
+Rubber & $10^{13}$--$10^{15}$ & Insulator\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{examplebox}[23.2]
+\stepcounter{workedexample}
+A nichrome heating element is $0.80\ \text{m}$ long
+and has a diameter of $0.50\ \text{mm}$.
+($\rho_{nichrome} = 1.1\times10^{-6}\ \Omega\text{m}$)\\
+(a) Calculate the resistance of the element.\\
+(b) It is connected to a $240\ \text{V}$ supply.
+Find the current and power dissipated.\\
+(c) A second identical element is connected in
+parallel. Find the total resistance and power.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} $A = \pi r^2 = \pi(0.25\times10^{-3})^2
+= 1.963\times10^{-7}\ \text{m}^2$:
+\[
+  R = \frac{\rho L}{A}
+  = \frac{1.1\times10^{-6} \times 0.80}
+    {1.963\times10^{-7}}
+  = \frac{8.8\times10^{-7}}{1.963\times10^{-7}}
+  = 4.48\ \Omega \approx 4.5\ \Omega
+\]
+
+\textbf{(b)} Current: $I = V/R = 240/4.48
+= 53.6\ \text{A}$\\
+Power: $P = VI = 240 \times 53.6 = 12\,864\ \text{W}$
+$\approx 12.9\ \text{kW}$
+
+\textbf{(c)} Two identical resistors in parallel:
+$R_{total} = R/2 = 2.24\ \Omega$\\
+Power: $P = V^2/R_{total} = 240^2/2.24
+= 25\,714\ \text{W} = 25.7\ \text{kW}$
+
+Parallel connection doubles the current and
+doubles the power --- two independent paths for
+current flow.
+\end{solutionbox}
+
+% ============================================================
+\section{Resistance and Temperature}
+% ============================================================
+
+\begin{defbox}[Variation of Resistance with Temperature]
+\textbf{Metals (conductors):}
+Resistance \textit{increases} with temperature.
+Higher temperature causes more vigorous lattice
+vibrations, more frequent collisions between
+electrons and ions, lower drift velocity.
+\[
+  R = R_0(1 + \alpha\Delta T)
+\]
+where $\alpha$ is the temperature coefficient of
+resistance (K$^{-1}$).
+
+\textbf{Semiconductors and thermistors (NTC type):}
+Resistance \textit{decreases} with temperature.
+Higher temperature frees more electrons as charge
+carriers, greatly increasing conductivity.
+(NTC = Negative Temperature Coefficient)
+
+\textbf{LDR (Light Dependent Resistor):}
+Resistance decreases as light intensity increases.
+Light photons free more charge carriers.
+\end{defbox}
+
+\begin{diagbox}[Resistance vs Temperature for Metal and NTC Thermistor]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=11cm, height=6cm,
+  xlabel={Temperature $T$ (°C)},
+  ylabel={Resistance $R$ ($\Omega$)},
+  xmin=0, xmax=120,
+  ymin=0, ymax=5,
+  grid=major, grid style={gray!15},
+  ytick=\empty,
+  xtick={0,20,40,60,80,100,120},
+  legend pos=north east,
+]
+  % Metal: R increases linearly
+  \addplot[codexblue, very thick, domain=0:120]
+    {1.0 + 0.025*x};
+  \addlegendentry{Metal conductor ($R$ increases)};
+
+  % NTC thermistor: R decreases steeply
+  \addplot[codexred, very thick, domain=0:120,
+    samples=80]
+    {4.0*exp(-0.04*x)};
+  \addlegendentry{NTC Thermistor ($R$ decreases rapidly)};
+
+  % Annotations
+  \node[codexblue, font=\small] at (axis cs:80,3.5)
+    {Metal: more vibrations,\\more collisions,\\higher $R$};
+  \node[codexred, font=\small] at (axis cs:60,1.5)
+    {Thermistor: more carriers\\freed by heat,\\lower $R$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Resistors in Series and Parallel}
+% ============================================================
+
+\begin{lawbox}[Resistors in Series]
+Resistors in series carry the \textbf{same current}.
+The total voltage is the sum of individual voltages.
+\[
+  V = V_1 + V_2 + V_3 + \ldots
+\]
+\[
+  IR_{total} = IR_1 + IR_2 + IR_3 + \ldots
+\]
+\[
+  \boxed{R_{series} = R_1 + R_2 + R_3 + \ldots}
+\]
+\end{lawbox}
+
+\begin{lawbox}[Resistors in Parallel]
+Resistors in parallel have the \textbf{same voltage}.
+The total current is the sum of individual currents.
+\[
+  I = I_1 + I_2 + I_3 + \ldots
+\]
+\[
+  \frac{V}{R_{total}} = \frac{V}{R_1}
+  + \frac{V}{R_2} + \frac{V}{R_3} + \ldots
+\]
+\[
+  \boxed{\frac{1}{R_{parallel}} = \frac{1}{R_1}
+  + \frac{1}{R_2} + \frac{1}{R_3} + \ldots}
+\]
+For two resistors in parallel:
+$R_p = \frac{R_1 R_2}{R_1 + R_2}$
+\end{lawbox}
+
+\begin{examplebox}[23.3]
+\stepcounter{workedexample}
+Find the total resistance and current from a
+$24\ \text{V}$ supply for the network: $R_1 = 4\ \Omega$
+in series with the parallel combination of
+$R_2 = 6\ \Omega$ and $R_3 = 12\ \Omega$.
+\end{examplebox}
+
+\begin{solutionbox}
+Parallel combination of $R_2$ and $R_3$:
+\[
+  R_{23} = \frac{R_2 R_3}{R_2 + R_3}
+  = \frac{6 \times 12}{6 + 12}
+  = \frac{72}{18} = 4\ \Omega
+\]
+
+Total resistance ($R_1$ in series with $R_{23}$):
+\[
+  R_{total} = R_1 + R_{23} = 4 + 4 = 8\ \Omega
+\]
+
+Total current:
+\[
+  I = \frac{V}{R_{total}} = \frac{24}{8}
+  = 3.0\ \text{A}
+\]
+
+Voltage across parallel section:
+$V_{23} = I \times R_{23} = 3.0 \times 4 = 12\ \text{V}$
+
+Current through $R_2$: $I_2 = 12/6 = 2.0\ \text{A}$
+
+Current through $R_3$: $I_3 = 12/12 = 1.0\ \text{A}$
+
+Check: $I_2 + I_3 = 3.0\ \text{A} = I$ ✓
+\end{solutionbox}
+
+% ============================================================
+\section{Kirchhoff's Laws}
+% ============================================================
+
+\begin{lawbox}[Kirchhoff's Current Law (KCL)]
+\textbf{First Law (Junction Rule):}
+The sum of currents entering any junction (node)
+in a circuit equals the sum of currents leaving it.
+\[
+  \sum I_{in} = \sum I_{out}
+\]
+This is a consequence of conservation of charge
+--- charge cannot accumulate at a junction.
+\end{lawbox}
+
+\begin{lawbox}[Kirchhoff's Voltage Law (KVL)]
+\textbf{Second Law (Loop Rule):}
+The algebraic sum of potential differences around
+any closed loop in a circuit is zero.
+\[
+  \sum V = 0 \quad \text{(around any closed loop)}
+\]
+This is a consequence of conservation of energy
+--- the work done going around a complete loop is
+zero (you return to the same potential).
+\end{lawbox}
+
+\begin{diagbox}[Applying Kirchhoff's Laws]
+\begin{center}
+\begin{tikzpicture}[scale=0.95, font=\small]
+
+  % Circuit nodes
+  \coordinate (A) at (0,4);
+  \coordinate (B) at (5,4);
+  \coordinate (C) at (5,0);
+  \coordinate (D) at (0,0);
+
+  % Wires
+  \draw[very thick] (A) -- (B) -- (C) -- (D) -- (A);
+  \draw[very thick] (A) -- ++(2.5,0) -- ++(0,-4);
+
+  % Batteries
+  % E1 (left branch, top to bottom)
+  \draw[very thick] (0,2.5) -- (0,2.8);
+  % NOTE: use ASCII '-' for the coordinate; Unicode minus (−) breaks pgf math under pdfLaTeX
+  \draw[very thick, codexred] (-0.3,2.8) -- (0.3,2.8);
+  \draw[very thick] (0,2.8) -- (0,3.1);
+  \draw[very thick, codexblue] (-0.5,3.1) -- (0.5,3.1);
+  \draw[very thick] (0,3.1) -- (0,3.5);
+  \node[left] at (-0.6,3.0) {$\mathcal{E}_1$};
+  \node[right, font=\tiny] at (0.6,3.0) {EMF};
+
+  % R1 (top branch)
+  \fill[gray!30] (1.5,3.7) rectangle (3.5,4.3);
+  \draw[thick] (1.5,3.7) rectangle (3.5,4.3);
+  \node at (2.5,4.0) {$R_1$};
+
+  % R2 (right branch)
+  \fill[gray!30] (4.7,1.5) rectangle (5.3,3.0);
+  \draw[thick] (4.7,1.5) rectangle (5.3,3.0);
+  \node at (5.0,2.25) {$R_2$};
+
+  % R3 (middle branch)
+  \fill[gray!30] (2.2,1.5) rectangle (2.8,3.0);
+  \draw[thick] (2.2,1.5) rectangle (2.8,3.0);
+  \node at (2.5,2.25) {$R_3$};
+
+  % E2 (bottom branch)
+  \draw[very thick] (2.5,0.5) -- (2.5,0.8);
+  \draw[very thick, codexred] (2.2,0.8) -- (2.8,0.8);
+  \draw[very thick] (2.5,0.8) -- (2.5,1.1);
+  \draw[very thick, codexblue] (2.0,1.1) -- (3.0,1.1);
+  \node[below] at (2.5,0.4) {$\mathcal{E}_2$};
+
+  % Current labels
+  \draw[->, very thick, codexblue]
+    (A) ++ (0.5,0.15) -- ++(0.8,0)
+    node[above]{$I_1$};
+  \draw[->, very thick, codexred]
+    (B) ++ (0,-0.5) -- ++(0,-0.8)
+    node[right]{$I_2$};
+  \draw[->, very thick, codexgreen]
+    (2.5,3.5) -- (2.5,3.0)
+    node[right]{$I_3$};
+
+  % KCL annotation
+  \fill[codexgold] (A) circle (5pt);
+  \node[above left, codexgold] at (A)
+    {\small Junction A:\\$I_1 = I_2 + I_3$};
+
+  % KVL annotation
+  \draw[->, codexgold, thick, dashed, rounded corners]
+    (0.5,3.8) -- (4.5,3.8) -- (4.5,0.3) -- (0.5,0.3)
+    -- (0.5,3.8);
+  \node[codexgold, font=\tiny] at (2.5,0.0)
+    {Outer loop:\\$\mathcal{E}_1 - I_1R_1
+    - I_2R_2 - \mathcal{E}_2 = 0$};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[23.4]
+\stepcounter{workedexample}
+In the circuit, $\mathcal{E}_1 = 12\ \text{V}$,
+$\mathcal{E}_2 = 6\ \text{V}$,
+$R_1 = 2\ \Omega$, $R_2 = 4\ \Omega$,
+$R_3 = 6\ \Omega$. Find the three currents using
+Kirchhoff's Laws.
+\end{examplebox}
+
+\begin{solutionbox}
+Let currents $I_1$, $I_2$, $I_3$ flow as shown.
+
+\textbf{KCL at junction A:}
+\[
+  I_1 = I_2 + I_3 \quad \cdots(1)
+\]
+
+\textbf{KVL, outer loop
+($\mathcal{E}_1$, $R_1$, $R_2$, $\mathcal{E}_2$):}
+\[
+  12 - 2I_1 - 4I_2 - 6 = 0
+  \implies 2I_1 + 4I_2 = 6
+  \implies I_1 + 2I_2 = 3 \quad\cdots(2)
+\]
+
+\textbf{KVL, inner loop ($R_3$, $R_2$):}
+\[
+  6I_3 - 4I_2 - 6 = 0
+  \implies 6I_3 - 4I_2 = 6
+  \implies 3I_3 - 2I_2 = 3 \quad\cdots(3)
+\]
+
+From (1): $I_1 = I_2 + I_3$. Substituting into (2):
+\[
+  (I_2 + I_3) + 2I_2 = 3
+  \implies 3I_2 + I_3 = 3 \quad\cdots(4)
+\]
+
+From (3): $I_3 = (3 + 2I_2)/3$. Substituting into (4):
+\[
+  3I_2 + \frac{3 + 2I_2}{3} = 3
+  \implies 9I_2 + 3 + 2I_2 = 9
+  \implies 11I_2 = 6
+  \implies I_2 = \frac{6}{11} = 0.545\ \text{A}
+\]
+\[
+  I_3 = \frac{3 + 2(0.545)}{3}
+  = \frac{4.09}{3} = 1.36\ \text{A}
+\]
+\[
+  I_1 = I_2 + I_3 = 0.545 + 1.36 = 1.91\ \text{A}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{EMF and Internal Resistance}
+% ============================================================
+
+\begin{definitionbox}[EMF and Internal Resistance]
+The \textbf{electromotive force} (EMF) $\mathcal{E}$
+of a source is the energy supplied per unit charge
+by the source (battery, generator, solar cell):
+\[
+  \mathcal{E} = \frac{W}{Q}
+\]
+SI unit: volt (V). EMF is \textbf{not} a force ---
+it is a potential difference, but one that drives
+the circuit.
+
+Every real source has an \textbf{internal resistance}
+$r$ (due to the resistance of its own materials).
+For a source of EMF $\mathcal{E}$ and internal
+resistance $r$ driving current $I$ through external
+resistance $R$:
+\[
+  \mathcal{E} = IR + Ir = I(R + r)
+\]
+\[
+  V_{terminal} = \mathcal{E} - Ir
+\]
+where $Ir$ is the \textbf{lost volts} --- potential
+difference ``wasted'' inside the source.
+\end{definitionbox}
+
+\begin{diagbox}[Battery with Internal Resistance]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Battery box
+  \draw[thick, dashed, gray]
+    (0,-0.5) rectangle (3.5,1.5);
+  \node[gray, font=\small] at (1.75,2.0)
+    {Battery (internal resistance $r$)};
+
+  % Internal resistance
+  \fill[gray!30] (0.3,0.3) rectangle (1.8,0.7);
+  \draw[thick] (0.3,0.3) rectangle (1.8,0.7);
+  \node[font=\tiny] at (1.05,0.5) {$r$};
+
+  % EMF source (ideal)
+  \draw[very thick] (2.2,0.1) -- (2.2,0.4);
+  \draw[very thick, codexred] (1.9,0.4) -- (2.5,0.4);
+  \draw[very thick] (2.2,0.4) -- (2.2,0.6);
+  \draw[very thick, codexblue] (1.7,0.6) -- (2.7,0.6);
+  \draw[very thick] (2.2,0.6) -- (2.2,0.9);
+  \node[right, font=\small] at (2.8,0.5)
+    {$\mathcal{E}$};
+
+  % Wires
+  \draw[very thick] (0,0.5) -- (-1.0,0.5)
+    -- (-1.0,2.5);
+  \draw[very thick] (3.5,0.5) -- (4.5,0.5)
+    -- (4.5,2.5);
+  \draw[very thick] (-1.0,2.5) -- (4.5,2.5);
+
+  % External resistor
+  \fill[codexblue!20] (0.5,2.2) rectangle (3.0,2.8);
+  \draw[thick] (0.5,2.2) rectangle (3.0,2.8);
+  \node at (1.75,2.5) {External resistance $R$};
+
+  % Current arrow
+  \draw[->, very thick, codexgold]
+    (1.75,2.65) -- (2.5,2.65)
+    node[right, font=\small]{$I$};
+
+  % Voltage labels
+  \draw[<->, codexblue, thick]
+    (-1.5,0.5) -- (-1.5,2.5);
+  \node[left, codexblue] at (-1.6,1.5)
+    {$V_{terminal}$\\$= \mathcal{E} - Ir$};
+
+  % Lost volts annotation
+  \draw[<->, codexred, thick]
+    (0.1,0.5) -- (0.1,-0.8);
+  \node[below, codexred, font=\tiny]
+    at (0.1,-0.9) {$Ir$ (lost volts)};
+
+  % Equation
+  \node[align=center, font=\small]
+    at (1.75,-1.5)
+    {$\mathcal{E} = V_{terminal} + Ir
+    = I(R+r)$};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[23.5]
+\stepcounter{workedexample}
+A battery of EMF $9.0\ \text{V}$ and internal
+resistance $0.5\ \Omega$ is connected to an external
+resistor of $8.5\ \Omega$.\\
+(a) Find the current in the circuit.\\
+(b) Find the terminal voltage of the battery.\\
+(c) Find the power delivered to the external resistor.\\
+(d) What is the maximum power the battery could
+deliver (short circuit current), and why is this
+dangerous?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Current:
+\[
+  I = \frac{\mathcal{E}}{R+r}
+  = \frac{9.0}{8.5+0.5} = \frac{9.0}{9.0}
+  = 1.0\ \text{A}
+\]
+
+\textbf{(b)} Terminal voltage:
+\[
+  V_T = \mathcal{E} - Ir = 9.0 - 1.0(0.5)
+  = 8.5\ \text{V}
+\]
+or: $V_T = IR = 1.0 \times 8.5 = 8.5\ \text{V}$ ✓
+
+\textbf{(c)} Power to external resistor:
+\[
+  P = I^2R = (1.0)^2 \times 8.5 = 8.5\ \text{W}
+\]
+
+\textbf{(d)} Short circuit ($R = 0$):
+\[
+  I_{sc} = \frac{\mathcal{E}}{r}
+  = \frac{9.0}{0.5} = 18\ \text{A}
+\]
+Power dissipated inside the battery:
+$P_{internal} = I^2 r = (18)^2 \times 0.5 = 162\ \text{W}$
+
+This enormous power dissipation inside the battery
+causes rapid heating, potentially causing the
+battery to explode or catch fire. Short circuits
+are genuinely dangerous.
+\end{solutionbox}
+
+% ============================================================
+\section{The Potential Divider}
+% ============================================================
+
+\begin{definitionbox}[Potential Divider]
+A \textbf{potential divider} (voltage divider) is
+two (or more) resistors connected in series across
+a supply, used to produce an output voltage that
+is a fraction of the supply voltage.
+
+For two resistors $R_1$ and $R_2$ in series across
+supply $V_s$, the output voltage across $R_2$ is:
+\[
+  V_{out} = V_s \times \frac{R_2}{R_1 + R_2}
+\]
+\end{definitionbox}
+
+\begin{diagbox}[Potential Divider Circuit]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Supply
+  \draw[very thick] (0,0) -- (0,5);
+  \draw[very thick] (4,0) -- (4,5);
+  \draw[very thick] (0,5) -- (4,5);
+  \draw[very thick] (0,0) -- (4,0);
+  \node[left] at (-0.1,2.5) {$V_s$};
+
+  % R1 (top)
+  \fill[gray!30] (-0.3,3.5) rectangle (0.3,4.8);
+  \draw[thick] (-0.3,3.5) rectangle (0.3,4.8);
+  \node[left] at (-0.5,4.1) {$R_1$};
+
+  % R2 (bottom)
+  \fill[gray!30] (-0.3,0.8) rectangle (0.3,3.0);
+  \draw[thick] (-0.3,0.8) rectangle (0.3,3.0);
+  \node[left] at (-0.5,1.9) {$R_2$};
+
+  % Output voltage tap (between R1 and R2)
+  \fill[black] (0,3.25) circle (4pt);
+  \draw[thick] (0,3.25) -- (2.0,3.25);
+  \fill[black] (0,0.5) circle (4pt);
+  \draw[thick] (0,0.5) -- (2.0,0.5);
+  % Or use the bottom of R2
+  \fill[black] (0,0.5) circle (4pt);
+
+  % Output voltage arrow
+  \draw[<->, codexblue, thick]
+    (2.0,0.5) -- (2.0,3.25);
+  \node[right, codexblue] at (2.1,1.9)
+    {$V_{out}$};
+
+  % Thermistor variant annotation
+  \node[align=center, font=\small] at (5.5,2.5)
+    {If $R_2$ is a thermistor:\\
+    $V_{out}$ varies with temperature\\[0.5cm]
+    If $R_2$ is an LDR:\\
+    $V_{out}$ varies with light intensity};
+
+  % Formula
+  \node[codexblue, font=\normalsize] at (5.5,0.5)
+    {$V_{out} = V_s\dfrac{R_2}{R_1+R_2}$};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[23.6]
+\stepcounter{workedexample}
+A potential divider consists of a $10\ \text{k}\Omega$
+resistor in series with an NTC thermistor. The supply
+is $5.0\ \text{V}$. The thermistor has resistance
+$20\ \text{k}\Omega$ at $20°\text{C}$ and
+$2\ \text{k}\Omega$ at $80°\text{C}$.
+The output is taken across the thermistor.\\
+(a) Find $V_{out}$ at $20°\text{C}$.\\
+(b) Find $V_{out}$ at $80°\text{C}$.\\
+(c) Explain how this circuit could be used as a
+temperature-sensing switch.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} At $20°\text{C}$ ($R_T = 20\ \text{k}\Omega$):
+\[
+  V_{out} = 5.0 \times \frac{20}{10+20}
+  = 5.0 \times \frac{20}{30} = 3.33\ \text{V}
+\]
+
+\textbf{(b)} At $80°\text{C}$ ($R_T = 2\ \text{k}\Omega$):
+\[
+  V_{out} = 5.0 \times \frac{2}{10+2}
+  = 5.0 \times \frac{2}{12} = 0.833\ \text{V}
+\]
+
+\textbf{(c)} $V_{out}$ decreases as temperature
+rises (because the thermistor resistance falls,
+taking less of the supply voltage). This output
+can be connected to a comparator or transistor
+circuit that switches a relay at a set voltage
+threshold. For example: if $V_{out}$ falls below
+$1.0\ \text{V}$ (corresponding to a temperature
+above about $75°\text{C}$), a fan or cooling
+system switches on. This is exactly how temperature
+control circuits work in computers, refrigerators,
+and air conditioning units.
+\end{solutionbox}
+
+% ============================================================
+\section{The Wheatstone Bridge}
+% ============================================================
+
+\begin{definitionbox}[Wheatstone Bridge]
+A \textbf{Wheatstone bridge} is a circuit for
+measuring an unknown resistance by comparison with
+known resistances. It consists of four resistors
+$P$, $Q$, $R$, $S$ arranged in a diamond with a
+galvanometer $G$ across the middle.
+
+The bridge is \textbf{balanced} (zero galvanometer
+current) when:
+\[
+  \frac{P}{Q} = \frac{R}{S}
+  \implies PS = QR
+\]
+At balance, the unknown resistance $S$ can be found:
+\[
+  S = \frac{QR}{P}
+\]
+\end{definitionbox}
+
+\begin{diagbox}[Wheatstone Bridge Circuit]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Four nodes
+  \coordinate (A) at (0,3);   % left
+  \coordinate (B) at (3,6);   % top
+  \coordinate (C) at (6,3);   % right
+  \coordinate (D) at (3,0);   % bottom
+
+  % Four resistors
+  % P: A to B (top left)
+  \draw[thick] (A) -- (B);
+  \fill[gray!30]
+    ({0.5*(0+3)-0.3},{0.5*(3+6)+0.3})
+    rectangle
+    ({0.5*(0+3)+0.9},{0.5*(3+6)-0.3});
+  \node at ({0.5*(0+3)+0.3},{0.5*(3+6)}) {$P$};
+
+  % Q: B to C (top right)
+  \draw[thick] (B) -- (C);
+  \fill[gray!30]
+    ({0.5*(3+6)-0.3},{0.5*(6+3)+0.3})
+    rectangle
+    ({0.5*(3+6)+0.9},{0.5*(6+3)-0.3});
+  \node at ({0.5*(3+6)+0.3},{0.5*(6+3)}) {$Q$};
+
+  % R: A to D (bottom left)
+  \draw[thick] (A) -- (D);
+  \fill[gray!30]
+    ({0.5*(0+3)-0.9},{0.5*(3+0)+0.3})
+    rectangle
+    ({0.5*(0+3)+0.3},{0.5*(3+0)-0.3});
+  \node at ({0.5*(0+3)-0.3},{0.5*(3+0)}) {$R$};
+
+  % S: D to C (bottom right)
+  \draw[thick] (D) -- (C);
+  \fill[gray!30]
+    ({0.5*(3+6)-0.3},{0.5*(0+3)+0.3})
+    rectangle
+    ({0.5*(3+6)+0.9},{0.5*(0+3)-0.3});
+  \node at ({0.5*(3+6)+0.3},{0.5*(0+3)}) {$S$};
+
+  % Galvanometer (centre)
+  \draw[thick] (B) -- (D);
+  \fill[white] (2.6,2.6) rectangle (3.4,3.4);
+  \draw[thick] (2.6,2.6) rectangle (3.4,3.4);
+  \node at (3.0,3.0) {$G$};
+  \node[right, font=\tiny] at (3.5,3.0)
+    {Galvanometer};
+
+  % Battery (left side A) and connection
+  \draw[thick] (A) -- (-1.5,3.0);
+  \draw[thick] (C) -- (7.5,3.0);
+  \draw[thick] (-1.5,3.0) -- (-1.5,6) -- (3,6);
+  \draw[thick] (7.5,3.0) -- (7.5,6) -- (3,6);
+
+  % Battery symbol
+  \draw[very thick] (5.8,6.0) -- (5.8,6.3);
+  \draw[very thick, codexred] (5.5,6.3) -- (6.1,6.3);
+  \draw[very thick] (5.8,6.3) -- (5.8,6.6);
+  \draw[very thick, codexblue] (5.3,6.6) -- (6.3,6.6);
+  \draw[very thick] (5.8,6.6) -- (5.8,7.0);
+  \node[above, font=\small] at (5.8,7.0)
+    {$V_s$};
+
+  % Nodes
+  \foreach \coord in {(A),(B),(C),(D)} {
+    \fill[black] \coord circle (4pt);
+  }
+  \node[left] at (A) {A};
+  \node[above] at (B) {B};
+  \node[right] at (C) {C};
+  \node[below] at (D) {D};
+
+  % Balance condition
+  \node[align=center, font=\small] at (3.0,-1.0)
+    {At balance ($I_G = 0$):\\
+    $\dfrac{P}{Q} = \dfrac{R}{S}$};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{The Potentiometer}
+% ============================================================
+
+\begin{definitionbox}[Potentiometer]
+A \textbf{potentiometer} is a device for measuring
+EMF or potential difference by comparison, using a
+null method (no current drawn from the source being
+measured).
+
+A long resistance wire of length $L$ is connected
+to a driver cell. The potential per unit length along
+the wire is constant. A sliding contact (jockey) is
+moved along the wire until the galvanometer reads
+zero (null point). At the null point:
+\[
+  \frac{\mathcal{E}_1}{\mathcal{E}_2}
+  = \frac{\ell_1}{\ell_2}
+\]
+where $\ell_1$ and $\ell_2$ are the balancing lengths
+for EMFs $\mathcal{E}_1$ and $\mathcal{E}_2$.
+
+\textbf{Advantage over voltmeter:} At the null point,
+no current is drawn from the cell being measured, so
+its terminal voltage equals its EMF.
+\end{definitionbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Current:} $I = \Delta Q/\Delta t$;
+$I = nqAv_d$ (drift velocity)
+
+\textbf{Ohm's Law:} $V = IR$ (ohmic, constant $T$)
+
+\textbf{Resistivity:} $R = \rho L/A$;
+metals: $\rho$ increases with $T$;
+NTC thermistors: $\rho$ decreases with $T$.
+
+\textbf{Series:} $R_s = R_1+R_2+\ldots$
+(same current; voltages add)
+
+\textbf{Parallel:}
+$\frac{1}{R_p} = \frac{1}{R_1}+\frac{1}{R_2}+\ldots$
+(same voltage; currents add)
+
+\textbf{Kirchhoff's Laws:}
+KCL: $\sum I_{in} = \sum I_{out}$ (charge conservation)
+KVL: $\sum V = 0$ (energy conservation)
+
+\textbf{EMF and internal resistance:}
+$\mathcal{E} = I(R+r)$;
+$V_{terminal} = \mathcal{E} - Ir$
+
+\textbf{Potential divider:}
+$V_{out} = V_s R_2/(R_1+R_2)$
+
+\textbf{Wheatstone bridge balance:}
+$P/Q = R/S$
+
+\textbf{Potentiometer:} null method;
+$\mathcal{E}_1/\mathcal{E}_2 = \ell_1/\ell_2$
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[23]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A charge of $120\ \text{C}$ flows
+through a resistor in $4.0\ \text{min}$. The
+current is:
+
+\mcoption{A}{$0.5\ \text{A}$}
+\mcoption{B}{$2.0\ \text{A}$}
+\mcoption{C}{$30\ \text{A}$}
+\mcoption{D}{$480\ \text{A}$}
+\ansref{Ch23-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} Three resistors of $6\ \Omega$ each
+are connected: one in series with the parallel
+combination of the other two. The total resistance is:
+
+\mcoption{A}{$18\ \Omega$}
+\mcoption{B}{$9\ \Omega$}
+\mcoption{C}{$3\ \Omega$}
+\mcoption{D}{$2\ \Omega$}
+\ansref{Ch23-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A cell of EMF $6.0\ \text{V}$ and
+internal resistance $1.0\ \Omega$ drives a current
+of $2.0\ \text{A}$. The terminal voltage is:
+
+\mcoption{A}{$4.0\ \text{V}$}
+\mcoption{B}{$5.0\ \text{V}$}
+\mcoption{C}{$6.0\ \text{V}$}
+\mcoption{D}{$8.0\ \text{V}$}
+\ansref{Ch23-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} Kirchhoff's Voltage Law is a
+consequence of:
+
+\mcoption{A}{Conservation of charge}
+\mcoption{B}{Conservation of energy}
+\mcoption{C}{Newton's Third Law}
+\mcoption{D}{Faraday's Law}
+\ansref{Ch23-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} In a potential divider, $R_1 = 3\ \Omega$
+and $R_2 = 9\ \Omega$ across a $12\ \text{V}$ supply.
+The output voltage across $R_2$ is:
+
+\mcoption{A}{$3\ \text{V}$}
+\mcoption{B}{$6\ \text{V}$}
+\mcoption{C}{$9\ \text{V}$}
+\mcoption{D}{$12\ \text{V}$}
+\ansref{Ch23-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} The resistance of a metal wire
+increases when:
+
+\mcoption{A}{Its length decreases}
+\mcoption{B}{Its cross-sectional area increases}
+\mcoption{C}{Its temperature increases}
+\mcoption{D}{Its temperature decreases}
+\ansref{Ch23-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} A Wheatstone bridge is balanced when
+$P = 10\ \Omega$, $Q = 5\ \Omega$, $R = 8\ \Omega$.
+The value of the unknown resistance $S$ is:
+
+\mcoption{A}{$4\ \Omega$}
+\mcoption{B}{$8\ \Omega$}
+\mcoption{C}{$16\ \Omega$}
+\mcoption{D}{$40\ \Omega$}
+\ansref{Ch23-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} An NTC thermistor in a circuit:
+
+\mcoption{A}{Has resistance that increases with
+light intensity}
+\mcoption{B}{Has resistance that increases with
+temperature}
+\mcoption{C}{Has resistance that decreases with
+temperature}
+\mcoption{D}{Obeys Ohm's Law at all temperatures}
+\ansref{Ch23-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} The drift velocity of electrons
+carrying $3\ \text{A}$ in a $2\ \text{mm}^2$ copper
+wire ($n = 8.5\times10^{28}\ \text{m}^{-3}$,
+$e = 1.6\times10^{-19}\ \text{C}$) is approximately:
+
+\mcoption{A}{$1.1\times10^{-4}\ \text{m\,s}^{-1}$}
+\mcoption{B}{$1.1\times10^{-3}\ \text{m\,s}^{-1}$}
+\mcoption{C}{$3.0\times10^{-4}\ \text{m\,s}^{-1}$}
+\mcoption{D}{$3.0\ \text{m\,s}^{-1}$}
+\ansref{Ch23-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} The potentiometer is preferred over
+a voltmeter for measuring EMF because:
+
+\mcoption{A}{The potentiometer is cheaper}
+\mcoption{B}{At balance, no current is drawn from
+the cell, so the terminal voltage equals the EMF}
+\mcoption{C}{The potentiometer is more portable}
+\mcoption{D}{Voltmeters cannot measure EMF at all}
+\ansref{Ch23-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A copper wire of diameter $1.0\ \text{mm}$
+and length $2.0\ \text{m}$ is connected to a
+$3.0\ \text{V}$ battery.
+($\rho_{Cu} = 1.72\times10^{-8}\ \Omega\text{m}$,
+$n = 8.5\times10^{28}\ \text{m}^{-3}$,
+$e = 1.6\times10^{-19}\ \text{C}$)\\[4pt]
+(a) Calculate the resistance of the wire.\\
+(b) Calculate the current flowing.\\
+(c) Calculate the drift velocity of electrons.\\
+(d) Comment on the comparison between drift velocity
+and the speed at which the circuit switches on.\\
+(e) The wire is replaced with one of the same length
+and material but half the diameter. What is the new
+resistance and current?
+\hfill\ansref{Ch23-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} Apply Kirchhoff's Laws to the following
+circuit: Battery $\mathcal{E}_1 = 10\ \text{V}$
+(internal resistance $0.5\ \Omega$) is connected
+in a loop with $R_1 = 3\ \Omega$. A second battery
+$\mathcal{E}_2 = 4\ \text{V}$ (internal resistance
+$1.0\ \Omega$) and $R_2 = 2\ \Omega$ form a branch
+connected in parallel with $R_1$.
+A third branch with $R_3 = 6\ \Omega$ is also
+in parallel with $R_1$.\\[4pt]
+(a) Label the three branch currents $I_1$, $I_2$,
+$I_3$ and write KCL at the junction.\\
+(b) Write two independent KVL equations.\\
+(c) Solve for the three currents.\\
+(d) Verify your answers using power balance:
+total power from sources = total power in resistors.
+\hfill\ansref{Ch23-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A battery of EMF $12\ \text{V}$ is
+connected to the following network:
+$R_1 = 2\ \Omega$ in series with the parallel
+combination of $R_2 = 6\ \Omega$ and $R_3 = 3\ \Omega$,
+and then in series with $R_4 = 1\ \Omega$.
+The battery has internal resistance $r = 0.5\ \Omega$.\\[4pt]
+(a) Find the total circuit resistance.\\
+(b) Find the current from the battery.\\
+(c) Find the terminal voltage.\\
+(d) Find the voltage across $R_2$.\\
+(e) Find the current through $R_3$.\\
+(f) Find the power dissipated in $R_4$.
+\hfill\ansref{Ch23-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} In a Wheatstone bridge, $P = 100\ \Omega$,
+$Q = 200\ \Omega$, and $R$ is a variable resistor.
+$S$ is an unknown resistance (a strain gauge).
+The driver cell is $6.0\ \text{V}$.\\[4pt]
+(a) Find the value of $R$ needed to balance the
+bridge when $S = 85\ \Omega$.\\
+(b) When the strain gauge is stretched, its
+resistance changes to $86.5\ \Omega$. The bridge
+is no longer balanced. Calculate the new value of
+$R$ needed to rebalance.\\
+(c) The fractional change in resistance
+$\Delta R/R = 0.0176$ corresponds to a strain of
+$\varepsilon = 8.8\times10^{-5}$ (a tiny stretch).
+Calculate the gauge factor $GF = (\Delta R/R)/\varepsilon$.\\
+(d) Explain why a bridge circuit is better than a
+simple voltage divider for detecting small resistance
+changes.
+\hfill\ansref{Ch23-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A student uses a potentiometer to
+compare two cells. A driver cell of
+$\mathcal{E}_d = 4.0\ \text{V}$ is connected across
+a $100\ \text{cm}$ uniform resistance wire.
+Cell 1 (standard cell, $\mathcal{E}_1 = 1.50\ \text{V}$)
+balances at $\ell_1 = 37.5\ \text{cm}$.
+Cell 2 (unknown EMF) balances at
+$\ell_2 = 45.0\ \text{cm}$.\\[4pt]
+(a) Calculate the potential gradient along the wire
+(V per cm).\\
+(b) Calculate the EMF of cell 2.\\
+(c) Cell 2 is now connected with a resistance of
+$5.0\ \Omega$ in series (a load), and the balancing
+length changes to $35.0\ \text{cm}$.
+Find the terminal voltage of cell 2 under this load.\\
+(d) Calculate the internal resistance of cell 2.\\
+(e) Explain why the potentiometer gives a more
+accurate value of EMF than a voltmeter would.
+\hfill\ansref{Ch23-B5}
+
+\end{exercisebox}

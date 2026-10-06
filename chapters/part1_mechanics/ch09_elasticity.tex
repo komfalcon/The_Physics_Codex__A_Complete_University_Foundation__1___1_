@@ -1,0 +1,905 @@
+% !TeX root = ../../main.tex
+% ============================================================
+%  CHAPTER 9: ELASTICITY
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part1/ch09_elasticity.tex
+% ============================================================
+
+\chapter{Elasticity}
+\label{ch:elasticity}
+
+\chapterquote{The most incomprehensible thing about
+the world is that it is comprehensible.}{Albert Einstein}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item State and apply Hooke's Law to springs and
+  elastic materials
+  \item Define elastic limit, yield point and
+  breaking point
+  \item Define and calculate tensile stress, tensile
+  strain and Young's modulus
+  \item Interpret force-extension and stress-strain
+  graphs
+  \item Calculate the energy stored in a stretched
+  spring or elastic material
+  \item Distinguish between elastic and plastic
+  deformation
+  \item Classify materials as ductile, brittle or
+  elastic and describe their stress-strain curves
+  \item Apply spring combinations (series and parallel)
+\end{enumerate}
+\end{objectivebox}
+
+\vspace{0.4cm}
+
+\minitoc
+
+\vspace{0.5cm}
+
+% ============================================================
+\section{Deformation of Solids}
+% ============================================================
+
+When a force is applied to a solid object, it deforms
+--- it changes shape. Sometimes this deformation is
+permanent (like bending a spoon), and sometimes the
+object springs back to its original shape when the
+force is removed (like a rubber band). Understanding
+the relationship between applied forces and the
+resulting deformations is essential in engineering,
+architecture, and materials science.
+
+\begin{definitionbox}[Elastic and Plastic Deformation]
+\textbf{Elastic deformation:} The material returns
+to its original shape and size when the deforming
+force is removed. The deformation is reversible.
+
+\vspace{0.4cm}
+
+\textbf{Plastic deformation:} The material does
+\textit{not} return to its original shape when the
+force is removed. The deformation is permanent.
+The material has been permanently changed.
+\end{definitionbox}
+
+\begin{realworldbox}[Elasticity in Nigerian Construction]
+Steel reinforcing bars (``rebar'') used in building
+construction across Nigeria must undergo elastic
+deformation under normal loads --- if they bent
+permanently (plastic deformation) under the weight
+of a building, the structure would fail. Engineers
+specify steel grades by their yield stress, ensuring
+buildings operate safely within the elastic region.
+The quality of construction materials is a direct
+application of the physics in this chapter.
+\end{realworldbox}
+
+% ============================================================
+\section{Hooke's Law}
+% ============================================================
+
+\begin{lawbox}[Hooke's Law]
+Within the \textbf{elastic limit}, the extension
+of a spring (or elastic material) is directly
+proportional to the applied force:
+\[
+  F = ke
+\]
+where:
+\begin{itemize}[noitemsep]
+  \item $F$ = applied force (N)
+  \item $e$ = extension from natural length (m)
+  \item $k$ = spring constant (stiffness) (N\,m$^{-1}$)
+\end{itemize}
+A larger $k$ means a stiffer spring.
+\end{lawbox}
+
+\begin{historybox}[Robert Hooke]
+Robert Hooke (1635--1703) was one of Newton's great
+contemporaries and rivals. He discovered his law of
+elasticity in 1660 but kept it secret for years,
+publishing it initially as a Latin anagram
+(\textit{ceiiinosssttu}) before revealing it as
+\textit{Ut tensio, sic vis} --- ``As the extension,
+so the force.'' Beyond elasticity, Hooke invented
+the universal joint, the iris diaphragm, coined the
+term ``cell'' in biology (using his microscope),
+and designed many of the scientific instruments of
+his era. He is one of the most underrated scientists
+in history, largely because his feud with Newton
+meant Newton's supporters marginalised him.
+\end{historybox}
+
+\begin{diagbox}[Force-Extension Graph (Hooke's Law Region)]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=10cm, height=7cm,
+  xlabel={Extension $e$ (m)},
+  ylabel={Force $F$ (N)},
+  xmin=0, xmax=0.12,
+  ymin=0, ymax=70,
+  grid=major, grid style={gray!20},
+  xtick={0,0.02,0.04,0.06,0.08,0.10,0.12},
+  ytick={0,10,20,30,40,50,60,70},
+]
+  % Hooke's law region (straight line)
+  \addplot[codexblue, very thick, domain=0:0.08]{500*x};
+
+  % Beyond elastic limit (curved)
+  \addplot[codexred, very thick, domain=0.08:0.115,
+    samples=30]{40 + 200*(x-0.08) - 3000*(x-0.08)^2};
+
+  % Elastic limit point
+  \fill[codexgold] (axis cs:0.08,40) circle (4pt);
+  \draw[dashed, codexgold]
+    (axis cs:0.08,0) -- (axis cs:0.08,40);
+  \node[codexgold, right, font=\small]
+    at (axis cs:0.082,35) {Elastic limit};
+
+  % Gradient label
+  \draw[<->, gray]
+    (axis cs:0.01,5) -- (axis cs:0.05,25);
+  \node[codexblue, font=\small, rotate=63]
+    at (axis cs:0.025,20) {gradient $= k$};
+
+  % Labels
+  \node[codexblue, font=\small]
+    at (axis cs:0.03,38) {\shortstack{Hooke's law\\(linear)}};
+  \node[codexred, font=\small]
+    at (axis cs:0.10,50) {\shortstack{Beyond elastic\\limit}};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[9.1]
+\stepcounter{workedexample}
+A spring has natural length $12.0\ \text{cm}$.
+When a $4.0\ \text{N}$ weight is hung from it, its
+length becomes $17.0\ \text{cm}$.\\
+(a) Find the spring constant.\\
+(b) Find the total length when a $10.0\ \text{N}$
+weight is hung (assuming Hooke's law still holds).\\
+(c) Find the elastic PE stored in case (b).
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Extension $e = 17.0 - 12.0 = 5.0\ \text{cm}
+= 0.050\ \text{m}$:
+\[
+  k = \frac{F}{e} = \frac{4.0}{0.050}
+  = 80\ \text{N\,m}^{-1}
+\]
+
+\textbf{(b)} Extension for $10\ \text{N}$:
+\[
+  e = \frac{F}{k} = \frac{10.0}{80} = 0.125\ \text{m}
+  = 12.5\ \text{cm}
+\]
+Total length $= 12.0 + 12.5 = 24.5\ \text{cm}$
+
+\textbf{(c)} Elastic PE:
+\[
+  E = \frac{1}{2}ke^2
+  = \frac{1}{2}(80)(0.125)^2
+  = 40 \times 0.015625
+  = 0.625\ \text{J}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Elastic Potential Energy}
+% ============================================================
+
+\begin{processbox}[Deriving Elastic PE]
+When a spring is extended by $e$, the force varies
+from $0$ (at $e=0$) to $ke$ (at extension $e$).
+The work done equals the area under the $F$-$e$ graph:
+\[
+  W = \text{area of triangle}
+  = \frac{1}{2} \times e \times F
+  = \frac{1}{2} \times e \times ke
+  = \frac{1}{2}ke^2
+\]
+This work is stored as elastic PE:
+\[
+  \boxed{E_{elastic} = \frac{1}{2}ke^2
+  = \frac{1}{2}Fe = \frac{F^2}{2k}}
+\]
+\end{processbox}
+
+\begin{examplebox}[9.2]
+\stepcounter{workedexample}
+A spring of stiffness $200\ \text{N\,m}^{-1}$ is
+compressed by $8.0\ \text{cm}$ and used to launch
+a $50\ \text{g}$ ball vertically. Assuming all
+elastic PE converts to KE, find the launch speed
+of the ball.
+\end{examplebox}
+
+\begin{solutionbox}
+Elastic PE stored:
+\[
+  E = \frac{1}{2}ke^2
+  = \frac{1}{2}(200)(0.08)^2
+  = 100 \times 0.0064 = 0.64\ \text{J}
+\]
+
+Converting to KE:
+\[
+  \frac{1}{2}mv^2 = 0.64
+\]
+\[
+  v^2 = \frac{2 \times 0.64}{0.050} = 25.6
+\]
+\[
+  v = \sqrt{25.6} = 5.06\ \text{m\,s}^{-1}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Springs in Series and Parallel}
+% ============================================================
+
+\begin{lawbox}[Springs in Series and Parallel]
+\textbf{Springs in series} (end-to-end):
+Both springs experience the same force but the
+total extension is the sum of individual extensions:
+\[
+  \frac{1}{k_{series}} = \frac{1}{k_1} + \frac{1}{k_2}
+\]
+Series combination is \textit{softer} (smaller $k$,
+larger extension for same force).
+
+\vspace{0.5cm}
+
+\textbf{Springs in parallel} (side-by-side):
+Both springs have the same extension but the total
+force is shared between them:
+\[
+  k_{parallel} = k_1 + k_2
+\]
+Parallel combination is \textit{stiffer} (larger $k$,
+smaller extension for same force).
+\end{lawbox}
+
+\begin{diagbox}[Series vs Parallel Springs]
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+  % SERIES
+  \node[font=\bfseries] at (1,6) {Series};
+  % Ceiling
+  \fill[gray!30] (0,5.5) rectangle (2,5.8);
+  \draw[thick] (0,5.5) -- (2,5.5);
+  % Spring 1
+  \draw[thick, decorate,
+    decoration={coil, amplitude=4pt, segment length=6pt}]
+    (1,5.5) -- (1,3.8);
+  \node[right, font=\small] at (1.3,4.65) {$k_1$};
+  % Spring 2
+  \draw[thick, decorate,
+    decoration={coil, amplitude=4pt, segment length=6pt}]
+    (1,3.8) -- (1,2.1);
+  \node[right, font=\small] at (1.3,2.95) {$k_2$};
+  % Mass
+  \fill[codexblue!40] (0.4,1.7) rectangle (1.6,2.1);
+  \node at (1,1.9) {$F$};
+  % Formula
+  \node[font=\small, align=center] at (1,1.0)
+    {$\dfrac{1}{k_s} = \dfrac{1}{k_1}+\dfrac{1}{k_2}$};
+
+  % PARALLEL
+  \node[font=\bfseries] at (6,6) {Parallel};
+  % Ceiling
+  \fill[gray!30] (4,5.5) rectangle (8,5.8);
+  \draw[thick] (4,5.5) -- (8,5.5);
+  % Spring 1
+  \draw[thick, decorate,
+    decoration={coil, amplitude=4pt, segment length=6pt}]
+    (5,5.5) -- (5,3.0);
+  \node[left, font=\small] at (4.7,4.25) {$k_1$};
+  % Spring 2
+  \draw[thick, decorate,
+    decoration={coil, amplitude=4pt, segment length=6pt}]
+    (7,5.5) -- (7,3.0);
+  \node[right, font=\small] at (7.3,4.25) {$k_2$};
+  % Bar connecting springs to mass
+  \draw[thick] (4.5,3.0) -- (7.5,3.0);
+  % Mass
+  \fill[codexblue!40] (5,2.6) rectangle (7,3.0);
+  \node at (6,2.8) {$F$};
+  % Formula
+  \node[font=\small, align=center] at (6,1.0)
+    {$k_p = k_1 + k_2$};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Stress, Strain and Young's Modulus}
+% ============================================================
+
+Hooke's law $F = ke$ describes the behaviour of a
+specific spring. But to characterise the \textit{material}
+itself (independent of geometry), we use \textbf{stress}
+and \textbf{strain}.
+
+\begin{definitionbox}[Tensile Stress]
+\textbf{Tensile stress} $\sigma$ is the force per
+unit cross-sectional area applied to a material:
+\[
+  \sigma = \frac{F}{A}
+\]
+SI unit: N\,m$^{-2}$ = Pascal (Pa).
+A material under tension has positive stress; under
+compression, negative.
+\end{definitionbox}
+
+\begin{definitionbox}[Tensile Strain]
+\textbf{Tensile strain} $\varepsilon$ is the fractional
+change in length:
+\[
+  \varepsilon = \frac{\Delta L}{L_0}
+  = \frac{e}{L_0}
+\]
+Strain is \textbf{dimensionless} (it is a ratio of
+two lengths). It is often expressed as a percentage.
+\end{definitionbox}
+
+\begin{definitionbox}[Young's Modulus]
+The \textbf{Young's modulus} $E$ (or $Y$) of a material
+is the ratio of tensile stress to tensile strain within
+the elastic limit:
+\[
+  E = \frac{\sigma}{\varepsilon}
+  = \frac{F/A}{\Delta L/L_0}
+  = \frac{FL_0}{A\,\Delta L}
+\]
+SI unit: N\,m$^{-2}$ = Pa (typically GPa for solids).
+
+Young's modulus is a \textit{material property} ---
+it does not depend on the size or shape of the
+specimen, only on what the material is.
+\end{definitionbox}
+
+\begin{table}[H]
+\centering
+\caption{Young's Modulus of Common Materials}
+\label{tab:youngs_modulus}
+\begin{tabular}{lll}
+\toprule
+\textbf{Material} & \textbf{Young's Modulus (GPa)} &
+\textbf{Notes}\\
+\midrule
+Steel & 200 & Construction rebar, bridges\\
+Aluminium & 70 & Aircraft, window frames\\
+Copper & 120 & Wiring, pipes\\
+Concrete & 30 & Compression only; weak in tension\\
+Rubber & 0.001--0.1 & Very elastic; large strains\\
+Bone & 15--20 & Cortical (compact) bone\\
+Wood & 10--15 & Along the grain\\
+Glass & 70 & Brittle; fractures suddenly\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{examplebox}[9.3]
+\stepcounter{workedexample}
+A steel wire of length $2.0\ \text{m}$ and
+cross-sectional area $1.5\times10^{-6}\ \text{m}^2$
+is stretched by a $300\ \text{N}$ force.
+($E_{steel} = 2.0\times10^{11}\ \text{Pa}$)\\
+(a) Calculate the tensile stress.\\
+(b) Calculate the extension.\\
+(c) Calculate the tensile strain.\\
+(d) Calculate the elastic PE stored.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Tensile stress:
+\[
+  \sigma = \frac{F}{A}
+  = \frac{300}{1.5\times10^{-6}}
+  = 2.0\times10^8\ \text{Pa} = 200\ \text{MPa}
+\]
+
+\textbf{(b)} Extension:
+\[
+  E = \frac{FL_0}{A\Delta L}
+  \implies \Delta L = \frac{FL_0}{AE}
+  = \frac{300 \times 2.0}{1.5\times10^{-6}
+    \times 2.0\times10^{11}}
+\]
+\[
+  E = \frac{600}{3.0\times10^5}
+  = 2.0\times10^{-3}\ \text{m} = 2.0\ \text{mm}
+\]
+
+\textbf{(c)} Tensile strain:
+\[
+  \varepsilon = \frac{\Delta L}{L_0}
+  = \frac{2.0\times10^{-3}}{2.0}
+  = 1.0\times10^{-3} = 0.1\%
+\]
+
+\textbf{(d)} Elastic PE:
+\[
+  E_{pe} = \frac{1}{2}F\Delta L
+  = \frac{1}{2} \times 300 \times 2.0\times10^{-3}
+  = 0.30\ \text{J}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{The Stress-Strain Graph}
+% ============================================================
+
+The stress-strain graph reveals the complete mechanical
+behaviour of a material from initial loading through
+to fracture. Each region of the graph has a physical
+meaning.
+
+\begin{diagbox}[Stress-Strain Graph for a Ductile Metal (Steel)]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=13cm,
+    height=9cm,
+    clip=false,
+    xlabel={Strain $\varepsilon$},
+    ylabel={Stress $\sigma$ (MPa)},
+    xmin=0, xmax=0.35,
+    ymin=0, ymax=580,
+    grid=major,
+    grid style={gray!20},
+    xtick={0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30},
+    xticklabels={0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30},
+    xticklabel style={rotate=45, anchor=north east, font=\small},
+    extra x ticks={0.020},
+    extra x tick labels={$\varepsilon_A$},
+    extra x tick style={
+        tick label style={color=codexblue, font=\small, yshift=-1pt},
+    },
+    ytick={0,100,200,300,355,400,510},
+    yticklabels={$0$,$100$,$200$,$300$,$355$,$400$,$510$},
+    tick label style={font=\small},
+]
+
+% ===== SHADED ZONES (drawn first, behind everything) =====
+\fill[codexblue,  opacity=0.08] (axis cs:0,0)     rectangle (axis cs:0.020,580);
+\fill[codexred,   opacity=0.08] (axis cs:0.020,0) rectangle (axis cs:0.060,580);
+\fill[codexgreen, opacity=0.08] (axis cs:0.060,0) rectangle (axis cs:0.250,580);
+\fill[codexgold,  opacity=0.08] (axis cs:0.250,0) rectangle (axis cs:0.320,580);
+
+% ===== YIELD STRESS REFERENCE LINE =====
+\draw[gray, dashed, thin] (axis cs:0,355) -- (axis cs:0.320,355);
+\node[gray, font=\scriptsize, anchor=east] at (axis cs:-0.010,355) {$\sigma_y$};
+
+% ===== ZONE LABELS =====
+\node[align=center, font=\scriptsize] at (axis cs:0.010,500) {\textbf{Elastic}\\[1pt]reversible};
+\node[align=center, font=\scriptsize] at (axis cs:0.040,500) {\textbf{Yield}\\[1pt]plateau};
+\node[align=center, font=\scriptsize] at (axis cs:0.155,500) {\textbf{Hardening}\\[1pt]strengthening};
+\node[align=center, font=\scriptsize] at (axis cs:0.285,500) {\textbf{Necking}\\[1pt]thinning};
+
+% ===== CURVE SEGMENTS =====
+% O -> A : Elastic region (exaggerated scale so it's visible; Hooke's Law)
+\addplot[codexblue, very thick, domain=0:0.020, samples=50] {20000*x};
+
+% A -> B' : Drop from upper yield to lower yield
+\addplot[codexred, very thick, domain=0.020:0.025, samples=50] {400 - 9000*(x - 0.020)};
+
+% B' -> B : Yield plateau (Luders band)
+\addplot[codexred, very thick, domain=0.025:0.060, samples=50] {355};
+
+% B -> C : Strain hardening, eased to zero slope at both ends (no kink at C)
+\addplot[codexgreen, very thick, smooth, domain=0.060:0.250, samples=80]
+    {355 + 155*(1 - cos(180*(x - 0.060)/0.190))/2};
+
+% C -> D : Necking, eased to zero slope at C (continuous with hardening curve)
+\addplot[codexgold, very thick, smooth, domain=0.250:0.320, samples=80]
+    {510 - 170*(1 - cos(180*(x - 0.250)/0.070))/2};
+
+% ===== HOOKE'S LAW TRIANGLE (rise/run on the elastic line) =====
+\draw[codexblue, thin] (axis cs:0.006,120) -- (axis cs:0.013,120) -- (axis cs:0.013,260);
+\node[codexblue, font=\scriptsize, below] at (axis cs:0.0095,118) {$\Delta\varepsilon$};
+\node[codexblue, font=\scriptsize, right] at (axis cs:0.0135,190) {$\Delta\sigma$};
+\node[codexblue, font=\scriptsize, rotate=80] at (axis cs:0.0165,300) {$E=\Delta\sigma/\Delta\varepsilon$};
+\node[codexblue, font=\scriptsize, rotate=80, anchor=east] at (axis cs:0.0005,250) {Hooke's Law region};
+
+% Not-to-scale disclaimer
+\node[gray, font=\tiny] at (axis cs:0.075,55) {(elastic region exaggerated for clarity --- not to scale)};
+
+% ===== POINT MARKERS =====
+\fill (axis cs:0,0) circle (1.6pt);
+\node[below right, font=\small] at (axis cs:0,0) {O\,(origin)};
+
+\fill[codexblue] (axis cs:0.020,400) circle (1.6pt);
+\node[above right, codexblue, font=\small] at (axis cs:0.022,405) {A\,(upper yield)};
+
+\fill[codexred] (axis cs:0.060,355) circle (1.6pt);
+\node[below right, codexred, font=\small] at (axis cs:0.060,355) {B\,(lower yield)};
+
+\fill[codexgreen] (axis cs:0.250,510) circle (1.6pt);
+\node[above, codexgreen, font=\small] at (axis cs:0.250,515) {C\,(UTS)};
+
+\fill[codexgold] (axis cs:0.320,340) circle (1.6pt);
+\node[above right, codexgold, font=\small] at (axis cs:0.320,340) {D\,(fracture)};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.4cm}
+{\small
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+\begin{tabular}{p{1.6cm} | p{10.5cm}}
+\hline
+\textbf{Region} & \textbf{Description} \\
+\hline
+O $\to$ A & \textbf{Elastic region} --- Hooke's Law obeyed; slope $=$ Young's modulus $E$ \\
+A $\to$ B & \textbf{Yield plateau} --- large strain for little stress increase; material flows (L\"{u}ders band in mild steel) \\
+B $\to$ C & \textbf{Strain hardening} --- dislocations accumulate; stress required increases \\
+C & \textbf{Ultimate Tensile Strength (UTS)} --- maximum engineering stress \\
+C $\to$ D & \textbf{Necking} --- cross-section reduces locally; engineering stress falls \\
+D & \textbf{Fracture point} \\
+\hline
+\end{tabular}
+\end{center}
+}
+\end{diagbox}
+
+\begin{defbox}[Key Points on the Stress-Strain Graph]
+\begin{itemize}[noitemsep]
+  \item \textbf{O to A (Elastic region):} Stress is
+  proportional to strain. Hooke's Law is obeyed.
+  Young's modulus $= $ gradient.
+  \item \textbf{A (Elastic limit / Yield point):}
+  Maximum stress for which the material returns to
+  original shape. Beyond this, deformation is permanent.
+  \item \textbf{A to B (Plastic deformation / Yield
+  plateau):} Large strain for little increase in stress.
+  Material flows.
+  \item \textbf{B to C (Strain hardening):} Material
+  becomes harder to deform as dislocations pile up.
+  Stress required increases.
+  \item \textbf{C (Ultimate Tensile Strength, UTS):}
+  Maximum stress the material can withstand.
+  \item \textbf{C to D (Necking):} Material becomes
+  locally thinner (necking). Stress in that region
+  increases dramatically until fracture.
+  \item \textbf{D (Fracture point):} Material breaks.
+\end{itemize}
+\end{defbox}
+
+\subsection{Material Classifications}
+
+\begin{defbox}[Ductile, Brittle and Elastic Materials]
+\df{Ductile}{Large plastic region before fracture.
+Can be drawn into wires or hammered into sheets.
+Examples: copper, steel, gold, aluminium.}
+
+\vspace{0.4cm}
+
+\df{Brittle}{Little or no plastic region.
+Fractures suddenly with little warning when the elastic
+limit is exceeded. Examples: glass, cast iron, ceramics,
+chalk, concrete.}
+
+\vspace{0.4cm}
+
+\df{Elastic (rubber-like)}{Large elastic strains,
+non-linear stress-strain relationship (does not obey
+Hooke's Law over large ranges). High resilience.
+Examples: rubber, biological tissues.}
+\end{defbox}
+
+\begin{diagbox}[Comparing Stress-Strain Curves]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=10cm, height=6cm,
+  xlabel={Strain $\varepsilon$},
+  ylabel={Stress $\sigma$},
+  xmin=0, xmax=1.0,
+  ymin=0, ymax=1.2,
+  grid=major, grid style={gray!20},
+  xtick=\empty, ytick=\empty,
+  legend pos=north west
+]
+  % ---- Ductile (steel-like): two segments, ONE legend entry ----
+  \addplot[codexblue, very thick, domain=0:0.02,
+    samples=10, forget plot]{30*x};
+  \addplot[codexblue, very thick, domain=0.02:0.4,
+    samples=20]{0.6 + 0.6*(x-0.02) - 1*(x-0.02)^2};
+  \addlegendentry{Ductile (steel)}
+  \fill[codexblue] (axis cs:0.4,0.684) circle (2pt); % fracture point
+
+  % ---- Brittle (glass-like): straight line then sudden fracture ----
+  \addplot[codexred, very thick, domain=0:0.04,
+    samples=10]{15*x};
+  \addlegendentry{Brittle (glass)}
+  \fill[codexred] (axis cs:0.04,0.6) circle (2pt);
+  \draw[codexred, very thick, dashed]
+    (axis cs:0.04,0.6) -- (axis cs:0.04,0);
+
+  % ---- Elastic/rubber: J-shaped curve, low initial stiffness then steep upturn ----
+  \addplot[codexgreen, very thick, domain=0:0.95,
+    samples=60]{0.12*x + 1.0*x^4};
+  \addlegendentry{Elastic (rubber)}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Hooke's Law:} $F = ke$ (within elastic limit).
+Spring constant $k$ (N\,m$^{-1}$) measures stiffness.
+
+\textbf{Elastic PE:}
+$E = \frac{1}{2}ke^2 = \frac{1}{2}Fe = \frac{F^2}{2k}$
+
+\textbf{Springs in series:}
+$\frac{1}{k_s} = \frac{1}{k_1} + \frac{1}{k_2}$
+(softer)
+
+\textbf{Springs in parallel:}
+$k_p = k_1 + k_2$ (stiffer)
+
+\textbf{Tensile stress:}
+$\sigma = F/A$ (Pa)
+
+\textbf{Tensile strain:}
+$\varepsilon = \Delta L/L_0$ (dimensionless)
+
+\textbf{Young's modulus:}
+$E = \sigma/\varepsilon = FL_0/(A\Delta L)$ (Pa)
+
+\textbf{Elastic deformation:} reversible.
+\textbf{Plastic deformation:} permanent.
+\textbf{Elastic limit:} boundary between them.
+
+\textbf{Material types:}
+Ductile (large plastic region);
+Brittle (fractures suddenly at elastic limit);
+Elastic/rubber (large, non-linear elastic strains).
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[9]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A spring of constant $k = 40\ \text{N\,m}^{-1}$
+is stretched by $5\ \text{cm}$. The elastic PE stored is:
+
+\mcoption{A}{$0.025\ \text{J}$}
+\mcoption{B}{$0.05\ \text{J}$}
+\mcoption{C}{$0.10\ \text{J}$}
+\mcoption{D}{$1.00\ \text{J}$}
+\ansref{Ch9-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} Two springs each of constant
+$k = 60\ \text{N\,m}^{-1}$ are connected in series.
+The effective spring constant is:
+
+\mcoption{A}{$120\ \text{N\,m}^{-1}$}
+\mcoption{B}{$60\ \text{N\,m}^{-1}$}
+\mcoption{C}{$30\ \text{N\,m}^{-1}$}
+\mcoption{D}{$15\ \text{N\,m}^{-1}$}
+\ansref{Ch9-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A wire of length $2\ \text{m}$ and
+cross-section $2\ \text{mm}^2$ is stretched by
+$0.5\ \text{mm}$ under a $100\ \text{N}$ load.
+The Young's modulus is:
+
+\mcoption{A}{$2\times10^{10}\ \text{Pa}$}
+\mcoption{B}{$2\times10^{11}\ \text{Pa}$}
+\mcoption{C}{$1\times10^{11}\ \text{Pa}$}
+\mcoption{D}{$5\times10^{10}\ \text{Pa}$}
+\ansref{Ch9-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} Which material behaviour is described
+as brittle?
+
+\mcoption{A}{Large plastic deformation before fracture}
+\mcoption{B}{Returns to original shape after large
+deformation}
+\mcoption{C}{Fractures with little or no plastic
+deformation}
+\mcoption{D}{Has a very small Young's modulus}
+\ansref{Ch9-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} On a stress-strain graph, the gradient
+of the linear (elastic) region equals:
+
+\mcoption{A}{The spring constant}
+\mcoption{B}{The elastic limit}
+\mcoption{C}{The Young's modulus}
+\mcoption{D}{The ultimate tensile strength}
+\ansref{Ch9-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} A rubber band is stretched to twice its
+natural length. The strain is:
+
+\mcoption{A}{$0.5$}
+\mcoption{B}{$1.0$}
+\mcoption{C}{$2.0$}
+\mcoption{D}{$100\%$ which equals 1.0}
+\ansref{Ch9-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} If the diameter of a wire is doubled
+(keeping length and material the same), and the same
+force is applied, the extension:
+
+\mcoption{A}{Doubles}
+\mcoption{B}{Halves}
+\mcoption{C}{Becomes one quarter}
+\mcoption{D}{Is unchanged}
+\ansref{Ch9-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} Beyond the elastic limit of a metal wire:
+
+\mcoption{A}{The wire returns to its original
+length when the force is removed}
+\mcoption{B}{The wire breaks immediately}
+\mcoption{C}{Permanent deformation occurs}
+\mcoption{D}{Hooke's Law is still obeyed}
+\ansref{Ch9-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} A spring of constant $k$ stores energy
+$E$ when extended by $x$. If the extension is doubled,
+the stored energy becomes:
+
+\mcoption{A}{$2E$}
+\mcoption{B}{$4E$}
+\mcoption{C}{$E\sqrt{2}$}
+\mcoption{D}{$E/2$}
+\ansref{Ch9-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} Three springs each of constant
+$k = 90\ \text{N\,m}^{-1}$ are connected in parallel.
+The effective spring constant is:
+
+\mcoption{A}{$30\ \text{N\,m}^{-1}$}
+\mcoption{B}{$90\ \text{N\,m}^{-1}$}
+\mcoption{C}{$180\ \text{N\,m}^{-1}$}
+\mcoption{D}{$270\ \text{N\,m}^{-1}$}
+\ansref{Ch9-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A student sets up an experiment to
+verify Hooke's Law using a spring. She records the
+following data:
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Force (N) & Length (cm)\\
+\midrule
+0.0 & 15.0\\
+2.0 & 17.4\\
+4.0 & 19.8\\
+6.0 & 22.2\\
+8.0 & 24.6\\
+10.0 & 26.9\\
+12.0 & 30.1\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+(a) Plot force against extension and determine the
+spring constant from the gradient.\\
+(b) Identify the approximate elastic limit from
+the data.\\
+(c) What physical change occurs in the spring at
+the elastic limit?\\
+(d) Calculate the elastic PE stored when the force
+is $8.0\ \text{N}$.
+\hfill\ansref{Ch9-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A steel cable in a suspension bridge
+has the following properties:
+Length $= 500\ \text{m}$, diameter $= 50\ \text{mm}$,
+Young's modulus $= 200\ \text{GPa}$.
+The cable supports a load of $2.0\times10^6\ \text{N}$.\\[4pt]
+(a) Calculate the cross-sectional area.\\
+(b) Calculate the tensile stress.\\
+(c) Calculate the extension of the cable.\\
+(d) Calculate the tensile strain and express as a
+percentage.\\
+(e) Calculate the elastic PE stored in the cable.
+\hfill\ansref{Ch9-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A spring of constant
+$500\ \text{N\,m}^{-1}$ and natural length
+$20\ \text{cm}$ hangs vertically. A $2.0\ \text{kg}$
+mass is attached and released from rest at the
+natural length position.\\[4pt]
+(a) Find the equilibrium extension (where the
+net force is zero).\\
+(b) Find the amplitude of oscillation.
+(Hint: the system oscillates about the equilibrium
+position, and the amplitude equals the equilibrium
+extension for a release from the natural length.)\\
+(c) Find the maximum speed of the mass.\\
+(d) Find the maximum elastic PE and maximum KE
+during the oscillation.\\
+(e) Verify energy conservation by showing that total
+mechanical energy is constant at equilibrium and
+at maximum extension.
+\hfill\ansref{Ch9-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} Two springs, $k_1 = 40\ \text{N\,m}^{-1}$
+and $k_2 = 60\ \text{N\,m}^{-1}$, are connected in
+series and hung from a fixed support. A $3.0\ \text{kg}$
+mass hangs from the lower spring.
+($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+(a) Calculate the effective spring constant.\\
+(b) Calculate the total extension.\\
+(c) Calculate the individual extensions of each
+spring.\\
+(d) Verify that the force in each spring is the same.\\
+(e) The mass is now connected to two springs in
+parallel (both $k_1$ and $k_2$ support the same mass).
+Find the new effective spring constant and total
+extension.
+\hfill\ansref{Ch9-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A copper wire and a steel wire are each
+$1.0\ \text{m}$ long and $0.5\ \text{mm}$ in diameter.
+They are joined end-to-end (in series) and a force
+of $50\ \text{N}$ is applied.
+($E_{copper} = 1.2\times10^{11}\ \text{Pa}$,
+$E_{steel} = 2.0\times10^{11}\ \text{Pa}$)\\[4pt]
+(a) Calculate the cross-sectional area of each wire.\\
+(b) Calculate the extension of each wire.\\
+(c) Calculate the total extension of the combined wire.\\
+(d) Calculate the stress in each wire. Are they the
+same? Explain why.\\
+(e) Calculate the strain in each wire. Are they the
+same? Explain why.
+\hfill\ansref{Ch9-B5}
+
+\end{exercisebox}

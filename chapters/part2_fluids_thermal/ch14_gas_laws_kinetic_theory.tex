@@ -1,0 +1,1122 @@
+% ============================================================
+%  CHAPTER 14: GAS LAWS AND KINETIC THEORY
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part2/ch14_gas_laws.tex
+% ============================================================
+
+\chapter{Gas Laws and Kinetic Theory}
+\label{ch:gas_laws}
+\minitoc
+\newpage
+
+\chapterquote{The atoms come into my brain, dance a
+dance, and then go out --- there are always new atoms,
+but always doing the same dance.}{Richard Feynman}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item State and apply Boyle's Law, Charles' Law
+  and the Pressure Law
+  \item Combine the three laws into the general gas
+  equation
+  \item State and apply the ideal gas equation
+  $PV = nRT$
+  \item Explain the assumptions of the kinetic theory
+  of gases
+  \item Describe qualitatively how kinetic theory
+  explains the gas laws
+  \item Connect average molecular kinetic energy to
+  temperature: $\frac{1}{2}m\langle c^2 \rangle
+  = \frac{3}{2}k_BT$
+  \item Distinguish between ideal and real gases
+  \item Solve problems involving mixtures of gases
+  using Dalton's Law
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: What is a Gas?}
+% ============================================================
+
+Pump air into a bicycle tyre and it becomes harder ---
+more pressure. Heat a sealed container of gas and the
+pressure rises. Compress a gas and its temperature
+rises. These are everyday observations, but they point
+to deep physics.
+
+A gas consists of an enormous number of molecules
+moving randomly in all directions at high speeds.
+At room temperature, nitrogen molecules (which make
+up 78\% of air) move at average speeds of around
+$500\ \text{m\,s}^{-1}$ --- faster than a bullet.
+They collide with each other and with the walls of
+their container billions of times per second. Each
+collision with a wall exerts a tiny force. The sum
+of billions of these tiny forces over the wall area
+is what we measure as \textbf{pressure}.
+
+This picture --- the \textbf{kinetic theory of gases}
+--- connects the microscopic (invisible molecular
+motion) to the macroscopic (measurable pressure,
+volume, temperature). It is one of the great
+intellectual achievements of 19th-century physics.
+
+% ============================================================
+\section{Boyle's Law}
+% ============================================================
+
+\begin{historybox}[Robert Boyle, 1662]
+Robert Boyle (1627--1691), working in Oxford with
+his assistant Robert Hooke, used a J-shaped glass
+tube sealed at one end and open at the other, with
+mercury trapping a column of air. By adding mercury
+to the open end, he increased the pressure on the
+trapped air and measured how its volume changed.
+His meticulous measurements, published in 1662,
+established the first quantitative gas law. Boyle
+was a founding member of the Royal Society and is
+often called the ``father of modern chemistry.''
+\end{historybox}
+
+\begin{lawbox}[Boyle's Law]
+At constant temperature, the volume of a fixed mass
+of gas is inversely proportional to its pressure:
+\[
+  P \propto \frac{1}{V}
+  \quad \text{(constant } T \text{ and mass)}
+\]
+\[
+  PV = \text{constant}
+\]
+\[
+  \boxed{P_1 V_1 = P_2 V_2}
+  \quad \text{(at constant } T\text{)}
+\]
+\end{lawbox}
+
+\begin{diagbox}[Boyle's Law: $P$ vs $V$ and $P$ vs $1/V$ Graphs]
+\begin{center}
+\begin{tikzpicture}
+  % P vs V graph
+  \begin{axis}[
+    name=plot1,
+    width=6cm, height=5.5cm,
+    xlabel={Volume $V$},
+    ylabel={Pressure $P$},
+    xmin=0, xmax=5,
+    ymin=0, ymax=5,
+    grid=major, grid style={gray!15},
+    xtick=\empty, ytick=\empty,
+    title={$P$ vs $V$ (hyperbola)}
+  ]
+    \addplot[codexblue, very thick, domain=0.3:4.8,
+      samples=80]{1.0/x + 0.3};
+    \addplot[codexred, very thick, domain=0.5:4.8,
+      samples=80]{2.0/x + 0.3};
+    \addplot[codexgreen, very thick, domain=0.8:4.8,
+      samples=80]{3.5/x + 0.3};
+    \node[codexblue, font=\tiny] at (axis cs:0.7,2.5)
+      {$T_1$};
+    \node[codexred, font=\tiny] at (axis cs:0.9,3.5)
+      {$T_2 > T_1$};
+    \node[codexgreen, font=\tiny] at (axis cs:1.5,4.0)
+      {$T_3 > T_2$};
+    \node[font=\tiny, gray] at (axis cs:3.5,1.5)
+      {\shortstack{$PV = $ const\\(each curve)}};
+  \end{axis}
+
+  % P vs 1/V graph
+  \begin{axis}[
+    name=plot2,
+    at={(plot1.right of south east)},
+    anchor=left of south west,
+    xshift=0.8cm,
+    width=6cm, height=5.5cm,
+    xlabel={$1/V$},
+    ylabel={Pressure $P$},
+    xmin=0, xmax=5,
+    ymin=0, ymax=5,
+    grid=major, grid style={gray!15},
+    xtick=\empty, ytick=\empty,
+    title={$P$ vs $1/V$ (straight line through origin)}
+  ]
+    \addplot[codexblue, very thick, domain=0:4.5]{0.8*x};
+    \addplot[codexred, very thick, domain=0:3.5]{1.2*x};
+    \addplot[codexgreen, very thick, domain=0:2.8]{1.6*x};
+    \node[codexblue, font=\tiny] at (axis cs:4.0,2.8)
+      {$T_1$};
+    \node[codexred, font=\tiny] at (axis cs:3.0,3.5)
+      {$T_2$};
+    \node[codexgreen, font=\tiny] at (axis cs:2.0,3.5)
+      {$T_3$};
+    \node[font=\tiny, gray, align=center]
+      at (axis cs:3.0,1.0)
+      {Gradient $= $ const\\$= $ slope $\propto T$};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+\small Each curve on the $P$-$V$ graph corresponds to
+a different temperature (isotherm). The $P$ vs $1/V$
+graph is a straight line through the origin,
+confirming $P \propto 1/V$.
+\end{diagbox}
+
+\begin{examplebox}[14.1]
+\stepcounter{workedexample}
+A gas occupies $4.0\ \text{L}$ at a pressure of
+$200\ \text{kPa}$ at constant temperature.\\
+(a) Find the pressure when the volume is compressed
+to $1.5\ \text{L}$.\\
+(b) Find the volume when the pressure is
+$50\ \text{kPa}$.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} At constant $T$: $P_1V_1 = P_2V_2$
+\[
+  P_2 = \frac{P_1V_1}{V_2}
+  = \frac{200 \times 4.0}{1.5}
+  = 533\ \text{kPa}
+\]
+
+\textbf{(b)}
+\[
+  V_2 = \frac{P_1V_1}{P_2}
+  = \frac{200 \times 4.0}{50}
+  = 16.0\ \text{L}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Charles' Law}
+% ============================================================
+
+\begin{historybox}[Jacques Charles and Gay-Lussac, 1787--1802]
+Jacques Charles (1746--1823), a French physicist and
+balloonist, discovered in 1787 that different gases
+expand equally when heated through the same temperature
+interval --- but he did not publish his findings.
+Joseph Gay-Lussac rediscovered and published the law
+in 1802, crediting Charles for the earlier work.
+Charles was a passionate hot-air balloonist --- the
+first person to use hydrogen balloons for flight ---
+so he had a very practical interest in how gases
+behave when heated.
+\end{historybox}
+
+\begin{lawbox}[Charles' Law]
+At constant pressure, the volume of a fixed mass of
+gas is directly proportional to its absolute temperature
+(in Kelvin):
+\[
+  V \propto T
+  \quad \text{(constant } P \text{ and mass)}
+\]
+\[
+  \frac{V}{T} = \text{constant}
+\]
+\[
+  \boxed{\frac{V_1}{T_1} = \frac{V_2}{T_2}}
+  \quad \text{(at constant } P\text{)}
+\]
+\textbf{Critical:} $T$ must be in \textbf{Kelvin}.
+Using Celsius gives wrong answers.
+\end{lawbox}
+
+\begin{diagbox}[Charles' Law: $V$ vs $T$ Graph]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=11cm, height=6cm,
+  xlabel={Temperature $T$ (K)},
+  ylabel={Volume $V$},
+  xmin=-300, xmax=600,
+  ymin=0, ymax=5,
+  grid=major, grid style={gray!15},
+  xtick={-273,0,100,200,300,400,500},
+  xticklabels={
+    \shortstack{$0\,\text{K}$\\($-273\textdegree\text{C}$)},
+    $0\textdegree\text{C}$,$100\textdegree\text{C}$,$200\textdegree\text{C}$,
+    $300\textdegree\text{C}$,$400\textdegree\text{C}$,$500\textdegree\text{C}$
+  },
+  ytick=\empty,
+  extra x ticks={-273},
+  extra x tick labels={},
+]
+  % Three lines for three different pressures
+  \addplot[codexblue, very thick, domain=-273:550]
+    {0.008*(x+273)};
+  \addplot[codexred, very thick, domain=-273:550]
+    {0.012*(x+273)};
+  \addplot[codexgreen, very thick, domain=-273:550]
+    {0.006*(x+273)};
+
+  % Extrapolation to absolute zero (dashed)
+  \addplot[codexblue, dashed, domain=-273:0]
+    {0.008*(x+273)};
+  \addplot[codexred, dashed, domain=-273:0]
+    {0.012*(x+273)};
+  \addplot[codexgreen, dashed, domain=-273:0]
+    {0.006*(x+273)};
+
+  % All lines converge at absolute zero
+  \fill[codexred] (axis cs:-273,0) circle (4pt);
+  \node[below right, codexred, font=\small]
+    at (axis cs:-273,0) {\shortstack{Absolute zero\\$T = 0\,\text{K}$}};
+
+  % Pressure labels
+  \node[codexblue, font=\small]
+    at (axis cs:480,3.2) {$P_1$};
+  \node[codexred, font=\small]
+    at (axis cs:400,4.5) {$P_2 > P_1$};
+  \node[codexgreen, font=\small]
+    at (axis cs:480,2.3) {$P_3 < P_1$};
+
+  % Real gas region
+  \draw[gray, dashed, thick]
+    (axis cs:0,-0.1) -- (axis cs:0,5);
+  \node[gray, font=\tiny, rotate=90]
+    at (axis cs:-50,2.5) {Real gas region};
+
+  % Annotation
+  \node[align=center, font=\small, codexblue]
+    at (axis cs:250,0.5)
+    {\shortstack{All lines extrapolate to $V=0$\\at $T = -273\textdegree\text{C} = 0\,\text{K}$}};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\small All $V$-$T$ lines, when extrapolated, converge at
+$T = 0\ \text{K}$ ($-273°\text{C}$) --- absolute zero,
+where the gas would have zero volume. This is how
+absolute zero was first predicted from gas behaviour.
+\end{diagbox}
+
+\begin{examplebox}[14.2]
+\stepcounter{workedexample}
+A gas occupies $3.0\ \text{L}$ at $27°\text{C}$
+at constant pressure.\\
+(a) Find its volume at $127°\text{C}$.\\
+(b) Find the temperature at which its volume
+would be $1.0\ \text{L}$.
+\end{examplebox}
+
+\begin{solutionbox}
+Convert temperatures to Kelvin:
+$T_1 = 27 + 273 = 300\ \text{K}$
+
+\textbf{(a)} $T_2 = 127 + 273 = 400\ \text{K}$
+\[
+  V_2 = V_1 \times \frac{T_2}{T_1}
+  = 3.0 \times \frac{400}{300} = 4.0\ \text{L}
+\]
+
+\textbf{(b)}
+\[
+  T_2 = T_1 \times \frac{V_2}{V_1}
+  = 300 \times \frac{1.0}{3.0} = 100\ \text{K}
+  = -173°\text{C}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{The Pressure Law (Gay-Lussac's Law)}
+% ============================================================
+
+\begin{lawbox}[The Pressure Law]
+At constant volume, the pressure of a fixed mass of
+gas is directly proportional to its absolute
+temperature:
+\[
+  P \propto T
+  \quad \text{(constant } V \text{ and mass)}
+\]
+\[
+  \frac{P}{T} = \text{constant}
+\]
+\[
+  \boxed{\frac{P_1}{T_1} = \frac{P_2}{T_2}}
+  \quad \text{(at constant } V\text{)}
+\]
+Again, $T$ must be in Kelvin.
+\end{lawbox}
+
+\begin{examplebox}[14.3]
+\stepcounter{workedexample}
+A car tyre has a pressure of $220\ \text{kPa}$
+(gauge) at $15°\text{C}$ in the morning. After a
+long drive, the tyre temperature rises to $55°\text{C}$.
+Atmospheric pressure is $100\ \text{kPa}$.\\
+(a) Find the new pressure in the tyre.\\
+(b) Find the new gauge pressure.
+\end{examplebox}
+
+\begin{solutionbox}
+The Pressure Law uses \textit{absolute} (total)
+pressure, not gauge pressure.
+
+Absolute pressure: $P_1 = 220 + 100 = 320\ \text{kPa}$\\
+$T_1 = 15 + 273 = 288\ \text{K}$,
+$T_2 = 55 + 273 = 328\ \text{K}$
+
+\textbf{(a)} New absolute pressure:
+\[
+  P_2 = P_1 \times \frac{T_2}{T_1}
+  = 320 \times \frac{328}{288}
+  = 364\ \text{kPa}
+\]
+
+\textbf{(b)} New gauge pressure:
+$364 - 100 = 264\ \text{kPa}$
+
+The pressure has risen from $220$ to $264\ \text{kPa}$
+gauge --- a $20\%$ increase. Tyre manufacturers
+recommend checking tyre pressure when \textit{cold}
+for this reason. Letting air out of hot tyres to
+reduce pressure is dangerous because the pressure
+will drop further when the tyre cools.
+\end{solutionbox}
+
+% ============================================================
+\section{The General Gas Law and Ideal Gas Equation}
+% ============================================================
+
+\begin{lawbox}[The General Gas Law]
+Combining Boyle's, Charles' and Pressure Laws:
+\[
+  \boxed{\frac{P_1 V_1}{T_1} = \frac{P_2 V_2}{T_2}}
+  \quad \text{(fixed mass of ideal gas)}
+\]
+This holds whenever any combination of $P$, $V$
+and $T$ changes simultaneously.
+\end{lawbox}
+
+\begin{lawbox}[The Ideal Gas Equation]
+For $n$ moles of ideal gas:
+\[
+  \boxed{PV = nRT}
+\]
+where:
+\begin{itemize}[noitemsep]
+  \item $P$ = pressure (Pa)
+  \item $V$ = volume (m$^3$)
+  \item $n$ = amount of gas (moles)
+  \item $R = 8.314\ \text{J\,mol}^{-1}\text{K}^{-1}$
+  (universal gas constant)
+  \item $T$ = absolute temperature (K)
+\end{itemize}
+For $N$ molecules (using Boltzmann's constant
+$k_B = R/N_A = 1.38\times10^{-23}\ \text{J\,K}^{-1}$):
+\[
+  PV = Nk_BT
+\]
+At STP ($T = 273\ \text{K}$, $P = 1.013\times10^5\ \text{Pa}$):
+1 mole of ideal gas occupies $22.4\ \text{L}$ (molar volume).
+\end{lawbox}
+
+\begin{examplebox}[14.4]
+\stepcounter{workedexample}
+A sealed container holds $0.50\ \text{mol}$ of
+nitrogen gas at $300\ \text{K}$ and
+$1.5\times10^5\ \text{Pa}$.\\
+(a) Calculate the volume of the container.\\
+(b) The gas is heated at constant volume to
+$450\ \text{K}$. Find the new pressure.\\
+(c) Find the number of molecules in the container.\\
+($R = 8.314\ \text{J\,mol}^{-1}\text{K}^{-1}$,
+$N_A = 6.02\times10^{23}\ \text{mol}^{-1}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Volume:
+\[
+  V = \frac{nRT}{P}
+  = \frac{0.50 \times 8.314 \times 300}
+    {1.5\times10^5}
+  = \frac{1247.1}{1.5\times10^5}
+  = 8.31\times10^{-3}\ \text{m}^3
+  = 8.31\ \text{L}
+\]
+
+\textbf{(b)} Constant volume, so $P/T = $ const:
+\[
+  P_2 = P_1 \times \frac{T_2}{T_1}
+  = 1.5\times10^5 \times \frac{450}{300}
+  = 2.25\times10^5\ \text{Pa}
+\]
+
+\textbf{(c)} Number of molecules:
+\[
+  N = n \times N_A = 0.50 \times 6.02\times10^{23}
+  = 3.01\times10^{23}\ \text{molecules}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Dalton's Law of Partial Pressures}
+% ============================================================
+
+\begin{lawbox}[Dalton's Law of Partial Pressures]
+The total pressure of a mixture of non-reacting
+gases equals the sum of the partial pressures of
+each component gas:
+\[
+  P_{total} = P_1 + P_2 + P_3 + \cdots
+\]
+The \textbf{partial pressure} of a gas is the
+pressure it would exert if it alone occupied the
+entire volume at the same temperature.
+\[
+  P_i = \frac{n_i RT}{V}
+\]
+where $n_i$ is the number of moles of gas $i$.
+\end{lawbox}
+
+\begin{examplebox}[14.5]
+\stepcounter{workedexample}
+A container holds $0.30\ \text{mol}$ of oxygen and
+$0.70\ \text{mol}$ of nitrogen at $300\ \text{K}$
+in a volume of $10.0\ \text{L}$.\\
+(a) Calculate the partial pressure of each gas.\\
+(b) Calculate the total pressure.\\
+($R = 8.314\ \text{J\,mol}^{-1}\text{K}^{-1}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Partial pressures:
+\[
+  P_{O_2} = \frac{n_{O_2}RT}{V}
+  = \frac{0.30 \times 8.314 \times 300}
+    {0.010}
+  = \frac{748.3}{0.010}
+  = 74\,830\ \text{Pa} \approx 74.8\ \text{kPa}
+\]
+\[
+  P_{N_2} = \frac{0.70 \times 8.314 \times 300}
+    {0.010}
+  = 174\,594\ \text{Pa} \approx 174.6\ \text{kPa}
+\]
+
+\textbf{(b)} Total pressure:
+\[
+  P_{total} = 74.8 + 174.6 = 249.4\ \text{kPa}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Kinetic Theory of Gases}
+% ============================================================
+
+\begin{defbox}[Assumptions of the Kinetic Theory of Ideal Gases]
+\begin{enumerate}[noitemsep]
+  \item A gas consists of a very large number of
+  molecules ($N \sim 10^{23}$)
+  \item The molecules are in continuous, rapid,
+  random motion
+  \item The total volume of the molecules is
+  negligible compared to the volume of the container
+  \item Collisions between molecules and with the
+  walls are perfectly elastic (no kinetic energy lost)
+  \item There are no intermolecular forces except
+  during collisions (molecules travel in straight
+  lines between collisions)
+  \item The time of a collision is negligible
+  compared to the time between collisions
+  \item All molecules obey Newton's laws of motion
+\end{enumerate}
+\end{defbox}
+
+\begin{diagbox}[Kinetic Model: Gas Molecules in a Container]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Container
+  \fill[gray!10] (0,0) rectangle (7,5);
+  \draw[very thick] (0,0) rectangle (7,5);
+
+  % Molecules (random positions)
+  \foreach \x/\y in {
+    0.8/4.2, 1.5/2.1, 2.3/4.5, 3.1/1.3,
+    3.8/3.7, 4.5/0.8, 5.2/2.8, 6.1/1.6,
+    1.1/0.6, 2.7/2.9, 4.9/4.1, 6.4/3.5,
+    0.4/3.0, 5.8/0.4, 3.4/0.3} {
+    \fill[codexblue] (\x,\y) circle (3pt);
+  }
+
+  % Velocity arrows on selected molecules
+  \draw[->, thick, codexred]
+    (1.5,2.1) -- (2.3,2.7);
+  \draw[->, thick, codexred]
+    (3.1,1.3) -- (2.4,0.7);
+  \draw[->, thick, codexred]
+    (3.8,3.7) -- (4.6,4.3);
+  \draw[->, thick, codexred]
+    (5.2,2.8) -- (4.3,2.2);
+  \draw[->, thick, codexred]
+    (6.1,1.6) -- (6.5,0.9);
+  \draw[->, thick, codexred]
+    (4.5,0.8) -- (5.3,0.3);
+
+  % Collision with wall
+  \fill[codexgold] (6.8,3.5) circle (4pt);
+  \draw[->, thick, codexgold]
+    (6.0,3.5) -- (6.7,3.5);
+  \draw[->, thick, codexgold, dashed]
+    (6.8,3.5) -- (6.0,3.5);
+  \node[right, codexgold, font=\tiny] at (4.8,3.5)
+    {collision};
+
+  % Force exerted on wall
+  \foreach \y in {0.5,1.5,2.5,3.5,4.5} {
+    \draw[->, thick, codexgreen!70]
+      (7.0,\y) -- (7.5,\y);
+  }
+  \node[right, codexgreen, font=\small] at (7.5,2.5)
+    {\shortstack{Net force on wall = Pressure}};
+
+  % Temperature label
+  \node[align=center, font=\small] at (3.5,-1.2)
+    {Higher $T$ $\implies$ faster molecules $\implies$\\
+    harder, more frequent wall collisions $\implies$\\
+    higher $P$};
+
+  % Labels
+  \node[codexblue, font=\tiny] at (0.5,4.8)
+    {Molecules};
+  \node[codexred, font=\tiny] at (3.5,2.0)
+    {\shortstack{Random\\velocities}};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\subsection{Kinetic Theory Explanation of the Gas Laws}
+
+The kinetic theory explains why the gas laws work:
+
+\textbf{Boyle's Law} (constant $T$): If we halve the
+volume, each molecule travels half the distance before
+hitting a wall --- collisions with the wall are twice
+as frequent. Double the frequency means double the
+pressure. $P \propto 1/V$.
+
+\textbf{Charles' Law} (constant $P$): Raising the
+temperature increases molecular speeds. More frequent
+and harder collisions $\implies$ pressure rises. To
+keep pressure constant, we must increase the volume
+(fewer molecules per unit volume, lower collision
+frequency). $V \propto T$.
+
+\textbf{Pressure Law} (constant $V$): Raising temperature
+increases molecular speeds and hence the force and
+frequency of wall collisions. $P \propto T$.
+
+% ============================================================
+\section{Kinetic Theory: Connecting Molecules to
+Thermodynamics}
+% ============================================================
+
+\subsection{Deriving \texorpdfstring{$PV = \frac{1}{3}Nm\langle c^2\rangle$}{PV = (1/3) N m <c\textasciicircum{}2>} }
+
+This is the Level B content. We derive the pressure
+of a gas from first principles --- from Newton's laws
+applied to individual molecules.
+
+\begin{processbox}[Pressure from First Principles (Level B)]
+Consider $N$ molecules each of mass $m$ in a cubic
+box of side $L$ (volume $V = L^3$).
+
+Focus on one molecule moving with velocity component
+$u_x$ in the $x$-direction toward a wall.
+
+\textbf{Step 1:} Change in momentum per collision
+with the wall:
+$\Delta p = 2mu_x$ (elastic collision reverses $x$-velocity)
+
+\textbf{Step 2:} Time between successive collisions
+with the same wall:
+$\Delta t = 2L/u_x$ (molecule travels to opposite wall and back)
+
+\textbf{Step 3:} Force exerted by one molecule on the wall:
+\[
+  F_{one} = \frac{\Delta p}{\Delta t}
+  = \frac{2mu_x}{2L/u_x} = \frac{mu_x^2}{L}
+\]
+
+\textbf{Step 4:} Total force from all $N$ molecules:
+\[
+  F_{total} = \frac{m}{L}\sum_{i=1}^N u_{xi}^2
+  = \frac{Nm}{L}\langle u_x^2\rangle
+\]
+where $\langle u_x^2\rangle$ is the mean square
+$x$-velocity.
+
+\textbf{Step 5:} By symmetry of random motion:
+$\langle u_x^2\rangle = \langle u_y^2\rangle
+= \langle u_z^2\rangle$
+
+Since $\langle c^2\rangle = \langle u_x^2\rangle
++ \langle u_y^2\rangle + \langle u_z^2\rangle$:
+\[
+  \langle u_x^2\rangle = \frac{1}{3}\langle c^2\rangle
+\]
+
+\textbf{Step 6:} Pressure (force per unit area,
+wall area $= L^2$):
+\[
+  P = \frac{F}{A} = \frac{Nm\langle c^2\rangle/3L}{L^2}
+  = \frac{Nm\langle c^2\rangle}{3L^3}
+\]
+\[
+  \boxed{PV = \frac{1}{3}Nm\langle c^2\rangle}
+\]
+where $\langle c^2\rangle$ is the \textbf{mean square
+speed} of the molecules, and $\sqrt{\langle c^2\rangle}$
+is the \textbf{root mean square (rms) speed} $c_{rms}$.
+\end{processbox}
+
+\subsection{Connecting to Temperature}
+
+Comparing $PV = \frac{1}{3}Nm\langle c^2\rangle$
+with the ideal gas law $PV = Nk_BT$:
+\[
+  \frac{1}{3}Nm\langle c^2\rangle = Nk_BT
+\]
+\[
+  \frac{1}{2}m\langle c^2\rangle = \frac{3}{2}k_BT
+\]
+
+\begin{keybox}[Average Molecular Kinetic Energy and Temperature]
+\[
+  \overline{KE} = \frac{1}{2}m\langle c^2\rangle
+  = \frac{3}{2}k_BT
+\]
+The average translational kinetic energy of a
+molecule depends \textbf{only on temperature}.
+It is independent of the type of gas, the mass of
+the molecule, or the pressure.
+
+This gives the rms speed:
+\[
+  c_{rms} = \sqrt{\langle c^2\rangle}
+  = \sqrt{\frac{3k_BT}{m}}
+  = \sqrt{\frac{3RT}{M}}
+\]
+where $M$ is the molar mass (kg\,mol$^{-1}$).
+\end{keybox}
+
+\begin{diagbox}[Maxwell-Boltzmann Speed Distribution]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=11cm, height=6cm,
+  xlabel={Molecular speed $c$ (m\,s$^{-1}$)},
+  ylabel={Fraction of molecules},
+  xmin=0, xmax=1400, ymin=0, ymax=0.0035,
+  grid=major, grid style={gray!15},
+  ytick=\empty,
+  xtick={0,200,400,600,800,1000,1200},
+  legend pos=north east]
+  % Low T distribution (peak verified at x=sqrt(80000)=283 m/s)
+  \addplot[codexblue, very thick, domain=0:1200, samples=150]
+    {1200 * x^2 * exp(-x^2/80000) * 3e-9};
+  \addlegendentry{Low $T$}
+  % High T distribution (peak verified at x=sqrt(160000)=400 m/s)
+  \addplot[codexred, very thick, domain=0:1400, samples=150]
+    {600 * x^2 * exp(-x^2/160000) * 3e-9};
+  \addlegendentry{High $T$}
+  % Low T c_mp: dashed blue line + rotated label on left side
+  \draw[dashed, codexblue, thick] (axis cs:283,0) -- (axis cs:283,0.00285);
+  \node[codexblue, font=\tiny, rotate=90, anchor=south] at (axis cs:255,0.00145) {$c_{mp}$ (low $T$)};
+  % High T c_mp: dashed red (no longer duplicated with a dotted line on top)
+  \draw[dashed, codexred, thick] (axis cs:400,0) -- (axis cs:400,0.00185);
+  \node[codexred, font=\tiny, rotate=90, anchor=south] at (axis cs:378,0.001) {$c_{mp}$ (high $T$)};
+  % c_mean: dotted gold at 450
+  \draw[dotted, codexgold, line width=1.2pt] (axis cs:450,0) -- (axis cs:450,0.00175);
+  \node[codexgold, font=\tiny, rotate=90, anchor=south] at (axis cs:468,0.0009) {$\bar{c}$ (mean)};
+  % c_rms: dash-dot green at 490 (distinct style from dotted and dashed)
+  \draw[dash dot, codexgreen, line width=1.2pt] (axis cs:490,0) -- (axis cs:490,0.00155);
+  \node[codexgreen, font=\tiny, rotate=90, anchor=south] at (axis cs:508,0.0008) {$c_{rms}$};
+  % Area = 1 note (positioned left of the legend box)
+  \node[font=\tiny, gray, align=center] at (axis cs:1100,0.0028)
+    {Total area\\under each\\curve $= 1$};
+  % Tail annotation (anchor and position kept inside the axis frame)
+  \draw[->, gray, thick] (axis cs:850,0.0004) -- (axis cs:1000,0.0004);
+  \node[gray, font=\tiny, align=left, anchor=west] at (axis cs:1010,0.0004)
+    {More high-speed\\molecules at high $T$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\small \textbf{Key:} The Maxwell-Boltzmann distribution shows the spread of molecular speeds.
+At higher $T$: the peak shifts right (faster average), the curve broadens, and importantly,
+more molecules have very high speeds (the tail extends further). This is why reactions speed up
+with temperature --- more molecules can overcome the activation energy.
+\end{diagbox}
+
+\begin{examplebox}[14.6]
+\stepcounter{workedexample}
+Calculate the rms speed of nitrogen molecules
+(molar mass $28\ \text{g\,mol}^{-1}$) at $300\ \text{K}$.\\
+($R = 8.314\ \text{J\,mol}^{-1}\text{K}^{-1}$)
+\end{examplebox}
+
+\begin{solutionbox}
+$M = 28\times10^{-3}\ \text{kg\,mol}^{-1}$
+
+\[
+  c_{rms} = \sqrt{\frac{3RT}{M}}
+  = \sqrt{\frac{3 \times 8.314 \times 300}
+    {28\times10^{-3}}}
+  = \sqrt{\frac{7482.6}{0.028}}
+  = \sqrt{267\,236}
+  = 517\ \text{m\,s}^{-1}
+\]
+
+At room temperature, nitrogen molecules move at
+about $517\ \text{m\,s}^{-1}$ --- roughly $1.5$ times
+the speed of sound. For comparison, oxygen ($M = 32$)
+has rms speed $\sqrt{28/32} = 0.935$ times that of
+nitrogen, about $483\ \text{m\,s}^{-1}$.
+\end{solutionbox}
+
+% ============================================================
+\section{Ideal vs Real Gases}
+% ============================================================
+
+\begin{defbox}[Ideal vs Real Gas]
+An \textbf{ideal gas} perfectly obeys $PV = nRT$.
+It has:
+\begin{itemize}[noitemsep]
+  \item Zero molecular volume
+  \item No intermolecular forces (except during
+  collisions)
+\end{itemize}
+
+A \textbf{real gas} deviates from ideal behaviour:
+\begin{itemize}[noitemsep]
+  \item Molecules have finite volume (important at
+  high pressure, when molecules are close together)
+  \item Intermolecular attractions exist (important
+  at low temperature, when molecules move slowly)
+\end{itemize}
+
+Real gases behave most ideally at:
+\begin{itemize}[noitemsep]
+  \item \textbf{Low pressure} (molecules far apart)
+  \item \textbf{High temperature} (molecules moving
+  fast, intermolecular forces less significant)
+\end{itemize}
+\end{defbox}
+
+\begin{diagbox}[$PV/nRT$ vs $P$ for Ideal and Real Gases]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[width=10cm, height=6cm,
+  xlabel={Pressure $P$ (atm)},
+  ylabel={$PV/nRT$},
+  xmin=0, xmax=600, ymin=0.6, ymax=1.4,
+  grid=major, grid style={gray!15},
+  ytick={0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.3,1.4},
+  legend style={at={(1.02,1.0)},anchor=north west,draw=gray!40,fill=white}]
+  % Ideal gas (horizontal line at 1)
+  \addplot[black, very thick, dashed, domain=0:600]{1.0};
+  \addlegendentry{Ideal gas}
+  % Hydrogen (rises above 1: volume effect dominates)
+  \addplot[codexblue, very thick, domain=0:600, samples=50]
+    {1.0 + 0.0003*x};
+  \addlegendentry{H$_2$ (real)}
+  % Nitrogen (dips below then rises)
+  \addplot[codexred, very thick, domain=0:600, samples=80]
+    {1.0 - 0.0005*x + 0.0000018*x^2};
+  \addlegendentry{N$_2$ (real)}
+  % CO2 (larger dip: stronger attractions)
+  \addplot[codexgreen, very thick, domain=0:600, samples=80]
+    {1.0 - 0.0015*x + 0.0000040*x^2};
+  \addlegendentry{CO$_2$ (real)}
+  % Ideal line label: anchor=east keeps it right-aligned fully inside the frame
+  \node[font=\small, black, anchor=east] at (axis cs:597,1.03)
+    {Ideal ($PV/nRT = 1$)};
+  % Intermolecular attractions annotation
+  \draw[->, gray] (axis cs:200,0.72)
+    -- (axis cs:150,0.82)
+    node[left, font=\tiny]{\shortstack{Intermolecular\\attractions}};
+  % Finite volume: label in open space, arrow points to H2 curve
+  \node[gray, font=\tiny, align=center] at (axis cs:470,1.32)
+    {Finite\\volume};
+  \draw[->, gray] (axis cs:455,1.27) -- (axis cs:425,1.127);
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\small For an ideal gas, $PV/nRT = 1$ at all pressures.
+Real gases deviate: at low pressure, attractions
+dominate (below 1); at high pressure, finite molecular
+volume dominates (above 1).
+\end{diagbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Boyle's Law:} $P_1V_1 = P_2V_2$
+(constant $T$, $P \propto 1/V$)
+
+\textbf{Charles' Law:} $V_1/T_1 = V_2/T_2$
+(constant $P$, $V \propto T$)
+
+\textbf{Pressure Law:} $P_1/T_1 = P_2/T_2$
+(constant $V$, $P \propto T$)
+
+\textbf{General gas law:}
+$P_1V_1/T_1 = P_2V_2/T_2$
+
+\textbf{Ideal gas equation:}
+$PV = nRT = Nk_BT$
+
+$R = 8.314\ \text{J\,mol}^{-1}\text{K}^{-1}$,
+$k_B = 1.38\times10^{-23}\ \text{J\,K}^{-1}$
+
+\textbf{Dalton's Law:}
+$P_{total} = P_1 + P_2 + \cdots$
+
+\textbf{Kinetic theory result:}
+$PV = \frac{1}{3}Nm\langle c^2\rangle$
+
+\textbf{Molecular KE and temperature:}
+$\frac{1}{2}m\langle c^2\rangle = \frac{3}{2}k_BT$
+
+\textbf{RMS speed:}
+$c_{rms} = \sqrt{3RT/M} = \sqrt{3k_BT/m}$
+
+\textbf{Ideal gas:} $T$ always in Kelvin.
+Real gases deviate at high $P$ and low $T$.
+
+\textbf{STP:} 1 mol ideal gas occupies 22.4 L.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[14]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A gas is compressed from $8.0\ \text{L}$
+at $100\ \text{kPa}$ to $2.0\ \text{L}$ at constant
+temperature. The new pressure is:
+
+\mcoption{A}{$25\ \text{kPa}$}
+\mcoption{B}{$200\ \text{kPa}$}
+\mcoption{C}{$400\ \text{kPa}$}
+\mcoption{D}{$800\ \text{kPa}$}
+\ansref{Ch14-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} A gas at $27°\text{C}$ is heated at
+constant pressure until its volume doubles. The
+new temperature is:
+
+\mcoption{A}{$54°\text{C}$}
+\mcoption{B}{$300°\text{C}$}
+\mcoption{C}{$327°\text{C}$}
+\mcoption{D}{$600°\text{C}$}
+\ansref{Ch14-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} Which graph correctly shows Boyle's
+Law?
+
+\mcoption{A}{$P$ vs $V$: straight line through origin}
+\mcoption{B}{$P$ vs $1/V$: straight line through origin}
+\mcoption{C}{$P$ vs $V$: horizontal line}
+\mcoption{D}{$P$ vs $T$: straight line through origin}
+\ansref{Ch14-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} According to kinetic theory, the
+average translational kinetic energy of a gas
+molecule depends on:
+
+\mcoption{A}{The type of gas and its mass only}
+\mcoption{B}{The pressure of the gas only}
+\mcoption{C}{The absolute temperature only}
+\mcoption{D}{Both the pressure and temperature}
+\ansref{Ch14-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} The rms speed of molecules in a gas
+is doubled. The absolute temperature has:
+
+\mcoption{A}{Doubled}
+\mcoption{B}{Halved}
+\mcoption{C}{Quadrupled}
+\mcoption{D}{Increased by $\sqrt{2}$}
+\ansref{Ch14-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} $2.0\ \text{mol}$ of an ideal gas
+occupy $50\ \text{L}$ at $300\ \text{K}$.
+The pressure is ($R = 8.314\ \text{J\,mol}^{-1}\text{K}^{-1}$):
+
+\mcoption{A}{$9.97\ \text{kPa}$}
+\mcoption{B}{$99.8\ \text{kPa}$}
+\mcoption{C}{$997\ \text{kPa}$}
+\mcoption{D}{$49.9\ \text{kPa}$}
+\ansref{Ch14-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} Dalton's Law states that the total
+pressure of a gas mixture equals:
+
+\mcoption{A}{The pressure of the most abundant gas}
+\mcoption{B}{The average pressure of all gases}
+\mcoption{C}{The sum of the partial pressures}
+\mcoption{D}{The product of all partial pressures}
+\ansref{Ch14-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} An ideal gas differs from a real gas
+because an ideal gas has:
+
+\mcoption{A}{Heavier molecules}
+\mcoption{B}{Zero molecular volume and no
+intermolecular forces}
+\mcoption{C}{Molecules moving at the same speed}
+\mcoption{D}{All kinetic energy and no potential
+energy}
+\ansref{Ch14-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} At STP, the molar volume of an ideal
+gas is approximately:
+
+\mcoption{A}{$2.24\ \text{L}$}
+\mcoption{B}{$22.4\ \text{L}$}
+\mcoption{C}{$224\ \text{L}$}
+\mcoption{D}{$2240\ \text{L}$}
+\ansref{Ch14-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} The main reason real gases deviate
+from ideal gas behaviour at high pressure is that:
+
+\mcoption{A}{Molecules move too fast}
+\mcoption{B}{The temperature becomes too high}
+\mcoption{C}{The volume of the molecules
+themselves becomes significant}
+\mcoption{D}{Molecules lose kinetic energy
+in collisions}
+\ansref{Ch14-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A diver uses a $12\ \text{L}$ tank of
+compressed air at $200\ \text{atm}$ at the surface
+($20°\text{C}$).\\[4pt]
+(a) Calculate the volume this air would occupy at
+surface pressure ($1.0\ \text{atm}$) at $20°\text{C}$.\\
+(b) At a depth of $30\ \text{m}$ in seawater
+($\rho = 1025\ \text{kg\,m}^{-3}$), the absolute
+pressure is $4.07\ \text{atm}$. The air in the
+tank cools to $10°\text{C}$. Calculate the volume
+the air would occupy at this depth and temperature.\\
+(c) How many times longer can the diver breathe
+from the tank at $30\ \text{m}$ compared to at
+the surface, if each breath uses the same volume
+of air?\\
+($g = 10\ \text{m\,s}^{-2}$, $P_{atm} = 1.013\times10^5$ Pa)
+\hfill\ansref{Ch14-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} An LPG (liquefied petroleum gas)
+cylinder has an internal volume of $15\ \text{L}$.
+It contains gas at a pressure of $8.0\times10^5\ \text{Pa}$
+and temperature $25°\text{C}$. The gas is essentially
+propane with molar mass $44\ \text{g\,mol}^{-1}$.
+($R = 8.314\ \text{J\,mol}^{-1}\text{K}^{-1}$)\\[4pt]
+(a) Calculate the number of moles of propane.\\
+(b) Calculate the mass of propane in the cylinder.\\
+(c) If the temperature rises to $50°\text{C}$ and
+the pressure relief valve opens at
+$9.5\times10^5\ \text{Pa}$, does the valve open?\\
+(d) The cylinder is left in a fire where the
+temperature reaches $300°\text{C}$. Calculate the
+pressure if no gas escapes. Comment on the danger.
+\hfill\ansref{Ch14-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} Use the kinetic theory result
+$PV = \frac{1}{3}Nm\langle c^2\rangle$ and the
+ideal gas equation to answer the following.\\[4pt]
+(a) Show that the average kinetic energy of a
+molecule is $\frac{3}{2}k_BT$.\\
+(b) Calculate the average KE of a nitrogen
+molecule at $300\ \text{K}$ and at $600\ \text{K}$.\\
+(c) Calculate the rms speed of nitrogen at both
+temperatures ($M_{N_2} = 28\times10^{-3}\ \text{kg\,mol}^{-1}$,
+$R = 8.314\ \text{J\,mol}^{-1}\text{K}^{-1}$).\\
+(d) The internal energy of an ideal monatomic gas
+is $U = \frac{3}{2}nRT$. Calculate the internal
+energy of $2.0\ \text{mol}$ of helium at $300\ \text{K}$.
+\hfill\ansref{Ch14-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A mixture of gases in a $20\ \text{L}$
+container at $300\ \text{K}$ contains:
+$1.0\ \text{mol}$ of helium,
+$0.5\ \text{mol}$ of neon, and
+$1.5\ \text{mol}$ of argon.
+($R = 8.314\ \text{J\,mol}^{-1}\text{K}^{-1}$)\\[4pt]
+(a) Calculate the partial pressure of each gas.\\
+(b) Calculate the total pressure using Dalton's
+Law.\\
+(c) Verify using $PV = n_{total}RT$.\\
+(d) If the argon is removed by a selective
+membrane, what is the new total pressure?\\
+(e) Helium has molar mass $4\ \text{g\,mol}^{-1}$
+and argon has $40\ \text{g\,mol}^{-1}$. At the
+same temperature, calculate the ratio of their
+rms speeds.
+\hfill\ansref{Ch14-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} (a) Starting from the ideal gas
+equation $PV = nRT$, show that the density $\rho$
+of an ideal gas is given by:
+\[
+  \rho = \frac{PM}{RT}
+\]
+where $M$ is the molar mass.\\[4pt]
+(b) Use this result to calculate the density of
+dry air (approximate $M_{air} = 29\ \text{g\,mol}^{-1}$)
+at $20°\text{C}$ and 1 atm ($1.013\times10^5\ \text{Pa}$).\\
+(c) Hot air balloons work because heated air is
+less dense than the surrounding cool air. At what
+temperature must air be heated for the density to
+be $20\%$ less than at $20°\text{C}$ (with
+pressure constant)?\\
+(d) On a hot day in Lagos ($35°\text{C}$,
+$P = 1.01\times10^5\ \text{Pa}$), calculate the
+density of air and compare with the value at $20°\text{C}$.
+Explain why aeroplanes require longer runways to
+take off on hot days.
+\hfill\ansref{Ch14-B5}
+
+\end{exercisebox}

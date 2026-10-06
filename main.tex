@@ -1,0 +1,730 @@
+% This file was accidentally populated with chapter content.
+% Redirect compilation to the actual root document.
+\input{book_main}
+\endinput
+
+% ============================================================
+%  THE PHYSICS CODEX: A COMPLETE UNIVERSITY FOUNDATION
+%  Author: Korede Samuel Omotosho (Falcon)
+%  Publisher: Aurikrex Learning Systems
+%  First Edition, 2026
+%
+%  MASTER FILE — compile this file in Overleaf
+%  Compile TWICE with pdfLaTeX for full TOC and references
+%
+%  FILE STRUCTURE (create these files in Overleaf):
+%  main.tex                    ← this file
+%  front_matter/
+%    titlepage.tex
+%    copyright.tex
+%    dedication.tex
+%    foreword.tex
+%    preface.tex
+%    how_to_use.tex
+%    about_author.tex
+%  chapters/
+%    part1_mechanics/
+%      ch01_measurement.tex
+%      ch02_scalars_vectors.tex
+%      ch03_kinematics.tex
+%      ch04_dynamics.tex
+%      ch05_work_energy_power.tex
+%      ch06_circular_motion.tex
+%      ch07_shm.tex
+%      ch08_gravitation.tex
+%      ch09_elasticity.tex
+%      ch10_simple_machines.tex
+%    part2_fluids_thermal/
+%      ch11_density_pressure.tex
+%      ch12_surface_tension.tex
+%      ch13_temperature_expansion.tex
+%      ch14_gas_laws.tex
+%      ch15_calorimetry.tex
+%      ch16_heat_transfer.tex
+%    part3_waves_optics/
+%      ch17_wave_motion.tex
+%      ch18_sound.tex
+%      ch19_reflection.tex
+%      ch20_refraction_optics.tex
+%    part4_electricity_magnetism/
+%      ch21_electrostatics.tex
+%      ch22_capacitance.tex
+%      ch23_current_electricity.tex
+%      ch24_electrical_power.tex
+%      ch25_magnetism.tex
+%      ch26_electromagnetic_induction.tex
+%    part5_modern_physics/
+%      ch27_atomic_structure.tex
+%      ch28_radioactivity.tex
+%      ch29_electronics.tex
+%  back_matter/
+%    appendix_a_constants.tex
+%    appendix_b_formulae.tex
+%    appendix_c_si_units.tex
+%    answers.tex
+%    bibliography.tex
+% ============================================================
+
+\documentclass[12pt, a4paper, twoside, openright]{book}
+
+% Encoding (pdfLaTeX safety)
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern} % better font size coverage (avoids "Font shape ... not available")
+\usepackage{multicol} % for multicols environment
+% Symbols
+\usepackage{pifont}
+\DeclareUnicodeCharacter{2713}{\ding{51}} % ✓
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage[
+  a4paper,
+  inner=3cm,
+  outer=2.5cm,
+  top=2.5cm,
+  bottom=3cm,
+  headheight=15pt
+]{geometry}
+
+\usepackage{amsmath, amssymb, mathtools}
+
+% Filter a known harmless siunitx warning triggered by the physics package.
+\usepackage{silence}
+\WarningFilter{siunitx}{Detected the "physics" package: omitting definition of \qty}
+
+\usepackage{siunitx}
+\usepackage{textcomp} % provides \textdegree in text mode
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% Make \textdegree also work in math mode (many chapters use $30\textdegree$ etc.)
+\AtBeginDocument{%
+  \let\origtextdegree\textdegree
+  \DeclareRobustCommand{\textdegree}{\ifmmode^\circ\else\origtextdegree\fi}%
+}
+
+% \usepackage{titlesec} % disabled for stability during drafting
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{mdframed}
+% \usepackage{pifont} % already loaded above
+\usepackage[nopatch=footnote]{microtype}
+\usepackage{pdfpages}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{emptypage}
+\usepackage{imakeidx}
+%\usepackage{minitoc} % temporarily disabled for debugging
+\usepackage{epigraph}
+\usepackage{lettrine}
+
+% If chapters still contain \minitoc, make it a no-op while minitoc is disabled
+\providecommand{\minitoc}{}
+\usepackage{afterpage}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{cleveref}
+\usepackage{cancel}
+\usepackage{physics}
+% siunitx/physics both define \qty; restore siunitx's definition to silence warnings.
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usepackage{mathrsfs}
+
+\usetikzlibrary{
+  shapes,
+  arrows,
+  arrows.meta,
+  positioning,
+  calc,
+  decorations.pathmorphing,
+  decorations.markings,
+  patterns,
+  shadows,
+  3d,
+  perspective,
+  angles,
+  quotes,
+  intersections,
+  through,
+  backgrounds
+}
+
+\pgfplotsset{compat=1.18}
+
+% ============================================================
+% COLOURS
+% ============================================================
+\definecolor{codexblue}{RGB}{10, 40, 90}
+\definecolor{codexgold}{RGB}{180, 140, 30}
+\definecolor{codexaccent}{RGB}{30, 100, 180}
+\definecolor{codexred}{RGB}{160, 30, 30}
+\definecolor{codexgreen}{RGB}{20, 100, 50}
+\definecolor{partbg}{RGB}{8, 30, 70}
+\definecolor{chapterbg}{RGB}{15, 50, 100}
+\definecolor{defbg}{RGB}{240, 248, 255}
+\definecolor{examplebg}{RGB}{245, 255, 245}
+\definecolor{warningbg}{RGB}{255, 248, 220}
+\definecolor{keybg}{RGB}{255, 245, 235}
+\definecolor{solutionbg}{RGB}{248, 248, 255}
+\definecolor{thmcolor}{RGB}{10, 40, 90}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{darkgray}{RGB}{80, 80, 80}
+
+% ============================================================
+% HYPERREF SETUP
+% ============================================================
+\hypersetup{
+  colorlinks   = true,
+  linkcolor    = codexblue,
+  urlcolor     = codexaccent,
+  citecolor    = codexred,
+  pdftitle     = {The Physics Codex: A Complete University Foundation},
+  pdfauthor    = {Korede Samuel Omotosho},
+  pdfsubject   = {Physics},
+  pdfkeywords  = {Physics, UTME, University, Foundation, Nigeria}
+}
+
+% ============================================================
+% INDEX
+% ============================================================
+\makeindex[columns=2, title=Index, intoc]
+
+% ============================================================
+% MINITOC (chapter table of contents)
+% ============================================================
+% Temporarily disabled for debugging
+%\dominitoc
+%\setcounter{minitocdepth}{2}
+
+% ============================================================
+% HEADER AND FOOTER
+% ============================================================
+\fancypagestyle{fancy}{%
+  \fancyhf{}%
+  % Explicitly clear every header slot (prevents any default \leftmark usage)
+  \fancyhead[LO,LE,CO,CE,RO,RE]{}%
+  % Keep only the section title in the running header
+  \fancyhead[LE,RO]{\small\color{codexblue}\textit{\rightmark}}%
+  \fancyfoot[LE,RO]{\small\color{darkgray}\thepage}%
+  \fancyfoot[LO,RE]{\small\color{darkgray}\textit{Aurikrex Learning Systems}}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\footrulewidth}{0.3pt}%
+}
+\pagestyle{fancy}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\small\color{darkgray}\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% ============================================================
+% CHAPTER AND SECTION TITLE FORMATTING
+% ============================================================
+% NOTE: titlesec-based custom heading formatting has been disabled for now
+% to keep compilation stable while drafting.
+% If you want it back later, re-enable \usepackage{titlesec} and restore the
+% \titleformat/\titlespacing definitions here.
+
+% ============================================================
+% TCOLORBOX LIBRARY
+% ============================================================
+\tcbuselibrary{skins, breakable, theorems, listings}
+
+% Help prevent overfull lines inside boxes (e.g., long definitions/equations)
+\tcbset{before upper=\sloppy}
+
+% DEFINITION BOX
+\newtcolorbox{definitionbox}[1][]{
+  enhanced, breakable,
+  colback    = defbg,
+  colframe   = codexblue,
+  fonttitle  = \bfseries\small\color{white},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexblue, rounded corners},
+  title      = {Definition~#1},
+  title after break = {Definition~#1},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% DIAGRAM BOX (for TikZ/figures)
+\newtcolorbox{diagbox}[1][]{%
+  % Keep this in normal paragraph/vertical mode (NOT LR mode), so TikZ/pgfplots and
+  % list-like environments won't trigger "Not allowed in LR mode".
+  parbox=false,
+  enhanced,
+  breakable=false,
+  before upper=\centering,
+  colback    = white,
+  colframe   = codexaccent,
+  fonttitle  = \bfseries\small\color{white},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexaccent, rounded corners},
+  title      = {#1},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% PROCESS / DERIVATION BOX (step-by-step reasoning)
+\newtcolorbox{processbox}[1][]{
+  enhanced, breakable,
+  colback    = codexgold!6,
+  colframe   = codexgold!80!black,
+  fonttitle  = \bfseries\small\color{black},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexgold, rounded corners},
+  title      = {\ding{46}~#1},
+  title after break = {\ding{46}~#1},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% GENERAL PURPOSE DEFINITION/LIST BOX (title only)
+\newtcolorbox{defbox}[1][]{
+  enhanced, breakable,
+  colback    = defbg,
+  colframe   = codexblue,
+  fonttitle  = \bfseries\small\color{white},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexblue, rounded corners},
+  title      = {#1},
+  title after break = {#1},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% THEOREM BOX
+\newtcolorbox{theorembox}[1][]{
+  enhanced, breakable,
+  colback    = keybg,
+  colframe   = codexred,
+  fonttitle  = \bfseries\small\color{white},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexred, rounded corners},
+  title      = {Theorem:~#1},
+  title after break = {Theorem:~#1},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% LAW BOX
+\newtcolorbox{lawbox}[1][]{
+  enhanced, breakable,
+  colback    = keybg,
+  colframe   = codexgold,
+  fonttitle  = \bfseries\small\color{codexblue},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexgold, rounded corners},
+  title      = {#1},
+  title after break = {#1},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% EXAMPLE BOX
+\newtcolorbox{examplebox}[1][]{
+  enhanced, breakable,
+  colback    = examplebg,
+  colframe   = codexgreen,
+  fonttitle  = \bfseries\small\color{white},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexgreen, rounded corners},
+  title      = {Worked Example~#1},
+  title after break = {Worked Example~#1},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% SOLUTION BOX
+\newtcolorbox{solutionbox}{
+  enhanced, breakable,
+  colback    = solutionbg,
+  colframe   = codexaccent!60,
+  fonttitle  = \bfseries\small\color{white},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexaccent, rounded corners},
+  title      = {Solution},
+  title after break = {Solution},
+  arc        = 3mm,
+  boxrule    = 0.6pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% KEY CONCEPT BOX
+\newtcolorbox{keybox}[1][]{
+  enhanced, breakable,
+  colback    = codexblue!8,
+  colframe   = codexblue,
+  fonttitle  = \bfseries\small\color{white},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexblue, rounded corners},
+  title      = {\ding{72}~Key Concept:~#1},
+  title after break = {\ding{72}~Key Concept:~#1},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% REAL WORLD BOX
+\newtcolorbox{realworldbox}[1][]{
+  enhanced, breakable,
+  colback    = codexgreen!6,
+  colframe   = codexgreen,
+  fonttitle  = \bfseries\small\color{white},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexgreen, rounded corners},
+  title      = {\ding{108}~Real World:~#1},
+  title after break = {\ding{108}~Real World:~#1},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% EXAM TIP BOX
+\newtcolorbox{examtipbox}{
+  enhanced, breakable,
+  colback    = warningbg,
+  colframe   = codexgold!80!black,
+  fonttitle  = \bfseries\small\color{black},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexgold, rounded corners},
+  title      = {\ding{72}~Exam Tip},
+  title after break = {\ding{72}~Exam Tip},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% HISTORICAL NOTE BOX
+\newtcolorbox{historybox}[1][]{
+  enhanced, breakable,
+  colback    = codexgold!8,
+  colframe   = codexgold,
+  fonttitle  = \bfseries\small\color{codexblue},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexgold!70, rounded corners},
+  title      = {\ding{70}~Historical Note:~#1},
+  title after break = {\ding{70}~Historical Note:~#1},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% MISCONCEPTION BOX
+\newtcolorbox{misconceptionbox}{
+  enhanced, breakable,
+  colback    = codexred!6,
+  colframe   = codexred,
+  fonttitle  = \bfseries\small\color{white},
+  attach boxed title to top left = {yshift=-2mm, xshift=4mm},
+  boxed title style = {colback=codexred, rounded corners},
+  title      = {\ding{55}~Common Misconception},
+  title after break = {\ding{55}~Common Misconception},
+  arc        = 3mm,
+  boxrule    = 0.8pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt
+}
+
+% SUMMARY BOX
+\newtcolorbox{summarybox}{
+  enhanced, breakable,
+  colback    = codexblue!5,
+  colframe   = codexblue,
+  fonttitle  = \bfseries\color{white},
+  boxed title style = {colback=codexblue},
+  title      = {Chapter Summary},
+  title after break = {Chapter Summary},
+  attach boxed title to top center = {yshift=-3mm},
+  arc        = 4mm,
+  boxrule    = 1pt,
+  left=8pt, right=8pt, top=12pt, bottom=8pt
+}
+
+% OBJECTIVE BOX
+\newtcolorbox{objectivebox}{
+  enhanced, breakable,
+  colback    = codexblue!4,
+  colframe   = codexblue!40,
+  fonttitle  = \bfseries\small\color{codexblue},
+  title      = {Learning Objectives},
+  title after break = {Learning Objectives},
+  arc        = 3mm,
+  boxrule    = 0.6pt,
+  left=6pt, right=6pt, top=8pt, bottom=6pt,
+  leftrule   = 4pt
+}
+
+% EXERCISE BOX (for end-of-chapter questions)
+\newtcolorbox{exercisebox}[1][]{
+  enhanced, breakable,
+  colback    = lightgray,
+  colframe   = codexblue,
+  fonttitle  = \bfseries\color{white},
+  boxed title style = {colback=codexblue},
+  title      = {Exercises --- Chapter #1},
+  title after break = {Exercises --- Chapter #1},
+  attach boxed title to top center = {yshift=-3mm},
+  arc        = 4mm,
+  boxrule    = 1pt,
+  left=8pt, right=8pt, top=12pt, bottom=8pt
+}
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\newcommand{\df}[2]{\textbf{#1}\ ---\ #2}
+% NOTE: siunitx defines \unit, so we avoid that name.
+\newcommand{\unittext}[1]{\,\text{#1}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\magnitude}[1]{\left|\boldsymbol{#1}\right|}
+\newcommand{\important}[1]{\textcolor{codexred}{\textbf{#1}}}
+\newcommand{\highlight}[1]{\colorbox{codexgold!20}{#1}}
+\newcommand{\chapterquote}[2]{%
+  \epigraph{\textit{``#1''}}{--- \textbf{#2}}%
+}
+
+% Safe input helper (prevents compile errors when a chapter file
+% hasn't been created yet)
+\newcommand{\inputifexists}[1]{%
+  \IfFileExists{#1.tex}{\input{#1}}{\typeout{(Physics Codex) Missing file: #1.tex}}%
+}
+
+% Answer reference command
+\newcommand{\ansref}[1]{\textcolor{codexaccent}{\small(See Answer~#1)}}
+
+% Multiple choice option formatting
+\newcommand{\mcoption}[2]{\textbf{(#1)}\ #2\quad}
+
+% Section opening letter
+\newcommand{\dropcap}[1]{\lettrine[lines=2, loversize=0.1]{\color{codexblue}#1}{}}
+
+% ============================================================
+% COUNTER SETUP
+% ============================================================
+\newcounter{workedexample}[chapter]
+\renewcommand{\theworkedexample}{\thechapter.\arabic{workedexample}}
+
+\newcounter{exercise}[chapter]
+\renewcommand{\theexercise}{\thechapter.\arabic{exercise}}
+
+% ============================================================
+% CAPTION SETUP
+% ============================================================
+\captionsetup{
+  font       = small,
+  labelfont  = {bf, color=codexblue},
+  labelsep   = period,
+  margin     = 1cm
+}
+
+% ============================================================
+% SPACING
+% ============================================================
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+\setlength{\epigraphwidth}{0.7\textwidth}
+
+% ============================================================
+% SIUNITX SETUP
+% ============================================================
+\sisetup{
+  per-mode            = symbol,
+  inter-unit-product  = \ensuremath{{}\cdot{}},
+  number-unit-separator = {\,}
+}
+
+% ============================================================
+% BEGIN DOCUMENT
+% ============================================================
+\begin{document}
+
+% ============================================================
+% FRONT COVER
+% ============================================================
+\IfFileExists{front_cover.png}{%
+  \thispagestyle{empty}%
+  \begin{center}
+    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{front_cover.png}%
+  \end{center}
+  \cleardoublepage
+}{%
+  % (Optional) If you haven't added the cover image yet, compilation still works.
+}
+
+% ============================================================
+% FRONT MATTER
+% ============================================================
+\frontmatter
+\pagestyle{empty}
+
+\inputifexists{front_matter/titlepage}
+\cleardoublepage
+
+\inputifexists{front_matter/copyright}
+\cleardoublepage
+
+\inputifexists{front_matter/dedication}
+\cleardoublepage
+
+\inputifexists{front_matter/foreword}
+\cleardoublepage
+
+\pagestyle{fancy}
+
+\inputifexists{front_matter/preface}
+\cleardoublepage
+
+\inputifexists{front_matter/how_to_use}
+\cleardoublepage
+
+\inputifexists{front_matter/about_author}
+\cleardoublepage
+
+% ============================================================
+% TABLE OF CONTENTS
+% ============================================================
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+}
+\cleardoublepage
+
+% List of Figures
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\cleardoublepage
+
+% ============================================================
+% MAIN MATTER
+% ============================================================
+\mainmatter
+\pagestyle{fancy}
+
+% ============================================================
+% PART 1: MECHANICS
+% ============================================================
+\part{Mechanics}
+
+\inputifexists{chapters/part1_mechanics/ch01_measurement}
+\inputifexists{chapters/part1_mechanics/ch02_scalars_vectors}
+\inputifexists{chapters/part1_mechanics/ch03_kinematics}
+\inputifexists{chapters/part1_mechanics/ch04_newtons_laws_dynamics}
+\inputifexists{chapters/part1_mechanics/ch05_work_energy_power}
+\inputifexists{chapters/part1_mechanics/ch06_circular_motion}
+\inputifexists{chapters/part1_mechanics/ch07_simple_harmonic_motion}
+\inputifexists{chapters/part1_mechanics/ch08_gravitation}
+
+\inputifexists{chapters/part1_mechanics/ch09_elasticity}
+
+\inputifexists{chapters/part1_mechanics/ch10_simple_machines}
+
+
+% ============================================================
+% PART 2: FLUIDS AND THERMAL PHYSICS
+% ============================================================
+\part{Fluids and Thermal Physics}
+
+\inputifexists{chapters/part2_fluids_thermal/ch11_density_pressure_archimedes}
+\inputifexists{chapters/part2_fluids_thermal/ch12_surface_tension_viscosity_capillarity}
+\inputifexists{chapters/part2_fluids_thermal/ch13_temperature_thermal_expansion}
+\inputifexists{chapters/part2_fluids_thermal/ch14_gas_laws_kinetic_theory}
+\inputifexists{chapters/part2_fluids_thermal/ch15_heat_energy_calorimetry}
+\inputifexists{chapters/part2_fluids_thermal/ch16_heat_transfer}
+
+% ============================================================
+% PART 3: WAVES AND OPTICS
+% ============================================================
+\part{Waves and Optics}
+
+\inputifexists{chapters/part3_waves_optics/ch17_wave_motion}
+\inputifexists{chapters/part3_waves_optics/ch18_sound_waves}
+\inputifexists{chapters/part3_waves_optics/ch19_light_reflection}
+\inputifexists{chapters/part3_waves_optics/ch20_light_refraction_optical_instruments}
+
+% ============================================================
+% PART 4: ELECTRICITY AND MAGNETISM
+% ============================================================
+\part{Electricity and Magnetism}
+
+\inputifexists{chapters/part4_electricity_magnetism/ch21_electrostatics}
+\inputifexists{chapters/part4_electricity_magnetism/ch22_capacitance}
+\inputifexists{chapters/part4_electricity_magnetism/ch23_current_electricity}
+\inputifexists{chapters/part4_electricity_magnetism/ch24_electrical_energy_power}
+\inputifexists{chapters/part4_electricity_magnetism/ch25_magnetism_electromagnetism}
+\inputifexists{chapters/part4_electricity_magnetism/ch26_electromagnetic_induction}
+
+% ============================================================
+% PART 5: MODERN PHYSICS
+% ============================================================
+\part{Modern Physics}
+
+\inputifexists{chapters/part5_modern_physics/ch27_atomic_structure_spectra}
+\inputifexists{chapters/part5_modern_physics/ch28_radioactivity_nuclear_physics}
+\inputifexists{chapters/part5_modern_physics/ch29_electronics}
+
+% ============================================================
+% BACK MATTER
+% ============================================================
+\backmatter
+\pagestyle{fancy}
+
+% ============================================================
+% APPENDICES
+% ============================================================
+\appendix
+\part*{Appendices}
+\addcontentsline{toc}{part}{Appendices}
+\inputifexists{back_matter/appendix_a_constants}
+\inputifexists{back_matter/appendix_b_formulae}
+\inputifexists{back_matter/appendix_c_si_units}
+
+
+% ============================================================
+% ANSWERS TO EXERCISES
+% ============================================================
+\inputifexists{back_matter/answers}
+
+% ============================================================
+% BIBLIOGRAPHY
+% ============================================================
+\inputifexists{back_matter/bibliography}
+
+% ============================================================
+% INDEX
+% ============================================================
+\printindex
+
+% ============================================================
+% BACK COVER
+% ============================================================
+\IfFileExists{back_cover.png}{%
+  \cleardoublepage
+  \thispagestyle{empty}%
+  \begin{center}
+    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{back_cover.png}%
+  \end{center}
+}{%
+  % (Optional) If you haven't added the back cover image yet, compilation still works.
+}
+
+\end{document}

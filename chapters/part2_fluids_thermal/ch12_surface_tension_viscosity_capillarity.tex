@@ -1,0 +1,1285 @@
+% ============================================================
+%  CHAPTER 12: SURFACE TENSION, VISCOSITY AND CAPILLARITY
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part2/ch12_surface_tension.tex
+% ============================================================
+
+\chapter{Surface Tension, Viscosity and Capillarity}
+\label{ch:surface_tension}
+\minitoc
+\newpage
+
+\chapterquote{In every walk with nature, one receives
+far more than he seeks.}{John Muir}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Explain surface tension in terms of
+  intermolecular forces
+  \item Define surface tension and calculate it
+  using the force per unit length definition
+  \item Explain and calculate the excess pressure
+  inside a soap bubble and a liquid drop
+  \item Define capillarity and derive the formula
+  for capillary rise
+  \item Explain why water rises in glass capillaries
+  but mercury falls
+  \item Define viscosity and explain its molecular
+  origin
+  \item State Stokes' law and use it to calculate
+  terminal velocity in a viscous fluid
+  \item Distinguish between laminar and turbulent
+  flow
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: The Invisible Skin}
+% ============================================================
+
+Fill a glass of water very carefully until it is
+slightly above the rim. Instead of immediately
+spilling over, the water forms a gentle dome above
+the glass edge --- held there by something. A small
+insect called a water strider walks across the surface
+of a pond as if the water were solid ground, its legs
+making small dimples but never breaking through.
+A steel needle, denser than water, can be made to
+float if placed gently and horizontally on the surface.
+
+None of these phenomena makes sense if we think of
+a liquid surface as simply nothing --- as just
+the boundary between water and air. Something is
+acting there. That something is \textbf{surface tension}
+--- an emergent property of the intermolecular forces
+that hold a liquid together, creating what behaves
+like an elastic membrane stretched over the surface.
+
+% ============================================================
+\section{Intermolecular Forces: The Origin of Surface
+Tension}
+% ============================================================
+
+To understand surface tension, we must first
+understand where it comes from.
+
+Inside a liquid, each molecule is surrounded on
+all sides by neighbouring molecules. The attractive
+forces (\textbf{cohesive forces}) pull equally in
+all directions. The net force on an interior molecule
+is zero.
+
+At the surface, the situation is different. A surface
+molecule has neighbours below and to its sides, but
+very few neighbours above (only air molecules, which
+are much farther apart). The cohesive forces pulling
+downward and sideways are not balanced by forces from
+above. The surface molecule experiences a net
+\textbf{inward} force.
+
+\begin{diagbox}[Interior vs Surface Molecule: Intermolecular Forces]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Liquid region
+  \fill[codexblue!15] (0,0) rectangle (8,4);
+  % Air region
+  \fill[cyan!5] (0,4) rectangle (8,6);
+  % Surface line
+  \draw[codexblue, very thick] (0,4) -- (8,4)
+    node[right]{Surface};
+  % Air label
+  \node[gray, font=\itshape] at (3.3,5.2) {Air (few molecules, weak forces)};
+  % Liquid label
+  \node[codexblue, font=\itshape] at (5.5,0.5) {Liquid interior};
+
+  % ---- INTERIOR MOLECULE ----
+  \fill[codexred] (2.5,2.0) circle (8pt)
+    node[below=13pt, font=\bfseries\small, black]{Interior molecule};
+
+  % Force arrows in all directions (equal)
+  \foreach \angle in {0,45,90,135,180,225,270,315} {
+    \draw[->, thick, codexred!70]
+      ({2.5 + 0.15*cos(\angle)}, {2.0 + 0.15*sin(\angle)})
+      -- ({2.5 + 0.7*cos(\angle)}, {2.0 + 0.7*sin(\angle)});
+  }
+  % Net force = zero
+  \node[codexgreen, font=\small] at (2.5,2.0)
+    {};
+  \draw[codexgreen, thick] (2.5,0.9)
+    node[right, font=\tiny]{Net force $= 0$};
+
+  % ---- SURFACE MOLECULE ----
+  \fill[codexgold] (5.5,4.0) circle (8pt)
+    node[above=10pt, font=\bfseries\small, black]{Surface molecule};
+
+  % Force arrows only downward and sideways (no upward)
+  \foreach \angle in {0,180,225,270,315} {
+    \draw[->, thick, codexgold!80]
+      ({5.5 + 0.15*cos(\angle)}, {4.0 + 0.15*sin(\angle)})
+      -- ({5.5 + 0.7*cos(\angle)}, {4.0 + 0.7*sin(\angle)});
+  }
+  % Very weak upward forces from air
+  \foreach \angle in {45,90,135} {
+    \draw[->, thin, gray, dashed]
+      ({5.5 + 0.15*cos(\angle)}, {4.0 + 0.15*sin(\angle)})
+      -- ({5.5 + 0.35*cos(\angle)}, {4.0 + 0.35*sin(\angle)});
+  }
+  \node[gray, font=\tiny, align=center] at (7.1,5.2) {Weak air\\forces};
+
+  % Net inward force arrow
+  \draw[->, very thick, codexred, line width=2pt]
+    (5.5,3.9) -- (5.5,3.0)
+    node[right]{Net inward force};
+
+  % Consequence annotation
+  \node[align=center, font=\small] at (4.0,-0.9)
+    {Surface molecules are pulled inward\\
+    $\implies$ Surface tends to contract\\
+    $\implies$ Acts like a stretched elastic membrane};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+This net inward force has two consequences. First,
+molecules at the surface have higher potential energy
+than those inside (work must be done to bring a
+molecule from inside to the surface). Second, the
+surface tends to \textit{contract} --- to minimise
+the number of molecules at the surface, and therefore
+minimise the total surface area. This tendency to
+contract is what we experience as \textbf{surface
+tension}.
+
+% ============================================================
+\section{Defining Surface Tension}
+% ============================================================
+
+\begin{definitionbox}[Surface Tension]
+\textbf{Surface tension} $\gamma$ (also written $T$)
+is the force per unit length acting along the surface
+of a liquid, perpendicular to any imaginary line
+drawn on the surface:
+\[
+  \gamma = \frac{F}{L}
+\]
+where $F$ is the force acting along a length $L$ of
+the surface. SI unit: N\,m$^{-1}$.
+
+Equivalently, surface tension is the energy per unit
+area of the surface:
+\[
+  \gamma = \frac{W}{A}\ \text{(J\,m}^{-2}\text{)}
+\]
+Both definitions give the same numerical value and
+are physically equivalent.
+\end{definitionbox}
+
+\begin{table}[H]
+\centering
+\caption{Surface Tension of Common Liquids at 20°C}
+\label{tab:surface_tension}
+\begin{tabular}{ll}
+\toprule
+\textbf{Liquid} & \textbf{Surface Tension (N\,m$^{-1}$)}\\
+\midrule
+Mercury & 0.480\\
+Water & 0.073\\
+Glycerol & 0.063\\
+Olive oil & 0.033\\
+Soapy water & 0.025--0.040\\
+Ethanol & 0.022\\
+Acetone & 0.024\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{keybox}[Factors Affecting Surface Tension]
+\begin{itemize}[noitemsep]
+  \item \textbf{Temperature:} Surface tension
+  \textit{decreases} as temperature increases
+  (molecules have more energy, cohesive forces
+  effectively weaker)
+  \item \textbf{Contamination:} Soap and detergents
+  dramatically \textit{reduce} surface tension (they
+  are surfactants --- surface-active agents)
+  \item \textbf{Type of liquid:} Depends on the
+  nature and strength of intermolecular forces
+\end{itemize}
+\end{keybox}
+
+\begin{examplebox}[12.1]
+\stepcounter{workedexample}
+A thin wire frame with a movable crossbar is used to
+measure surface tension. The crossbar has length
+$4.0\ \text{cm}$. A force of $5.84\times10^{-3}\ \text{N}$
+is required to slowly pull the crossbar away from
+the liquid film.\\
+(a) Explain why the factor of 2 appears in the
+calculation.\\
+(b) Calculate the surface tension.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} A liquid film has \textit{two} surfaces
+--- a front face and a back face. The force must
+stretch both surfaces simultaneously, so the
+effective length resisting the force is $2L$.
+
+\textbf{(b)}
+\[
+  \gamma = \frac{F}{2L}
+  = \frac{5.84\times10^{-3}}{2 \times 0.040}
+  = \frac{5.84\times10^{-3}}{0.080}
+  = 0.073\ \text{N\,m}^{-1}
+\]
+This is consistent with the surface tension of
+water at room temperature.
+\end{solutionbox}
+
+% ============================================================
+\section{Excess Pressure in Bubbles and Drops}
+% ============================================================
+
+Surface tension creates a pressure difference across
+any curved liquid surface --- the pressure inside is
+always greater than the pressure outside.
+
+\begin{processbox}[Excess Pressure Inside a Liquid Drop]
+Consider a spherical liquid drop of radius $r$.
+Surface tension acts along the equator trying to
+contract the sphere. If we imagine cutting the drop
+in half, the surface tension force pulls the two
+halves together along the circumference $2\pi r$:
+\[
+  F_{surface} = \gamma \times 2\pi r
+\]
+The excess pressure $\Delta P$ inside acts over the
+circular cross-section:
+\[
+  F_{pressure} = \Delta P \times \pi r^2
+\]
+At equilibrium: $\Delta P \times \pi r^2
+= \gamma \times 2\pi r$
+\[
+  \boxed{\Delta P = \frac{2\gamma}{r}}
+  \quad \text{(liquid drop --- one surface)}
+\]
+\end{processbox}
+
+\begin{processbox}[Excess Pressure Inside a Soap Bubble]
+A soap bubble has \textbf{two} surfaces (inner and
+outer). Both contribute to the contracting force:
+\[
+  F_{surface} = 2 \times \gamma \times 2\pi r
+  = 4\pi r \gamma
+\]
+\[
+  \Delta P \times \pi r^2 = 4\pi r \gamma
+\]
+\[
+  \boxed{\Delta P = \frac{4\gamma}{r}}
+  \quad \text{(soap bubble --- two surfaces)}
+\]
+\end{processbox}
+
+\begin{diagbox}[Excess Pressure: Drop vs Bubble]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % === LIQUID DROP ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries] at (2,4.8) {Liquid Drop};
+    % Drop
+    \fill[codexblue!40] (2,2) circle (1.8cm);
+    \draw[very thick, codexblue] (2,2) circle (1.8cm);
+    % One surface label
+    \node[codexblue, font=\small] at (2.0,4.3)
+      {One surface};
+    \draw[->, codexblue] (3.3,3.3) -- (2.8,2.8);
+    % Radius
+    \draw[<->, codexred] (2,2) -- (3.9,2)
+      node[midway, above]{$r$};
+    % Pressure arrows (inward surface tension)
+    \foreach \angle in {0,60,120,180,240,300} {
+      \draw[->, thick, codexgold]
+        ({2+2.0*cos(\angle)},{2+2.0*sin(\angle)})
+        -- ({2+1.5*cos(\angle)},{2+1.5*sin(\angle)});
+    }
+    % Excess pressure label
+\node[font=\small\bfseries, codexblue] at (2,-0.4)
+      {$\Delta P = \dfrac{2\gamma}{r}$};
+    % Higher pressure inside
+    \node[font=\tiny, align=center] at (2,-1.5)
+      {$P_{inside} > P_{outside}$\\
+      by $\dfrac{2\gamma}{r}$};
+  \end{scope}
+
+  % === SOAP BUBBLE ===
+  \begin{scope}[shift={(6,0)}]
+    \node[font=\bfseries] at (2,4.8) {Soap Bubble};
+    % Outer surface
+    \draw[very thick, codexblue] (2,2) circle (2.0cm);
+    % Inner surface
+    \draw[very thick, codexblue!60] (2,2) circle (1.6cm);
+    % Film between surfaces
+    \fill[codexblue!20] (2,2) circle (2.0cm);
+    \fill[white] (2,2) circle (1.6cm);
+    % Labels
+    \node[codexblue, font=\tiny] at (3.5,3.6)
+      {Outer surface};
+    \draw[->, codexblue, thin] (3.3,3.4)
+      -- (2.9,2.9);
+    \node[codexblue!70, font=\tiny] at (3.4,2.8)
+      {Inner surface};
+    \draw[->, codexblue!70, thin] (3.2,2.7)
+      -- (2.7,2.4);
+    % Two surfaces annotation
+    \node[codexblue, font=\small] at (2,4.3)
+      {Two surfaces};
+    % Air inside label
+    \node[font=\tiny] at (2,2) {Air};
+    % Radius
+    \draw[<->, codexred] (2,2) -- (4.0,2)
+      node[midway, above]{$r$};
+    % Excess pressure
+    \node[font=\small\bfseries, codexblue] at (2,-0.5)
+      {$\Delta P = \dfrac{4\gamma}{r}$};
+    \node[font=\tiny, align=center] at (2,-1.5)
+      {Twice the excess pressure\\
+      of a liquid drop};
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[12.2]
+\stepcounter{workedexample}
+A soap bubble has radius $3.0\ \text{cm}$.
+The surface tension of the soap solution is
+$0.030\ \text{N\,m}^{-1}$.\\
+(a) Calculate the excess pressure inside the bubble.\\
+(b) What is the total pressure inside the bubble if
+atmospheric pressure is $1.013\times10^5\ \text{Pa}$?\\
+(c) Two soap bubbles of radii $r_1 = 2.0\ \text{cm}$
+and $r_2 = 4.0\ \text{cm}$ are joined together.
+Which direction does air flow when the junction is
+opened? Explain.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Excess pressure (soap bubble, two surfaces):
+\[
+  \Delta P = \frac{4\gamma}{r}
+  = \frac{4 \times 0.030}{0.030}
+  = \frac{0.120}{0.030} = 4.0\ \text{Pa}
+\]
+
+\textbf{(b)} Total pressure:
+\[
+  P_{total} = P_{atm} + \Delta P
+  = 1.013\times10^5 + 4.0
+  \approx 1.013\times10^5\ \text{Pa}
+\]
+The excess pressure is tiny compared to atmospheric
+pressure --- which is why blowing a soap bubble
+requires very little extra effort.
+
+\textbf{(c)} Excess pressure in small bubble:
+$\Delta P_1 = 4\gamma/r_1 = 4(0.030)/0.020
+= 6.0\ \text{Pa}$
+
+Excess pressure in large bubble:
+$\Delta P_2 = 4\gamma/r_2 = 4(0.030)/0.040
+= 3.0\ \text{Pa}$
+
+The small bubble has higher internal pressure.
+When joined, air flows \textbf{from the small bubble
+into the large bubble}. The small bubble shrinks and
+the large one grows. This is counterintuitive ---
+one might expect the large bubble to push into the
+small one. The physics says otherwise: smaller radius
+$\implies$ higher pressure $\implies$ air flows outward.
+\end{solutionbox}
+
+% ============================================================
+\section{Capillarity}
+% ============================================================
+
+\begin{definitionbox}[Capillarity]
+\textbf{Capillarity} (or capillary action) is the
+spontaneous rise or fall of a liquid in a narrow tube
+(capillary tube) due to the combined effects of
+surface tension (cohesion within the liquid) and
+adhesion between the liquid and the tube wall.
+\end{definitionbox}
+
+Whether a liquid rises or falls in a capillary tube
+depends on whether adhesion or cohesion dominates:
+
+\begin{itemize}
+  \item \textbf{Water in glass:} Adhesion of water
+  to glass $>$ cohesion of water to water. Water
+  \textit{wets} glass. The meniscus is \textit{concave}.
+  Water \textbf{rises} in the tube.
+
+  \item \textbf{Mercury in glass:} Cohesion of
+  mercury to mercury $>$ adhesion of mercury to glass.
+  Mercury does \textit{not} wet glass. The meniscus
+  is \textit{convex}. Mercury \textbf{falls} in the tube.
+\end{itemize}
+
+\begin{diagbox}[Capillary Rise and Fall: Water vs Mercury]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+  % === WATER IN GLASS (rises) ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries, align=center] at (1.5,7.0)
+      {Water in Glass\\(rises)};
+    % Outer container
+    \fill[codexblue!10] (0,0) rectangle (3.0,4.5);
+    \draw[thick] (0,0) rectangle (3.0,4.5);
+    % Bulk water level
+    \draw[codexblue, thick] (0,2.0) -- (0.8,2.0);
+    \draw[codexblue, thick] (2.2,2.0) -- (3.0,2.0);
+    \fill[codexblue!25] (0,0) rectangle (3.0,2.0);
+    % Capillary tube
+    \draw[thick] (0.9,0) -- (0.9,5.5);
+    \draw[thick] (2.1,0) -- (2.1,5.5);
+    % Water inside capillary (risen)
+    \fill[codexblue!40] (0.9,0) rectangle (2.1,3.8);
+    % Concave meniscus at top
+    \draw[codexblue, very thick]
+      (0.9,3.8) .. controls (1.1,3.4) and (1.9,3.4) ..
+      (2.1,3.8);
+    \fill[codexblue!40]
+      (0.9,3.8) .. controls (1.1,3.4) and (1.9,3.4) ..
+      (2.1,3.8) -- (2.1,3.8) -- (0.9,3.8);
+    % Height h
+    \draw[<->, codexred, thick]
+      (2.3,2.0) -- (2.3,3.6);
+    \node[right, codexred] at (2.4,2.8) {$h$};
+    % Contact angle
+    \node[font=\tiny, codexblue] at (1.5,4.2)
+      {Concave meniscus};
+    \node[font=\tiny, codexblue] at (1.5,4.6)
+      {(adhesion $>$ cohesion)};
+    % Arrows: adhesion pulls up (label moved to arrow midpoint,
+    % clear of the meniscus labels above it)
+    \draw[->, thick, codexgreen]
+      (0.9,3.5) -- (0.9,4.2)
+      node[midway, left, font=\tiny]{adhesion};
+    \draw[->, thick, codexgreen]
+      (2.1,3.5) -- (2.1,4.2);
+  \end{scope}
+  % === MERCURY IN GLASS (falls) ===
+  \begin{scope}[shift={(5.0,0)}]
+    \node[font=\bfseries, align=center] at (1.5,7.0)
+      {Mercury in Glass\\(falls)};
+    % Outer container
+    \fill[gray!15] (0,0) rectangle (3.0,4.5);
+    \draw[thick] (0,0) rectangle (3.0,4.5);
+    % Bulk mercury level
+    \draw[gray!70, thick] (0,2.5) -- (0.8,2.5);
+    \draw[gray!70, thick] (2.2,2.5) -- (3.0,2.5);
+    \fill[gray!50] (0,0) rectangle (3.0,2.5);
+    % Capillary tube
+    \draw[thick] (0.9,0) -- (0.9,5.5);
+    \draw[thick] (2.1,0) -- (2.1,5.5);
+    % Mercury inside capillary (depressed)
+    \fill[gray!60] (0.9,0) rectangle (2.1,1.8);
+    % Convex meniscus at top (bulges upward)
+    \draw[gray!80, very thick]
+      (0.9,1.8) .. controls (1.1,2.3) and (1.9,2.3) ..
+      (2.1,1.8);
+    \fill[gray!60]
+      (0.9,1.8) .. controls (1.1,2.3) and (1.9,2.3) ..
+      (2.1,1.8) -- (2.1,1.8) -- (0.9,1.8);
+    % Depression h
+    \draw[<->, codexred, thick]
+      (2.3,1.8) -- (2.3,2.5);
+    \node[right, codexred] at (2.4,2.15)
+      {\shortstack{$h$\\(depressed)}};
+    % Contact angle label (darkened for legibility against the gray fill)
+    \node[font=\tiny, black!65] at (1.5,2.7)
+      {Convex meniscus};
+    \node[font=\tiny, black!65] at (1.5,3.1)
+      {(cohesion $>$ adhesion)};
+    % Arrows: cohesion pulls down
+    \draw[->, thick, codexred]
+      (1.5,1.8) -- (1.5,1.1)
+      node[right, font=\tiny, align=left]{cohesion\\pulls down};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{processbox}[Deriving the Capillary Rise Formula]
+For a liquid of surface tension $\gamma$, density
+$\rho$, in a tube of radius $r$, with contact angle
+$\theta$:
+
+The surface tension force acting upward around the
+contact line:
+\[
+  F_{up} = \gamma \cos\theta \times 2\pi r
+\]
+
+Weight of liquid column raised to height $h$:
+\[
+  W = \rho g h \pi r^2
+\]
+
+At equilibrium ($F_{up} = W$):
+\[
+  \gamma \cos\theta \times 2\pi r = \rho g h \pi r^2
+\]
+\[
+  \boxed{h = \frac{2\gamma\cos\theta}{\rho g r}}
+\]
+For water on glass, $\theta \approx 0°$,
+so $\cos\theta \approx 1$:
+\[
+  h \approx \frac{2\gamma}{\rho g r}
+\]
+\textbf{Narrower tube $\implies$ greater rise.}
+\end{processbox}
+
+\begin{diagbox}[Capillary Rise Formula: Narrower Tube Rises Higher]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % Container
+  \fill[codexblue!10] (0,0) rectangle (9,2);
+  \draw[thick] (0,0) rectangle (9,2);
+  % Bulk water level
+  \draw[codexblue, thick] (0,2) -- (9,2);
+  \fill[codexblue!20] (0,0) rectangle (9,2);
+
+  % Tube 1 (widest, r = large, lowest rise)
+  \begin{scope}[shift={(1,0)}]
+    \draw[thick] (0,0) -- (0,6); % left wall
+    \draw[thick] (1.6,0) -- (1.6,6); % right wall
+    \fill[codexblue!40] (0,0) rectangle (1.6,2.8);
+    \draw[codexblue, very thick]
+      (0,2.8) .. controls (0.25,2.4) and (1.35,2.4) ..
+      (1.6,2.8);
+    \draw[<->, codexred] (1.8,2.0) -- (1.8,2.7);
+    \node[right, codexred, font=\tiny] at (1.8,2.35)
+      {\shortstack{$h_1$}};
+    \node[font=\tiny, align=center] at (0.8,5.5)
+      {Wide\\$r_1$};
+  \end{scope}
+
+  % Tube 2 (medium)
+  \begin{scope}[shift={(4,0)}]
+    \draw[thick] (0,0) -- (0,6);
+    \draw[thick] (1.0,0) -- (1.0,6);
+    \fill[codexblue!40] (0,0) rectangle (1.0,3.5);
+    \draw[codexblue, very thick]
+      (0,3.5) .. controls (0.15,3.1) and (0.85,3.1) ..
+      (1.0,3.5);
+    \draw[<->, codexred] (1.2,2.0) -- (1.2,3.4);
+    \node[right, codexred, font=\tiny] at (1.3,2.7)
+      {$h_2$};
+    \node[font=\tiny, align=center] at (0.5,5.5)
+      {Medium\\$r_2$};
+  \end{scope}
+
+  % Tube 3 (narrowest, highest rise)
+  \begin{scope}[shift={(6.5,0)}]
+    \draw[thick] (0,0) -- (0,6);
+    \draw[thick] (0.5,0) -- (0.5,6);
+    \fill[codexblue!40] (0,0) rectangle (0.5,4.8);
+    \draw[codexblue, very thick]
+      (0,4.8) .. controls (0.06,4.4) and (0.44,4.4) ..
+      (0.5,4.8);
+    \draw[<->, codexred] (0.7,2.0) -- (0.7,4.7);
+    \node[right, codexred, font=\tiny] at (0.78,3.35)
+      {\shortstack{$h_3$}};
+    \node[font=\tiny, align=center] at (0.25,5.5)
+      {Narrow\\$r_3$};
+  \end{scope}
+
+  % Formula
+  \node[codexblue, font=\small, align=center]
+    at (4.5,-0.6)
+    {$h = \dfrac{2\gamma\cos\theta}{\rho g r}$
+    \quad $h \propto \dfrac{1}{r}$};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[12.3]
+\stepcounter{workedexample}
+Water ($\gamma = 0.073\ \text{N\,m}^{-1}$,
+$\rho = 1000\ \text{kg\,m}^{-3}$) rises in a glass
+capillary tube of internal radius $0.30\ \text{mm}$.
+The contact angle is $0°$.
+($g = 10\ \text{m\,s}^{-2}$)\\
+(a) Calculate the height of the water column.\\
+(b) What radius tube would cause the water to rise
+$5.0\ \text{cm}$?\\
+(c) Explain why water rises in the wick of a
+kerosene lantern.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Height of rise:
+\[
+  h = \frac{2\gamma\cos\theta}{\rho g r}
+  = \frac{2 \times 0.073 \times 1}{1000 \times 10
+    \times 0.30\times10^{-3}}
+  = \frac{0.146}{3.0}
+  = 0.0487\ \text{m} \approx 4.9\ \text{cm}
+\]
+
+\textbf{(b)} Required radius:
+\[
+  r = \frac{2\gamma}{\rho g h}
+  = \frac{2 \times 0.073}{1000 \times 10 \times 0.050}
+  = \frac{0.146}{500}
+  = 2.92\times10^{-4}\ \text{m}
+  \approx 0.29\ \text{mm}
+\]
+
+\textbf{(c)} A wick consists of tightly-packed fibres
+with very narrow spaces (capillaries) between them.
+These narrow capillaries pull kerosene upward by
+capillary action. The narrower the gaps between
+fibres, the higher the kerosene can be drawn. This
+capillary-fed fuel then burns at the top of the wick.
+The same principle operates in soil --- water is
+drawn from deeper, wetter layers toward the surface
+through narrow soil pores.
+\end{solutionbox}
+
+% ============================================================
+\section{Viscosity}
+% ============================================================
+
+\begin{definitionbox}[Viscosity]
+\textbf{Viscosity} is the property of a fluid that
+resists the relative motion between adjacent layers
+of the fluid. It is the fluid's internal friction.
+
+A highly viscous fluid (like honey or palm oil) flows
+slowly and resists deformation strongly. A fluid of
+low viscosity (like water or air) flows easily.
+
+The coefficient of viscosity $\eta$ (eta) is defined
+through Newton's law of viscosity:
+\[
+  F = \eta A \frac{dv}{dx}
+\]
+where $F$ is the tangential force between fluid layers,
+$A$ is the area of contact, and $dv/dx$ is the
+velocity gradient (rate of change of velocity with
+distance perpendicular to flow).
+
+SI unit of $\eta$: pascal-second (Pa\,s) or
+N\,s\,m$^{-2}$.
+\end{definitionbox}
+
+\begin{diagbox}[Laminar Flow: Velocity Profile in a Viscous Fluid]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Pipe walls
+  \fill[gray!40] (-0.2,-0.3) rectangle (10,0);
+  \fill[gray!40] (-0.2,3.0) rectangle (10,3.4);
+  \draw[thick] (-0.2,0) -- (10,0);
+  \draw[thick] (-0.2,3.0) -- (10,3.0);
+
+  % Fluid layers (laminar)
+  \fill[codexblue!10] (-0.2,0) rectangle (10,3.0);
+
+  % Velocity arrows (parabolic profile)
+  % Wall: v = 0; centre: v = max
+  \foreach \y/\vlen in {0.15/0.2, 0.5/0.8, 1.0/1.6,
+    1.5/2.0, 2.0/1.6, 2.5/0.8, 2.85/0.2} {
+    \draw[->, thick, codexblue]
+      (2,\y) -- ({2+\vlen},\y);
+  }
+
+  % Layer labels
+  \node[black, font=\tiny] at (0.5,0.05) [below] {Wall ($v=0$)};
+  \node[black, font=\tiny] at (0.5,2.95) [above] {Wall ($v=0$)};
+  \node[codexblue, font=\tiny] at (4.8,1.5) {Centre ($v_{max}$)};
+
+  % Velocity profile curve
+  \draw[codexred, very thick, dashed]
+    (2,0) .. controls (2.2,1.5) .. (4,1.5)
+    .. controls (2.2,1.5) .. (2,3.0);
+
+  % Flow direction
+  \draw[->, very thick, codexgold]
+    (7.1,1.5) -- (8.5,1.5)
+    node[right]{Flow};
+
+  % Shear stress annotation
+  \draw[<->, codexred, dashed]
+    (5.8,0.5) -- (5.8,2.5);
+  \node[right, codexred, font=\tiny, align=left] at (5.9,1.5)
+    {velocity\\gradient\\$dv/dx$};
+
+  % Labels
+  \node[font=\small, align=center] at (4.5,-0.8)
+    {Laminar (smooth) flow: layers slide past each other\\
+    Velocity is zero at walls, maximum at centre};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{table}[H]
+\centering
+\caption{Viscosity of Common Fluids at 20°C}
+\label{tab:viscosity}
+\begin{tabular}{ll}
+\toprule
+\textbf{Fluid} & \textbf{Viscosity (Pa\,s)}\\
+\midrule
+Air & $1.8\times10^{-5}$\\
+Water & $1.0\times10^{-3}$\\
+Palm oil & $\approx 0.04$--$0.08$\\
+Glycerol & $1.5$\\
+Honey & $2$--$10$\\
+Tar (at 20°C) & $>10^5$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{keybox}[Temperature and Viscosity]
+\begin{itemize}[noitemsep]
+  \item \textbf{Liquids:} Viscosity \textit{decreases}
+  with increasing temperature (molecules have more
+  energy to overcome intermolecular attractions and
+  flow past each other more easily).
+  \item \textbf{Gases:} Viscosity \textit{increases}
+  with temperature (more molecular collisions between
+  layers as temperature rises).
+\end{itemize}
+This difference is physically important: engine oil
+must maintain adequate viscosity at high engine
+temperatures; thin oil at high temperature fails to
+lubricate correctly.
+\end{keybox}
+
+% ============================================================
+\section{Stokes' Law and Terminal Velocity}
+% ============================================================
+
+When a sphere moves through a viscous fluid, the fluid
+exerts a drag force on it. For slow speeds (laminar
+flow), this drag force was calculated by George Stokes
+in 1851.
+
+\begin{lawbox}[Stokes' Law]
+The viscous drag force $F_d$ on a sphere of radius
+$r$ moving at velocity $v$ through a fluid of
+viscosity $\eta$:
+\[
+  F_d = 6\pi\eta r v
+\]
+This assumes \textbf{laminar flow} (smooth, layered)
+at low speeds. At high speeds, flow becomes turbulent
+and Stokes' law no longer applies.
+\end{lawbox}
+
+\begin{processbox}[Terminal Velocity in a Viscous Fluid]
+A sphere of radius $r$, density $\rho_s$, falling
+through a fluid of density $\rho_f$ and viscosity $\eta$
+experiences three forces:
+
+\begin{itemize}[noitemsep]
+  \item Weight (downward):
+  $W = \frac{4}{3}\pi r^3 \rho_s g$
+  \item Upthrust (upward):
+  $U = \frac{4}{3}\pi r^3 \rho_f g$
+  \item Stokes' drag (upward):
+  $F_d = 6\pi\eta r v$
+\end{itemize}
+
+At terminal velocity $v_T$, net force $= 0$:
+\[
+  W = U + F_d
+\]
+\[
+  \frac{4}{3}\pi r^3 \rho_s g
+  = \frac{4}{3}\pi r^3 \rho_f g + 6\pi\eta r v_T
+\]
+\[
+  6\pi\eta r v_T
+  = \frac{4}{3}\pi r^3 g(\rho_s - \rho_f)
+\]
+\[
+  \boxed{v_T = \frac{2r^2(\rho_s - \rho_f)g}{9\eta}}
+\]
+\end{processbox}
+
+\begin{diagbox}[Forces on a Sphere Falling Through Viscous Fluid]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Fluid background
+  \fill[codexblue!10] (-1.0,0) rectangle (6,8);
+  \draw[thick] (-1.0,0) rectangle (6,8);
+  \node[codexblue, font=\itshape] at (2.5,7.5)
+    {Viscous fluid ($\eta$, $\rho_f$)};
+
+  % Sphere
+  \fill[gray!60] (2.5,4.5) circle (0.7cm);
+  \draw[thick] (2.5,4.5) circle (0.7cm);
+  \node[white, font=\bfseries\small] at (2.5,4.5) {$m$};
+
+  % Weight arrow (down)
+  \draw[->, very thick, codexred, line width=2.5pt]
+    (2.5,3.8) -- (2.5,2.5)
+    node[right]{$W = \dfrac{4}{3}\pi r^3 \rho_s g$};
+
+  % Upthrust arrow (up)
+  \draw[->, very thick, codexgreen, line width=2pt]
+    (2.5,5.2) -- (2.5,6.2)
+    node[right]{$U = \dfrac{4}{3}\pi r^3 \rho_f g$};
+
+  % Stokes drag arrow (up)
+  \draw[->, very thick, codexblue, line width=2pt]
+    (1.8,5.2) -- (1.8,6.8)
+    node[left]{$F_d = 6\pi\eta r v$};
+
+  % Velocity arrow (down, sphere moving)
+  \draw[->, thick, codexgold, dashed]
+    (3.2,4.5) -- (3.2,3.3)
+    node[right, font=\small]{$v$ (velocity)};
+
+  % At terminal velocity annotation
+  \draw[thick, black, dashed]
+    (0.2,1.5) -- (4.8,1.5);
+  \node[font=\small, align=center] at (2.5,0.8)
+    {At terminal velocity:\\
+    $W = U + F_d$\quad (net force = 0)};
+
+  % Terminal velocity formula
+  \node[codexblue, font=\small, align=center]
+    at (2.5,-0.8)
+    {$v_T = \dfrac{2r^2(\rho_s-\rho_f)g}{9\eta}$};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[12.4]
+\stepcounter{workedexample}
+A steel ball bearing of radius $2.0\ \text{mm}$ and
+density $7800\ \text{kg\,m}^{-3}$ falls through a
+cylinder of glycerol ($\eta = 1.5\ \text{Pa\,s}$,
+$\rho_f = 1260\ \text{kg\,m}^{-3}$).\\
+(a) Calculate the terminal velocity.\\
+(b) Calculate the weight, upthrust and Stokes' drag
+at terminal velocity.\\
+(c) Verify that the three forces balance.
+($g = 10\ \text{m\,s}^{-2}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Terminal velocity:
+\[
+  v_T = \frac{2r^2(\rho_s-\rho_f)g}{9\eta}
+  = \frac{2 \times (2.0\times10^{-3})^2
+    \times (7800-1260) \times 10}
+    {9 \times 1.5}
+\]
+\[
+  = \frac{2 \times 4\times10^{-6} \times 6540 \times 10}
+    {13.5}
+  = \frac{5.232\times10^{-1}}{13.5}
+  = 0.03876\ \text{m\,s}^{-1}
+  \approx 3.9\ \text{cm\,s}^{-1}
+\]
+
+\textbf{(b)} Volume of sphere:
+$V = \frac{4}{3}\pi r^3
+= \frac{4}{3}\pi(2\times10^{-3})^3
+= 3.351\times10^{-8}\ \text{m}^3$
+
+Weight:
+$W = \rho_s V g = 7800 \times 3.351\times10^{-8} \times 10
+= 2.614\times10^{-3}\ \text{N}$
+
+Upthrust:
+$U = \rho_f V g = 1260 \times 3.351\times10^{-8} \times 10
+= 4.222\times10^{-4}\ \text{N}$
+
+Stokes' drag:
+$F_d = 6\pi\eta r v_T
+= 6\pi \times 1.5 \times 2\times10^{-3} \times 0.03876
+= 2.192\times10^{-3}\ \text{N}$
+
+\textbf{(c)} Verification:
+$U + F_d = 4.222\times10^{-4} + 2.192\times10^{-3}
+= 2.614\times10^{-3}\ \text{N} = W$ ✓
+\end{solutionbox}
+
+% ============================================================
+\section{Laminar vs Turbulent Flow}
+% ============================================================
+
+\begin{definitionbox}[Laminar and Turbulent Flow]
+\textbf{Laminar flow:} Fluid moves in smooth,
+parallel layers (streamlines) with no mixing between
+layers. Velocity is steady at each point. Occurs at
+low speeds and in viscous fluids.
+
+\vspace{0.4cm}
+
+\textbf{Turbulent flow:} Fluid moves in irregular,
+chaotic eddies. Layers mix. Velocity fluctuates at
+each point. Occurs at high speeds and in less viscous
+fluids.
+
+The transition is predicted by the
+\textbf{Reynolds number}:
+\[
+  Re = \frac{\rho v d}{\eta}
+\]
+where $d$ is a characteristic length (e.g.\ pipe
+diameter). Laminar flow: $Re < 2000$. Turbulent:
+$Re > 4000$. Transition: $2000 < Re < 4000$.
+\end{definitionbox}
+
+\begin{diagbox}[Laminar vs Turbulent Flow]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % === LAMINAR FLOW ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries] at (3,5.5) {Laminar Flow};
+    % Pipe
+    \fill[gray!20] (0,-0.3) rectangle (6,0);
+    \fill[gray!20] (0,3.0) rectangle (6,3.3);
+    \draw[thick] (0,0) -- (6,0);
+    \draw[thick] (0,3.0) -- (6,3.0);
+    \fill[codexblue!10] (0,0) rectangle (6,3.0);
+
+    % Smooth streamlines
+    \foreach \y in {0.3,0.8,1.5,2.2,2.7} {
+      \draw[codexblue, thick]
+        (0.3,\y) -- (5.7,\y);
+    }
+    % Flow arrows
+    \foreach \y in {0.3,1.5,2.7} {
+      \draw[->, very thick, codexblue]
+        (2.5,\y) -- (3.5,\y);
+    }
+    \node[font=\small, codexblue, align=center]
+      at (3,4.5) {Smooth, parallel\\streamlines};
+  \end{scope}
+
+  % === TURBULENT FLOW ===
+  \begin{scope}[shift={(7,0)}]
+    \node[font=\bfseries] at (3,5.5) {Turbulent Flow};
+    % Pipe
+    \fill[gray!20] (0,-0.3) rectangle (6,0);
+    \fill[gray!20] (0,3.0) rectangle (6,3.3);
+    \draw[thick] (0,0) -- (6,0);
+    \draw[thick] (0,3.0) -- (6,3.0);
+    \fill[codexblue!10] (0,0) rectangle (6,3.0);
+
+    % Chaotic streamlines
+    \draw[codexblue, thick]
+      (0.3,1.5) .. controls (1,0.5) and (1.5,2.5)
+      .. (2.5,1.5) .. controls (3.5,0.5) and (4,2.5)
+      .. (5,1.5) -- (5.7,1.5);
+    \draw[codexblue, thick]
+      (0.3,0.8) .. controls (1,1.5) and (1.5,0.3)
+      .. (2.5,0.8) .. controls (3,1.5) and (4,0.3)
+      .. (5,1.0) -- (5.7,1.2);
+    \draw[codexblue, thick]
+      (0.3,2.2) .. controls (1,1.2) and (1.5,2.8)
+      .. (2.5,2.2) .. controls (3.5,1.5) and (4,2.7)
+      .. (5,2.0) -- (5.7,2.1);
+
+    % Eddy arrows
+    \draw[->, codexred, thick]
+      (2.5,1.5) circle (0.4);
+    \draw[->, codexred, thick]
+      (4.0,1.2) circle (0.35);
+
+    \node[font=\small, codexred, align=center]
+      at (3,4.5) {Chaotic eddies,\\mixing, energy loss};
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Surface tension origin:} Net inward cohesive
+force on surface molecules. Surface contracts to
+minimise area.
+
+\textbf{Surface tension:}
+$\gamma = F/L = W/A$ (N\,m$^{-1}$)
+
+\textbf{Excess pressure:}
+Liquid drop: $\Delta P = 2\gamma/r$
+(one surface)\\
+Soap bubble: $\Delta P = 4\gamma/r$
+(two surfaces)
+
+\textbf{Capillarity:} Water rises in narrow glass
+tubes (adhesion $>$ cohesion, concave meniscus).
+Mercury falls (cohesion $>$ adhesion, convex meniscus).
+
+\textbf{Capillary rise:}
+$h = 2\gamma\cos\theta/(\rho g r)$;
+narrower tube $\implies$ greater rise.
+
+\textbf{Viscosity:} Internal friction of a fluid.
+Liquids: $\eta$ decreases with temperature.
+Gases: $\eta$ increases with temperature.
+
+\textbf{Stokes' law:} $F_d = 6\pi\eta rv$
+(sphere in laminar flow)
+
+\textbf{Terminal velocity:}
+$v_T = 2r^2(\rho_s-\rho_f)g/(9\eta)$
+
+\textbf{Laminar flow:} smooth, parallel layers,
+$Re < 2000$.
+\textbf{Turbulent flow:} chaotic, mixing,
+$Re > 4000$.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[12]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} Surface tension arises because molecules
+at the liquid surface:
+
+\mcoption{A}{Have more kinetic energy than interior
+molecules}
+\mcoption{B}{Experience a net inward cohesive force}
+\mcoption{C}{Are repelled by air molecules above
+them}
+\mcoption{D}{Have lower density than interior
+molecules}
+\ansref{Ch12-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} The excess pressure inside a soap bubble
+of radius $r$ and surface tension $\gamma$ is:
+
+\mcoption{A}{$\gamma/r$}
+\mcoption{B}{$2\gamma/r$}
+\mcoption{C}{$4\gamma/r$}
+\mcoption{D}{$8\gamma/r$}
+\ansref{Ch12-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} Water rises in a capillary tube of radius
+$r$ to height $h$. In a tube of radius $r/3$, the
+height of rise would be:
+
+\mcoption{A}{$h/3$}
+\mcoption{B}{$h/9$}
+\mcoption{C}{$3h$}
+\mcoption{D}{$9h$}
+\ansref{Ch12-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} Mercury forms a convex meniscus in a
+glass tube because:
+
+\mcoption{A}{Mercury is denser than glass}
+\mcoption{B}{Mercury's cohesion exceeds its adhesion
+to glass}
+\mcoption{C}{Mercury is a liquid metal}
+\mcoption{D}{Glass repels mercury molecules}
+\ansref{Ch12-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} Adding soap to water:
+
+\mcoption{A}{Increases surface tension}
+\mcoption{B}{Has no effect on surface tension}
+\mcoption{C}{Reduces surface tension}
+\mcoption{D}{Reduces viscosity only}
+\ansref{Ch12-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} Stokes' law $F = 6\pi\eta rv$ applies
+when:
+
+\mcoption{A}{The flow around the sphere is turbulent}
+\mcoption{B}{The sphere is hollow}
+\mcoption{C}{The flow around the sphere is laminar}
+\mcoption{D}{The fluid is a gas only}
+\ansref{Ch12-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} A sphere reaches terminal velocity in
+a viscous fluid when:
+
+\mcoption{A}{Gravity equals upthrust}
+\mcoption{B}{Gravity equals Stokes' drag}
+\mcoption{C}{Gravity equals upthrust plus
+Stokes' drag}
+\mcoption{D}{Stokes' drag equals upthrust}
+\ansref{Ch12-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} The terminal velocity of a sphere is
+proportional to:
+
+\mcoption{A}{$r$}
+\mcoption{B}{$r^2$}
+\mcoption{C}{$r^3$}
+\mcoption{D}{$1/r$}
+\ansref{Ch12-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} The viscosity of a liquid generally:
+
+\mcoption{A}{Increases with temperature}
+\mcoption{B}{Decreases with temperature}
+\mcoption{C}{Is independent of temperature}
+\mcoption{D}{Increases then decreases with temperature}
+\ansref{Ch12-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} Two soap bubbles of radii $r$ and $3r$
+are connected by a tube. Air will flow:
+
+\mcoption{A}{From the larger bubble to the smaller}
+\mcoption{B}{From the smaller bubble to the larger}
+\mcoption{C}{In both directions equally}
+\mcoption{D}{No air flows; the system is already
+in equilibrium}
+\ansref{Ch12-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A thin wire loop of circumference
+$12\ \text{cm}$ is placed flat on a water surface.
+The force required to pull the loop vertically out
+of the water (breaking the surface film) is
+$1.75\times10^{-2}\ \text{N}$.\\[4pt]
+(a) Explain why the factor of 2 appears in the
+surface tension calculation for a wire loop pulled
+out of water (think about how many surfaces are
+created).\\
+(b) Calculate the surface tension of water.\\
+(c) What additional weight could be supported on the
+surface of water by a straight wire of length
+$5.0\ \text{cm}$? (Treat the wire as resting on the
+surface, supported by the film on both sides.)
+\hfill\ansref{Ch12-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A capillary tube of internal radius
+$0.20\ \text{mm}$ stands vertically in a liquid of
+density $800\ \text{kg\,m}^{-3}$ and surface tension
+$0.050\ \text{N\,m}^{-1}$. The contact angle between
+the liquid and glass is $30°$.
+($g = 10\ \text{m\,s}^{-2}$, $\cos 30° = 0.866$)\\[4pt]
+(a) Calculate the height to which the liquid rises.\\
+(b) If the tube is only $5.0\ \text{cm}$ tall, the
+liquid cannot rise to its natural height. Explain
+what happens instead, using the capillary formula
+to find the new contact angle.\\
+(c) If the tube radius is doubled to $0.40\ \text{mm}$,
+what is the new height of rise?\\
+(d) Explain the physical significance of capillarity
+for water transport in trees.
+\hfill\ansref{Ch12-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A glass sphere of radius $3.0\ \text{mm}$
+and density $2500\ \text{kg\,m}^{-3}$ falls through
+castor oil of viscosity $0.985\ \text{Pa\,s}$ and
+density $960\ \text{kg\,m}^{-3}$.
+($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+(a) Calculate the terminal velocity of the sphere.\\
+(b) Sketch a velocity-time graph from the moment the
+sphere is released to when it reaches terminal velocity.
+Label the key features.\\
+(c) At the instant of release ($v = 0$), calculate
+the initial acceleration.\\
+(d) If the sphere were twice the radius but the same
+density, how would the terminal velocity change?
+Show the calculation.
+\hfill\ansref{Ch12-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A soap bubble is blown to a radius of
+$4.0\ \text{cm}$. The surface tension of the soap
+solution is $0.040\ \text{N\,m}^{-1}$.
+Atmospheric pressure is $1.013\times10^5\ \text{Pa}$.\\[4pt]
+(a) Calculate the excess pressure inside the bubble.\\
+(b) Calculate the total pressure inside.\\
+(c) The bubble is blown further until its radius
+doubles to $8.0\ \text{cm}$. Calculate the work done
+in increasing the surface area. (Use $W = \gamma\Delta A$,
+remembering two surfaces.)\\
+(d) A second bubble of radius $2.0\ \text{cm}$ is
+connected to the first. Predict and calculate the
+final radius of the combined bubble, using conservation
+of air volume (assume the bubbles merge into one).
+\hfill\ansref{Ch12-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} An engineer uses a falling-sphere
+viscometer to measure the viscosity of an unknown oil.
+A steel ball bearing of radius $1.5\ \text{mm}$
+and density $7800\ \text{kg\,m}^{-3}$ is dropped into
+the oil (density $870\ \text{kg\,m}^{-3}$).
+The ball is observed to fall $20\ \text{cm}$ in
+$8.5\ \text{s}$ at constant speed.
+($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+(a) Calculate the terminal velocity of the ball.\\
+(b) Use Stokes' law to calculate the viscosity of
+the oil.\\
+(c) Calculate the Reynolds number using
+$Re = \rho_f v d/\eta$. Is Stokes' law valid in
+this case?\\
+(d) At what temperature do you expect the oil to
+be? (Refer to Table~\ref{tab:viscosity} and
+physical reasoning.)\\
+(e) If the experiment is repeated with a ball of
+twice the radius (keeping everything else the same),
+what is the new terminal velocity? What does this
+imply about using larger spheres in viscometry?
+\hfill\ansref{Ch12-B5}
+
+\end{exercisebox}

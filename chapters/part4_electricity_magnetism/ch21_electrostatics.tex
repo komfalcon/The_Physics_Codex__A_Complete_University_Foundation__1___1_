@@ -1,0 +1,1194 @@
+% ============================================================
+%  CHAPTER 21: ELECTROSTATICS
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part4/ch21_electrostatics.tex
+% ============================================================
+
+\chapter{Electrostatics}
+\label{ch:electrostatics}
+\minitoc
+\newpage
+
+\chapterquote{Electricity is really just organised
+lightning.}{George Carlin}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Describe the nature of electric charge and
+  the structure of matter that gives rise to it
+  \item State and apply Coulomb's Law
+  \item Define electric field and electric field
+  strength
+  \item Sketch electric field patterns for various
+  charge configurations
+  \item Define electric potential and potential
+  difference
+  \item Relate electric field strength to potential
+  gradient
+  \item Describe the behaviour of conductors and
+  insulators in electric fields
+  \item Explain charging by friction, contact,
+  and induction
+  \item Describe the gold-leaf electroscope and
+  its uses
+  \item Apply knowledge of electrostatics to
+  practical situations including lightning protection
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: What is Electric Charge?}
+% ============================================================
+
+Rub a plastic ruler vigorously on your hair, then hold
+it near small scraps of paper. The paper scraps leap
+toward the ruler and stick to it. Nothing is touching
+them. No wind is blowing. Yet they move. Something
+invisible is acting across the gap between the ruler
+and the paper.
+
+This invisible influence is the \textbf{electric force},
+and it arises from a property of matter called
+\textbf{electric charge}. Charge is as fundamental as
+mass. You cannot explain what charge \textit{is} in
+terms of something simpler --- it simply \textit{is},
+a fundamental property of certain subatomic particles.
+What we can do is describe how it behaves.
+
+Rubbing the ruler on your hair transfers electrons from
+your hair to the ruler. The ruler gains excess electrons
+and becomes negatively charged. Your hair loses electrons
+and becomes positively charged. The attraction between
+the charged ruler and the neutral paper is due to the
+charged ruler inducing a charge redistribution in the
+paper, pulling the opposite charges slightly closer ---
+and since opposite charges attract, the net force is
+attractive even though the paper was initially neutral.
+
+% ============================================================
+\section{Electric Charge}
+% ============================================================
+
+\begin{definitionbox}[Electric Charge]
+\textbf{Electric charge} $Q$ is a fundamental property
+of matter. It exists in two types: \textbf{positive}
+and \textbf{negative}.
+
+The SI unit of charge is the \textbf{coulomb} (C).
+
+The charge of one proton: $+e = +1.6\times10^{-19}\ \text{C}$\\
+The charge of one electron: $-e = -1.6\times10^{-19}\ \text{C}$\\
+Neutrons have zero charge.
+
+Charge is \textbf{quantised}: all observable charges
+are integer multiples of the elementary charge $e$:
+\[
+  Q = ne \quad (n = 0, \pm1, \pm2, \ldots)
+\]
+\end{definitionbox}
+
+\begin{lawbox}[Conservation of Electric Charge]
+The total electric charge in an isolated system is
+\textbf{conserved}. Charge cannot be created or
+destroyed, only transferred from one object to another.
+
+Like charges \textbf{repel}. Unlike charges
+\textbf{attract}.
+\end{lawbox}
+
+\begin{diagbox}[Attraction and Repulsion of Charges]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % === UNLIKE CHARGES ATTRACT ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries] at (2.5,3.5)
+      {Unlike charges: ATTRACT};
+
+    % Positive charge (left)
+    \fill[codexred] (0.8,1.5) circle (0.5cm);
+    \node[white, font=\bfseries] at (0.8,1.5) {$+$};
+
+    % Negative charge (right)
+    \fill[codexblue] (4.2,1.5) circle (0.5cm);
+    \node[white, font=\bfseries] at (4.2,1.5) {$-$};
+
+    % Force arrows pointing TOWARD each other
+    \draw[->, very thick, codexred, line width=2.5pt]
+      (1.3,1.5) -- (2.3,1.5);
+    \draw[->, very thick, codexblue, line width=2.5pt]
+      (3.7,1.5) -- (2.7,1.5);
+
+    % Field lines between charges
+    \foreach \y in {1.0,1.5,2.0} {
+      \draw[->, codexgold!60, dashed]
+        (1.4,\y) -- (3.6,\y);
+    }
+  \end{scope}
+
+  % === LIKE CHARGES REPEL ===
+  \begin{scope}[shift={(7,0)}]
+    \node[font=\bfseries] at (2.5,3.5)
+      {Like charges: REPEL};
+
+    % Two positive charges
+    \fill[codexred] (0.8,1.5) circle (0.5cm);
+    \node[white, font=\bfseries] at (0.8,1.5) {$+$};
+
+    \fill[codexred] (4.2,1.5) circle (0.5cm);
+    \node[white, font=\bfseries] at (4.2,1.5) {$+$};
+
+    % Force arrows pointing AWAY from each other
+    \draw[->, very thick, codexred, line width=2.5pt]
+      (1.3,1.5) -- (0.2,1.5);
+    \draw[->, very thick, codexred, line width=2.5pt]
+      (3.7,1.5) -- (4.8,1.5);
+
+    % Two negative charges
+    \fill[codexblue] (0.8,0.0) circle (0.5cm);
+    \node[white, font=\bfseries] at (0.8,0.0) {$-$};
+
+    \fill[codexblue] (4.2,0.0) circle (0.5cm);
+    \node[white, font=\bfseries] at (4.2,0.0) {$-$};
+
+    \draw[->, very thick, codexblue, line width=2.5pt]
+      (1.3,0.0) -- (0.2,0.0);
+    \draw[->, very thick, codexblue, line width=2.5pt]
+      (3.7,0.0) -- (4.8,0.0);
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Conductors and Insulators}
+% ============================================================
+
+\begin{defbox}[Conductors and Insulators]
+\textbf{Conductors} contain large numbers of free
+(mobile) electrons that can move throughout the
+material. When a charge is placed on a conductor, the
+free electrons redistribute until the electric field
+inside the conductor is zero. Examples: all metals,
+graphite, electrolyte solutions.
+
+\textbf{Insulators} (dielectrics) have electrons
+tightly bound to their atoms. Charge placed on an
+insulator stays where it is placed. Examples: plastic,
+rubber, glass, dry wood, air, ceramics.
+
+\textbf{Semiconductors} have conductivity between
+conductors and insulators, controllable by doping.
+Examples: silicon, germanium (Chapter 29).
+\end{defbox}
+
+\subsection{Methods of Charging}
+
+\begin{diagbox}[Three Methods of Charging]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % === FRICTION ===
+  \begin{scope}[shift={(0,5.5)}]
+    \node[font=\bfseries] at (3.5,2.0)
+      {1. Charging by Friction};
+    % Fur (left)
+    \fill[brown!30] (0,0) rectangle (2.5,1.2);
+    \draw[thick] (0,0) rectangle (2.5,1.2);
+    \node at (1.25,0.6) {Fur ($+$)};
+    \foreach \x in {0.3,0.7,1.1,1.5,1.9} {
+      \node[codexred, font=\bfseries] at (\x,1.0)
+        {$+$};
+    }
+    % Rod (right)
+    \fill[codexblue!20] (3.0,0) rectangle (5.5,1.2);
+    \draw[thick] (3.0,0) rectangle (5.5,1.2);
+    \node at (4.25,0.6) {Rod ($-$)};
+    \foreach \x in {3.3,3.7,4.1,4.5,4.9} {
+      \node[codexblue, font=\bfseries] at (\x,1.0)
+        {$-$};
+    }
+    % Arrows showing electron transfer
+    \draw[->, thick, codexblue]
+      (2.8,0.8) -- (3.2,0.8);
+    \node[below, font=\tiny] at (3.0,0.2)
+      {Electrons transfer from fur to rod\\
+      Fur becomes $+$ve, Rod becomes $-$ve};
+  \end{scope}
+
+  % === CONTACT ===
+  \begin{scope}[shift={(0,2.5)}]
+    \node[font=\bfseries] at (3.5,2.0)
+      {2. Charging by Contact};
+    % Charged sphere
+    \fill[codexred!40] (0.8,0.6) circle (0.7);
+    \draw[thick] (0.8,0.6) circle (0.7);
+    \foreach \angle in {0,45,90,135,180,225,270,315} {
+      \node[codexred, font=\tiny]
+        at ({0.8+0.5*cos(\angle)},{0.6+0.5*sin(\angle)})
+        {$+$};
+    }
+    \node[below] at (0.8,-0.2) {Charged ($+$)};
+
+    % Arrow
+    \draw[->, thick, codexred] (1.6,0.6) -- (2.5,0.6);
+    \node[above, font=\tiny] at (2.0,0.7) {touch};
+
+    % Neutral sphere
+    \fill[gray!20] (3.3,0.6) circle (0.7);
+    \draw[thick] (3.3,0.6) circle (0.7);
+    \node[below] at (3.3,-0.2) {Neutral};
+
+    % Arrow
+    \draw[->, thick, codexred] (4.4,0.6) -- (5.3,0.6);
+    \node[above, font=\tiny] at (4.8,0.7) {separate};
+
+    % Both charged
+    \fill[codexred!30] (5.8,0.6) circle (0.7);
+    \draw[thick] (5.8,0.6) circle (0.7);
+    \foreach \angle in {0,90,180,270} {
+      \node[codexred, font=\tiny]
+        at ({5.8+0.4*cos(\angle)},{0.6+0.4*sin(\angle)})
+        {$+$};
+    }
+    \node[below] at (5.8,-0.2) {Also $+$ve};
+  \end{scope}
+
+  % === INDUCTION ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries] at (3.5,2.0)
+      {3. Charging by Induction (no contact)};
+    % Charged rod nearby
+    \fill[codexred!30] (-0.5,0.3) rectangle (0.0,1.3);
+    \foreach \y in {0.5,0.8,1.1} {
+      \node[codexred, font=\tiny] at (-0.25,\y) {$+$};
+    }
+    \node[left, font=\tiny] at (-0.6,0.8) {Charged\\rod};
+
+    % Neutral conductor with induced charges
+    \fill[gray!20] (0.8,0) rectangle (4.2,1.6);
+    \draw[thick] (0.8,0) rectangle (4.2,1.6);
+    % Negative induced charges (near rod)
+    \foreach \y in {0.3,0.6,0.9,1.2} {
+      \node[codexblue, font=\bfseries] at (1.1,\y) {$-$};
+    }
+    % Positive induced charges (far end)
+    \foreach \y in {0.3,0.6,0.9,1.2} {
+      \node[codexred, font=\bfseries] at (3.9,\y) {$+$};
+    }
+    \node[below, font=\tiny] at (2.5,-0.2)
+      {Conductor: charge redistributes by induction};
+
+    % Earth the far end, remove earth, remove rod
+    \draw[->, thick, codexblue] (4.2,0.8) -- (5.0,0.8)
+      node[right, font=\tiny]{Earth\\(remove $+$)};
+    \fill[gray!20] (5.8,0) rectangle (7.5,1.6);
+    \draw[thick] (5.8,0) rectangle (7.5,1.6);
+    \foreach \y in {0.3,0.6,0.9,1.2} {
+      \node[codexblue, font=\bfseries] at (6.0,\y)
+        {$-$};
+    }
+    \node[below, font=\tiny] at (6.65,-0.2)
+      {Conductor now $-$ve\\(no contact with rod)};
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Coulomb's Law}
+% ============================================================
+
+\begin{historybox}[Charles-Augustin de Coulomb, 1785]
+Charles Coulomb (1736--1806) used a torsion balance
+(similar to the one later used by Cavendish to measure
+$G$) to measure the force between charged spheres with
+extraordinary precision. He established that the
+electrostatic force follows an inverse square law ---
+exactly parallel to Newton's gravitational law --- and
+that it depends on the product of the charges. His
+careful measurements in 1785 remain one of the most
+elegant experimental confirmations of a fundamental
+physical law.
+\end{historybox}
+
+\begin{lawbox}[Coulomb's Law]
+The electrostatic force between two point charges
+$Q_1$ and $Q_2$ separated by a distance $r$ in
+vacuum is:
+\[
+  F = \frac{kQ_1Q_2}{r^2}
+  = \frac{Q_1Q_2}{4\pi\varepsilon_0 r^2}
+\]
+where:
+\begin{itemize}[noitemsep]
+  \item $k = 8.99\times10^9\ \text{N\,m}^2\text{C}^{-2}$
+  is Coulomb's constant
+  \item $\varepsilon_0 = 8.85\times10^{-12}\ \text{C}^2\text{N}^{-1}\text{m}^{-2}$
+  is the permittivity of free space
+  \item $F > 0$: repulsive force (like charges)
+  \item $F < 0$: attractive force (unlike charges)
+\end{itemize}
+The force is along the line joining the two charges
+(central force).
+\end{lawbox}
+
+\begin{keybox}[Comparison: Coulomb's Law vs Newton's Gravity]
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Feature} & \textbf{Coulomb} & \textbf{Newton}\\
+\midrule
+Formula & $F = kQ_1Q_2/r^2$ & $F = Gm_1m_2/r^2$\\
+Distance dependence & $1/r^2$ & $1/r^2$\\
+Both attractive? & No (can repel) & Yes (always)\\
+Constant & $k = 8.99\times10^9$ &
+  $G = 6.67\times10^{-11}$\\
+Magnitude ratio & $F_E/F_G \approx 10^{39}$ (for electrons) & \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+The electrostatic force between two electrons is
+$\sim10^{39}$ times stronger than the gravitational
+force between them. Gravity is the dominant force
+on cosmic scales only because matter is electrically
+neutral in bulk.
+\end{keybox}
+
+\begin{examplebox}[21.1]
+\stepcounter{workedexample}
+Two point charges, $Q_1 = +3.0\ \mu\text{C}$ and
+$Q_2 = -5.0\ \mu\text{C}$, are placed $0.20\ \text{m}$
+apart.\\
+(a) Calculate the force between them.\\
+(b) Is the force attractive or repulsive?\\
+(c) How does the force change if the distance is
+tripled?\\
+($k = 9.0\times10^9\ \text{N\,m}^2\text{C}^{-2}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Force:
+\[
+  F = \frac{kQ_1Q_2}{r^2}
+  = \frac{9.0\times10^9 \times 3.0\times10^{-6}
+    \times 5.0\times10^{-6}}{(0.20)^2}
+  = \frac{9.0\times10^9 \times 1.5\times10^{-11}}
+    {0.04}
+\]
+\[
+  = \frac{0.135}{0.04} = 3.375\ \text{N}
+  \approx 3.4\ \text{N}
+\]
+
+\textbf{(b)} The charges are opposite ($+$ and $-$)
+so the force is \textbf{attractive}. The negative
+sign in the product $Q_1Q_2$ indicates attraction.
+
+\textbf{(c)} When $r$ is tripled ($r' = 3r$):
+\[
+  F' = \frac{kQ_1Q_2}{(3r)^2}
+  = \frac{F}{9} = \frac{3.4}{9} \approx 0.38\ \text{N}
+\]
+Tripling the distance reduces the force to
+$\frac{1}{9}$ of its original value (inverse square
+law).
+\end{solutionbox}
+
+% ============================================================
+\section{Electric Field}
+% ============================================================
+
+\begin{definitionbox}[Electric Field Strength]
+An \textbf{electric field} exists in the region
+surrounding a charged object. It is a field of force.
+
+The \textbf{electric field strength} $\vect{E}$ at a
+point is the force per unit positive charge placed
+at that point:
+\[
+  \vect{E} = \frac{\vect{F}}{q}
+  \implies F = qE
+\]
+SI unit: N\,C$^{-1}$ or V\,m$^{-1}$ (both equivalent).
+
+Direction of $\vect{E}$: same as the force on a
+\textit{positive} test charge.
+\end{definitionbox}
+
+\begin{lawbox}[Electric Field Due to a Point Charge]
+The electric field strength at distance $r$ from a
+point charge $Q$ in vacuum:
+\[
+  E = \frac{kQ}{r^2} = \frac{Q}{4\pi\varepsilon_0 r^2}
+\]
+Direction: radially outward for positive $Q$;
+radially inward for negative $Q$.
+\end{lawbox}
+
+\begin{examplebox}[21.2]
+\stepcounter{workedexample}
+A proton ($Q = 1.6\times10^{-19}\ \text{C}$) is
+placed in a uniform electric field of
+$E = 5.0\times10^4\ \text{N\,C}^{-1}$.\\
+(a) Find the force on the proton.\\
+(b) Find the acceleration of the proton.
+($m_p = 1.67\times10^{-27}\ \text{kg}$)\\
+(c) Find the field strength at a distance of
+$0.10\ \text{m}$ from a $+2.0\ \mu\text{C}$
+point charge in vacuum.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Force on proton:
+\[
+  F = qE = 1.6\times10^{-19}
+  \times 5.0\times10^4
+  = 8.0\times10^{-15}\ \text{N}
+\]
+
+\textbf{(b)} Acceleration:
+\[
+  a = \frac{F}{m} = \frac{8.0\times10^{-15}}
+  {1.67\times10^{-27}}
+  = 4.79\times10^{12}\ \text{m\,s}^{-2}
+\]
+About $5\times10^{11}\ g$ --- an enormous acceleration.
+Electric forces on subatomic particles are vastly
+more significant than gravity.
+
+\textbf{(c)}
+\[
+  E = \frac{kQ}{r^2}
+  = \frac{9.0\times10^9 \times 2.0\times10^{-6}}
+    {(0.10)^2}
+  = \frac{1.8\times10^4}{0.01}
+  = 1.8\times10^6\ \text{N\,C}^{-1}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Electric Field Lines}
+% ============================================================
+
+Electric fields are visualised using \textbf{field
+lines} (lines of force). Rules for drawing field lines:
+\begin{enumerate}[noitemsep]
+  \item Field lines start on positive charges and
+  end on negative charges (or extend to/from infinity).
+  \item The direction of a field line at any point is
+  the direction of $\vect{E}$ at that point.
+  \item The density of field lines (lines per unit
+  area) represents the magnitude of $\vect{E}$.
+  \item Field lines never cross (there is only one
+  direction of $\vect{E}$ at any point).
+  \item Field lines are perpendicular to conducting
+  surfaces.
+\end{enumerate}
+
+\begin{diagbox}[Electric Field Patterns for Common Charge Configurations]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % === SINGLE POSITIVE CHARGE ===
+  \begin{scope}[shift={(0,6)}]
+    \node[font=\bfseries] at (0,2.2) {$+Q$};
+    \fill[codexred] (0,0) circle (0.35cm);
+    \node[white, font=\bfseries] at (0,0) {$+$};
+    % Radial field lines out
+    \foreach \angle in {0,45,90,135,180,225,270,315} {
+      \draw[->, thick, codexred]
+        ({0.4*cos(\angle)},{0.4*sin(\angle)})
+        -- ({1.8*cos(\angle)},{1.8*sin(\angle)});
+    }
+  \end{scope}
+
+  % === SINGLE NEGATIVE CHARGE ===
+  \begin{scope}[shift={(5,6)}]
+    \node[font=\bfseries] at (0,2.2) {$-Q$};
+    \fill[codexblue] (0,0) circle (0.35cm);
+    \node[white, font=\bfseries] at (0,0) {$-$};
+    % Radial field lines in
+    \foreach \angle in {0,45,90,135,180,225,270,315} {
+      \draw[->, thick, codexblue]
+        ({1.8*cos(\angle)},{1.8*sin(\angle)})
+        -- ({0.4*cos(\angle)},{0.4*sin(\angle)});
+    }
+  \end{scope}
+
+  % === TWO OPPOSITE CHARGES (dipole) ===
+  \begin{scope}[shift={(0,1)}]
+    \node[font=\bfseries] at (2.5,3.5)
+      {$+Q$ and $-Q$ (dipole field)};
+    \fill[codexred] (0.5,1.5) circle (0.35cm);
+    \node[white, font=\bfseries] at (0.5,1.5) {$+$};
+    \fill[codexblue] (4.5,1.5) circle (0.35cm);
+    \node[white, font=\bfseries] at (4.5,1.5) {$-$};
+
+    % Field lines from + to -
+    % Straight horizontal line
+    \draw[->, thick, codexgold]
+      (0.85,1.5) -- (4.15,1.5);
+    % Curved lines
+    \draw[->, thick, codexgold]
+      (0.5,1.85) .. controls (1.5,3.0) and (3.5,3.0)
+      .. (4.5,1.85);
+    \draw[->, thick, codexgold]
+      (0.5,1.15) .. controls (1.5,0.0) and (3.5,0.0)
+      .. (4.5,1.15);
+    \draw[->, thick, codexgold!70]
+      (0.85,1.9) .. controls (2.0,3.8) and (3.0,3.8)
+      .. (4.15,1.9);
+    \draw[->, thick, codexgold!70]
+      (0.85,1.1) .. controls (2.0,-0.8) and (3.0,-0.8)
+      .. (4.15,1.1);
+  \end{scope}
+
+  % === UNIFORM FIELD (parallel plates) ===
+  \begin{scope}[shift={(7,0)}]
+    \node[font=\bfseries] at (2.5,4.5)
+      {Uniform field (parallel plates)};
+    % Plates
+    \fill[codexred!40] (0,3.5) rectangle (5,4.0);
+    \fill[codexblue!40] (0,0) rectangle (5,0.5);
+    \draw[thick] (0,3.5) -- (5,3.5);
+    \draw[thick] (0,0.5) -- (5,0.5);
+    % $+$ on top plate
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+      \node[codexred, font=\bfseries] at (\x,3.75)
+        {$+$};
+    }
+    % $-$ on bottom plate
+    \foreach \x in {0.5,1.5,2.5,3.5,4.5} {
+      \node[codexblue, font=\bfseries] at (\x,0.25)
+        {$-$};
+    }
+    % Uniform downward field lines
+    \foreach \x in {0.6,1.3,2.0,2.7,3.4,4.1,4.8} {
+      \draw[->, thick, codexgold]
+        (\x,3.5) -- (\x,0.5);
+    }
+    \node[right, font=\tiny, codexgold] at (5.1,2.0)
+      {Uniform $E$\\(parallel lines,\\equal spacing)};
+    % E field label
+    \node[codexgold, font=\small] at (2.5,2.0) {$\vect{E}$};
+    \draw[->, very thick, codexgold]
+      (2.5,2.5) -- (2.5,1.5);
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Uniform Electric Field}
+% ============================================================
+
+Between two parallel conducting plates separated by
+distance $d$ and with potential difference $V$ between
+them, the electric field is \textbf{uniform}
+(constant magnitude and direction):
+
+\begin{lawbox}[Uniform Electric Field Between Parallel Plates]
+\[
+  E = \frac{V}{d}
+\]
+where $V$ is the potential difference between the
+plates and $d$ is the separation.
+
+The force on a charge $q$ in this field:
+\[
+  F = qE = \frac{qV}{d}
+\]
+\end{lawbox}
+
+% ============================================================
+\section{Electric Potential}
+% ============================================================
+
+\begin{definitionbox}[Electric Potential and Potential
+Difference]
+The \textbf{electric potential} $V$ at a point is the
+work done per unit positive charge in bringing a small
+positive test charge from infinity (where $V = 0$) to
+that point:
+\[
+  V = \frac{W}{q}
+\]
+SI unit: volt (V) where $1\ \text{V}
+= 1\ \text{J\,C}^{-1}$.
+
+The \textbf{potential difference} (p.d.) between two
+points A and B is:
+\[
+  V_{AB} = V_A - V_B
+  = \frac{W_{AB}}{q}
+\]
+where $W_{AB}$ is the work done moving charge $q$
+from B to A.
+
+For a point charge $Q$ in vacuum:
+\[
+  V = \frac{kQ}{r} = \frac{Q}{4\pi\varepsilon_0 r}
+\]
+\end{definitionbox}
+
+\begin{keybox}[Relationship Between $E$ and $V$]
+The electric field is related to the potential by:
+\[
+  E = -\frac{dV}{dr}
+  \approx -\frac{\Delta V}{\Delta r}
+\]
+$E$ is the negative of the potential gradient.
+Field lines point from high potential to low potential
+(downhill in potential, just as water flows downhill
+in gravitational potential).
+
+For a uniform field: $E = V/d$.
+\end{keybox}
+
+\begin{definitionbox}[Equipotential Surfaces]
+\textbf{Equipotential surfaces} are surfaces on
+which the electric potential is the same at every
+point. No work is done moving a charge along an
+equipotential surface.
+
+Equipotential surfaces are always \textbf{perpendicular}
+to electric field lines.
+
+For a point charge: equipotentials are spheres
+centred on the charge.
+For a uniform field: equipotentials are planes
+perpendicular to $\vect{E}$.
+\end{definitionbox}
+
+\begin{diagbox}[Field Lines and Equipotentials for a Point Charge]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Charge at centre
+  \fill[codexred] (0,0) circle (0.3cm);
+  \node[white, font=\bfseries\small] at (0,0) {$+$};
+
+  % Radial field lines (8 directions)
+  \foreach \angle in {0,45,90,135,180,225,270,315} {
+    \draw[->, very thick, codexred!70]
+      ({0.35*cos(\angle)},{0.35*sin(\angle)})
+      -- ({2.5*cos(\angle)},{2.5*sin(\angle)});
+  }
+
+  % Equipotential circles
+  \foreach \r/\label in {
+    0.7/{$V_1$}, 1.2/{$V_2$}, 1.8/{$V_3$}} {
+    \draw[codexblue, thick, dashed] (0,0) circle (\r);
+    \node[codexblue, font=\tiny] at (\r+0.2,0.15)
+      {\label};
+  }
+
+  % Annotation
+  \node[font=\small, align=center] at (0,-3.2)
+    {Radial field lines $\perp$ to circular\\
+    equipotentials. $V_1 > V_2 > V_3$\\
+    (potential falls with distance from $+$ charge)};
+
+  % Key
+  \draw[codexred!70, thick, ->] (3.0,1.0) -- (3.7,1.0);
+  \node[right, codexred!70, font=\tiny] at (3.8,1.0)
+    {Field lines};
+  \draw[codexblue, thick, dashed]
+    (3.0,0.4) arc(0:30:0.5);
+  \node[right, codexblue, font=\tiny] at (3.6,0.4)
+    {Equipotentials};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[21.3]
+\stepcounter{workedexample}
+Two parallel plates are separated by $4.0\ \text{cm}$
+with a potential difference of $800\ \text{V}$.
+A positive charge of $3.0\times10^{-6}\ \text{C}$
+is placed between the plates.\\
+(a) Find the electric field strength.\\
+(b) Find the force on the charge.\\
+(c) Find the work done moving the charge from the
+negative plate to the positive plate.\\
+(d) Find the potential at a point halfway between
+the plates, taking the negative plate as zero
+potential.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Electric field:
+\[
+  E = \frac{V}{d} = \frac{800}{0.040}
+  = 20\,000\ \text{V\,m}^{-1}
+  = 2.0\times10^4\ \text{N\,C}^{-1}
+\]
+
+\textbf{(b)} Force:
+\[
+  F = qE = 3.0\times10^{-6} \times 2.0\times10^4
+  = 0.060\ \text{N}
+\]
+Direction: toward the negative plate (force on
+positive charge is in direction of $\vect{E}$,
+from high to low potential --- the force on a
+positive charge is from the positive plate toward
+the negative plate).
+
+Wait --- let us clarify: the field points from the
+$+$ plate to the $-$ plate, and the force on a
+positive charge is in the direction of $\vect{E}$,
+i.e.\ toward the negative plate.
+
+\textbf{(c)} Work done (against electric force,
+moving from $-$ to $+$ plate):
+\[
+  W = qV = 3.0\times10^{-6} \times 800
+  = 2.4\times10^{-3}\ \text{J}
+\]
+
+\textbf{(d)} Halfway ($d/2 = 0.020\ \text{m}$
+from negative plate):
+\[
+  V_{half} = E \times \frac{d}{2}
+  = 20\,000 \times 0.020 = 400\ \text{V}
+\]
+The potential increases linearly from 0 to 800 V
+across the gap.
+\end{solutionbox}
+
+% ============================================================
+\section{The Gold-Leaf Electroscope}
+% ============================================================
+
+\begin{diagbox}[The Gold-Leaf Electroscope]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Glass jar
+  \draw[thick, gray!60] (1.0,0) -- (0.5,4.0);
+  \draw[thick, gray!60] (5.0,0) -- (5.5,4.0);
+  \draw[thick, gray!60] (1.0,0) -- (5.0,0);
+  \draw[thick, gray!60] (0.5,4.0) -- (5.5,4.0);
+  \node[gray, font=\itshape, font=\small] at (3,0.5)
+    {Glass jar (insulating)};
+
+  % Metal rod
+  \fill[gray!50] (2.8,1.5) rectangle (3.2,6.5);
+  \draw[thick] (2.8,1.5) rectangle (3.2,6.5);
+  \node[right, font=\tiny] at (3.3,5.5) {Metal rod};
+
+  % Metal cap (top)
+  \fill[gray!50] (2.0,6.5) rectangle (4.0,7.0);
+  \draw[thick] (2.0,6.5) rectangle (4.0,7.0);
+  \node[above, font=\small] at (3.0,7.0)
+    {Metal cap\\(collecting plate)};
+
+  % Two gold leaves (uncharged: hanging vertical)
+  \draw[very thick, codexgold]
+    (3.0,1.5) -- (2.3,0.2);
+  \draw[very thick, codexgold]
+    (3.0,1.5) -- (3.7,0.2);
+  \node[below, codexgold] at (2.0,0.1)
+    {Gold leaf};
+  \node[below, codexgold] at (4.0,0.1)
+    {Gold leaf};
+
+  % Charged version (leaves spread)
+  \begin{scope}[shift={(7,0)}]
+    \draw[thick, gray!60] (1.0,0) -- (0.5,4.0);
+    \draw[thick, gray!60] (5.0,0) -- (5.5,4.0);
+    \draw[thick, gray!60] (1.0,0) -- (5.0,0);
+    \draw[thick, gray!60] (0.5,4.0) -- (5.5,4.0);
+    \fill[gray!50] (2.8,1.5) rectangle (3.2,6.5);
+    \draw[thick] (2.8,1.5) rectangle (3.2,6.5);
+    \fill[gray!50] (2.0,6.5) rectangle (4.0,7.0);
+    \draw[thick] (2.0,6.5) rectangle (4.0,7.0);
+    \node[above, font=\small] at (3.0,7.0)
+      {Charged metal cap};
+    % Charge signs on cap
+    \foreach \x in {2.2,2.7,3.2,3.7} {
+      \node[codexred, font=\bfseries] at (\x,6.75)
+        {$+$};
+    }
+    % Charge signs on rod
+    \foreach \y in {2.0,2.8,3.6,4.4,5.2,6.0} {
+      \node[codexred, font=\bfseries] at (3.0,\y)
+        {$+$};
+    }
+    % Leaves spread apart
+    \draw[very thick, codexgold]
+      (3.0,1.5) -- (1.8,-0.2);
+    \draw[very thick, codexgold]
+      (3.0,1.5) -- (4.2,-0.2);
+    % Charge on leaves
+    \node[codexred, font=\bfseries] at (2.1,0.6)
+      {$+$};
+    \node[codexred, font=\bfseries] at (3.9,0.6)
+      {$+$};
+    \node[font=\small, codexred, align=center]
+      at (3.0,-0.7)
+      {Leaves repel:\\same sign charge};
+  \end{scope}
+
+  % Labels
+  \node[font=\small, align=center] at (3.0,-1.5)
+    {Uncharged: leaves hang\\vertically (no force)};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+The gold-leaf electroscope detects the presence of
+charge. When a charged object is brought near or
+touches the cap, the leaves diverge because they
+acquire the same sign of charge and repel each other.
+The greater the charge, the larger the divergence.
+
+\textbf{Uses of the electroscope:}
+\begin{enumerate}[noitemsep]
+  \item Detecting the presence and sign of charge
+  \item Testing whether a body is a conductor or
+  insulator
+  \item Detecting ionising radiation (charged
+  particles discharge the electroscope)
+\end{enumerate}
+
+% ============================================================
+\section{Properties of Conductors in Electrostatic
+Equilibrium}
+% ============================================================
+
+\begin{lawbox}[Properties of Charged Conductors]
+For a conductor in electrostatic equilibrium (charges
+not moving):
+\begin{enumerate}[noitemsep]
+  \item The electric field \textbf{inside} the
+  conductor is \textbf{zero}.
+  \item Any excess charge resides entirely on the
+  \textbf{outer surface} of the conductor.
+  \item The electric field at the surface is
+  perpendicular to the surface.
+  \item Charge concentrates on sharp points and
+  edges (where curvature is greatest).
+  \item The entire conductor is at the same
+  potential (equipotential body).
+\end{enumerate}
+\end{lawbox}
+
+\begin{realworldbox}[Lightning Conductors]
+Lightning is a massive electrostatic discharge
+between charged clouds and the Earth. A lightning
+conductor (lightning rod) on a tall building works
+by exploiting two properties: (1) the sharp metal
+spike at the top concentrates electric field lines,
+ionising the air and providing a conductive path;
+(2) the copper strip connecting the spike to earth
+provides a low-resistance path for the current of
+billions of amperes to flow safely to ground,
+bypassing the building structure.
+
+The \textbf{National Theatre} in Lagos, the
+\textbf{Transcorp Hilton} in Abuja, and all tall
+structures in Nigeria are required by building codes
+to have lightning protection systems. Benjamin
+Franklin invented the lightning rod in 1752, the
+same year he famously flew a kite in a thunderstorm
+to demonstrate that lightning was electrical. He
+survived. Several who attempted to repeat his
+experiment did not.
+\end{realworldbox}
+
+% ============================================================
+\section{Gauss's Law (Qualitative)}
+% ============================================================
+
+\begin{lawbox}[Gauss's Law (Statement)]
+The total electric flux $\Phi_E$ through any closed
+surface is proportional to the total charge enclosed
+within that surface:
+\[
+  \Phi_E = \oint \vect{E} \cdot d\vect{A}
+  = \frac{Q_{enclosed}}{\varepsilon_0}
+\]
+This powerful law allows us to calculate electric
+fields for symmetric charge distributions very
+efficiently. Key results:
+
+\textbf{Outside a spherical conductor (radius $R$):}
+$E = kQ/r^2$ (same as point charge)
+
+\textbf{Inside a spherical conductor:} $E = 0$
+
+\textbf{Uniform infinite plate (surface charge
+density $\sigma$):} $E = \sigma/(2\varepsilon_0)$
+
+\textbf{Between parallel plates:}
+$E = \sigma/\varepsilon_0 = V/d$
+\end{lawbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Charge:} positive or negative, quantised
+in units of $e = 1.6\times10^{-19}\ \text{C}$.
+Conserved. Like charges repel; unlike attract.
+
+\textbf{Coulomb's Law:}
+$F = kQ_1Q_2/r^2$; $k = 9.0\times10^9\ \text{N\,m}^2\text{C}^{-2}$
+
+\textbf{Electric field:} $E = F/q$ (N\,C$^{-1}$).
+Point charge: $E = kQ/r^2$.
+Uniform field: $E = V/d$.
+
+\textbf{Electric potential:} $V = W/q$ (volts).
+Point charge: $V = kQ/r$.
+Potential decreases in direction of $\vect{E}$.
+$E = -\Delta V/\Delta r$.
+
+\textbf{Equipotentials:} surfaces of equal $V$,
+always $\perp$ to field lines.
+
+\textbf{Conductors:} $E = 0$ inside; all charge on
+surface; surface is equipotential; charge
+concentrates at sharp points.
+
+\textbf{Charging methods:} friction (electron
+transfer); contact (charge sharing); induction
+(no contact needed).
+
+\textbf{Gauss's Law:}
+$\Phi = Q_{enc}/\varepsilon_0$.
+Explains why $E = 0$ inside a conductor.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[21]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} Two charges $+2Q$ and $+3Q$ are placed
+$d$ apart. The force between them is $F$. If the
+distance is halved and each charge is doubled, the
+new force is:
+
+\mcoption{A}{$F$}
+\mcoption{B}{$4F$}
+\mcoption{C}{$16F$}
+\mcoption{D}{$24F$}
+\ansref{Ch21-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} The electric field inside a uniformly
+charged hollow metal sphere is:
+
+\mcoption{A}{Maximum at the centre}
+\mcoption{B}{Zero throughout}
+\mcoption{C}{Equal to $kQ/r^2$ at all interior points}
+\mcoption{D}{Directed radially inward}
+\ansref{Ch21-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A charge $q$ moves from a point of
+potential $V_1$ to a point of potential $V_2$. The
+work done by the electric field on the charge is:
+
+\mcoption{A}{$q(V_2 - V_1)$}
+\mcoption{B}{$q(V_1 - V_2)$}
+\mcoption{C}{$q(V_1 + V_2)$}
+\mcoption{D}{$qV_1V_2$}
+\ansref{Ch21-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} Two parallel plates are $5.0\ \text{mm}$
+apart with a potential difference of $250\ \text{V}$.
+The electric field between them is:
+
+\mcoption{A}{$50\ \text{V\,m}^{-1}$}
+\mcoption{B}{$500\ \text{V\,m}^{-1}$}
+\mcoption{C}{$5\times10^4\ \text{V\,m}^{-1}$}
+\mcoption{D}{$5\times10^5\ \text{V\,m}^{-1}$}
+\ansref{Ch21-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} The electric potential due to a point
+charge $Q$ at distance $r$ is proportional to:
+
+\mcoption{A}{$1/r^2$}
+\mcoption{B}{$1/r$}
+\mcoption{C}{$r$}
+\mcoption{D}{$r^2$}
+\ansref{Ch21-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} A gold-leaf electroscope is negatively
+charged. When a positively charged rod is brought
+near (but not touching) the cap, the leaves:
+
+\mcoption{A}{Diverge further}
+\mcoption{B}{Come together}
+\mcoption{C}{Remain unchanged}
+\mcoption{D}{The cap becomes positive}
+\ansref{Ch21-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} Charging by induction produces a
+charge that is:
+
+\mcoption{A}{The same sign as the inducing charge}
+\mcoption{B}{Opposite sign to the inducing charge}
+\mcoption{C}{Zero charge}
+\mcoption{D}{Depends on whether the object is a
+conductor}
+\ansref{Ch21-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} The unit of electric field strength
+can also be written as:
+
+\mcoption{A}{J\,C$^{-1}$}
+\mcoption{B}{V\,m$^{-1}$}
+\mcoption{C}{C\,N$^{-1}$}
+\mcoption{D}{J\,m$^{-1}$}
+\ansref{Ch21-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} A proton and an electron are placed
+$1\ \text{nm}$ apart. The ratio of the electric
+force to the gravitational force between them is
+approximately:
+
+\mcoption{A}{$10^{20}$}
+\mcoption{B}{$10^{30}$}
+\mcoption{C}{$10^{39}$}
+\mcoption{D}{$10^{10}$}
+\ansref{Ch21-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} Equipotential surfaces and electric
+field lines are always:
+
+\mcoption{A}{Parallel to each other}
+\mcoption{B}{Perpendicular to each other}
+\mcoption{C}{Identical}
+\mcoption{D}{Parallel only for a point charge}
+\ansref{Ch21-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} Three point charges are arranged as
+follows: $Q_1 = +4.0\ \mu\text{C}$ at the origin,
+$Q_2 = -2.0\ \mu\text{C}$ at $x = 0.30\ \text{m}$,
+$Q_3 = +3.0\ \mu\text{C}$ at $x = 0.60\ \text{m}$.
+All on the x-axis.
+($k = 9.0\times10^9\ \text{N\,m}^2\text{C}^{-2}$)\\[4pt]
+(a) Calculate the force on $Q_2$ due to $Q_1$.\\
+(b) Calculate the force on $Q_2$ due to $Q_3$.\\
+(c) Find the net force on $Q_2$ (magnitude and
+direction).\\
+(d) At what point on the x-axis (between $Q_1$ and
+$Q_3$) is the electric field zero?
+\hfill\ansref{Ch21-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A parallel plate capacitor has plates
+of area $0.050\ \text{m}^2$ separated by
+$2.0\ \text{mm}$. A potential difference of
+$400\ \text{V}$ is applied.\\[4pt]
+(a) Calculate the electric field strength between
+the plates.\\
+(b) Calculate the surface charge density $\sigma$
+on the plates (use $E = \sigma/\varepsilon_0$).\\
+(c) Calculate the charge on each plate.\\
+(d) An electron (mass $9.11\times10^{-31}\ \text{kg}$,
+charge $-1.6\times10^{-19}\ \text{C}$) is released
+from rest near the negative plate. Find its
+acceleration and the speed with which it hits the
+positive plate.
+\hfill\ansref{Ch21-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A metallic sphere of radius $10\ \text{cm}$
+carries a charge of $+5.0\ \mu\text{C}$ in free space.
+($k = 9.0\times10^9\ \text{N\,m}^2\text{C}^{-2}$,
+$\varepsilon_0 = 8.85\times10^{-12}\ \text{C}^2\text{N}^{-1}\text{m}^{-2}$)\\[4pt]
+(a) Calculate the electric field strength at the
+surface of the sphere.\\
+(b) Calculate the electric field at $0.30\ \text{m}$
+from the centre of the sphere.\\
+(c) Calculate the electric potential at the surface.\\
+(d) Calculate the work done bringing a $+2.0\ \mu\text{C}$
+charge from infinity to the surface of the sphere.\\
+(e) Explain why the electric field inside the sphere
+is zero, using Gauss's Law reasoning.
+\hfill\ansref{Ch21-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A charged oil drop of mass
+$3.27\times10^{-15}\ \text{kg}$ is held stationary
+between two horizontal parallel plates separated
+by $6.0\ \text{mm}$. The lower plate is negative.
+The potential difference is $490\ \text{V}$.
+($g = 10\ \text{m\,s}^{-2}$,
+$e = 1.6\times10^{-19}\ \text{C}$)\\[4pt]
+(a) Draw a free-body diagram of the stationary
+drop showing all forces.\\
+(b) For the drop to be stationary, what must be
+the relationship between the electric force and
+the gravitational force?\\
+(c) Calculate the charge on the drop.\\
+(d) How many elementary charges does this represent?\\
+(e) The potential difference is doubled. Describe
+the subsequent motion of the drop.
+\hfill\ansref{Ch21-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} (a) Explain the principle of operation
+of a lightning conductor, referring to:
+(i) the distribution of charge on conductors with
+sharp points; (ii) the ionisation of air; (iii) the
+path of the lightning discharge.\\[4pt]
+(b) A lightning strike delivers a charge of
+$5.0\ \text{C}$ in $0.001\ \text{s}$.
+Calculate the average current during the strike.\\[4pt]
+(c) If the potential difference between the cloud
+and ground just before the strike is
+$3.0\times10^8\ \text{V}$, calculate the energy
+released in the lightning strike.\\[4pt]
+(d) Express this energy in kWh. How long could this
+energy power a $60\ \text{W}$ light bulb?\\[4pt]
+(e) Despite the enormous energy in a lightning
+strike, it is not practical to harvest lightning
+for electricity generation in Nigeria. Suggest
+two physical reasons why.
+\hfill\ansref{Ch21-B5}
+
+\end{exercisebox}

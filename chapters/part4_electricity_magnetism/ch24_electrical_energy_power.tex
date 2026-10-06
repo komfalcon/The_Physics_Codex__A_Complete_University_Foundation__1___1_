@@ -1,0 +1,1059 @@
+% ============================================================
+%  CHAPTER 24: ELECTRICAL ENERGY AND POWER
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part4/ch24_electrical_power.tex
+% ============================================================
+
+\chapter{Electrical Energy and Power}
+\label{ch:electrical_power}
+\minitoc
+\newpage
+
+\chapterquote{Energy is the only life, and is from the
+Body; and Reason is the bound or outward circumference
+of Energy.}{William Blake}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Define electrical power and calculate it
+  using multiple formulae
+  \item Calculate electrical energy in joules and
+  kilowatt-hours
+  \item Explain the heating effect of electric
+  current and apply it to practical situations
+  \item Describe the action of fuses and circuit
+  breakers
+  \item Explain why electrical power is transmitted
+  at high voltage and low current
+  \item Calculate power losses in transmission lines
+  \item Describe the principles of AC generation
+  and the transformer
+  \item Apply the transformer equations for voltage,
+  current and power
+  \item Perform cost calculations for electrical
+  energy consumption
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: Energy from Electrons}
+% ============================================================
+
+When you switch on a $60\ \text{W}$ light bulb, you
+are driving electrons through the tungsten filament
+at roughly $0.27\ \text{A}$. Each electron loses
+$222\ \text{V}$ worth of potential energy as it moves
+through the filament. That energy does not disappear ---
+it is converted to heat and light, heating the filament
+to about $2500°\text{C}$, hot enough to glow white.
+
+The rate at which electrical energy is converted to
+other forms (heat, light, mechanical work) is
+\textbf{electrical power}. It is simply the product
+of voltage and current. This chapter connects the
+abstract quantities of current and potential difference
+to the everyday reality of electricity bills, burnt-out
+fuses, power transmission lines, and the transformer
+sitting on every electrical pole across Nigeria.
+
+% ============================================================
+\section{Electrical Power}
+% ============================================================
+
+\begin{definitionbox}[Electrical Power]
+The \textbf{electrical power} dissipated in a
+component is the rate at which electrical energy
+is converted to other forms:
+\[
+  P = \frac{W}{t} = \frac{QV}{t} = IV
+\]
+where $W = QV$ is the work done (energy transferred)
+when charge $Q$ moves through potential difference $V$.
+
+Using Ohm's Law ($V = IR$), three equivalent forms:
+\[
+  \boxed{P = IV = I^2R = \frac{V^2}{R}}
+\]
+SI unit: watt (W) where $1\ \text{W}
+= 1\ \text{J\,s}^{-1}$.
+
+\textbf{Which formula to use:}
+\begin{itemize}[noitemsep]
+  \item Know $I$ and $V$: use $P = IV$
+  \item Know $I$ and $R$: use $P = I^2R$
+  \item Know $V$ and $R$: use $P = V^2/R$
+\end{itemize}
+\end{definitionbox}
+
+\begin{examplebox}[24.1]
+\stepcounter{workedexample}
+An electric iron is rated $1200\ \text{W}$ at
+$240\ \text{V}$.\\
+(a) Calculate the current drawn.\\
+(b) Calculate the resistance of the heating element.\\
+(c) Calculate the charge passing through the iron
+in $30\ \text{min}$.\\
+(d) Calculate the energy consumed in $30\ \text{min}$.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Current:
+\[
+  I = \frac{P}{V} = \frac{1200}{240} = 5.0\ \text{A}
+\]
+
+\textbf{(b)} Resistance:
+\[
+  R = \frac{V}{I} = \frac{240}{5.0} = 48\ \Omega
+\]
+Or: $R = V^2/P = 240^2/1200 = 57600/1200 = 48\ \Omega$ ✓
+
+\textbf{(c)} Charge in $30\ \text{min}
+= 1800\ \text{s}$:
+\[
+  Q = It = 5.0 \times 1800 = 9000\ \text{C}
+\]
+
+\textbf{(d)} Energy consumed:
+\[
+  W = Pt = 1200 \times 1800 = 2\,160\,000\ \text{J}
+  = 2.16\ \text{MJ}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Electrical Energy and the Kilowatt-Hour}
+% ============================================================
+
+\begin{definitionbox}[Electrical Energy and the
+Kilowatt-Hour]
+Electrical energy consumed:
+\[
+  W = Pt \quad [\text{joules, when } P \text{ in
+  watts and } t \text{ in seconds}]
+\]
+
+For billing purposes, the unit used is the
+\textbf{kilowatt-hour} (kWh):
+\[
+  1\ \text{kWh} = 1000\ \text{W} \times 3600\ \text{s}
+  = 3.6\times10^6\ \text{J} = 3.6\ \text{MJ}
+\]
+\textbf{Energy in kWh:}
+\[
+  W(\text{kWh}) = P(\text{kW}) \times t(\text{hours})
+\]
+\textbf{Cost of electrical energy:}
+\[
+  \text{Cost} = W(\text{kWh}) \times \text{tariff rate}
+  (\text{per kWh})
+\]
+\end{definitionbox}
+
+\begin{examplebox}[24.2]
+\stepcounter{workedexample}
+A household uses the following appliances daily in
+Nigeria:
+\begin{itemize}[noitemsep]
+  \item One $1.5\ \text{kW}$ air conditioner for
+  $6\ \text{h}$
+  \item Four $18\ \text{W}$ LED bulbs for $8\ \text{h}$
+  each
+  \item A $100\ \text{W}$ television for $5\ \text{h}$
+  \item A $2.0\ \text{kW}$ electric iron for $1\ \text{h}$
+\end{itemize}
+The electricity tariff is ₦68 per kWh.\\
+(a) Calculate the daily energy consumption in kWh.\\
+(b) Calculate the daily cost.\\
+(c) Calculate the monthly (30-day) bill.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Daily energy:
+
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+Appliance & Power (kW) & Hours & kWh\\
+\midrule
+Air conditioner & 1.50 & 6 & 9.00\\
+Four LED bulbs & $4\times0.018 = 0.072$ & 8 & 0.576\\
+Television & 0.100 & 5 & 0.500\\
+Electric iron & 2.00 & 1 & 2.00\\
+\midrule
+\textbf{Total} & & & \textbf{12.076}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Daily energy $\approx 12.1\ \text{kWh}$
+
+\textbf{(b)} Daily cost:
+\[
+  \text{Cost} = 12.076 \times 68
+  = ₦821.17 \approx ₦821
+\]
+
+\textbf{(c)} Monthly bill (30 days):
+\[
+  \text{Monthly} = 821 \times 30 = ₦24\,634
+\]
+
+The air conditioner dominates (74\% of the bill).
+This explains why reducing air conditioner usage
+or switching to a higher-efficiency unit dramatically
+reduces electricity costs.
+\end{solutionbox}
+
+% ============================================================
+\section{The Heating Effect of Electric Current}
+% ============================================================
+
+When current flows through a resistor, the work done
+by the electric field on the charge carriers is
+converted to thermal energy through collisions with
+lattice ions. This is called \textbf{Joule heating}
+or the \textbf{thermal effect of current}.
+
+\begin{lawbox}[Joule's Law of Heating]
+The heat generated by a current $I$ flowing through
+a resistance $R$ for time $t$ is:
+\[
+  Q_{heat} = I^2Rt
+\]
+This is always positive --- heat is always generated
+regardless of the direction of current. The heating
+effect is why resistors get warm, why fuses blow,
+and why cables have maximum current ratings.
+\end{lawbox}
+
+\begin{historybox}[James Prescott Joule, 1840]
+James Joule (1818--1889) was a Manchester brewer who
+became one of the greatest experimental physicists
+of the 19th century. He discovered the mechanical
+equivalent of heat (that heat is a form of energy)
+and the heating effect of current. He was largely
+self-taught, conducting experiments in the cellar
+of his family's brewery. The unit of energy (joule)
+is named in his honour. His collaboration with Lord
+Kelvin established the foundations of thermodynamics.
+\end{historybox}
+
+\begin{realworldbox}[Joule Heating in Nigerian Electrical Systems]
+Poor quality extension cords and undersized wiring
+are responsible for a significant proportion of house
+fires in Nigeria. When too much current is drawn
+through a wire rated for a lower current, the power
+dissipated ($I^2R$) causes excessive heating. Since
+resistance is fixed by the wire geometry and material,
+and the heating increases as $I^2$, even a modest
+overcurrent causes dramatically more heat. A wire
+rated for $6\ \text{A}$ carrying $12\ \text{A}$
+dissipates $4$ times the rated heat --- enough to
+ignite surrounding insulation and materials.
+\end{realworldbox}
+
+% ============================================================
+\section{Fuses and Circuit Breakers}
+% ============================================================
+
+\begin{definitionbox}[Fuse]
+A \textbf{fuse} is a short length of thin wire
+(low melting point alloy) connected in series with
+a circuit. If the current exceeds the fuse rating,
+the wire melts and breaks the circuit, protecting
+the appliance and wiring from damage.
+
+Fuses are rated in amperes (A): $1\ \text{A}$,
+$3\ \text{A}$, $5\ \text{A}$, $13\ \text{A}$, etc.
+
+\textbf{Correct fuse selection:} Choose the lowest
+fuse rating that is above the normal operating
+current of the appliance.
+
+For appliance of power $P$ at voltage $V$:
+\[
+  I_{operating} = \frac{P}{V}
+\]
+Choose a fuse rated just above $I_{operating}$.
+\end{definitionbox}
+
+\begin{defbox}[Circuit Breaker vs Fuse]
+A \textbf{circuit breaker} is an automatic switch
+that trips (opens) when current exceeds a set value.
+Unlike a fuse, it can be reset (switched back on)
+after the fault is cleared. Modern homes use circuit
+breakers (MCBs --- Miniature Circuit Breakers) in
+the consumer unit (distribution board).
+
+\textbf{Earth leakage circuit breaker} (ELCB) or
+\textbf{Residual Current Device} (RCD) detects if
+current is flowing to earth (through a person, for
+example) and disconnects the supply within
+milliseconds, preventing electrocution.
+\end{defbox}
+
+\begin{examplebox}[24.3]
+\stepcounter{workedexample}
+A $1000\ \text{W}$ blender and a $700\ \text{W}$
+toaster are both connected to a $240\ \text{V}$
+socket via a shared $13\ \text{A}$ extension cord.\\
+(a) Find the operating current of each appliance.\\
+(b) Find the total current drawn.\\
+(c) Is the $13\ \text{A}$ fuse adequate? Explain.\\
+(d) A student also plugs in a $1200\ \text{W}$
+microwave oven. Will the fuse blow?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Operating currents:
+\[
+  I_{blender} = \frac{1000}{240} = 4.17\ \text{A}
+  \qquad
+  I_{toaster} = \frac{700}{240} = 2.92\ \text{A}
+\]
+
+\textbf{(b)} Total current:
+$I_{total} = 4.17 + 2.92 = 7.08\ \text{A}$
+
+\textbf{(c)} $7.08\ \text{A} < 13\ \text{A}$,
+so the fuse is adequate for this load.
+
+\textbf{(d)} Adding microwave:
+$I_{microwave} = 1200/240 = 5.00\ \text{A}$
+
+New total: $7.08 + 5.00 = 12.08\ \text{A}$
+
+Still just below $13\ \text{A}$, so the fuse should
+not blow immediately. However, if the blender is
+under heavy load and draws slightly more than rated,
+or if the supply voltage fluctuates (common in
+Nigeria), the total could exceed $13\ \text{A}$.
+Using a $13\ \text{A}$ socket for three high-power
+appliances simultaneously is poor practice.
+\end{solutionbox}
+
+% ============================================================
+\section{Power Transmission and the Transformer}
+% ============================================================
+
+\subsection{Why High Voltage Transmission?}
+
+When electrical power is transmitted over long
+distances, energy is lost as heat in the cables
+($P_{loss} = I^2R_{cable}$). To minimise these
+losses, power is transmitted at \textbf{high voltage}
+and \textbf{low current}. Since $P = IV$, the same
+power can be transmitted with much lower current
+if the voltage is higher --- and lower current means
+much less heat dissipation.
+
+\begin{diagbox}[High Voltage Transmission: Reducing Power Loss]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % Power station
+  \fill[gray!30] (0,1.0) rectangle (1.5,3.0);
+  \draw[thick] (0,1.0) rectangle (1.5,3.0);
+  \node[font=\small, align=center] at (0.75,2.0)
+    {Power\\Station\\$P_{gen}$};
+
+  % Step-up transformer
+  \fill[codexblue!20] (2,0.5) rectangle (3.5,3.5);
+  \draw[thick] (2,0.5) rectangle (3.5,3.5);
+  \node[codexblue, font=\small, align=center]
+    at (2.75,2.0) {Step-up\\Transformer\\$11\ \text{kV}$\\
+    $\to$\\$400\ \text{kV}$};
+
+  % Transmission line
+  \draw[very thick, gray] (3.5,2.0) -- (8,2.0);
+  \draw[thick, gray, decorate,
+    decoration={snake, amplitude=2pt}]
+    (3.5,2.0) -- (8,2.0);
+  \node[above, gray, font=\small] at (5.75,2.1)
+    {Grid ($400\ \text{kV}$, low $I$)};
+  \node[below, codexred, font=\small]
+    at (5.75,1.85) {$P_{loss} = I^2R_{cable}$ (small)};
+
+  % Step-down transformer (grid substation)
+  \fill[codexred!20] (8,0.5) rectangle (9.5,3.5);
+  \draw[thick] (8,0.5) rectangle (9.5,3.5);
+  \node[codexred, font=\small, align=center]
+    at (8.75,2.0) {Step-down\\Transformer\\$400\ \text{kV}$\\
+    $\to$\\$11\ \text{kV}$};
+
+  % Local distribution
+  \draw[very thick, gray] (9.5,2.0) -- (12,2.0);
+  \node[above, gray, font=\small] at (10.75,2.1)
+    {$11\ \text{kV}$};
+
+  % Local step-down
+  \fill[codexgreen!20] (12,1.0) rectangle (13.5,3.0);
+  \draw[thick] (12,1.0) rectangle (13.5,3.0);
+  \node[codexgreen, font=\small, align=center]
+    at (12.75,2.0) {Local\\Transformer\\$\to 240\ \text{V}$};
+
+  % Home
+  \fill[gray!15] (14,1.2) rectangle (15,2.8);
+  \draw[thick] (14,1.2) rectangle (15,2.8);
+  \node[font=\small] at (14.5,2.0) {Home\\$240\ \text{V}$};
+  \draw[thick] (13.5,2.0) -- (14,2.0);
+
+  % Comparison: low voltage same power
+  \node[align=center, font=\small, codexblue]
+    at (5.75,0.0)
+    {$P = IV$: at high $V$, current $I = P/V$ is small\\
+    $P_{loss} = I^2R$: small $I \Rightarrow$ tiny losses};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{examplebox}[24.4]
+\stepcounter{workedexample}
+A power station generates $50\ \text{MW}$ of
+electrical power. The transmission cable has a
+total resistance of $10\ \Omega$.\\
+(a) If transmitted at $10\ \text{kV}$, find the
+current and the power lost in the cables.\\
+(b) If transmitted at $400\ \text{kV}$, find the
+current and the power lost.\\
+(c) Compare the power losses as a percentage.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} At $10\ \text{kV}$:
+\[
+  I = \frac{P}{V} = \frac{50\times10^6}{10\times10^3}
+  = 5000\ \text{A}
+\]
+\[
+  P_{loss} = I^2R = (5000)^2 \times 10
+  = 250\times10^6\ \text{W} = 250\ \text{MW}
+\]
+Power lost $= 250\ \text{MW}$ out of $50\ \text{MW}$
+generated --- \textbf{5 times more power wasted than
+generated}! Transmission at $10\ \text{kV}$ is
+completely impractical.
+
+\textbf{(b)} At $400\ \text{kV}$:
+\[
+  I = \frac{50\times10^6}{400\times10^3}
+  = 125\ \text{A}
+\]
+\[
+  P_{loss} = (125)^2 \times 10
+  = 156\,250\ \text{W} = 156\ \text{kW}
+\]
+
+\textbf{(c)} Comparison:
+\[
+  \text{At 10 kV: } \frac{250\times10^6}{50\times10^6}
+  \times 100\% = 500\%\ \text{(impossible)}
+\]
+\[
+  \text{At 400 kV: } \frac{156\times10^3}
+  {50\times10^6} \times 100\% = 0.31\%
+\]
+Increasing voltage by a factor of 40 reduces power
+loss by a factor of $40^2 = 1600$. This is the
+entire justification for the national high-voltage
+grid.
+\end{solutionbox}
+
+% ============================================================
+\section{The Transformer}
+% ============================================================
+
+\begin{definitionbox}[Transformer]
+A \textbf{transformer} is a device that changes
+the voltage of an AC supply using electromagnetic
+induction. It consists of two coils (primary and
+secondary) wound on a common iron core.
+
+When AC flows in the primary coil, it creates a
+changing magnetic flux in the iron core. This
+changing flux induces an EMF in the secondary coil
+(Faraday's Law --- Chapter 26).
+\end{definitionbox}
+
+\begin{diagbox}[Transformer Construction and Action]
+\begin{center}
+\begin{tikzpicture}[scale=0.95, font=\small]
+
+  % Iron core (rectangular loop)
+  \fill[gray!30] (0,0) rectangle (1.0,5.5);
+  \fill[gray!30] (6.0,0) rectangle (7.0,5.5);
+  \fill[gray!30] (0,5.0) rectangle (7.0,5.5);
+  \fill[gray!30] (0,0) rectangle (7.0,0.5);
+  \draw[very thick, gray]
+    (0,0) rectangle (7.0,5.5);
+  \draw[very thick, gray]
+    (1.0,0.5) rectangle (6.0,5.0);
+  \node[gray, font=\small] at (3.5,2.75)
+    {Iron core\\(laminated)};
+
+  % Primary coil (left leg)
+  \draw[codexblue, very thick, decorate,
+    decoration={coil, aspect=0.5, segment length=6pt,
+    amplitude=5pt}]
+    (0.5,1.0) -- (0.5,4.5);
+  \node[codexblue] at (-0.3,2.75) {Primary};
+  \node[codexblue, font=\tiny] at (-0.3,2.25)
+    {$N_p$ turns};
+
+  % Secondary coil (right leg)
+  \draw[codexred, very thick, decorate,
+    decoration={coil, aspect=0.5, segment length=6pt,
+    amplitude=5pt}]
+    (6.5,1.0) -- (6.5,4.5);
+  \node[codexred] at (7.8,2.75) {Secondary};
+  \node[codexred, font=\tiny] at (7.8,2.25)
+    {$N_s$ turns};
+
+  % AC input
+  \draw[thick, codexblue] (0.5,4.5) -- (-1.5,4.5);
+  \draw[thick, codexblue] (0.5,1.0) -- (-1.5,1.0);
+  \fill[white] (-1.5,2.25) circle (0.6);
+  \draw[thick, codexblue] (-1.5,2.25) circle (0.6);
+  \draw[codexblue, thick]
+    (-1.9,2.25) .. controls (-1.6,2.75) and (-1.4,2.75)
+    .. (-1.5,2.25)
+    .. controls (-1.6,1.75) and (-1.4,1.75)
+    .. (-1.1,2.25);
+  \node[left, codexblue] at (-2.2,2.25)
+    {$V_p$ (AC)};
+
+  % AC output
+  \draw[thick, codexred] (6.5,4.5) -- (8.5,4.5);
+  \draw[thick, codexred] (6.5,1.0) -- (8.5,1.0);
+  % Load resistor
+  \fill[gray!20] (8.2,1.5) rectangle (8.8,4.0);
+  \draw[thick] (8.2,1.5) rectangle (8.8,4.0);
+  \node[right, font=\small] at (8.9,2.75) {Load $R$};
+  \draw[thick, codexred] (8.5,4.5) -- (8.5,4.0);
+  \draw[thick, codexred] (8.5,1.0) -- (8.5,1.5);
+  \node[right, codexred] at (9.1,4.0) {$V_s$};
+
+  % Flux arrow
+  \draw[->, very thick, codexgold]
+    (3.5,0.25) -- (3.5,0.02);
+  \draw[->, very thick, codexgold]
+    (3.5,5.48) -- (3.5,5.25);
+  \node[below, codexgold, font=\tiny]
+    at (3.5,-0.1) {Magnetic flux $\Phi$};
+
+  % Turns ratio
+  \node[align=center, font=\small]
+    at (3.5,-1.0)
+    {$\dfrac{V_s}{V_p} = \dfrac{N_s}{N_p}$
+    \quad (turns ratio)};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{lawbox}[Transformer Equations]
+\textbf{Voltage ratio} (turns ratio):
+\[
+  \frac{V_s}{V_p} = \frac{N_s}{N_p}
+\]
+
+\textbf{Current ratio} (assuming 100\% efficiency):
+\[
+  \frac{I_s}{I_p} = \frac{N_p}{N_s}
+\]
+(Current ratio is the inverse of voltage ratio.)
+
+\textbf{Power equality} (ideal transformer):
+\[
+  P_p = P_s \implies V_p I_p = V_s I_s
+\]
+
+\textbf{Step-up transformer:} $N_s > N_p$,
+$V_s > V_p$, $I_s < I_p$.
+
+\textbf{Step-down transformer:} $N_s < N_p$,
+$V_s < V_p$, $I_s > I_p$.
+
+\textbf{Efficiency:}
+\[
+  \eta = \frac{P_s}{P_p} \times 100\%
+  = \frac{V_s I_s}{V_p I_p} \times 100\%
+\]
+\end{lawbox}
+
+\begin{keybox}[Why Transformers Only Work with AC]
+Transformers require a \textbf{changing} magnetic
+flux to induce an EMF in the secondary coil. A DC
+current through the primary creates a constant flux
+--- no change, no induction, no output in the
+secondary. Only AC (alternating current), which
+reverses direction many times per second, creates
+the continuously changing flux needed.
+
+This is why AC was chosen over DC for power
+distribution worldwide (following the famous
+``War of Currents'' between Edison, who promoted
+DC, and Tesla/Westinghouse, who promoted AC in
+the 1880s--1890s). Tesla won.
+\end{keybox}
+
+\begin{examplebox}[24.5]
+\stepcounter{workedexample}
+A step-down transformer connected to a $240\ \text{V}$
+AC supply has a turns ratio of $20:1$ and supplies
+a resistive load of $6.0\ \Omega$.\\
+(a) Find the secondary voltage.\\
+(b) Find the secondary current.\\
+(c) Find the primary current (assume 100\% efficiency).\\
+(d) Find the power delivered to the load.\\
+(e) The transformer efficiency is actually $95\%$.
+Find the actual primary current.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Secondary voltage:
+\[
+  V_s = V_p \times \frac{N_s}{N_p}
+  = 240 \times \frac{1}{20} = 12\ \text{V}
+\]
+
+\textbf{(b)} Secondary current:
+\[
+  I_s = \frac{V_s}{R} = \frac{12}{6.0} = 2.0\ \text{A}
+\]
+
+\textbf{(c)} Primary current (ideal):
+\[
+  I_p = I_s \times \frac{N_s}{N_p}
+  = 2.0 \times \frac{1}{20} = 0.10\ \text{A}
+\]
+Or: $I_p = P/(V_p) = 24/240 = 0.10\ \text{A}$ ✓
+
+\textbf{(d)} Power to load:
+\[
+  P = I_s^2 R = (2.0)^2 \times 6.0 = 24\ \text{W}
+\]
+Or: $P = V_s I_s = 12 \times 2.0 = 24\ \text{W}$ ✓
+
+\textbf{(e)} At $95\%$ efficiency:
+\[
+  \eta = \frac{P_s}{P_p}
+  \implies P_p = \frac{P_s}{\eta}
+  = \frac{24}{0.95} = 25.26\ \text{W}
+\]
+\[
+  I_p = \frac{P_p}{V_p} = \frac{25.26}{240}
+  = 0.105\ \text{A}
+\]
+The primary current is slightly higher than the
+ideal case to account for the transformer's own
+internal losses.
+\end{solutionbox}
+
+% ============================================================
+\section{Alternating Current: Basic Concepts}
+% ============================================================
+
+\begin{definitionbox}[AC Quantities]
+In \textbf{alternating current} (AC), the current
+and voltage alternate sinusoidally:
+\[
+  V = V_0\sin(2\pi ft) = V_0\sin(\omega t)
+\]
+\[
+  I = I_0\sin(\omega t)
+\]
+
+\textbf{Peak value:} $V_0$ or $I_0$ (maximum value).
+
+\textbf{Root mean square (RMS) value:}
+\[
+  V_{rms} = \frac{V_0}{\sqrt{2}} \approx 0.707\,V_0
+\]
+\[
+  I_{rms} = \frac{I_0}{\sqrt{2}} \approx 0.707\,I_0
+\]
+
+The RMS value of an AC current or voltage is the
+equivalent DC value that produces the same power
+dissipation.
+
+\textbf{Power in AC circuit} (resistive load only):
+\[
+  P = V_{rms}I_{rms} = I_{rms}^2R
+  = \frac{V_{rms}^2}{R}
+\]
+\end{definitionbox}
+
+\begin{keybox}[Mains Voltage: Peak vs RMS]
+The Nigerian (and UK) mains supply is quoted as
+$240\ \text{V}$. This is the \textbf{RMS value}.
+The actual peak voltage is:
+\[
+  V_0 = \sqrt{2} \times V_{rms}
+  = \sqrt{2} \times 240 \approx 339\ \text{V}
+\]
+A voltmeter connected to the mains reads the RMS
+value ($240\ \text{V}$). The peak value of $339\ \text{V}$
+is high enough to be lethal --- which is why the
+peak voltage matters for insulation design and the
+rating of capacitors and other components.
+\end{keybox}
+
+\begin{examplebox}[24.6]
+\stepcounter{workedexample}
+The Nigerian mains supply is $240\ \text{V}$ RMS
+at $50\ \text{Hz}$.\\
+(a) Find the peak voltage.\\
+(b) Find the peak current through a $60\ \Omega$
+resistor connected to the mains.\\
+(c) Find the average power dissipated.\\
+(d) Write the equation for the instantaneous
+voltage as a function of time.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Peak voltage:
+\[
+  V_0 = \sqrt{2} \times 240 = 339\ \text{V}
+\]
+
+\textbf{(b)} Peak current:
+\[
+  I_0 = \frac{V_0}{R} = \frac{339}{60}
+  = 5.65\ \text{A}
+\]
+
+\textbf{(c)} Average power (using RMS values):
+\[
+  P = \frac{V_{rms}^2}{R} = \frac{240^2}{60}
+  = \frac{57\,600}{60} = 960\ \text{W}
+\]
+
+\textbf{(d)} Instantaneous voltage:
+$\omega = 2\pi f = 2\pi \times 50 = 314\ \text{rad\,s}^{-1}$
+\[
+  V = 339\sin(314t)\ \text{V}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Sources of Energy for Electricity Generation}
+% ============================================================
+
+\begin{table}[H]
+\centering
+\caption{Sources of Electrical Energy}
+\label{tab:energy_sources}
+\begin{tabular}{llll}
+\toprule
+\textbf{Source} & \textbf{Type} & \textbf{Nigerian
+example} & \textbf{Efficiency}\\
+\midrule
+Coal/Gas & Fossil fuel & Egbin Gas Station & $35$--$45\%$\\
+Hydroelectric & Renewable & Kainji, Shiroro & $85$--$95\%$\\
+Nuclear & Nuclear fission & (not in Nigeria) & $33$--$37\%$\\
+Solar PV & Renewable & Off-grid Nigeria & $15$--$22\%$\\
+Wind & Renewable & (limited in Nigeria) & $35$--$45\%$\\
+Geothermal & Renewable & (not applicable) & $10$--$23\%$\\
+Biomass & Renewable & Sawmill waste & $20$--$30\%$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{realworldbox}[Nigeria's Electricity Challenges]
+Nigeria has an installed electricity generation
+capacity of approximately $12\,500\ \text{MW}$
+(as of 2025), but typically generates only
+$4\,000$--$5\,000\ \text{MW}$ against a demand
+estimated at $30\,000\ \text{MW}$. The result is
+the persistent power outages that have made private
+generators and solar inverter systems a fact of
+life for Nigerian homes and businesses.
+
+Understanding electrical power, efficiency, and
+energy costs is not abstract for Nigerians --- it
+is a daily practical necessity. The physics in
+this chapter directly governs the cost of running
+a generator, the savings from switching to LED
+bulbs, the economics of solar panels, and the
+reason the national grid transmits at $330\ \text{kV}$
+rather than $240\ \text{V}$.
+\end{realworldbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Electrical power:}
+$P = IV = I^2R = V^2/R$ (watts, W)
+
+\textbf{Electrical energy:}
+$W = Pt$ (joules); $W = P(\text{kW}) \times t(\text{hours})$
+(kWh); $1\ \text{kWh} = 3.6\ \text{MJ}$
+
+\textbf{Joule heating:} $Q = I^2Rt$;
+always generates heat regardless of current direction.
+
+\textbf{Fuse:} melts when $I > $ rated value;
+protects circuit. Choose rating just above $I_{operating}$.
+
+\textbf{Power transmission:} at high voltage to
+reduce $I$, reducing $P_{loss} = I^2R_{cable}$.
+$P_{loss} \propto 1/V^2$ for same transmitted power.
+
+\textbf{Transformer:}
+$V_s/V_p = N_s/N_p$ (turns ratio);
+$I_s/I_p = N_p/N_s$;
+$P_p = P_s$ (ideal).
+Requires AC. Step-up: $N_s > N_p$.
+Step-down: $N_s < N_p$.
+
+\textbf{AC:} $V_{rms} = V_0/\sqrt{2}$;
+$I_{rms} = I_0/\sqrt{2}$.
+Mains $240\ \text{V}$ is RMS; peak $= 339\ \text{V}$.
+$P = V_{rms}I_{rms}$ (resistive load).
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[24]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A $100\ \Omega$ resistor carries a
+current of $2.0\ \text{A}$. The power dissipated is:
+
+\mcoption{A}{$50\ \text{W}$}
+\mcoption{B}{$200\ \text{W}$}
+\mcoption{C}{$400\ \text{W}$}
+\mcoption{D}{$20\,000\ \text{W}$}
+\ansref{Ch24-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} $1\ \text{kWh}$ is equal to:
+
+\mcoption{A}{$1000\ \text{J}$}
+\mcoption{B}{$3600\ \text{J}$}
+\mcoption{C}{$3.6\times10^6\ \text{J}$}
+\mcoption{D}{$1\ \text{W}$}
+\ansref{Ch24-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A transformer has a turns ratio
+$N_p:N_s = 1:10$. It is a:
+
+\mcoption{A}{Step-down transformer}
+\mcoption{B}{Step-up transformer}
+\mcoption{C}{Isolation transformer}
+\mcoption{D}{Rectifier}
+\ansref{Ch24-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} Electrical power is transmitted at
+high voltage in order to:
+
+\mcoption{A}{Increase the speed of electricity}
+\mcoption{B}{Reduce power losses in cables}
+\mcoption{C}{Reduce the resistance of cables}
+\mcoption{D}{Increase the efficiency of generators}
+\ansref{Ch24-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} The RMS value of an AC voltage with
+peak value $100\ \text{V}$ is approximately:
+
+\mcoption{A}{$50\ \text{V}$}
+\mcoption{B}{$70.7\ \text{V}$}
+\mcoption{C}{$100\ \text{V}$}
+\mcoption{D}{$141.4\ \text{V}$}
+\ansref{Ch24-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} An ideal step-down transformer reduces
+voltage from $240\ \text{V}$ to $12\ \text{V}$.
+The ratio of primary current to secondary current is:
+
+\mcoption{A}{$1:1$}
+\mcoption{B}{$1:20$}
+\mcoption{C}{$20:1$}
+\mcoption{D}{$240:12$}
+\ansref{Ch24-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} A $2\ \text{kW}$ appliance is used for
+$3\ \text{h}$ per day for 30 days. The energy consumed is:
+
+\mcoption{A}{$6\ \text{kWh}$}
+\mcoption{B}{$60\ \text{kWh}$}
+\mcoption{C}{$180\ \text{kWh}$}
+\mcoption{D}{$6000\ \text{kWh}$}
+\ansref{Ch24-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} A fuse blows when:
+
+\mcoption{A}{The voltage across it exceeds the rating}
+\mcoption{B}{The power input is too low}
+\mcoption{C}{The current through it exceeds the
+rated value and melts the wire}
+\mcoption{D}{The resistance of the circuit is too high}
+\ansref{Ch24-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} If the transmission line voltage is
+doubled (same power transmitted), the power
+dissipated in the line:
+
+\mcoption{A}{Doubles}
+\mcoption{B}{Is halved}
+\mcoption{C}{Is quartered}
+\mcoption{D}{Stays the same}
+\ansref{Ch24-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} Transformers work only with AC because:
+
+\mcoption{A}{AC has a higher voltage than DC}
+\mcoption{B}{DC would destroy the iron core}
+\mcoption{C}{Electromagnetic induction requires a
+changing magnetic flux, which DC cannot provide}
+\mcoption{D}{AC is safer than DC}
+\ansref{Ch24-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A household in Abuja uses the
+following electrical appliances:
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Appliance & Power (W) & Hours per day\\
+\midrule
+Split air conditioner & 1800 & 8\\
+Refrigerator & 150 & 24\\
+LED bulbs (5 total) & 15 each & 6\\
+Television & 120 & 5\\
+Laptop charger & 65 & 4\\
+Electric kettle & 1500 & 0.5\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The electricity tariff is ₦80 per kWh.\\[4pt]
+(a) Calculate the daily energy consumption of
+each appliance in kWh.\\
+(b) Find the total daily energy consumption.\\
+(c) Calculate the monthly electricity bill
+(30-day month).\\
+(d) The household switches from a $1800\ \text{W}$
+split AC to a $1200\ \text{W}$ inverter AC with
+the same cooling performance. Calculate the
+monthly saving in Naira.\\
+(e) Calculate the payback period (in months) if
+the inverter AC costs ₦180,000 more than the
+standard AC.
+\hfill\ansref{Ch24-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A $220\ \text{kV}$ transmission line
+carries power from the Kainji Hydroelectric Dam
+to Lagos. The transmission line has a total
+resistance (both conductors) of $60\ \Omega$.
+The line carries $500\ \text{A}$.\\[4pt]
+(a) Calculate the power delivered to the line.\\
+(b) Calculate the power lost in the line as heat.\\
+(c) Calculate the voltage drop along the line.\\
+(d) What is the voltage at the Lagos end of the line?\\
+(e) If the power delivered to Lagos consumers
+is $P_L = (220\text{ kV} - \Delta V) \times 500\text{ A}$,
+calculate $P_L$.\\
+(f) Confirm the power balance:
+$P_{input} = P_{line loss} + P_L$.
+\hfill\ansref{Ch24-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A $240\ \text{V}$ to $12\ \text{V}$
+step-down transformer supplies a car battery charger.
+The secondary coil has $60$ turns. The charger
+delivers $5.0\ \text{A}$ to the battery.\\[4pt]
+(a) Find the number of primary turns.\\
+(b) Find the primary current (assume 100\%
+efficiency).\\
+(c) Find the power input and output.\\
+(d) The transformer has an efficiency of $92\%$.
+Find the actual primary current.\\
+(e) Calculate the heat generated inside the
+transformer per hour.\\
+(f) Explain two causes of energy loss in a
+real transformer.
+\hfill\ansref{Ch24-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} An AC generator produces a sinusoidal
+voltage with peak value $325\ \text{V}$ at
+$50\ \text{Hz}$.\\[4pt]
+(a) Write the expression for the instantaneous
+voltage as a function of time.\\
+(b) Calculate the RMS voltage.\\
+(c) This generator is connected to a $40\ \Omega$
+resistive load. Calculate the peak current, RMS
+current, and average power.\\
+(d) A voltmeter and an ammeter are connected to
+measure this circuit. What do they read?\\
+(e) If this generator is connected to the primary
+of a transformer with $N_p = 200$ and $N_s = 50$,
+find the secondary RMS voltage and the secondary
+peak voltage.
+\hfill\ansref{Ch24-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A house is wired with cables rated
+at a maximum current of $13\ \text{A}$ from a
+$240\ \text{V}$ supply.\\[4pt]
+(a) Calculate the maximum power that can be
+drawn from each socket.\\
+(b) An extension cord with four sockets is used.
+All four sockets are used: $1800\ \text{W}$
+air fryer, $900\ \text{W}$ microwave,
+$1200\ \text{W}$ electric kettle, and a
+$60\ \text{W}$ lamp. Calculate the total current.\\
+(c) Will the $13\ \text{A}$ fuse blow? What is the
+risk if the fuse is replaced with a $20\ \text{A}$
+fuse?\\
+(d) The air fryer, microwave and kettle each have
+internal resistance of approximately
+$32\ \Omega$, $64\ \Omega$ and $48\ \Omega$
+respectively. Calculate the power dissipated in the
+extension cord itself if the cord has total
+resistance $0.5\ \Omega$.\\
+(e) A student argues that if the voltage is $240\ \text{V}$
+and the fuse is rated $13\ \text{A}$, you can safely
+use up to $240 \times 13 = 3120\ \text{W}$. Explain
+whether this is correct, and identify any assumptions.
+\hfill\ansref{Ch24-B5}
+
+\end{exercisebox}

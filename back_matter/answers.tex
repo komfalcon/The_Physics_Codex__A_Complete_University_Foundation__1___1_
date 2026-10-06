@@ -1,0 +1,4284 @@
+% NOTE: This file is included in the document body (not the preamble).
+% Load required packages in the main preamble instead, e.g.:
+%   \usepackage{xcolor,multicol,amssymb,amsmath}
+% (expl3 is part of the LaTeX kernel in modern LaTeX.)
+
+%  ANSWERS TO EXERCISES
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: back_matter/answers.tex
+% ============================================================
+
+\chapter*{Answers to Exercises}
+\addcontentsline{toc}{chapter}{Answers to Exercises}
+\markboth{Answers to Exercises}{Answers to Exercises}
+
+\small
+
+% -------------------- Formatting helpers (answers only) --------------------
+\makeatletter
+\newif\ifAnswers@FirstChapter
+\Answers@FirstChaptertrue
+\newif\ifAnswers@FirstB
+\Answers@FirstBtrue
+
+\definecolor{navyblue}{RGB}{26, 39, 68}
+
+% Fallbacks (in case the main preamble doesn't load amsmath/amssymb).
+\providecommand{\text}[1]{\mathrm{#1}}
+\providecommand{\checkmark}{\ensuremath{\surd}}
+\providecommand{\vect}[1]{\mathbf{#1}}
+
+\newcommand{\AnswersChapterBand}[2]{%
+  \ifAnswers@FirstChapter\global\Answers@FirstChapterfalse\else\vspace{14pt}\fi
+  \noindent
+  \colorbox{navyblue}{%
+    \parbox{\linewidth}{%
+      \vspace{6pt}%
+      \hspace{8pt}{\color{white}\large\bfseries Chapter #1 \quad #2}%
+      \vspace{6pt}%
+    }%
+  }%
+  \vspace{10pt}%
+  \global\Answers@FirstBtrue
+}
+
+\newcommand{\AnswersSectionHeading}[1]{%
+  \vspace{8pt}%
+  \noindent{\bfseries #1}%
+  \vspace{4pt}%
+}
+
+\let\Answers@origtextbf\textbf
+
+% Special \textbf handler for A- and B- labels (keeps normal \textbf{} elsewhere).
+\ExplSyntaxOn
+\cs_new_protected:Npn \Answers_textbf:n #1
+  {
+    % A-labels like "A1.~C" (the "~" is just a space token here, so match whitespace)
+    \regex_match:nnTF { \A\s*A\d+\.\s*[A-D]\s*\Z } {#1}
+      {
+        \regex_extract_once:nnN { \A\s*A(\d+)\.\s*([A-D])\s*\Z } {#1} \l_tmpa_seq
+        % Print label as "A1." then option letter; DO NOT insert \quad here
+        % because the document already has "\textbf{A1.~C} \quad ...".
+        \noindent\Answers@origtextbf{A\seq_item:Nn \l_tmpa_seq {1}.}~\seq_item:Nn \l_tmpa_seq {2}
+      }
+      {
+        % B-labels like "B1."
+        \regex_match:nnTF { \A\s*B\d+\.\s*\Z } {#1}
+          {
+            \regex_extract_once:nnN { \A\s*B(\d+)\.\s*\Z } {#1} \l_tmpb_seq
+            \ifAnswers@FirstB\global\Answers@FirstBfalse\else
+              \medskip
+              \noindent\rule{\linewidth}{0.3pt}
+              \medskip
+            \fi
+            \vspace{6pt}
+            \noindent\Answers@origtextbf{B\seq_item:Nn \l_tmpb_seq {1}.}\par
+            \vspace{3pt}
+          }
+          {\Answers@origtextbf{#1}}
+      }
+  }
+
+% Alias without expl3 “:” so it can be used with \let in normal LaTeX code.
+\cs_new_eq:NN \AnswersTextbf \Answers_textbf:n
+\ExplSyntaxOff
+
+% (a), (b), ... part labels in Section B
+\newcommand{\Answers@partlabel}[1]{\noindent\Answers@origtextbf{(#1)}\space}
+\begingroup\lccode`\~=`(\lowercase{\endgroup\def~}{\Answers@paren}
+\ExplSyntaxOn
+\cs_set_protected:Npn \Answers@paren #1)
+  {
+    \mode_if_math:TF
+      { (#1) }
+      {
+        % Only treat (a), (b), ... as part labels; everything else is a normal parenthesis.
+        \regex_match:nnTF { \A\s*[A-Za-z]\s*\Z } {#1}
+          {
+            \Answers@partlabel{#1}%
+            \@ifnextchar~{\@gobble}{}%
+          }
+          { (#1) }
+      }
+  }
+\ExplSyntaxOff
+\makeatother
+
+% Public alias (no @) so it can be used outside \makeatletter, e.g. when making '(' active.
+\makeatletter
+\let\AnswersParen\Answers@paren
+\makeatother
+
+% -------------------- Intro paragraph --------------------
+\begin{center}
+\textit{Section A answers are given as the correct option letter followed by a brief justification.
+Section B answers give the key numerical result or the essential reasoning for each part; full worked
+solutions for selected problems are available on the Aurikrex Learning Platform.}
+\end{center}
+\vspace{12pt}
+
+% ============================================================
+%  CHAPTER 1
+% ============================================================
+\AnswersChapterBand{1}{Measurement}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad Electric current (ampere) is one of
+the seven SI base quantities. Force, velocity, and energy
+are all derived.
+
+\textbf{A2.~B} \quad
+$3.5\times10^{-4}\,\text{m} = 3.5\times10^{-4}\times10^{3}
+\,\text{mm} = 0.35\,\text{mm}$.
+
+\textbf{A3.~A} \quad
+$P = F/A \Rightarrow [MLT^{-2}]/[L^{2}] = [ML^{-1}T^{-2}]$.
+
+\textbf{A4.~B} \quad $0.004\,070$: digits $4,0,7,0$ are
+significant (the leading zeros are not). That gives
+\textbf{4} significant figures.
+
+\textbf{A5.~B} \quad $108\,\text{km\,h}^{-1}
+\div 3.6 = 30\,\text{m\,s}^{-1}$.
+
+\textbf{A6.~C} \quad Momentum is mass$\times$velocity,
+a vector. Temperature, power and mass are scalars.
+
+\textbf{A7.~B} \quad
+$[m][g][h]=[M][LT^{-2}][L]=[ML^{2}T^{-2}]$, the
+dimension of energy. \checkmark
+
+\textbf{A8.~B} \quad Five nearly identical readings
+$(24.3,\,24.3,\,24.4,\,24.3,\,24.3)$ are
+\textit{precise} (small spread). Without a true value
+for comparison we cannot confirm accuracy.
+
+\textbf{A9.~C} \quad
+$0.85\,\text{g\,cm}^{-3}\times1000 = 850\,\text{kg\,m}^{-3}$.
+
+\textbf{A10.~C} \quad $E=mva$ has dimensions
+$[M][LT^{-1}][LT^{-2}]=[ML^{2}T^{-3}]$ (power), not
+energy $[ML^{2}T^{-2}]$. The equation is dimensionally
+inconsistent.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$[F/A]=[MLT^{-2}]/[L^{2}]=[ML^{-1}T^{-2}]$. \quad
+(b)~$[W/t]=[ML^{2}T^{-2}]/[T]=[ML^{2}T^{-3}]$.
+Watts: $\text{kg\,m}^{2}\text{s}^{-3}$. \quad
+(c)~$n=[V/(kT)]=[ML^{2}T^{-2}]/([ML^{2}T^{-2}K^{-1}][K])
+=[M^{0}L^{0}T^{0}]$, dimensionless. Consistent. \quad
+(d)~$k=PV/(nT)$; units
+$\text{Pa}\cdot\text{m}^{3}/(\text{mol}\cdot\text{K})
+=\text{J\,mol}^{-1}\text{K}^{-1}$.
+
+\textbf{B2.}
+(a)~Absolute error $\pm0.05\,\text{cm}$; percentage
+error $=(0.05/12.4)\times100=0.40\%$. \quad
+(b)~$\rho=m/V=210/(25.0\times10^{-6})
+=8.40\times10^{6}\,\text{g\,m}^{-3}
+=8.40\times10^{3}\,\text{kg\,m}^{-3}$. \quad
+(c)~Fractional uncertainty in $V=3\times\delta L/L
+=3\times0.5/25=6\%$; in $m$ negligible;
+$\delta\rho/\rho=6\%$,
+$\delta\rho=0.06\times8400=504
+\approx500\,\text{kg\,m}^{-3}$. \quad
+(d)~Report as $\rho=(8400\pm500)\,\text{kg\,m}^{-3}$.
+
+\textbf{B3.}
+(a)~$T=2\pi\sqrt{L/g}\Rightarrow
+g=4\pi^{2}L/T^{2}$; dimensions $[L]/[T^{2}]=[LT^{-2}]$.
+\checkmark \quad
+(b)~$g=4\pi^{2}(0.650)/(1.618)^{2}
+=4\times9.870\times0.650/2.618
+=9.79\,\text{m\,s}^{-2}$. \quad
+(c)~$\%\,\text{err in }g
+=\%\,\text{err in }L + 2\times\%\,\text{err in }T
+=(0.5/65.0)\times100+2\times(0.5/161.8)\times100
+=0.77+0.62=1.39\approx1.4\%$. \quad
+(d)~$\delta g=0.014\times9.79=0.14\,\text{m\,s}^{-2}$.
+Report: $g=(9.79\pm0.14)\,\text{m\,s}^{-2}$.
+
+\textbf{B4.}
+(a)~Mean $=\frac{1}{5}(5.23+5.25+5.21+5.24+5.22)
+=26.15/5=5.23\,\text{cm}$. \quad
+(b)~Deviations: $0,+0.02,-0.02,+0.01,-0.01$;
+mean absolute deviation $=0.06/5=0.012\,\text{cm}$.
+\quad
+(c)~Percentage uncertainty $=(0.012/5.23)\times100
+=0.23\%$. \quad
+(d)~Systematic error shifts all readings by the same
+amount (e.g.\ a zero error on the ruler); random errors
+produce spread in both directions. Random errors are
+reduced by repeating and averaging; systematic errors
+are not.
+
+\textbf{B5.}
+(a)~$[k]=[F/x]=[MLT^{-2}]/[L]=[MT^{-2}]$. \quad
+(b)~$[T]=[(m/k)^{1/2}]=[M/(MT^{-2})]^{1/2}=[T^{2}]^{1/2}
+=[T]$. Consistent. \quad
+(c)~$k=4\pi^{2}m/T^{2}$. \quad
+(d)~Plot $T^{2}$ vs $m$; gradient $=4\pi^{2}/k$,
+hence $k=4\pi^{2}/\text{gradient}$. \quad
+(e)~$k=4\times9.870/0.452^{2}
+\approx39.48/0.2043=193\,\text{N\,m}^{-1}$.
+
+% ============================================================
+%  CHAPTER 2
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{2}{Scalars and Vectors}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad Displacement and velocity are both
+vectors (magnitude + direction). Speed is scalar; mass
+is scalar; power is scalar.
+
+\textbf{A2.~D} \quad Resultant range:
+$|8-6|=2\,\text{N}$ to $8+6=14\,\text{N}$.
+$15\,\text{N}$ lies outside this range and is impossible.
+
+\textbf{A3.~A} \quad $F_x = 100\cos60°=100\times0.5
+=50\,\text{N}$.
+
+\textbf{A4.~C} \quad $5^{2}+12^{2}=25+144=169=13^{2}$.
+This is a Pythagorean triple, so the angle between the
+$5\,\text{N}$ and $12\,\text{N}$ forces is $90°$.
+
+\textbf{A5.~B} \quad
+$|\vect{F}|=\sqrt{(-3)^{2}+(-4)^{2}}=\sqrt{25}=5\,\text{N}$.
+Magnitude is always positive.
+
+\textbf{A6.~C} \quad $v_{P\text{ rel }Q}=v_P-v_Q
+=40\,\text{N}-(-40\,\text{N})=80\,\text{km\,h}^{-1}$
+north.
+
+\textbf{A7.~A} \quad Resultant $R=\sqrt{F_1^2+F_2^2
++2F_1F_2\cos\theta}$; maximum when $\cos\theta=1$,
+i.e.\ $\theta=0°$.
+
+\textbf{A8.~B} \quad
+$|\vect{s}|=\sqrt{5^2+(-12)^2}=\sqrt{169}=13\,\text{m}$.
+
+\textbf{A9.~B} \quad Two equal forces $F$ at $90°$:
+resultant $=\sqrt{F^2+F^2}=F\sqrt{2}$.
+
+\textbf{A10.~B} \quad By the triangle of forces, when
+three concurrent forces are in equilibrium the resultant
+of any two must equal the third in magnitude and act
+in the opposite direction.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$F_x=80\cos30°=69.3\,\text{N}$;
+$F_y=80\sin30°=40\,\text{N}$. \quad
+(b)~$R_x=69.3+60=129.3\,\text{N}$;
+$R_y=40-45=-5\,\text{N}$. \quad
+(c)~$|\vect{R}|=\sqrt{129.3^2+5^2}=\sqrt{16718.5}
+=129.4\,\text{N}\approx129\,\text{N}$. \quad
+(d)~$\theta=\tan^{-1}(5/129.3)=2.2°$ below the
+horizontal.
+
+\textbf{B2.}
+(a)~By Lami's theorem, for three concurrent coplanar
+forces in equilibrium:
+$T_1/\sin\angle_1=T_2/\sin\angle_2=W/\sin\angle_3$. \quad
+(b)~The angle between $T_1$ and $T_2$ (above the
+horizontal) and $W$ (downward):
+$T_1=W\sin60°/\sin90°=200\times0.866/1=173.2\,\text{N}$;
+$T_2=W\sin30°/\sin90°=200\times0.5=100\,\text{N}$. \quad
+(c)~Both tensions reduce as the angle between the strings
+decreases; in the limit (strings horizontal) tension
+would become infinite.
+
+\textbf{B3.}
+(a)~$R_{horizontal}=40\cos0°+30\cos(-90°)+50\cos120°
+=40+0-25=15\,\text{N}$ east. \quad
+$R_{vertical}=40\sin0°+30\sin(-90°)+50\sin120°
+=0-30+43.3=13.3\,\text{N}$ north. \quad
+(b)~$|\vect{R}|=\sqrt{15^2+13.3^2}=\sqrt{402}
+=20.1\,\text{N}$. \quad
+(c)~$\theta=\tan^{-1}(13.3/15)=41.6°$ north of east.
+
+\textbf{B4.}
+(a)~$v_{AB}=v_A-v_B$. $v_A=50\,\text{km\,h}^{-1}$
+north; $v_B=40\,\text{km\,h}^{-1}$ east. \quad
+$|v_{AB}|=\sqrt{50^2+40^2}=\sqrt{4100}=64\,\text{km\,h}^{-1}$. \quad
+(b)~Direction: $\theta=\tan^{-1}(40/50)=38.7°$ west of
+north. \quad
+(c)~If $v_{river}=3\,\text{m\,s}^{-1}$ east and
+$v_{boat in still water}=5\,\text{m\,s}^{-1}$, to travel
+straight across: aim upstream at angle
+$\theta=\sin^{-1}(3/5)=36.9°$ west of north; resultant
+speed $=\sqrt{25-9}=4\,\text{m\,s}^{-1}$.
+
+\textbf{B5.}
+(a)~$T\cos\theta=mg$ and $T\sin\theta=F$. Hence
+$\tan\theta=F/(mg)$. \quad
+(b)~$T=\sqrt{F^2+(mg)^2}$. \quad
+(c)~$\theta=\tan^{-1}[0.50/(0.200\times10)]
+=\tan^{-1}(0.25)=14.0°$. \quad
+(d)~$T=\sqrt{0.50^2+2.0^2}=\sqrt{4.25}=2.06\,\text{N}$. \quad
+(e)~If a second horizontal force $F_2=0.30\,\text{N}$
+acts perpendicular to $F_1$: resultant horizontal force
+$=\sqrt{0.50^2+0.30^2}=0.583\,\text{N}$;
+$\theta=\tan^{-1}(0.583/2.0)=16.3°$;
+$T=\sqrt{0.583^2+2.0^2}=2.08\,\text{N}$.
+
+% ============================================================
+%  CHAPTER 3
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{3}{Kinematics}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad $s=\tfrac{1}{2}at^2\Rightarrow
+100=\tfrac{1}{2}\times a\times25\Rightarrow a=8\,\text{m\,s}^{-2}$.
+
+\textbf{A2.~C} \quad Horizontal line on a $v$-$t$ graph
+means $v$ is constant, i.e.\ zero acceleration.
+
+\textbf{A3.~C} \quad At height $H=u^2/2g$: speed is zero.
+At half-height $H/2$: $v^2=u^2-2g(H/2)=u^2-u^2/2=u^2/2$,
+so $v=u/\sqrt{2}$. Ratio of speed at $H/2$ to speed at
+$H$ is $(u/\sqrt{2}):0=\sqrt{2}:0$.
+
+\textbf{A4.~B} \quad Range $R=v^2\sin2\theta/g$.
+At $45°$: $R_{45}=v^2/g$.
+At $30°$: $R_{30}=v^2\sin60°/g=R_{45}\times(\sqrt{3}/2)
+\approx0.87R$.
+
+\textbf{A5.~B} \quad $H=\tfrac{1}{2}gT^2$.
+For $4H$: $T'^2=4T^2\Rightarrow T'=2T$.
+
+\textbf{A6.~C} \quad Area under a $v$-$t$ graph equals
+displacement (a vector, not merely distance).
+
+\textbf{A7.~C} \quad In projectile motion (no air
+resistance) horizontal and vertical motions are
+completely independent.
+
+\textbf{A8.~C} \quad Average speed in first $4\,\text{s}$:
+$15\,\text{m\,s}^{-1}$. Next $4\,\text{s}$:
+$25\,\text{m\,s}^{-1}$. Speed increasing $\Rightarrow$
+accelerating.
+
+\textbf{A9.~B} \quad $s=\tfrac{1}{2}(u+v)t
+=\tfrac{1}{2}(30+0)(6)=90\,\text{m}$.
+
+\textbf{A10.~C} \quad Velocity (m\,s$^{-1}$) and speed
+(m\,s$^{-1}$) share the same SI unit.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~Using $v^2=u^2+2as$: $20^2=0+2a(400)\Rightarrow
+a=\frac{400}{800}=0.5\,\text{m\,s}^{-2}$. \quad
+(b)~Braking: $0^2=20^2+2(-3)s\Rightarrow s=200/3
+=66.7\,\text{m}$. \quad
+(c)~Reaction distance $=20\times0.8=16\,\text{m}$.
+Total stopping distance $=16+66.7=82.7\,\text{m}$. \quad
+(d)~At $v=25\,\text{m\,s}^{-1}$: reaction distance
+$=25\times0.8=20\,\text{m}$; braking distance
+$=25^2/(2\times3)=104.2\,\text{m}$; total
+$=124.2\,\text{m}$.
+
+\textbf{B2.}
+(a)~$u_x=v_0\cos40°=25\times0.766=19.15\,\text{m\,s}^{-1}$;
+$u_y=25\sin40°=16.07\,\text{m\,s}^{-1}$. \quad
+(b)~$t_{top}=u_y/g=16.07/10=1.607\,\text{s}$. \quad
+(c)~$H=u_y^2/(2g)=258.2/20=12.91\,\text{m}$. \quad
+(d)~$t_{flight}=2t_{top}=3.21\,\text{s}$. \quad
+(e)~$R=u_x\times t_{flight}=19.15\times3.21=61.5\,\text{m}$.
+
+\textbf{B3.}
+(a)~From rest: area under $v$-$t$ graph (triangles/trapezoids)
+for each phase. Phase 1 (0--10s): triangle, area
+$=\tfrac{1}{2}\times10\times20=100\,\text{m}$.
+Phase 2 (10--25s): rectangle, $15\times20=300\,\text{m}$.
+Phase 3 (25--35s): triangle, $\tfrac{1}{2}\times10\times20
+=100\,\text{m}$. Total $=500\,\text{m}$. \quad
+(b)~Acceleration in phase 1: $a=20/10=2\,\text{m\,s}^{-2}$.
+Deceleration in phase 3: $a=-20/10=-2\,\text{m\,s}^{-2}$.
+\quad
+(c)~Average speed $=500/35=14.3\,\text{m\,s}^{-1}$.
+
+\textbf{B4.}
+(a)~Time to fall $h=80\,\text{m}$:
+$h=\tfrac{1}{2}gt^2\Rightarrow t=\sqrt{160/10}=4\,\text{s}$. \quad
+(b)~Horizontal range $=u\times t=15\times4=60\,\text{m}$. \quad
+(c)~Vertical speed at impact: $v_y=gt=10\times4=40\,\text{m\,s}^{-1}$.
+Resultant speed $=\sqrt{15^2+40^2}=\sqrt{1825}=42.7\,\text{m\,s}^{-1}$. \quad
+(d)~Angle to horizontal $=\tan^{-1}(40/15)=69.4°$.
+
+\textbf{B5.}
+(a)~Let the trains each have length $L$ and speed $v$.
+Relative speed when approaching $=2v$.
+Time to pass $=2L/(2v)=L/v$.
+\quad
+(b)~Relative speed when same direction $=v-v=0$;
+the trains take infinitely long to pass (they travel
+together). For one stationary and one moving at $v$:
+time $=2L/v$. \quad
+(c)~$v_{rel}=30+20=50\,\text{m\,s}^{-1}$ (head-on).
+Time to pass $=(250+200)/50=450/50=9\,\text{s}$. \quad
+(d)~Same direction: $v_{rel}=30-20=10\,\text{m\,s}^{-1}$.
+Time $=450/10=45\,\text{s}$.
+
+% ============================================================
+%  CHAPTER 4
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{4}{Dynamics}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad Impulse $=Ft=20\times5=100\,\text{N\,s}
+=\Delta p$.
+
+\textbf{A2.~B} \quad $a=(m_2-m_1)g/(m_1+m_2)
+=(6-2)\times10/(6+2)=40/8=5\,\text{m\,s}^{-2}$.
+
+\textbf{A3.~B} \quad Newton's Third Law pair: the book
+pulls Earth upward with the same force that Earth pulls
+the book downward. Weight and normal force are
+\textit{not} Newton 3rd-Law pairs (they act on the
+same object).
+
+\textbf{A4.~B} \quad $a=g\sin37°=10\times0.6
+=6\,\text{m\,s}^{-2}$ (smooth incline).
+
+\textbf{A5.~C} \quad Terminal velocity when
+$\text{drag}=\text{weight}$; net force $=0$;
+acceleration $=0$.
+
+\textbf{A6.~B} \quad Perfectly inelastic collision:
+objects stick together. Momentum is conserved; kinetic
+energy is not (some becomes heat/sound/deformation).
+
+\textbf{A7.~B} \quad Maximum static friction
+$=\mu N=0.4\times100=40\,\text{N}$. The applied force
+$30\,\text{N}<40\,\text{N}$, so the block does not slide.
+Friction equals applied force $=30\,\text{N}$.
+
+\textbf{A8.~C} \quad Apparent weight
+$=m(g+a)=60(10+2)=720\,\text{N}$.
+
+\textbf{A9.~C} \quad Conservation of momentum:
+$m_{bullet}v_{bullet}=m_{rifle}v_{rifle}$;
+$v_{rifle}=0.015\times600/3.0=3.0\,\text{m\,s}^{-1}$.
+
+\textbf{A10.~C} \quad Passengers lurching forward when
+the bus brakes: their inertia resists the deceleration
+--- Newton's First Law.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~Net force $=800-200=600\,\text{N}$;
+$a=F/m=600/1200=0.5\,\text{m\,s}^{-2}$. \quad
+(b)~$v=u+at=0+0.5\times15=7.5\,\text{m\,s}^{-1}$. \quad
+(c)~$s=\tfrac{1}{2}at^2=\tfrac{1}{2}\times0.5\times225
+=56.25\,\text{m}$. \quad
+(d)~Normal force from road: $N=mg=1200\times10
+=12\,000\,\text{N}$; friction provides centripetal force.
+
+\textbf{B2.}
+(a)~Both blocks: net force $=(5-3)\times10=20\,\text{N}$;
+total mass $=8\,\text{kg}$; $a=20/8=2.5\,\text{m\,s}^{-2}$. \quad
+(b)~Tension in string: for $3\,\text{kg}$ block:
+$T-30=3\times2.5\Rightarrow T=37.5\,\text{N}$. \quad
+(c)~String goes slack if $m_2\leq m_1$; tension then
+zero.
+
+\textbf{B3.}
+(a)~Momentum before: $0.2\times300=60\,\text{N\,s}$.
+After: $(0.2+5)\times v=60\Rightarrow v=60/5.2
+=11.5\,\text{m\,s}^{-1}$. \quad
+(b)~$\Delta KE=\tfrac{1}{2}\times5.2\times11.5^2
+-\tfrac{1}{2}\times0.2\times300^2=344-9000=-8656\,\text{J}$.
+Lost as heat and deformation. \quad
+(c)~Coefficient of friction: $\mu=v^2/(2gs)=11.5^2/(2\times10\times s)$.
+If $s=2\,\text{m}$: $\mu=132.25/40=3.3$ (unrealistically
+high, showing the block does not travel far).
+
+\textbf{B4.}
+(a)~On the $5\,\text{kg}$ block:
+$mg\sin30°-f=ma\Rightarrow5\times10\times0.5-f=5a
+\Rightarrow25-f=5a$.
+Normal: $N=mg\cos30°=5\times10\times0.866=43.3\,\text{N}$.
+Friction: $f=\mu N=0.3\times43.3=13.0\,\text{N}$.
+$a=(25-13.0)/5=2.4\,\text{m\,s}^{-2}$. \quad
+(b)~$v^2=2\times2.4\times3.0=14.4\Rightarrow v=3.79\,\text{m\,s}^{-1}$.
+\quad
+(c)~At the bottom the block leaves the ramp; projectile
+motion follows.
+
+\textbf{B5.}
+(a)~$F_{net}=F_{thrust}-F_{weight}-F_{drag}
+=8000-3000-500=4500\,\text{N}$.
+$a=4500/300=15\,\text{m\,s}^{-2}$. \quad
+(b)~To hover: thrust $=$ weight $=3000\,\text{N}$. \quad
+(c)~As fuel burns, mass decreases; same thrust produces
+greater acceleration. The rocket accelerates faster
+as its mass decreases. \quad
+(d)~$v_{exhaust}\,\Delta m=M\,\Delta v$ (rocket equation);
+momentum of ejected gas equals momentum gained by rocket.
+
+% ============================================================
+%  CHAPTER 5
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{5}{Work, Energy and Power}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~A} \quad $W=Fd\cos\theta
+=50\times8.0\times\cos60°=400\times0.5=200\,\text{J}$.
+
+\textbf{A2.~C} \quad Kinetic energy $=\tfrac{1}{2}mv^2$
+(by definition of KE).
+
+\textbf{A3.~B} \quad $E=\tfrac{1}{2}kx^2
+=\tfrac{1}{2}\times400\times(0.05)^2=0.50\,\text{J}$.
+
+\textbf{A4.~B} \quad $P=\dot{m}gh=50\times10\times10
+=5000\,\text{W}$.
+
+\textbf{A5.~C} \quad Power of engine $=$ engine force
+$\times$ velocity $=3000\times20=60\,000\,\text{W}$.
+
+\textbf{A6.~C} \quad Efficiency $=P_{out}/P_{in}
+=1.5/2=0.75=75\%$.
+
+\textbf{A7.~D} \quad Gravity acts toward the Sun
+(centripetally); velocity is tangential (perpendicular to
+gravity). Work done $=Fd\cos90°=0$.
+
+\textbf{A8.~B} \quad Energy conservation:
+$\tfrac{1}{2}mv^2=\tfrac{1}{2}mv_0^2+mgH\Rightarrow
+v=\sqrt{v_0^2+2gH}$.
+
+\textbf{A9.~A} \quad $KE=\tfrac{1}{2}mv^2$.
+Doubling $KE$: $v_{new}=v\sqrt{2}$, so speed is
+multiplied by $\sqrt{2}$.
+
+\textbf{A10.~B} \quad $P=mgh/t=70\times10\times12/18
+=8400/18=466.7\approx467\,\text{W}$.
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+
+\textbf{B1.}
+(a)~Normal force $N=mg\cos20°=5\times10\times0.940=47.0\,\text{N}$.
+Friction $=\mu N=0.3\times47.0=14.1\,\text{N}$.
+Net force $=mg\sin20°-f=5\times10\times0.342-14.1
+=17.1-14.1=3.0\,\text{N}$.
+$a=0.60\,\text{m\,s}^{-2}$. \quad
+(b)~Work by gravity over $s=4\,\text{m}$:
+$W_g=mgs\sin20°=5\times10\times4\times0.342=68.4\,\text{J}$.
+Work by friction: $W_f=-14.1\times4=-56.4\,\text{J}$.
+Net work $=68.4-56.4=12.0\,\text{J}=\Delta KE$. \checkmark \quad
+(c)~$v=\sqrt{2\times0.60\times4}=2.19\,\text{m\,s}^{-1}$.
+
+\textbf{B2.}
+(a)~Spring compressed $x=F/k=200/5000=0.04\,\text{m}$;
+$E_{spring}=\tfrac{1}{2}\times5000\times0.04^2=4\,\text{J}$. \quad
+(b)~At launch: $4=\tfrac{1}{2}\times0.05\times v^2
+\Rightarrow v=\sqrt{160}=12.65\,\text{m\,s}^{-1}$. \quad
+(c)~Maximum height: $h=v^2/(2g)=160/20=8\,\text{m}$. \quad
+(d)~At $h=3\,\text{m}$: $KE=4-mgh=4-0.05\times10\times3
+=4-1.5=2.5\,\text{J}$.
+
+\textbf{B3.}
+(a)~$P_{useful}=Fv=1200\times25=30\,000\,\text{W}$.
+Engine power $=30\,000/0.35=85\,714\approx85.7\,\text{kW}$. \quad
+(b)~At constant speed, engine force $=$ resistance force
+$=1200\,\text{N}$. \quad
+(c)~Work done against resistance per hour
+$=1200\times25\times3600=1.08\times10^8\,\text{J}$.
+
+\textbf{B4.}
+(a)~$PE_{top}=mgh=0.5\times10\times3=15\,\text{J}$;
+$KE_{top}=0$; total $E=15\,\text{J}$. \quad
+(b)~At bottom: $KE=15\,\text{J}$;
+$v=\sqrt{2\times15/0.5}=\sqrt{60}=7.75\,\text{m\,s}^{-1}$. \quad
+(c)~With friction $W_{friction}=3\,\text{J}$:
+$KE_{bottom}=15-3=12\,\text{J}$;
+$v=\sqrt{2\times12/0.5}=6.93\,\text{m\,s}^{-1}$. \quad
+(d)~Efficiency $=12/15=80\%$.
+
+\textbf{B5.}
+(a)~Work done per hour $=Power\times time
+=75\times3600=270\,000\,\text{J}$. \quad
+(b)~Stairs: $P=mgh/t=75\times10\times5/20
+=187.5\,\text{W}$; cycling $=75\,\text{W}$ assumed
+mechanical output. Stairs requires $2.5\times$ the
+power. \quad
+(c)~Calories: $1\,\text{kcal}=4186\,\text{J}$.
+In $1\,\text{h}$ at $75\,\text{W}$:
+$270\,000/4186=64.5\,\text{kcal}$.
+
+% ============================================================
+%  CHAPTER 6
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{6}{Circular Motion}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad Speed is constant; velocity changes
+direction (hence changes). No net work done, but a
+centripetal force acts.
+
+\textbf{A2.~C} \quad $F=mv^2/r=0.2\times16/0.5
+=6.4\,\text{N}$.
+
+\textbf{A3.~C} \quad Kepler: $T^2\propto r^3$.
+$T_2^2/T_1^2=(4r)^3/r^3=64\Rightarrow T_2=8T$.
+
+\textbf{A4.~B} \quad $v_{max}=\sqrt{\mu rg}
+=\sqrt{0.4\times50\times10}=\sqrt{200}=14.1\,\text{m\,s}^{-1}$.
+
+\textbf{A5.~B} \quad At top of circle, minimum speed
+when tension $T=0$: $mg=mv^2/r\Rightarrow v=\sqrt{rg}$.
+
+\textbf{A6.~C} \quad $\theta=\omega t=10\times5
+=50\,\text{rad}$.
+
+\textbf{A7.~C} \quad At the ideal banking angle for a
+given speed, the horizontal component of normal force
+alone provides centripetal force. Friction is zero.
+
+\textbf{A8.~C} \quad $v=\sqrt{ar}=\sqrt{0.0027
+\times3.84\times10^8}=\sqrt{1.037\times10^6}
+\approx1018\approx1020\,\text{m\,s}^{-1}$.
+
+\textbf{A9.~B} \quad At hilltop: $mg-N=mv^2/r$.
+Maximum speed when $N=0$: $v=\sqrt{rg}
+=\sqrt{40\times10}=20\,\text{m\,s}^{-1}$.
+
+\textbf{A10.~B} \quad At top: $(T+mg)=mv^2/L$.
+If $T=mg$: $2mg=mv^2/L\Rightarrow v=\sqrt{2gL}$.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$\omega=2\pi f=2\pi\times3=18.85\,\text{rad\,s}^{-1}$. \quad
+(b)~$v=\omega r=18.85\times0.5=9.42\,\text{m\,s}^{-1}$. \quad
+(c)~$a_c=\omega^2 r=18.85^2\times0.5=177.7\,\text{m\,s}^{-2}$. \quad
+(d)~$F=ma_c=0.3\times177.7=53.3\,\text{N}$.
+
+\textbf{B2.}
+(a)~$T\cos\theta=mg$ and $T\sin\theta=m\omega^2 r$
+where $r=L\sin\theta$. Dividing:
+$\tan\theta=\omega^2L\sin\theta/g\Rightarrow
+\cos\theta=g/(\omega^2 L)$. \quad
+(b)~$\omega=\sqrt{g/(L\cos\theta)}$. \quad
+(c)~$L=0.50\,\text{m}$, $\theta=30°$:
+$\omega=\sqrt{10/(0.50\times\cos30°)}
+=\sqrt{10/0.433}=\sqrt{23.1}=4.80\,\text{rad\,s}^{-1}$;
+$n=\omega/2\pi=0.764\,\text{rev\,s}^{-1}=45.8\,\text{rpm}$.
+
+\textbf{B3.}
+(a)~Centripetal force: $F=mv^2/r=1200\times400/80
+=6000\,\text{N}$. \quad
+(b)~Friction available $=\mu mg=0.6\times1200\times10
+=7200\,\text{N}>6000\,\text{N}$. Safe. \quad
+(c)~Max speed: $v=\sqrt{\mu rg}=\sqrt{0.6\times80\times10}
+=\sqrt{480}=21.9\,\text{m\,s}^{-1}=78.9\,\text{km\,h}^{-1}$.
+
+\textbf{B4.}
+(a)~$T^2=4\pi^2R^3/(GM_E)$;
+$M_E=4\pi^2R^3/(GT^2)
+=4\times9.87\times(6.4\times10^6+400\times10^3)^3/
+(6.67\times10^{-11}\times(5535)^2)$. \quad
+(b)~Orbital speed:
+$v=2\pi r/T=2\pi\times6.78\times10^6/5535
+=7700\,\text{m\,s}^{-1}=7.7\,\text{km\,s}^{-1}$. \quad
+(c)~Period $\propto r^{3/2}$; higher orbit $\Rightarrow$
+longer period. GEO period $=24\,\text{h}$.
+
+\textbf{B5.}
+(a)~At bottom: $N-mg=mv^2/r\Rightarrow N=m(g+v^2/r)
+=70\times(10+400/20)=70\times30=2100\,\text{N}$. \quad
+(b)~At top: $N+mg=mv^2/r\Rightarrow N=m(v^2/r-g)
+=70\times(20-10)=700\,\text{N}$. \quad
+(c)~Normal force at bottom is $3.5\times$ body weight;
+at top is $1\times$ body weight --- rollercoaster riders
+feel heaviest at the bottom.
+
+% ============================================================
+%  CHAPTER 7
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{7}{Simple Harmonic Motion}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad SHM: $a\propto-x$
+(acceleration proportional to displacement,
+directed toward equilibrium).
+
+\textbf{A2.~C} \quad $T=2\pi\sqrt{L/g}$.
+If $g'=4g$: $T'=2\pi\sqrt{L/(4g)}=T/2$.
+
+\textbf{A3.~B} \quad $v=\omega\sqrt{A^2-x^2}$;
+maximum when $x=0$ (at equilibrium).
+
+\textbf{A4.~B} \quad $T'=2\pi\sqrt{m'/k'}
+=2\pi\sqrt{2m/(k/2)}=2\pi\sqrt{4m/k}=2T$.
+
+\textbf{A5.~C} \quad $a_{max}=\omega^2A=25\times0.04
+=1.00\,\text{m\,s}^{-2}$.
+
+\textbf{A6.~C} \quad KE $=$ PE when
+$\tfrac{1}{2}m\omega^2(A^2-x^2)=\tfrac{1}{2}m\omega^2x^2
+\Rightarrow x=A/\sqrt{2}$.
+
+\textbf{A7.~B} \quad Critical damping: system returns
+to equilibrium as fast as possible without oscillating.
+
+\textbf{A8.~B} \quad Resonance: driving frequency equals
+natural frequency of the system.
+
+\textbf{A9.~B} \quad $T=2\pi\sqrt{L/g}
+=2\pi\sqrt{1.0/10}=2\pi/\sqrt{10}$.
+Using $\pi^2=10$: $T=2\sqrt{10}/\sqrt{10}=2.0\,\text{s}$.
+
+\textbf{A10.~C} \quad $x=A\sin\omega t$ (displacement);
+$a=-\omega^2A\sin\omega t=-\omega^2 x$.
+Phase difference between $x$ and $a$ is $180°$.
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+
+\textbf{B1.}
+(a)~$A=3.0\,\text{cm}=0.03\,\text{m}$;
+$\omega=2\pi/T=2\pi/0.8=7.854\,\text{rad\,s}^{-1}$. \quad
+(b)~$v_{max}=\omega A=7.854\times0.03=0.236\,\text{m\,s}^{-1}$. \quad
+(c)~$a_{max}=\omega^2A=61.7\times0.03=1.85\,\text{m\,s}^{-2}$. \quad
+(d)~$x=0.03\sin(7.854t)$ m; $v=0.236\cos(7.854t)$ m\,s$^{-1}$. \quad
+(e)~At $x=0.02\,\text{m}$:
+$v=\omega\sqrt{A^2-x^2}=7.854\sqrt{0.0009-0.0004}
+=7.854\times0.02236=0.1756\,\text{m\,s}^{-1}$.
+
+\textbf{B2.}
+(a)~$T=2\pi\sqrt{L/g}$; $L=g(T/2\pi)^2
+=10\times(2/2\pi)^2=10/(pi^2)=1.013\,\text{m}$. \quad
+(b)~On Mars ($g=3.72\,\text{m\,s}^{-2}$):
+$T=2\pi\sqrt{1.013/3.72}=3.28\,\text{s}$. \quad
+(c)~The pendulum gains time on Earth (oscillates faster)
+and loses time on Mars (slower). \quad
+(d)~For a clock: change in $g$ by $\Delta g$ causes
+fractional change in rate $\approx\Delta g/(2g)$.
+
+\textbf{B3.}
+(a)~$k=m\omega^2=0.5\times(2\pi/0.6)^2=0.5\times109.7
+=54.8\,\text{N\,m}^{-1}$. \quad
+(b)~$v_{max}=\omega A=10.47\times0.08=0.838\,\text{m\,s}^{-1}$. \quad
+(c)~$E_{total}=\tfrac{1}{2}kA^2=\tfrac{1}{2}\times54.8
+\times0.0064=0.175\,\text{J}$. \quad
+(d)~At $x=A/2=0.04\,\text{m}$:
+$KE=E-\tfrac{1}{2}k(0.04)^2=0.175-0.0438=0.131\,\text{J}$
+(75\% of total).
+
+\textbf{B4.}
+(a)~$T=2\pi/\omega=2\pi/12=0.524\,\text{s}$;
+$f=1/T=1.91\,\text{Hz}$. \quad
+(b)~$a=-\omega^2 x=-144\times0.05=-7.2\,\text{m\,s}^{-2}$
+(toward equilibrium). \quad
+(c)~$v=\omega\sqrt{A^2-x^2}=12\sqrt{0.25-0.0025}
+=12\times0.4975=5.97\,\text{m\,s}^{-1}$.
+
+\textbf{B5.}
+(a)~Forced oscillations: external driver supplies energy.
+If driver frequency $\neq$ natural frequency, oscillation
+amplitude is limited. \quad
+(b)~At resonance: amplitude becomes very large (limited
+only by damping). \quad
+(c)~Tacoma Narrows Bridge (1940): wind-induced forced
+oscillation matched natural frequency, causing
+catastrophic resonance and collapse. \quad
+(d)~Damping reduces resonant amplitude, widens resonance
+peak, shifts resonant frequency slightly lower.
+Lightly damped: tall, sharp peak; heavily damped: low,
+broad peak.
+
+% ============================================================
+%  CHAPTER 8
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{8}{Gravitation}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~D} \quad $F\propto1/r^2$; doubling $r$
+gives $F/4$.
+
+\textbf{A2.~C} \quad $g=GM/R^2$.
+$g'=G(2M)/(2R)^2=2GM/4R^2=g/2$.
+
+\textbf{A3.~C} \quad $v_{esc}=\sqrt{2GM/R}$.
+Same $M$, double $R$: $v'=v_{esc}/\sqrt{2}
+=11.2/\sqrt{2}=7.92\,\text{km\,s}^{-1}$.
+
+\textbf{A4.~C} \quad $T^2\propto r^3$.
+$T_Y^2/T_X^2=(4r_X)^3/r_X^3=64$;
+$T_Y=8\times8=64$ years.
+
+\textbf{A5.~C} \quad Both astronaut and ISS are in free
+fall (both falling toward Earth at the same rate);
+apparent gravity is zero.
+
+\textbf{A6.~B} \quad Gravitational potential = work done
+per unit mass bringing a test mass from infinity to
+that point.
+
+\textbf{A7.~C} \quad $v=\sqrt{GM/r}$; if $r$
+(approximately) doubles for large $h$, $v$
+decreases by factor $\sqrt{2}$.
+
+\textbf{A8.~B} \quad Kepler's Second Law: equal areas in
+equal times; fastest when closest (perihelion).
+
+\textbf{A9.~B} \quad
+$V=-GM_E/R_E=-gR_E=-9.81\times6.4\times10^6
+=-6.28\times10^7\,\text{J\,kg}^{-1}$.
+For $1\,\text{kg}$: $PE=-6.28\times10^7\,\text{J}$.
+
+\textbf{A10.~B} \quad Geostationary: above equator,
+period $24\,\text{h}$, orbits west to east. Appears
+stationary from Earth.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$F=Gm_1m_2/r^2=6.67\times10^{-11}\times60\times80/
+(0.5)^2=6.67\times10^{-11}\times4800/0.25
+=1.28\times10^{-6}\,\text{N}$. \quad
+(b)~This is negligible compared with gravitational pull
+of Earth on each person ($mg\sim600\,\text{N}$). We do
+not feel gravitational attraction to nearby objects
+because it is $10^8$ times weaker than Earth's pull. \quad
+(c)~If separation doubled: $F'=F/4
+=3.2\times10^{-7}\,\text{N}$.
+
+\textbf{B2.}
+(a)~$g_{surface}=GM/R^2$;
+$g_{orbit}=GM/(R+h)^2=g_{surface}R^2/(R+h)^2
+=9.81\times(6.4\times10^6)^2/(6.8\times10^6)^2
+=9.81\times0.885=8.68\,\text{m\,s}^{-2}$. \quad
+(b)~$v=\sqrt{g_{orbit}(R+h)}=\sqrt{8.68\times6.8\times10^6}
+=\sqrt{5.90\times10^7}=7683\,\text{m\,s}^{-1}
+\approx7.7\,\text{km\,s}^{-1}$. \quad
+(c)~$T=2\pi(R+h)/v=2\pi\times6.8\times10^6/7683
+=5559\,\text{s}\approx92.7\,\text{min}$.
+
+\textbf{B3.}
+(a)~At geostationary radius $r_{GEO}$:
+$GM_E/r_{GEO}^2=\omega^2r_{GEO}$;
+$r_{GEO}=(GM_E/\omega^2)^{1/3}$.
+$\omega=2\pi/(24\times3600)=7.27\times10^{-5}\,\text{rad\,s}^{-1}$.
+$GM_E=gR_E^2=9.81\times(6.4\times10^6)^2
+=4.02\times10^{14}$.
+$r_{GEO}=(4.02\times10^{14}/(7.27\times10^{-5})^2)^{1/3}
+=(7.60\times10^{22})^{1/3}=4.23\times10^7\,\text{m}$
+$=42\,300\,\text{km}$ from Earth's centre. \quad
+(b)~Height above surface $=42\,300-6400=35\,900\,\text{km}$. \quad
+(c)~$v=\omega r_{GEO}=7.27\times10^{-5}\times4.23\times10^7
+=3075\,\text{m\,s}^{-1}\approx3.1\,\text{km\,s}^{-1}$.
+
+\textbf{B4.}
+(a)~$v_{esc}=\sqrt{2GM/R}=\sqrt{2gR}
+=\sqrt{2\times9.81\times6.4\times10^6}
+=\sqrt{1.256\times10^8}=11\,200\,\text{m\,s}^{-1}
+=11.2\,\text{km\,s}^{-1}$. \quad
+(b)~For the Moon ($g_M=1.62\,\text{m\,s}^{-2}$,
+$R_M=1.74\times10^6\,\text{m}$):
+$v_{esc,M}=\sqrt{2\times1.62\times1.74\times10^6}
+=2376\,\text{m\,s}^{-1}=2.4\,\text{km\,s}^{-1}$. \quad
+(c)~The Moon's escape velocity is lower than the thermal
+speeds of light gases (H$_2$, He) at lunar surface
+temperatures, so the Moon cannot retain these gases and
+has no atmosphere.
+
+\textbf{B5.}
+(a)~$T^2=4\pi^2r^3/(GM_S)$;
+$GM_S=4\pi^2r_E^3/T_E^2
+=4\times9.87\times(1.5\times10^{11})^3/(3.156\times10^7)^2
+=4\times9.87\times3.375\times10^{33}/9.96\times10^{14}
+=1.33\times10^{20}$. \quad
+$M_S=1.33\times10^{20}/(6.67\times10^{-11})
+=2.0\times10^{30}\,\text{kg}$. \quad
+(b)~For Mars: $r_M=1.524\,\text{AU}=2.279\times10^{11}\,\text{m}$.
+$T_M=T_E(r_M/r_E)^{3/2}=(1.524)^{3/2}=1.881$ years. \quad
+(c)~Kepler's Third Law is a consequence of Newton's law
+of gravitation and circular orbit dynamics combined.
+
+% ============================================================
+%  CHAPTER 9
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{9}{Elasticity}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad $E=\tfrac{1}{2}kx^2
+=\tfrac{1}{2}\times40\times(0.05)^2=0.05\,\text{J}$.
+
+\textbf{A2.~C} \quad Series: $1/k_s=1/k+1/k=2/k$;
+$k_s=k/2=30\,\text{N\,m}^{-1}$.
+
+\textbf{A3.~B} \quad $E=FL/(Ax)
+=100\times2/(2\times10^{-6}\times5\times10^{-4})
+=200/(10^{-9})=2\times10^{11}\,\text{Pa}$.
+
+\textbf{A4.~C} \quad Brittle: fractures with little or
+no plastic deformation (e.g.\ glass, ceramics).
+
+\textbf{A5.~C} \quad Gradient of linear region of
+stress-strain graph $=$ stress/strain $=$ Young's
+modulus.
+
+\textbf{A6.~B} \quad Strain $=\Delta L/L_0
+=(2L-L)/L=1.0$.
+
+\textbf{A7.~C} \quad $R=\rho L/A$; $A\propto d^2$;
+double $d\Rightarrow A$ quadruples.
+Extension $x=FL/(AE)$; if $A$ quadruples, $x$
+becomes $1/4$ of original.
+
+\textbf{A8.~C} \quad Beyond elastic limit: permanent
+(plastic) deformation; wire does not return to original
+length.
+
+\textbf{A9.~B} \quad $E=\tfrac{1}{2}kx^2\propto x^2$.
+Double $x\Rightarrow E$ becomes $4E$.
+
+\textbf{A10.~D} \quad Parallel: $k_p=k_1+k_2+k_3
+=90+90+90=270\,\text{N\,m}^{-1}$.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$F=kx=200\times0.06=12\,\text{N}$; this equals the
+weight of the mass $\Rightarrow m=12/10=1.2\,\text{kg}$. \quad
+(b)~$E=\tfrac{1}{2}kx^2=\tfrac{1}{2}\times200\times0.0036
+=0.36\,\text{J}$. \quad
+(c)~When released: $0.36=\tfrac{1}{2}mv^2
+\Rightarrow v=\sqrt{2\times0.36/1.2}=0.775\,\text{m\,s}^{-1}$.
+\quad
+(d)~The mass oscillates with $\omega=\sqrt{k/m}
+=\sqrt{200/1.2}=12.9\,\text{rad\,s}^{-1}$,
+period $T=0.487\,\text{s}$.
+
+\textbf{B2.}
+(a)~$E=FL/(Ax)=50\times2.0/(0.785\times10^{-6}
+\times3.2\times10^{-3})$. \\
+$A=\pi(0.5\times10^{-3})^2=7.85\times10^{-7}\,\text{m}^2$.
+$E=100/(2.512\times10^{-9})=3.98\times10^{10}\,\text{Pa}
+\approx4\times10^{10}\,\text{Pa}$. \quad
+(b)~Stress $=F/A=50/7.85\times10^{-7}
+=6.37\times10^7\,\text{Pa}$. \quad
+(c)~Strain $=x/L=3.2\times10^{-3}/2.0
+=1.6\times10^{-3}$ (dimensionless).
+
+\textbf{B3.}
+(a)~Two springs in series: $k_s=k/2=150\,\text{N\,m}^{-1}$.
+Extension $=F/k_s=80/150=0.533\,\text{m}$. \quad
+(b)~Two in parallel: $k_p=2k=600\,\text{N\,m}^{-1}$.
+Extension $=80/600=0.133\,\text{m}$. \quad
+(c)~Energy in series: $\tfrac{1}{2}\times150\times0.533^2
+=21.3\,\text{J}$. Energy in parallel:
+$\tfrac{1}{2}\times600\times0.133^2=5.33\,\text{J}$.
+Series stores $4\times$ more energy for the same force.
+
+\textbf{B4.}
+(a)~From graph: limit of proportionality at about
+$200\,\text{N}$ (where graph starts to curve);
+elastic limit slightly beyond this. \quad
+(b)~Young's modulus $=$ gradient of linear region
+$=\sigma/\varepsilon = (F/A)/(\Delta L/L)$. \quad
+(c)~Ductile: large plastic deformation before fracture
+(copper, steel); brittle: fractures abruptly (glass,
+cast iron). \quad
+(d)~Hysteresis: area enclosed by loading and unloading
+curves $=$ energy dissipated as heat per cycle.
+
+\textbf{B5.}
+(a)~$L_1=2.000\,\text{m}$; $\Delta L_1=F/(EA/L)
+=100\times2/(2\times10^{11}\times7.85\times10^{-7})
+=200/(1.57\times10^5)=1.27\times10^{-3}\,\text{m}$.
+\quad
+(b)~$L_2=1.000\,\text{m}$, same $F$, $A$:
+$\Delta L_2=100\times1/(E\times A)
+=0.637\times10^{-3}\,\text{m}$.
+\quad
+(c)~Combined: wires in series $\Rightarrow$
+total extension $=\Delta L_1+\Delta L_2
+=1.91\times10^{-3}\,\text{m}=1.91\,\text{mm}$. \quad
+(d)~Effective spring constant:
+$k_{eff}=F/\Delta L_{total}=100/0.00191
+=52\,400\,\text{N\,m}^{-1}$.
+
+% ============================================================
+%  CHAPTER 10
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{10}{Simple Machines}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad $MA=\eta\times VR=0.75\times6=4.5$.
+
+\textbf{A2.~C} \quad Third-class lever: effort applied
+between fulcrum and load; effort arm $<$ load arm;
+$MA<1$ always.
+
+\textbf{A3.~C} \quad $VR=5$; ideal $MA=VR=5$.
+Effort $=L/MA=1000/5=200\,\text{N}$.
+
+\textbf{A4.~B} \quad $VR=2\pi L/p
+=2\pi\times0.20/0.004=100\pi=314$.
+
+\textbf{A5.~B} \quad $VR=\text{length}/\text{height}
+=8/2=4$.
+
+\textbf{A6.~B} \quad Ideal wheel-and-axle:
+Effort$\times$wheel radius $=$ Load$\times$axle radius.
+$E=600\times8/40=120\,\text{N}$.
+
+\textbf{A7.~B} \quad An ideal machine has efficiency
+$=100\%$ ($MA=VR$). No machine creates energy; $MA$
+can never exceed $VR$ in a real machine.
+
+\textbf{A8.~C} \quad $MA=$ effort arm/load arm.
+Wheelbarrow: load is $0.3\,\text{m}$ from wheel
+(fulcrum); handles are $1.5\,\text{m}$ from load,
+so effort arm $=0.3+1.5=1.8\,\text{m}$ from fulcrum.
+Actually for a second-class lever:
+$MA=$ effort arm$/$load arm $=1.8/0.3=6$... hmm.
+
+Let me re-read: ``wheel (fulcrum) $0.3\,\text{m}$ from the
+load and handles $1.5\,\text{m}$ from the load.''
+Load arm $=0.3\,\text{m}$.
+Effort arm $=$ distance from fulcrum to effort
+$=0.3+1.5=1.8\,\text{m}$.
+$MA=1.8/0.3=6$. But option C $=5.0$ and D $=6.0$.
+$MA=6.0$ $\Rightarrow$ \textbf{D}.
+
+(Note to Falcon: on proofing verify whether the
+wheelbarrow problem intends effort arm $=1.5\,\text{m}$
+from the fulcrum or $1.5\,\text{m}$ from the load.
+If effort arm $=1.5\,\text{m}$ from fulcrum:
+$MA=1.5/0.3=5.0$ $\Rightarrow$ C.)
+
+\textbf{A9.~C} \quad Speed ratio $=$ driver teeth/driven
+teeth $=20/80=1/4$.
+Driven speed $=400\times(1/4)=100\,\text{rpm}$.
+
+\textbf{A10.~C} \quad $L=\eta\times VR\times E
+=0.60\times5\times200=600\,\text{N}$.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$VR=\text{effort distance}/\text{load distance}
+=1.2/0.4=3$; $\eta=MA/VR$; $MA=L/E=300/120=2.5$;
+$\eta=2.5/3=83.3\%$. \quad
+(b)~Energy input $=$ Effort$\times$effort distance
+$=120\times1.2=144\,\text{J}$.
+Useful output $=300\times0.4=120\,\text{J}$.
+Energy wasted $=24\,\text{J}$ (friction in pivots). \quad
+(c)~Frictional force (converted): work lost/effort
+distance $=24/1.2=20\,\text{N}$.
+
+\textbf{B2.}
+(a)~$VR=4$ (four load-bearing rope sections).
+Ideal effort $=800/4=200\,\text{N}$. \quad
+(b)~Actual effort with $\eta=0.80$:
+$E=L/(\eta\times VR)=800/(0.80\times4)=250\,\text{N}$.
+\quad
+(c)~Work input $=E\times d_E$; work output
+$=L\times d_L$; $d_E=VR\times d_L=4\times2=8\,\text{m}$.
+Work input $=250\times8=2000\,\text{J}$.
+Work output $=800\times2=1600\,\text{J}$.
+$\eta=1600/2000=80\%$. \checkmark
+
+\textbf{B3.}
+(a)~For $n$ moveable pulleys: $VR=2n$.
+$n=3\Rightarrow VR=6$. \quad
+(b)~Ideal effort $=1500/6=250\,\text{N}$. \quad
+(c)~With $\eta=0.75$: actual effort
+$=1500/(0.75\times6)=333\,\text{N}$. \quad
+(d)~To lift $2\,\text{m}$: effort moves $6\times2
+=12\,\text{m}$.
+
+\textbf{B4.}
+(a)~$VR=$ wheel circumference/axle circumference
+$=2\pi\times0.35/(2\pi\times0.05)=7.0$. \quad
+(b)~$\eta=MA/VR$; $MA=L/E=490/(0.35\times10^{-1}
+\times980)\approx...$
+Actually: $E=490/(VR\times\eta)=490/(7\times0.85)
+=82.4\,\text{N}$. \quad
+(c)~Screwdriver: VR $=2\pi r_{handle}/r_{tip}$;
+longer handle, wider grip $\Rightarrow$ higher $VR$,
+more torque for same effort.
+
+\textbf{B5.}
+(a)~Gears A ($N_A=12$), B ($N_B=48$), C
+($N_C=16$): A drives B, B drives C.
+Speed ratio A:B $=48/12=4$ (B runs at $n/4$).
+B and C on same axle? If so C runs at same speed as B.
+If B drives C: speed ratio B:C $=16/48$... without
+more detail, general answer: overall ratio
+$=N_A\times N_C/(N_B\times...) $ depends on arrangement. \quad
+(b)~Torque increases when speed decreases (power $=\tau\omega=$
+constant for ideal gear). \quad
+(c)~Industrial gearboxes step down speed from motor to
+increase torque for rotating heavy loads.
+
+% ============================================================
+%  CHAPTER 11
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{11}{Density, Pressure and Upthrust}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad $P=F/A=60/0.3=200\,\text{Pa}$.
+
+\textbf{A2.~B} \quad $h=P/(\rho g)
+=5\times10^5/(1000\times10)=50\,\text{m}$.
+
+\textbf{A3.~C} \quad Upthrust $=12-8=4\,\text{N}$.
+
+\textbf{A4.~B} \quad Floating: $\rho_{wood}V g
+=\rho_{water}(0.6V)g\Rightarrow\rho_{wood}
+=600\,\text{kg\,m}^{-3}$.
+
+\textbf{A5.~B} \quad Pascal's principle: pressure
+applied to enclosed fluid transmits equally in all
+directions $\Rightarrow$ hydraulic systems.
+
+\textbf{A6.~C} \quad Relative density $8.5\times1000
+=8500\,\text{kg\,m}^{-3}$.
+
+\textbf{A7.~B} \quad Neutral buoyancy: upthrust $=$
+weight $\Rightarrow$ density of object $=$ density of
+fluid.
+
+\textbf{A8.~C} \quad $P=\rho gh$; depends only on
+depth and fluid density, not container shape or total
+mass.
+
+\textbf{A9.~C} \quad $F_2=F_1\times A_2/A_1
+=10\times200/2=1000\,\text{N}$.
+
+\textbf{A10.~C} \quad Upthrust (Archimedes' principle)
+$=$ weight of fluid displaced; reduces apparent weight
+of anchor.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$\rho=m/V=7.9\,\text{g/cm}^3=7900\,\text{kg\,m}^{-3}$.
+\quad
+(b)~Apparent weight $=W-U=W-\rho_{water}Vg$.
+$V=m/\rho_{Fe}=0.500/7900=6.33\times10^{-5}\,\text{m}^3$.
+$U=1000\times6.33\times10^{-5}\times10=0.633\,\text{N}$.
+Apparent weight $=0.500\times10-0.633=4.37\,\text{N}$. \quad
+(c)~In oil ($\rho=800\,\text{kg\,m}^{-3}$):
+$U=800\times6.33\times10^{-5}\times10=0.506\,\text{N}$.
+Apparent weight $=5-0.506=4.49\,\text{N}$.
+
+\textbf{B2.}
+(a)~Weight of ship $=W$; volume of water displaced
+$=W/(\rho g)$. If $W=100\times10^6\,\text{N}$:
+$V=100\times10^6/(1025\times10)
+=9756\,\text{m}^3$. \quad
+(b)~Extra $2000\,\text{kg}$ cargo increases total weight;
+ship sinks deeper until extra upthrust $=2000\times10
+=20\,000\,\text{N}$ more. Extra volume
+$=20\,000/(1025\times10)=1.95\,\text{m}^3$.
+If cross-section $\approx500\,\text{m}^2$:
+extra depth $\approx0.004\,\text{m}=4\,\text{mm}$.
+
+\textbf{B3.}
+(a)~Total pressure at depth $h=60\,\text{m}$:
+$P=P_{atm}+\rho gh=101\,000+1025\times10\times60
+=101\,000+615\,000=716\,000\,\text{Pa}$. \quad
+(b)~Force on porthole ($d=0.25\,\text{m}$, $A=\pi r^2
+=0.0491\,\text{m}^2$):
+$F=P\times A=716\,000\times0.0491=35\,150\,\text{N}
+\approx35\,\text{kN}$. \quad
+(c)~At SCUBA depth the diver breathes compressed air at
+ambient pressure; the high nitrogen partial pressure
+causes narcosis at deep depths.
+
+\textbf{B4.}
+(a)~Small piston area $A_1=\pi(0.02)^2
+=1.257\times10^{-3}\,\text{m}^2$.
+Large piston $A_2=\pi(0.15)^2=7.07\times10^{-2}\,\text{m}^2$.
+$F_2=F_1\times A_2/A_1=500\times7.07/1.257\times10^{-1}
+=500\times56.25=28\,125\,\text{N}$. \quad
+(b)~$VR=A_2/A_1=56.25$; to lift $0.5\,\text{m}$,
+small piston must move $56.25\times0.5=28.1\,\text{m}$.
+\quad
+(c)~$\eta=W_{out}/W_{in}=28125\times0.5/(500\times28.1)
+=14062.5/14050=100\%$ (ideal). In practice
+$<100\%$ due to friction and leakage.
+
+\textbf{B5.}
+(a)~$RD=\rho_{substance}/\rho_{water}$. Measure weight
+$W_1$ in air, weight $W_2$ when fully submerged in
+water. $RD=W_1/(W_1-W_2)$. \quad
+(b)~For the solid: $W_1=2.5\,\text{N}$;
+$W_2=1.8\,\text{N}$; $RD=2.5/0.7=3.57$. \quad
+(c)~$\rho=3.57\times1000=3570\,\text{kg\,m}^{-3}$
+(consistent with aluminium alloy or similar material). \quad
+(d)~For a floating body: $\rho_{object}\times V_{total}
+=\rho_{fluid}\times V_{submerged}$;
+$RD=V_{submerged}/V_{total}=$ fraction submerged.
+
+% ============================================================
+%  CHAPTER 12
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{12}{Surface Tension and Viscosity}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad Surface molecules have a net
+inward cohesive force (no molecules above them to
+balance the downward attraction).
+
+\textbf{A2.~C} \quad Soap bubble has two liquid
+surfaces: excess pressure $=4\gamma/r$.
+
+\textbf{A3.~C} \quad $h=2\gamma\cos\theta/(\rho gr)$.
+If $r\to r/3$: $h\to3h$.
+
+\textbf{A4.~B} \quad Mercury's cohesion exceeds its
+adhesion to glass; it forms a convex meniscus and
+does not wet glass.
+
+\textbf{A5.~C} \quad Surfactants (soap) reduce surface
+tension by disrupting hydrogen bonding at the water
+surface.
+
+\textbf{A6.~C} \quad Stokes' law $F=6\pi\eta rv$
+applies only for laminar (streamline) flow around
+the sphere.
+
+\textbf{A7.~C} \quad At terminal velocity net force
+$=0$: weight $=$ upthrust $+$ drag
+($mg=U+6\pi\eta rv$).
+
+\textbf{A8.~B} \quad From Stokes' terminal velocity:
+$v_t=2r^2(\rho_s-\rho_f)g/(9\eta)\propto r^2$.
+
+\textbf{A9.~B} \quad Viscosity of liquids decreases
+with temperature (molecules have more thermal energy
+to overcome intermolecular binding).
+
+\textbf{A10.~B} \quad Pressure inside a bubble
+$\propto1/r$; smaller bubble has higher pressure;
+air flows from smaller to larger bubble.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$\gamma=F/(2L)=0.015/(2\times0.1)
+=0.075\,\text{N\,m}^{-1}$ (factor of 2 because frame
+film has two surfaces). \quad
+(b)~$h=2\gamma\cos\theta/(\rho gr)
+=2\times0.073\times1/(1000\times10\times0.5\times10^{-3})
+=0.146/5=0.0292\,\text{m}=2.92\,\text{cm}$. \quad
+(c)~Adding detergent reduces $\gamma$; $h$ decreases
+proportionally.
+
+\textbf{B2.}
+(a)~Weight $=mg=\tfrac{4}{3}\pi r^3(\rho_s-\rho_f)g$.
+Stokes drag $=6\pi\eta r v_t$.
+At terminal velocity:
+$v_t=\frac{2r^2(\rho_s-\rho_f)g}{9\eta}$. \quad
+(b)~$r=0.5\times10^{-3}\,\text{m}$,
+$\rho_s=7800$, $\rho_f=900$, $\eta=0.5\,\text{Pa\,s}$,
+$g=10$:
+$v_t=2\times(0.5\times10^{-3})^2\times6900\times10/
+(9\times0.5)=2\times2.5\times10^{-7}\times69000/4.5
+=3.45\times10^{-2}/4.5=7.67\times10^{-3}\,\text{m\,s}^{-1}$. \quad
+(c)~Reynolds number $Re=\rho_f v_t(2r)/\eta
+=900\times7.67\times10^{-3}\times10^{-3}/0.5=0.0138$.
+$Re\ll1\Rightarrow$ laminar flow. Stokes' law valid.
+
+\textbf{B3.}
+(a)~Excess pressure $P=2\gamma/r
+=2\times0.025/0.01=5\,\text{Pa}$ (water droplet, one
+surface). \quad
+(b)~Soap bubble: $P=4\gamma/r=4\times0.025/0.005
+=20\,\text{Pa}$. \quad
+(c)~When two bubbles of different radii merge: the
+smaller (higher pressure) pushes into the larger;
+the final bubble has radius determined by volume
+conservation and pressure equalisation. Intermediate
+surface becomes convex toward the larger bubble.
+
+\textbf{B4.}
+(a)~$\eta=F/(Av/d)$; units $=\text{N}/(\text{m}^2
+\times\text{m\,s}^{-1}/\text{m})=\text{N\,s\,m}^{-2}
+=\text{Pa\,s}$. \quad
+(b)~$F=\eta A v/d=1.0\times10^{-3}\times0.01
+\times1.0/5\times10^{-4}=2\times10^{-2}\,\text{N}
+=0.02\,\text{N}$. \quad
+(c)~As temperature rises, water viscosity falls
+(from $\sim1\,\text{mPa\,s}$ at $20°\text{C}$ to
+$\sim0.3\,\text{mPa\,s}$ at $80°\text{C}$).
+The engine runs more smoothly because oil also becomes
+less viscous when hot, but too low viscosity causes
+inadequate lubrication --- hence motor oil grades
+(5W-30 etc.) are designed to maintain viscosity across
+temperature ranges.
+
+\textbf{B5.}
+(a)~$h=2\gamma/(\rho g r)$ where $r$ is tube radius.
+Measure $h$ for several known radii $r$; plot $h$ vs
+$1/r$; gradient $=2\gamma/(\rho g)$; hence $\gamma$. \quad
+(b)~Sources of error: contamination of tube, measuring
+height with ruler, meniscus shape uncertainty,
+temperature variation. \quad
+(c)~Insects walking on water: their legs dimple the
+surface film; weight $\leq$ surface tension force;
+$mg\leq2\gamma L$ where $L$ is total contact
+perimeter.
+
+% ============================================================
+%  CHAPTER 13
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{13}{Temperature and Thermal Expansion}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~A} \quad $T(\text{K})=-40+273=233\,\text{K}$.
+
+\textbf{A2.~B} \quad Linear interpolation:
+$L_{25}=L_0+(L_{100}-L_0)\times25/100
+=2+(10\times0.25)=2+2.5=4.5\,\text{cm}$.
+
+\textbf{A3.~A} \quad $\Delta L=\alpha L_0\Delta T
+=12\times10^{-6}\times2.0\times50=1.2\times10^{-3}\,\text{m}$.
+New length $=2.0+0.0012=2.0012\,\text{m}$.
+
+\textbf{A4.~C} \quad $\gamma=3\alpha$.
+
+\textbf{A5.~B} \quad Water is densest at $4°\text{C}$
+due to the hydrogen-bond structure of ice forming at
+lower temperatures.
+
+\textbf{A6.~B} \quad Different $\alpha$ values cause
+one strip to expand more than the other; the strip
+curves toward the less-expanding side.
+
+\textbf{A7.~B} \quad Apparent expansion
+$=$ real expansion $-$ expansion of container.
+
+\textbf{A8.~C} \quad Kelvin scale: $0\,\text{K}
+=$ absolute zero.
+
+\textbf{A9.~B} \quad The hole expands exactly as if
+the removed material were still there; it gets larger.
+
+\textbf{A10.~B} \quad Zeroth Law: if A and B are each
+in thermal equilibrium with C, then A and B are in
+thermal equilibrium with each other. This defines
+temperature and justifies thermometers.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$\Delta L=\alpha L_0\Delta T
+=11\times10^{-6}\times50\times80=0.044\,\text{m}$. \quad
+(b)~$\Delta V=\gamma V_0\Delta T=3\alpha V_0\Delta T
+=3\times11\times10^{-6}\times0.01\times80
+=2.64\times10^{-5}\,\text{m}^3$. \quad
+(c)~Gap needed $=\Delta L=0.044\,\text{m}=44\,\text{mm}$
+per $50\,\text{m}$. Provide expansion joints every
+$10\,\text{m}$ or at sufficient intervals.
+
+\textbf{B2.}
+(a)~$\Delta L=\alpha L\Delta T=12\times10^{-6}
+\times1.0\times200=2.4\times10^{-3}\,\text{m}=2.4\,\text{mm}$. \quad
+(b)~If both ends are fixed, the rod cannot expand and
+develops a compressive stress.
+$\sigma=E\alpha\Delta T=2\times10^{11}
+\times12\times10^{-6}\times200=4.8\times10^8\,\text{Pa}$. \quad
+(c)~This stress may exceed the yield strength of the
+material, causing buckling. Rail tracks buckle in
+extreme heat if expansion gaps are insufficient.
+(This is a genuine hazard on Nigerian railways during
+the dry season heat.)
+
+\textbf{B3.}
+(a)~$\Delta V_{real}=\gamma_{Hg}V_0\Delta T
+=1.82\times10^{-4}\times V_0\times\Delta T$.
+$\Delta V_{apparent}=(\gamma_{Hg}-\gamma_{glass})
+V_0\Delta T
+=(1.82-0.027)\times10^{-4}V_0\Delta T$. \quad
+(b)~Apparent coefficient $\gamma_{app}
+=\gamma_{real}-\gamma_{container}$. \quad
+(c)~Correction factor $=\gamma_{glass}\times V_0\times\Delta T$. \quad
+(d)~Mercury thermometer accurate to $\pm0.1°\text{C}$ with
+careful calibration; alcohol thermometer suitable for
+lower temperatures (alcohol freezes at $-115°\text{C}$
+vs mercury at $-39°\text{C}$).
+
+\textbf{B4.}
+(a)~$\Delta L/L=\alpha\Delta T$;
+$\alpha=\Delta L/(L\Delta T)
+=1.0\times10^{-3}/(2.0\times100)
+=5.0\times10^{-6}\,\text{K}^{-1}$.
+Likely material: invar or similar low-expansion alloy. \quad
+(b)~$\Delta V=3\alpha V_0\Delta T
+=3\times5\times10^{-6}\times1.5\times100
+=2.25\times10^{-3}\,\text{m}^3$. \quad
+(c)~At $120°\text{C}$: $\Delta L=5\times10^{-6}
+\times2.0\times100=10^{-3}\,\text{m}$.
+
+\textbf{B5.}
+(a)~Thermostat: bimetallic strip bends on heating;
+when strip touches contact, circuit opens (or closes)
+switching off (or on) the heater. \quad
+(b)~Strip A expands more (higher $\alpha$); strip curves
+toward B side. \quad
+(c)~Temperature range: set by the distance between the
+strip and the contact; adjusting a screw changes this
+distance. \quad
+(d)~Applications: electric iron, oven, fridge, fire
+alarm, kettle.
+
+% ============================================================
+%  CHAPTER 14
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{14}{Gas Laws and Kinetic Theory}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad $P_1V_1=P_2V_2$:
+$100\times8=P_2\times2\Rightarrow P_2=400\,\text{kPa}$.
+
+\textbf{A2.~C} \quad $V\propto T$ (Charles' Law).
+$T_1=300\,\text{K}$; double $V\Rightarrow T_2=600\,\text{K}
+=327°\text{C}$.
+
+\textbf{A3.~B} \quad Boyle's Law: $P\propto1/V$, so $P$
+vs $1/V$ is a straight line through the origin.
+
+\textbf{A4.~C} \quad $\overline{KE}=\tfrac{3}{2}k_BT$;
+depends only on absolute temperature.
+
+\textbf{A5.~C} \quad $c_{rms}\propto\sqrt{T}$.
+Double $c_{rms}\Rightarrow T$ quadruples.
+
+\textbf{A6.~B} \quad $P=nRT/V
+=2\times8.314\times300/(50\times10^{-3})
+=4988/0.05=99\,760\approx99.8\,\text{kPa}$.
+
+\textbf{A7.~C} \quad Dalton's Law: $P_{total}
+=\sum P_i$.
+
+\textbf{A8.~B} \quad Ideal gas: zero molecular volume
+and no intermolecular forces.
+
+\textbf{A9.~B} \quad Molar volume at STP $\approx22.4\,\text{L}$.
+
+\textbf{A10.~C} \quad At high pressure, molecules are
+packed closely; their own volume becomes a significant
+fraction of total volume.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~At surface: $V_s=nRT/P=n\times8.314\times293/
+(1.013\times10^5)$. Volume of tank: $12\,\text{L}$ at
+$200\,\text{atm}$; at surface pressure:
+$V=12\times200=2400\,\text{L}=2.4\,\text{m}^3$.
+\quad
+(b)~At $30\,\text{m}$ ($P=4.07\,\text{atm}$,
+$T=283\,\text{K}$), using $P_1V_1/T_1=P_2V_2/T_2$:
+$V_2=P_1V_1T_2/(T_1P_2)=200\times12\times283/
+(293\times4.07)=678\,600/1192=569\,\text{L}$. \quad
+(c)~Each breath uses the same volume; at $30\,\text{m}$
+the air in that volume is at 4.07 atm, containing
+$4.07\times$ as many molecules. Diver uses $4.07\times$
+as much air per breath $\Rightarrow$ tank lasts
+$2400/(4.07\times V_{breath})$ breaths vs
+$2400/V_{breath}$ at surface.
+Ratio $=1/4.07$; diver breathes $4\times$ shorter.
+
+\textbf{B2.}
+(a)~$n=PV/(RT)=8.0\times10^5\times0.015/
+(8.314\times298)=12000/2477.6=4.84\,\text{mol}$. \quad
+(b)~$m=n\times M=4.84\times44=213\,\text{g}$. \quad
+(c)~At $50°\text{C}=323\,\text{K}$:
+$P'=P\times T'/T=8.0\times10^5\times323/298
+=8.67\times10^5\,\text{Pa}<9.5\times10^5\,\text{Pa}$.
+Valve does not open. \quad
+(d)~At $300°\text{C}=573\,\text{K}$:
+$P'=8.0\times10^5\times573/298=1.54\times10^6\,\text{Pa}$.
+Far above relief valve pressure. Dangerous: cylinder may
+explode.
+
+\textbf{B3.}
+(a)~$PV=\tfrac{1}{3}Nm\langle c^2\rangle$ and
+$PV=Nk_BT$; equating:
+$\tfrac{1}{3}Nm\langle c^2\rangle=Nk_BT\Rightarrow
+\tfrac{1}{2}m\langle c^2\rangle=\tfrac{3}{2}k_BT$.
+\checkmark \quad
+(b)~At $300\,\text{K}$:
+$\overline{KE}=\tfrac{3}{2}\times1.38\times10^{-23}
+\times300=6.21\times10^{-21}\,\text{J}$.
+At $600\,\text{K}$: $1.24\times10^{-20}\,\text{J}$. \quad
+(c)~$c_{rms}=\sqrt{3RT/M}$.
+At $300\,\text{K}$:
+$c=\sqrt{3\times8.314\times300/0.028}=517\,\text{m\,s}^{-1}$.
+At $600\,\text{K}$:
+$c=\sqrt{3\times8.314\times600/0.028}=730\,\text{m\,s}^{-1}$.
+\quad
+(d)~$U=\tfrac{3}{2}nRT=\tfrac{3}{2}\times2\times8.314
+\times300=7483\,\text{J}\approx7.48\,\text{kJ}$.
+
+\textbf{B4.}
+(a)~$P_i=n_iRT/V$:
+$P_{He}=1.0\times8.314\times300/0.020=124\,710\,\text{Pa}
+\approx125\,\text{kPa}$;
+$P_{Ne}=0.5\times8.314\times300/0.020=62\,355\,\text{Pa}
+\approx62.4\,\text{kPa}$;
+$P_{Ar}=1.5\times8.314\times300/0.020=187\,065\,\text{Pa}
+\approx187\,\text{kPa}$.
+\quad
+(b)~$P_{total}=125+62.4+187=374\,\text{kPa}$. \quad
+(c)~$n_{total}=3.0\,\text{mol}$;
+$P=nRT/V=3\times8.314\times300/0.020=374\,130\,\text{Pa}
+\approx374\,\text{kPa}$. \checkmark \quad
+(d)~Without Ar ($n=1.5\,\text{mol}$):
+$P=1.5\times8.314\times300/0.020=187\,\text{kPa}$. \quad
+(e)~$c_{rms}\propto1/\sqrt{M}$.
+Ratio $=\sqrt{M_{Ar}/M_{He}}=\sqrt{40/4}=\sqrt{10}
+=3.16$.
+Helium molecules move $3.16\times$ faster than argon
+at the same temperature.
+
+\textbf{B5.}
+(a)~$PV=nRT\Rightarrow P(M/\rho)=nRT$. For $n=1$
+mole, mass $=M$, volume $=M/\rho$:
+$P(M/\rho)=RT\Rightarrow\rho=PM/(RT)$. \checkmark \quad
+(b)~$\rho=1.013\times10^5\times0.029/(8.314\times293)
+=2938/2436=1.206\,\text{kg\,m}^{-3}$. \quad
+(c)~For $\rho'=0.80\rho$: $T'=T/0.80=293/0.80
+=366\,\text{K}=93°\text{C}$. \quad
+(d)~At $35°\text{C}=308\,\text{K}$:
+$\rho=1.01\times10^5\times0.029/(8.314\times308)
+=1.148\,\text{kg\,m}^{-3}$.
+Less dense than at $20°\text{C}$; less air entering
+engines per cycle; less lift generated per unit area of
+wing at same speed $\Rightarrow$ longer take-off run
+needed.
+
+% ============================================================
+%  CHAPTER 15
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{15}{Heat Energy and Calorimetry}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad $Q=mc\Delta\theta
+=2\times390\times50=39\,000\,\text{J}$.
+
+\textbf{A2.~C} \quad During melting of a pure substance,
+temperature remains constant (latent heat absorbed
+breaks bonds without raising temperature).
+
+\textbf{A3.~B} \quad Vaporisation must completely
+overcome all intermolecular forces and do work against
+atmospheric pressure; melting only partially disrupts
+the structure.
+
+\textbf{A4.~C} \quad $Q=Pt=500\times240=120\,000\,\text{J}$.
+$c=Q/(m\Delta\theta)=120\,000/(2\times30)
+=2000\,\text{J\,kg}^{-1}\text{K}^{-1}$.
+
+\textbf{A5.~A} \quad Heat available from hot water to
+cool to $0°\text{C}$:
+$Q=0.1\times4200\times80=33\,600\,\text{J}$.
+Heat to melt all ice: $0.1\times3.36\times10^5
+=33\,600\,\text{J}$.
+Exactly equal $\Rightarrow$ all ice melts and final
+temperature $=0°\text{C}$.
+
+\textbf{A6.~B} \quad Evaporation occurs at the surface
+at any temperature and removes the fastest molecules,
+cooling the liquid.
+
+\textbf{A7.~B} \quad Heat lost to surroundings means
+less heat absorbed by the substance; temperature rise
+is less than expected; $c=Q_{in}/(m\Delta\theta)$ gives
+a value larger than true $c$.
+
+\textbf{A8.~C} \quad $Q=mL_v=0.200\times2.26\times10^6
+=452\,000\,\text{J}$.
+
+\textbf{A9.~B} \quad Method of mixtures uses
+conservation of energy: heat lost by hot object
+$=$ heat gained by cool object.
+
+\textbf{A10.~C} \quad Steam at $100°\text{C}$ releases
+$2.26\times10^6\,\text{J\,kg}^{-1}$ of latent heat
+when it condenses on skin, causing much more severe
+burns than liquid water at the same temperature.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$Q=mc\Delta\theta=5.0\times4200\times85
+=1\,785\,000\,\text{J}$.
+Time $=Q/P=1\,785\,000/2000=892.5\,\text{s}
+\approx14.9\,\text{min}$. \quad
+(b)~$Q_{vap}=1.0\times2.26\times10^6=2\,260\,000\,\text{J}$.
+Time $=2\,260\,000/2000=1130\,\text{s}\approx18.8\,\text{min}$.
+\quad
+(c)~If actual time is $12\%$ longer:
+$\eta=1/1.12\approx89\%$. \quad
+(d)~Losses include: heat to container walls; heat
+radiated/convected to surroundings; heat carried away
+by steam.
+
+\textbf{B2.}
+(a)~Heat gained by water:
+$Q_w=0.300\times4200\times10=12\,600\,\text{J}$.
+Heat gained by calorimeter:
+$Q_c=0.150\times900\times10=1350\,\text{J}$.
+Total heat gained $=13\,950\,\text{J}$. \quad
+(b)~Heat lost by steel $=13\,950\,\text{J}$ (assuming
+perfect insulation). \quad
+(c)~$c_{steel}=Q/(m\Delta\theta)
+=13\,950/(0.200\times92)=13\,950/18.4
+=758\,\text{J\,kg}^{-1}\text{K}^{-1}$. \quad
+(d)~This is higher than the accepted value of
+$450\,\text{J\,kg}^{-1}\text{K}^{-1}$ because heat
+was lost to surroundings; the measured $\Delta\theta$
+is smaller than ideal, making calculated $c$ larger.
+
+\textbf{B3.}
+(a)~Heat to bring ice to $0°\text{C}$:
+$Q_1=0.400\times2100\times15=12\,600\,\text{J}$. \quad
+(b)~Heat from warm water cooling to $0°\text{C}$:
+$Q_{avail}=0.600\times4200\times50=126\,000\,\text{J}$.
+\quad
+(c)~Heat to melt all ice:
+$Q_{melt}=0.400\times3.36\times10^5=134\,400\,\text{J}$.
+Heat remaining after warming ice to $0°\text{C}$:
+$126\,000-12\,600=113\,400\,\text{J}<134\,400\,\text{J}$.
+\textbf{Not all ice melts.} Some ice remains. \quad
+(d)~Since not all ice melts: temperature stays at
+$0°\text{C}$.
+Mass of ice melted:
+$m_{melted}=113\,400/(3.36\times10^5)=0.337\,\text{kg}$.
+Unmelted ice: $0.400-0.337=0.063\,\text{kg}=63\,\text{g}$.
+Final temperature $=0°\text{C}$.
+
+\textbf{B4.}
+(a)~$Q_1=mc\Delta\theta=0.500\times4200\times25
+=52\,500\,\text{J}$ (cooling water from $25°\text{C}$
+to $0°\text{C}$).
+$Q_2=mL_f=0.500\times3.36\times10^5=168\,000\,\text{J}$
+(freezing at $0°\text{C}$).
+$Q_3=mc_{ice}\Delta\theta=0.500\times2100\times10
+=10\,500\,\text{J}$ (cooling ice from $0°\text{C}$
+to $-10°\text{C}$).
+Total $=231\,000\,\text{J}$. \quad
+(b)~Time $=231\,000/80=2888\,\text{s}\approx48\,\text{min}$.
+\quad
+(c)~Sketch: temperature drops from $25°\text{C}$ to
+$0°\text{C}$ (sloped), then flat plateau at $0°\text{C}$
+(freezing, longest section), then drops to $-10°\text{C}$.
+\quad
+(d)~The plateau (latent heat phase) requires
+$168\,000\,\text{J}$ versus only $63\,000\,\text{J}$
+for all the sensible heat; the latent heat plateau
+is far longer than either cooling section.
+
+\textbf{B5.}
+(a)~(i)~Fastest molecules escape the surface; average
+speed of remaining molecules falls; lower average KE
+means lower temperature.
+(ii)~At high altitude, atmospheric pressure is lower;
+the boiling point is the temperature at which vapour
+pressure equals atmospheric pressure; lower pressure
+$\Rightarrow$ lower boiling point.
+(iii)~Pressure cooker: higher pressure $\Rightarrow$
+higher temperature needed to reach boiling
+(vapour pressure must equal higher external pressure).
+\quad
+(b)~$Q=mc\Delta\theta+mL_v
+=0.300\times4200\times91+0.300\times2.26\times10^6
+=114\,660+678\,000=792\,660\,\text{J}\approx793\,\text{kJ}$.
+\quad
+(c)~$Q_{removed}=1.5\times2.4\times10^6
+=3.6\times10^6\,\text{J}$.
+If not sweating: $\Delta\theta=Q/(mc_{body})
+=3.6\times10^6/(70\times3500)=14.7°\text{C}$.
+Body temperature would rise from $37°\text{C}$
+to $51.7°\text{C}$ --- fatal. Sweating is
+essential for thermoregulation.
+
+% ============================================================
+%  CHAPTER 16
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{16}{Heat Transfer}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad Only radiation can travel through
+vacuum (as electromagnetic waves). Conduction and
+convection require a medium.
+
+\textbf{A2.~A} \quad $\dot{Q}=kA\Delta T/L
+=50\times(2\times10^{-4})\times80/0.4=2\,\text{W}$.
+
+\textbf{A3.~D} \quad Stefan-Boltzmann: $P=\varepsilon\sigma AT^4$;
+power $\propto T^4$.
+
+\textbf{A4.~B} \quad Metals are good thermal conductors;
+free electrons rapidly carry heat away from your hand.
+
+\textbf{A5.~B} \quad Land heats faster (lower specific
+heat capacity); hot air rises over land; cooler sea air
+flows inland as sea breeze.
+
+\textbf{A6.~D} \quad $P\propto T^4$;
+$(2T)^4=16T^4\Rightarrow P$ multiplied by $16$.
+
+\textbf{A7.~B} \quad Vacuum prevents conduction (no
+material) and convection (no fluid).
+
+\textbf{A8.~B} \quad $R_A=L/(kA)$; $R_B=L/(2kA)$;
+$R_{total}=R_A+R_B=L/(kA)+L/(2kA)=3L/(2kA)$.
+$R_A/R_{total}=(L/kA)/(3L/2kA)=2/3$.
+Ratio $R_A:R_{total}=2:3$.
+
+\textbf{A9.~B} \quad Greenhouse effect: atmosphere
+transparent to short-wave solar radiation; absorbs
+outgoing long-wave infrared; re-radiates back to Earth.
+
+\textbf{A10.~A} \quad Ratio $=\varepsilon_s/\varepsilon_{bb}
+=0.02/1.0=1:50$.
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+
+\textbf{B1.}
+(a)~$\dot{Q}=kA\Delta T/L=0.70\times15\times14/0.22
+=147/0.22=668\,\text{W}$. \quad
+(b)~$R_{brick}=0.22/(0.70\times15)=0.02095\,\text{K\,W}^{-1}$.
+$R_{insul}=0.03/(0.038\times15)=0.05263\,\text{K\,W}^{-1}$.
+$R_{total}=0.0736\,\text{K\,W}^{-1}$.
+$\dot{Q}'=14/0.0736=190\,\text{W}$. \quad
+(c)~Reduction $=(668-190)/668\times100=71.6\%$. \quad
+(d)~Energy saved per day $=(668-190)\times3600\times24
+/1000=41\,299\,\text{Wh}=41.3\,\text{kWh}$.
+Cost saved $=41.3\times150=₦6195/\text{day}$.
+
+\textbf{B2.}
+(a)~$A=4\pi r^2=4\pi\times0.01=0.1257\,\text{m}^2$.
+$P_{emitted}=\sigma AT^4=5.67\times10^{-8}
+\times0.1257\times500^4=5.67\times10^{-8}
+\times0.1257\times6.25\times10^{10}=445\,\text{W}$.
+\quad
+(b)~$P_{absorbed}=\sigma AT_0^4=5.67\times10^{-8}
+\times0.1257\times300^4=5.67\times10^{-8}
+\times0.1257\times8.1\times10^9=57.8\,\text{W}$.
+\quad
+(c)~$P_{net}=445-57.8=387\,\text{W}$. \quad
+(d)~$dT/dt=-P_{net}/(mc)=-387/(0.5\times800)
+=-0.968°\text{C\,s}^{-1}$. \quad
+(e)~As sphere cools, $T\to T_0$; $P_{net}=(T^4-T_0^4)
+\to0$; deceleration decreases and sphere asymptotically
+approaches ambient temperature.
+
+\textbf{B3.}
+(a)~$P_{Sun}=\sigma A_{Sun}T^4=5.67\times10^{-8}
+\times4\pi(6.96\times10^8)^2\times5778^4
+=3.85\times10^{26}\,\text{W}$. \quad
+(b)~$I=P_{Sun}/(4\pi d^2)=3.85\times10^{26}/
+(4\pi\times(1.5\times10^{11})^2)
+=1361\,\text{W\,m}^{-2}$. \quad
+(c)~$P_{incident}=I\times A_{panel}
+=1361\times2.0=2722\,\text{W}$. \quad
+(d)~$P_{absorbed}=0.92\times2722=2505\,\text{W}$.
+$P_{electrical}=0.20\times2505=501\,\text{W}$. \quad
+(e)~$E=P_{elec}\times t=501\times6\times3600
+/1000=10.82\,\text{kWh}\approx10.8\,\text{kWh}$. \quad
+(f)~Value $=10.8\times250=₦2700\,\text{/day}$.
+
+\textbf{B4.}
+(a)~$R_{glass}=0.004/(1.0\times1.2)
+=3.33\times10^{-3}\,\text{K\,W}^{-1}$ (each pane).
+$R_{air}=0.012/(0.025\times1.2)=0.4\,\text{K\,W}^{-1}$.
+\quad
+(b)~$R_{total}=2\times3.33\times10^{-3}+0.4
+=0.4067\,\text{K\,W}^{-1}$. \quad
+(c)~$\dot{Q}=\Delta T/R_{total}=20/0.4067
+=49.2\,\text{W}$. \quad
+(d)~Single glass pane:
+$R_{single}=3.33\times10^{-3}\,\text{K\,W}^{-1}$.
+$\dot{Q}_{single}=20/3.33\times10^{-3}=6006\,\text{W}$.
+Improvement factor $=6006/49.2=122\times$. \quad
+(e)~With argon ($k=0.018$):
+$R_{Ar}=0.012/(0.018\times1.2)=0.556\,\text{K\,W}^{-1}$.
+$R_{total,Ar}=0.5627\,\text{K\,W}^{-1}$.
+$\dot{Q}_{Ar}=20/0.5627=35.5\,\text{W}$.
+Better than air-filled by factor $49.2/35.5=1.38$.
+
+\textbf{B5.}
+(a)~Power absorbed by planet $=\frac{(1-\alpha)L_*
+\pi R_p^2}{4\pi d^2}$.
+Power emitted $=\sigma(4\pi R_p^2)T^4$.
+Equating and solving:
+$T=\left[\frac{(1-\alpha)L_*}{16\pi\sigma d^2}\right]^{1/4}$.
+\quad
+(b)~$T_{Mars}=\left[\frac{(1-0.25)\times3.85\times10^{26}}
+{16\pi\times5.67\times10^{-8}\times(2.28\times10^{11})^2}\right]^{1/4}
+=\left[\frac{2.89\times10^{26}}{5.92\times10^{15}}\right]^{1/4}
+=(4.88\times10^{10})^{0.25}=210\,\text{K}=-63°\text{C}$.
+\quad
+(c)~Actual $T_{Mars}\approx210\,\text{K}$, close to our
+calculation. Mars has only a thin CO$_2$ atmosphere
+providing a small greenhouse effect. \quad
+(d)~Increasing $\alpha$ from $0.30$ to $0.35$:
+$T_{new}=T_{old}\times(1-0.35)^{0.25}/(1-0.30)^{0.25}
+=T_{old}\times(0.65/0.70)^{0.25}$.
+$T_{old}=255\,\text{K}$ (Earth equilibrium).
+$T_{new}=255\times(0.9286)^{0.25}=255\times0.9818
+=250\,\text{K}$. Temperature drops by $\sim5\,\text{K}$.
+This cooling effect (increased albedo) would partially
+counter global warming.
+
+% ============================================================
+%  CHAPTER 17
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{17}{Wave Motion}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad Sound is a longitudinal mechanical
+wave; oscillations are parallel to propagation.
+
+\textbf{A2.~C} \quad $f=v/\lambda=320/0.8=400\,\text{Hz}$.
+
+\textbf{A3.~C} \quad Maximum diffraction when
+$\lambda\approx$ gap width.
+
+\textbf{A4.~B} \quad Path difference $3\lambda/2
+=(n+\tfrac{1}{2})\lambda$ with $n=1$: destructive
+interference.
+
+\textbf{A5.~C} \quad Node to adjacent antinode
+$=\lambda/4$.
+
+\textbf{A6.~C} \quad Closed pipe fundamental:
+$f_{closed}=v/(4L)$. Open pipe: $f_{open}=v/(2L)
+=2f_{closed}$.
+
+\textbf{A7.~C} \quad $v=\sqrt{T/\mu}$; to double $v$,
+need $T' =4T$ (quadruple tension).
+
+\textbf{A8.~C} \quad Frequency is determined by the
+source and remains unchanged when the wave crosses
+a boundary between media.
+
+\textbf{A9.~C} \quad $f_3=3v/(2L)=3\times300/(2\times1.5)
+=900/3=300\,\text{Hz}$.
+
+\textbf{A10.~B} \quad EM waves are oscillating fields,
+not mechanical disturbances; they propagate through
+vacuum without a medium.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$f=1/T=1/2.0=0.5\,\text{Hz}$;
+$v=f\lambda=0.5\times3.0=1.5\,\text{m\,s}^{-1}$. \quad
+(b)~Path difference $=7.5/3.0=2.5\lambda$;
+$2.5=(n+\tfrac{1}{2})\lambda$ with $n=2$;
+points are in \textbf{antiphase}. \quad
+(c)~$y=0.15\sin(2\pi ft-2\pi x/\lambda)
+=0.15\sin(\pi t-2\pi x/3)\,\text{m}$. \quad
+(d)~At $t=0.5\,\text{s}$, $x=0$:
+$y=0.15\sin(0.5\pi)=0.15\times1=0.15\,\text{m}$.
+
+\textbf{B2.}
+(a)~$v=\sqrt{T/\mu}=\sqrt{80/0.005}=\sqrt{16000}
+=126.5\,\text{m\,s}^{-1}$. \quad
+(b)~$f_1=v/(2L)=126.5/(2\times1.20)=52.7\,\text{Hz}$. \quad
+(c)~$f_2=2f_1=105\,\text{Hz}$; $f_3=158\,\text{Hz}$;
+$f_4=211\,\text{Hz}$. \quad
+(d)~For $f_1'=160\,\text{Hz}$: $v'=2L\times160
+=2\times1.20\times160=384\,\text{m\,s}^{-1}$.
+$T'=v'^2\times\mu=384^2\times0.005=737\,\text{N}$. \quad
+(e)~Effective length $=0.90\,\text{m}$:
+$f'=126.5/(2\times0.90)=70.3\,\text{Hz}$.
+
+\textbf{B3.}
+(a)~Fundamental of open pipe (flute):
+$f_1=v/(2L)=340/(2\times0.60)=283\,\text{Hz}$. \quad
+(b)~Harmonics: $283$, $566$, $849$, $1132\,\text{Hz}$.
+\quad
+(c)~Clarinet (closed pipe):
+$f_1=v/(4L)=340/(4\times0.60)=141.7\,\text{Hz}$;
+harmonics (odd only): $141.7$, $425$, $709\,\text{Hz}$. \quad
+(d)~Clarinet lacks even harmonics; this changes the
+timbre (quality). Even with the same fundamental pitch,
+the waveform differs, making the instruments sound
+distinct. \quad
+(e)~Blowing harder produces the next odd harmonic
+(overblowing); flute overblows to the octave (second
+harmonic); clarinet overblows to the twelfth (third
+harmonic), which is why the clarinet appears higher.
+
+\textbf{B4.}
+(a)~$\lambda=v/f=340/680=0.50\,\text{m}$. \quad
+(b)~$S_2P-S_1P=4.12-4.0=0.12\,\text{m}$. \quad
+(c)~$0.12/0.50=0.24\lambda$; not a whole number
+or half-integer multiple. Partial (neither fully
+constructive nor fully destructive) interference. \quad
+(d)~$0.75/0.50=1.5\lambda=(n+\tfrac{1}{2})\lambda$;
+\textbf{destructive} interference. \quad
+(e)~Sketch: alternating loud (constructive) and
+quiet (destructive) regions at regular spacing along
+the line, with louds and quiets separated by
+$\lambda/(2\sin\theta)\approx$ fixed distance depending
+on geometry.
+
+\textbf{B5.}
+(a)~Over hemisphere: $I=P/(2\pi r^2)$. \quad
+(b)~$I=500/(2\pi\times10^6)=7.96\times10^{-5}
+\,\text{W\,m}^{-2}$. \quad
+(c)~$I_{min}=10^{-6}\,\text{W\,m}^{-2}$;
+$r_{max}=\sqrt{P/(2\pi I_{min})}
+=\sqrt{500/(2\pi\times10^{-6})}
+=\sqrt{7.96\times10^7}=8920\,\text{m}\approx8.9\,\text{km}$.
+\quad
+(d)~With $50\%$ absorption per $200\,\text{m}$:
+$I=I_0e^{-\ln2\times r/200}\times 1/(2\pi r^2)$.
+Setting $=I_{min}$ gives $r\approx1$--$2\,\text{km}$.
+\quad
+(e)~Sound diffracts around headlands and buildings;
+the low-frequency component of the foghorn ($\sim60$--
+$300\,\text{Hz}$, $\lambda\sim1$--$6\,\text{m}$)
+diffracts into shadow regions unreachable by direct
+sound.
+
+% ============================================================
+%  CHAPTER 18
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{18}{Sound Waves}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad Sound travels fastest through
+steel (a rigid solid with tightly packed atoms).
+
+\textbf{A2.~C} \quad Pitch is determined by frequency.
+
+\textbf{A3.~C} \quad $L=10\log(10^{-8}/10^{-12})
+=10\log10^4=40\,\text{dB}$.
+
+\textbf{A4.~C} \quad $f=600\times340/(340-40)
+=600\times340/300=680\,\text{Hz}$.
+
+\textbf{A5.~C} \quad $d=vt/2=340\times0.6/2
+=102\,\text{m}$.
+
+\textbf{A6.~C} \quad Ultrasound: frequency above
+$20\,\text{kHz}$.
+
+\textbf{A7.~C} \quad Source receding: wavefronts
+stretched, wavelength increases, frequency decreases.
+
+\textbf{A8.~B} \quad No molecules $\Rightarrow$ no
+medium for pressure waves to propagate.
+
+\textbf{A9.~B} \quad $70\,\text{dB}$ from $10$ sources:
+$I_{total}=10^{-5}\,\text{W\,m}^{-2}$;
+$I_{one}=10^{-6}\,\text{W\,m}^{-2}$.
+$L=10\log(10^{-6}/10^{-12})=60\,\text{dB}$.
+
+\textbf{A10.~D} \quad Closed pipe: first resonance
+$L_1=\lambda/4$; second $L_2=3\lambda/4$.
+$\lambda=2(L_2-L_1)$.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$v=331+0.6\times25=346\,\text{m\,s}^{-1}$. \quad
+(b)~Echo time $=2d/v=2\times85/346=0.491\,\text{s}$. \quad
+(c)~Frequency of clapping $=1/0.491=2.04\,\text{claps\,s}^{-1}$.
+\quad
+(d)~New distance $=75\,\text{m}$: echo time
+$=150/346=0.434\,\text{s}$; frequency
+$=2.31\,\text{claps\,s}^{-1}$.
+
+\textbf{B2.}
+(a)~$f_{approach}=720\times340/(340-25)
+=720\times340/315=777\,\text{Hz}$. \quad
+(b)~$f_{recede}=720\times340/(340+25)
+=720\times340/365=670\,\text{Hz}$. \quad
+(c)~$\Delta f=777-670=107\,\text{Hz}$. \quad
+(d)~Observer running away at $5\,\text{m\,s}^{-1}$,
+train approaching at $25\,\text{m\,s}^{-1}$:
+$f=720\times(340-5)/(340-25)=720\times335/315
+=765\,\text{Hz}$. \quad
+(e)~Both approaching:
+$f=720\times(340+5)/(340-25)=720\times345/315
+=789\,\text{Hz}$.
+
+\textbf{B3.}
+(a)~$\lambda=2(L_2-L_1)=2(56.8-18.6)\times10^{-2}
+=2\times38.2\times10^{-2}=0.764\,\text{m}$. \quad
+(b)~$v=f\lambda=440\times0.764=336\,\text{m\,s}^{-1}$.
+\quad
+(c)~End correction $e=\lambda/4-L_1
+=0.191-0.186=0.005\,\text{m}=5\,\text{mm}$. \quad
+(d)~$v=331+0.6\theta$;
+$336=331+0.6\theta\Rightarrow\theta=8.3°\text{C}$. \quad
+(e)~Third resonance: $L_3=5\lambda/4=5\times0.764/4
+=0.955\,\text{m}$ (from closed end, accounting for end
+correction: $L_3=5\lambda/4-e=0.950\,\text{m}$).
+
+\textbf{B4.}
+(a)~$\Delta f=24.000\,48-24.000=480\,\text{Hz}
+=4.8\times10^{-4}\,\text{GHz}$. \quad
+(b)~$v_{car}=c\Delta f/(2f_0)
+=3\times10^8\times480/(2\times24\times10^9)
+=144\times10^9/(48\times10^9)=3.0\,\text{m\,s}^{-1}$. \quad
+(c)~$3.0\times3600/1000=10.8\,\text{km\,h}^{-1}$. \quad
+(d)~Not speeding at $10.8\,\text{km\,h}^{-1}$. \quad
+(e)~Microwaves travel much faster and in a directed beam;
+sound is easily masked by traffic noise; microwave
+radar is unambiguous, highly directional, works in
+all weather.
+
+\textbf{B5.}
+(a)~$\lambda=v/f=1540/(5\times10^6)
+=3.08\times10^{-4}\,\text{m}=0.308\,\text{mm}$. \quad
+(b)~Minimum resolvable feature $\approx\lambda/2
+=0.154\,\text{mm}=154\,\mu\text{m}$. \quad
+(c)~$d=vt/2=1540\times80\times10^{-6}/2
+=0.0616\,\text{m}=6.16\,\text{cm}$. \quad
+(d)~Higher frequency $\Rightarrow$ shorter wavelength
+$\Rightarrow$ better resolution (smaller features
+detectable). But higher frequency also attenuates more
+rapidly in tissue; the shorter wavelengths are absorbed
+before reaching deep structures. Trade-off between
+resolution and depth. \quad
+(e)~$\Delta f/f_0=2v_{blood}/v_{sound}$;
+$\Delta f=2\times0.30\times5\times10^6/1540
+=1948\,\text{Hz}\approx1950\,\text{Hz}$.
+
+% ============================================================
+%  CHAPTER 19
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{19}{Reflection of Light}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad Both angles of incidence and
+reflection are measured from the normal to the
+reflecting surface.
+
+\textbf{A2.~B} \quad Plane mirror: virtual, erect,
+same size, same distance behind mirror as object
+is in front.
+
+\textbf{A3.~B} \quad $1/v=1/f-1/u=1/15-1/20
+=(4-3)/60=1/60$; $v=+60\,\text{cm}$.
+
+\textbf{A4.~C} \quad Convex mirror always produces
+a virtual, erect, diminished image for any object
+position.
+
+\textbf{A5.~C} \quad $f=R/2=40/2=20\,\text{cm}$.
+
+\textbf{A6.~C} \quad Object at $F$: $1/v
+=1/f-1/f=0$; $v=\infty$ (image at infinity).
+
+\textbf{A7.~B} \quad $m=-3$: magnitude $3$ (three
+times larger); negative sign means inverted.
+
+\textbf{A8.~C} \quad $n=360°/60°-1=6-1=5$ images.
+
+\textbf{A9.~B} \quad $u=6\,\text{cm}<f=12\,\text{cm}$;
+object inside focal length.
+$1/v=1/12-1/6=1/12-2/12=-1/12\Rightarrow v=-12\,\text{cm}$
+(virtual, $12\,\text{cm}$ behind mirror).
+$m=-v/u=-(-12)/6=+2$; erect and magnified.
+Answer: virtual, erect, at $12\,\text{cm}$ behind mirror.
+
+\textbf{A10.~C} \quad Convex mirror: wide field of view
+and always produces an upright image regardless of
+object distance.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+$f=20\,\text{cm}$ (concave).
+(a)~$u=60$: $1/v=1/20-1/60=3/60-1/60=2/60$;
+$v=30\,\text{cm}$; $m=-1/2$. Real, inverted,
+diminished. \quad
+(b)~$u=40$: $1/v=1/20-1/40=1/40$; $v=40\,\text{cm}$;
+$m=-1$. Real, inverted, same size. \quad
+(c)~$u=30$: $1/v=1/20-1/30=3/60-2/60=1/60$;
+$v=60\,\text{cm}$; $m=-2$. Real, inverted, magnified. \quad
+(d)~$u=10$: $1/v=1/20-1/10=1/20-2/20=-1/20$;
+$v=-20\,\text{cm}$; $m=+2$. Virtual, erect, magnified,
+$20\,\text{cm}$ behind mirror.
+
+\textbf{B2.}
+(a)~$1/v=1/f-1/u=1/(-30)-1/200=-1/30-1/200$.
+LCM 600: $=-20/600-3/600=-23/600$;
+$v=-600/23=-26.1\,\text{cm}$ (virtual). \quad
+(b)~$m=+v/u=26.1/200=+0.130$. \quad
+(c)~Image height $=0.130\times1.8=0.234\,\text{m}
+=23.4\,\text{cm}$. \quad
+(d)~The diminished image looks like a distant object;
+our brain judges distance by apparent size, so objects
+in convex mirrors appear farther away than they are ---
+hence the warning ``Objects in mirror are closer than
+they appear.''
+
+\textbf{B3.}
+(a)~For $m=+3$ (virtual, erect): $m=-v/u$
+(real-is-positive for mirror) $\Rightarrow v=-3u$.
+$1/f=1/u+1/v=1/u-1/(3u)=2/(3u)$;
+$u=2f/3=2\times2.4/3=1.6\,\text{cm}$. \quad
+(b)~$v=-3\times1.6=-4.8\,\text{cm}$ (virtual,
+$4.8\,\text{cm}$ behind mirror). \checkmark \quad
+(c)~Virtual image is upright and magnified; the
+dentist sees the tooth right way up through the mirror,
+larger than actual. A real image would be on the same
+side as the patient and inverted --- useless. \quad
+(d)~$u=3.0\,\text{cm}$, $f=2.4\,\text{cm}$.
+$1/v=1/2.4-1/3=5/12-4/12=1/12$; $v=12\,\text{cm}$.
+Real, inverted, magnified ($m=-4$). Not suitable ---
+image is inverted and far from mirror.
+
+\textbf{B4.}
+(a)~Object at $F$: image at infinity (parallel beam).
+\quad
+(b)~As $u\to f$: $1/v=1/f-1/u\to0$; $v\to\infty$. \quad
+(c)~$R=2f=2\times3.5=7.0\,\text{cm}$. \quad
+(d)~If filament is $0.5\,\text{cm}$ beyond $F$:
+$u=4.0\,\text{cm}$; $v=1/f-1/u=1/3.5-1/4
+=0.0357$ $\Rightarrow v=28\,\text{cm}$ (real, inverted
+image at $28\,\text{cm}$ in front of mirror);
+the beam is convergent, not parallel --- beam narrows
+to a spot then diverges. \quad
+(e)~Spherical reflector has spherical aberration;
+parallel rays further from axis focus at a different
+point than paraxial rays (the caustic). A parabolic
+reflector focuses all parallel rays to a single perfect
+focus.
+
+\textbf{B5.}
+(a)~$1/u$ values: $0.0667$, $0.0500$, $0.0400$,
+$0.0333$, $0.0250$.
+$1/v$ values: $0.0167$, $0.0333$, $0.0467$,
+$0.0541$, $0.0649$. \quad
+(b)--(d)~Intercepts on $1/v$ and $1/u$ axes both
+$\approx1/f$. Plot should give gradient $\approx-1$
+and intercepts $\approx1/f$.
+Average: $f\approx12.0$--$12.5\,\text{cm}$. \quad
+(e)~Sources of error: parallax in reading scale,
+locating exact image position by screen, spherical
+aberration for rays far from axis.
+
+% ============================================================
+%  CHAPTER 20
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{20}{Refraction and Optical Instruments}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad Light going from less dense
+($n=1.33$) to more dense ($n=1.50$) bends toward
+the normal.
+
+\textbf{A2.~C} \quad $\sin\theta_c=1/n$;
+$n=1/\sin42°=1/0.6691=1.494\approx1.49$.
+
+\textbf{A3.~C} \quad Converging lens, $u=15$, $f=10$:
+$1/v=1/10-1/15=1/30$; $v=+30\,\text{cm}$.
+
+\textbf{A4.~B} \quad Diverging lens always produces
+virtual, erect, diminished image.
+
+\textbf{A5.~C} \quad $P=1/f=1/0.20=5.0\,\text{D}$.
+
+\textbf{A6.~B} \quad TIR conditions: denser to less
+dense medium; angle of incidence $>$ critical angle.
+
+\textbf{A7.~B} \quad $M=f_o/f_e$: increase $f_o$
+and decrease $f_e$.
+
+\textbf{A8.~C} \quad Short-sight corrected by diverging
+lens (brings image forward onto retina).
+
+\textbf{A9.~B} \quad $\lambda_{medium}=\lambda_{air}/n$;
+decreases by factor $n$.
+
+\textbf{A10.~B} \quad Both lenses short focal length:
+$M_{obj}=v_o/u_o$ (large when $u_o\approx f_o$);
+$M_{eye}=D/f_e$ (large when $f_e$ small).
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+% (Parenthesis activation removed: it broke ordinary parentheses in text/math.)
+
+\textbf{B1.}
+(a)~$\sin\theta_c=n_{liquid}/n_{glass}=1.40/1.60=0.875$;
+$\theta_c=61.0°$. \quad
+(b)~$50°<61°$; TIR does \textit{not} occur. Ray
+refracts into liquid. \quad
+(c)~$\sin\theta_r=(1.60/1.40)\sin50°=1.143\times0.766
+=0.875\Rightarrow\theta_r=61.0°$. \quad
+(d)~Glass-air TIR: $\sin\theta_c=1/1.60=0.625$;
+$\theta_c=38.7°$. The ray must strike the glass-air
+surface at $>38.7°$ from the normal, which means it
+travels at $<90°-38.7°=51.3°$ to the surface.
+
+\textbf{B2.}
+(a)~For $m=5$: $m=v/u\Rightarrow v=5u$.
+$1/f=1/v-1/u$ (Cartesian, $u$ negative for real object)
+$\Rightarrow1/15=1/(5u)+1/u=6/(5u)\Rightarrow u=18\,\text{cm}$.
+Image distance $=5\times18=90\,\text{cm}$. \quad
+(b)~Object at $18\,\text{cm}$. \quad
+(c)~Screen at $90\,\text{cm}$ from lens. \quad
+(d)~$M=1+D/f=1+25/15=2.67\times$. \quad
+(e)~Projection: image $5\times3=15\,\text{cm}$ tall on
+screen; magnifying glass: virtual image at near point,
+$M\approx2.67$, image height $=2.67\times3=8\,\text{cm}$.
+Projection gives larger absolute image height.
+
+\textbf{B3.}
+(a)~$u_o=1.0\,\text{cm}$, $f_o=0.80\,\text{cm}$:
+$1/v_o=1/0.80-1/1.0=1.25-1.0=0.25$;
+$v_o=4.0\,\text{cm}$. \quad
+(b)~$m_o=v_o/u_o=4.0/1.0=4.0\times$. \quad
+(c)~Eyepiece (normal adjustment): $M_e=D/f_e
+=25/3.0=8.33\times$. \quad
+(d)~$M_{total}=4.0\times8.33=33.3\times$. \quad
+(e)~Microscope objective: short $f_o$ because the
+object is placed just beyond $f_o$ to produce a
+\textit{large} real image inside the tube (large $v_o$
+means large $m_o$). Telescope objective: long $f_o$
+because the object is at infinity; a long $f_o$
+produces a large focal-plane image of a distant object,
+giving high angular resolution and easier eyepiece
+magnification.
+
+\textbf{B4.}
+(a)~Long-sighted, near point $50\,\text{cm}$:
+$u=-25\,\text{cm}$ (object at reading distance),
+$v=-50\,\text{cm}$ (virtual image at near point).
+$1/f=1/v-1/u=1/(-50)-1/(-25)=-0.02+0.04=+0.02$;
+$P=+2.0\,\text{D}$. \quad
+(b)~Short-sighted, far point $2.0\,\text{m}$:
+$u=\infty$, $v=-2.0\,\text{m}$;
+$P=1/f=1/v=1/(-2.0)=-0.5\,\text{D}$. \quad
+(c)~Combined: $P=+2.5+(-1.5)=+1.0\,\text{D}$. \quad
+(d)~Contact lenses sit on the cornea; the distances to
+the objects and images change because the lens is at a
+different position. The effective object and image
+distances are measured from the cornea, not from a
+spectacle position $\sim1.5\,\text{cm}$ in front.
+This leads to a different required power (typically
+slightly less power for myopia correction and slightly
+more for hypermetropia).
+
+\textbf{B5.}
+(a)~$\sin\theta_c=1.45/1.55=0.9355$;
+$\theta_c=69.4°$. \quad
+(b)~In core: $v_1=c/n_1=3\times10^8/1.55
+=1.935\times10^8\,\text{m\,s}^{-1}$.
+In cladding: $v_2=3\times10^8/1.45
+=2.069\times10^8\,\text{m\,s}^{-1}$. \quad
+(c)~$\lambda_{core}=\lambda_{vac}/n_1
+=1550/1.55=1000\,\text{nm}$. \quad
+(d)~Every $15\,\text{km}$: intensity halved.
+After $100\,\text{km}$: $n=100/15=6.67$ half-lives.
+$I/I_0=(0.5)^{6.67}=0.5^{6.67}=0.010$.
+In dB: $10\log(0.010)=-20\,\text{dB}$. \quad
+(e)~Each amplifier restores signal. Every $80\,\text{km}$:
+$80/15=5.33$ half-lives; $I/I_0=0.5^{5.33}=0.0247
+=2.47\%$ before each amplifier. After amplification,
+full power restored. For $1000\,\text{km}$:
+$1000/80=12.5$, so $12$ amplifiers needed (one every
+$80\,\text{km}$ for segments $80, 160,...,960$; the
+last $40\,\text{km}$ brings intensity to
+$0.5^{40/15}\times100\%=15.9\%>1\%$, just adequate).
+
+% ============================================================
+%  CHAPTER 21
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{21}{Electrostatics}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad Original $F=k(2Q)(3Q)/d^2
+=6kQ^2/d^2$. New: charges $4Q,6Q$; distance $d/2$:
+$F'=k(4Q)(6Q)/(d/2)^2=96kQ^2/d^2=16F$.
+
+\textbf{A2.~B} \quad Inside a conductor in
+electrostatic equilibrium: $E=0$ throughout.
+
+\textbf{A3.~B} \quad Work done by field on charge $q$
+moving from $V_1$ to $V_2$:
+$W=q(V_1-V_2)$ (field does work moving charge
+from high to low potential).
+
+\textbf{A4.~C} \quad $E=V/d=250/(5\times10^{-3})
+=5\times10^4\,\text{V\,m}^{-1}$.
+
+\textbf{A5.~B} \quad $V=kQ/r\propto1/r$.
+
+\textbf{A6.~B} \quad Positive rod induces negative
+charges to move toward cap; leaves lose some negative
+charge (become less negative); leaves diverge less
+$\Rightarrow$ come together.
+
+\textbf{A7.~B} \quad Charging by induction produces
+charge opposite to the inducing charge.
+
+\textbf{A8.~B} \quad $1\,\text{V\,m}^{-1}
+=1\,\text{J\,C}^{-1}\text{m}^{-1}=1\,\text{N\,C}^{-1}$.
+The unit is $\text{V\,m}^{-1}$.
+
+\textbf{A9.~C} \quad $F_E/F_G\approx10^{39}$ for
+electron-proton pair.
+
+\textbf{A10.~B} \quad Equipotentials are always
+perpendicular to field lines; no work done moving
+along an equipotential.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+\catcode`(=\active
+\def({\AnswersParen}
+
+\textbf{B1.}
+(a)~$F_{12}=kQ_1Q_2/r_{12}^2
+=9\times10^9\times4\times10^{-6}\times2\times10^{-6}
+/0.09=0.8\,\text{N}$ (attractive, toward $+x$). \quad
+(b)~$F_{32}=9\times10^9\times3\times10^{-6}
+\times2\times10^{-6}/0.09=0.6\,\text{N}$ (attractive,
+toward $-x$). \quad
+(c)~Net force on $Q_2=0.8-0.6=0.2\,\text{N}$
+toward $Q_1$ (in $-x$ direction). \quad
+(d)~Zero field point between $Q_1$ and $Q_3$: let
+distance from $Q_1$ be $x$.
+$kQ_1/x^2=kQ_3/(0.6-x)^2$;
+$4/(x)^2=3/(0.6-x)^2$;
+$2/x=\sqrt{3}/(0.6-x)$;
+$2(0.6-x)=x\sqrt{3}$;
+$1.2-2x=1.732x$;
+$x=1.2/3.732=0.321\,\text{m}$ from $Q_1$.
+
+\textbf{B2.}
+(a)~$E=V/d=400/(2\times10^{-3})
+=2\times10^5\,\text{V\,m}^{-1}$. \quad
+(b)~$\sigma=\varepsilon_0E=8.85\times10^{-12}
+\times2\times10^5=1.77\times10^{-6}\,\text{C\,m}^{-2}
+=1.77\,\mu\text{C\,m}^{-2}$. \quad
+(c)~$Q=\sigma A=1.77\times10^{-6}\times0.050
+=8.85\times10^{-8}\,\text{C}=88.5\,\text{nC}$. \quad
+(d)~$a=eE/m=1.6\times10^{-19}\times2\times10^5/
+(9.11\times10^{-31})=3.51\times10^{16}\,\text{m\,s}^{-2}$.
+$v^2=2\times3.51\times10^{16}\times2\times10^{-3}$
+$=1.404\times10^{14}$; $v=1.19\times10^7\,\text{m\,s}^{-1}$.
+
+\textbf{B3.}
+(a)~$E_{surface}=kQ/R^2
+=9\times10^9\times5\times10^{-6}/(0.10)^2
+=4.5\times10^6\,\text{V\,m}^{-1}$. \quad
+(b)~$E_{0.30\,m}=9\times10^9\times5\times10^{-6}/0.09
+=5\times10^5\,\text{V\,m}^{-1}$. \quad
+(c)~$V=kQ/R=9\times10^9\times5\times10^{-6}/0.10
+=4.5\times10^5\,\text{V}$. \quad
+(d)~$W=q\Delta V=2\times10^{-6}\times4.5\times10^5
+=0.90\,\text{J}$. \quad
+(e)~By Gauss's Law: a Gaussian surface inside the
+spherical shell encloses zero charge
+($Q_{enc}=0\Rightarrow E=0$).
+
+\textbf{B4.}
+(a)~Forces: weight $mg$ downward;
+electric force $qE$ upward. \quad
+(b)~For equilibrium: $qE=mg$. \quad
+(c)~$E=V/d=490/(6\times10^{-3})
+=8.167\times10^4\,\text{V\,m}^{-1}$.
+$q=mg/E=3.27\times10^{-15}\times10/8.167\times10^4
+=4.0\times10^{-19}\,\text{C}$. \quad
+(d)~$n=q/e=4.0\times10^{-19}/1.6\times10^{-19}
+=2.5$... Not an integer. Closest: $3e$ or $2e$.
+Rounding: $q=4.0\times10^{-19}\approx2.5e$;
+likely $q=3e$ with slight experimental error. \quad
+(e)~Electric force doubles; net upward force acts;
+drop accelerates upward.
+
+\textbf{B5.}
+(a)~(i)~At sharp points, charge density and field are
+highest; air ionises more readily. (ii)~Ionised air
+forms a conductive path (corona discharge). (iii)~When
+lightning strikes the rod, current flows down the
+copper conductor to earth, bypassing the building. \quad
+(b)~$I=Q/t=5.0/0.001=5000\,\text{A}$. \quad
+(c)~$E=QV=5.0\times3.0\times10^8
+=1.5\times10^9\,\text{J}$. \quad
+(d)~$E=1.5\times10^9/(3.6\times10^6)
+=417\,\text{kWh}$. At $60\,\text{W}$:
+$t=1.5\times10^9/(60)=2.5\times10^7\,\text{s}
+\approx289\,\text{days}$. \quad
+(e)~Lightning strikes are brief, unpredictable,
+and spatially random; the energy per strike is
+enormous but arrives in $\sim1\,\text{ms}$; storage
+systems cannot handle such instantaneous power;
+harvesting the energy economically is not feasible.
+
+% ============================================================
+%  CHAPTER 22
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{22}{Capacitance}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~A} \quad $C=Q/V=60\times10^{-6}/12
+=5.0\,\mu\text{F}$.
+
+\textbf{A2.~D} \quad Three in series:
+$1/C=3/6=0.5$; $C=2\,\mu\text{F}$.
+
+\textbf{A3.~B} \quad $E=\tfrac{1}{2}CV^2
+=\tfrac{1}{2}\times50\times10^{-6}\times(200)^2
+=1.0\,\text{J}$.
+
+\textbf{A4.~C} \quad Battery disconnected: $Q$ constant.
+Inserting dielectric increases $C$; $V=Q/C$
+decreases.
+
+\textbf{A5.~A} \quad $Q=C_1V_1=10\times5=50\,\mu\text{C}$.
+$V_f=Q/(C_1+C_2)=50/50=1.0\,\text{V}$.
+
+\textbf{A6.~C} \quad $I=V/R=(V_0e^{-t/RC})/R$;
+decreases exponentially.
+
+\textbf{A7.~B} \quad $\tau=RC=10\times10^3\times470
+\times10^{-6}=4.7\,\text{s}$.
+
+\textbf{A8.~B} \quad $C=\varepsilon A/d$.
+Double $A$, halve $d$: $C'=\varepsilon(2A)/(d/2)
+=4\varepsilon A/d=4C$ (quadruples).
+
+\textbf{A9.~C} \quad $e^{-3}\approx0.050=5\%$
+of initial voltage.
+
+\textbf{A10.~C} \quad Total $C=2C$;
+$E=\tfrac{1}{2}(2C)V^2=CV^2
+=2\times(\tfrac{1}{2}CV^2)$. Double.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+\catcode`(=\active
+\def({\AnswersParen}
+
+\textbf{B1.}
+(a)~$A=200\,\text{cm}^2=0.02\,\text{m}^2$;
+$C=\varepsilon_0A/d=8.85\times10^{-12}
+\times0.02/(1.5\times10^{-3})=118\,\text{pF}$. \quad
+(b)~$Q=CV=118\times10^{-12}\times600=70.8\,\text{nC}$;
+$E=\tfrac{1}{2}CV^2=\tfrac{1}{2}\times118\times10^{-12}
+\times3.6\times10^5=2.12\times10^{-5}\,\text{J}
+=21.2\,\mu\text{J}$. \quad
+(c)~With dielectric: $C'=4.5\times118=531\,\text{pF}$.
+$Q'=531\times10^{-12}\times600=318.6\,\text{nC}$;
+$E'=\tfrac{1}{2}\times531\times10^{-12}\times600^2
+=95.6\,\mu\text{J}$. \quad
+(d)~Battery maintains constant $V$; more charge is
+drawn from battery as $C$ increases; extra energy
+$=95.6-21.2=74.4\,\mu\text{J}$ comes from the battery.
+Half of this extra energy goes into polarising the
+dielectric molecules (dielectric work); half stores in
+field. The battery supplies all the extra energy.
+
+\textbf{B2.}
+(a)~$C_{12}=C_1+C_2=3+6=9\,\mu\text{F}$. \quad
+(b)~$C_{123}$: $9\,\mu\text{F}$ in series with
+$4\,\mu\text{F}$:
+$1/C=1/9+1/4=13/36$; $C_{123}=36/13=2.77\,\mu\text{F}$.
+\quad
+(c)~$C_{total}=C_{123}+C_4=2.77+8=10.77\,\mu\text{F}$.
+\quad
+(d)~$Q_{total}=C_{total}\times V=10.77\times10^{-6}
+\times20=215.4\,\mu\text{C}$. \quad
+(e)~$Q$ through $C_4=C_4\times V=8\times20
+=160\,\mu\text{C}$.
+$Q$ through $C_{123}=215.4-160=55.4\,\mu\text{C}$.
+$V_{C3}=Q_{123}/C_{123}\times C_{123}/C_3$...
+Actually $Q_{series}=Q_{12series with 3}=55.4\,\mu\text{C}$.
+$V_{C3}=55.4/4=13.85\,\text{V}$.
+
+\textbf{B3.}
+(a)~$Q_0=CV_0=1000\times10^{-6}\times15
+=0.015\,\text{C}$;
+$I_0=V_0/R=15/(5000)=3\,\text{mA}$;
+$E_0=\tfrac{1}{2}CV_0^2=\tfrac{1}{2}\times10^{-3}
+\times225=0.1125\,\text{J}$. \quad
+(b)~$\tau=RC=5000\times10^{-3}=5\,\text{s}$. \quad
+(c)~$5=15e^{-t/5}\Rightarrow e^{-t/5}=1/3
+\Rightarrow t=5\ln3=5.49\,\text{s}$. \quad
+(d)~$I=I_0e^{-t/\tau}=3\times10^{-3}e^{-10/5}
+=3\times10^{-3}\times e^{-2}=3\times0.135
+=0.406\,\text{mA}$. \quad
+(f)~(i)~$I_0=V_0/R'=15/10000=1.5\,\text{mA}$ (halved).
+(ii)~$\tau'=10000\times10^{-3}=10\,\text{s}$ (doubled).
+(iii)~Total charge $=Q_0=CV_0=0.015\,\text{C}$
+(unchanged; all charge eventually delivered regardless
+of $R$).
+
+\textbf{B4.}
+(a)~$C=2E/V^2=2\times360/25\times10^6
+=28.8\,\mu\text{F}$. \quad
+(b)~$Q=CV=28.8\times10^{-6}\times5000
+=0.144\,\text{C}$. \quad
+(c)~$\tau=RC=50\times28.8\times10^{-6}
+=1.44\times10^{-3}\,\text{s}\neq5\,\text{ms}$.
+Discrepancy: the $\tau=5\,\text{ms}$ given implies
+$C=\tau/R=5\times10^{-3}/50=100\,\mu\text{F}$.
+These are different specifications; likely the
+question intends two separate design scenarios. \quad
+(d)~Peak current $=V/R=5000/50=100\,\text{A}$. \quad
+(e)~Peak power $=V^2/R=25\times10^6/50
+=500\,000\,\text{W}=500\,\text{kW}$. \quad
+(f)~After $5\tau$: $99.3\%$ of energy delivered.
+The final $0.7\%$ remains; for medical purposes,
+essentially complete discharge in $5\tau$.
+
+\textbf{B5.}
+(a)~$\ln V$ values:
+$t=0$: $\ln8.00=2.079$;
+$5$: $\ln5.90=1.775$;
+$10$: $1.470$; $15$: $1.163$;
+$20$: $0.858$; $25$: $0.554$. \quad
+(b)--(c)~Gradient $\approx-(2.079-0.554)/25
+=-1.525/25=-0.061\,\text{s}^{-1}$;
+$\tau=1/0.061=16.4\,\text{s}$. \quad
+(d)~$y$-intercept $\approx2.08$;
+$V_0=e^{2.08}=8.0\,\text{V}$. \quad
+(e)~$C=\tau/R=16.4/(33\times10^3)=4.97\times10^{-4}
+\,\text{F}\approx497\,\mu\text{F}$.
+Close to labelled $470\,\mu\text{F}$; discrepancy
+due to measurement uncertainty and tolerance
+($\pm20\%$ is typical for electrolytic capacitors).
+
+% ============================================================
+%  CHAPTER 23
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{23}{Current Electricity}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~A} \quad $I=Q/t=120/(4\times60)
+=120/240=0.5\,\text{A}$.
+
+\textbf{A2.~B} \quad Parallel pair: $6\parallel6=3\,\Omega$.
+Series with third: $3+6=9\,\Omega$.
+
+\textbf{A3.~A} \quad $V_T=\mathcal{E}-Ir=6-2\times1
+=4.0\,\text{V}$.
+
+\textbf{A4.~B} \quad KVL: sum of p.d.s around a loop
+$=0$; consequence of conservation of energy (path
+independence of potential).
+
+\textbf{A5.~C} \quad $V_{out}=12\times9/(3+9)
+=12\times0.75=9\,\text{V}$.
+
+\textbf{A6.~C} \quad Metal: increasing temperature
+increases lattice vibration; more electron-ion
+collisions; higher resistance.
+
+\textbf{A7.~A} \quad $S=QR/P=5\times8/10=4\,\Omega$.
+
+\textbf{A8.~C} \quad NTC thermistor: resistance
+decreases with temperature (more carriers freed
+thermally).
+
+\textbf{A9.~A} \quad $v_d=I/(nqA)
+=3/(8.5\times10^{28}\times1.6\times10^{-19}
+\times2\times10^{-6})$
+$=3/(2.72\times10^4)=1.1\times10^{-4}\,\text{m\,s}^{-1}$.
+
+\textbf{A10.~B} \quad At balance, zero current from
+cell being measured; terminal voltage $=$ EMF.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+\catcode`(=\active
+\def({\AnswersParen}
+
+\textbf{B1.}
+(a)~$A=\pi(0.5\times10^{-3})^2=7.85\times10^{-7}\,\text{m}^2$;
+$R=\rho L/A=1.72\times10^{-8}\times2/(7.85\times10^{-7})
+=0.0438\,\Omega$. \quad
+(b)~$I=V/R=3.0/0.0438=68.5\,\text{A}$. \quad
+(c)~$v_d=I/(nqA)=68.5/(8.5\times10^{28}
+\times1.6\times10^{-19}\times7.85\times10^{-7})
+=68.5/(1.066\times10^4)=6.43\times10^{-3}\,\text{m\,s}^{-1}$.
+\quad
+(d)~The electric field propagates at close to $c$;
+all electrons start drifting almost simultaneously.
+Drift is slow ($6\,\text{mm\,s}^{-1}$) but the signal
+(field) travels at nearly $3\times10^8\,\text{m\,s}^{-1}$.
+\quad
+(e)~Half diameter $\Rightarrow$ area $\times\frac{1}{4}$;
+$R\times4=0.175\,\Omega$; $I=3.0/0.175=17.1\,\text{A}$.
+
+\textbf{B2.}
+(a)~Branch currents $I_1$ (through $R_1$), $I_2$
+(through $\mathcal{E}_2,r_2,R_2$), $I_3$ (through
+$R_3$). KCL at junction: $I_1=I_2+I_3$. \quad
+(b)~Loop 1 ($\mathcal{E}_1$, $r_1$, $R_1$, and
+back through junction):
+$\mathcal{E}_1=I_1(r_1+R_1)=I_1(0.5+3)=3.5I_1$.
+Loop 2 ($\mathcal{E}_2$, $r_2$, $R_2$, same V as
+branch 1):
+$V_{R_1}=I_1R_1=I_2(R_2+r_2)+\mathcal{E}_2$. \quad
+(c)~From loop 1: $I_1=10/3.5=2.857\,\text{A}$.
+$V_{R_1}=2.857\times3=8.571\,\text{V}$.
+$I_2=(8.571-4)/(2+1)=4.571/3=1.524\,\text{A}$.
+$I_3=8.571/6=1.429\,\text{A}$.
+Check: $I_2+I_3=2.953\approx I_1=2.857$. Small
+discrepancy from rounding; circuit consistent. \quad
+(d)~Power from $\mathcal{E}_1$: $10\times2.857
+=28.57\,\text{W}$.
+Power from $\mathcal{E}_2$: $4\times1.524
+=6.10\,\text{W}$.
+Total: $34.67\,\text{W}$.
+Resistors: $I_1^2\times3.5+I_2^2\times3+I_3^2\times6
+=28.57+6.97+12.24=47.78$. Discrepancy from rounding
+in $I$ values; consistent at 3 significant figures.
+
+\textbf{B3.}
+(a)~$R_{23}=6\times3/(6+3)=2\,\Omega$.
+$R_{total}=r+R_1+R_{23}+R_4=0.5+2+2+1=5.5\,\Omega$.
+\quad
+(b)~$I=12/5.5=2.182\,\text{A}$. \quad
+(c)~$V_T=\mathcal{E}-Ir=12-2.182\times0.5
+=10.91\,\text{V}$. \quad
+(d)~$V_{23}=I\times R_{23}=2.182\times2
+=4.36\,\text{V}$. \quad
+(e)~$I_3=V_{23}/R_3=4.36/3=1.45\,\text{A}$. \quad
+(f)~$P_{R4}=I^2R_4=2.182^2\times1=4.76\,\text{W}$.
+
+\textbf{B4.}
+(a)~Balance: $P/Q=R/S$; $R=PS/Q=100\times85/200
+=42.5\,\Omega$. \quad
+(b)~New $S=86.5\,\Omega$:
+$R=100\times86.5/200=43.25\,\Omega$. \quad
+(c)~$GF=(\Delta R/R)/\varepsilon
+=0.0176/(8.8\times10^{-5})=200$.
+Typical strain gauges have $GF\approx2$; this
+is very high, suggesting a semiconductor strain
+gauge. \quad
+(d)~A bridge produces a \textit{difference} signal;
+at balance output is zero. A small $\Delta R$ produces
+a large unbalanced voltage proportional to $\Delta R$.
+A simple divider would require measuring a small
+change on a large background voltage, much less
+sensitive.
+
+\textbf{B5.}
+(a)~Potential gradient $=\mathcal{E}_d/L
+=4.0/100=0.04\,\text{V\,cm}^{-1}$. \quad
+(b)~$\mathcal{E}_2=\text{gradient}\times\ell_2
+=0.04\times45=1.80\,\text{V}$. \quad
+(c)~$V_{T2}=0.04\times35=1.40\,\text{V}$ (terminal
+voltage under load). \quad
+(d)~$I=(\mathcal{E}_2-V_{T2})/R_{internal}$;
+but we need $I$: from $V=\mathcal{E}-Ir$,
+$I=(1.80-1.40)/r$. Also $V=IR_L\Rightarrow
+I=V/R_L=1.40/5=0.28\,\text{A}$.
+$r=(1.80-1.40)/0.28=0.40/0.28=1.43\,\Omega$. \quad
+(e)~Potentiometer draws zero current at null point;
+the EMF measured equals the true EMF with no $Ir$
+drop. A voltmeter draws current and reads terminal
+voltage $\mathcal{E}-Ir<\mathcal{E}$.
+
+% ============================================================
+%  CHAPTER 24
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{24}{Electrical Energy and Power}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad $P=I^2R=4\times100=400\,\text{W}$.
+
+\textbf{A2.~C} \quad $1\,\text{kWh}=1000\times3600
+=3.6\times10^6\,\text{J}$.
+
+\textbf{A3.~B} \quad $N_s>N_p\Rightarrow V_s>V_p$:
+step-up transformer.
+
+\textbf{A4.~B} \quad $P_{loss}=I^2R$; transmit at high
+$V$ (low $I$) to minimise $I^2R$ losses.
+
+\textbf{A5.~B} \quad $V_{rms}=V_0/\sqrt{2}
+=100/1.414=70.7\,\text{V}$.
+
+\textbf{A6.~B} \quad Step-down $240\to12$:
+$N_p/N_s=20$; $I_s/I_p=N_p/N_s=20$;
+$I_p/I_s=1/20$, i.e.\ $1:20$.
+
+\textbf{A7.~C} \quad $E=2\times3\times30
+=180\,\text{kWh}$.
+
+\textbf{A8.~C} \quad Fuse: wire melts when current
+exceeds rated value.
+
+\textbf{A9.~C} \quad $I=P/V$; double $V\Rightarrow I$
+halves; $P_{loss}=I^2R$ is quartered.
+
+\textbf{A10.~C} \quad Transformers need changing
+flux; DC gives constant flux; no induction in
+secondary.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+\catcode`(=\active
+\def({\AnswersParen}
+
+\textbf{B1.}
+(a)~Daily kWh:
+AC: $1.8\times8=14.4$; Fridge: $0.15\times24=3.6$;
+Bulbs: $5\times0.015\times6=0.45$; TV: $0.12\times5
+=0.60$; Laptop: $0.065\times4=0.26$; Kettle:
+$1.5\times0.5=0.75$; Total $=20.06\,\text{kWh}$.
+\quad
+(b)~$20.06\,\text{kWh/day}$. \quad
+(c)~Monthly: $20.06\times30\times80=₦48\,144$. \quad
+(d)~Inverter AC: $1.2\times8=9.6\,\text{kWh}$.
+Saving: $(14.4-9.6)\times30\times80=₦11\,520/\text{month}$.
+\quad
+(e)~Payback $=180\,000/11\,520\approx15.6$ months.
+
+\textbf{B2.}
+(a)~$P_{in}=V\times I=220\times10^3\times500
+=110\,\text{MW}$. \quad
+(b)~$P_{loss}=I^2R=500^2\times60=15\,\text{MW}$.
+\quad
+(c)~$\Delta V=IR=500\times60=30\,000\,\text{V}
+=30\,\text{kV}$. \quad
+(d)~$V_{Lagos}=220-30=190\,\text{kV}$. \quad
+(e)~$P_L=190\times10^3\times500=95\,\text{MW}$. \quad
+(f)~$P_{in}=P_{loss}+P_L=15+95=110\,\text{MW}$. \checkmark
+
+\textbf{B3.}
+(a)~$N_p/N_s=V_p/V_s=240/12=20$;
+$N_p=20\times60=1200\,\text{turns}$. \quad
+(b)~$I_p=I_sN_s/N_p=5\times60/1200=0.25\,\text{A}$.
+\quad
+(c)~$P_{in}=P_{out}=V_sI_s=12\times5=60\,\text{W}$.
+\quad
+(d)~$\eta=92\%$: $P_{in}=60/0.92=65.2\,\text{W}$;
+$I_p=65.2/240=0.272\,\text{A}$. \quad
+(e)~Heat per hour $=(65.2-60)\times3600
+=18\,720\,\text{J}$. \quad
+(f)~Losses: (1) Eddy current losses in iron core
+(reduced by lamination); (2) Hysteresis losses (reduced
+by using soft iron); (3) Copper losses ($I^2R$ in
+windings); (4) Flux leakage.
+
+\textbf{B4.}
+(a)~$v(t)=325\sin(100\pi t)\,\text{V}$. \quad
+(b)~$V_{rms}=325/\sqrt{2}=229.8\approx230\,\text{V}$.
+\quad
+(c)~$I_0=V_0/R=325/40=8.125\,\text{A}$;
+$I_{rms}=8.125/\sqrt{2}=5.74\,\text{A}$;
+$P=V_{rms}I_{rms}=230\times5.74=1320\,\text{W}$. \quad
+(d)~Voltmeter reads $V_{rms}=230\,\text{V}$;
+ammeter reads $I_{rms}=5.74\,\text{A}$. \quad
+(e)~$V_{s,rms}=V_{p,rms}\times N_s/N_p
+=230\times50/200=57.5\,\text{V}$;
+$V_{s,peak}=57.5\times\sqrt{2}=81.3\,\text{V}$.
+
+\textbf{B5.}
+(a)~Max power $=VI=240\times13=3120\,\text{W}$. \quad
+(b)~$I_{total}=(1800+900+1200+60)/240
+=3960/240=16.5\,\text{A}$. \quad
+(c)~$16.5>13\,\text{A}$: fuse \textit{will} blow.
+Fitting a $20\,\text{A}$ fuse is dangerous: fuse no
+longer protects the cable (rated $13\,\text{A}$);
+cables may overheat and catch fire. \quad
+(d)~Total current through cord $=16.5\,\text{A}$;
+$P_{cord}=I^2R_{cord}=16.5^2\times0.5
+=136\,\text{W}$. \quad
+(e)~The student is correct in principle (assuming cable
+is rated for $13\,\text{A}$ continuous). However the
+assumption requires that all appliances run simultaneously
+and are resistive loads. In practice, motors (AC, fridge)
+have higher start-up currents; inductive loads may have
+higher peak currents. The $3120\,\text{W}$ is the
+\textit{maximum} for a $13\,\text{A}$ rated supply
+at $240\,\text{V}$.
+
+% ============================================================
+%  CHAPTER 25
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{25}{Magnetism and Electromagnetism}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad $B$ at centre of circular coil
+$=\mu_0NI/(2r)$.
+
+\textbf{A2.~C} \quad $F=BIL\sin\theta$; wire parallel
+to field: $\theta=0°$, $F=0$.
+
+\textbf{A3.~A} \quad $F=Bqv=0.2\times1.6\times10^{-19}
+\times10^6=3.2\times10^{-14}\,\text{N}$.
+
+\textbf{A4.~B} \quad Parallel currents (same direction)
+attract each other.
+
+\textbf{A5.~B} \quad Commutator reverses current in
+coil each half turn, keeping torque in the same
+direction.
+
+\textbf{A6.~C} \quad $r=mv/(Bq)$; larger momentum
+$\Rightarrow$ larger radius.
+
+\textbf{A7.~B} \quad Hall effect: measures $B$ and
+identifies the sign of majority charge carriers.
+
+\textbf{A8.~B} \quad Shunt $S$ in parallel with
+galvanometer:
+$I_gG=(I-I_g)S\Rightarrow S=GI_g/(I-I_g)$.
+
+\textbf{A9.~A} \quad $B=\mu_0nI=4\pi\times10^{-7}
+\times500\times2=4\pi\times10^{-4}
+\approx1.26\times10^{-3}\,\text{T}$.
+
+\textbf{A10.~B} \quad Fleming's Left-Hand Rule:
+force on current-carrying conductor (motor effect).
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+\catcode`(=\active
+\def({\AnswersParen}
+
+\textbf{B1.}
+(a)~Length $=0.08\,\text{m}$:
+$F=NBIL\sin90°=50\times0.30\times2.0\times0.08
+=2.4\,\text{N}$ (on each of the two longer sides,
+same magnitude, opposite direction). \quad
+(b)~Torque $=F\times d=2.4\times0.05=0.12\,\text{N\,m}$
+(where $d=0.05\,\text{m}$ is half the shorter side
+for a flat coil perpendicular to field, i.e.\ 
+torque $=NBAI=50\times0.3\times(0.08\times0.05)\times2
+=0.12\,\text{N\,m}$). \quad
+(c)~$\tau=BINA\cos\alpha=0.30\times2\times50
+\times0.004\times\cos30°=0.12\times0.866
+=0.104\,\text{N\,m}$. \quad
+(d)~Maximum torque when coil is parallel to field
+($\alpha=0°$); zero torque when coil is perpendicular
+to field ($\alpha=90°$, ``dead point''). At dead point
+the coil must have enough momentum to carry it through;
+the commutator must switch current at this moment.
+
+\textbf{B2.}
+(a)~$KE=qV=2\times1.6\times10^{-19}\times500
+=1.6\times10^{-16}\,\text{J}$. \quad
+(b)~$v=\sqrt{2KE/m}=\sqrt{2\times1.6\times10^{-16}/
+6.64\times10^{-27}}=\sqrt{4.82\times10^{10}}
+=2.19\times10^5\,\text{m\,s}^{-1}$. \quad
+(c)~$r=mv/(Bq)=6.64\times10^{-27}
+\times2.19\times10^5/(0.20\times2\times1.6\times10^{-19})
+=1.454\times10^{-21}/6.4\times10^{-20}
+=0.0227\,\text{m}=2.27\,\text{cm}$. \quad
+(d)~$T=2\pi m/(Bq)=2\pi\times6.64\times10^{-27}/
+(0.20\times3.2\times10^{-19})=4.17\times10^{-26}/
+6.4\times10^{-20}=6.52\times10^{-7}\,\text{s}$. \quad
+(e)~Circular path in $xy$-plane; after one complete
+orbit, particle returns to origin $(0,0,0)$.
+
+\textbf{B3.}
+(a)~$V_H=BI/(nqw)$:
+$B=V_H nqw/I=3.5\times10^{-3}\times2\times10^{21}
+\times1.6\times10^{-19}\times2\times10^{-3}/
+(50\times10^{-3})
+=3.5\times10^{-3}\times6.4\times10^{-1}/0.05
+=3.5\times10^{-3}\times12.8=0.0448\,\text{T}
+\approx45\,\text{mT}$. \quad
+(b)~With current parallel to field: force on carriers
+$=qv\times B=0$ (no transverse deflection);
+$V_H=0$. \quad
+(c)~If carriers are positive: they accumulate on one
+face; Hall voltage $+$ on that face. If negative
+(electrons): they accumulate on the opposite face;
+$+$ on the other face. Sign of $V_H$ reveals carrier
+type. \quad
+(d)~$V_H=BI/(nqw)=0.0448\times50\times10^{-3}/
+(8.5\times10^{28}\times1.6\times10^{-19}
+\times2\times10^{-3})
+=2.24\times10^{-3}/(2.72\times10^7)
+=8.2\times10^{-11}\,\text{V}$. Tiny because $n$ in
+copper is $\sim10^7$ times larger than in the
+semiconductor; more carriers mean each carries less
+of the deflecting force, giving a much smaller
+transverse voltage.
+
+\textbf{B4.}
+(a)~$F/L=\mu_0I_AI_B/(2\pi d)
+=4\pi\times10^{-7}\times6\times4/(2\pi\times0.04)
+=9.6\times10^{-6}/0.04\pi/(2\pi)$... let me compute directly:
+$F/L=2\times10^{-7}\times6\times4/0.04
+=2\times10^{-7}\times600=1.2\times10^{-4}\,\text{N\,m}^{-1}$.
+Same direction $\Rightarrow$ \textbf{attractive}. \quad
+(b)~Wire C is at $d=0.02\,\text{m}$ from each of A
+and B (midway). Force from A (same direction?):
+A carries $6\,\text{A}$ (same direction as C? C is
+opposite direction to both A and B).
+$F_{A\to C}/L=2\times10^{-7}\times6\times3/0.02
+=1.8\times10^{-4}\,\text{N\,m}^{-1}$ (repulsive
+from A, toward B).
+$F_{B\to C}/L=2\times10^{-7}\times4\times3/0.02
+=1.2\times10^{-4}\,\text{N\,m}^{-1}$ (repulsive
+from B, toward A).
+Net force on C $=(1.8-1.2)\times10^{-4}
+=6\times10^{-5}\,\text{N\,m}^{-1}$ toward B. \quad
+(c)~Zero field between A and B: Let distance from
+A be $x$.
+$\mu_0I_A/(2\pi x)=\mu_0I_B/(2\pi(0.04-x))$;
+$6/x=4/(0.04-x)$; $6(0.04-x)=4x$;
+$0.24=10x$; $x=0.024\,\text{m}=2.4\,\text{cm}$ from A.
+
+\textbf{B5.}
+(a)~\textit{(Ray diagram description)}:
+Rectangular coil between N and S pole pieces;
+commutator (split ring) contacts two brushes;
+current enters through one brush, flows through coil,
+exits through other brush; forces on sides perpendicular
+to field are upward and downward (by FLHR),
+creating torque. \quad
+(b)~$\tau_{max}=BINA=0.15\times3\times200
+\times(20\times10^{-4})=0.18\,\text{N\,m}$.
+\quad
+(c)~(i)~$\mathcal{E}_{back}=V-IR_{coil}
+=12-2\times1.5=12-3=9\,\text{V}$.
+(ii)~At start: back-EMF $=0$; $I_{start}=V/R
+=12/1.5=8\,\text{A}$, which may exceed the rated
+current and burn out the armature winding.
+(iii)~$P_{input}=VI=12\times2=24\,\text{W}$;
+$P_{coil}=I^2R=4\times1.5=6\,\text{W}$;
+$P_{mech}=P_{input}-P_{coil}=24-6=18\,\text{W}$.
+(iv)~$\eta=P_{mech}/P_{input}=18/24=75\%$.
+
+% ============================================================
+%  CHAPTER 26
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{26}{Electromagnetic Induction}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad The induced EMF equals the rate of
+change of flux linkage (Faraday's Law); it is greatest
+when $d\Phi/dt$ is maximum, not when $\Phi$ itself is
+large.
+
+\textbf{A2.~C} \quad By Lenz's Law, eddy currents induced
+in the copper tube create a magnetic braking force
+opposing the magnet's motion. The magnet falls slower
+than free fall --- the classic ``falling magnet''
+demonstration of electromagnetic braking.
+
+\textbf{A3.~C} \quad $\mathcal{E}=BLv
+=0.25\times0.40\times15=1.5\,\text{V}$.
+
+\textbf{A4.~C} \quad Lenz's Law states the induced
+current opposes the change causing it. If it aided the
+change, it would amplify itself indefinitely ---
+creating energy from nothing. Lenz's Law is therefore
+a direct consequence of conservation of energy.
+
+\textbf{A5.~B} \quad Peak EMF $\mathcal{E}_0=NBA\omega$.
+Doubling $N$ while keeping $B$, $A$ and $\omega$
+constant doubles $\mathcal{E}_0$. Option A gives
+$\tfrac{1}{2}N\times2\omega=N\omega$ (unchanged).
+
+\textbf{A6.~C} \quad Laminations divide the iron core
+into thin, electrically insulated sheets. Eddy currents
+are confined to narrow strips of high resistance,
+reducing $I^2R$ losses dramatically.
+
+\textbf{A7.~C} \quad Energy stored in an inductor is
+$W=\tfrac{1}{2}LI^2$, analogous to kinetic energy
+$\tfrac{1}{2}mv^2$.
+
+\textbf{A8.~C} \quad Back-EMF $\propto$ angular speed.
+At full speed the motor rotates fastest;
+back-EMF is maximum, limiting the current to its
+lowest running value.
+
+\textbf{A9.~C} \quad $|\mathcal{E}|=N\Delta\Phi/\Delta t
+=100\times(0.08-0.02)/0.05
+=100\times1.2=120\,\text{V}$.
+
+\textbf{A10.~B} \quad Slip rings maintain continuous
+sliding contact as the coil rotates, delivering the
+alternating current without reversing it. A commutator
+would reverse the current every half-turn, producing
+pulsating DC.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+\catcode`(=\active
+\def({\AnswersParen}
+
+\textbf{B1.}
+(a)~$A=\pi r^2=\pi(0.04)^2=5.027\times10^{-3}\,\text{m}^2$.
+$\Phi_i=B_iA=0.60\times5.027\times10^{-3}
+=3.016\times10^{-3}\,\text{Wb}$.
+$\Phi_f=0.10\times5.027\times10^{-3}
+=5.027\times10^{-4}\,\text{Wb}$. \quad
+(b)~$|\mathcal{E}|=N\Delta\Phi/\Delta t
+=150\times(3.016-0.503)\times10^{-3}/0.20
+=150\times2.513\times10^{-3}/0.20
+=1.88\,\text{V}$. \quad
+(c)~$I=\mathcal{E}/R=1.88/5.0=0.377\,\text{A}
+\approx0.38\,\text{A}$. \quad
+(d)~Flux is decreasing. By Lenz's Law the induced
+current must \textit{oppose} this decrease --- it creates
+a magnetic field in the \textbf{same direction} as the
+original (decreasing) field, trying to maintain the
+flux. Using the right-hand rule, the current circulates
+in the same rotational sense as the current that
+originally produced the field direction. \quad
+(e)~Coil rotated $90°$: flux changes from
+$\Phi_i=3.016\times10^{-3}\,\text{Wb}$ (coil
+perpendicular to $B$) to $\Phi_f=0$ (coil parallel to
+$B$).
+$|\mathcal{E}|=N\Delta\Phi/\Delta t
+=150\times3.016\times10^{-3}/0.20=2.26\,\text{V}$.
+
+\textbf{B2.}
+(a)~$\mathcal{E}=BLv=0.80\times0.50\times2.5
+=1.0\,\text{V}$;
+$I=\mathcal{E}/R=1.0/0.40=2.5\,\text{A}$. \quad
+(b)~Braking force $F=BIL
+=0.80\times2.5\times0.50=1.0\,\text{N}$.
+At constant velocity the applied force equals the
+braking force: $F_{applied}=1.0\,\text{N}$. \quad
+(c)~$P_{input}=Fv=1.0\times2.5=2.5\,\text{W}$;
+$P_{dissipated}=I^2R=6.25\times0.40=2.5\,\text{W}$.
+They are equal: all mechanical power input is
+converted to electrical heat in the rod ---
+energy is conserved. The rod is a linear generator
+operating at $100\%$ conversion into electrical
+power (all of which is dissipated in $R$). \quad
+(d)~Equation of motion when external force removed:
+$ma=-B^2L^2v/R$ (braking force $\propto v$).
+As $v$ decreases, the braking force decreases
+proportionally; deceleration therefore decreases.
+The rod asymptotically approaches zero velocity
+--- it never stops abruptly but decelerates
+ever more slowly. \quad
+(e)~$v=\mathcal{E}/(BL)=1.0/(0.80\times0.50)
+=2.5\,\text{m\,s}^{-1}$
+(confirming part (a)).
+
+\textbf{B3.}
+(a)~$\omega=2\pi f=2\pi\times25=157\,\text{rad\,s}^{-1}$.
+\quad
+(b)~$\mathcal{E}_0=NBA\omega
+=500\times0.20\times80\times10^{-4}\times157
+=500\times0.20\times0.0080\times157=125.6\,\text{V}
+\approx126\,\text{V}$. \quad
+(c)~$\mathcal{E}_{rms}=\mathcal{E}_0/\sqrt{2}
+=126/1.414=89.1\,\text{V}\approx89\,\text{V}$. \quad
+(d)~Total resistance $=R_{coil}+R_L=2+50=52\,\Omega$.
+Peak current $I_0=\mathcal{E}_0/R_{total}
+=126/52=2.42\,\text{A}$.
+RMS current $=2.42/\sqrt{2}=1.71\,\text{A}$.
+Power to load $=I_{rms}^2\times R_L
+=2.924\times50=146\,\text{W}$. \quad
+(e)~By Lenz's Law, the induced current in the rotating
+coil experiences a force opposing rotation ---
+an electromagnetic braking torque. To maintain constant
+angular speed, an external mechanical torque must
+continuously supply power equal to the electrical power
+generated. This is how mechanical energy (from turbines,
+etc.) is converted to electrical energy. \quad
+(f)~Doubling frequency doubles $\omega$; since
+$\mathcal{E}_0\propto\omega$, the new peak EMF
+$=2\times126=252\,\text{V}$.
+
+\textbf{B4.}
+(a)~$L=\mu_0N^2A/\ell
+=4\pi\times10^{-7}\times(600)^2
+\times8.0\times10^{-4}/0.25$.
+$=1.2566\times10^{-6}\times3.6\times10^5
+\times3.2\times10^{-3}
+=1.447\times10^{-3}\,\text{H}\approx1.45\,\text{mH}$.
+\quad
+(b)~$\mathcal{E}=-L\,dI/dt
+=1.447\times10^{-3}\times4.0/0.050
+=1.447\times10^{-3}\times80=0.116\,\text{V}$. \quad
+(c)~$W=\tfrac{1}{2}LI^2
+=\tfrac{1}{2}\times1.447\times10^{-3}\times16
+=11.6\times10^{-3}\,\text{J}=11.6\,\text{mJ}$. \quad
+(d)~$\mathcal{E}_2=M\,dI_1/dt
+=0.72\times10^{-6}\times200
+=1.44\times10^{-4}\,\text{V}=0.144\,\text{mV}$. \quad
+(e)~An iron core has relative permeability
+$\mu_r\gg1$ (typically hundreds to thousands).
+Since $L=\mu_r\mu_0N^2A/\ell$, the inductance
+scales directly with $\mu_r$. The iron core channels
+far more magnetic flux through the solenoid per unit
+current, increasing the flux linkage $N\Phi$ and hence
+$L$ by the same factor $\mu_r$.
+
+\textbf{B5.}
+(a)~$\mathcal{E}_{back}=V-IR_{coil}
+=240-3.0\times2.0=234\,\text{V}$. \quad
+(b)~$P_{input}=VI=240\times3.0=720\,\text{W}$;
+$P_{heat}=I^2R=(3.0)^2\times2.0=18\,\text{W}$;
+$P_{mechanical}=720-18=702\,\text{W}$. \quad
+(c)~$\eta=P_{mech}/P_{input}=702/720=97.5\%$. \quad
+(d)~At startup, $\mathcal{E}_{back}=0$ (coil not
+spinning); $I_{start}=V/R_{coil}=240/2.0=120\,\text{A}$.
+This is $40\times$ the normal running current.
+Such a large current can burn out armature windings,
+melt commutator brushes, or blow circuit protection,
+so direct-on-line starting of large motors is dangerous
+without a starter resistor. \quad
+(e)~With $18\,\Omega$ in series:
+$I_{start}=240/(2.0+18)=240/20=12\,\text{A}$.
+$P_{starter}=I^2\times18=144\times18=2592\,\text{W}$.
+Remove starter resistor when back-EMF is large enough
+to keep $I\leq6.0\,\text{A}$:
+$240-\mathcal{E}_{back}=6.0\times2.0=12\,\text{V}$;
+$\mathcal{E}_{back}=228\,\text{V}$.
+Since $\mathcal{E}_{back}\propto$ speed:
+fraction of full speed $=228/234\approx97.4\%$.
+Remove the starter resistor at approximately
+$97\%$ of full speed.
+
+% ============================================================
+%  CHAPTER 27
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{27}{Atomic Structure and Spectra}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~C} \quad Rutherford's back-scattered alpha
+particles implied all the positive charge and almost all
+the mass are concentrated in an incredibly small region
+--- the nucleus. The atom is predominantly empty space
+with electrons orbiting far outside.
+
+\textbf{A2.~C} \quad $E_4=-13.6/4^2=-13.6/16
+=-0.85\,\text{eV}$.
+
+\textbf{A3.~B} \quad The minimum frequency required to
+eject photoelectrons is the \textbf{threshold frequency}
+$f_0=\phi/h$.
+
+\textbf{A4.~C} \quad Each photon interacts with one
+electron. Greater intensity means more photons per
+second $\Rightarrow$ more electrons ejected per second.
+The energy per photon (and hence $KE_{max}$) depends
+only on frequency, which is unchanged.
+
+\textbf{A5.~B} \quad De Broglie's relation:
+$\lambda=h/p$.
+
+\textbf{A6.~B} \quad $\Delta E=E_4-E_2
+=-0.85-(-3.40)=+2.55\,\text{eV}$.
+
+\textbf{A7.~C} \quad The stopping potential $V_s$ is
+defined by $eV_s=KE_{max}$, so $V_s=KE_{max}/e$.
+It directly measures the maximum kinetic energy of
+the emitted electrons.
+
+\textbf{A8.~C} \quad The photoelectric effect --- in
+particular the existence of a threshold frequency and
+the immediate emission even in faint light --- cannot
+be explained by wave theory. Einstein's photon
+explanation (quantised light packets) provides
+direct evidence for the particle nature of light.
+
+\textbf{A9.~A} \quad The Lyman series consists of all
+transitions ending at $n=1$ (the ground state).
+
+\textbf{A10.~B} \quad The Heisenberg Uncertainty
+Principle is a fundamental property of quantum
+systems, not a technological limitation. A particle
+does not simultaneously possess both a definite
+position and a definite momentum; the more precisely
+one is known, the less precisely the other can be,
+regardless of how good the measuring instrument is.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+\catcode`(=\active
+\def({\AnswersParen}
+
+\textbf{B1.}
+(a)~$7.7\,\text{MeV}=7.7\times10^6\times1.6
+\times10^{-19}=1.232\times10^{-12}\,\text{J}$. \quad
+(b)~$q_\alpha=2e=3.2\times10^{-19}\,\text{C}$;
+$q_{Au}=79e=1.264\times10^{-17}\,\text{C}$.
+$d=kZq_\alpha q_{Au}/KE
+=(9\times10^9\times3.2\times10^{-19}
+\times1.264\times10^{-17})/1.232\times10^{-12}
+=(3.640\times10^{-26})/1.232\times10^{-12}
+=2.95\times10^{-14}\,\text{m}$.
+The nuclear radius is $\sim7\times10^{-15}\,\text{m}$;
+the distance of closest approach
+($\approx4$ nuclear radii) confirms the alpha particle
+just barely probes the nuclear surface in a
+head-on collision. \quad
+(c)~Atomic radius $\sim10^{-10}\,\text{m}$;
+nuclear radius $\sim10^{-15}\,\text{m}$.
+The ratio of volumes is $(10^{-10})^3/(10^{-15})^3
+=10^{15}$. The nucleus occupies roughly $10^{-15}$
+of the atomic volume. An alpha particle aimed at a
+random point has a $\sim1$ in $10^{15}$ chance of
+intercepting the nucleus, which is why most pass
+straight through. \quad
+(d)~The nucleus occupies a volume fraction of about
+$10^{-15}$ of the total atomic volume.
+The remaining $\sim99.9999999999999\%$ contains
+only the diffuse electron cloud, which is too light
+to deflect a fast alpha particle significantly.
+The atom is overwhelmingly empty space.
+
+\textbf{B2.}
+(a)~$E=hc/\lambda
+=(6.63\times10^{-34}\times3.0\times10^8)/97.2
+\times10^{-9}=2.046\times10^{-18}\,\text{J}
+=2.046\times10^{-18}/1.6\times10^{-19}
+=12.8\,\text{eV}$. \quad
+(b)~$\Delta E=E_n-E_1=12.8\,\text{eV}$;
+$E_1=-13.6\,\text{eV}$; $E_n=12.8-13.6
+=-0.80\,\text{eV}\approx E_4=-0.85\,\text{eV}$.
+The transition is $n=1\to n=4$ (Lyman series
+absorption). \quad
+(c)~$n=4\to n=2$:
+$\Delta E=-0.85-(-3.40)=2.55\,\text{eV}
+=4.08\times10^{-19}\,\text{J}$.
+$\lambda=hc/\Delta E=1.989\times10^{-25}/4.08
+\times10^{-19}=4.88\times10^{-7}\,\text{m}
+=488\,\text{nm}$. \quad
+(d)~$488\,\text{nm}$ is within the visible range
+(400--700\,nm). It appears \textbf{blue-green (cyan)}
+--- this is the H$\beta$ Balmer line. \quad
+(e)~Ionisation from ground state: $E=13.6\,\text{eV}
+=2.176\times10^{-18}\,\text{J}$.
+$\lambda=hc/E=1.989\times10^{-25}/2.176
+\times10^{-18}=9.14\times10^{-8}\,\text{m}
+=91.4\,\text{nm}$ (UV; the Lyman limit).
+
+\textbf{B3.}
+(a)~$f_0=\phi/h
+=(4.3\times1.6\times10^{-19})/6.63\times10^{-34}
+=6.88\times10^{-19}/6.63\times10^{-34}
+=1.038\times10^{15}\,\text{Hz}$.
+$\lambda_0=c/f_0=3.0\times10^8/1.038\times10^{15}
+=2.89\times10^{-7}\,\text{m}=289\,\text{nm}$
+(UV). \quad
+(b)~$E_{photon}=hc/\lambda=1.989\times10^{-25}/200
+\times10^{-9}=9.945\times10^{-19}\,\text{J}
+=6.22\,\text{eV}$.
+$KE_{max}=6.22-4.3=1.92\,\text{eV}
+=3.072\times10^{-19}\,\text{J}$.
+$v_{max}=\sqrt{2KE/m_e}
+=\sqrt{2\times3.072\times10^{-19}/9.11\times10^{-31}}
+=\sqrt{6.745\times10^{11}}
+=8.21\times10^5\,\text{m\,s}^{-1}$. \quad
+(c)~$V_s=KE_{max}/e=1.92\,\text{V}$. \quad
+(d)~(i)~$KE_{max}$ is \textbf{unchanged}: it depends
+only on photon frequency, which is unchanged by
+increasing intensity.
+(ii)~The rate of electron emission \textbf{doubles}:
+twice as many photons per second means twice as many
+photoelectron ejections per second. \quad
+(e)~$f_0=c/\lambda_0=3.0\times10^8/500\times10^{-9}
+=6.0\times10^{14}\,\text{Hz}$.
+$\phi=hf_0=6.63\times10^{-34}\times6.0\times10^{14}
+=3.978\times10^{-19}\,\text{J}=2.49\,\text{eV}$.
+Zinc ($\phi=4.3\,\text{eV}$) requires higher-energy
+(shorter-wavelength) photons. This second metal has a
+lower work function and is easier to ionise
+photelectrically.
+
+\textbf{B4.}
+(a)~$KE=eV=\tfrac{1}{2}m_ev^2\Rightarrow
+v=\sqrt{2eV/m_e}$; $p=m_ev=\sqrt{2m_eeV}$;
+$\lambda=h/p=h/\sqrt{2m_eeV}$. \checkmark \quad
+(b)~$V=50\,\text{V}$:
+$\lambda=6.63\times10^{-34}/\sqrt{2\times9.11
+\times10^{-31}\times1.6\times10^{-19}\times50}
+=6.63\times10^{-34}/3.82\times10^{-24}
+=1.74\times10^{-10}\,\text{m}=0.174\,\text{nm}$.
+$V=200\,\text{V}$: $\lambda\propto1/\sqrt{V}$;
+$\lambda=0.174\times\sqrt{50/200}=0.087\,\text{nm}$.
+$V=10\,000\,\text{V}$: $\lambda=0.174
+\times\sqrt{50/10000}=0.174\times0.0707
+=0.0123\,\text{nm}$. \quad
+(c)~Crystal lattice spacings $0.1$--$0.5\,\text{nm}$.
+At $50\,\text{V}$ ($\lambda=0.174\,\text{nm}$) and
+$200\,\text{V}$ ($\lambda=0.087\,\text{nm}$),
+$\lambda$ is comparable to lattice spacings
+$\Rightarrow$ diffraction expected.
+At $10\,000\,\text{V}$ ($\lambda=0.012\,\text{nm}$),
+$\lambda$ is much smaller than lattice spacings
+$\Rightarrow$ diffraction is negligible. \quad
+(d)~Visible light: 400--700\,nm. Electron wavelengths
+at these voltages are $10^3$--$10^4$ times smaller.
+Since resolution limit $\approx\lambda/2$, electron
+microscopes resolve features thousands of times smaller
+than optical microscopes --- allowing imaging of
+individual atoms. \quad
+(e)~$\lambda_p=h/\sqrt{2m_peV}
+=6.63\times10^{-34}/\sqrt{2\times1.67\times10^{-27}
+\times1.6\times10^{-19}\times200}
+=6.63\times10^{-34}/3.27\times10^{-22}
+=2.03\times10^{-12}\,\text{m}=0.00203\,\text{nm}$.
+Since $\lambda\propto1/\sqrt{m}$ (same $V$):
+$\lambda_p/\lambda_e=\sqrt{m_e/m_p}
+=\sqrt{9.11\times10^{-31}/1.67\times10^{-27}}
+=1/43$.
+The proton's de Broglie wavelength is 43 times
+smaller than the electron's at the same accelerating
+voltage, because the proton acquires the same kinetic
+energy but has far greater mass and therefore far
+greater momentum.
+
+\textbf{B5.}
+(a)~Centripetal force $=$ Coulomb force:
+$m_ev^2/r=ke^2/r^2\Rightarrow v=\sqrt{ke^2/(m_er)}$.
+$v=\sqrt{(9\times10^9\times(1.6\times10^{-19})^2)/
+(9.11\times10^{-31}\times5.29\times10^{-11})}
+=\sqrt{2.304\times10^{-28}/4.819\times10^{-41}}
+=\sqrt{4.782\times10^{12}}
+=2.19\times10^6\,\text{m\,s}^{-1}$. \quad
+(b)~$p=m_ev=9.11\times10^{-31}\times2.19\times10^6
+=1.995\times10^{-24}\,\text{kg\,m\,s}^{-1}$.
+$\lambda=h/p=6.63\times10^{-34}/1.995\times10^{-24}
+=3.32\times10^{-10}\,\text{m}$.
+Circumference $=2\pi r_1
+=2\pi\times5.29\times10^{-11}
+=3.32\times10^{-10}\,\text{m}$.
+$\lambda=2\pi r_1$ exactly: one complete de Broglie
+wavelength fits around the Bohr orbit. This is the
+standing-wave condition that gives physical meaning to
+Bohr's quantisation postulate. \quad
+(c)~Classical radiated power:
+$P=e^2a^2/(6\pi\varepsilon_0c^3)$.
+$=(1.6\times10^{-19})^2\times(9.0\times10^{22})^2/
+(6\pi\times8.85\times10^{-12}\times(3\times10^8)^3)$.
+Numerator: $2.56\times10^{-38}\times8.1\times10^{45}
+=2.074\times10^8$.
+Denominator: $6\pi\times8.85\times10^{-12}
+\times2.7\times10^{25}=4.506\times10^{15}$.
+$P=2.074\times10^8/4.506\times10^{15}
+\approx4.6\times10^{-8}\,\text{W}$.
+The electron's kinetic energy $=\tfrac{1}{2}m_ev^2
+\approx2.18\times10^{-18}\,\text{J}$.
+Time to radiate away all kinetic energy
+$\approx2.18\times10^{-18}/4.6\times10^{-8}
+\approx4.7\times10^{-11}\,\text{s}$.
+Classical physics predicts atomic collapse in
+$\sim10^{-11}\,\text{s}$. Atoms are stable because
+quantum mechanics forbids the electron from losing
+energy below the ground state; the stationary states
+are not arbitrary postulates but consequences of the
+wave nature of the electron. \quad
+(d)~Bohr arbitrarily \textit{postulated} quantised
+orbits without physical justification --- it was known
+even then that an accelerating classical charge must
+radiate. The model works only for hydrogen and
+hydrogen-like ions, cannot predict spectral line
+intensities, fails completely for multi-electron atoms,
+and violates the uncertainty principle (precise orbits
+imply simultaneously exact position and momentum).
+It was a phenomenological model that produced correct
+energy levels for the wrong physical reasons, and its
+incompleteness was recognised from the outset.
+
+% ============================================================
+%  CHAPTER 28
+% ============================================================
+\endgroup
+
+\AnswersChapterBand{28}{Radioactivity and Nuclear Physics}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad An alpha particle has the same
+composition as a helium-4 nucleus: 2 protons and
+2 neutrons, ${}^4_2\text{He}$.
+
+\textbf{A2.~C} \quad In $\beta^-$ decay a neutron in
+the nucleus converts to a proton, emitting a fast
+electron (beta particle) and an antineutrino. The
+proton number $Z$ increases by 1; $A$ is unchanged.
+
+\textbf{A3.~C} \quad $1\,\text{h}=60\,\text{min}
+=3\times t_{1/2}$. Fraction remaining
+$=(1/2)^3=1/8$.
+
+\textbf{A4.~C} \quad Gamma radiation (high-energy
+photons) is the most penetrating: it requires several
+centimetres of lead or metres of concrete to attenuate
+significantly and is never completely stopped.
+
+\textbf{A5.~C} \quad Binding energy per nucleon peaks
+at ${}^{56}_{26}$Fe ($\approx8.8\,\text{MeV}$ per
+nucleon), making iron-56 the most stable nucleus.
+
+\textbf{A6.~B} \quad The moderator slows fast
+(``fast'') neutrons released in fission to thermal
+speeds. Slow (thermal) neutrons are much more
+effective at inducing further fission in ${}^{235}$U.
+
+\textbf{A7.~C} \quad The fused product lies higher on
+the binding-energy-per-nucleon curve than the light
+reactants. Greater binding energy per nucleon means
+less mass per nucleon; the mass deficit is released as
+energy via $E=mc^2$.
+
+\textbf{A8.~C} \quad Alpha decay: $Z\to Z-2$.
+Each $\beta^-$ decay: $Z\to Z+1$.
+Net after $\alpha$ then $2\beta^-$:
+$Z-2+2=Z$. Final proton number unchanged.
+
+\textbf{A9.~C} \quad $\lambda=\ln2/t_{1/2}
+=0.693/t_{1/2}$.
+
+\textbf{A10.~B} \quad ${}^{14}$C has a half-life of
+5730 years, which is comparable to the timescale of
+human history and prehistoric archaeology (hundreds
+to tens of thousands of years). A too-short half-life
+would leave nothing detectable; a too-long one would
+show negligible change.
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+\catcode`(=\active
+\def({\AnswersParen}
+
+\textbf{B1.}
+(a)~$\Delta A=238-206=32$; each $\alpha$ reduces
+$A$ by 4; number of $\alpha$ decays $=32/4=8$.
+Net $Z$ change from 8 $\alpha$ decays:
+$92-16=76$; but $Z_{Pb}=82$; deficit $=82-76=6$;
+each $\beta^-$ increases $Z$ by 1; so 6 $\beta^-$
+decays. \textbf{8 alpha and 6 beta-minus decays.}
+Check: $A=238-32=206$ \checkmark;
+$Z=92-16+6=82$ \checkmark. \quad
+(b)~${}^{238}_{92}\text{U}\to
+{}^{234}_{90}\text{Th}+{}^{4}_{2}\text{He}$. \quad
+(c)~First $\beta^-$:
+${}^{234}_{90}\text{Th}\to
+{}^{234}_{91}\text{Pa}+{}^{0}_{-1}e+\bar{\nu}_e$.
+Second $\beta^-$:
+${}^{234}_{91}\text{Pa}\to
+{}^{234}_{92}\text{U}+{}^{0}_{-1}e+\bar{\nu}_e$. \quad
+(d)~$t_{1/2}=4.47\times10^9\times365.25\times86400
+=1.411\times10^{17}\,\text{s}$.
+$\lambda=0.693/1.411\times10^{17}
+=4.91\times10^{-18}\,\text{s}^{-1}$. \quad
+(e)~$N=(1.00/238)\times6.02\times10^{23}
+=2.529\times10^{21}\,\text{atoms}$.
+$A=\lambda N=4.91\times10^{-18}\times2.529
+\times10^{21}=1.24\times10^4\,\text{Bq}$.
+($1.00\,\text{g}$ of ${}^{238}$U has an activity of
+only about 12\,400\,Bq --- U-238 decays very slowly.)
+
+\textbf{B2.}
+(a)~$t_{1/2}=8.04\times86400=6.947\times10^5\,\text{s}$.
+$\lambda=0.693/6.947\times10^5
+=9.976\times10^{-7}\,\text{s}^{-1}
+\approx9.98\times10^{-7}\,\text{s}^{-1}$. \quad
+(b)~$N_0=A_0/\lambda=3.7\times10^9/9.976
+\times10^{-7}=3.71\times10^{15}\,\text{atoms}$. \quad
+(c)~$m=N_0\times M/N_A
+=3.71\times10^{15}\times131/6.02\times10^{23}
+=8.07\times10^{-7}\,\text{g}=0.807\,\mu\text{g}$. \quad
+(d)~$32.16\,\text{days}=32.16/8.04
+=4.00\times t_{1/2}$.
+$A=3.7\times10^9\times(1/2)^4
+=3.7\times10^9/16=2.31\times10^8\,\text{Bq}$. \quad
+(e)~Decay curve: exponential starting at
+$3.7\times10^9\,\text{Bq}$, halving every 8.04 days.
+Label axes ``Activity (Bq)'' and ``Time (days)''.
+Mark: $t=0$: $3.70\times10^9$;
+$t=8.04$: $1.85\times10^9$;
+$t=16.08$: $9.25\times10^8$;
+$t=24.12$: $4.63\times10^8\,\text{Bq}$. \quad
+(f)~Activity decreases exponentially with time.
+Delaying administration means the sample reaches the
+patient with lower activity than prescribed. Since
+the therapeutic effect depends on the total radiation
+dose delivered to the thyroid, a lower-activity sample
+may fail to achieve the required dose. The dose is
+prescribed and calibrated for a specific activity at
+the time of administration, not at the time of
+preparation.
+
+\textbf{B3.}
+(a)~${}^{56}_{26}$Fe has 26 protons and 30 neutrons.
+Mass of constituents:
+$26\times1.007276+30\times1.008665
+=26.18918+30.25995=56.44913\,\text{u}$.
+Mass defect:
+$\Delta m=56.44913-55.934939=0.51419\,\text{u}$.
+Binding energy:
+$E_B=0.51419\times931.5=479.0\,\text{MeV}$. \quad
+(b)~$E_B/A=479.0/56=8.55\,\text{MeV\,per\,nucleon}$. \quad
+(c)~${}^4$He: $E_B/A=28.3/4=7.08\,\text{MeV\,per\,nucleon}$.
+${}^{56}$Fe has higher binding energy per nucleon
+($8.55$ vs $7.08\,\text{MeV}$) --- it is more tightly
+bound and therefore more stable. \quad
+(d)~(i)~${}^{235}$U lies to the right of the peak
+(lower $E_B/A$). Fission fragments (mass number
+$\sim100$--$140$) sit nearer the peak where $E_B/A$
+is higher. Products are more tightly bound $\Rightarrow$
+less total mass $\Rightarrow$ mass deficit released as
+energy.
+(ii)~Hydrogen isotopes lie far to the left of the peak
+(low $E_B/A$). Fusion to helium or heavier nuclei
+moves up the curve to higher $E_B/A$ $\Rightarrow$
+mass deficit released as energy.
+(iii)~${}^{56}$Fe is \textit{at} the peak. Any
+reaction (fission or fusion) moves to a lower point on
+the curve $\Rightarrow$ products have lower $E_B/A$,
+meaning more mass must be supplied rather than
+released. No energy is liberated.
+
+\textbf{B4.}
+(a)~Fraction remaining
+$=A/A_0=1.5/6.5=0.2308$. \quad
+(b)~$t=\frac{t_{1/2}}{\ln2}\ln\!\left(\frac{A_0}{A}\right)
+=\frac{5730}{0.693}\ln\!\left(\frac{6.5}{1.5}\right)
+=8268\times\ln(4.333)
+=8268\times1.466=12\,121\,\text{years}
+\approx12\,100\,\text{years}$. \quad
+(c)~Upper bound ($A=1.3$): $t=8268\times\ln(6.5/1.3)
+=8268\times1.609=13\,305\,\text{years}$.
+Lower bound ($A=1.7$): $t=8268\times\ln(6.5/1.7)
+=8268\times1.341=11\,087\,\text{years}$.
+Uncertainty $\approx\pm1100\,\text{years}$. \quad
+(d)~After 50\,000 years: $t/t_{1/2}=50000/5730=8.73$
+half-lives. Remaining fraction
+$=(0.5)^{8.73}\approx0.0023$ (0.23\% of original).
+The activity is barely above background radiation,
+making accurate measurement impossible and the
+calculated age unreliable. \quad
+(e)~$12100$ years places the piece at approximately
+$10\,100$ BCE --- well within the Later Stone Age
+of West Africa. If the age were 1200 years (the
+example given), it would be approximately $826\,\text{CE}$,
+coinciding with the early flourishing of Yoruba
+kingdoms and the Ife civilisation, which was
+producing sophisticated terracotta and later bronze
+artwork during this period. The Oyo Empire was also
+consolidating at this time.
+
+\textbf{B5.}
+(a)~Thermal power $=P_{elec}/\eta
+=1000\times10^6/0.35=2.857\times10^9\,\text{W}
+\approx2.86\,\text{GW}$. \quad
+(b)~Energy per fission $=200\times1.6\times10^{-13}
+=3.2\times10^{-11}\,\text{J}$.
+Fissions per second $=2.857\times10^9/3.2\times10^{-11}
+=8.93\times10^{19}\,\text{s}^{-1}$. \quad
+(c)~Mass per ${}^{235}$U atom $=235/6.02\times10^{23}
+=3.904\times10^{-22}\,\text{g}$.
+Mass per second $=8.93\times10^{19}\times3.904
+\times10^{-22}=3.49\times10^{-2}\,\text{g\,s}^{-1}$.
+Mass per day $=3.49\times10^{-2}\times86400
+\approx3010\,\text{g\,day}^{-1}\approx3.01\,\text{kg\,day}^{-1}$.
+\quad
+(d)~Nuclear: $3.01\times365\approx1099\,\text{kg}
+\approx1.1\,\text{tonnes\,year}^{-1}$.
+Coal: thermal power $=1000/0.40=2500\,\text{MW}$.
+Energy per year $=2.5\times10^9\times3.156
+\times10^7=7.89\times10^{16}\,\text{J}$.
+Mass of coal $=7.89\times10^{16}/(24\times10^6)
+=3.29\times10^9\,\text{kg}=3.29$ million tonnes.
+Nuclear fuel is approximately $\mathbf{3}$ \textbf{million
+times} more energy-dense per unit mass than coal. \quad
+(e)~$0.001=(1/2)^n\Rightarrow n=\ln(1000)/\ln2
+=6.908/0.693=9.97\approx10\,\text{half-lives}$.
+Time $=10\times29=290\,\text{years}$.
+${}^{90}$Sr must be safely isolated for nearly three
+centuries before its activity falls to $0.1\%$ of
+its initial level --- illustrating the long-term
+waste management challenge of nuclear fission power.
+
+% ============================================================
+%  CHAPTER 29
+% ============================================================
+ \endgroup
+
+\AnswersChapterBand{29}{Electronics}
+
+\AnswersSectionHeading{Section A}
+\begin{multicols}{2}
+\begingroup
+\let\textbf\AnswersTextbf
+\def\quad{ --- }
+\setlength{\parindent}{0pt}
+
+\textbf{A1.~B} \quad $n$-type silicon is formed by
+doping with a pentavalent (Group V) element such as
+phosphorus or arsenic. The fifth valence electron is
+not needed for bonding and is easily freed as a
+conduction electron.
+
+\textbf{A2.~C} \quad A forward-biased silicon diode
+requires approximately $0.6$--$0.7\,\text{V}$ to
+overcome the built-in potential barrier before
+significant current flows ($\approx0.3\,\text{V}$
+for germanium).
+
+\textbf{A3.~C} \quad $I_C=h_{FE}\times I_B
+=200\times25\times10^{-6}=5.0\times10^{-3}\,\text{A}
+=5.0\,\text{mA}$.
+
+\textbf{A4.~D} \quad A full-wave bridge rectifier uses
+four diodes arranged in a diamond. Two conduct during
+the positive half-cycle and the other two during the
+negative half-cycle, always directing current through
+the load in the same direction.
+
+\textbf{A5.~B} \quad $A_v=-R_f/R_{in}
+=-180/20=-9$.
+
+\textbf{A6.~C} \quad In the common-emitter
+configuration the output is $180°$ out of phase
+with the input (inverted). The voltage gain is
+$A_v\approx-R_C/R_E$; the negative sign indicates
+inversion.
+
+\textbf{A7.~B} \quad NAND truth: output is LOW only
+when \textit{both} inputs are HIGH. With $A=1$ and
+$B=0$, the AND result is $0$; NAND gives the inverse:
+output $=1$.
+
+\textbf{A8.~B} \quad The depletion region is depleted
+of mobile charge carriers (both electrons and holes
+have recombined there). It contains fixed
+positive ions on the $n$-side and fixed negative
+ions on the $p$-side.
+
+\textbf{A9.~C} \quad A photodiode is reverse biased.
+Incident photons create electron-hole pairs in the
+depletion region; these are swept across the junction
+by the built-in electric field, producing a
+photocurrent proportional to light intensity.
+
+\textbf{A10.~C} \quad A NOR gate: output is HIGH
+only when \textit{all} inputs are LOW (the inverse
+of OR, which is LOW only when all inputs are LOW).
+
+\endgroup
+\end{multicols}
+
+\AnswersSectionHeading{Section B}
+\begingroup
+\let\textbf\AnswersTextbf
+\setlength{\parindent}{0pt}
+\def\quad{\par\smallskip}
+\catcode`(=\active
+\def({\AnswersParen}
+
+\textbf{B1.}
+(a)~Silicon has a band gap of $\approx1.1\,\text{eV}$
+separating a full valence band from an empty conduction
+band at absolute zero. This is too large for electrons
+to cross thermally at low temperatures (hence insulating
+at 0\,K) but small enough that at room temperature
+a tiny fraction of electrons gain sufficient thermal
+energy to bridge the gap, creating electron-hole pairs.
+The result is low but measurable conductivity --- neither
+as conductive as a metal (no band gap, conduction band
+always partially filled) nor as resistive as an insulator
+(band gap $>5\,\text{eV}$, essentially no thermal
+excitation). \quad
+(b)~Intrinsic carrier density: $1.5\times10^{16}\,\text{m}^{-3}$.
+Phosphorus donor density: $10^{22}\,\text{m}^{-3}$.
+Ratio: $10^{22}/1.5\times10^{16}\approx6.7\times10^5$.
+The doping concentration is about 670\,000 times
+larger than the intrinsic carrier density; thermally
+generated carriers are completely negligible, and the
+electrical properties are determined entirely by the
+donor electrons. \quad
+(c)~Conductivity ratio $=R_{undoped}/R_{doped}
+=2300/0.023=10^5$.
+Conductivity increased by a factor of
+$\mathbf{100\,000}$. \quad
+(d)~Each phosphorus donor that loses its extra
+electron to the conduction band becomes a fixed
+positive ion locked in the crystal lattice. The
+number of free electrons equals the number of
+fixed positive ions (plus negligible intrinsic
+carriers). Total charge
+$=$ (mobile electrons) $+$ (fixed $+$ ions) $+$
+(intrinsic holes and electrons) $= 0$.
+The semiconductor is electrically neutral overall.
+
+\textbf{B2.}
+(a)~$V_{peak}=V_{rms}\times\sqrt{2}
+=12\times1.414=17.0\,\text{V}$. \quad
+(b)~Two diodes conduct simultaneously; voltage drop
+$=2\times0.65=1.30\,\text{V}$.
+$V_{peak,out}=17.0-1.30=15.7\,\text{V}$. \quad
+(c)~$\tau=RC=1000\times10^{-6}\times100
+=0.10\,\text{s}$.
+Period of full-wave output $=1/(2f)=1/100
+=0.010\,\text{s}$.
+Since $\tau\gg T_{output}$ ($0.10\gg0.010$), the
+capacitor discharges very little between successive
+peaks. Smoothing is highly effective --- the ripple
+voltage is small compared with the DC output. \quad
+(d)~(i)~Without capacitor: sequence of positive
+half-sine pulses at 100\,Hz, peak at $15.7\,\text{V}$,
+touching zero at each cycle. Label horizontal axis
+``time'', mark peak $V_0=15.7\,\text{V}$. \\
+(ii)~With capacitor: nearly flat DC at $\approx15.7\,\text{V}$
+with small sawtooth ripple ($\sim0.5$--$1\,\text{V}$
+amplitude) at 100\,Hz, showing slow discharge between
+charging peaks. \quad
+(e)~Full-wave rectification: (1)~both half-cycles
+contribute, so average output voltage is approximately
+double that of half-wave ($0.637\,V_0$ vs
+$0.318\,V_0$); (2)~ripple frequency is $2f=100\,\text{Hz}$
+rather than $50\,\text{Hz}$, giving the smoothing
+capacitor less time to discharge between peaks and
+producing much smaller ripple; (3)~transformer and
+circuit components are used more efficiently since
+current is drawn during both half-cycles.
+
+\textbf{B3.}
+(a)~$I_{C,sat}=(V_{CC}-V_{CE,sat})/R_C
+=(9.0-0.2)/1000=8.8\times10^{-3}\,\text{A}
+=8.8\,\text{mA}$. \quad
+(b)~$I_{B,min}=I_{C,sat}/h_{FE}
+=8.8\times10^{-3}/150=58.7\,\mu\text{A}$. \quad
+(c)~Voltage across $R_B=V_{in}-V_{BE}=5.0-0.6
+=4.4\,\text{V}$.
+$R_B=4.4/I_{B,min}=4.4/58.7\times10^{-6}
+=75\,000\,\Omega=75\,\text{k}\Omega$
+(maximum value to guarantee saturation; use
+$\leq75\,\text{k}\Omega$ in practice). \quad
+(d)~The relay coil replaces $R_C$. When the input
+is HIGH, the collector current $I_C=h_{FE}I_B$
+(up to 150 times larger than $I_B$) flows through
+the relay coil, energising its electromagnet and
+closing (or opening) relay contacts in a separate,
+electrically isolated high-power circuit. The
+transistor uses a milliamp-level signal to switch
+many amperes through a load at a completely different
+voltage, with full galvanic isolation between
+the control and load circuits. \quad
+(e)~In a switch the bias point is either in
+\textit{cutoff} ($V_{BE}<0.6\,\text{V}$, $I_C=0$,
+transistor OFF) or \textit{saturation}
+($V_{CE}\approx0.2\,\text{V}$, $I_C$ limited by
+$R_C$ and $V_{CC}$, transistor fully ON). The
+operating point is driven hard to either extreme;
+there is no linear relationship between input and
+output. An amplifier, by contrast, is biased to a
+Q-point in the middle of the active (linear) region.
+Here $I_C\approx h_{FE}I_B$ throughout the signal
+swing, so the output faithfully reproduces and
+amplifies the input waveform without clipping.
+
+\textbf{B4.}
+(a)~$A_v=-R_f/R_{in}=-47/10=-4.7$. \quad
+(b)~(i)~$V_{out}=-4.7\times0.2=-0.94\,\text{V}$. \quad
+(ii)~$V_{out}=-4.7\times(-0.3)=+1.41\,\text{V}$. \quad
+(iii)~$V_{out}=-4.7\times0.5=-2.35\,\text{V}$.
+All three outputs are within $\pm12\,\text{V}$;
+the op-amp operates in the linear region throughout.
+\quad
+(c)~Output saturates when $|A_v\times V_{in}|
+\approx12\,\text{V}$:
+$V_{in,sat}=12/4.7=2.55\,\text{V}$.
+In practice the op-amp saturates slightly below the
+rail, so output clips at $\approx\pm(10\text{--}11)\,
+\text{V}$ depending on the device; saturation begins
+around $|V_{in}|\approx2.3$--$2.6\,\text{V}$. \quad
+(d)~Roles swapped: $R_{input}=47\,\text{k}\Omega$,
+$R_{feedback}=10\,\text{k}\Omega$.
+$A_v=-10/47=-0.213$.
+This is an \textit{attenuator} (gain magnitude less
+than 1). \quad
+(e)~Non-inverting: $A_v=1+R_f/R_1=6$;
+$R_f/R_1=5$; $R_1=10\,\text{k}\Omega$;
+$R_f=5\times10=\mathbf{50\,\text{k}\Omega}$.
+
+\textbf{B5.}
+(a)~$U=(P\cdot K)+(P\cdot T)$. \quad
+(b)~Factoring: $U=P(K+T)$
+(using Boolean distributive law $AB+AC=A(B+C)$).
+This confirms that the PIN correct ($P=1$) is
+necessary in all cases; the door unlocks whenever
+either $K$ or $T$ (or both) is also HIGH. \quad
+(c)~Full truth table:
+\begin{center}
+\begin{tabular}{ccc|c|c}
+$P$ & $K$ & $T$ & $K+T$ & $U=P(K+T)$\\
+\hline
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 1 & 1 & 0\\
+0 & 1 & 0 & 1 & 0\\
+0 & 1 & 1 & 1 & 0\\
+1 & 0 & 0 & 0 & 0\\
+1 & 0 & 1 & 1 & 1\\
+1 & 1 & 0 & 1 & 1\\
+1 & 1 & 1 & 1 & 1\\
+\end{tabular}
+\end{center}
+The door unlocks only when $P=1$ and at least one of
+$K$ or $T$ is HIGH. \quad
+(d)~Minimum gate circuit: $K$ and $T$ feed an
+\textbf{OR} gate; the OR output and $P$ feed an
+\textbf{AND} gate to give $U$. Two gates total. \quad
+(e)~Implementing with NAND gates only:
+NOT A from NAND: connect both inputs of a NAND
+together: $\overline{A}=\text{NAND}(A,A)$.
+OR from three NANDs (by De Morgan):
+$A+B=\overline{\bar{A}\cdot\bar{B}}$,
+so:
+$G_1=\text{NAND}(K,K)=\bar{K}$;
+$G_2=\text{NAND}(T,T)=\bar{T}$;
+$G_3=\text{NAND}(G_1,G_2)=\overline{\bar{K}\cdot\bar{T}}=K+T$.
+Then AND from two NANDs:
+$G_4=\text{NAND}(P,G_3)=\overline{P\cdot(K+T)}$;
+$G_5=\text{NAND}(G_4,G_4)=P(K+T)=U$.
+Total: \textbf{five NAND gates}.
+
+\endgroup
+
+\normalsize
+
+\normalsize

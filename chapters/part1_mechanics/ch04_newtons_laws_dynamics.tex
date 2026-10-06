@@ -1,0 +1,912 @@
+% ============================================================
+%  CHAPTER 4: NEWTON'S LAWS AND DYNAMICS
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part1/ch04_dynamics.tex
+% ============================================================
+
+\chapter{Newton's Laws and Dynamics}
+\label{ch:dynamics}
+
+\chapterquote{If I have seen further, it is by standing
+on the shoulders of giants.}{Isaac Newton}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item State and explain Newton's three laws of motion
+  with real examples
+  \item Define linear momentum and impulse
+  \item Apply the law of conservation of momentum to
+  collisions and explosions
+  \item Distinguish between elastic and inelastic
+  collisions
+  \item Apply Newton's laws to connected bodies, pulleys,
+  and inclined planes
+  \item Define friction, state its laws, and apply them
+  to practical problems
+  \item Analyse motion on inclined planes with and
+  without friction
+  \item Understand and apply the concept of terminal
+  velocity
+\end{enumerate}
+\end{objectivebox}
+
+\vspace{0.4cm}
+
+\minitoc
+
+\vspace{0.5cm}
+
+% ============================================================
+\section{From Kinematics to Dynamics}
+% ============================================================
+
+Chapter~3 described \textit{how} objects move. This
+chapter asks \textit{why}. The answer was given in 1687
+by Isaac Newton in his masterwork
+\textit{Philosophi\ae\ Naturalis Principia Mathematica}
+--- the \textit{Principia} --- widely considered the most
+important scientific book ever written. In it, Newton
+unified the motion of the planets, the fall of objects
+on Earth, the behaviour of tides, and the paths of
+comets under a single set of three laws.
+
+\begin{historybox}[Newton and the Apple]
+Newton himself claimed that the sight of an apple falling
+from a tree in his garden in Woolsthorpe, Lincolnshire,
+around 1666, set him thinking about gravity. Whether the
+story is embellished or not, what is certain is that
+Newton spent roughly twenty years developing his ideas
+before finally publishing them. His great insight was not
+that gravity existed --- everyone knew things fell --- but
+that the same gravitational force that pulled the apple
+also kept the Moon in orbit. The Moon, he realised, is
+perpetually \textit{falling} --- it just keeps missing
+the Earth because of its sideways velocity.
+\end{historybox}
+
+% ============================================================
+\section{Newton's First Law: Inertia}
+% ============================================================
+
+\begin{lawbox}[Newton's First Law of Motion]
+A body remains at rest, or continues to move in a
+straight line at constant velocity, unless acted upon
+by a net (resultant) external force.
+
+Mathematically: if $\sum\vect{F} = \vect{0}$,
+then $\vect{v} = \text{constant}$ (including $v = 0$).
+\end{lawbox}
+
+This law contains two profound ideas. First, rest and
+uniform motion are equivalent states --- a body doing
+either requires no explanation. Only \textit{change}
+in motion requires explanation. Second, every body has
+an intrinsic resistance to change in its state of motion.
+This resistance is called \textbf{inertia}.
+
+\begin{definitionbox}[Inertia]
+\textbf{Inertia} is the tendency of a body to resist
+any change in its state of rest or uniform motion.
+The measure of inertia is \textbf{mass}. A more massive
+body has more inertia --- it is harder to start, stop,
+or change the direction of.
+\end{definitionbox}
+
+\begin{realworldbox}[Inertia on a Danfo]
+When a Lagos danfo suddenly brakes, passengers who are
+standing lurch forward. Their bodies were moving with
+the bus and, by Newton's First Law, they tend to
+continue moving forward. Only a force (from a handrail,
+another passenger, or the seat) stops them. Seatbelts
+exist precisely to provide this stopping force before
+the windscreen does.
+\end{realworldbox}
+
+% ============================================================
+\section{Newton's Second Law: Force and Momentum}
+% ============================================================
+
+\begin{lawbox}[Newton's Second Law of Motion]
+The rate of change of momentum of a body is directly
+proportional to the net external force acting on it,
+and takes place in the direction of that force.
+\[
+  \vect{F}_{net} = \frac{d\vect{p}}{dt}
+  = \frac{\Delta\vect{p}}{\Delta t}
+\]
+For constant mass:
+\[
+  \vect{F}_{net} = m\vect{a}
+\]
+The SI unit of force is the \textbf{newton} (N):
+$1\ \text{N} = 1\ \text{kg\,m\,s}^{-2}$
+\end{lawbox}
+
+\begin{definitionbox}[Linear Momentum]
+The \textbf{linear momentum} $\vect{p}$ of a body is
+the product of its mass and velocity:
+\[
+  \vect{p} = m\vect{v}
+\]
+Momentum is a \textbf{vector} quantity. SI unit:
+kg\,m\,s$^{-1}$ or N\,s.
+\end{definitionbox}
+
+\begin{definitionbox}[Impulse]
+The \textbf{impulse} $\vect{J}$ of a force is the
+product of the force and the time interval over which
+it acts:
+\[
+  \vect{J} = \vect{F}\,\Delta t
+  = \Delta\vect{p} = m\vect{v} - m\vect{u}
+\]
+Impulse equals the change in momentum.
+SI unit: N\,s = kg\,m\,s$^{-1}$.
+\end{definitionbox}
+
+\begin{keybox}[Impulse-Momentum Theorem]
+\[
+  \vect{F}\,\Delta t = m\vect{v} - m\vect{u}
+\]
+A large force acting for a short time produces the same
+change in momentum as a small force acting for a long
+time. This is why airbags save lives: they increase the
+collision time, reducing the peak force on the occupant.
+\end{keybox}
+
+\begin{examplebox}[4.1]
+\stepcounter{workedexample}
+A $1500\ \text{kg}$ car travelling at
+$20\ \text{m\,s}^{-1}$ is brought to rest in $4.0\ \text{s}$
+by applying the brakes.\\
+(a) Find the change in momentum.\\
+(b) Find the average braking force.\\
+(c) If the same car hit a wall and stopped in $0.1\ \text{s}$,
+what would the average force be?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Change in momentum:
+\[
+  \Delta p = mv - mu = 1500(0) - 1500(20)
+  = -30\,000\ \text{kg\,m\,s}^{-1}
+\]
+Magnitude: $30\,000\ \text{N\,s}$
+
+\textbf{(b)} Average braking force:
+\[
+  F = \frac{\Delta p}{\Delta t}
+  = \frac{30\,000}{4.0} = 7\,500\ \text{N}
+\]
+
+\textbf{(c)} Hitting the wall ($\Delta t = 0.1\ \text{s}$):
+\[
+  F = \frac{30\,000}{0.1} = 300\,000\ \text{N}
+\]
+This is 40 times larger --- enough to be fatal. The
+same change in momentum, but 40 times less time, means
+40 times the force. This explains why crumple zones,
+airbags and crash barriers save lives: they increase
+$\Delta t$.
+\end{solutionbox}
+
+% ============================================================
+\section{Newton's Third Law: Action and Reaction}
+% ============================================================
+
+\begin{lawbox}[Newton's Third Law of Motion]
+For every action (force), there is an equal and opposite
+reaction. If body A exerts a force $\vect{F}$ on body B,
+then body B exerts a force $-\vect{F}$ on body A.
+\[
+  \vect{F}_{AB} = -\vect{F}_{BA}
+\]
+The two forces are equal in magnitude, opposite in
+direction, act on \textbf{different} bodies, are of the
+same type, and act simultaneously.
+\end{lawbox}
+
+\begin{misconceptionbox}
+The action and reaction forces in Newton's Third Law
+\textbf{never cancel each other}. They cannot, because
+they act on different bodies. If you push a wall with
+force $F$, the wall pushes you back with force $F$ ---
+but these forces act on different objects (you and the
+wall). To find whether something accelerates, add up
+all forces on \textit{that object alone}.
+\end{misconceptionbox}
+
+\begin{realworldbox}[Rocket Propulsion]
+A rocket engine burns fuel, expelling hot gases
+\textit{backward} at high speed. By Newton's Third
+Law, the gases push the rocket \textit{forward} with
+an equal and opposite force (thrust). There is no air
+to push against in space --- the rocket pushes against
+the expelled gas itself. This is why rockets work in
+the vacuum of space, while aeroplane propellers do not.
+The NASC (National Space Research and Development
+Agency) in Abuja studies rocket propulsion for Nigeria's
+space programme.
+\end{realworldbox}
+
+% ============================================================
+\section{Conservation of Linear Momentum}
+% ============================================================
+
+\begin{lawbox}[Law of Conservation of Linear Momentum]
+The total linear momentum of a closed system (no net
+external force) remains constant, regardless of the
+interactions between the bodies within the system.
+\[
+  \sum \vect{p}_{before}
+  = \sum \vect{p}_{after}
+\]
+\[
+  m_1\vect{u}_1 + m_2\vect{u}_2
+  = m_1\vect{v}_1 + m_2\vect{v}_2
+\]
+This law follows directly from Newton's Second and Third
+Laws combined.
+\end{lawbox}
+
+\subsection{Types of Collision}
+
+\begin{definitionbox}[Elastic and Inelastic Collisions]
+\textbf{Elastic collision:} Both momentum AND kinetic
+energy are conserved. In practice, perfectly elastic
+collisions occur only at the atomic/molecular level.
+Billiard balls approximate elastic collisions.
+
+\vspace{0.4cm}
+
+\textbf{Inelastic collision:} Momentum is conserved but
+kinetic energy is NOT conserved. Some KE is converted
+to heat, sound, and deformation.
+
+\vspace{0.4cm}
+
+\textbf{Perfectly inelastic collision:} The bodies stick
+together after impact and move with a common velocity.
+Maximum kinetic energy is lost.
+\[
+  m_1u_1 + m_2u_2 = (m_1+m_2)V
+\]
+\end{definitionbox}
+
+\begin{examplebox}[4.2]
+\stepcounter{workedexample}
+A $3.0\ \text{kg}$ trolley moving at
+$6.0\ \text{m\,s}^{-1}$ collides and sticks to a
+$2.0\ \text{kg}$ stationary trolley.\\
+(a) Find the common velocity after collision.\\
+(b) Calculate the kinetic energy before and after.\\
+(c) What fraction of the kinetic energy is lost?
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Conservation of momentum (perfectly
+inelastic):
+\[
+  m_1u_1 + m_2u_2 = (m_1+m_2)V
+\]
+\[
+  (3.0)(6.0) + (2.0)(0) = (3.0+2.0)V
+\]
+\[
+  18 = 5V \implies V = 3.6\ \text{m\,s}^{-1}
+\]
+
+\textbf{(b)} Kinetic energies:
+\[
+  KE_{before}
+  = \tfrac{1}{2}(3.0)(6.0)^2 = 54\ \text{J}
+\]
+\[
+  KE_{after}
+  = \tfrac{1}{2}(5.0)(3.6)^2 = 32.4\ \text{J}
+\]
+
+\textbf{(c)} Energy lost $= 54 - 32.4 = 21.6\ \text{J}$
+\[
+  \text{Fraction lost}
+  = \frac{21.6}{54} = 0.40 = 40\%
+\]
+\end{solutionbox}
+
+\begin{examplebox}[4.3]
+\stepcounter{workedexample}
+A gun of mass $2.0\ \text{kg}$ fires a bullet of mass
+$20\ \text{g}$ at $400\ \text{m\,s}^{-1}$.
+Find the recoil velocity of the gun.
+\end{examplebox}
+
+\begin{solutionbox}
+Initially both gun and bullet are at rest:
+total initial momentum $= 0$.
+
+By conservation of momentum:
+\[
+  0 = m_{bullet}v_{bullet} + m_{gun}v_{gun}
+\]
+\[
+  0 = (0.020)(400) + (2.0)v_{gun}
+\]
+\[
+  v_{gun} = -\frac{8.0}{2.0} = -4.0\ \text{m\,s}^{-1}
+\]
+The gun recoils at $4.0\ \text{m\,s}^{-1}$ in the
+direction opposite to the bullet. The negative sign
+confirms this.
+\end{solutionbox}
+
+% ============================================================
+\section{Applications of Newton's Laws}
+% ============================================================
+
+\subsection{Connected Bodies and Pulleys}
+
+\begin{examplebox}[4.4]
+\stepcounter{workedexample}
+Two blocks, $A$ ($4.0\ \text{kg}$) and $B$
+($6.0\ \text{kg}$), are connected by a light,
+inextensible string over a smooth pulley (Atwood's
+machine). Find: (a) the acceleration; (b) the tension.
+($g = 10\ \text{m\,s}^{-2}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+  % Pulley
+  \draw[thick] (0,2) circle (0.5cm);
+  \fill[gray!30] (0,2) circle (0.5cm);
+  \draw[thick] (-0.5,2.5) -- (0.5,2.5);
+
+  % String
+  \draw[thick] (-0.5,2) -- (-0.5,0.5);
+  \draw[thick] (0.5,2) -- (0.5,0.5);
+
+  % Block A (left, lighter)
+  \fill[codexblue!30] (-1,0) rectangle (0,0.5);
+  \node at (-0.5,0.25) {$A$};
+  \node[left, font=\small] at (-1,0.25) {$4$ kg};
+  \draw[->, thick, codexblue] (-0.5,0)
+    -- (-0.5,-0.8) node[left]{$m_Ag$};
+  \draw[->, thick, codexred] (-0.5,0.5)
+    -- (-0.5,1.2) node[left]{$T$};
+
+  % Block B (right, heavier)
+  \fill[codexred!30] (0,0) rectangle (1,0.5);
+  \node at (0.5,0.25) {$B$};
+  \node[right, font=\small] at (1,0.25) {$6$ kg};
+  \draw[->, thick, codexblue] (0.5,0)
+    -- (0.5,-0.8) node[right]{$m_Bg$};
+  \draw[->, thick, codexred] (0.5,0.5)
+    -- (0.5,1.2) node[right]{$T$};
+
+  % Acceleration arrows
+  \draw[->, thick, codexgreen, dashed]
+    (-0.5,-1.0) -- (-0.5,-1.5)
+    node[left, font=\small]{$a$ (up)};
+  \draw[->, thick, codexgreen, dashed]
+    (0.5,-1.0) -- (0.5,-1.5)
+    node[right, font=\small]{$a$ (down)};
+\end{tikzpicture}
+\end{center}
+
+$B$ is heavier so it descends and $A$ ascends.
+Take downward for $B$ as positive, upward for $A$
+as positive.
+
+For block $B$ (net downward force):
+\[
+  m_B g - T = m_B a \quad\cdots(1)
+\]
+For block $A$ (net upward force):
+\[
+  T - m_A g = m_A a \quad\cdots(2)
+\]
+
+Adding equations (1) and (2):
+\[
+  (m_B - m_A)g = (m_A + m_B)a
+\]
+\[
+  a = \frac{(m_B - m_A)g}{m_A + m_B}
+  = \frac{(6-4)(10)}{4+6}
+  = \frac{20}{10} = 2.0\ \text{m\,s}^{-2}
+\]
+
+Substituting into (2):
+\[
+  T = m_A(g + a) = 4.0(10 + 2.0) = 48\ \text{N}
+\]
+\end{solutionbox}
+
+\subsection{Motion on an Inclined Plane}
+
+\begin{diagbox}[Forces on an Inclined Plane]
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+  % Incline
+  \fill[gray!20] (0,0) -- (5,0) -- (5,3) -- cycle;
+  \draw[thick] (0,0) -- (5,0) -- (5,3) -- cycle;
+  \draw[codexgold] (0.6,0) arc(0:31:0.6);
+  \node[codexgold] at (1.0,0.2) {$\theta$};
+
+  % Block
+  \begin{scope}[rotate=31, shift={(2.5,0.15)}]
+    \fill[codexblue!30] (0,0) rectangle (1,0.7);
+    \node at (0.5,0.35) {$m$};
+  \end{scope}
+
+  % Forces from centre of block
+  \coordinate (C) at (3.0, 1.5);
+
+  % Weight
+  \draw[->, very thick, codexred]
+    (C) -- ++(0,-1.8)
+    node[below]{$W = mg$};
+
+  % Normal reaction (perpendicular to surface)
+  \draw[->, very thick, codexblue]
+    (C) -- ++(-0.95, 1.56)
+    node[above left]{$R$};
+
+  % Component parallel to incline (down the slope)
+  \draw[->, thick, codexgreen, dashed]
+    (C) -- ++(0.95,-0.57)
+    node[right, font=\small]{$mg\sin\theta$};
+
+  % Component perpendicular to incline
+  \draw[->, thick, codexgold, dashed]
+    (C) -- ++(-0.57,-0.95)
+    node[left, font=\small]{$mg\cos\theta$};
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+For a body on a frictionless incline at angle $\theta$:
+\[
+  R = mg\cos\theta \quad \text{(perpendicular to surface)}
+\]
+\[
+  F_{net} = mg\sin\theta \quad \text{(along surface, downward)}
+\]
+\[
+  a = g\sin\theta \quad \text{(acceleration down the incline)}
+\]
+
+With friction (coefficient $\mu$):
+\[
+  F_{friction} = \mu R = \mu mg\cos\theta
+\]
+\[
+  a = g(\sin\theta - \mu\cos\theta)
+  \quad \text{(sliding down, friction acts up)}
+\]
+
+\begin{examplebox}[4.5]
+\stepcounter{workedexample}
+A $5.0\ \text{kg}$ crate slides down a ramp inclined
+at $30°$ to the horizontal. The coefficient of kinetic
+friction between the crate and the ramp is $0.20$.
+Find: (a) the normal reaction; (b) the friction force;
+(c) the acceleration.
+($g = 10\ \text{m\,s}^{-2}$)
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Normal reaction:
+\[
+  R = mg\cos\theta = 5.0 \times 10 \times \cos 30°
+  = 50 \times 0.866 = 43.3\ \text{N}
+\]
+
+\textbf{(b)} Friction force:
+\[
+  f = \mu R = 0.20 \times 43.3 = 8.66\ \text{N}
+\]
+(acting up the incline, opposing motion)
+
+\textbf{(c)} Net force down the incline:
+\[
+  F_{net} = mg\sin\theta - f
+  = 50\sin 30° - 8.66
+  = 25 - 8.66 = 16.3\ \text{N}
+\]
+\[
+  a = \frac{F_{net}}{m} = \frac{16.3}{5.0}
+  = 3.3\ \text{m\,s}^{-2}
+\]
+\end{solutionbox}
+
+% ============================================================
+\section{Friction}
+% ============================================================
+
+\begin{definitionbox}[Friction]
+\textbf{Friction} is the force that opposes the relative
+motion (or tendency of motion) between two surfaces in
+contact. It acts tangentially to the surfaces, opposing
+the direction of motion or impending motion.
+\end{definitionbox}
+
+\begin{lawbox}[Laws of Solid Friction (Amontons-Coulomb)]
+\begin{enumerate}[noitemsep]
+  \item Friction force is proportional to the normal
+  reaction: $F \propto R$, i.e.\ $F = \mu R$
+  \item Friction is independent of the area of contact
+  between the surfaces (for given $R$)
+  \item Kinetic friction is independent of the relative
+  speed of the surfaces
+  \item Static friction is always greater than or equal
+  to kinetic friction:
+  $\mu_s \geq \mu_k$
+\end{enumerate}
+where $\mu$ is the \textbf{coefficient of friction}
+(dimensionless).
+\end{lawbox}
+
+\begin{definitionbox}[Static and Kinetic Friction]
+\textbf{Static friction} $f_s$ prevents two surfaces
+from sliding relative to each other. It has a maximum
+value: $f_{s,max} = \mu_s R$.
+
+\textbf{Kinetic (dynamic) friction} $f_k$ acts between
+surfaces already in relative motion: $f_k = \mu_k R$.
+
+Always: $f_{s,max} \geq f_k$, so $\mu_s \geq \mu_k$.
+\end{definitionbox}
+
+% ============================================================
+\section{Terminal Velocity}
+% ============================================================
+
+When an object falls through a fluid (air, water), the
+fluid exerts a \textbf{drag force} that opposes the
+motion and increases with speed. At some point, the drag
+force equals the weight. At that point, the net force
+is zero and the object stops accelerating --- it falls
+at constant speed called the \textbf{terminal velocity}.
+
+\begin{processbox}[Stages of Free Fall with Air Resistance]
+\begin{enumerate}[noitemsep]
+  \item \textbf{Initial:} Object starts from rest.
+  Weight $> $ drag. Net downward force is large.
+  Acceleration is close to $g$.
+  \item \textbf{Intermediate:} As speed increases,
+  drag increases. Net downward force decreases.
+  Acceleration decreases but body still speeds up.
+  \item \textbf{Terminal:} Speed reaches terminal
+  velocity $v_T$ where drag $=$ weight.
+  Net force $= 0$. Acceleration $= 0$.
+  Speed is constant.
+\end{enumerate}
+\[
+  \text{At terminal velocity: } F_{drag} = mg
+\]
+\end{processbox}
+
+\begin{diagbox}[Velocity-Time Graph for Terminal Velocity]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=10cm, height=6cm,
+  xlabel={Time $t$ (s)},
+  ylabel={Velocity $v$ (m\,s$^{-1}$)},
+  xmin=0, xmax=10, ymin=0, ymax=60,
+  ytick={0,10,20,30,40,50,55},
+  grid=major, grid style={gray!20},
+  yticklabels={0,10,20,30,40,50,$v_T$},
+]
+  % Terminal velocity curve (approaching asymptote)
+  \addplot[codexblue, very thick, domain=0:10, samples=100]
+    {55*(1 - exp(-0.4*x))};
+
+  % Terminal velocity line
+  \addplot[codexred, thick, dashed, domain=0:10]{55};
+  \node[codexred, right] at (axis cs:9.5,55)
+    {$v_T$};
+
+  % Annotation: steep initial gradient
+  \draw[->, gray] (axis cs:1,20) -- (axis cs:0.5,10)
+    node[left, font=\tiny]{High initial $a$};
+
+  % Annotation: gradient decreasing
+  \draw[->, gray] (axis cs:4,45) -- (axis cs:5,50)
+    node[right, font=\tiny]{$a$ decreasing};
+
+  % Annotation: flat at terminal
+  \draw[->, gray] (axis cs:8,53) -- (axis cs:9,55)
+    node[right, font=\tiny]{$a = 0$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{realworldbox}[Parachutes and Terminal Velocity]
+A skydiver in free fall (no parachute) reaches a
+terminal velocity of approximately $55\ \text{m\,s}^{-1}$
+($200\ \text{km\,h}^{-1}$). When the parachute opens,
+it enormously increases the drag force, decelerating
+the skydiver rapidly to a new, much lower terminal
+velocity of about $5\ \text{m\,s}^{-1}$ --- safe for
+landing. The parachute works not by eliminating gravity
+but by increasing drag until it equals the weight at a
+safe speed.
+\end{realworldbox}
+
+% ============================================================
+\section{Weight, Mass and the Normal Force}
+% ============================================================
+
+\begin{definitionbox}[Weight]
+The \textbf{weight} $W$ of a body is the gravitational
+force exerted on it by the Earth (or whatever
+gravitational body it is near):
+\[
+  W = mg
+\]
+Weight is a \textbf{vector} (directed toward the centre
+of the Earth). SI unit: newton (N).
+
+Weight depends on location. The same $5.0\ \text{kg}$
+mass weighs $49\ \text{N}$ on Earth, $8.2\ \text{N}$
+on the Moon, and $0\ \text{N}$ in deep space.
+Mass is constant everywhere.
+\end{definitionbox}
+
+\begin{definitionbox}[Normal Force]
+The \textbf{normal force} (or normal reaction) $N$ is
+the contact force exerted by a surface on an object,
+perpendicular to the surface. It prevents objects from
+passing through surfaces. It is not always equal to
+weight --- it depends on the situation.
+\end{definitionbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Newton's First Law:} Body at rest or constant
+velocity unless net force acts. Defines inertia.
+
+\textbf{Newton's Second Law:} $\vect{F}_{net} = m\vect{a}$
+or $\vect{F} = \Delta\vect{p}/\Delta t$.
+
+\textbf{Newton's Third Law:} Action = $-$Reaction
+(on different bodies).
+
+\textbf{Momentum:} $\vect{p} = m\vect{v}$ (vector, N\,s)
+
+\textbf{Impulse:} $\vect{J} = \vect{F}\Delta t
+= \Delta\vect{p}$
+
+\textbf{Conservation of momentum:}
+$\sum\vect{p}_{before} = \sum\vect{p}_{after}$
+(closed system)
+
+\textbf{Elastic collision:} momentum and KE conserved.
+\textbf{Perfectly inelastic:}
+$(m_1+m_2)V = m_1u_1+m_2u_2$
+
+\textbf{Inclined plane:}
+$N = mg\cos\theta$;
+$a = g(\sin\theta - \mu\cos\theta)$
+
+\textbf{Friction:} $f = \mu N$; static $\geq$ kinetic.
+
+\textbf{Terminal velocity:} drag = weight; $a = 0$.
+
+\textbf{Weight:} $W = mg$ (vector, varies with location).
+\textbf{Mass:} constant everywhere.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[4]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A force of $20\ \text{N}$ acts on a
+$4.0\ \text{kg}$ mass for $5.0\ \text{s}$.
+The change in momentum is:
+
+\mcoption{A}{$4\ \text{N\,s}$}
+\mcoption{B}{$16\ \text{N\,s}$}
+\mcoption{C}{$100\ \text{N\,s}$}
+\mcoption{D}{$400\ \text{N\,s}$}
+\ansref{Ch4-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} A $2\ \text{kg}$ and a $6\ \text{kg}$ mass
+hang over a smooth pulley. The acceleration of the
+system is (take $g = 10\ \text{m\,s}^{-2}$):
+
+\mcoption{A}{$2.5\ \text{m\,s}^{-2}$}
+\mcoption{B}{$5.0\ \text{m\,s}^{-2}$}
+\mcoption{C}{$7.5\ \text{m\,s}^{-2}$}
+\mcoption{D}{$10\ \text{m\,s}^{-2}$}
+\ansref{Ch4-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} Newton's Third Law pairs are:
+
+\mcoption{A}{Weight of a book and the normal force
+from the table on the book}
+\mcoption{B}{Weight of a book and the gravitational
+pull of the book on the Earth}
+\mcoption{C}{Tension in a rope and the weight of
+the hanging object}
+\mcoption{D}{Friction and normal force on a
+sliding block}
+\ansref{Ch4-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} A $5\ \text{kg}$ block slides down a
+smooth incline of $37°$. Its acceleration is
+(sin$37° = 0.6$, $g = 10\ \text{m\,s}^{-2}$):
+
+\mcoption{A}{$4\ \text{m\,s}^{-2}$}
+\mcoption{B}{$6\ \text{m\,s}^{-2}$}
+\mcoption{C}{$8\ \text{m\,s}^{-2}$}
+\mcoption{D}{$10\ \text{m\,s}^{-2}$}
+\ansref{Ch4-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} An object reaches terminal velocity when:
+
+\mcoption{A}{Its weight is zero}
+\mcoption{B}{Its acceleration equals $g$}
+\mcoption{C}{The drag force equals its weight}
+\mcoption{D}{Its kinetic energy is maximum}
+\ansref{Ch4-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} In a perfectly inelastic collision:
+
+\mcoption{A}{Both momentum and KE are conserved}
+\mcoption{B}{Momentum is conserved but KE is not}
+\mcoption{C}{KE is conserved but momentum is not}
+\mcoption{D}{Neither momentum nor KE is conserved}
+\ansref{Ch4-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} The coefficient of friction between
+two surfaces is $0.4$. A $10\ \text{kg}$ block rests
+on a horizontal surface. The friction force when a
+horizontal force of $30\ \text{N}$ is applied
+(take $g = 10\ \text{m\,s}^{-2}$) is:
+
+\mcoption{A}{$4\ \text{N}$}
+\mcoption{B}{$30\ \text{N}$}
+\mcoption{C}{$40\ \text{N}$}
+\mcoption{D}{$12\ \text{N}$}
+\ansref{Ch4-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} A $60\ \text{kg}$ person stands on a
+scale in a lift accelerating upward at
+$2\ \text{m\,s}^{-2}$. The scale reads:
+($g = 10\ \text{m\,s}^{-2}$)
+
+\mcoption{A}{$480\ \text{N}$}
+\mcoption{B}{$600\ \text{N}$}
+\mcoption{C}{$720\ \text{N}$}
+\mcoption{D}{$120\ \text{N}$}
+\ansref{Ch4-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} A rifle of mass $3.0\ \text{kg}$ fires
+a $15\ \text{g}$ bullet at $600\ \text{m\,s}^{-1}$.
+The recoil speed of the rifle is:
+
+\mcoption{A}{$0.5\ \text{m\,s}^{-1}$}
+\mcoption{B}{$1.5\ \text{m\,s}^{-1}$}
+\mcoption{C}{$3.0\ \text{m\,s}^{-1}$}
+\mcoption{D}{$6.0\ \text{m\,s}^{-1}$}
+\ansref{Ch4-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} Which of the following is a consequence
+of Newton's First Law?
+
+\mcoption{A}{A falling body accelerates at $g$}
+\mcoption{B}{A book on a table is at rest because
+the table exerts a normal force}
+\mcoption{C}{Passengers lurch forward when a bus
+brakes suddenly}
+\mcoption{D}{A rocket accelerates when fuel is burned}
+\ansref{Ch4-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A $1200\ \text{kg}$ car travelling at
+$30\ \text{m\,s}^{-1}$ rear-ends a stationary
+$800\ \text{kg}$ car. After the collision, the two
+cars move together.\\[4pt]
+(a) Find the common velocity after collision.\\
+(b) Calculate the kinetic energy lost in the collision.\\
+(c) Express this as a percentage of the original KE.\\
+(d) In what form does this lost energy appear?
+\hfill\ansref{Ch4-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A $8.0\ \text{kg}$ block is placed on an
+incline of angle $25°$. The coefficient of static
+friction is $0.45$ and kinetic friction is $0.35$.
+($g = 10\ \text{m\,s}^{-2}$, sin$25° = 0.423$,
+cos$25° = 0.906$)\\[4pt]
+(a) Does the block slide? Justify using force
+comparison.\\
+(b) If a force of $20\ \text{N}$ acts down the incline,
+find the net acceleration.\\
+(c) If the block is already sliding, find its
+acceleration without the extra force.
+\hfill\ansref{Ch4-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} Two masses, $m_1 = 3.0\ \text{kg}$ on a
+horizontal frictionless table and $m_2 = 5.0\ \text{kg}$
+hanging over the edge, are connected by a light string
+over a smooth pulley at the edge of the table.\\[4pt]
+(a) Draw a free-body diagram for each mass.\\
+(b) Write Newton's second law equations for each mass.\\
+(c) Solve for the acceleration of the system.\\
+(d) Find the tension in the string.\\
+(e) If friction exists with $\mu_k = 0.20$, what is
+the new acceleration?
+\hfill\ansref{Ch4-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A parachutist of total mass $90\ \text{kg}$
+(including equipment) falls from rest. The drag force
+at velocity $v$ is given by $F_d = kv^2$ where
+$k = 0.6\ \text{kg\,m}^{-1}$. ($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+(a) Calculate the terminal velocity.\\
+(b) At $v = 20\ \text{m\,s}^{-1}$, calculate the net
+force and the acceleration.\\
+(c) Sketch the velocity-time graph from release to
+terminal velocity, labelling key features.\\
+(d) Explain what happens to the acceleration as the
+speed increases from zero to terminal velocity.
+\hfill\ansref{Ch4-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A $500\ \text{kg}$ cannon fires a
+$10\ \text{kg}$ shell horizontally. The shell leaves
+the barrel at $400\ \text{m\,s}^{-1}$. The cannon
+recoils on a frictionless surface.\\[4pt]
+(a) Find the recoil velocity of the cannon.\\
+(b) After firing, the cannon rolls back $2.0\ \text{m}$
+before a brake stops it. What is the average braking
+force?\\
+(c) How does the impulse on the shell compare with
+the impulse on the cannon? Explain using Newton's
+Third Law.\\
+(d) The cannon and shell experience the same impulse
+magnitude but very different velocities. Why?
+\hfill\ansref{Ch4-B5}
+
+\end{exercisebox}

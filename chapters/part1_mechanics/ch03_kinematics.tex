@@ -1,0 +1,982 @@
+% ============================================================
+%  CHAPTER 3: KINEMATICS
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part1/ch03_kinematics.tex
+% ============================================================
+
+\chapter{Kinematics}
+\label{ch:kinematics}
+
+\chapterquote{Nature uses only the longest threads to weave
+her patterns, so each small piece of her fabric reveals
+the organisation of the entire tapestry.}{Richard Feynman}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item Define and distinguish between distance,
+  displacement, speed, velocity and acceleration
+  \item Derive and apply the four equations of uniform
+  acceleration
+  \item Analyse motion using displacement-time and
+  velocity-time graphs
+  \item Solve problems involving bodies falling freely
+  under gravity
+  \item Analyse projectile motion by resolving into
+  horizontal and vertical components
+  \item Calculate range, time of flight and maximum
+  height of projectiles
+  \item Describe and solve problems in relative motion
+\end{enumerate}
+\end{objectivebox}
+
+\vspace{0.4cm}
+
+\minitoc
+
+\vspace{0.5cm}
+
+% ============================================================
+\section{What is Kinematics?}
+% ============================================================
+
+\textbf{Kinematics} is the branch of mechanics that
+describes \textit{how} objects move --- their position,
+speed, direction and change of speed --- without asking
+\textit{why} they move. The \textit{why} is the business
+of dynamics (Chapter 4). Kinematics is the language of
+motion; dynamics provides the explanation.
+
+To understand kinematics properly, we need precise
+definitions of the terms we use. In everyday speech,
+``distance'' and ``displacement'' mean much the same
+thing. In Physics they are completely different quantities.
+
+% ============================================================
+\section{Fundamental Definitions}
+% ============================================================
+
+\begin{definitionbox}[Distance and Displacement]
+\textbf{Distance} is the total length of the path
+travelled by a body, regardless of direction.
+It is a \textbf{scalar} quantity. SI unit: metre (m).
+
+\vspace{0.4cm}
+
+\textbf{Displacement} is the straight-line distance from
+the initial position to the final position, measured in
+a specified direction. It is a \textbf{vector} quantity.
+SI unit: metre (m).
+\end{definitionbox}
+
+\vspace{2.3cm}
+
+\begin{definitionbox}[Speed and Velocity]
+\textbf{Speed} is the rate of change of distance with
+time. It is a \textbf{scalar}. SI unit: m\,s$^{-1}$.
+\[
+  \text{Speed} = \frac{\text{distance}}{\text{time}}
+\]
+
+\textbf{Velocity} is the rate of change of displacement
+with time. It is a \textbf{vector}. SI unit: m\,s$^{-1}$.
+\[
+  \vect{v} = \frac{\Delta\vect{s}}{\Delta t}
+\]
+
+\textbf{Average velocity} over a time interval $\Delta t$:
+\[
+  \bar{v} = \frac{\text{total displacement}}
+  {\text{total time}} = \frac{\Delta s}{\Delta t}
+\]
+\end{definitionbox}
+
+\begin{definitionbox}[Acceleration]
+\textbf{Acceleration} is the rate of change of velocity
+with time. It is a \textbf{vector}. SI unit: m\,s$^{-2}$.
+\[
+  \vect{a} = \frac{\Delta\vect{v}}{\Delta t}
+  = \frac{\vect{v} - \vect{u}}{t}
+\]
+where $\vect{u}$ is the initial velocity and $\vect{v}$
+is the final velocity.
+
+\textbf{Deceleration} (retardation) is negative
+acceleration --- the velocity is decreasing in magnitude.
+\end{definitionbox}
+
+\begin{misconceptionbox}
+A body can be accelerating even when its speed is
+constant. If a car goes around a circular bend at constant
+speed, its direction is continuously changing, so its
+velocity is changing, so it is accelerating. This
+\textit{centripetal acceleration} is covered fully in
+Chapter 6. For now, recognise that speed and velocity
+are different, and acceleration means change in velocity
+--- not necessarily change in speed.
+\end{misconceptionbox}
+
+% ============================================================
+\section{Equations of Uniform Acceleration}
+% ============================================================
+
+When acceleration is \textbf{constant} (uniform), we can
+derive four equations that connect displacement $s$,
+initial velocity $u$, final velocity $v$, acceleration $a$,
+and time $t$.
+
+\begin{historybox}[Galileo and the Inclined Plane]
+In the 1590s, Galileo Galilei rolled bronze balls down
+smooth inclined planes in Pisa. He could not time free
+fall directly --- it was too fast. By using a gentle slope,
+he slowed the motion enough to time it with a water clock.
+He discovered that the distance covered was proportional
+to the square of the time --- $s \propto t^2$ --- the
+mathematical signature of uniform acceleration. This was
+the first experimental determination of the equations we
+are about to derive, and it overturned 2000 years of
+Aristotelian physics in one stroke.
+\end{historybox}
+
+\subsection{Derivation of the Four Equations}
+
+\textbf{Equation 1: $v = u + at$}
+
+From the definition of acceleration:
+\[
+  a = \frac{v - u}{t}
+  \implies \boxed{v = u + at}
+\]
+
+\textbf{Equation 2: $s = \frac{1}{2}(u + v)t$}
+
+For uniform acceleration, the average velocity is the
+arithmetic mean of initial and final velocities:
+\[
+  \bar{v} = \frac{u + v}{2}
+  \implies \boxed{s = \frac{u+v}{2}\cdot t}
+\]
+
+\textbf{Equation 3: $s = ut + \frac{1}{2}at^2$}
+
+Substitute $v = u + at$ into Equation 2:
+\[
+  s = \frac{u + (u+at)}{2}\cdot t
+  = \frac{2u + at}{2}\cdot t
+  \implies \boxed{s = ut + \frac{1}{2}at^2}
+\]
+
+\textbf{Equation 4: $v^2 = u^2 + 2as$}
+
+From Equation 1: $t = (v-u)/a$. Substitute into
+Equation 2:
+\[
+  s = \frac{u+v}{2} \cdot \frac{v-u}{a}
+  = \frac{v^2 - u^2}{2a}
+  \implies \boxed{v^2 = u^2 + 2as}
+\]
+
+\begin{lawbox}[The Four Equations of Uniform Acceleration]
+\begin{align}
+  v &= u + at \label{eq:v}\\[4pt]
+  s &= \frac{(u+v)}{2}\,t \label{eq:s_avg}\\[4pt]
+  s &= ut + \tfrac{1}{2}at^2 \label{eq:s_quad}\\[4pt]
+  v^2 &= u^2 + 2as \label{eq:v_sq}
+\end{align}
+Valid only when acceleration $a$ is \textbf{constant}.
+Each equation contains four of the five variables
+$\{u, v, a, s, t\}$. Choose the equation that contains
+the three known variables and the one unknown.
+\end{lawbox}
+
+\vspace{3.3cm}
+
+\begin{examtipbox}
+Strategy for kinematics problems:
+\begin{enumerate}[noitemsep]
+  \item Write down what is given and what is unknown.
+  \item Establish a sign convention (usually: positive
+  direction = direction of initial motion).
+  \item Choose the equation containing the unknown and
+  the three knowns.
+  \item Substitute carefully, paying attention to signs.
+\end{enumerate}
+\end{examtipbox}
+
+\begin{examplebox}[3.1]
+\stepcounter{workedexample}
+A car starts from rest and accelerates uniformly at
+$3.0\ \text{m\,s}^{-2}$ for $8.0\ \text{s}$.
+Calculate: (a) the final velocity, (b) the distance
+travelled.
+\end{examplebox}
+
+\begin{solutionbox}
+Given: $u = 0$, $a = 3.0\ \text{m\,s}^{-2}$,
+$t = 8.0\ \text{s}$\\
+Unknown: $v$ and $s$
+
+\textbf{(a)} Using $v = u + at$:
+\[
+  v = 0 + 3.0 \times 8.0 = 24\ \text{m\,s}^{-1}
+\]
+
+\textbf{(b)} Using $s = ut + \frac{1}{2}at^2$:
+\[
+  s = 0 \times 8.0 + \tfrac{1}{2} \times 3.0 \times 8.0^2
+  = 0 + \tfrac{1}{2} \times 3.0 \times 64
+  = 96\ \text{m}
+\]
+
+\textbf{Check} using $v^2 = u^2 + 2as$:
+$24^2 = 0 + 2(3.0)(96) = 576$ ✓
+\end{solutionbox}
+
+\begin{examplebox}[3.2]
+\stepcounter{workedexample}
+A lorry travelling at $25\ \text{m\,s}^{-1}$ applies its
+brakes and decelerates uniformly. It comes to rest after
+travelling $125\ \text{m}$. Find: (a) the deceleration,
+(b) the time taken to stop.
+\end{examplebox}
+
+\begin{solutionbox}
+Given: $u = 25\ \text{m\,s}^{-1}$,
+$v = 0$, $s = 125\ \text{m}$
+
+\textbf{(a)} Using $v^2 = u^2 + 2as$:
+\[
+  0 = 25^2 + 2a(125)
+  \implies 250a = -625
+  \implies a = -2.5\ \text{m\,s}^{-2}
+\]
+Deceleration $= 2.5\ \text{m\,s}^{-2}$
+
+\textbf{(b)} Using $v = u + at$:
+\[
+  0 = 25 + (-2.5)t
+  \implies t = \frac{25}{2.5} = 10\ \text{s}
+\]
+
+\begin{realworldbox}[Braking Distance on Nigerian Roads]
+The lorry in this example requires $125\ \text{m}$ to
+stop from $25\ \text{m\,s}^{-1}$ ($90\ \text{km\,h}^{-1}$)
+--- that is over a third of a football pitch. On wet or
+laterite roads, the deceleration is smaller, and the
+stopping distance is even longer. This is why heavy goods
+vehicles are deadly in urban traffic: their stopping
+distances are enormous.
+\end{realworldbox}
+\end{solutionbox}
+
+% ============================================================
+\section{Motion Graphs}
+% ============================================================
+
+Graphs are among the most powerful tools for analysing
+motion. Two graphs are used routinely: the
+\textbf{displacement-time} graph and the
+\textbf{velocity-time} graph.
+
+\subsection{Displacement-Time Graphs}
+
+\begin{lawbox}[Displacement-Time Graph]
+\begin{itemize}[noitemsep]
+  \item The \textbf{gradient} (slope) of a
+  displacement-time graph equals the \textbf{velocity}
+  at that instant.
+  \item A straight line $\implies$ constant velocity
+  (uniform motion).
+  \item A curved line $\implies$ changing velocity
+  (acceleration or deceleration).
+  \item Horizontal line $\implies$ object at rest ($v = 0$).
+  \item Negative gradient $\implies$ body moving in the
+  negative direction.
+\end{itemize}
+\end{lawbox}
+
+\begin{diagbox}[Displacement-Time Graphs]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=5cm,
+  xlabel={Time $t$ (s)},
+  ylabel={Displacement $s$ (m)},
+  xmin=0, xmax=6, ymin=0, ymax=30,
+  xtick={0,1,2,3,4,5,6},
+  ytick={0,5,10,15,20,25,30},
+  grid=major, grid style={gray!30},
+ legend style={
+  at={(0.5,-0.22)},
+  anchor=north,
+  legend columns=3,
+  font=\small
+},
+]
+  % Constant velocity (straight line)
+  \addplot[codexblue, thick, domain=0:4]
+    {5*x} node[right, pos=0.7]{};
+  \addlegendentry{Constant velocity}
+
+  % Acceleration (curve)
+  \addplot[codexred, thick, domain=0:5, samples=50]
+    {x^2} node[right, pos=0.8]{};
+  \addlegendentry{Acceleration (slope increasing)}
+
+  % At rest (horizontal)
+  \addplot[codexgreen, thick, domain=0:6]
+    {20} node[right, pos=0.9]{};
+  \addlegendentry{At rest}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\subsection{Velocity-Time Graphs}
+
+\begin{lawbox}[Velocity-Time Graph]
+\begin{itemize}[noitemsep]
+  \item The \textbf{gradient} of a velocity-time graph
+  equals the \textbf{acceleration} at that instant.
+  \item The \textbf{area under} a velocity-time graph
+  (between the graph and the time axis) equals the
+  \textbf{displacement}.
+  \item Straight line with positive gradient
+  $\implies$ uniform acceleration.
+  \item Straight line with negative gradient
+  $\implies$ uniform deceleration.
+  \item Horizontal line $\implies$ constant velocity
+  ($a = 0$).
+\end{itemize}
+\end{lawbox}
+
+\begin{diagbox}[Velocity-Time Graph]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=6cm,
+  xlabel={Time $t$ (s)},
+  ylabel={Velocity $v$ (m\,s$^{-1}$)},
+  xmin=0, xmax=12, ymin=0, ymax=30,
+  xtick={0,2,4,6,8,10,12},
+  ytick={0,5,10,15,20,25,30},
+  grid=major, grid style={gray!30},
+]
+  % Phase 1: Acceleration 0 to 4s, 0 to 20 m/s
+  \addplot[codexgreen, very thick, domain=0:4]{5*x};
+  \node[codexgreen, font=\small] at (axis cs:2,13)
+    {Accelerating};
+
+  % Phase 2: Constant velocity 4s to 8s
+  \addplot[codexblue, very thick, domain=4:8]{20};
+  \node[codexblue, font=\small] at (axis cs:6,22)
+    {Constant velocity};
+
+  % Phase 3: Deceleration 8s to 12s
+  \addplot[codexred, very thick, domain=8:12]{20-5*(x-8)};
+  \node[codexred, font=\small] at (axis cs:10,13)
+    {Decelerating};
+
+  % Area shading
+  \addplot[fill=codexgreen!15, opacity=0.5, domain=0:4]
+    {5*x} \closedcycle;
+  \addplot[fill=codexblue!15, opacity=0.5, domain=4:8]
+    {20} \closedcycle;
+  \addplot[fill=codexred!15, opacity=0.5, domain=8:12]
+    {20-5*(x-8)} \closedcycle;
+
+  % Gradient annotation
+  \draw[->, gray, dashed]
+    (axis cs:1,0) -- (axis cs:1,5)
+    node[right, font=\tiny]{gradient = $a$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\small\textit{The shaded areas represent displacement in
+each phase.}
+\end{diagbox}
+
+\begin{examplebox}[3.3]
+\stepcounter{workedexample}
+From the velocity-time graph above, calculate:
+(a) the acceleration in phase 1;
+(b) the total displacement over all three phases;
+(c) the deceleration in phase 3.
+\end{examplebox}
+
+\begin{solutionbox}
+\textbf{(a)} Phase 1 gradient (0 to 4 s):
+\[
+  a = \frac{\Delta v}{\Delta t}
+  = \frac{20 - 0}{4 - 0} = 5\ \text{m\,s}^{-2}
+\]
+
+\textbf{(b)} Total displacement = total area under graph:
+\begin{align*}
+  s_1 &= \tfrac{1}{2} \times 4 \times 20 = 40\ \text{m}
+  \quad\text{(triangle)}\\
+  s_2 &= 4 \times 20 = 80\ \text{m}
+  \quad\text{(rectangle)}\\
+  s_3 &= \tfrac{1}{2} \times 4 \times 20 = 40\ \text{m}
+  \quad\text{(triangle)}\\
+  s_{total} &= 40 + 80 + 40 = 160\ \text{m}
+\end{align*}
+
+\textbf{(c)} Phase 3 gradient (8 to 12 s):
+\[
+  a = \frac{0 - 20}{12 - 8} = -5\ \text{m\,s}^{-2}
+\]
+Deceleration $= 5\ \text{m\,s}^{-2}$
+\end{solutionbox}
+
+\vspace{3.3cm}
+
+% ============================================================
+\section{Free Fall Under Gravity}
+% ============================================================
+
+\begin{definitionbox}[Free Fall]
+\textbf{Free fall} is motion under the influence of
+gravity alone, with no air resistance. Near the surface
+of the Earth, every freely falling object accelerates
+downward at:
+\[
+  g = 9.81\ \text{m\,s}^{-2}
+  \approx 10\ \text{m\,s}^{-2}\ \text{(UTME)}
+\]
+This value is the same for all objects, regardless of
+their mass. A feather and a hammer, dropped together in
+a vacuum, fall at exactly the same rate.
+\end{definitionbox}
+
+
+\begin{historybox}[Galileo Drops From the Tower]
+Legend says Galileo dropped two cannonballs of different
+masses from the Leaning Tower of Pisa to disprove
+Aristotle's claim that heavier objects fall faster.
+Whether or not the story is literally true, Galileo
+certainly established by careful experiment that all
+objects fall with the same acceleration in the absence
+of air resistance. This was revolutionary: for 2000
+years, educated people had believed otherwise.
+\end{historybox}
+
+For vertical motion under gravity, the equations of
+uniform acceleration apply with $a = g$ (taking downward
+as positive) or $a = -g$ (taking upward as positive).
+We will use the convention: \textbf{upward positive,
+downward negative.}
+
+\begin{align*}
+  v &= u - gt \quad \text{(upward positive)}\\
+  h &= ut - \tfrac{1}{2}gt^2\\
+  v^2 &= u^2 - 2gh
+\end{align*}
+
+\begin{examplebox}[3.4]
+\stepcounter{workedexample}
+A stone is thrown vertically upward from the ground
+with an initial velocity of $20\ \text{m\,s}^{-1}$.
+Taking $g = 10\ \text{m\,s}^{-2}$, find:
+(a) the maximum height reached;
+(b) the time taken to reach maximum height;
+(c) the total time before the stone returns to the
+ground;
+(d) the velocity when it returns to ground level.
+\end{examplebox}
+
+\begin{solutionbox}
+Taking upward as positive: $u = +20\ \text{m\,s}^{-1}$,
+$a = -10\ \text{m\,s}^{-2}$.
+
+\textbf{(a)} At maximum height, $v = 0$. Using
+$v^2 = u^2 + 2as$:
+\[
+  0 = 20^2 + 2(-10)s
+  \implies 20s = 400
+  \implies s = H_{max} = 20\ \text{m}
+\]
+
+\textbf{(b)} Time to maximum height. Using $v = u + at$:
+\[
+  0 = 20 + (-10)t \implies t = 2\ \text{s}
+\]
+
+\textbf{(c)} By symmetry, the time to fall back from
+maximum height to the ground equals the time to rise:
+\[
+  t_{total} = 2 \times 2 = 4\ \text{s}
+\]
+
+\textbf{(d)} Using $v = u + at$ for full journey:
+\[
+  v = 20 + (-10)(4) = 20 - 40 = -20\ \text{m\,s}^{-1}
+\]
+The negative sign confirms the velocity is downward.
+The speed of impact equals the launch speed --- the
+motion is perfectly symmetric (no air resistance).
+\end{solutionbox}
+
+\begin{examplebox}[3.5]
+\stepcounter{workedexample}
+A coconut falls from a palm tree $20\ \text{m}$ tall.
+(a) How long does it take to reach the ground?
+(b) With what velocity does it strike the ground?
+($g = 10\ \text{m\,s}^{-2}$, neglect air resistance)
+\end{examplebox}
+
+\begin{solutionbox}
+Taking downward as positive: $u = 0$, $a = +10\ \text{m\,s}^{-2}$,
+$s = 20\ \text{m}$.
+
+\textbf{(a)} Using $s = ut + \frac{1}{2}at^2$:
+\[
+  20 = 0 + \tfrac{1}{2}(10)t^2
+  = 5t^2
+  \implies t^2 = 4
+  \implies t = 2\ \text{s}
+\]
+
+\textbf{(b)} Using $v = u + at$:
+\[
+  v = 0 + 10 \times 2 = 20\ \text{m\,s}^{-1}
+  \text{ (downward)}
+\]
+
+\begin{realworldbox}[Coconut Danger]
+Coconut trees can be over 25 m tall. A coconut falling
+from 25 m strikes the ground at approximately
+$22\ \text{m\,s}^{-1}$ ($79\ \text{km\,h}^{-1}$).
+This is why the area beneath tall coconut trees is
+genuinely dangerous, and why plantation workers in
+parts of Nigeria and across coastal West Africa use
+protective gear when harvesting.
+\end{realworldbox}
+\end{solutionbox}
+
+% ============================================================
+\section{Projectile Motion}
+% ============================================================
+
+A \textbf{projectile} is any object that is given an
+initial velocity and then moves freely under gravity
+alone. Thrown stones, footballs, artillery shells, and
+water from a hose are all projectiles.
+
+The key insight for analysing projectile motion is this:
+\textbf{the horizontal and vertical motions are completely
+independent of each other.}
+
+\begin{keybox}[Independence of Horizontal and Vertical Motion]
+\begin{itemize}[noitemsep]
+  \item \textbf{Horizontal:} No force acts horizontally
+  (ignoring air resistance). Horizontal velocity is
+  \textit{constant} throughout the flight.
+  \[
+    v_x = u\cos\theta = \text{constant}
+    \qquad x = u\cos\theta \cdot t
+  \]
+  \item \textbf{Vertical:} Gravity acts downward.
+  The vertical motion is free fall.
+  \[
+    v_y = u\sin\theta - gt
+    \qquad y = u\sin\theta \cdot t - \tfrac{1}{2}gt^2
+  \]
+\end{itemize}
+\end{keybox}
+
+\begin{diagbox}[Projectile Motion Trajectory]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  width=12cm, height=7cm,
+  xlabel={Horizontal distance $x$ (m)},
+  ylabel={Height $y$ (m)},
+  xmin=0, xmax=50, ymin=0, ymax=15,
+  grid=major, grid style={gray!20},
+  axis equal=false,
+]
+  % Trajectory: u=20, theta=45, g=10
+  % x = 20cos45*t, y = 20sin45*t - 5t^2
+  % T = 2*20sin45/10 = 2.83 s, R = 40 m
+  \addplot[codexblue, very thick, domain=0:2.828, samples=60,
+    variable=\t]
+    ({20*0.7071*\t}, {20*0.7071*\t - 5*\t*\t});
+  \addlegendentry{$u=20$ m/s, $\theta=45°$}
+
+  % Velocity vectors at a few points
+  \foreach \tt/\vx/\vy in {
+    0.5/{7.07}/{7.07-5},
+    1.0/{7.07}/{7.07-10},
+    1.5/{7.07}/{7.07-15},
+    2.0/{7.07}/{7.07-20}
+  }{
+    \pgfmathsetmacro\px{20*0.7071*\tt}
+    \pgfmathsetmacro\py{20*0.7071*\tt - 5*\tt*\tt}
+    \edef\temp{\noexpand\fill[codexred] (axis cs:\px,\py)
+      circle (1.5pt);}
+    \temp
+  }
+
+  % Horizontal component arrow
+  \draw[->, codexred, thick]
+    (axis cs:20,11.2) -- (axis cs:23,11.2)
+    node[right, font=\tiny]{$v_x = \text{const}$};
+
+  % Max height annotation
+  \draw[dashed, gray] (axis cs:20,0) -- (axis cs:20,10);
+  \node[right, gray, font=\small] at (axis cs:20,5)
+    {$H_{max}$};
+
+  % Range annotation
+  \draw[<->, gray] (axis cs:0,-1.5) -- (axis cs:40,-1.5);
+  \node[below, gray, font=\small] at (axis cs:20,-1.5)
+    {Range $R$};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\subsection{Key Projectile Formulae}
+
+For a projectile launched at speed $u$ at angle $\theta$
+above the horizontal:
+
+\begin{lawbox}[Projectile Equations (launch from ground)]
+\begin{align*}
+  t &= \frac{u\sin\theta}{g}
+  \quad \text{(time taken to reach the maximum height)}\\[6pt]
+  T &= \frac{2u\sin\theta}{g}
+  \quad \text{(time of flight)}\\[6pt]
+  H_{max} &= \frac{u^2\sin^2\theta}{2g}
+  \quad \text{(maximum height)}\\[6pt]
+  R &= \frac{u^2\sin 2\theta}{g}
+  \quad \text{(horizontal range)}\\[6pt]
+  v_x &= u\cos\theta
+  \quad \text{(horizontal velocity, constant)}\\[6pt]
+  v_y &= u\sin\theta - gt
+  \quad \text{(vertical velocity at time } t\text{)}
+\end{align*}
+Maximum range occurs at $\theta = 45°$.
+\end{lawbox}
+
+\begin{lawbox}[Horizontal Projection from Height $H$]
+If a projectile is launched \textit{horizontally} (i.e.\
+$\theta = 0$) from a height $H$:
+\[
+  t_{fall} = \sqrt{\frac{2H}{g}}
+  \quad \text{(time to hit ground)}
+  \qquad
+  R = u\sqrt{\frac{2H}{g}}
+  \quad \text{(range)}
+\]
+\end{lawbox}
+
+\begin{examplebox}[3.6]
+\stepcounter{workedexample}
+A footballer kicks a ball at $18\ \text{m\,s}^{-1}$ at
+an angle of $40°$ above the ground. Taking
+$g = 10\ \text{m\,s}^{-2}$, find:
+(a) the maximum height the ball reaches;
+(b) the total time the ball is in the air;
+(c) the horizontal range.
+\end{examplebox}
+
+\begin{solutionbox}
+Given: $u = 18\ \text{m\,s}^{-1}$, $\theta = 40°$,
+$g = 10\ \text{m\,s}^{-2}$.
+
+\[
+  u_x = 18\cos 40° = 18 \times 0.766 = 13.8\ \text{m\,s}^{-1}
+\]
+\[
+  u_y = 18\sin 40° = 18 \times 0.643 = 11.6\ \text{m\,s}^{-1}
+\]
+
+\textbf{(a)} Maximum height:
+\[
+  H_{max} = \frac{u_y^2}{2g}
+  = \frac{11.6^2}{2 \times 10}
+  = \frac{134.56}{20} = 6.7\ \text{m}
+\]
+
+\textbf{(b)} Time of flight:
+\[
+  T = \frac{2u_y}{g}
+  = \frac{2 \times 11.6}{10} = 2.32\ \text{s}
+\]
+
+\textbf{(c)} Horizontal range:
+\[
+  R = u_x \times T = 13.8 \times 2.32 = 32.0\ \text{m}
+\]
+\end{solutionbox}
+
+\begin{examplebox}[3.7]
+\stepcounter{workedexample}
+A stone is thrown horizontally at $15\ \text{m\,s}^{-1}$
+from the top of a cliff $45\ \text{m}$ high.
+Find: (a) the time it takes to reach the sea;
+(b) the horizontal distance from the base of the cliff.
+\end{examplebox}
+
+\begin{solutionbox}
+Horizontal: $u_x = 15\ \text{m\,s}^{-1}$, no acceleration.\\
+Vertical: $u_y = 0$, $a = 10\ \text{m\,s}^{-2}$ downward,
+$H = 45\ \text{m}$.
+
+\textbf{(a)} Time to fall $45\ \text{m}$:
+\[
+  H = \tfrac{1}{2}gt^2
+  \implies 45 = \tfrac{1}{2}(10)t^2
+  = 5t^2
+  \implies t = \sqrt{9} = 3\ \text{s}
+\]
+
+\textbf{(b)} Horizontal distance:
+\[
+  x = u_x \times t = 15 \times 3 = 45\ \text{m}
+\]
+\end{solutionbox}
+
+\vspace{3.3cm}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+
+\textbf{Distance} (scalar) vs \textbf{displacement}
+(vector). \textbf{Speed} (scalar) vs \textbf{velocity}
+(vector).
+
+\vspace{0.3cm}
+
+\textbf{Four equations of uniform acceleration:}
+\begin{align*}
+  v &= u + at\\
+  s &= \tfrac{1}{2}(u+v)t\\
+  s &= ut + \tfrac{1}{2}at^2\\
+  v^2 &= u^2 + 2as
+\end{align*}
+
+\textbf{Velocity-time graph:}
+gradient = acceleration; area = displacement.
+
+\textbf{Free fall:} $a = g \approx 10\ \text{m\,s}^{-2}$
+downward for all objects, mass independent.
+
+\textbf{Projectile motion:} horizontal and vertical
+motions are independent. Horizontal velocity is constant.
+\[
+  T = \frac{2u\sin\theta}{g}, \quad
+  H = \frac{u^2\sin^2\theta}{2g}, \quad
+  R = \frac{u^2\sin 2\theta}{g}
+\]
+Maximum range at $\theta = 45°$.
+
+\end{summarybox}
+
+% ============================================================
+% EXERCISES
+% ============================================================
+\newpage
+\begin{exercisebox}[3]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} A body starts from rest and accelerates
+uniformly. After 5 s it has travelled 100 m. Its
+acceleration is:
+
+\mcoption{A}{$4\ \text{m\,s}^{-2}$}
+\mcoption{B}{$8\ \text{m\,s}^{-2}$}
+\mcoption{C}{$10\ \text{m\,s}^{-2}$}
+\mcoption{D}{$20\ \text{m\,s}^{-2}$}
+\ansref{Ch3-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} On a velocity-time graph, a horizontal
+straight line indicates:
+
+\mcoption{A}{Zero velocity}
+\mcoption{B}{Constant acceleration}
+\mcoption{C}{Constant velocity}
+\mcoption{D}{Increasing acceleration}
+\ansref{Ch3-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} A ball is thrown vertically upward with
+speed $u$. The ratio of its speed at half the maximum
+height to its speed at the maximum height is:
+
+\mcoption{A}{$\sqrt{2} : 1$}
+\mcoption{B}{$1 : 0$}
+\mcoption{C}{$\sqrt{2} : 0$}
+\mcoption{D}{$1 : \sqrt{2}$}
+\ansref{Ch3-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} A projectile is fired at $45°$ to the
+horizontal with speed $v$. Its range is $R$. If the
+same projectile is fired with the same speed at $30°$,
+its new range is approximately:
+
+\mcoption{A}{$0.5R$}
+\mcoption{B}{$0.87R$}
+\mcoption{C}{$R$}
+\mcoption{D}{$1.15R$}
+\ansref{Ch3-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} A stone is dropped from a height $H$ and
+takes time $T$ to reach the ground. A second stone is
+dropped from height $4H$. The time it takes is:
+
+\mcoption{A}{$T$}
+\mcoption{B}{$2T$}
+\mcoption{C}{$4T$}
+\mcoption{D}{$16T$}
+\ansref{Ch3-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} The area under a velocity-time graph
+between $t = 0$ and $t = T$ represents:
+
+\mcoption{A}{Acceleration}
+\mcoption{B}{Distance only}
+\mcoption{C}{Displacement}
+\mcoption{D}{The product of average velocity and
+acceleration}
+\ansref{Ch3-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} A ball is thrown horizontally from a tower.
+Ignoring air resistance, which statement is correct?
+
+\mcoption{A}{Its horizontal speed decreases as it falls}
+\mcoption{B}{Its vertical speed is constant}
+\mcoption{C}{Its horizontal and vertical motions are
+independent}
+\mcoption{D}{It reaches maximum height at the midpoint
+of its flight}
+\ansref{Ch3-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} A car travels $60\ \text{m}$ in the first
+$4\ \text{s}$ of its journey and $100\ \text{m}$ in the
+next $4\ \text{s}$. The car is:
+
+\mcoption{A}{Decelerating}
+\mcoption{B}{Moving at constant velocity}
+\mcoption{C}{Accelerating}
+\mcoption{D}{Moving in a circle}
+\ansref{Ch3-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} A body moving at $30\ \text{m\,s}^{-1}$
+decelerates uniformly and stops after $6\ \text{s}$.
+The distance it travels during deceleration is:
+
+\mcoption{A}{$45\ \text{m}$}
+\mcoption{B}{$90\ \text{m}$}
+\mcoption{C}{$135\ \text{m}$}
+\mcoption{D}{$180\ \text{m}$}
+\ansref{Ch3-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} Which pair of physical quantities has the
+same unit?
+
+\mcoption{A}{Speed and acceleration}
+\mcoption{B}{Displacement and distance}
+\mcoption{C}{Velocity and speed}
+\mcoption{D}{Distance and time}
+\ansref{Ch3-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A train starts from rest at a station and
+accelerates uniformly at $0.8\ \text{m\,s}^{-2}$ for
+$30\ \text{s}$. It then travels at constant velocity for
+$2\ \text{min}$. Finally, it decelerates uniformly and
+comes to rest at the next station in $20\ \text{s}$.\\[4pt]
+(a) Calculate the maximum velocity reached.\\
+(b) Sketch the velocity-time graph for the entire journey,
+labelling all values.\\
+(c) Calculate the total distance between the two
+stations.\\
+(d) Calculate the deceleration in the final phase.
+\hfill\ansref{Ch3-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A rock is dropped from a bridge into a
+river below. The splash is heard $2.8\ \text{s}$ after
+the rock is released. The speed of sound in air is
+$340\ \text{m\,s}^{-1}$ and $g = 10\ \text{m\,s}^{-2}$.\\[4pt]
+(a) Write an equation relating the height $H$ of the
+bridge to the fall time $t_1$ and the sound travel
+time $t_2$, given that $t_1 + t_2 = 2.8\ \text{s}$.\\
+(b) Solve for $H$ (this requires solving a quadratic
+equation).\\
+(c) With what velocity does the rock hit the water?
+\hfill\ansref{Ch3-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A goalkeeper kicks a football from ground
+level at a speed of $22\ \text{m\,s}^{-1}$ at an angle
+of $35°$ above the horizontal. ($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+(a) Find the horizontal and vertical components of the
+initial velocity.\\
+(b) Calculate the maximum height reached.\\
+(c) Calculate the total time the ball is in the air.\\
+(d) Calculate the horizontal range.\\
+(e) A defender stands $35\ \text{m}$ away from the
+goalkeeper. At what height is the ball when it passes
+over the defender?
+\hfill\ansref{Ch3-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} From a cliff $80\ \text{m}$ above sea level,
+a rescue flare is fired \textit{vertically upward} at
+$30\ \text{m\,s}^{-1}$. Taking $g = 10\ \text{m\,s}^{-2}$
+and setting the base of the cliff as $y = 0$:
+(a) Write an equation for the height $y$ of the flare
+above sea level as a function of time.\\
+(b) Find the maximum height above sea level.\\
+(c) Find the time at which the flare hits the sea.\\
+(d) Find the speed at which the flare hits the sea.
+\hfill\ansref{Ch3-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} Two motorcyclists, Adebisi and Chukwudi,
+start from the same point. Adebisi rides due north at
+constant $60\ \text{km\,h}^{-1}$. At the same instant,
+Chukwudi rides due east at constant $80\ \text{km\,h}^{-1}$.\\[4pt]
+(a) After $30\ \text{min}$, how far apart are they?\\
+(b) What is the velocity of Adebisi relative to Chukwudi
+(magnitude and direction)?\\
+(c) At what rate is the distance between them increasing
+after $30\ \text{min}$?
+\hfill\ansref{Ch3-B5}
+
+\end{exercisebox}

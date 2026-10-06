@@ -1,0 +1,1048 @@
+% ============================================================
+%  CHAPTER 19: REFLECTION OF LIGHT
+%  The Physics Codex: A Complete University Foundation
+%  Korede Samuel Omotosho (Falcon)
+%  Aurikrex Learning Systems, 2026
+%
+%  File: chapters/part3/ch19_reflection.tex
+% ============================================================
+
+\chapter{Reflection of Light}
+\label{ch:reflection}
+\minitoc
+\newpage
+
+\chapterquote{We are all mirrors and lenses for one
+another --- every person you meet reflects something
+back to you, and focuses your attention on something
+new.}{Anonymous}
+
+\begin{objectivebox}
+By the end of this chapter, you should be able to:
+\begin{enumerate}[noitemsep]
+  \item State and apply the laws of reflection
+  \item Describe the properties of images formed
+  in plane mirrors
+  \item Distinguish between real and virtual images
+  \item Describe how images are formed by concave
+  and convex mirrors at various object positions
+  \item Apply the mirror formula and magnification
+  equation to solve problems
+  \item Draw ray diagrams for concave and convex
+  mirrors
+  \item Describe practical applications of curved
+  mirrors
+  \item Explain total internal reflection and
+  critical angle in the context of reflection
+  from mirror surfaces
+\end{enumerate}
+\end{objectivebox}
+
+% ============================================================
+\section{Intuition: What is Reflection?}
+% ============================================================
+
+You wake up in the morning and look in the bathroom
+mirror. The face looking back at you is your own ---
+but something is subtly wrong. Your right hand appears
+to be the left hand of the person in the mirror. The
+image is \textbf{laterally inverted}. Yet your head
+is at the top and your feet at the bottom --- the image
+is not inverted vertically. Why does a mirror reverse
+left and right but not up and down?
+
+The answer is that a mirror does neither. What it
+actually does is reverse \textbf{front and back} ---
+it swaps the direction you are facing. Your nose
+points toward the mirror; the image's nose points
+away from the mirror. The apparent left-right
+reversal is a consequence of how we interpret ``left''
+and ``right'' when comparing ourselves to our mirror
+image.
+
+This deceptively simple question --- answered by
+thinking carefully about what reflection actually
+does --- is the kind of thinking that Physics trains.
+The laws of reflection, which we now derive, make all
+of this precise.
+
+% ============================================================
+\section{The Laws of Reflection}
+% ============================================================
+
+\begin{lawbox}[Laws of Reflection]
+\begin{enumerate}[noitemsep]
+  \item The incident ray, the reflected ray, and the
+  normal to the reflecting surface at the point of
+  incidence all lie in the \textbf{same plane}.
+  \item The angle of incidence equals the angle of
+  reflection:
+  \[
+    \theta_i = \theta_r
+  \]
+\end{enumerate}
+Both angles are measured from the \textbf{normal}
+(a line perpendicular to the surface at the point
+of incidence), \textit{not} from the surface itself.
+\end{lawbox}
+
+\begin{diagbox}[Laws of Reflection at a Plane Surface]
+\begin{center}
+\begin{tikzpicture}[scale=1.1, font=\small]
+
+  % Mirror surface
+  \fill[gray!30] (0,-0.2) rectangle (8,0);
+  \draw[very thick] (0,0) -- (8,0);
+  % Hatching below mirror
+  \foreach \x in {0,0.4,...,7.6} {
+    \draw[gray!50, thin] (\x,0) -- (\x-0.3,-0.4);
+  }
+
+  % Normal
+  \draw[dashed, gray, thick] (4,-0.5) -- (4,3.5);
+  \node[right, gray] at (4.1,3.3) {Normal};
+
+  % Point of incidence
+  \fill[black] (4,0) circle (3pt);
+
+  % Incident ray
+  \draw[->, very thick, codexblue, line width=2pt]
+    (1.2,3.0) -- (4,0);
+  \node[left, codexblue] at (1.0,3.0)
+    {Incident ray};
+
+  % Reflected ray
+  \draw[->, very thick, codexred, line width=2pt]
+    (4,0) -- (6.8,3.0);
+  \node[right, codexred] at (7.0,3.0)
+    {Reflected ray};
+
+  % Angle of incidence arc and label
+  \draw[codexblue, thick]
+    (4,0.8) arc(90:123:0.8);
+  \node[codexblue] at (3.4,1.1) {$\theta_i$};
+
+  % Angle of reflection arc and label
+  \draw[codexred, thick]
+    (4,0.8) arc(90:57:0.8);
+  \node[codexred] at (4.6,1.1) {$\theta_r$};
+
+  % Equality annotation
+  \node[codexgold, font=\bfseries] at (4,-1.0)
+    {$\theta_i = \theta_r$ \quad (Law of Reflection)};
+
+  % Wavefronts on incident beam (optional visual)
+  \foreach \k in {0.5,1.0,1.5} {
+    \draw[codexblue!40, thin]
+      ({1.2+\k*0.7},{3.0-\k*1.0})
+      -- ({1.2+\k*0.7+0.5},{3.0-\k*1.0-0.7});
+  }
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{misconceptionbox}
+The angle of incidence is measured from the
+\textbf{normal}, NOT from the surface.
+A ray travelling along the normal has
+$\theta_i = 0°$ and reflects straight back
+($\theta_r = 0°$). A ray grazing the surface
+has $\theta_i = 90°$ and reflects at $90°$.
+If you measure from the surface, you get the
+\textit{complement} of the correct angle ---
+answers will be wrong.
+\end{misconceptionbox}
+
+% ============================================================
+\section{Reflection in Plane Mirrors}
+% ============================================================
+
+\begin{processbox}[Image Formation in a Plane Mirror]
+To find where a plane mirror forms an image:
+\begin{enumerate}[noitemsep]
+  \item Draw two rays from the object to the mirror.
+  \item Apply the law of reflection to each ray
+  ($\theta_i = \theta_r$).
+  \item Extend the reflected rays \textit{behind} the
+  mirror (as dashed lines). Where they intersect is
+  the image position.
+\end{enumerate}
+\end{processbox}
+
+\begin{diagbox}[Image in a Plane Mirror]
+\begin{center}
+\begin{tikzpicture}[scale=1.0, font=\small]
+
+  % Mirror
+  \fill[gray!25] (5,-0.3) rectangle (5.4,5.5);
+  \draw[very thick] (5,0) -- (5,5);
+  \foreach \y in {0,0.4,...,5.2} {
+    \draw[gray!50, thin] (5,\y) -- (5.4,\y-0.3);
+  }
+  \node[right, gray] at (5.5,5.3) {Mirror};
+
+  % Object (arrow)
+  \draw[->, very thick, codexblue, line width=2pt]
+    (2,0) -- (2,2.5);
+  \node[left, codexblue] at (1.9,1.25) {Object};
+  \node[below, codexblue] at (2,0) {O};
+
+  % Image (dashed arrow, behind mirror)
+  \draw[->, very thick, codexred!50, dashed, line width=2pt]
+    (8,0) -- (8,2.5);
+  \node[right, codexred!70, align=center] at (8.1,1.25) {Image\\(virtual)};
+
+  % Ray 1: from top of object, hits mirror at 2.5 height
+  \draw[->, thick, codexblue]
+    (2,2.5) -- (5,2.5);
+  \draw[->, thick, codexred]
+    (5,2.5) -- (7,2.5);
+  \draw[dashed, codexred!50]
+    (5,2.5) -- (8,2.5);
+
+  % Ray 2: from top of object, hits mirror at 1.0
+  \draw[->, thick, codexblue]
+    (2,2.5) -- (5,1.0);
+  % Reflect: angle in = angle out
+  % Incoming slope: (1.0-2.5)/(5-2) = -1.5/3 = -0.5
+  % Reflected slope: 0.5 (symmetric about normal)
+  \draw[->, thick, codexred]
+    (5,1.0) -- (7,2.0);
+  \draw[dashed, codexred!50]
+    (5,1.0) -- (8,2.5);
+
+  % Distance markers
+  \draw[<->, gray, thick] (2,-0.8) -- (5,-0.8);
+  \node[below, gray] at (3.5,-0.9) {$u$ (object distance)};
+  \draw[<->, gray, thick] (5,-0.8) -- (8,-0.8);
+  \node[below, gray] at (6.5,-0.9) {$v$ (image distance)};
+
+  % Equal distance annotation
+  \node[codexgold, font=\bfseries] at (5,-1.6)
+    {$u = v$ \quad (image as far behind as object is in front)};
+
+  % Dashed image lines converging
+  \fill[codexred!40] (8,2.5) circle (4pt);
+  \node[above, codexred, font=\tiny, align=center] at (8,2.55)
+    {image of\\object tip};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{defbox}[Properties of Image in a Plane Mirror]
+\begin{enumerate}[noitemsep]
+  \item \textbf{Same size} as the object
+  ($|$image height$|$ = $|$object height$|$)
+  \item \textbf{Same distance behind} the mirror
+  as the object is in front
+  \item \textbf{Virtual} --- the image cannot be
+  formed on a screen; the reflected rays appear to
+  diverge from a point behind the mirror but do not
+  actually pass through that point
+  \item \textbf{Erect} (right way up)
+  \item \textbf{Laterally inverted} (left-right
+  reversed relative to the object)
+\end{enumerate}
+\end{defbox}
+
+\begin{definitionbox}[Real and Virtual Images]
+A \textbf{real image} is formed where reflected
+(or refracted) rays \textit{actually converge}. It
+can be projected on a screen. Examples: image on a
+cinema screen, image in a concave mirror when object
+is beyond the focal point.
+
+A \textbf{virtual image} is formed where reflected
+(or refracted) rays \textit{appear to diverge from}
+when extended backwards. The rays do not actually
+pass through the image point. It cannot be projected
+on a screen. Examples: image in a plane mirror,
+image in a convex mirror, image in a concave mirror
+when object is within the focal length.
+\end{definitionbox}
+
+% ============================================================
+\section{Curved Mirrors}
+% ============================================================
+
+\begin{defbox}[Terminology for Curved Mirrors]
+\begin{itemize}[noitemsep]
+  \item \textbf{Centre of curvature (C):} the centre
+  of the sphere of which the mirror is a part.
+  \item \textbf{Radius of curvature (R):} the radius
+  of that sphere.
+  \item \textbf{Principal axis:} the straight line
+  passing through the centre of curvature and the
+  pole (centre) of the mirror.
+  \item \textbf{Focal point (F):} the point where
+  rays parallel to the principal axis converge after
+  reflection (concave) or appear to diverge from
+  after reflection (convex).
+  \item \textbf{Focal length (f):} the distance from
+  the pole to the focal point. $f = R/2$.
+  \item \textbf{Concave mirror:} reflecting surface
+  curves inward (like the inside of a spoon). Converging.
+  \item \textbf{Convex mirror:} reflecting surface
+  curves outward (like the outside of a spoon).
+  Diverging.
+\end{itemize}
+\end{defbox}
+
+\begin{diagbox}[Concave and Convex Mirror Geometry]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % === CONCAVE MIRROR ===
+  \begin{scope}[shift={(0,0)}]
+    \node[font=\bfseries, codexblue] at (4.5,4.0)
+      {Concave Mirror (converging)};
+
+    % Mirror arc
+    \draw[very thick, codexblue]
+      (4,0.5) arc(0:50:4 and 4);
+    \fill[gray!20]
+      (4,0.5) arc(0:50:4 and 4) -- (5.4,3.8)
+      arc(50:0:4.3 and 4.3) -- cycle;
+    % Hatching
+    \foreach \a in {0,5,...,50} {
+      \coordinate (p) at
+        ({4+4*cos(180-\a)},{4*sin(\a)});
+      \draw[gray!50, thin] (p)
+        -- ({4+4.4*cos(180-\a)},{4.4*sin(\a)});
+    }
+
+    % Principal axis
+    \draw[dashed, gray] (0,2.0) -- (7,2.0);
+    \node[right, gray, font=\tiny] at (7,2.0)
+      {Principal axis};
+
+    % Centre of curvature
+    \fill[codexred] (4,2.0) circle (4pt);
+    \node[above, codexred, font=\small] at (4,2.1) {C};
+
+    % Focal point
+    \fill[codexgold] (2.0,2.0) circle (4pt);
+    \node[above, codexgold, font=\small] at (2.0,2.1)
+      {F};
+
+    % Pole
+    \fill[black] (0.05,2.0) circle (3pt);
+    \node[below, black, font=\small] at (0.05,1.9)
+      {P};
+
+    % Focal length
+    \draw[<->, gray] (0.1,1.2) -- (2.0,1.2);
+    \node[below, gray, font=\tiny] at (1.05,1.1)
+      {$f$};
+
+    % Radius of curvature
+    \draw[<->, gray] (0.1,0.6) -- (4.0,0.6);
+    \node[below, gray, font=\tiny] at (2.05,0.5)
+      {$R = 2f$};
+
+    % Parallel rays converging to F
+    \foreach \h in {0.5,1.0,1.5,2.0,2.5,3.0,3.5} {
+      \draw[->, thick, codexblue!60]
+        (-0.5,\h) -- (0.05,\h);
+    }
+    \draw[->, thick, codexblue]
+      (0.05,3.5) -- (2.0,2.0);
+    \draw[->, thick, codexblue]
+      (0.05,0.5) -- (2.0,2.0);
+    \draw[->, thick, codexblue]
+      (0.05,2.0) -- (2.0,2.0);
+  \end{scope}
+
+  % === CONVEX MIRROR ===
+  \begin{scope}[shift={(8.5,0)}]
+    \node[font=\bfseries, codexred] at (1.5,4.0)
+      {Convex Mirror (diverging)};
+
+    % Mirror arc (reversed)
+    \draw[very thick, codexred]
+      (0,0.5) arc(180:130:4 and 4);
+    \fill[gray!20]
+      (0,0.5) arc(180:130:4 and 4) --
+      (-1.4,3.8) arc(130:180:4.3 and 4.3) -- cycle;
+
+    % Principal axis
+    \draw[dashed, gray] (-4,2.0) -- (3,2.0);
+
+    % Centre of curvature (behind mirror)
+    \fill[codexred!50] (-4,2.0) circle (4pt);
+    \node[below, codexred!70, font=\small] at (-4,1.9)
+      {C (virtual)};
+
+    % Focal point (virtual, behind mirror)
+    \fill[codexgold!70] (-2.0,2.0) circle (4pt);
+    \node[below, codexgold!80, font=\small]
+      at (-2.0,1.9) {F (virtual)};
+
+    % Pole
+    \fill[black] (0.05,2.0) circle (3pt);
+    \node[below, font=\small] at (0.05,1.9) {P};
+
+    % Parallel rays diverging
+    \foreach \h in {0.5,1.0,1.5,2.0,2.5,3.0,3.5} {
+      \draw[->, thick, codexred!50]
+        (3,\h) -- (0.05,\h);
+    }
+    % Reflected rays diverge
+    \draw[->, thick, codexred]
+      (0.05,3.5) -- (2.0,3.8);
+    \draw[->, thick, codexred]
+      (0.05,0.5) -- (2.0,0.2);
+    \draw[->, thick, codexred]
+      (0.05,2.0) -- (2.0,2.0);
+    % Dashed extensions (virtual)
+    \draw[dashed, codexred!50]
+      (0.05,3.5) -- (-2.0,2.0);
+    \draw[dashed, codexred!50]
+      (0.05,0.5) -- (-2.0,2.0);
+
+    \node[codexred, font=\tiny, align=center] at (1.5,3.0)
+      {diverging\\reflected rays};
+    \draw[->, codexred, thin] (1.5,2.8)
+      -- (0.8,3.3);
+  \end{scope}
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+% ============================================================
+\section{Ray Diagrams for Curved Mirrors}
+% ============================================================
+
+\begin{processbox}[The Three Principal Rays for Curved Mirrors]
+To draw a ray diagram, use any two of these three
+special rays:
+
+\textbf{Ray 1 (Parallel ray):} A ray travelling
+parallel to the principal axis reflects through the
+focal point F (concave) or appears to come from F
+(convex).
+
+\textbf{Ray 2 (Focal ray):} A ray passing through
+F (concave) or heading toward F (convex) reflects
+parallel to the principal axis.
+
+\textbf{Ray 3 (Centre ray):} A ray passing through
+the centre of curvature C reflects back along itself
+(strikes the mirror perpendicularly).
+\end{processbox}
+
+\begin{diagbox}[Concave Mirror: Object Beyond C (Real, Inverted, Diminished)]
+\begin{center}
+\begin{tikzpicture}[scale=0.9, font=\small]
+
+  % Mirror arc
+  \draw[very thick, codexblue]
+    (8,0) arc(0:70:8 and 8);
+
+  % Principal axis
+  \draw[dashed, gray] (-1,3.5) -- (9,3.5);
+
+  % C and F
+  \fill[codexred] (4,3.5) circle (4pt)
+    node[below]{\small C};
+  \fill[codexgold] (2,3.5) circle (4pt)
+    node[below]{\small F};
+  \fill[black] (0.05,3.5) circle (3pt)
+    node[below]{\small P};
+
+  % Object (beyond C, at 5.5)
+  \draw[->, very thick, codexblue, line width=2pt]
+    (5.5,3.5) -- (5.5,5.5);
+  \node[above, codexblue] at (5.5,5.6) {Object};
+
+  % Ray 1: parallel to axis from top of object
+  \draw[->, thick, codexblue]
+    (5.5,5.5) -- (0.3,5.5);
+  % Reflects through F
+  \draw[->, thick, codexred]
+    (0.3,5.5) -- (2.0,3.5);
+  \draw[codexred, thick] (2.0,3.5) -- (4.5,1.2);
+
+  % Ray 3: through C from top of object
+  \draw[->, thick, codexblue]
+    (5.5,5.5) -- (4.0,3.5);
+  % Reflects back through C
+  \draw[->, thick, codexred]
+    (4.0,3.5) -- (2.5,1.5);
+
+  % Image position (intersection)
+  \fill[codexgreen] (3.0,1.8) circle (4pt);
+  \draw[->, very thick, codexgreen, dashed,
+    line width=2pt]
+    (3.0,3.5) -- (3.0,1.8);
+  \node[right, codexgreen, align=left] at (3.1,2.6)
+    {Image\\(real, inverted,\\diminished)};
+
+  % Labels
+  \node[font=\tiny, align=center] at (1.0,6.5)
+    {Object beyond C $\implies$ image:\\
+    between F and C, real, inverted, diminished};
+
+\end{tikzpicture}
+\end{center}
+\end{diagbox}
+
+\begin{table}[H]
+\centering
+\caption{Summary of Images Formed by a Concave Mirror}
+\label{tab:concave_images}
+\small
+\begin{tabular}{p{3cm}p{2cm}p{2cm}p{2cm}p{2cm}}
+\toprule
+\textbf{Object position} & \textbf{Image position} &
+\textbf{Size} & \textbf{Nature} & \textbf{Orientation}\\
+\midrule
+At infinity & At F & Very small & Real & Inverted\\
+Beyond C & Between F and C & Smaller & Real & Inverted\\
+At C & At C & Same size & Real & Inverted\\
+Between F and C & Beyond C & Larger & Real & Inverted\\
+At F & At infinity & --- & --- & ---\\
+Between F and P & Behind mirror & Larger & Virtual & Erect\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Summary of Images Formed by a Convex Mirror}
+\label{tab:convex_images}
+\small
+\begin{tabular}{p{3.5cm}p{3.5cm}p{2cm}p{2cm}p{2cm}}
+\toprule
+\textbf{Object position} & \textbf{Image position} &
+\textbf{Size} & \textbf{Nature} & \textbf{Orientation}\\
+\midrule
+Any position in front & Behind mirror, between P and F &
+  Smaller & Virtual & Erect\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+\section{The Mirror Formula and Magnification}
+% ============================================================
+
+\begin{lawbox}[The Mirror Formula]
+For a curved mirror with focal length $f$, object
+distance $u$, and image distance $v$:
+\[
+  \frac{1}{f} = \frac{1}{u} + \frac{1}{v}
+\]
+\textbf{Sign convention (Real is Positive):}
+\begin{itemize}[noitemsep]
+  \item Distances measured from the pole P.
+  \item Distances in the direction of the incident
+  light are \textit{positive} (object distance $u$
+  is always positive for real objects).
+  \item For a concave mirror: $f$ is positive.
+  \item For a convex mirror: $f$ is negative.
+  \item Real images have positive $v$.
+  \item Virtual images have negative $v$.
+\end{itemize}
+\end{lawbox}
+
+\begin{lawbox}[Linear Magnification]
+The \textbf{linear magnification} $m$ of an image
+is:
+\[
+  m = \frac{\text{image height}}{\text{object height}}
+  = \frac{h_i}{h_o} = -\frac{v}{u}
+\]
+\begin{itemize}[noitemsep]
+  \item $|m| > 1$: image is magnified (larger than
+  object)
+  \item $|m| < 1$: image is diminished (smaller
+  than object)
+  \item $m > 0$: image is erect
+  \item $m < 0$: image is inverted
+\end{itemize}
+\end{lawbox}
+
+\begin{examplebox}[19.1]
+\stepcounter{workedexample}
+An object $4.0\ \text{cm}$ tall is placed
+$30\ \text{cm}$ in front of a concave mirror
+of focal length $10\ \text{cm}$.\\
+(a) Find the image distance using the mirror formula.\\
+(b) Find the magnification.\\
+(c) Find the height of the image.\\
+(d) State the nature of the image.
+\end{examplebox}
+
+\begin{solutionbox}
+$u = 30\ \text{cm}$, $f = +10\ \text{cm}$ (concave)
+
+\textbf{(a)} Mirror formula:
+\[
+  \frac{1}{v} = \frac{1}{f} - \frac{1}{u}
+  = \frac{1}{10} - \frac{1}{30}
+  = \frac{3-1}{30} = \frac{2}{30}
+\]
+\[
+  v = \frac{30}{2} = +15\ \text{cm}
+\]
+Positive $v$ confirms a real image.
+
+\textbf{(b)} Magnification:
+\[
+  m = -\frac{v}{u} = -\frac{15}{30} = -0.50
+\]
+
+\textbf{(c)} Image height:
+\[
+  h_i = m \times h_o = -0.50 \times 4.0
+  = -2.0\ \text{cm}
+\]
+The negative sign confirms the image is inverted.
+
+\textbf{(d)} The image is:
+\textbf{real} (positive $v$),
+\textbf{inverted} (negative $m$),
+\textbf{diminished} ($|m| < 1$),
+at $15\ \text{cm}$ in front of the mirror.
+\end{solutionbox}
+
+\begin{examplebox}[19.2]
+\stepcounter{workedexample}
+An object is placed $8.0\ \text{cm}$ in front of a
+concave mirror. The image is virtual and is
+$24\ \text{cm}$ behind the mirror.\\
+(a) Calculate the focal length of the mirror.\\
+(b) Calculate the radius of curvature.\\
+(c) Calculate the magnification.
+\end{examplebox}
+
+\begin{solutionbox}
+$u = +8.0\ \text{cm}$, $v = -24\ \text{cm}$
+(negative because virtual, behind mirror)
+
+\textbf{(a)} Focal length:
+\[
+  \frac{1}{f} = \frac{1}{u} + \frac{1}{v}
+  = \frac{1}{8} + \frac{1}{-24}
+  = \frac{3}{24} - \frac{1}{24} = \frac{2}{24}
+\]
+\[
+  f = \frac{24}{2} = +12\ \text{cm}
+\]
+Positive $f$ confirms it is a concave mirror.
+
+\textbf{(b)} Radius of curvature:
+$R = 2f = 24\ \text{cm}$
+
+\textbf{(c)} Magnification:
+\[
+  m = -\frac{v}{u} = -\frac{-24}{8} = +3.0
+\]
+Positive and greater than 1: the image is erect
+and magnified (three times the object size).
+This is the principle of a shaving/make-up mirror:
+object placed between F and P gives a magnified,
+erect, virtual image.
+\end{solutionbox}
+
+\begin{examplebox}[19.3]
+\stepcounter{workedexample}
+A convex driving mirror has a focal length of
+$-25\ \text{cm}$. A car $3.0\ \text{m}$ behind
+the mirror is being viewed.\\
+(a) Find the image distance.\\
+(b) Find the magnification.\\
+(c) Explain why convex mirrors are used as rear-view
+and security mirrors rather than plane or concave mirrors.
+\end{examplebox}
+
+\begin{solutionbox}
+$f = -25\ \text{cm}$, $u = +300\ \text{cm}$
+
+\textbf{(a)}
+\[
+  \frac{1}{v} = \frac{1}{f} - \frac{1}{u}
+  = \frac{1}{-25} - \frac{1}{300}
+  = -\frac{12}{300} - \frac{1}{300}
+  = -\frac{13}{300}
+\]
+\[
+  v = -\frac{300}{13} = -23.1\ \text{cm}
+\]
+Negative: image is virtual, $23.1\ \text{cm}$
+behind the mirror.
+
+\textbf{(b)}
+\[
+  m = -\frac{v}{u} = -\frac{-23.1}{300}
+  = +0.077
+\]
+The image is diminished to about $7.7\%$ of the
+object size.
+
+\textbf{(c)} A convex mirror always produces an
+\textit{erect, virtual, diminished} image regardless
+of object distance. This gives:
+\begin{itemize}[noitemsep]
+  \item A wider field of view (the outward curvature
+  collects light from a larger angle) --- you see more
+  of the scene behind you
+  \item The image is always the right way up (erect)
+  \item It is always in front of the driver, behind
+  the mirror surface (virtual and safe)
+\end{itemize}
+A plane mirror would give a narrower field of view.
+A concave mirror would give a distorted, sometimes
+inverted image that changes as objects move closer.
+\end{solutionbox}
+
+% ============================================================
+\section{Applications of Curved Mirrors}
+% ============================================================
+
+\begin{table}[H]
+\centering
+\caption{Applications of Curved Mirrors}
+\label{tab:mirror_applications}
+\begin{tabular}{lll}
+\toprule
+\textbf{Mirror type} & \textbf{Application} &
+\textbf{Reason}\\
+\midrule
+Concave & Shaving/make-up mirror &
+  Magnified, erect virtual image\\
+Concave & Dentist's mirror &
+  Magnified, erect virtual image\\
+Concave & Parabolic torch/headlight &
+  Produces parallel beam from bulb at F\\
+Concave & Solar furnace &
+  Concentrates sunlight at F\\
+Concave & Reflecting telescope &
+  Collects and focuses distant light\\
+Convex & Car rear-view mirror &
+  Wide field of view, always erect\\
+Convex & Security/shop mirror &
+  Wide field of view, sees whole room\\
+Convex & Road junction mirrors &
+  Wide field of view for safety\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{realworldbox}[Solar Concentrators in Africa]
+Parabolic concave mirrors concentrate solar radiation
+at their focal point, generating very high temperatures.
+The Solar Energy Research Laboratory at Obafemi Awolowo
+University (OAU) in Ile-Ife has studied parabolic
+trough concentrators for water heating and cooking
+applications. A parabolic solar cooker can focus enough
+sunlight to boil water without any fuel --- directly
+relevant to rural communities where kerosene and LPG
+are expensive. The physics is simply the concave
+mirror bringing all parallel solar rays to a single
+focus.
+\end{realworldbox}
+
+% ============================================================
+\section{Lateral Inversion and Multiple Reflections}
+% ============================================================
+
+\begin{processbox}[Image in Two Mirrors at 90°]
+When two plane mirrors are placed at $90°$ to each
+other, three images of an object are formed. The
+third image (formed by two reflections) is not
+laterally inverted --- it shows the object as others
+see it, not as you see yourself in a single mirror.
+This is why text appears readable in the corner of
+two perpendicular mirrors, unlike in a single mirror.
+
+For two mirrors at angle $\theta$, the number of
+images formed is:
+\[
+  n = \frac{360°}{\theta} - 1
+  \quad \text{(when } 360°/\theta \text{ is an integer)}
+\]
+At $90°$: $n = 360/90 - 1 = 3$ images.
+At $60°$: $n = 360/60 - 1 = 5$ images.
+At $45°$: $n = 360/45 - 1 = 7$ images.
+\end{processbox}
+
+% ============================================================
+\section{Chapter Summary}
+% ============================================================
+
+\begin{summarybox}
+\textbf{Laws of reflection:} (1) incident ray,
+reflected ray, normal all in same plane;
+(2) $\theta_i = \theta_r$ (angles from normal).
+
+\textbf{Plane mirror image:} virtual, erect, same size,
+laterally inverted, same distance behind as object
+is in front.
+
+\textbf{Real image:} rays actually converge;
+can be projected on screen.
+\textbf{Virtual image:} rays appear to diverge from;
+cannot be projected.
+
+\textbf{Concave mirror} (converging): focal length $f > 0$.
+\textbf{Convex mirror} (diverging): $f < 0$; always
+gives virtual, erect, diminished image.
+
+\textbf{Mirror formula:}
+$\frac{1}{f} = \frac{1}{u} + \frac{1}{v}$
+
+\textbf{Magnification:}
+$m = h_i/h_o = -v/u$
+
+$m < 0$: inverted. $m > 0$: erect.
+$|m| > 1$: magnified. $|m| < 1$: diminished.
+
+$R = 2f$.
+
+\textbf{Applications:}
+Concave: shaving mirror, torch, telescope, solar
+furnace. Convex: driving mirror, security mirror.
+
+\textbf{Multiple mirrors:}
+$n = 360°/\theta - 1$ images formed by two mirrors
+at angle $\theta$.
+\end{summarybox}
+
+% ============================================================
+\newpage
+\begin{exercisebox}[19]
+
+\subsection*{Section A: Multiple Choice}
+
+\textbf{A1.} The angle of reflection is measured
+from:
+
+\mcoption{A}{The reflecting surface}
+\mcoption{B}{The normal to the surface}
+\mcoption{C}{The incident ray}
+\mcoption{D}{The tangent to the surface}
+\ansref{Ch19-A1}
+
+\vspace{0.4cm}
+
+\textbf{A2.} A plane mirror forms an image that is:
+
+\mcoption{A}{Real, inverted, same size}
+\mcoption{B}{Virtual, erect, same size}
+\mcoption{C}{Real, erect, magnified}
+\mcoption{D}{Virtual, inverted, diminished}
+\ansref{Ch19-A2}
+
+\vspace{0.4cm}
+
+\textbf{A3.} An object is placed $20\ \text{cm}$
+from a concave mirror of focal length $15\ \text{cm}$.
+The image distance is:
+
+\mcoption{A}{$-60\ \text{cm}$}
+\mcoption{B}{$+60\ \text{cm}$}
+\mcoption{C}{$+8.6\ \text{cm}$}
+\mcoption{D}{$-8.6\ \text{cm}$}
+\ansref{Ch19-A3}
+
+\vspace{0.4cm}
+
+\textbf{A4.} A convex mirror always produces an
+image that is:
+
+\mcoption{A}{Real, inverted, diminished}
+\mcoption{B}{Real, erect, magnified}
+\mcoption{C}{Virtual, erect, diminished}
+\mcoption{D}{Virtual, inverted, same size}
+\ansref{Ch19-A4}
+
+\vspace{0.4cm}
+
+\textbf{A5.} A concave mirror of radius of curvature
+$40\ \text{cm}$ has a focal length of:
+
+\mcoption{A}{$80\ \text{cm}$}
+\mcoption{B}{$40\ \text{cm}$}
+\mcoption{C}{$20\ \text{cm}$}
+\mcoption{D}{$10\ \text{cm}$}
+\ansref{Ch19-A5}
+
+\vspace{0.4cm}
+
+\textbf{A6.} An object is placed at the focal point
+of a concave mirror. The image is:
+
+\mcoption{A}{At the centre of curvature}
+\mcoption{B}{At the focal point}
+\mcoption{C}{At infinity}
+\mcoption{D}{Behind the mirror}
+\ansref{Ch19-A6}
+
+\vspace{0.4cm}
+
+\textbf{A7.} The magnification produced by a mirror
+is $-3$. This means the image is:
+
+\mcoption{A}{Erect and 3 times larger}
+\mcoption{B}{Inverted and 3 times larger}
+\mcoption{C}{Erect and 3 times smaller}
+\mcoption{D}{Inverted and 3 times smaller}
+\ansref{Ch19-A7}
+
+\vspace{0.4cm}
+
+\textbf{A8.} Two plane mirrors are placed at
+$60°$ to each other. The number of images of an
+object placed between them is:
+
+\mcoption{A}{$3$}
+\mcoption{B}{$4$}
+\mcoption{C}{$5$}
+\mcoption{D}{$6$}
+\ansref{Ch19-A8}
+
+\vspace{0.4cm}
+
+\textbf{A9.} The focal length of a concave mirror
+is $12\ \text{cm}$. An object is placed $6\ \text{cm}$
+from the mirror. The image is:
+
+\mcoption{A}{Real, inverted, at $12\ \text{cm}$}
+\mcoption{B}{Virtual, erect, at $12\ \text{cm}$
+behind mirror}
+\mcoption{C}{Real, inverted, at $4\ \text{cm}$}
+\mcoption{D}{Virtual, erect, at $4\ \text{cm}$}
+\ansref{Ch19-A9}
+
+\vspace{0.4cm}
+
+\textbf{A10.} Why is a convex mirror used as a
+driving mirror?
+
+\mcoption{A}{It produces magnified images}
+\mcoption{B}{It produces real images}
+\mcoption{C}{It provides a wide field of view and
+always erect images}
+\mcoption{D}{It shows objects at their true distance}
+\ansref{Ch19-A10}
+
+\vspace{0.6cm}
+
+\subsection*{Section B: Theory and Calculations}
+
+\textbf{B1.} A concave mirror has a focal length
+of $20\ \text{cm}$. For each of the following object
+positions, use the mirror formula to find the image
+position, magnification, and state the nature
+(real/virtual, erect/inverted, enlarged/diminished):\\[4pt]
+(a) Object at $60\ \text{cm}$\\
+(b) Object at $40\ \text{cm}$\\
+(c) Object at $30\ \text{cm}$\\
+(d) Object at $10\ \text{cm}$\\
+(e) Verify your results by sketching a ray diagram
+for case (c).
+\hfill\ansref{Ch19-B1}
+
+\vspace{0.4cm}
+
+\textbf{B2.} A security camera uses a convex mirror
+of focal length $-30\ \text{cm}$ to monitor a shop.
+A thief stands $2.0\ \text{m}$ from the mirror.\\[4pt]
+(a) Calculate the image distance.\\
+(b) Calculate the magnification.\\
+(c) If the thief is $1.8\ \text{m}$ tall, how tall
+does the image appear in the mirror?\\
+(d) Explain why the image in a convex mirror
+appears to be further away than the object
+actually is. (Consider the magnification and how
+we judge distance from apparent size.)\\
+(e) Calculate the field of view (the maximum
+angle at which an object can be seen in the mirror)
+if the mirror has a diameter of $30\ \text{cm}$.
+Assume the observer's eye is $50\ \text{cm}$ directly
+in front of the mirror. (Use $\tan\alpha = r/d$)
+\hfill\ansref{Ch19-B2}
+
+\vspace{0.4cm}
+
+\textbf{B3.} A dentist's concave mirror produces a
+virtual image of a tooth that is $3$ times the
+actual size of the tooth.\\[4pt]
+(a) If the focal length of the mirror is
+$2.4\ \text{cm}$, at what distance is the tooth
+from the mirror?\\
+(b) Find the image distance and verify that
+it is virtual.\\
+(c) Explain why the image must be virtual for
+the dentist's application.\\
+(d) If a candle is placed at $3.0\ \text{cm}$
+from the same mirror, describe fully the image
+formed. Is it suitable for a dentist?
+\hfill\ansref{Ch19-B3}
+
+\vspace{0.4cm}
+
+\textbf{B4.} A torch uses a concave parabolic
+reflector to produce a parallel beam of light.
+The bulb filament is placed at the focal point,
+$3.5\ \text{cm}$ from the vertex of the reflector.
+The reflector has a diameter of $8.0\ \text{cm}$.\\[4pt]
+(a) State the image position when the object
+(filament) is at the focal point.\\
+(b) Using $1/f = 1/u + 1/v$, verify your answer
+in (a) by considering what happens as $u \to f$.\\
+(c) Calculate the radius of curvature of the
+reflector.\\
+(d) Two identical torches are shone from the same
+side: one has its filament exactly at the focal
+point; the other has its filament $0.5\ \text{cm}$
+beyond the focal point (further from the mirror).
+Describe the difference in the beams produced.\\
+(e) Explain why a parabolic reflector is used
+rather than a spherical reflector for producing
+a parallel beam.
+\hfill\ansref{Ch19-B4}
+
+\vspace{0.4cm}
+
+\textbf{B5.} A student sets up an experiment to
+find the focal length of a concave mirror by
+measuring image distances for various object
+distances.
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+$u$ (cm) & $v$ (cm) & $1/u$ (cm$^{-1}$) &
+$1/v$ (cm$^{-1}$)\\
+\midrule
+15.0 & 60.0 & & \\
+20.0 & 30.0 & & \\
+25.0 & 21.4 & & \\
+30.0 & 18.5 & & \\
+40.0 & 15.4 & & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+(a) Complete the table by calculating $1/u$ and
+$1/v$ for each row (to 3 significant figures).\\
+(b) Plot a graph of $1/v$ against $1/u$ and draw
+the best fit straight line.\\
+(c) Determine the focal length from:\\
+\quad (i) The gradient of the line (should be $-1$
+for perfect data)\\
+\quad (ii) The $y$-intercept (equals $1/f$)\\
+\quad (iii) The $x$-intercept (equals $1/f$)\\
+(d) Calculate the mean focal length from the three
+values in (c).\\
+(e) Explain one source of error in this experiment
+and how it could be reduced.
+\hfill\ansref{Ch19-B5}
+
+\end{exercisebox}
