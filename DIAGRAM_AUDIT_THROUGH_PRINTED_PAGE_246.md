@@ -46,28 +46,6 @@ The inventory contains **86 TikZ blocks** across the included front matter and C
 | 18 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1641–1656 | 0 | The Vector (Cross) Product | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
 | 19 | `chapters/part1_mechanics/ch03_kinematics.tex` | 303–334 | 1 | Displacement-Time Graphs | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
 | 20 | `chapters/part1_mechanics/ch03_kinematics.tex` | 358–396 | 1 | Velocity-Time Graph | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
-<<<<<<< HEAD
-| 21 | `chapters/part1_mechanics/ch03_kinematics.tex` | 593–639 | 1 | Projectile Motion Trajectory | INVENTORIED — individual visual review still required |
-| 22 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 363–398 | 0 | Connected Bodies and Pulleys | INVENTORIED — individual visual review still required |
-| 23 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 434–469 | 0 | Forces on an Inclined Plane | INVENTORIED — individual visual review still required |
-| 24 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 597–628 | 1 | Velocity-Time Graph for Terminal Velocity | INVENTORIED — individual visual review still required |
-| 25 | `chapters/part1_mechanics/ch05_work_energy_power.tex` | 65–96 | 0 | Work Done at an Angle | INVENTORIED — individual visual review still required |
-| 26 | `chapters/part1_mechanics/ch05_work_energy_power.tex` | 329–349 | 1 | Work Done by a Spring Force | INVENTORIED — individual visual review still required |
-| 27 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 121–154 | 0 | Angular and Linear Quantities | INVENTORIED — individual visual review still required |
-| 28 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 248–278 | 0 | Centripetal Acceleration and Force | INVENTORIED — individual visual review still required |
-| 29 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 406–439 | 0 | Vertical Circle --- Forces at Key Points | INVENTORIED — individual visual review still required |
-| 30 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 144–198 | 3 | SHM Graphs --- Displacement, Velocity, Acceleration | INVENTORIED — individual visual review still required |
-| 31 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 301–336 | 0 | The Simple Pendulum | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
-| 32 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 497–525 | 1 | Energy vs Displacement in SHM | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
-| 33 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 599–627 | 1 | Damping Comparison | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
-| 34 | `chapters/part1_mechanics/ch08_gravitation.tex` | 88–111 | 0 | Gravitational Force Between Two Masses | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
-| 35 | `chapters/part1_mechanics/ch08_gravitation.tex` | 272–298 | 1 | $g$ vs Distance from Earth's Centre | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
-| 36 | `chapters/part1_mechanics/ch09_elasticity.tex` | 120–157 | 1 | Force-Extension Graph (Hooke's Law Region) | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
-| 37 | `chapters/part1_mechanics/ch09_elasticity.tex` | 274–320 | 0 | Series vs Parallel Springs | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
-| 38 | `chapters/part1_mechanics/ch09_elasticity.tex` | 450–535 | 1 | Stress-Strain Graph for a Ductile Metal (Steel) | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
-| 39 | `chapters/part1_mechanics/ch09_elasticity.tex` | 605–637 | 1 | Comparing Stress-Strain Curves | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
-| 40 | `chapters/part1_mechanics/ch10_simple_machines.tex` | 215–274 | 0 | The Three Classes of Lever | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
-=======
 | 21 | `chapters/part1_mechanics/ch03_kinematics.tex` | 593–639 | 1 | Projectile Motion Trajectory | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
 | 22 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 363–398 | 0 | Connected Bodies and Pulleys | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
 | 23 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 434–469 | 0 | Forces on an Inclined Plane | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
@@ -78,17 +56,16 @@ The inventory contains **86 TikZ blocks** across the included front matter and C
 | 28 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 248–278 | 0 | Centripetal Acceleration and Force | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
 | 29 | `chapters/part1_mechanics/ch06_circular_motion.tex` | 406–439 | 0 | Vertical Circle --- Forces at Key Points | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
 | 30 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 144–198 | 3 | SHM Graphs --- Displacement, Velocity, Acceleration | REVIEWED — see BATCH3_DIAGRAM_REVIEW.md |
-| 31 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 301–336 | 0 | The Simple Pendulum | INVENTORIED — individual visual review still required |
-| 32 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 497–525 | 1 | Energy vs Displacement in SHM | INVENTORIED — individual visual review still required |
-| 33 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 599–627 | 1 | Damping Comparison | INVENTORIED — individual visual review still required |
-| 34 | `chapters/part1_mechanics/ch08_gravitation.tex` | 88–111 | 0 | Gravitational Force Between Two Masses | INVENTORIED — individual visual review still required |
-| 35 | `chapters/part1_mechanics/ch08_gravitation.tex` | 272–298 | 1 | $g$ vs Distance from Earth's Centre | INVENTORIED — individual visual review still required |
-| 36 | `chapters/part1_mechanics/ch09_elasticity.tex` | 120–157 | 1 | Force-Extension Graph (Hooke's Law Region) | INVENTORIED — individual visual review still required |
-| 37 | `chapters/part1_mechanics/ch09_elasticity.tex` | 274–320 | 0 | Series vs Parallel Springs | INVENTORIED — individual visual review still required |
-| 38 | `chapters/part1_mechanics/ch09_elasticity.tex` | 450–535 | 1 | Stress-Strain Graph for a Ductile Metal (Steel) | INVENTORIED — individual visual review still required |
-| 39 | `chapters/part1_mechanics/ch09_elasticity.tex` | 605–637 | 1 | Comparing Stress-Strain Curves | INVENTORIED — individual visual review still required |
-| 40 | `chapters/part1_mechanics/ch10_simple_machines.tex` | 215–274 | 0 | The Three Classes of Lever | INVENTORIED — individual visual review still required |
->>>>>>> origin/main
+| 31 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 301–336 | 0 | The Simple Pendulum | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
+| 32 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 497–525 | 1 | Energy vs Displacement in SHM | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
+| 33 | `chapters/part1_mechanics/ch07_simple_harmonic_motion.tex` | 599–627 | 1 | Damping Comparison | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
+| 34 | `chapters/part1_mechanics/ch08_gravitation.tex` | 88–111 | 0 | Gravitational Force Between Two Masses | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
+| 35 | `chapters/part1_mechanics/ch08_gravitation.tex` | 272–298 | 1 | $g$ vs Distance from Earth's Centre | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
+| 36 | `chapters/part1_mechanics/ch09_elasticity.tex` | 120–157 | 1 | Force-Extension Graph (Hooke's Law Region) | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
+| 37 | `chapters/part1_mechanics/ch09_elasticity.tex` | 274–320 | 0 | Series vs Parallel Springs | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
+| 38 | `chapters/part1_mechanics/ch09_elasticity.tex` | 450–535 | 1 | Stress-Strain Graph for a Ductile Metal (Steel) | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
+| 39 | `chapters/part1_mechanics/ch09_elasticity.tex` | 605–637 | 1 | Comparing Stress-Strain Curves | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
+| 40 | `chapters/part1_mechanics/ch10_simple_machines.tex` | 215–274 | 0 | The Three Classes of Lever | REVIEWED — see BATCH4_DIAGRAM_REVIEW.md |
 | 41 | `chapters/part1_mechanics/ch10_simple_machines.tex` | 353–382 | 0 | The Inclined Plane | INVENTORIED — individual visual review still required |
 | 42 | `chapters/part1_mechanics/ch10_simple_machines.tex` | 463–514 | 0 | Pulley Systems | INVENTORIED — individual visual review still required |
 | 43 | `chapters/part2_fluids_thermal/ch11_density_pressure_archimedes.tex` | 125–171 | 0 | Visualising Density | INVENTORIED — individual visual review still required |
