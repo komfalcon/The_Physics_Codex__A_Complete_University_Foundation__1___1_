@@ -36,16 +36,16 @@ The inventory contains **86 TikZ blocks** across the included front matter and C
 | 8 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 491–504 | 0 | Triangle Rule | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
 | 9 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 534–555 | 0 | Parallelogram Rule | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
 | 10 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 588–615 | 0 | Polygon Rule: Four Vectors | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
-| 11 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 621–640 | 0 | Closed Polygon: Equilibrium | INVENTORIED — individual visual review still required |
-| 12 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 712–722 | 0 | Calculating the Resultant Analytically | INVENTORIED — individual visual review still required |
-| 13 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 790–818 | 0 | Resolution of a Vector | INVENTORIED — individual visual review still required |
-| 14 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1039–1061 | 0 | Position Vectors in 2D | INVENTORIED — individual visual review still required |
-| 15 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1254–1275 | 0 | Equilibrium of Forces | INVENTORIED — individual visual review still required |
-| 16 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1345–1367 | 0 | Geometric Meaning of the Dot Product | INVENTORIED — individual visual review still required |
-| 17 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1593–1616 | 0 | Right-Hand Rule | INVENTORIED — individual visual review still required |
-| 18 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1641–1656 | 0 | The Vector (Cross) Product | INVENTORIED — individual visual review still required |
-| 19 | `chapters/part1_mechanics/ch03_kinematics.tex` | 303–334 | 1 | Displacement-Time Graphs | INVENTORIED — individual visual review still required |
-| 20 | `chapters/part1_mechanics/ch03_kinematics.tex` | 358–396 | 1 | Velocity-Time Graph | INVENTORIED — individual visual review still required |
+| 11 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 621–640 | 0 | Closed Polygon: Equilibrium | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
+| 12 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 712–722 | 0 | Calculating the Resultant Analytically | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
+| 13 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 790–818 | 0 | Resolution of a Vector | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
+| 14 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1039–1061 | 0 | Position Vectors in 2D | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
+| 15 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1254–1275 | 0 | Equilibrium of Forces | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
+| 16 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1345–1367 | 0 | Geometric Meaning of the Dot Product | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
+| 17 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1593–1616 | 0 | Right-Hand Rule | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
+| 18 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 1641–1656 | 0 | The Vector (Cross) Product | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
+| 19 | `chapters/part1_mechanics/ch03_kinematics.tex` | 303–334 | 1 | Displacement-Time Graphs | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
+| 20 | `chapters/part1_mechanics/ch03_kinematics.tex` | 358–396 | 1 | Velocity-Time Graph | REVIEWED — see BATCH2_DIAGRAM_REVIEW.md |
 | 21 | `chapters/part1_mechanics/ch03_kinematics.tex` | 593–639 | 1 | Projectile Motion Trajectory | INVENTORIED — individual visual review still required |
 | 22 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 363–398 | 0 | Connected Bodies and Pulleys | INVENTORIED — individual visual review still required |
 | 23 | `chapters/part1_mechanics/ch04_newtons_laws_dynamics.tex` | 434–469 | 0 | Forces on an Inclined Plane | INVENTORIED — individual visual review still required |

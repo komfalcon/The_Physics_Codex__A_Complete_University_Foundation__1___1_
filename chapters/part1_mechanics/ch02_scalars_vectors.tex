@@ -1258,7 +1258,8 @@ $45°$ with the vertical. Find the tension in each cable.
   \fill[gray!30] (-3,2) rectangle (3,2.3);
   \draw[thick] (-3,2) -- (3,2);
   % Cables
-  \draw[thick, codexblue] (0,0) -- (-2.5, 2)
+  % 30 degrees from the vertical: |x| = 2 tan(30 degrees) = 1.155.
+  \draw[thick, codexblue] (0,0) -- (-1.155, 2)
     node[midway, left]{$T_1$};
   \draw[thick, codexred] (0,0) -- (2,2)
     node[midway, right]{$T_2$};
@@ -1599,15 +1600,11 @@ $\vect{A}\times\vect{B}$:
   \draw[->, thick, codexred, line width=2pt]
     (0,0) -- (1.5,2.5) node[above right]{$\vect{B}$};
 
-  % Cross product direction (out of page = upward z)
-  \draw[->, thick, codexgreen, line width=2.5pt]
-    (0,0) -- (0,0) ;
-  % Indicate z direction with circled dot
+  % Cross product direction: circled dot denotes out of the page.
   \node[draw, circle, thick, codexgreen,
     inner sep=3pt] at (-1.5,1.5) {$\cdot$};
-  \draw[->, thick, codexgreen, line width=1.5pt]
-    (-1.5,1.5) -- (-1.5,2.5)
-    node[above]{\small $\vect{A}\times\vect{B}$ (out of page)};
+  \node[right, codexgreen, font=\small] at (-1.25,1.5)
+    {$\vect{A}\times\vect{B}$ (out of page)};
 
   \draw[codexgold] (0.7,0) arc(0:59:0.7);
   \node[codexgold] at (1.0,0.35) {$\theta$};
@@ -1653,7 +1650,7 @@ $\vect{B}\times\vect{A}$ points downward (into the page).
   \draw[<-, thick, codexgreen](k) -- (i);
 
   \node at (1.25,-1.0)
-    {\small Anti-Clockwise: negative product};
+    {\small Clockwise cycle: positive product};
     
 \end{tikzpicture}
 
