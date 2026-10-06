@@ -868,14 +868,16 @@ Voltmeter           & Voltage   & varies       & depends on scale\\
   \draw (0,0) -- (4.8,0);
 
   % ----- Vernier scale: zero at 33.4 mm, 10 divisions = 9 mm total -----
-  \foreach \x in {1.0,1.45,1.9,2.35,2.8,3.25,3.7,4.15,4.6,5.05,5.5}
+  % The main-scale unit is 1 mm = 0.4 drawing units. Thus 1 VSD = 0.9 mm
+  % is 0.36 drawing units; the fourth vernier line coincides at 37 mm.
+  \foreach \x in {1.36,1.72,2.08,2.44,2.8,3.16,3.52,3.88,4.24,4.6,4.96}
     \draw[blue] (\x,-1.6) -- (\x,-1.0);
   % Coincident vernier line (division 4)
   \draw[red, thick] (2.8,-1.6) -- (2.8,-1.0);
-  \node[below, blue] at (1.0,-1.65) {0};
-  \node[below, blue] at (3.25,-1.65) {5};
-  \node[below, blue] at (5.5,-1.65) {10};
-  \draw[blue] (1.0,-1.0) -- (5.5,-1.0);
+  \node[below, blue] at (1.36,-1.65) {0};
+  \node[below, blue] at (3.16,-1.65) {5};
+  \node[below, blue] at (4.96,-1.65) {10};
+  \draw[blue] (1.36,-1.0) -- (4.96,-1.0);
 
   % Coincidence guide line
   \draw[red, dashed] (2.8,0) -- (2.8,-1.6);

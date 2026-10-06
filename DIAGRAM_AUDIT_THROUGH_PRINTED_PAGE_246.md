@@ -26,16 +26,16 @@ The inventory contains **86 TikZ blocks** across the included front matter and C
 
 | # | Source file | Lines | PGFPlots axes | Nearby section | Audit result |
 |---:|---|---:|---:|---|---|
-| 1 | `front_matter/dedication.tex` | 11–14 | 0 | — | INVENTORIED — individual visual review still required |
-| 2 | `front_matter/titlepage.tex` | 25–40 | 0 | — | INVENTORIED — individual visual review still required |
-| 3 | `chapters/part1_mechanics/ch01_measurement.tex` | 835–890 | 0 | Reading a Vernier Calliper | INVENTORIED — individual visual review still required |
-| 4 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 124–131 | 0 | Equal Vectors | INVENTORIED — individual visual review still required |
-| 5 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 186–200 | 0 | Parallel and Anti-parallel | INVENTORIED — individual visual review still required |
-| 6 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 341–356 | 0 | Magnitude from Pythagoras | INVENTORIED — individual visual review still required |
-| 7 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 444–461 | 0 | Vector Representation | INVENTORIED — individual visual review still required |
-| 8 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 491–504 | 0 | Triangle Rule | INVENTORIED — individual visual review still required |
-| 9 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 534–555 | 0 | Parallelogram Rule | INVENTORIED — individual visual review still required |
-| 10 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 588–615 | 0 | Polygon Rule: Four Vectors | INVENTORIED — individual visual review still required |
+| 1 | `front_matter/dedication.tex` | 11–14 | 0 | — | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
+| 2 | `front_matter/titlepage.tex` | 25–40 | 0 | — | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
+| 3 | `chapters/part1_mechanics/ch01_measurement.tex` | 835–890 | 0 | Reading a Vernier Calliper | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
+| 4 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 124–131 | 0 | Equal Vectors | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
+| 5 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 186–200 | 0 | Parallel and Anti-parallel | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
+| 6 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 341–356 | 0 | Magnitude from Pythagoras | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
+| 7 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 444–461 | 0 | Vector Representation | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
+| 8 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 491–504 | 0 | Triangle Rule | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
+| 9 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 534–555 | 0 | Parallelogram Rule | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
+| 10 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 588–615 | 0 | Polygon Rule: Four Vectors | REVIEWED — see BATCH1_DIAGRAM_REVIEW.md |
 | 11 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 621–640 | 0 | Closed Polygon: Equilibrium | INVENTORIED — individual visual review still required |
 | 12 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 712–722 | 0 | Calculating the Resultant Analytically | INVENTORIED — individual visual review still required |
 | 13 | `chapters/part1_mechanics/ch02_scalars_vectors.tex` | 790–818 | 0 | Resolution of a Vector | INVENTORIED — individual visual review still required |

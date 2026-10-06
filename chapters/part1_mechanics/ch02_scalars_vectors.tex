@@ -169,8 +169,10 @@ points in the exactly opposite direction:
 \subsection*{Parallel and Anti-parallel Vectors}
 
 \begin{definitionbox}[Parallel Vectors]
-Two vectors are \textbf{parallel} if they point in
-exactly the same direction (angle between them $= 0°$).
+In the broad geometric sense, parallel vectors are collinear:
+they point in the same or exactly opposite directions. In this
+chapter, ``parallel'' without the prefix ``anti-'' means
+\textbf{same direction} (angle between them $= 0°$).
 They may have different magnitudes.
 \end{definitionbox}
 
@@ -441,11 +443,11 @@ represents the direction of the vector.
 
 \begin{diagbox}[Vector Representation]
 \begin{center}
-\begin{tikzpicture}[scale=1.1]
+\begin{tikzpicture}[scale=1.0]
   % Single vector
   \draw[->, thick, codexblue, line width=2pt]
     (0,0) -- (4,0);
-  \node[below] at (2,0) {magnitude = 4 units};
+  \node[below] at (2,0) {magnitude = $4\,\mathrm{N}$};
   \node[above] at (2,0.05) {$\vect{F}$};
   \draw[<->, gray] (0,-0.5) -- (4,-0.5);
   \node[below, gray] at (2,-0.5) {Scale: 1 cm = 1 N};
@@ -599,7 +601,7 @@ system is in equilibrium.
   \draw[->, thick, codexgold, line width=2pt]
     (P2) -- (P3) node[midway, right]{$\vect{F}_3$};
   \draw[->, thick, violet, line width=2pt]
-    (P3) -- (2.5,3.5) -- (1.0,4.5)
+    (P3) -- (1.0,4.5)
     node[midway, left]{$\vect{F}_4$};
 
   % Resultant
