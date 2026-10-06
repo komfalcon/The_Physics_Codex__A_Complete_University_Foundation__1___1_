@@ -190,7 +190,9 @@
 \let\origcleardoublepage\cleardoublepage
 \let\cleardoublepage\clearpage
 \frontmatter
-\let\cleardoublepage\origcleardoublepage
+% Keep this override active for all front-matter chapters and lists. The
+% book class defaults to openright, so restoring \cleardoublepage here would
+% insert blank verso pages before every \chapter* (Foreword, Preface, etc.).
 \inputifexists{front_matter/titlepage}
 \inputifexists{front_matter/copyright}
 \inputifexists{front_matter/dedication}
@@ -203,6 +205,8 @@
 \cleardoublepage
 \listoffigures
 \cleardoublepage
+% Restore normal open-right chapter starts for the main matter.
+\let\cleardoublepage\origcleardoublepage
 
 % -------------------- Main matter --------------------
 \mainmatter
