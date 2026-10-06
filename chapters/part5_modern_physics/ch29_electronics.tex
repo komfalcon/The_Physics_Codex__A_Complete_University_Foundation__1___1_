@@ -138,7 +138,7 @@ electrically neutral overall.
 
 \begin{diagbox}[$n$-type and $p$-type Silicon Crystals]
 \begin{center}
-\begin{tikzpicture}[scale=0.9, font=\small]
+\begin{tikzpicture}[scale=0.68, font=\small]
 
   % === n-TYPE ===
   \begin{scope}[shift={(0,0)}]
@@ -429,7 +429,7 @@ reduces the ripple and gives a nearly constant DC.
 
 \begin{diagbox}[Half-Wave and Full-Wave Rectification Circuits and Waveforms]
 \begin{center}
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.72, font=\small]
 
   % HALF-WAVE
   \begin{scope}[shift={(0,5)}]
@@ -505,7 +505,7 @@ reduces the ripple and gives a nearly constant DC.
   \begin{axis}[
     name=wave1,
     at={(0pt,0pt)},
-    width=7cm, height=3.5cm,
+    width=5.0cm, height=3.0cm,
     title={Input AC},
     xlabel={}, ylabel={$V$},
     xmin=0, xmax=4*pi,
@@ -522,8 +522,8 @@ reduces the ripple and gives a nearly constant DC.
     name=wave2,
     at={(wave1.right of south east)},
     anchor=left of south west,
-    xshift=0.2cm,
-    width=7cm, height=3.5cm,
+    xshift=0.1cm,
+    width=5.0cm, height=3.0cm,
     title={Half-wave output},
     xlabel={}, ylabel={$V$},
     xmin=0, xmax=4*pi,
@@ -547,8 +547,8 @@ reduces the ripple and gives a nearly constant DC.
     name=wave3,
     at={(wave2.right of south east)},
     anchor=left of south west,
-    xshift=0.2cm,
-    width=7cm, height=3.5cm,
+    xshift=0.1cm,
+    width=5.0cm, height=3.0cm,
     title={Full-wave output},
     xlabel={Time}, ylabel={$V$},
     xmin=0, xmax=4*pi,
@@ -878,7 +878,7 @@ Used as a buffer to match impedances.
   % === INVERTING AMPLIFIER ===
   \begin{scope}[shift={(0,0)}]
     \node[font=\bfseries] at (4.0,4.5)
-      {Inverting Amplifier: $A_v = -R_f/R_{in}$};
+      {Inverting Amplifier};
 
     % Op-amp triangle
     \fill[gray!20]
@@ -918,7 +918,7 @@ Used as a buffer to match impedances.
   % === NON-INVERTING AMPLIFIER ===
   \begin{scope}[shift={(9,0)}]
     \node[font=\bfseries] at (4.0,4.5)
-      {Non-Inverting: $A_v = 1 + R_f/R_1$};
+      {Non-Inverting Amplifier};
 
     % Op-amp
     \fill[gray!20]

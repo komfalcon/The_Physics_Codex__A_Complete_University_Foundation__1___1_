@@ -531,8 +531,8 @@ molecules increases. The solid expands.
     xtick={1.2},
     xticklabels={$r_0$},
     grid=major, grid style={gray!15},
-    clip=false,
-    restrict y to domain=-2:3,
+    clip=true,
+    restrict y to domain=-1.3:1.0,
     unbounded coords=jump
   ]
     % Potential energy curve (Lennard-Jones like)
@@ -558,13 +558,13 @@ molecules increases. The solid expands.
       at (axis cs:1.76,-0.3) {High $T$\\avg $r_2 > r_1$};
     % Arrows showing average positions (own well-separated rows below the frame)
     \draw[<->, codexgreen, dashed]
-      (axis cs:0.95,-1.6) -- (axis cs:1.34,-1.6);
+      (axis cs:0.95,-1.15) -- (axis cs:1.34,-1.15);
     \node[codexgreen, below, font=\tiny]
-      at (axis cs:1.145,-1.6) {$\langle r \rangle_1$};
+      at (axis cs:1.145,-1.15) {$\langle r \rangle_1$};
     \draw[<->, codexred, dashed]
-      (axis cs:0.88,-2.0) -- (axis cs:1.75,-2.0);
+      (axis cs:0.88,-1.25) -- (axis cs:1.75,-1.25);
     \node[codexred, below, font=\tiny]
-      at (axis cs:1.315,-2.0) {$\langle r \rangle_2$};
+      at (axis cs:1.315,-1.25) {$\langle r \rangle_2$};
     % Note: asymmetric curve causes net expansion
     \node[align=center, font=\tiny, gray]
       at (axis cs:2.8,0.6)

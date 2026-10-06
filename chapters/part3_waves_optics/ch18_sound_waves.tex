@@ -315,6 +315,7 @@ waveform. A rich musical tone contains many harmonics.
     ymin=-1.5, ymax=1.5,
     xtick=\empty, ytick=\empty,
     grid=major, grid style={gray!10},
+    legend style={at={(0.5,-0.22)}, anchor=north, font=\tiny, /tikz/column 2/.style={column sep=3pt}},
   ]
     \addplot[codexblue, very thick, domain=0:4*pi,
       samples=200]{sin(deg(4*x))};
@@ -337,6 +338,7 @@ waveform. A rich musical tone contains many harmonics.
     ymin=-1.5, ymax=1.5,
     xtick=\empty, ytick=\empty,
     grid=major, grid style={gray!10},
+    legend style={at={(0.5,-0.22)}, anchor=north, font=\tiny, /tikz/column 2/.style={column sep=3pt}},
   ]
     \addplot[codexblue, very thick, domain=0:4*pi,
       samples=200]{1.2*sin(deg(2*x))};
@@ -359,6 +361,7 @@ waveform. A rich musical tone contains many harmonics.
     ymin=-1.5, ymax=1.5,
     xtick=\empty, ytick=\empty,
     grid=major, grid style={gray!10},
+    legend style={at={(0.5,-0.22)}, anchor=north, font=\tiny, /tikz/column 2/.style={column sep=3pt}},
   ]
     \addplot[codexblue, very thick, domain=0:4*pi,
       samples=200]{sin(deg(2*x))};

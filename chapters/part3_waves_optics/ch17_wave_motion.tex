@@ -477,7 +477,7 @@ $\lambda > d$: significant spreading.
 
 \begin{diagbox}[Diffraction Through a Gap]
 \begin{center}
-\begin{tikzpicture}[scale=0.9, font=\small]
+\begin{tikzpicture}[scale=0.68, font=\small]
 
   % === Wide gap (little diffraction) ===
   \begin{scope}[shift={(0,0)}]
@@ -907,7 +907,7 @@ of length $2L$.
   % --- OPEN PIPE ---
   \begin{scope}[shift={(0,0)}]
     \node[font=\bfseries, align=center] at (4,7.5)
-      {Open Pipe (both ends open)\\Antinodes at both ends};
+      {Open Pipe};
 
     % Pipe walls
     \draw[very thick, gray] (0,0) -- (0,7);
@@ -936,7 +936,7 @@ of length $2L$.
   % --- CLOSED PIPE ---
   \begin{scope}[shift={(10,0)}]
     \node[font=\bfseries, align=center] at (4,7.5)
-      {Closed Pipe (one end closed)\\Node at closed end, Antinode at open};
+      {Closed Pipe};
 
     % Pipe walls
     \draw[very thick, gray] (0,0) -- (0,7);
@@ -954,7 +954,7 @@ of length $2L$.
     \fill[codexgreen] (8,6.7) circle (4pt);
     \node[left, font=\tiny, codexblue] at (-0.5,6.0)
       {$n=1$};
-    \node[right, font=\tiny] at (8.2,6.3)
+    \node[right, font=\tiny] at (7.6,6.3)
       {$f_1 = v/4L$};
 
     % n=3 (3rd harmonic: 3/4 wave)
@@ -967,7 +967,7 @@ of length $2L$.
     \fill[codexgreen] (8,4.7) circle (4pt);
     \node[left, font=\tiny, codexred] at (-0.5,4.0)
       {$n=3$};
-    \node[right, font=\tiny] at (8.2,4.3)
+    \node[right, font=\tiny] at (7.6,4.3)
       {$f_3 = 3f_1$};
 
     % n=5
@@ -977,7 +977,7 @@ of length $2L$.
     \fill[codexgreen] (8,2.7) circle (4pt);
     \node[left, font=\tiny, codexgreen] at (-0.5,2.0)
       {$n=5$};
-    \node[right, font=\tiny] at (8.2,2.3)
+    \node[right, font=\tiny] at (7.6,2.3)
       {$f_5 = 5f_1$\\only odd};
 
     \draw[<->, gray] (0,-0.5) -- (8,-0.5);
