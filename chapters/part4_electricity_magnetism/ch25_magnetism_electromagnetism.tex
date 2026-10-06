@@ -179,7 +179,7 @@ path.
 
 \begin{diagbox}[Magnetic Fields Around Current-Carrying Conductors]
 \begin{center}
-\begin{tikzpicture}[scale=0.9, font=\small]
+\begin{tikzpicture}[scale=0.75, font=\small]
 
   % === STRAIGHT WIRE (current out of page) ===
   \begin{scope}[shift={(0,0)}]
@@ -568,21 +568,21 @@ ratio.
     (2,3) -- (2,4);
 
   % Velocity and force labels
-  \node[codexred, font=\small] at (5.5,5.3) {$v$};
+  \node[codexred, font=\small] at (5.5,5.65) {$v$};
   \draw[->, thick, codexgold]
     (4,5) -- (4,4)
     node[right, font=\small]{$F = Bqv$ (inward)};
 
   % Radius
   \draw[<->, gray, thick] (4,3) -- (6,3);
-  \node[above, gray] at (5,3.1) {$r = mv/Bq$};
+  \node[above, gray] at (5,3.35) {$r = mv/Bq$};
 
   % Charge label
   \fill[codexred!60] (4,5) circle (6pt);
   \node[white, font=\bfseries] at (4,5) {$+$};
 
   % Formula
-  \node[align=center, font=\small] at (4,-0.5)
+  \node[align=center, font=\small] at (4,-0.9)
     {Magnetic force provides centripetal acceleration:\\
     $Bqv = mv^2/r \implies r = mv/(Bq)$};
 
@@ -730,10 +730,10 @@ to rotate.
   % Force arrows on sides (Fleming's LHR)
   \draw[->, very thick, codexgold, line width=2.5pt]
     (-1.0,3.0) -- (-1.7,3.0)
-    node[left]{$F$ (down)};
+    node[left, yshift=4pt]{$F$};
   \draw[->, very thick, codexgold, line width=2.5pt]
     (1.0,3.0) -- (1.7,3.0)
-    node[right]{$F$ (up)};
+    node[right, yshift=4pt]{$F$};
 
   % Rotation arrow
   \draw[->, very thick, codexgreen, line width=2pt]

@@ -449,9 +449,9 @@ meaning.
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
-    width=13cm,
-    height=9cm,
-    clip=false,
+    width=11.5cm,
+    height=8.5cm,
+    clip=true,
     xlabel={Strain $\varepsilon$},
     ylabel={Stress $\sigma$ (MPa)},
     xmin=0, xmax=0.35,
@@ -482,10 +482,10 @@ meaning.
 \node[gray, font=\scriptsize, anchor=east] at (axis cs:-0.010,355) {$\sigma_y$};
 
 % ===== ZONE LABELS =====
-\node[align=center, font=\scriptsize] at (axis cs:0.008,470) {\textbf{Elastic}\\[1pt]reversible};
-\node[align=center, font=\scriptsize] at (axis cs:0.045,470) {\textbf{Yield}\\[1pt]plateau};
-\node[align=center, font=\scriptsize] at (axis cs:0.155,500) {\textbf{Hardening}\\[1pt]strengthening};
-\node[align=center, font=\scriptsize] at (axis cs:0.285,500) {\textbf{Necking}\\[1pt]thinning};
+\node[align=center, font=\tiny] at (axis cs:0.010,545) {\textbf{Elastic}\\reversible};
+\node[align=center, font=\tiny] at (axis cs:0.040,545) {\textbf{Yield}\\plateau};
+\node[align=center, font=\tiny] at (axis cs:0.155,545) {\textbf{Hardening}\\strengthening};
+\node[align=center, font=\tiny] at (axis cs:0.285,545) {\textbf{Necking}\\thinning};
 
 % ===== CURVE SEGMENTS =====
 % O -> A : Elastic region (exaggerated scale so it's visible; Hooke's Law)

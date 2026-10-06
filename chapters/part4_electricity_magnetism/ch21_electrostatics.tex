@@ -233,7 +233,6 @@ Examples: silicon, germanium (Chapter 29).
         at ({0.8+0.5*cos(\angle)},{0.6+0.5*sin(\angle)})
         {$+$};
     }
-    \node[below] at (0.8,-0.2) {Charged ($+$)};
 
     % Arrow
     \draw[->, thick, codexred] (1.6,0.6) -- (2.5,0.6);
@@ -242,7 +241,7 @@ Examples: silicon, germanium (Chapter 29).
     % Neutral sphere
     \fill[gray!20] (3.3,0.6) circle (0.7);
     \draw[thick] (3.3,0.6) circle (0.7);
-    \node[below] at (3.3,-0.2) {Neutral};
+    \node[font=\tiny] at (3.3,0.6) {Neutral};
 
     % Arrow
     \draw[->, thick, codexred] (4.4,0.6) -- (5.3,0.6);
@@ -256,12 +255,11 @@ Examples: silicon, germanium (Chapter 29).
         at ({5.8+0.4*cos(\angle)},{0.6+0.4*sin(\angle)})
         {$+$};
     }
-    \node[below] at (5.8,-0.2) {Also $+$ve};
   \end{scope}
 
   % === INDUCTION ===
   \begin{scope}[shift={(0,0)}]
-    \node[font=\bfseries] at (3.5,2.0)
+    \node[font=\tiny\bfseries] at (4.0,2.0)
       {3. Charging by Induction (no contact)};
     % Charged rod nearby
     \fill[codexred!30] (-0.5,0.3) rectangle (0.0,1.3);
@@ -281,9 +279,6 @@ Examples: silicon, germanium (Chapter 29).
     \foreach \y in {0.3,0.6,0.9,1.2} {
       \node[codexred, font=\bfseries] at (3.9,\y) {$+$};
     }
-    \node[below, font=\tiny] at (2.5,-0.2)
-      {Conductor: charge redistributes by induction};
-
     % Earth the far end, remove earth, remove rod
     \draw[->, thick, codexblue] (4.2,0.8) -- (5.0,0.8)
       node[right, font=\tiny]{Earth\\(remove $+$)};
@@ -293,8 +288,8 @@ Examples: silicon, germanium (Chapter 29).
       \node[codexblue, font=\bfseries] at (6.0,\y)
         {$-$};
     }
-    \node[below, font=\tiny] at (6.65,-0.2)
-      {Conductor now $-$ve\\(no contact with rod)};
+    \node[below, font=\tiny] at (4.0,-0.2)
+      {Induction makes the conductor negative without contact};
   \end{scope}
 
 \end{tikzpicture}

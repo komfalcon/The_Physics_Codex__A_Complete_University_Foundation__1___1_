@@ -425,7 +425,7 @@ $\mathcal{E} = \Delta\Phi/\Delta t = BLv$.
 
 \begin{diagbox}[Motional EMF: Conductor Moving in a Field]
 \begin{center}
-\begin{tikzpicture}[scale=1.0, font=\small]
+\begin{tikzpicture}[scale=0.82, font=\small]
 
   % Magnetic field (into page -- crosses)
   \foreach \x in {0.5,1.5,2.5,3.5,4.5,5.5,6.5} {
@@ -449,7 +449,7 @@ $\mathcal{E} = \Delta\Phi/\Delta t = BLv$.
   % Force on positive charges (upward, by F=qv×B)
   \draw[->, thick, codexred]
     (3.0,1.5) -- (3.0,3.5);
-  \node[right, codexred, font=\tiny] at (3.1,2.5)
+  \node[right, codexred, font=\tiny] at (3.9,3.9)
     {$F=qvB$\\on $+$ charges\\(upward)};
 
   % Charge accumulation
@@ -460,8 +460,8 @@ $\mathcal{E} = \Delta\Phi/\Delta t = BLv$.
 
   % EMF label
   \draw[<->, codexgreen, thick]
-    (3.3,0.4) -- (3.3,4.6);
-  \node[right, codexgreen] at (3.4,2.5)
+    (3.65,0.4) -- (3.65,4.6);
+  \node[right, codexgreen] at (3.85,2.5)
     {$\mathcal{E} = BLv$};
 
   % Rails (horizontal guide)
@@ -829,7 +829,7 @@ energy loss.
   % === SOLID CORE ===
   \begin{scope}[shift={(0,0)}]
     \node[font=\bfseries, codexred] at (2.5,5.0)
-      {Solid Core: Large eddy currents};
+      {Solid Core};
 
     % Solid iron block
     \fill[gray!40] (0.5,0.5) rectangle (4.5,4.5);
@@ -855,7 +855,7 @@ energy loss.
   % === LAMINATED CORE ===
   \begin{scope}[shift={(7,0)}]
     \node[font=\bfseries, codexgreen] at (2.5,5.0)
-      {Laminated Core: Small eddy currents};
+      {Laminated Core};
 
     % Laminated iron (thin slices with insulation)
     \foreach \x in {0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0} {
@@ -881,7 +881,7 @@ energy loss.
   \end{scope}
 
   % Explanation
-  \node[align=center, font=\small] at (7.0,-1.2)
+  \node[align=center, font=\small] at (7.0,-1.45)
     {Laminations confine eddy currents to thin strips.\\
     Higher resistance path $\Rightarrow$ lower current
     $\Rightarrow$ far less energy loss.};

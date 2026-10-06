@@ -157,7 +157,7 @@ A component that obeys Ohm's Law is called
   % Ohmic resistor
   \begin{axis}[
     name=p1,
-    width=5.5cm, height=5cm,
+    width=4.0cm, height=4.2cm,
     xlabel={$V$ (V)}, ylabel={$I$ (A)},
     xmin=0, xmax=5, ymin=0, ymax=5,
     grid=major, grid style={gray!15},
@@ -175,8 +175,8 @@ A component that obeys Ohm's Law is called
     name=p2,
     at={(p1.right of south east)},
     anchor=left of south west,
-    xshift=0.5cm,
-    width=5.5cm, height=5cm,
+    xshift=0.25cm,
+    width=4.0cm, height=4.2cm,
     xlabel={$V$ (V)}, ylabel={$I$ (A)},
     xmin=0, xmax=5, ymin=0, ymax=5,
     grid=major, grid style={gray!15},
@@ -196,7 +196,7 @@ A component that obeys Ohm's Law is called
     at={(p2.right of south east)},
     anchor=left of south west,
     xshift=0.5cm,
-    width=5.5cm, height=5cm,
+    width=4.0cm, height=4.2cm,
     xlabel={$V$ (V)}, ylabel={$I$ (A)},
     xmin=-2, xmax=3, ymin=-0.5, ymax=5,
     grid=major, grid style={gray!15},
@@ -334,7 +334,7 @@ Light photons free more charge carriers.
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
-  width=11cm, height=6cm,
+  width=10cm, height=6cm,
   xlabel={Temperature $T$ (°C)},
   ylabel={Resistance $R$ ($\Omega$)},
   xmin=0, xmax=120,
@@ -342,7 +342,7 @@ Light photons free more charge carriers.
   grid=major, grid style={gray!15},
   ytick=\empty,
   xtick={0,20,40,60,80,100,120},
-  legend pos=north east,
+  legend style={at={(0.5,-0.22)}, anchor=north, font=\tiny, /tikz/column 2/.style={column sep=4pt}},
 ]
   % Metal: R increases linearly
   \addplot[codexblue, very thick, domain=0:120]
@@ -675,11 +675,11 @@ difference ``wasted'' inside the source.
   \draw[<->, codexred, thick]
     (0.1,0.5) -- (0.1,-0.8);
   \node[below, codexred, font=\tiny]
-    at (0.1,-0.9) {$Ir$ (lost volts)};
+    at (0.1,-0.65) {$Ir$ (lost volts)};
 
   % Equation
   \node[align=center, font=\small]
-    at (1.75,-1.5)
+    at (1.75,-1.15)
     {$\mathcal{E} = V_{terminal} + Ir
     = I(R+r)$};
 
@@ -787,14 +787,14 @@ supply $V_s$, the output voltage across $R_2$ is:
     {$V_{out}$};
 
   % Thermistor variant annotation
-  \node[align=center, font=\small] at (5.5,2.5)
+  \node[align=center, font=\small] at (5.6,2.8)
     {If $R_2$ is a thermistor:\\
     $V_{out}$ varies with temperature\\[0.5cm]
     If $R_2$ is an LDR:\\
     $V_{out}$ varies with light intensity};
 
   % Formula
-  \node[codexblue, font=\normalsize] at (5.5,0.5)
+  \node[codexblue, font=\normalsize] at (5.6,0.55)
     {$V_{out} = V_s\dfrac{R_2}{R_1+R_2}$};
 
 \end{tikzpicture}

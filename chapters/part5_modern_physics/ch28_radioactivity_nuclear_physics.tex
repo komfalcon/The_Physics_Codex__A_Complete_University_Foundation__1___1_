@@ -877,11 +877,6 @@ shielding to absorb neutrons and gamma radiation.
     \draw[thick, codexgold] (\x,0.5) rectangle
       (\x+0.3,5.5);
   }
-  \node[codexgold, font=\tiny] at (2.0,3.0)
-    {Fuel rods};
-  \node[codexgold, font=\tiny] at (2.0,2.5)
-    {(${}^{235}$U)};
-
   % Control rods (partially inserted from top)
   \foreach \x in {0.9,1.5,2.1,2.7,3.3} {
     \fill[codexblue!60] (\x,3.5) rectangle
@@ -889,9 +884,6 @@ shielding to absorb neutrons and gamma radiation.
     \draw[thick, codexblue] (\x,3.5) rectangle
       (\x+0.2,6.5);
   }
-  \node[codexblue, font=\tiny] at (2.2,6.2)
-    {Control rods};
-
   % Coolant (water as moderator+coolant)
   \fill[codexblue!15] (0.3,0.3) rectangle (4.2,6.2);
   % Fuel rods on top
@@ -901,8 +893,17 @@ shielding to absorb neutrons and gamma radiation.
     \draw[thick, codexgold] (\x,0.5) rectangle
       (\x+0.3,5.5);
   }
-  \node[codexblue, font=\tiny] at (4.0,1.0)
-    {Pressurised\\water\\(coolant +\\moderator)};
+  % Core labels in the clear space beside the vessel; short leaders
+  % keep names legible without covering the fuel/control-rod bundle.
+  \draw[codexgold!80] (4.5,3.9) -- (5.1,3.9);
+  \node[codexgold, font=\tiny, align=center]
+    at (5.75,3.9) {Fuel rods\\(${}^{235}$U)};
+  \draw[codexblue!80] (4.5,3.1) -- (5.1,3.1);
+  \node[codexblue, font=\tiny, align=center]
+    at (5.75,3.1) {Control\\rods};
+  \draw[codexblue!50] (4.5,2.2) -- (5.1,2.2);
+  \node[codexblue, font=\tiny, align=center]
+    at (5.75,2.2) {Pressurised\\water\\(moderator +\\coolant)};
 
   % Hot coolant out
   \draw[->, very thick, codexred]
@@ -938,12 +939,12 @@ shielding to absorb neutrons and gamma radiation.
   % === Turbine ===
   \fill[gray!30] (11.5,4.0) rectangle (13.0,6.0);
   \draw[thick] (11.5,4.0) rectangle (13.0,6.0);
-  \node[font=\small] at (12.25,5.0) {Turbine};
+  \node[font=\tiny] at (12.25,5.55) {Turbine};
 
   % Generator
   \fill[gray!30] (13.0,4.0) rectangle (14.5,6.0);
   \draw[thick] (13.0,4.0) rectangle (14.5,6.0);
-  \node[font=\small] at (13.75,5.0) {Generator};
+  \node[font=\tiny] at (13.75,4.45) {Generator};
 
   % Electricity out
   \draw[->, very thick, codexgold]
