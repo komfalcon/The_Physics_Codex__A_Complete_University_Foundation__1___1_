@@ -28,22 +28,35 @@ Working directory in the Sandbox:
 /home/ubuntu/The_Physics_Codex__A_Complete_University_Foundation__1___1_
 ```
 
-Current branch:
+The previous pull request containing the earlier batches has already been merged. Do **not** continue on the old branch and do **not** create another commit on the merged pull request.
 
-```text
-audit-diagrams-through-page-246
+Start from the current remote `main` branch:
+
+```bash
+cd /home/ubuntu/The_Physics_Codex__A_Complete_University_Foundation__1___1_
+git fetch origin --prune
+git switch main
+git pull --ff-only origin main
+git switch -c audit-diagrams-batch3
 ```
 
-Current latest commit after Batch 2:
+If the local checkout is not available, clone the repository first with:
 
-```text
-3bfcc99 Review and repair diagrams batch 2
+```bash
+gh repo clone komfalcon/The_Physics_Codex__A_Complete_University_Foundation__1___1_
 ```
 
-The existing pull request is:
+The next AI must create a **new pull request** from `audit-diagrams-batch3` into `main`. Use a focused title such as:
 
 ```text
-https://github.com/komfalcon/The_Physics_Codex__A_Complete_University_Foundation__1___1_/pull/1
+Review and repair diagrams batch 3
+```
+
+Do not reuse the old pull-request number or old branch. Verify the new branch and clean status before editing:
+
+```bash
+git status --short --branch
+git log -3 --oneline
 ```
 
 The repository is currently clean after the pushed Batch 2 commit. Verify with:
@@ -256,7 +269,7 @@ git commit -m "Review and repair diagrams batch 3"
 git push
 ```
 
-Do not merge the pull request automatically. Leave the work on the existing branch and PR.
+Do not merge the new pull request automatically. Leave the work on the new Batch 3 branch and new PR for the user to review.
 
 ## Build-warning policy
 
@@ -288,7 +301,7 @@ Do not tell the user that all diagrams are publication-perfect after completing 
 - what warnings remain;
 - how many diagrams are still unreviewed.
 
-After Batch 3, the correct progress count should be **30 of 86 individually reviewed**, assuming all ten items are completed and recorded.
+After Batch 3, the correct progress count should be **30 of 86 individually reviewed**, assuming all ten items are completed and recorded. The new PR should contain only the Batch 3 changes and reports on top of the already-merged `main`.
 
 ## Continuation after Batch 3
 
