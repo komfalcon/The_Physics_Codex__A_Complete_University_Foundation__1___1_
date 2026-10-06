@@ -313,8 +313,8 @@ the pendulum undergoes SHM with:
     node[right, black]{$m$};
 
   % Length label
-  \draw[<->, gray] (-0.3,4) -- (-0.3,1.8);
-  \node[left, gray] at (-0.3,2.9) {$L$};
+  \draw[<->, gray] (-0.25,4) -- (0.95,1.8);
+  \node[left, gray] at (0.25,2.9) {$L$};
 
   % Angle
   \draw[codexgold, thick] (0,3.2) arc(270:298:0.8);
@@ -324,9 +324,9 @@ the pendulum undergoes SHM with:
   \draw[->, very thick, codexred]
     (1.2,1.8) -- (1.2,0.6) node[below]{$mg$};
   \draw[->, very thick, codexgreen]
-    (1.2,1.8) -- (1.0,3.0) node[above left]{$T$};
+    (1.2,1.8) -- (0,4) node[above left]{$T$};
   \draw[->, thick, codexblue, dashed]
-    (1.2,1.8) -- (-0.2,1.8)
+    (1.2,1.8) -- (-0.05,1.1)
     node[left, font=\small, align=left]{$mg\sin\theta$\\(restoring)};
 
   % Period formula
@@ -513,7 +513,7 @@ At amplitude ($x=A$): $KE = 0$, $PE = E_{total}$
   \addlegendentry{$E_{total}$}
 
   % PE = (1/2)m*omega^2*x^2 (parabola)
-  \addplot[codexred, thick, domain=-1.1:1.1,
+  \addplot[codexred, thick, domain=-1:1,
     samples=50]{x^2};
   \addlegendentry{PE}
 
@@ -613,7 +613,7 @@ oscillation over time due to energy dissipation
 
   % Heavy damping (slow return, no oscillation)
   \addplot[codexred, thick, domain=0:12, samples=100]
-    {exp(-0.9*x)};
+    {(1+0.5*x)*exp(-0.5*x)};
   \addlegendentry{Heavy damping}
 
   % Critical damping (fastest return without oscillation)
