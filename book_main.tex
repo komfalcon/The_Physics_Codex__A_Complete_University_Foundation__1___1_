@@ -1,4 +1,7 @@
 \documentclass[12pt]{book}
+% Allow normal prose to find a nearby line break instead of protruding into
+% the margin. Display equations and diagrams are still checked individually.
+\setlength{\emergencystretch}{2em}
 
 % ============================================================
 % Packages
@@ -39,6 +42,7 @@
 % HEADER (remove chapter title; keep section title; keep page number position)
 % ============================================================
 \pagestyle{fancy}
+\raggedbottom
 \fancyhf{}% clear all header/footers
 % Page number stays in the outer header (default fancyhdr position for books)
 \fancyhead[LE,RO]{\thepage}
@@ -52,7 +56,8 @@
 \usepackage{longtable}
 \usepackage{siunitx}
 \sisetup{detect-all,range-phrase=--,range-units=single}
-\usepackage{minitoc}
+% minitoc is intentionally disabled: chapters retain compatibility \minitoc
+% calls, but loading the package only creates empty auxiliary files and hints.
 \usepackage{epigraph}
 \usepackage{wrapfig}
 \usepackage{lettrine}

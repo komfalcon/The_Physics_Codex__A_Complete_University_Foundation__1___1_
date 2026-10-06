@@ -248,20 +248,14 @@ longitudinal waves cannot be polarised.
   \pgfmathsetlengthmacro{\xunit}{\panelwidth/(\wavelength + 2*\xmargin)}
 
   % Vertical padding for labels/equations (in y-units; keep even top/bottom).
-  \pgfmathsetmacro{\yPadTop}{1.05}
+  % The wavelength label sits above the arrow; the previous bound clipped
+  % its ascenders at the top of the surrounding diagbox.
+  \pgfmathsetmacro{\yPadTop}{1.55}
   \pgfmathsetmacro{\yPadBottom}{2.05}
 
   % Annotation heights/offsets
-  \pgfmathsetmacro{\yLam}{\A + 0.95}       % lift arrow to avoid the "Crest" label
+  \pgfmathsetmacro{\yLam}{\A + 0.82}       % clear the crest label while retaining top padding
   \pgfmathsetmacro{\yEqText}{-\A - 1.45}   % equation block baseline (preserved)
-
-  % --- Named coordinates (mathematically consistent) ---
-  % NOTE: x is automatically scaled by x=\xunit (see tikzpicture options below).
-  \coordinate (C1)  at (\xCrestOne, \A);
-  \coordinate (C2)  at (\xCrestTwo, \A);
-  \coordinate (T1)  at (\xTrough,  -\A);
-  \coordinate (EqC1) at (\xCrestOne, 0);
-  \coordinate (EqT1) at (\xTrough,    0);
 
   % --- Styles / font sizes ---
   \tikzset{
@@ -274,6 +268,14 @@ longitudinal waves cannot be polarised.
 
   % Apply the computed x-scale (y stays in normal TikZ units).
   \begin{scope}[x=\xunit]
+
+    % These coordinates must be defined inside the scaled scope. Defining
+    % them outside made the second crest ignore \xunit and escape the panel.
+    \coordinate (C1)  at (\xCrestOne, \A);
+    \coordinate (C2)  at (\xCrestTwo, \A);
+    \coordinate (T1)  at (\xTrough,  -\A);
+    \coordinate (EqC1) at (\xCrestOne, 0);
+    \coordinate (EqT1) at (\xTrough,    0);
 
     % Explicit bounding box = panel content + even padding (prevents overflow)
     \path[use as bounding box]
@@ -309,7 +311,8 @@ longitudinal waves cannot be polarised.
     \draw[<->, codexgold, very thick] (\xCrestOne, \yLam) -- (\xCrestTwo, \yLam);
     \draw[dashed, black!55] (C1) -- (\xCrestOne, \yLam);
     \draw[dashed, black!55] (C2) -- (\xCrestTwo, \yLam);
-    \node[paramlabel, codexgold, above=2pt]
+    \node[paramlabel, codexgold, above=2pt, font=\footnotesize,
+      align=center, text width=0.82\panelwidth]
       at ($ (\xCrestOne,\yLam)!0.5!(\xCrestTwo,\yLam) $)
       {$\lambda$ (wavelength: crest to next crest)};
 
