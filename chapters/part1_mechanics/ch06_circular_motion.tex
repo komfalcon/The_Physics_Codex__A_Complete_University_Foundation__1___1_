@@ -256,8 +256,8 @@ horizontal circle of radius $r = L\sin\theta$.
 
   % Forces
   \draw[->, very thick, codexred]
-    (0.6,3-1.039) -- (0.6, 3-1.039+1.5)
-    node[right]{$T$};
+    (0.6,3-1.039) -- (0,3)
+    node[above left]{$T$};
   \draw[->, very thick, codexblue]
     (0.6,3-1.039) -- (0.6, 3-1.039-1.2)
     node[below]{$mg$};
@@ -267,8 +267,8 @@ horizontal circle of radius $r = L\sin\theta$.
 
   % Angle
   \draw[dashed, gray] (0,3) -- (0,1.5);
-  \draw[codexgold] (0,2.7) arc(270:240:0.3);
-  \node[codexgold, left, font=\small] at (-0.05,2.55)
+  \draw[codexgold] (0,2.7) arc(270:300:0.3);
+  \node[codexgold, right, font=\small] at (0.15,2.55)
     {$30°$};
 
   % Radius
@@ -433,7 +433,7 @@ taut, $T_T = 0$):
     node[left, font=\small]{$v_T$ (min speed)};
 
   % Note
-  \node[font=\tiny, align=center] at (0,-3.2)
+  \node[font=\tiny, align=center] at (0,-3.35)
     {At bottom: $T_B > mg$ (feels heavier)\\
     At top: $T_T + mg$ both centripetal};
 \end{tikzpicture}
