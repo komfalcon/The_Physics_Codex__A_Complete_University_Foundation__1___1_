@@ -180,14 +180,14 @@ A component that obeys Ohm's Law is called
     xlabel={$V$ (V)}, ylabel={$I$ (A)},
     xmin=0, xmax=5, ymin=0, ymax=5,
     grid=major, grid style={gray!15},
-    xtick=\empty, ytick=\empty,
+    xtick={0,1,2,3,4,5}, ytick={0,1,2,3,4,5},
     title={Filament Bulb (non-ohmic)}
   ]
     \addplot[codexred, very thick, domain=0:5,
       samples=60]{2*sqrt(x)};
     \node[codexred, font=\tiny, align=center, fill=white,
       inner sep=1pt]
-      at (axis cs:1.4,4.35)
+      at (axis cs:2.4,4.35)
       {Curve: $R$ increases\\with temperature};
   \end{axis}
 
@@ -215,7 +215,7 @@ A component that obeys Ohm's Law is called
       {Conducts in\\one direction only};
     \node[codexred, font=\tiny, align=center, fill=white,
       inner sep=1pt]
-      at (axis cs:-1.0,0.55) {Reverse bias:\\no current};
+      at (axis cs:-0.2,0.7) {Reverse bias:\\no current};
   \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -332,17 +332,17 @@ Resistance decreases as light intensity increases.
 Light photons free more charge carriers.
 \end{defbox}
 
-\begin{diagbox}[Resistance vs Temperature for Metal and NTC Thermistor]
+\begin{diagbox}[Qualitative Resistance Trends with Temperature]
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   width=10cm, height=6cm,
   xlabel={Temperature $T$ (°C)},
-  ylabel={Resistance $R$ ($\Omega$)},
+  ylabel={Relative resistance (arbitrary units)},
   xmin=0, xmax=120,
   ymin=0, ymax=5,
   grid=major, grid style={gray!15},
-  ytick=\empty,
+  ytick={0,1,2,3,4,5},
   xtick={0,20,40,60,80,100,120},
   legend style={at={(0.5,-0.22)}, anchor=north, font=\tiny, /tikz/column 2/.style={column sep=4pt}},
 ]
@@ -531,10 +531,7 @@ zero (you return to the same potential).
   \node[anchor=west, codexgold, font=\tiny, align=left] at (2.8,4.55)
     {Junction A:\\$I_1 = I_2 + I_3$};
 
-  % KVL annotation
-  \draw[->, codexgold, thick, dashed, rounded corners]
-    (0.5,3.8) -- (4.5,3.8) -- (4.5,0.3) -- (0.5,0.3)
-    -- (0.5,3.8);
+  % KVL equation callout; the main circuit shows the actual outer-loop path.
   \node[codexgold, font=\tiny, fill=white, inner sep=1pt,
         align=center, text width=3.2cm] at (2.5,-0.45)
     {Outer loop:\\$\mathcal{E}_1 - I_1R_1 - I_2R_2 = 0$};
@@ -630,37 +627,37 @@ difference ``wasted'' inside the source.
 \begin{center}
 \begin{tikzpicture}[scale=1.0, font=\small]
 
-  % Battery box
+  % The source body contains the ideal EMF and its series internal resistance.
   \draw[thick, dashed, gray]
     (0,-0.5) rectangle (3.5,1.5);
-  \node[gray, font=\small] at (1.75,2.0)
-    {Battery (internal resistance $r$)};
+  \node[gray, font=\scriptsize, fill=white, inner sep=1pt]
+    at (1.75,1.2) {Real source};
 
-  % Internal resistance
-  \fill[gray!30] (0.3,0.3) rectangle (1.8,0.7);
-  \draw[thick] (0.3,0.3) rectangle (1.8,0.7);
-  \node[font=\tiny] at (1.05,0.5) {$r$};
-
-  % EMF source (ideal)
-  \draw[very thick] (2.2,0.1) -- (2.2,0.4);
-  \draw[very thick, codexred] (1.9,0.4) -- (2.5,0.4);
-  \draw[very thick] (2.2,0.4) -- (2.2,0.6);
-  \draw[very thick, codexblue] (1.7,0.6) -- (2.7,0.6);
-  \draw[very thick] (2.2,0.6) -- (2.2,0.9);
-  \node[right, font=\small] at (2.8,0.5)
-    {$\mathcal{E}$};
-
-  % Wires
+  % External circuit: load R is in series with the real source.
   \draw[very thick] (0,0.5) -- (-1.0,0.5)
     -- (-1.0,2.5);
   \draw[very thick] (3.5,0.5) -- (4.5,0.5)
     -- (4.5,2.5);
-  \draw[very thick] (-1.0,2.5) -- (4.5,2.5);
+  \draw[very thick] (-1.0,2.5) -- (0.5,2.5);
+  \draw[very thick] (3.0,2.5) -- (4.5,2.5);
 
   % External resistor
   \fill[codexblue!20] (0.5,2.2) rectangle (3.0,2.8);
   \draw[thick] (0.5,2.2) rectangle (3.0,2.8);
-  \node at (1.75,2.5) {External resistance $R$};
+  \node[above, font=\small] at (1.75,2.8) {External load};
+  \node at (1.75,2.5) {$R$};
+
+  % Internal branch: terminal, r, ideal EMF, return terminal.
+  \draw[very thick] (0,0.5) -- (0.3,0.5);
+  \fill[gray!30] (0.3,0.3) rectangle (1.6,0.7);
+  \draw[thick] (0.3,0.3) rectangle (1.6,0.7);
+  \node[font=\tiny] at (0.95,0.5) {$r$};
+  \draw[very thick] (1.6,0.5) -- (2.0,0.5);
+  \draw[very thick, codexblue] (2.0,0.15) -- (2.0,0.85);
+  \draw[very thick, codexred] (2.3,0.3) -- (2.3,0.7);
+  \draw[very thick] (2.3,0.5) -- (3.5,0.5);
+  \node[above, font=\tiny] at (2.15,0.9) {$\mathcal{E}$};
+  \node[codexblue, font=\tiny] at (1.9,0.9) {$+$};
 
   % Current arrow
   \draw[->, very thick, codexgold]
@@ -673,11 +670,10 @@ difference ``wasted'' inside the source.
   \node[left, codexblue] at (-1.6,1.5)
     {$V_{terminal}$\\$= \mathcal{E} - Ir$};
 
-  % Lost volts annotation
-  \draw[<->, codexred, thick]
-    (0.1,0.5) -- (0.1,-0.8);
-  \node[below, codexred, font=\tiny]
-    at (0.1,-0.65) {$Ir$ (lost volts)};
+  % Lost-voltage drop across the internal resistor.
+  \draw[<->, codexred, thick] (0.3,0.12) -- (1.6,0.12);
+  \node[below, codexred, font=\tiny] at (0.95,0.12)
+    {$Ir$ (lost volts)};
 
   % Equation
   \node[align=center, font=\small]
@@ -757,46 +753,49 @@ supply $V_s$, the output voltage across $R_2$ is:
 \begin{center}
 \begin{tikzpicture}[scale=1.0, font=\small]
 
-  % Supply
-  \draw[very thick] (0,0) -- (0,5);
-  \draw[very thick] (4,0) -- (4,5);
-  \draw[very thick] (0,5) -- (4,5);
-  \draw[very thick] (0,0) -- (4,0);
-  \node[left] at (-0.1,2.5) {$V_s$};
+  % Series divider string and supply rails.
+  \draw[very thick] (0,5.0) -- (4.0,5.0);
+  \draw[very thick] (0,0.0) -- (4.0,0.0);
+  \draw[very thick] (0,5.0) -- (0,4.5);
+  \draw[very thick] (0,3.5) -- (0,3.0);
+  \draw[very thick] (0,3.0) -- (0,2.0);
+  \draw[very thick] (0,1.0) -- (0,0.0);
 
-  % R1 (top)
-  \fill[gray!30] (-0.3,3.5) rectangle (0.3,4.8);
-  \draw[thick] (-0.3,3.5) rectangle (0.3,4.8);
-  \node[left] at (-0.5,4.1) {$R_1$};
+  % R1 and R2 are actually in series between the supply rails.
+  \fill[gray!30] (-0.3,3.5) rectangle (0.3,4.5);
+  \draw[thick] (-0.3,3.5) rectangle (0.3,4.5);
+  \node[left] at (-0.5,4.0) {$R_1$};
+  \fill[gray!30] (-0.3,1.0) rectangle (0.3,2.0);
+  \draw[thick] (-0.3,1.0) rectangle (0.3,2.0);
+  \node[left] at (-0.5,1.5) {$R_2$};
+  \fill[black] (0,3.0) circle (4pt);
+  \fill[black] (0,0.0) circle (4pt);
 
-  % R2 (bottom)
-  \fill[gray!30] (-0.3,0.8) rectangle (0.3,3.0);
-  \draw[thick] (-0.3,0.8) rectangle (0.3,3.0);
-  \node[left] at (-0.5,1.9) {$R_2$};
+  % Connected source in the return rail (long plate is positive).
+  \draw[very thick] (4.0,0.0) -- (4.0,2.7);
+  \draw[very thick] (4.0,3.0) -- (4.0,5.0);
+  \draw[very thick, codexblue] (3.55,3.0) -- (4.45,3.0);
+  \draw[very thick, codexred] (3.75,2.7) -- (4.25,2.7);
+  \node[left] at (3.45,2.85) {$V_s$};
+  \node[right, codexblue, font=\tiny] at (4.45,3.0) {$+$};
+  \node[right, codexred, font=\tiny] at (4.25,2.7) {$-$};
 
-  % Output voltage tap (between R1 and R2)
-  \fill[black] (0,3.25) circle (4pt);
-  \draw[thick] (0,3.25) -- (2.0,3.25);
-  \fill[black] (0,0.5) circle (4pt);
-  \draw[thick] (0,0.5) -- (2.0,0.5);
-  % Or use the bottom of R2
-  \fill[black] (0,0.5) circle (4pt);
-
-  % Output voltage arrow
-  \draw[<->, codexblue, thick]
-    (2.0,0.5) -- (2.0,3.25);
-  \node[right, codexblue] at (2.1,1.9)
-    {$V_{out}$};
+  % Open voltage-measurement taps across R2: no wire shorts the output.
+  \draw[thick] (0,3.0) -- (1.4,3.0);
+  \draw[thick] (0,0.0) -- (1.4,0.0);
+  \draw[<->, codexblue, thick] (1.8,0.0) -- (1.8,3.0);
+  \node[right, codexblue] at (1.9,1.5) {$V_{out}$};
 
   % Thermistor variant annotation
-  \node[align=center, font=\small] at (5.6,2.8)
-    {If $R_2$ is a thermistor:\\
-    $V_{out}$ varies with temperature\\[0.5cm]
-    If $R_2$ is an LDR:\\
+  \node[align=center, font=\footnotesize, text width=2.8cm]
+    at (6.1,2.8)
+    {If $R_2$ is a thermistor:\
+    $V_{out}$ varies with temperature\\[0.3cm]
+    If $R_2$ is an LDR:\
     $V_{out}$ varies with light intensity};
 
   % Formula
-  \node[codexblue, font=\normalsize] at (5.6,0.55)
+  \node[codexblue, font=\normalsize] at (6.1,0.55)
     {$V_{out} = V_s\dfrac{R_2}{R_1+R_2}$};
 
 \end{tikzpicture}
@@ -868,81 +867,62 @@ At balance, the unknown resistance $S$ can be found:
 
 \begin{diagbox}[Wheatstone Bridge Circuit]
 \begin{center}
-\begin{tikzpicture}[scale=1.0, font=\small]
+\begin{tikzpicture}[scale=0.9, font=\small]
 
-  % Four nodes
-  \coordinate (A) at (0,3);   % left
-  \coordinate (B) at (3,6);   % top
-  \coordinate (C) at (6,3);   % right
-  \coordinate (D) at (3,0);   % bottom
+  % Four bridge junctions.
+  \coordinate (A) at (0,3);
+  \coordinate (B) at (3,6);
+  \coordinate (C) at (6,3);
+  \coordinate (D) at (3,0);
 
-  % Four resistors
-  % P: A to B (top left)
-  \draw[thick] (A) -- (B);
-  \fill[gray!30]
-    ({0.5*(0+3)-0.3},{0.5*(3+6)+0.3})
-    rectangle
-    ({0.5*(0+3)+0.9},{0.5*(3+6)-0.3});
-  \node at ({0.5*(0+3)+0.3},{0.5*(3+6)}) {$P$};
+  % Each resistor interrupts its own diamond arm.
+  \draw[thick] (A) -- (1.2,4.2);
+  \node[draw, fill=gray!25, minimum width=0.8cm,
+        minimum height=0.35cm, rotate=45] at (1.5,4.5) {$P$};
+  \draw[thick] (1.8,4.8) -- (B);
 
-  % Q: B to C (top right)
-  \draw[thick] (B) -- (C);
-  \fill[gray!30]
-    ({0.5*(3+6)-0.3},{0.5*(6+3)+0.3})
-    rectangle
-    ({0.5*(3+6)+0.9},{0.5*(6+3)-0.3});
-  \node at ({0.5*(3+6)+0.3},{0.5*(6+3)}) {$Q$};
+  \draw[thick] (B) -- (4.2,4.8);
+  \node[draw, fill=gray!25, minimum width=0.8cm,
+        minimum height=0.35cm, rotate=-45] at (4.5,4.5) {$Q$};
+  \draw[thick] (4.8,4.2) -- (C);
 
-  % R: A to D (bottom left)
-  \draw[thick] (A) -- (D);
-  \fill[gray!30]
-    ({0.5*(0+3)-0.9},{0.5*(3+0)+0.3})
-    rectangle
-    ({0.5*(0+3)+0.3},{0.5*(3+0)-0.3});
-  \node at ({0.5*(0+3)-0.3},{0.5*(3+0)}) {$R$};
+  \draw[thick] (A) -- (1.2,1.8);
+  \node[draw, fill=gray!25, minimum width=0.8cm,
+        minimum height=0.35cm, rotate=-45] at (1.5,1.5) {$R$};
+  \draw[thick] (1.8,1.2) -- (D);
 
-  % S: D to C (bottom right)
-  \draw[thick] (D) -- (C);
-  \fill[gray!30]
-    ({0.5*(3+6)-0.3},{0.5*(0+3)+0.3})
-    rectangle
-    ({0.5*(3+6)+0.9},{0.5*(0+3)-0.3});
-  \node at ({0.5*(3+6)+0.3},{0.5*(0+3)}) {$S$};
+  \draw[thick] (D) -- (4.2,1.2);
+  \node[draw, fill=gray!25, minimum width=0.8cm,
+        minimum height=0.35cm, rotate=45] at (4.5,1.5) {$S$};
+  \draw[thick] (4.8,1.8) -- (C);
 
-  % Galvanometer (centre)
-  \draw[thick] (B) -- (D);
+  % Galvanometer connects the two middle junctions B and D.
+  \draw[thick] (B) -- (3,3.4);
   \fill[white] (2.6,2.6) rectangle (3.4,3.4);
   \draw[thick] (2.6,2.6) rectangle (3.4,3.4);
-  \node at (3.0,3.0) {$G$};
-  \node[right, font=\tiny] at (3.5,3.0)
-    {Galvanometer};
+  \node at (3,3) {$G$};
+  \draw[thick] (3,2.6) -- (D);
+  \node[right, font=\tiny] at (3.5,3) {Galvanometer};
 
-  % Battery (left side A) and connection
-  \draw[thick] (A) -- (-1.5,3.0);
-  \draw[thick] (C) -- (7.5,3.0);
-  \draw[thick] (-1.5,3.0) -- (-1.5,6) -- (3,6);
-  \draw[thick] (7.5,3.0) -- (7.5,6) -- (3,6);
+  % Supply is connected across A and C via an external branch above B.
+  \draw[thick] (A) -- (-1,3) -- (-1,7.3) -- (2.7,7.3);
+  \draw[very thick, codexblue] (2.7,6.95) -- (2.7,7.65);
+  \draw[very thick, codexred] (3.05,7.1) -- (3.05,7.5);
+  \draw[thick] (3.05,7.3) -- (7,7.3) -- (7,3) -- (C);
+  \node[above, font=\small] at (2.9,7.7) {$V_s$};
+  \node[codexblue, font=\tiny] at (2.55,7.7) {$+$};
 
-  % Battery symbol
-  \draw[very thick] (5.8,6.0) -- (5.8,6.3);
-  \draw[very thick, codexred] (5.5,6.3) -- (6.1,6.3);
-  \draw[very thick] (5.8,6.3) -- (5.8,6.6);
-  \draw[very thick, codexblue] (5.3,6.6) -- (6.3,6.6);
-  \draw[very thick] (5.8,6.6) -- (5.8,7.0);
-  \node[above, font=\small] at (5.8,7.0)
-    {$V_s$};
-
-  % Nodes
+  % Junction markers and labels.
   \foreach \coord in {(A),(B),(C),(D)} {
     \fill[black] \coord circle (4pt);
   }
-  \node[left] at (A) {A};
+  \node[below left] at (A) {A};
   \node[above] at (B) {B};
-  \node[right] at (C) {C};
+  \node[below right] at (C) {C};
   \node[below] at (D) {D};
 
-  % Balance condition
-  \node[align=center, font=\small] at (3.0,-1.0)
+  % Balance condition.
+  \node[align=center, font=\small] at (3,-1.0)
     {At balance ($I_G = 0$):\\
     $\dfrac{P}{Q} = \dfrac{R}{S}$};
 

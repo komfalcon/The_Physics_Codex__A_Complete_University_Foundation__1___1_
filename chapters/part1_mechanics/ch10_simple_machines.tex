@@ -226,14 +226,15 @@ the Effort (E), Fulcrum (F), and Load (L).
   % Load (right, down)
   \draw[->, very thick, codexred] (6.2,6.8) -- (6.2,5.8);
   \node[below, codexred] at (6.2,5.8) {L};
-  % Labels
+  % Labels; lower the distance row to keep it clear of the F and L markers.
   \node[below, gray] at (3.5,5.7) {F};
-  \draw[<->, gray] (0.8,5.35) -- (3.5,5.35);
-  \node[below, gray] at (2.1,5.25) {$d_E$};
-  \draw[<->, gray] (3.5,5.35) -- (6.2,5.35);
-  \node[below, gray] at (4.85,5.25) {$d_L$};
+  \draw[<->, gray] (0.8,4.85) -- (3.5,4.85);
+  \node[below, gray] at (2.1,4.72) {$d_E$};
+  \draw[<->, gray] (3.5,4.85) -- (6.2,4.85);
+  \node[below, gray] at (4.85,4.72) {$d_L$};
 
   % === SECOND CLASS ===
+  \begin{scope}[yshift=-0.5cm]
   \node[font=\bfseries\small, anchor=east] at (-0.2,3.65) {2nd};
   % Beam
   \fill[gray!30] (0,3.5) rectangle (7,3.8);
@@ -247,12 +248,14 @@ the Effort (E), Fulcrum (F), and Load (L).
   \node[above, codexblue] at (6.5,4.8) {E};
   % Labels
   \node[below, gray] at (0.5,2.7) {F};
-  \draw[<->, gray] (0.5,2.35) -- (6.5,2.35);
-  \node[below, gray] at (3.5,2.25) {$d_E$};
-  \draw[<->, gray] (0.5,1.9) -- (3.5,1.9);
-  \node[below, gray] at (2.0,1.8) {$d_L$};
+  \draw[<->, gray] (0.5,2.0) -- (6.5,2.0);
+  \node[below, gray] at (4.5,1.9) {$d_E$};
+  \draw[<->, gray] (0.5,1.35) -- (3.5,1.35);
+  \node[below, gray] at (1.3,1.25) {$d_L$};
+  \end{scope}
 
   % === THIRD CLASS ===
+  \begin{scope}[yshift=-1cm]
   \node[font=\bfseries\small, anchor=east] at (-0.2,0.65) {3rd};
   % Beam
   \fill[gray!30] (0,0.5) rectangle (7,0.8);
@@ -270,6 +273,7 @@ the Effort (E), Fulcrum (F), and Load (L).
   \node[below, gray] at (1.5,-0.9) {$d_E$};
   \draw[<->, gray] (0.5,-1.3) -- (6.2,-1.3);
   \node[below, gray] at (3.35,-1.4) {$d_L$};
+  \end{scope}
   
 \end{tikzpicture}
 \end{center}

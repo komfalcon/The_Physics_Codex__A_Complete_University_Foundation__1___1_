@@ -303,14 +303,15 @@ outer). Both contribute to the contracting force:
       {One surface};
     \draw[->, codexblue] (3.3,3.3) -- (2.8,2.8);
     % Radius
-    \draw[<->, codexred] (2,2) -- (3.9,2)
-      node[midway, above]{$r$};
-    % Pressure arrows (inward surface tension)
-    \foreach \angle in {0,60,120,180,240,300} {
-      \draw[->, thick, codexgold]
-        ({2+2.0*cos(\angle)},{2+2.0*sin(\angle)})
-        -- ({2+1.5*cos(\angle)},{2+1.5*sin(\angle)});
-    }
+    \draw[<->, gray] (2,2) -- (3.27,0.73)
+      node[midway, below right]{$r$};
+    % Excess pressure is normal to the interface; surface tension is tangential.
+    \draw[->, thick, codexred] (3.8,2.0) -- (4.35,2.0);
+    \node[codexred, font=\tiny, align=center] at (4.6,2.9)
+      {$\Delta P$: pressure\\normal to surface};
+    \draw[<->, thick, codexgreen] (3.8,1.45) -- (3.8,2.55);
+    \node[codexgreen, font=\tiny, align=center] at (4.6,1.25)
+      {Surface tension $\gamma$: \\tangent to surface};
     % Excess pressure label
 \node[font=\small\bfseries, codexblue] at (2,-0.4)
       {$\Delta P = \dfrac{2\gamma}{r}$};
@@ -464,7 +465,11 @@ depends on whether adhesion or cohesion dominates:
     \draw[<->, codexred, thick]
       (2.3,2.0) -- (2.3,3.6);
     \node[right, codexred] at (2.4,2.8) {$h$};
-    % Contact angle
+    % Contact angle at the right wall: measured through the liquid.
+    \draw[densely dashed, gray] (2.1,3.8) -- (1.75,3.1);
+    \draw[codexred, thin]
+      (2.1,3.45) arc[start angle=270,end angle=243,radius=0.35];
+    \node[codexred, font=\tiny] at (1.88,3.35) {$\theta$};
     \node[font=\tiny, codexblue] at (1.5,5.95)
       {Concave meniscus};
     \node[font=\tiny, codexblue] at (1.5,6.35)
@@ -474,8 +479,6 @@ depends on whether adhesion or cohesion dominates:
     \draw[->, thick, codexgreen]
       (0.9,3.5) -- (0.9,4.2)
       node[midway, left, font=\tiny]{adhesion};
-    \draw[->, thick, codexgreen]
-      (2.1,3.5) -- (2.1,4.2);
   \end{scope}
   % === MERCURY IN GLASS (falls) ===
   \begin{scope}[shift={(5.0,0)}]
@@ -505,16 +508,23 @@ depends on whether adhesion or cohesion dominates:
       (2.3,1.8) -- (2.3,2.5);
     \node[right, codexred] at (2.4,2.15)
       {\shortstack{$h$\\(depressed)}};
-    % Contact angle label (darkened for legibility against the gray fill)
-    \node[font=\tiny, black!65] at (1.5,3.45)
+    % Contact angle at the right wall: measured through the liquid.
+    \draw[densely dashed, gray] (2.1,1.8) -- (1.85,2.43);
+    \draw[codexred, thin]
+      (1.969,2.125) arc[start angle=112,end angle=270,radius=0.35];
+    \node[codexred, font=\tiny] at (1.78,2.12) {$\theta$};
+    % Move Mercury labels above the tube for contrast and to avoid glass-wall overlap.
+    \node[font=\tiny, black] at (1.5,5.95)
       {Convex meniscus};
-    \node[font=\tiny, black!65] at (1.5,3.85)
+    \node[font=\tiny, black] at (1.5,6.35)
       {(cohesion $>$ adhesion)};
     % Arrows: cohesion pulls down
     \draw[->, thick, codexred]
       (1.5,1.8) -- (1.5,1.1)
       node[right, font=\tiny, align=left]{cohesion\\pulls down};
   \end{scope}
+  \node[font=\tiny, align=center] at (4.0,-0.55)
+    {Contact angle $\theta$ is measured through the liquid};
 \end{tikzpicture}
 \end{center}
 \end{diagbox}
@@ -864,7 +874,7 @@ At terminal velocity $v_T$, net force $= 0$:
     (0.2,1.5) -- (4.8,1.5);
   \node[font=\small, align=center] at (2.5,0.8)
     {At terminal velocity:\\
-    $W = U + F_d$\quad (arrows to scale; net force = 0)};
+    $W = U + F_d$\quad (schematic arrows, not to scale; net force = 0)};
 
   % Terminal velocity formula
   \node[codexblue, font=\small, align=center]

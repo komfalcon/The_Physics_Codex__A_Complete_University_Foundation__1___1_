@@ -798,7 +798,6 @@ without the atmosphere.
   every node/.style={align=center},
   % --- Consistent arrow styles (must match legend) ---
   sw/.style={->, very thick, codexgold, line cap=round},            % short-wave (incoming)
-  refl/.style={->, thick, codexgold!60, dashed, line cap=round},    % reflected short-wave
   lw/.style={->, very thick, codexred, line cap=round},             % long-wave IR (thermal)
   lwthin/.style={->, thick, codexred!85, line cap=round},
   % --- Typography ---
@@ -850,7 +849,6 @@ without the atmosphere.
   % Reference x-positions for vertical arrows (distinct pathways)
   %------------------------------------------------------------------
   \def\xSW{4.0}    % incoming short-wave (down)
-  \def\xRefl{3.2}  % reflected short-wave (up) (shifted right to clear top-left legend)
   \def\xLWup{6.0}  % surface IR absorbed by atmosphere
   \def\xWin{7.25}  % atmospheric window (surface -> space)
   \def\xBack{5.0}  % back radiation (atmosphere -> surface)
@@ -865,18 +863,6 @@ without the atmosphere.
   \draw[sw] (swTop) -- (swAtm);
   \draw[sw] (swAtm) -- (swSurf);
   \node[ann, anchor=east] at ({\xR-0.15},{\yAtmT+0.55}) {Incoming short-wave\\(mostly transmitted)};
-
-  % Reflected short-wave to space (vertical, distinct from IR arrows)
-  \draw[refl] (\xRefl,\yAtmT) -- (\xRefl,\ySpaceT);
-  \node[ann, anchor=west] at ({\xRefl+0.15},{\ySpaceT-0.75}) {Reflected\\short-wave};
-
-  % Small cloud icon near the reflection (kept clear of labels)
-  \begin{scope}[shift={({\xRefl-0.65},{\ySpaceT-1.75})}]
-    \fill[white] (0,0) circle (0.32);
-    \fill[white] (0.40,0.10) circle (0.42);
-    \fill[white] (0.88,0) circle (0.30);
-    \draw[gray!35] (-0.35,-0.15) .. controls (0.18,-0.42) and (1.05,-0.42) .. (1.25,-0.15);
-  \end{scope}
 
   %------------------------------------------------------------------
   % Long-wave IR: surface emission, absorption, and re-emission
@@ -895,7 +881,7 @@ without the atmosphere.
 
   % Back radiation (originates in atmosphere band; terminates at surface only)
   \draw[lw] (\xBack,\yAtmB) -- (\xBack,\ySurfT);
-  \node[ann] at ({\xBack-1.8},{(\ySurfT+\yAtmB)/2}) {Downward IR\\(``back radiation'')};
+  \node[ann, font=\tiny, inner sep=0.5pt, text width=0.80cm, anchor=west] at ({\xBack+0.03},{(\ySurfT+\yAtmB)/2}) {Back\\radiation};
 
   % Atmospheric window: surface IR escaping directly to space (distinct path)
   \draw[lwthin] (\xWin,\ySurfT) -- (\xWin,\ySpaceT);
@@ -917,8 +903,6 @@ without the atmosphere.
     \node[anchor=west, font=\scriptsize] at (1.35,1.28) {Short-wave};
     \draw[lw]   (0.25,0.86) -- (1.15,0.86);
     \node[anchor=west, font=\scriptsize] at (1.35,0.86) {Long-wave IR};
-    \draw[refl] (0.25,0.44) -- (1.15,0.44);
-    \node[anchor=west, font=\scriptsize] at (1.35,0.44) {Reflected};
   \end{scope}
 
 \end{tikzpicture}

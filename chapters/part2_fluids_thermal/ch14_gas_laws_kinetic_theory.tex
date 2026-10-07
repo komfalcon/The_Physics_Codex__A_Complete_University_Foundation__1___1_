@@ -744,9 +744,10 @@ where $M$ is the molar mass (kg\,mol$^{-1}$).
 \end{tikzpicture}
 \end{center}
 \small \textbf{Key:} The Maxwell-Boltzmann distribution shows the spread of molecular speeds.
-At higher $T$: the peak shifts right (faster average), the curve broadens, and importantly,
-more molecules have very high speeds (the tail extends further). This is why reactions speed up
-with temperature --- more molecules can overcome the activation energy.
+At higher $T$, the most-probable speed (the peak) shifts right, while the mean and rms speeds
+also increase. The distribution broadens, and more molecules have very high speeds (a longer
+high-speed tail). This is why reactions speed up with temperature --- more molecules can
+overcome the activation energy.
 \end{diagbox}
 
 \begin{examplebox}[14.6]
@@ -840,6 +841,9 @@ Real gases behave most ideally at:
   \node[gray, font=\tiny, align=center] at (axis cs:470,1.32)
     {Finite\\volume};
   \draw[->, gray] (axis cs:455,1.27) -- (axis cs:425,1.127);
+  \node[font=\tiny, gray, fill=white, inner sep=1pt, align=center,
+    text width=9cm, anchor=south] at (axis cs:300,0.62)
+    {Qualitative schematic; thermodynamic conditions are not specified.};
 \end{axis}
 \end{tikzpicture}
 \end{center}

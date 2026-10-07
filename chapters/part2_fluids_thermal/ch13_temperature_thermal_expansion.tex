@@ -524,9 +524,9 @@ molecules increases. The solid expands.
     ylabel={Potential energy $E_p$},
     xmin=0.5, xmax=3.5,
     ymin=-1.3, ymax=1.0,
-    ytick={-1.0,0},
+    ytick={-0.8,0},
     yticklabels={min $E_p$,0},
-    xtick={1.2},
+    xtick={1.12},
     xticklabels={$r_0$},
     grid=major, grid style={gray!15},
     clip=true,
@@ -554,15 +554,15 @@ molecules increases. The solid expands.
     \fill[codexred] (axis cs:1.377,-0.3) circle (2pt);
     \node[codexred, right, align=left, font=\tiny]
       at (axis cs:1.40,-0.3) {High $T$\\avg $r_2 > r_1$};
-    % Arrows showing average positions (own well-separated rows below the frame)
+    % Turning-point spans at each energy (own rows below the well minimum)
     \draw[<->, codexgreen, dashed]
-      (axis cs:1.063,-1.15) -- (axis cs:1.218,-1.15);
-    \node[codexgreen, below, font=\tiny]
-      at (axis cs:1.1405,-1.15) {$\langle r \rangle_1$};
+      (axis cs:1.063,-0.95) -- (axis cs:1.218,-0.95);
+    \node[codexgreen, right, font=\tiny, fill=white, inner sep=1pt]
+      at (axis cs:1.218,-0.95) {Low $T$ range};
     \draw[<->, codexred, dashed]
-      (axis cs:1.027,-1.25) -- (axis cs:1.377,-1.25);
-    \node[codexred, below, font=\tiny]
-      at (axis cs:1.202,-1.25) {$\langle r \rangle_2$};
+      (axis cs:1.027,-1.20) -- (axis cs:1.377,-1.20);
+    \node[codexred, right, font=\tiny, fill=white, inner sep=1pt]
+      at (axis cs:1.377,-1.20) {High $T$ range};
     % Note: asymmetric curve causes net expansion
     \node[align=center, font=\tiny, gray]
       at (axis cs:2.8,0.6)
@@ -798,64 +798,57 @@ concrete highways, and building structures.
 
 \begin{diagbox}[The Bimetallic Strip: Principle and Applications]
 \begin{center}
-\begin{tikzpicture}[scale=1.0, font=\small]
+\begin{tikzpicture}[scale=0.85, font=\small]
+  % Two side-by-side states keep the strip geometry easy to compare.
+  \node[font=\bfseries, align=center] at (2.7,5.8)
+    {At room temperature\\straight};
+  \node[font=\bfseries, align=center] at (8.9,5.8)
+    {When heated\\brass expands more};
 
-  % === AT ROOM TEMPERATURE ===
-  \begin{scope}[shift={(0,4.5)}]
-    \node[font=\bfseries] at (4,1.8) {At room temperature: straight};
-    % Brass strip (top, higher $\alpha$)
-    \fill[codexgold!60] (0,0.5) rectangle (7,1.0);
-    \draw[thick] (0,0.5) rectangle (7,1.0);
-    \node[codexgold, font=\tiny] at (3.5,0.75) {Brass ($\alpha$ larger)};
-    % Steel strip (bottom, lower $\alpha$)
-    \fill[gray!40] (0,0) rectangle (7,0.5);
-    \draw[thick] (0,0) rectangle (7,0.5);
-    \node[gray, font=\tiny] at (3.5,0.25) {Steel ($\alpha$ smaller)};
-    % Fixed end
-    \fill[gray!70] (-0.3,-0.2) rectangle (0,1.2);
-    \draw[thick] (-0.3,-0.2) rectangle (0,1.2);
-    \node[below, font=\tiny] at (-0.15,-0.3) {fixed};
-  \end{scope}
+  % Room-temperature bonded layers.
+  \fill[gray!70] (0.05,4.15) rectangle (0.35,5.25);
+  \draw[thick] (0.05,4.15) rectangle (0.35,5.25);
+  \node[below, font=\tiny] at (0.2,4.05) {fixed};
+  \fill[codexgold!60] (0.35,4.70) rectangle (5.0,5.10);
+  \draw[thick] (0.35,4.70) rectangle (5.0,5.10);
+  \fill[gray!40] (0.35,4.30) rectangle (5.0,4.70);
+  \draw[thick] (0.35,4.30) rectangle (5.0,4.70);
+  \node[codexgold!60!black, font=\tiny] at (2.7,4.90)
+    {Brass (higher $\alpha$)};
+  \node[gray!60!black, font=\tiny] at (2.7,4.50)
+    {Steel (lower $\alpha$)};
 
-  % === WHEN HEATED ===
-  \begin{scope}[shift={(0,1.5)}]
-    \node[font=\bfseries] at (4.5,2.3) {When heated: curves downward (brass expands more)};
-    % Fixed end
-    \fill[gray!70] (-0.3,-0.6) rectangle (0,1.2);
-    \draw[thick] (-0.3,-0.6) rectangle (0,1.2);
-    % Curved brass (upper/outer, longer layer; free end bends downward)
-    \draw[codexgold!80, very thick, fill=codexgold!50]
-      (0,1.0) .. controls (2,0.9) and (5,0.55) ..
-      (7,0.0) -- (7,-0.5) ..
-      controls (5,0.05) and (2,0.4) ..
-      (0,0.5) -- cycle;
-    \node[codexgold!60!black, font=\tiny, fill=white, inner sep=1pt] at (3.5,0.75)
-      {Brass (outer, longer)};
-    % Curved steel (lower/inner, shorter layer)
-    \draw[gray!60, very thick, fill=gray!40]
-      (0,0.5) .. controls (2,0.4) and (5,0.05) ..
-      (7,-0.5) -- (7,-1.0) ..
-      controls (5,-0.45) and (2,-0.1) ..
-      (0,0.0) -- cycle;
-    \node[gray, font=\tiny, fill=white, inner sep=1pt] at (3.5,-0.75)
-      {Steel (inner, shorter)};
-    % Curvature arrow
-    \draw[->, very thick, codexred]
-      (7.2,0.0) -- (7.2,-0.8)
-      node[right, align=center]{bends\\down};
-  \end{scope}
+  % Heated bonded layers: brass is the longer outside layer;
+  % the strip curves toward the lower-expansion steel layer.
+  \fill[gray!70] (6.10,4.00) rectangle (6.40,5.20);
+  \draw[thick] (6.10,4.00) rectangle (6.40,5.20);
+  \draw[codexgold!80!black, very thick, fill=codexgold!50]
+    (6.40,5.00) .. controls (8.00,5.00) and (10.00,4.70) ..
+    (11.30,4.20) -- (11.30,3.80)
+    .. controls (10.00,4.30) and (8.00,4.60) .. (6.40,4.60) -- cycle;
+  \draw[gray!70, very thick, fill=gray!40]
+    (6.40,4.60) .. controls (8.00,4.60) and (10.00,4.30) ..
+    (11.30,3.80) -- (11.30,3.40)
+    .. controls (10.00,3.90) and (8.00,4.20) .. (6.40,4.20) -- cycle;
+  \node[codexgold!60!black, font=\tiny, fill=white, inner sep=1pt]
+    at (8.85,4.40) {Brass: outer, longer};
+  \node[gray!60!black, font=\tiny, fill=white, inner sep=1pt]
+    at (8.85,4.00) {Steel: inner, shorter};
+  \draw[->, very thick, codexred] (11.65,4.15) -- (11.65,3.45)
+    node[right, align=left, font=\tiny] {bends toward\\steel};
 
-  % === APPLICATIONS ===
-  \begin{scope}[shift={(0,-1.5)}]
-    \node[font=\bfseries] at (4.5,2.3) {Applications:};
-    \node[font=\small, align=left] at (4.0,0.9)
-      {$\bullet$ Thermostats (heating/cooling control)\\
-       $\bullet$ Fire alarms (circuit breaks when heated)\\
-       $\bullet$ Electrical circuit breakers\\
-       $\bullet$ Oven temperature indicators\\
-       $\bullet$ Bimetallic thermometers};
-  \end{scope}
-
+  % Applications are in a separate row, clear of both strip drawings.
+  \draw[gray!50, dashed] (0.35,2.75) -- (12.10,2.75);
+  \node[font=\bfseries] at (6.20,3.05) {Applications};
+  \node[font=\footnotesize, align=left, text width=4.7cm]
+    at (3.10,1.45)
+    {$\bullet$ Thermostats (heating/cooling control)\\
+     $\bullet$ Fire alarms (break circuit when heated)\\
+     $\bullet$ Electrical circuit breakers};
+  \node[font=\footnotesize, align=left, text width=4.7cm]
+    at (9.25,1.45)
+    {$\bullet$ Oven temperature indicators\\
+     $\bullet$ Bimetallic thermometers};
 \end{tikzpicture}
 \end{center}
 \end{diagbox}

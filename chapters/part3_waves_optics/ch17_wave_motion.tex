@@ -586,57 +586,50 @@ zero if $A_1 = A_2$).
 \begin{center}
 \begin{tikzpicture}[scale=0.85, font=\small]
 
-  % === CONSTRUCTIVE ===
-  \begin{scope}[shift={(0,6)}]
-    \node[font=\bfseries, codexgreen] at (6,2.5)
-      {Constructive Interference (in phase)};
+  % === CONSTRUCTIVE: both components and their sum share one baseline ===
+  \begin{scope}[shift={(0,5.4)}]
+    \node[font=\bfseries, codexgreen] at (6,2.25)
+      {Constructive Interference (equal waves, in phase)};
+    \draw[gray!55, dashed] (0,0) -- (12,0);
+    \draw[->, gray!65] (0,-1.4) -- (12.4,-1.4)
+      node[right, font=\tiny] {position};
 
-    % Wave 1
-    \draw[codexblue, thick, domain=0:12, samples=80]
-      plot ({\x},
-      {0.6*sin(deg(\x*0.52))+1.5});
-    \node[left, codexblue, font=\tiny] at (0,1.5)
-      {Wave 1};
-
-    % Wave 2
-    \draw[codexred, thick, domain=0:12, samples=80]
-      plot ({\x},
-      {0.6*sin(deg(\x*0.52))+0.5});
-    \node[left, codexred, font=\tiny] at (0,0.5)
-      {Wave 2};
-
-    % Resultant
-    \draw[codexgreen, very thick, domain=0:12, samples=80]
-      plot ({\x},
-      {1.2*sin(deg(\x*0.52))-0.8});
-    \node[left, codexgreen, font=\small, align=center] at (0,-0.8)
-      {Resultant\\($2A$)};
+    % The two equal-amplitude components coincide exactly.
+    \draw[codexblue, thick, domain=0:12, samples=100]
+      plot ({\x},{0.55*sin(deg(\x*0.52))});
+    \draw[codexred, thick, dashed, domain=0:12, samples=100]
+      plot ({\x},{0.55*sin(deg(\x*0.52))});
+    % Point-by-point sum: A sin(kx) + A sin(kx) = 2A sin(kx).
+    \draw[codexgreen, very thick, domain=0:12, samples=100]
+      plot ({\x},{1.10*sin(deg(\x*0.52))});
+    \node[font=\tiny, codexblue, fill=white, inner sep=1pt, anchor=west]
+      at (8.7,1.25) {Wave 1: amplitude $A$};
+    \node[font=\tiny, codexred, fill=white, inner sep=1pt, anchor=west]
+      at (8.7,0.98) {Wave 2: amplitude $A$, in phase};
+    \node[font=\tiny, codexgreen, fill=white, inner sep=1pt, anchor=west]
+      at (8.7,0.71) {Resultant: amplitude $2A$};
   \end{scope}
 
-  % === DESTRUCTIVE ===
+  % === DESTRUCTIVE: equal, opposite displacements cancel point by point ===
   \begin{scope}[shift={(0,0)}]
-    \node[font=\bfseries, codexred] at (6,2.5)
-      {Destructive Interference (antiphase)};
+    \node[font=\bfseries, codexred] at (6,2.25)
+      {Destructive Interference (equal waves, antiphase)};
+    \draw[gray!55, dashed] (0,0) -- (12,0);
+    \draw[->, gray!65] (0,-1.4) -- (12.4,-1.4)
+      node[right, font=\tiny] {position};
 
-    % Wave 1
-    \draw[codexblue, thick, domain=0:12, samples=80]
-      plot ({\x},
-      {0.6*sin(deg(\x*0.52))+1.5});
-    \node[left, codexblue, font=\tiny] at (0,1.5)
-      {Wave 1};
-
-    % Wave 2 (antiphase: add pi to phase)
-    \draw[codexred, thick, domain=0:12, samples=80]
-      plot ({\x},
-      {0.6*sin(deg(\x*0.52)+180)+0.5});
-    \node[left, codexred, font=\tiny, align=center] at (0,0.5)
-      {Wave 2\\(antiphase)};
-
-    % Resultant (zero)
-    \draw[codexgold, very thick, domain=0:12]
-      plot ({\x},{-0.8});
-    \node[left, codexgold, font=\small, align=center] at (0,-0.8)
-      {Resultant\\$= 0$};
+    \draw[codexblue, thick, domain=0:12, samples=100]
+      plot ({\x},{0.55*sin(deg(\x*0.52))});
+    \draw[codexred, thick, dashed, domain=0:12, samples=100]
+      plot ({\x},{0.55*sin(deg(\x*0.52)+180)});
+    % Equal antiphase components sum to zero at every position.
+    \draw[codexgold, very thick] (0,0) -- (12,0);
+    \node[font=\tiny, codexblue, fill=white, inner sep=1pt, anchor=west]
+      at (8.7,1.25) {Wave 1: amplitude $A$};
+    \node[font=\tiny, codexred, fill=white, inner sep=1pt, anchor=west]
+      at (8.7,0.98) {Wave 2: amplitude $A$, antiphase};
+    \node[font=\tiny, codexgold, fill=white, inner sep=1pt, anchor=west]
+      at (8.7,0.71) {Resultant: zero displacement};
   \end{scope}
 
 \end{tikzpicture}

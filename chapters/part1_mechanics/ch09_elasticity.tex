@@ -452,8 +452,8 @@ meaning.
     width=11.5cm,
     height=8.5cm,
     clip=true,
-    xlabel={Strain $\varepsilon$},
-    ylabel={Stress $\sigma$ (MPa)},
+    xlabel={Engineering strain $\varepsilon_{\mathrm{eng}}$},
+    ylabel={Engineering stress $\sigma_{\mathrm{eng}}$ (MPa)},
     xmin=0, xmax=0.35,
     ymin=0, ymax=580,
     grid=major,
@@ -479,13 +479,14 @@ meaning.
 
 % ===== YIELD STRESS REFERENCE LINE =====
 \draw[gray, dashed, thin] (axis cs:0,355) -- (axis cs:0.320,355);
-\node[gray, font=\scriptsize, anchor=east] at (axis cs:-0.010,355) {$\sigma_y$};
+\node[gray, font=\scriptsize, anchor=west, fill=white, inner sep=1pt]
+  at (axis cs:0.004,372) {$\sigma_y$};
 
 % ===== ZONE LABELS =====
-\node[align=center, font=\tiny] at (axis cs:0.010,545) {\textbf{Elastic}\\reversible};
-\node[align=center, font=\tiny] at (axis cs:0.040,545) {\textbf{Yield}\\plateau};
-\node[align=center, font=\tiny] at (axis cs:0.155,545) {\textbf{Hardening}\\strengthening};
-\node[align=center, font=\tiny] at (axis cs:0.285,545) {\textbf{Necking}\\thinning};
+\node[align=left, anchor=west, font=\tiny] at (axis cs:0.003,560) {\textbf{Elastic}};
+\node[align=center, font=\tiny] at (axis cs:0.040,525) {\textbf{Yield}};
+\node[align=center, font=\tiny] at (axis cs:0.155,545) {\textbf{Hardening}};
+\node[align=center, font=\tiny] at (axis cs:0.285,545) {\textbf{Necking}};
 
 % ===== CURVE SEGMENTS =====
 % O -> A : Elastic region (exaggerated scale so it's visible; Hooke's Law)
@@ -509,11 +510,12 @@ meaning.
 \draw[codexblue, thin] (axis cs:0.006,120) -- (axis cs:0.013,120) -- (axis cs:0.013,260);
 \node[codexblue, font=\scriptsize, below] at (axis cs:0.0095,118) {$\Delta\varepsilon$};
 \node[codexblue, font=\scriptsize, right] at (axis cs:0.0135,190) {$\Delta\sigma$};
-\node[codexblue, font=\scriptsize, rotate=80] at (axis cs:0.0165,300) {$E=\Delta\sigma/\Delta\varepsilon$};
-\node[codexblue, font=\scriptsize, rotate=80, anchor=east] at (axis cs:0.004,250) {Hooke's Law region};
 
 % Not-to-scale disclaimer
-\node[gray, font=\tiny] at (axis cs:0.075,55) {(elastic region exaggerated for clarity --- not to scale)};
+\node[gray, font=\tiny] at (axis cs:0.200,45) {(elastic region exaggerated for clarity --- not to scale)};
+\node[gray!60!black, font=\scriptsize, align=center, fill=white, inner sep=1pt]
+  at (axis cs:0.190,95)
+  {Engineering stress uses $A_0$; true stress is not plotted};
 
 % ===== POINT MARKERS =====
 \fill (axis cs:0,0) circle (1.6pt);
@@ -526,10 +528,10 @@ meaning.
 \node[below right, codexred, font=\small] at (axis cs:0.060,355) {B\,(lower yield)};
 
 \fill[codexgreen] (axis cs:0.250,510) circle (1.6pt);
-\node[above, codexgreen, font=\small] at (axis cs:0.250,515) {C\,(UTS)};
+\node[below left, codexgreen, font=\small] at (axis cs:0.250,470) {C\,(UTS)};
 
 \fill[codexgold] (axis cs:0.320,340) circle (1.6pt);
-\node[above right, codexgold, font=\small] at (axis cs:0.320,340) {D\,(fracture)};
+\node[below left, codexgold, font=\small] at (axis cs:0.318,335) {D\,(fracture)};
 
 \end{axis}
 \end{tikzpicture}

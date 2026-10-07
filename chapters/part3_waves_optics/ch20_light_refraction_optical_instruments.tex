@@ -887,10 +887,10 @@ lenses with greater aberration).
 \begin{center}
 \begin{tikzpicture}[scale=0.9, font=\small]
 
-  % === SHORT-SIGHT (Myopia) ===
+  % === SHORT-SIGHT (Myopia), uncorrected ===
   \begin{scope}[shift={(0,5)}]
-    \node[font=\bfseries, codexred] at (4.5,2.0)
-      {Short-sight (Myopia): Image forms in front of retina};
+    \node[font=\bfseries, codexred, align=center] at (4.5,2.0)
+      {Short-sight (myopia), uncorrected: parallel rays focus before retina};
 
     % Eyeball
     \fill[white] (5,0) circle (1.5cm);
@@ -903,15 +903,15 @@ lenses with greater aberration).
     \draw[codexgreen, very thick]
       (5,0) ++(20:1.5) arc(20:-20:1.5);
     \node[codexgreen, font=\tiny] at (6.4,0) {Retina};
-    % Focal point (in front of retina - SHORT SIGHT)
+    % Uncorrected focal point in front of the retina.
     \fill[codexred] (5.2,0) circle (4pt);
     \node[above, codexred, font=\tiny] at (5.2,0.1)
-      {image here};
-    % Rays converging too soon
+      {focus};
+    % Parallel rays from a distant object enter the eye.
     \draw[->, thick, codexblue]
-      (0.5,0.8) -- (3.5,0.3);
+      (0.5,0.3) -- (3.5,0.3);
     \draw[->, thick, codexblue]
-      (0.5,-0.8) -- (3.5,-0.3);
+      (0.5,-0.3) -- (3.5,-0.3);
     \draw[thick, codexred] (3.5,0.3) -- (5.2,0);
     \draw[thick, codexred] (3.5,-0.3) -- (5.2,0);
     % Diverge after focal point
@@ -919,15 +919,14 @@ lenses with greater aberration).
       (5.2,0) -- (6.5,0.4);
     \draw[dashed, codexred!50]
       (5.2,0) -- (6.5,-0.4);
-    \node[font=\tiny, align=center] at (2.0,-1.5)
-      {Corrected by:\\diverging (concave) lens\\
-      $P < 0$};
+    \node[font=\tiny, align=center, text width=2.7cm] at (1.6,-1.65)
+      {Uncorrected: focus forms\\in front of retina};
   \end{scope}
 
-  % === LONG-SIGHT (Hypermetropia) ===
+  % === LONG-SIGHT (Hypermetropia), uncorrected ===
   \begin{scope}[shift={(0,0)}]
-    \node[font=\bfseries, codexblue] at (4.5,2.0)
-      {Long-sight (Hypermetropia): Image forms behind retina};
+    \node[font=\bfseries, codexblue, align=center] at (4.5,2.0)
+      {Long-sight (hypermetropia), uncorrected: parallel rays focus behind retina};
 
     % Eyeball
     \fill[white] (5,0) circle (1.5cm);
@@ -943,18 +942,18 @@ lenses with greater aberration).
     % Focal point (beyond retina - LONG SIGHT)
     \fill[codexblue] (7.5,0) circle (4pt);
     \node[above, codexblue, font=\tiny] at (7.5,0.1)
-      {image would form here};
-    % Rays not converging enough
+      {focus};
+    % Parallel distant-object rays are not converged enough by the eye.
     \draw[->, thick, codexblue]
-      (0.5,0.8) -- (3.5,0.3);
+      (0.5,0.3) -- (3.5,0.3);
     \draw[->, thick, codexblue]
-      (0.5,-0.8) -- (3.5,-0.3);
+      (0.5,-0.3) -- (3.5,-0.3);
     \draw[thick, codexblue] (3.5,0.3) -- (6.4,0.2);
     \draw[thick, codexblue] (3.5,-0.3) -- (6.4,-0.2);
     \draw[thick, codexblue] (6.4,0.2) -- (7.5,0);
     \draw[thick, codexblue] (6.4,-0.2) -- (7.5,0);
-    \node[font=\tiny, align=center] at (2.0,-1.5)
-      {Without correction:\\rays focus behind retina};
+    \node[font=\tiny, align=center, text width=2.7cm] at (1.6,-1.65)
+      {Uncorrected: focus forms\\behind the retina};
   \end{scope}
 
 \end{tikzpicture}

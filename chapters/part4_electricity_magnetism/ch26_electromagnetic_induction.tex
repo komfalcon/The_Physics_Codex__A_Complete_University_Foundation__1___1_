@@ -77,18 +77,14 @@ a coil.
     \node[font=\bfseries] at (4.0,3.5)
       {Magnet moving into coil $\Rightarrow$ induced current};
 
-    % Coil
-    \draw[very thick, gray] (2.0,0.5) -- (2.0,3.0);
-    \draw[very thick, gray] (5.0,0.5) -- (5.0,3.0);
-    \draw[very thick, gray] (2.0,0.5) -- (5.0,0.5);
-    \draw[very thick, gray] (2.0,3.0) -- (5.0,3.0);
-    % Coil windings
-    \foreach \y in {0.8,1.2,1.6,2.0,2.4,2.8} {
-      \draw[gray, thick]
-        (2.0,\y) .. controls (2.5,\y+0.15) and
-        (4.5,\y+0.15) .. (5.0,\y);
-    }
-    \node[font=\small] at (3.5,1.7) {Coil};
+    % A two-terminal multi-turn winding; the galvanometer closes its circuit.
+    \draw[very thick, gray, decorate,
+      decoration={coil, aspect=0.5, segment length=5pt,
+      amplitude=5pt}]
+      (2.0,1.75) -- (5.0,1.75);
+    \draw[thick] (5.0,1.75) -- (6.0,1.75) -- (6.0,1.5);
+    \draw[thick] (7.0,1.5) -- (7.0,0.2) -- (2.0,0.2)
+      -- (2.0,1.75);
 
     % Magnet (N end entering from left)
     \fill[codexred!60] (-0.5,1.2) rectangle (0.5,2.3);
@@ -99,12 +95,10 @@ a coil.
     \draw[->, very thick, codexgold] (1.5,1.75) -- (2.0,1.75);
     \node[above, codexgold, font=\small] at (1.75,1.9)
       {$v$};
+    \node[font=\tiny, fill=white, inner sep=1pt]
+      at (4.2,2.8) {Coil};
 
-    % Galvanometer
-    \draw[thick] (3.5,0.5) -- (3.5,-0.3);
-    \draw[thick] (3.5,-0.3) -- (7.0,-0.3);
-    \draw[thick] (7.0,-0.3) -- (7.0,1.75);
-    \draw[thick] (7.0,1.75) -- (5.0,1.75);
+    % Galvanometer is inserted between the two circuit terminals.
     \fill[white] (6.5,1.5) circle (0.5);
     \draw[thick] (6.5,1.5) circle (0.5);
     \node[font=\tiny] at (6.5,1.5) {G};
@@ -120,16 +114,14 @@ a coil.
     \node[font=\bfseries] at (3.5,3.5)
       {Magnet stationary $\Rightarrow$ no current};
 
-    % Coil
-    \draw[very thick, gray] (2.0,0.5) -- (2.0,3.0);
-    \draw[very thick, gray] (5.0,0.5) -- (5.0,3.0);
-    \draw[very thick, gray] (2.0,0.5) -- (5.0,0.5);
-    \draw[very thick, gray] (2.0,3.0) -- (5.0,3.0);
-    \foreach \y in {0.8,1.2,1.6,2.0,2.4,2.8} {
-      \draw[gray, thick]
-        (2.0,\y) .. controls (2.5,\y+0.15) and
-        (4.5,\y+0.15) .. (5.0,\y);
-    }
+    % A two-terminal multi-turn winding; the galvanometer closes its circuit.
+    \draw[very thick, gray, decorate,
+      decoration={coil, aspect=0.5, segment length=5pt,
+      amplitude=5pt}]
+      (2.0,1.75) -- (5.0,1.75);
+    \draw[thick] (5.0,1.75) -- (6.0,1.75) -- (6.0,1.5);
+    \draw[thick] (7.0,1.5) -- (7.0,0.2) -- (2.0,0.2)
+      -- (2.0,1.75);
 
     % Magnet static inside coil
     \fill[codexred!60] (1.5,1.2) rectangle (2.5,2.3);
@@ -139,16 +131,15 @@ a coil.
     \node[white, font=\bfseries] at (3.0,1.75) {S};
     \node[above, gray, font=\small] at (2.5,2.4)
       {stationary};
+    \node[font=\tiny, fill=white, inner sep=1pt]
+      at (4.2,2.8) {Coil};
 
-    % Galvanometer (no deflection)
-    \draw[thick] (3.5,0.5) -- (3.5,-0.3);
-    \draw[thick] (3.5,-0.3) -- (6.5,-0.3);
-    \draw[thick] (6.5,-0.3) -- (6.5,1.75);
-    \fill[white] (6.0,1.5) circle (0.5);
-    \draw[thick] (6.0,1.5) circle (0.5);
-    \node[font=\tiny] at (6.0,1.5) {G};
+    % Galvanometer is inserted between the two circuit terminals.
+    \fill[white] (6.5,1.5) circle (0.5);
+    \draw[thick] (6.5,1.5) circle (0.5);
+    \node[font=\tiny] at (6.5,1.5) {G};
     % Needle vertical (no deflection)
-    \draw[-, thick, gray] (6.0,1.5) -- (6.0,1.9);
+    \draw[-, thick, gray] (6.5,1.5) -- (6.5,1.9);
 
     \node[gray, font=\small] at (3.5,-0.8)
       {No deflection $\Rightarrow$ no current};
@@ -159,16 +150,14 @@ a coil.
     \node[font=\bfseries] at (4.0,3.5)
       {Magnet withdrawing $\Rightarrow$ opposite current};
 
-    % Coil
-    \draw[very thick, gray] (2.0,0.5) -- (2.0,3.0);
-    \draw[very thick, gray] (5.0,0.5) -- (5.0,3.0);
-    \draw[very thick, gray] (2.0,0.5) -- (5.0,0.5);
-    \draw[very thick, gray] (2.0,3.0) -- (5.0,3.0);
-    \foreach \y in {0.8,1.2,1.6,2.0,2.4,2.8} {
-      \draw[gray, thick]
-        (2.0,\y) .. controls (2.5,\y+0.15) and
-        (4.5,\y+0.15) .. (5.0,\y);
-    }
+    % A two-terminal multi-turn winding; the galvanometer closes its circuit.
+    \draw[very thick, gray, decorate,
+      decoration={coil, aspect=0.5, segment length=5pt,
+      amplitude=5pt}]
+      (2.0,1.75) -- (5.0,1.75);
+    \draw[thick] (5.0,1.75) -- (6.0,1.75) -- (6.0,1.5);
+    \draw[thick] (7.0,1.5) -- (7.0,0.2) -- (2.0,0.2)
+      -- (2.0,1.75);
 
     % Magnet withdrawing
     \fill[codexred!60] (1.5,1.2) rectangle (2.5,2.3);
@@ -179,12 +168,10 @@ a coil.
     \draw[->, very thick, codexgold]
       (1.5,1.75) -- (0.8,1.75);
     \node[above, codexgold] at (1.15,1.9) {$v$};
+    \node[font=\tiny, fill=white, inner sep=1pt]
+      at (4.2,2.8) {Coil};
 
-    % Galvanometer (opposite deflection)
-    \draw[thick] (3.5,0.5) -- (3.5,-0.3);
-    \draw[thick] (3.5,-0.3) -- (7.0,-0.3);
-    \draw[thick] (7.0,-0.3) -- (7.0,1.75);
-    \draw[thick] (7.0,1.75) -- (5.0,1.75);
+    % Galvanometer is inserted between the two circuit terminals.
     \fill[white] (6.5,1.5) circle (0.5);
     \draw[thick] (6.5,1.5) circle (0.5);
     \node[font=\tiny] at (6.5,1.5) {G};
@@ -307,8 +294,10 @@ nothing, which is impossible.
     % Induced current opposes increase:
     % creates field opposing (downward) inside coil
     % By right hand rule: current flows clockwise (viewed from top)
+    \draw[very thick, codexred]
+      (2.0,3.5) ellipse (1.5 and 0.5);
     \draw[->, very thick, codexred]
-      (2.0,3.5) arc(0:270:0.8 and 0.3);
+      (2.0,3.5) arc(0:270:1.5 and 0.5);
     \node[above, codexred, font=\tiny] at (2.0,4.45)
       {Clockwise current (viewed from top)};
     \node[anchor=west, codexred, font=\tiny, align=left]
@@ -346,8 +335,10 @@ nothing, which is impossible.
 
     % Induced current tries to maintain flux:
     % creates upward field, so anticlockwise (from top)
+    \draw[very thick, codexblue]
+      (2.0,3.5) ellipse (1.5 and 0.5);
     \draw[->, very thick, codexblue]
-      (2.0,3.5) arc(0:-270:0.8 and 0.3);
+      (2.0,3.5) arc(0:-270:1.5 and 0.5);
     \node[above, codexblue, font=\tiny] at (2.0,4.45)
       {Anticlockwise current (viewed from top)};
     \node[anchor=west, codexblue, font=\tiny, align=left]
@@ -661,15 +652,14 @@ where $\mathcal{E}_0 = NBA\omega$ is the \textbf{peak EMF}.
         (1.5,\y) -- (5.5,\y);
     }
 
-    % Rotating coil (shown at angle)
+    % Rotating coil shown as an open loop with two terminals.
+    % The loop plane is parallel to B here (maximum induced EMF).
     \draw[very thick, codexblue, line width=2.5pt]
-      (2.8,1.0) -- (4.2,4.0);
-    \draw[very thick, codexred, line width=2.5pt]
-      (4.2,1.0) -- (2.8,4.0);
-    \node[above, codexblue, font=\tiny]
-      at (3.0,4.1) {$I$ out};
-    \node[below, codexred, font=\tiny]
-      at (4.2,0.9) {$I$ in};
+      (4.2,1.0) -- (4.2,4.0) -- (2.8,4.0) -- (2.8,1.0);
+    \draw[->, very thick, codexred]
+      (4.2,2.0) -- (4.2,3.0);
+    \draw[->, very thick, codexblue]
+      (2.8,3.0) -- (2.8,2.0);
 
     % Rotation arrow
     \draw[->, very thick, codexgreen, dashed]
@@ -681,15 +671,22 @@ where $\mathcal{E}_0 = NBA\omega$ is the \textbf{peak EMF}.
     \fill[gray!50] (3.3,0.3) rectangle (3.7,1.0);
     \fill[gray!50] (3.3,4.0) rectangle (3.7,4.7);
 
-    % Slip rings (circles on axle)
+    % Slip rings and separate coil-terminal connections
     \draw[thick] (3.5,0.1) ellipse (0.5 and 0.15);
     \draw[thick] (3.5,-0.3) ellipse (0.5 and 0.15);
-    \node[below, font=\tiny] at (3.5,-0.5)
+    \draw[very thick, codexblue] (2.8,1.0) -- (3.0,0.1);
+    \draw[very thick, codexblue] (4.2,1.0) -- (4.0,-0.3);
+    \node[below, font=\tiny] at (3.5,-0.55)
       {Slip rings (give AC)};
 
     % Brushes and external circuit
-    \draw[thick] (4.0,0.1) -- (5.0,0.1);
-    \draw[thick] (4.0,-0.3) -- (5.0,-0.3);
+    \fill[gray!65] (4.0,0.0) rectangle (4.2,0.2);
+    \draw[thick] (4.0,0.0) rectangle (4.2,0.2);
+    \fill[gray!65] (4.0,-0.4) rectangle (4.2,-0.2);
+    \draw[thick] (4.0,-0.4) rectangle (4.2,-0.2);
+    \node[above, font=\tiny] at (4.55,0.25) {Brushes};
+    \draw[thick] (4.2,0.1) -- (5.0,0.1);
+    \draw[thick] (4.2,-0.3) -- (5.0,-0.3);
     \draw[thick] (5.0,0.1) -- (5.0,-1.5);
     \draw[thick] (5.0,-0.3) -- (6.0,-0.3) -- (6.0,-1.5);
     \fill[white] (5.3,-1.5) rectangle (5.7,-2.0);
@@ -834,21 +831,25 @@ energy loss.
     \fill[gray!40] (0.5,0.5) rectangle (4.5,4.5);
     \draw[very thick] (0.5,0.5) rectangle (4.5,4.5);
 
-    % Large eddy current loops
+    % A changing field normal to this cross-section drives eddy currents.
+    \foreach \x in {0.9,4.1} {
+      \foreach \y in {0.9,4.1} {
+        \node[codexblue!70, font=\small] at (\x,\y) {$\otimes$};
+      }
+    }
+
+    % Large eddy current loops (counterclockwise for increasing inward B)
     \draw[->, very thick, codexred]
       (1.5,1.5) -- (3.5,1.5) -- (3.5,3.5)
       -- (1.5,3.5) -- (1.5,1.5);
     \draw[->, thick, codexred!70]
       (1.0,1.0) -- (4.0,1.0) -- (4.0,4.0)
       -- (1.0,4.0) -- (1.0,1.0);
-    \node[codexred, font=\small] at (2.5,2.5)
-      {Large $I$\\large $I^2R$\\loss};
+    \node[codexred, font=\tiny, align=center] at (2.5,-0.85)
+      {Large loops; greater $I^2R$ loss};
 
-    % Changing flux arrows
-    \draw[->, very thick, codexblue]
-      (2.5,-0.2) -- (2.5,0.4);
-    \node[below, codexblue, font=\tiny]
-      at (2.5,-0.3) {changing $\vect{B}$};
+    \node[below, codexblue, font=\tiny, align=center]
+      at (2.5,-0.25) {Increasing $B$ into page};
   \end{scope}
 
   % === LAMINATED CORE ===
@@ -863,24 +864,28 @@ energy loss.
     }
     \draw[very thick] (0.5,0.5) rectangle (4.5,4.5);
 
+    % The same changing field passes normally through each sheet.
+    \foreach \x in {0.7,4.3} {
+      \foreach \y in {0.9,4.1} {
+        \node[codexblue!70, font=\small] at (\x,\y) {$\otimes$};
+      }
+    }
+
     % Small eddy currents (confined to thin sheets)
     \foreach \x in {0.6,1.1,1.6,2.1,2.6,3.1,3.6} {
       \draw[->, thin, codexgreen]
         (\x,1.5) -- (\x+0.2,1.5) -- (\x+0.2,3.5)
         -- (\x,3.5) -- (\x,1.5);
     }
-    \node[codexgreen, font=\small] at (2.5,2.5)
-      {Small $I$\\small $I^2R$\\loss};
+    \node[codexgreen, font=\tiny, align=center] at (2.5,-0.85)
+      {Small loops; lower total loss};
 
-    % Changing flux
-    \draw[->, very thick, codexblue]
-      (2.5,-0.2) -- (2.5,0.4);
-    \node[below, codexblue, font=\tiny]
-      at (2.5,-0.3) {changing $\vect{B}$};
+    \node[below, codexblue, font=\tiny, align=center]
+      at (2.5,-0.25) {Increasing $B$ into page};
   \end{scope}
 
   % Explanation
-  \node[align=center, font=\small] at (7.0,-1.45)
+  \node[align=center, font=\small] at (5.75,-1.55)
     {Laminations confine eddy currents to thin strips.\\
     Higher resistance path $\Rightarrow$ lower current
     $\Rightarrow$ far less energy loss.};
