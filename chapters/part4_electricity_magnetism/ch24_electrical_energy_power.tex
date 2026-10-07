@@ -507,22 +507,24 @@ changing flux induces an EMF in the secondary coil
     decoration={coil, aspect=0.5, segment length=6pt,
     amplitude=5pt}]
     (0.5,1.0) -- (0.5,4.5);
-  \node[codexblue] at (-0.3,2.75) {Primary};
-  \node[codexblue, font=\tiny] at (-0.3,2.25)
-    {$N_p$ turns};
+  \node[codexblue, font=\scriptsize, align=center,
+    fill=white, inner sep=1pt] at (1.7,4.0)
+    {Primary\\$N_p$ turns};
 
   % Secondary coil (right leg)
   \draw[codexred, very thick, decorate,
     decoration={coil, aspect=0.5, segment length=6pt,
     amplitude=5pt}]
     (6.5,1.0) -- (6.5,4.5);
-  \node[codexred] at (7.8,2.75) {Secondary};
-  \node[codexred, font=\tiny] at (7.8,2.25)
-    {$N_s$ turns};
+  \node[codexred, font=\scriptsize, align=center,
+    fill=white, inner sep=1pt] at (5.3,4.0)
+    {Secondary\\$N_s$ turns};
 
   % AC input
   \draw[thick, codexblue] (0.5,4.5) -- (-1.5,4.5);
   \draw[thick, codexblue] (0.5,1.0) -- (-1.5,1.0);
+  \draw[thick, codexblue] (-1.5,4.5) -- (-1.5,2.85);
+  \draw[thick, codexblue] (-1.5,1.65) -- (-1.5,1.0);
   \fill[white] (-1.5,2.25) circle (0.6);
   \draw[thick, codexblue] (-1.5,2.25) circle (0.6);
   \draw[codexblue, thick]

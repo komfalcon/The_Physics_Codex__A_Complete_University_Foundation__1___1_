@@ -547,8 +547,8 @@ depth point outward on all four sides.}
   \draw[->, codexred] (8.75,2.5) -- (9.35,2.5);
 
   \node[below, font=\small, align=center, text width=10cm] at (5,-0.3)
-    {At depth $h$ below each free surface, pressure is
-    $P = P_0 + \rho g h$ in all three vessels, regardless of shape.};
+    {Separate, unconnected vessels; same liquid and surface pressure. At equal
+    depth $h$, each has $P = P_0 + \rho g h$, regardless of shape.};
 
 \end{tikzpicture}
 \end{center}
@@ -870,61 +870,62 @@ For a floating object:
 
 \begin{diagbox}[Floating, Sinking and Neutral Buoyancy]
 \begin{center}
-\begin{tikzpicture}[scale=0.85]
+\begin{tikzpicture}[scale=0.82, font=\small]
+  % Three separate tanks keep the density labels and force arrows distinct.
+  \node[font=\bfseries, codexblue, align=center] at (2,4.7) {Floating\\wood};
+  \node[font=\bfseries, codexaccent, align=center] at (6,4.7) {Neutral\\submarine};
+  \node[font=\bfseries, codexred, align=center] at (10,4.7) {Sinking\\metal};
+  \node[font=\tiny, align=center, fill=white, inner sep=1pt, text width=11cm]
+    at (6,-0.12)
+    {Arrows indicate force directions; relative lengths are qualitative; placements are not lines of action.};
 
-  % Water in container
-  \fill[codexaccent!15] (0,0) rectangle (12,5);
-  \draw[thick] (0,0) rectangle (12,5);
-  \draw[thick, codexaccent] (0,5) -- (12,5);
+  % Water and open-sided tank outlines.
+  \fill[codexaccent!15] (0.5,1.4) rectangle (3.5,3.5);
+  \fill[codexaccent!15] (4.5,1.4) rectangle (7.5,3.5);
+  \fill[codexaccent!15] (8.5,1.4) rectangle (11.5,3.5);
+  \draw[thick] (0.5,4.1) -- (0.5,1.4) -- (3.5,1.4) -- (3.5,4.1);
+  \draw[thick] (4.5,4.1) -- (4.5,1.4) -- (7.5,1.4) -- (7.5,4.1);
+  \draw[thick] (8.5,4.1) -- (8.5,1.4) -- (11.5,1.4) -- (11.5,4.1);
+  \draw[thick, codexaccent] (0.5,3.5) -- (3.5,3.5)
+    (4.5,3.5) -- (7.5,3.5) (8.5,3.5) -- (11.5,3.5);
 
-  % FLOATS (left): wood, $\rho < \rho_{water}$
-  \fill[codexblue!60] (1,4.5) rectangle (2.8,5.5);
-  \draw[thick] (1,4.5) rectangle (2.8,5.5);
-  \node at (1.9,5.0) {\small Wood};
-  % Only partially submerged
-  \fill[codexblue!80, opacity=0.5]
-    (1,4.5) rectangle (2.8,5.0);
-  \draw[->, codexgreen, thick]
-    (1.3,4.55) -- (1.3,5.45)
-    node[above, font=\tiny]{$U=W$};
-  \draw[->, codexred, thick]
-    (2.5,5.45) -- (2.5,4.55)
-    node[below, font=\tiny]{$W=U$};
-  \node[below, font=\small] at (1.9,2.3)
-    {Floats};
-  \node[below, font=\tiny, codexblue] at (1.9,3.0)
-    {$\rho < \rho_{fluid}$};
+  % Floating: half the block is submerged; the equilibrium forces are equal.
+  \fill[codexblue!60] (1.4,3.0) rectangle (2.6,4.0);
+  \fill[codexblue!80, opacity=0.45] (1.4,3.0) rectangle (2.6,3.5);
+  \draw[thick] (1.4,3.0) rectangle (2.6,4.0);
+  \node[font=\tiny] at (2,3.75) {Wood};
+  \draw[->, codexgreen, thick] (1.0,3.0) -- (1.0,4.0)
+    node[above, font=\tiny] {$U$};
+  \draw[->, codexred, thick] (3.0,4.0) -- (3.0,3.0)
+    node[below, font=\tiny] {$W$};
+  \node[font=\small] at (2,0.95) {Floats: $U=W$};
+  \node[codexblue, font=\tiny] at (2,0.35)
+    {$\rho_{object}<\rho_{fluid}$};
 
-  % NEUTRAL (middle): same density
-  \fill[codexaccent!60] (5,2.3) rectangle (7,3.5);
-  \draw[thick] (5,2.3) rectangle (7,3.5);
-  \node at (6,2.9) {\small Submarine};
-  \draw[->, codexgreen, thick]
-    (5.4,2.35) -- (5.4,3.25)
-    node[above, font=\tiny]{$U=W$};
-  \draw[->, codexred, thick]
-    (6.6,3.45) -- (6.6,2.55)
-    node[below, font=\tiny]{$W=U$};
-  \node[below, font=\small] at (6,0.1)
-    {Neutrally buoyant};
-  \node[below, font=\tiny, codexaccent] at (6,0.8)
-    {$\rho = \rho_{fluid}$};
+  % Neutral buoyancy: fully immersed and in force balance.
+  \fill[codexaccent!60] (5.4,2.5) rectangle (6.6,3.3);
+  \draw[thick] (5.4,2.5) rectangle (6.6,3.3);
+  \node[font=\tiny] at (6,2.9) {Submarine};
+  \draw[->, codexgreen, thick] (5.0,2.5) -- (5.0,3.3)
+    node[above, font=\tiny] {$U$};
+  \draw[->, codexred, thick] (7.0,3.3) -- (7.0,2.5)
+    node[below, font=\tiny] {$W$};
+  \node[font=\small] at (6,0.95) {Neutral: $U=W$};
+  \node[codexaccent, font=\tiny] at (6,0.35)
+    {$\rho_{object}=\rho_{fluid}$};
 
-  % SINKS (right): metal
-  \fill[codexred!50] (9.5,0.2) rectangle (11,1.2);
-  \draw[thick] (9.5,0.2) rectangle (11,1.2);
-  \node at (10.25,0.7) {\small Metal};
-  \draw[->, codexgreen, thick]
-    (9.65,0.2) -- (9.65,0.9)
-    node[above, font=\tiny]{$U$};
-  \draw[->, codexred, thick, line width=2pt]
-    (10.85,1.2) -- (10.85,0.2)
-    node[below, font=\tiny]{$W > U$};
-  \node[below, font=\small] at (10.25,-0.8)
-    {Sinks};
-  \node[below, font=\tiny, codexred] at (10.25,3.4)
-    {$\rho > \rho_{fluid}$};
-
+  % Sinking: the weight arrow is longer to show W > U.
+  \fill[codexred!50] (9.4,1.55) rectangle (10.6,2.35);
+  \draw[thick] (9.4,1.55) rectangle (10.6,2.35);
+  \node[font=\tiny] at (10,1.95) {Metal};
+  \draw[->, codexgreen, thick] (9.0,1.55) -- (9.0,2.0)
+    node[above, font=\tiny] {$U$};
+  \draw[->, codexred, thick, line width=1.5pt]
+    (11.0,2.35) -- (11.0,1.55)
+    node[below, font=\tiny] {$W$};
+  \node[font=\small] at (10,0.95) {Sinks: $W>U$};
+  \node[codexred, font=\tiny] at (10,0.35)
+    {$\rho_{object}>\rho_{fluid}$};
 \end{tikzpicture}
 \end{center}
 \end{diagbox}

@@ -278,7 +278,8 @@ carriers). The diode is essentially \textbf{non-conducting}.
     % $p$-type (left)
     \fill[codexred!20] (0,1.5) rectangle (2.5,4.5);
     \draw[thick] (0,1.5) rectangle (2.5,4.5);
-    \node[codexred, font=\small] at (1.25,3.5) {$p$-type};
+    \node[codexred, font=\scriptsize, fill=white, inner sep=1pt]
+      at (1.25,4.30) {$p$-type};
     \foreach \x in {0.5,1.0,1.5,2.0} {
       \foreach \y in {2.0,2.5,3.0,3.5,4.0} {
         \node[codexred, font=\small] at (\x,\y) {$+$};
@@ -299,21 +300,23 @@ carriers). The diode is essentially \textbf{non-conducting}.
     \fill[gray!40] (2.5,1.5) rectangle (3.5,4.5);
     \draw[thick] (2.5,1.5) -- (2.5,4.5);
     \draw[thick] (3.5,1.5) -- (3.5,4.5);
-    \node[gray, font=\tiny, rotate=90]
-      at (3.0,3.0) {Depletion\\region\\(narrow)};
+    \node[gray, font=\tiny, align=center, fill=white,
+      text width=0.85cm, inner sep=1pt]
+      at (3.0,4.15) {Narrow depletion};
 
     % Battery
     \draw[thick] (0,3.0) -- (-1.5,3.0);
     \draw[thick] (6.0,3.0) -- (7.5,3.0);
     \draw[thick] (-1.5,3.0) -- (-1.5,0.5);
     \draw[thick] (7.5,3.0) -- (7.5,0.5);
-    \draw[thick] (-1.5,0.5) -- (7.5,0.5);
-    % Battery symbol
-    \draw[very thick, codexred] (2.5,0.5) -- (3.5,0.5);
-    \draw[very thick] (2.0,0.3) -- (4.0,0.3);
-    \node[above, codexred, font=\small] at (2.5,0.6)
+    \draw[thick] (-1.5,0.5) -- (2.5,0.5);
+    \draw[thick] (3.5,0.5) -- (7.5,0.5);
+    % Series cell: long positive plate and short negative plate.
+    \draw[very thick, codexred] (2.5,0.15) -- (2.5,0.85);
+    \draw[very thick] (3.5,0.30) -- (3.5,0.70);
+    \node[above, codexred, font=\small] at (2.5,0.85)
       {$+$};
-    \node[above, codexblue, font=\small] at (4.5,0.6)
+    \node[above, codexblue, font=\small] at (3.5,0.70)
       {$-$};
 
     % Conventional current leaves the positive terminal, enters the p-side,
@@ -346,21 +349,23 @@ carriers). The diode is essentially \textbf{non-conducting}.
     \fill[gray!40] (2.0,1.5) rectangle (4.0,4.5);
     \draw[thick] (2.0,1.5) -- (2.0,4.5);
     \draw[thick] (4.0,1.5) -- (4.0,4.5);
-    \node[gray, font=\tiny, rotate=90]
-      at (3.0,3.0) {Wide depletion region};
+    \node[gray, font=\tiny, align=center, fill=white,
+      text width=1.7cm, inner sep=1pt]
+      at (3.0,4.15) {Wide depletion region};
 
     % Battery (reversed polarity)
     \draw[thick] (0,3.0) -- (-1.5,3.0);
     \draw[thick] (6.0,3.0) -- (7.5,3.0);
     \draw[thick] (-1.5,3.0) -- (-1.5,0.5);
     \draw[thick] (7.5,3.0) -- (7.5,0.5);
-    \draw[thick] (-1.5,0.5) -- (7.5,0.5);
-    % Battery reversed
-    \draw[very thick, codexblue] (2.5,0.5) -- (3.5,0.5);
-    \draw[very thick] (2.0,0.3) -- (4.0,0.3);
-    \node[above, codexblue, font=\small] at (2.3,0.6)
+    \draw[thick] (-1.5,0.5) -- (2.5,0.5);
+    \draw[thick] (3.5,0.5) -- (7.5,0.5);
+    % Reversed series cell: short negative plate then long positive plate.
+    \draw[very thick, codexblue] (2.5,0.30) -- (2.5,0.70);
+    \draw[very thick, codexred] (3.5,0.15) -- (3.5,0.85);
+    \node[above, codexblue, font=\small] at (2.5,0.70)
       {$-$};
-    \node[above, codexred, font=\small] at (4.5,0.6)
+    \node[above, codexred, font=\small] at (3.5,0.85)
       {$+$};
 
     % Tiny conventional leakage current is opposite to forward current,
@@ -685,33 +690,25 @@ is $180°$ out of phase with input.
     \fill[gray!30] (2.5,4.8) rectangle (3.5,6.0);
     \draw[thick] (2.5,4.8) rectangle (3.5,6.0);
     \node[right, font=\small] at (3.6,5.4) {$R_C$};
-    \draw[thick] (3.0,6.0) -- (3.0,4.8);
-
-    % Transistor symbol
-    % Collector
-    \draw[thick] (3.0,4.8) -- (3.0,4.2);
-    % Base line
-    \draw[very thick] (3.0,3.5) -- (3.0,4.2);
-    \draw[very thick] (3.0,3.5) -- (3.0,2.8);
-    % Emitter (with arrow for npn)
-    \draw[thick] (3.0,2.8) -- (3.0,2.2);
-    % Collector terminal
-    \draw[thick] (3.0,4.0) -- (4.0,4.5);
-    % Emitter terminal (with arrow)
-    \draw[thick] (3.0,3.0) -- (4.0,2.5);
-    \draw[->, thick] (3.7,2.7) -- (4.0,2.5);
-    % Base terminal
-    \draw[thick] (3.0,3.5) -- (1.5,3.5);
-    % Labels
-    \node[above, font=\small] at (4.0,4.5) {C};
-    \node[below, font=\small] at (4.0,2.5) {E};
+    % Three-terminal NPN device; collector/base/emitter are separate nets.
+    \draw[thick] (3.0,3.5) circle (0.85);
+    \draw[very thick] (2.8,2.95) -- (2.8,4.05);
+    \draw[thick] (2.8,3.95) -- (3.4,4.2);
+    \draw[thick] (2.8,3.05) -- (3.4,2.8);
+    \draw[->, thick] (3.12,2.92) -- (3.4,2.8);
+    \draw[thick] (3.0,4.8) -- (3.4,4.8) -- (3.4,4.2);
+    \draw[thick] (3.4,2.8) -- (3.4,2.2);
+    \draw[thick] (2.8,3.5) -- (1.5,3.5);
+    % Terminal labels
+    \node[right, font=\small] at (3.4,4.2) {C};
+    \node[right, font=\small] at (3.4,2.8) {E};
     \node[left, font=\small] at (1.4,3.5) {B};
 
     % Ground
-    \draw[thick] (3.0,2.2) -- (3.0,1.5);
-    \draw[thick] (2.5,1.5) -- (3.5,1.5);
-    \draw[thick] (2.7,1.3) -- (3.3,1.3);
-    \draw[thick] (2.9,1.1) -- (3.1,1.1);
+    \draw[thick] (3.4,2.2) -- (3.4,1.5);
+    \draw[thick] (2.9,1.5) -- (3.9,1.5);
+    \draw[thick] (3.1,1.3) -- (3.7,1.3);
+    \draw[thick] (3.25,1.1) -- (3.55,1.1);
 
     % Base resistor and input
     \fill[gray!30] (0.5,3.2) rectangle (1.2,3.8);
@@ -723,8 +720,8 @@ is $180°$ out of phase with input.
       {$V_{in}$};
 
     % Output (collector)
-    \draw[thick, dashed] (4.0,4.5) -- (5.5,4.5);
-    \node[right, font=\small] at (5.6,4.5)
+    \draw[thick, dashed] (3.4,4.8) -- (5.5,4.8);
+    \node[right, font=\small] at (5.6,4.8)
       {$V_{out}$};
 
     % State table
@@ -733,8 +730,9 @@ is $180°$ out of phase with input.
       at (3.0,-0.5)
       {$V_{in}$ low: $I_B=0$, $I_C=0$,\\
       \quad transistor OFF, $V_{out}=V_{CC}$\\
-      $V_{in}$ high: $I_B>0$, $I_C=h_{FE}I_B$,\\
-      \quad transistor ON, $V_{out}\approx 0$};
+      $V_{in}$ high: $I_B\ge I_{C(sat)}/h_{FE}$,\\
+      \quad $I_C\approx (V_{CC}-V_{CE(sat)})/R_C$,\\
+      \quad $V_{out}\approx V_{CE(sat)}\ll V_{CC}$};
   \end{scope}
 
   % === TRANSISTOR AS AMPLIFIER ===
@@ -750,25 +748,24 @@ is $180°$ out of phase with input.
     \fill[gray!30] (2.5,4.8) rectangle (3.5,6.0);
     \draw[thick] (2.5,4.8) rectangle (3.5,6.0);
     \node[right, font=\small] at (3.6,5.4) {$R_C$};
-    \draw[thick] (3.0,6.0) -- (3.0,4.8);
 
-    % Transistor
-    \draw[very thick] (3.0,3.5) -- (3.0,4.2);
-    \draw[very thick] (3.0,3.5) -- (3.0,2.8);
-    \draw[thick] (3.0,4.0) -- (4.0,4.5);
-    \draw[thick] (3.0,3.0) -- (4.0,2.5);
-    \draw[->, thick] (3.7,2.7) -- (4.0,2.5);
-    \draw[thick] (3.0,3.5) -- (1.5,3.5);
-    \node[above, font=\small] at (4.0,4.5) {C};
-    \node[below, font=\small] at (4.0,2.5) {E};
+    % Three-terminal NPN device; collector/base/emitter are separate nets.
+    \draw[thick] (3.0,3.5) circle (0.85);
+    \draw[very thick] (2.8,2.95) -- (2.8,4.05);
+    \draw[thick] (2.8,3.95) -- (3.4,4.2);
+    \draw[thick] (2.8,3.05) -- (3.4,2.8);
+    \draw[->, thick] (3.12,2.92) -- (3.4,2.8);
+    \draw[thick] (3.0,4.8) -- (3.4,4.8) -- (3.4,4.2);
+    \draw[thick] (3.4,2.8) -- (3.0,2.3);
+    \draw[thick] (2.8,3.5) -- (1.5,3.5);
+    \node[right, font=\small] at (3.4,4.2) {C};
+    \node[right, font=\small] at (3.4,2.8) {E};
     \node[left, font=\small] at (1.4,3.5) {B};
 
     % Emitter resistor
     \fill[gray!30] (2.5,1.5) rectangle (3.5,2.3);
     \draw[thick] (2.5,1.5) rectangle (3.5,2.3);
     \node[right, font=\small] at (3.6,1.9) {$R_E$};
-    \draw[thick] (3.0,2.3) -- (4.0,2.5);
-    \draw[thick] (3.0,2.3) -- (3.0,1.5);
 
     % Ground
     \draw[thick] (3.0,1.5) -- (3.0,1.0);
@@ -784,12 +781,12 @@ is $180°$ out of phase with input.
       at (-0.6,3.5) {$v_{in}$};
 
     % Output (inverted, amplified AC)
-    \draw[thick, dashed] (4.0,4.5) -- (5.5,4.5);
+    \draw[thick, dashed] (3.4,4.8) -- (4.0,4.8);
     \draw[codexred, thick]
-      (5.5,4.5) sin (5.75,3.5)
-      cos (6.0,4.5) sin (6.25,5.5) cos (6.5,4.5);
-    \node[right, codexred, font=\small]
-      at (6.6,4.5) {$v_{out}$\\(amplified,\\inverted)};
+      (4.0,4.8) sin (4.225,3.8)
+      cos (4.45,4.8) sin (4.675,5.8) cos (4.9,4.8);
+    \node[right, codexred, font=\tiny, align=left, text width=1.0cm]
+      at (5.0,4.8) {$v_{out}$\\amplified\\inverted};
 
     % Gain formula
     \node[align=center, font=\small] at (3.0,-0.5)
@@ -975,8 +972,8 @@ Used as a buffer to match impedances.
     \draw[thick] (3.3,0.9) -- (3.7,0.9);
 
     % Output
-    \draw[thick] (5.5,2.25) -- (7.0,2.25);
-    \node[right, font=\small] at (7.1,2.25) {$V_{out}$};
+    \draw[thick] (5.5,2.25) -- (6.0,2.25);
+    \node[above, font=\scriptsize] at (5.85,2.25) {$V_{out}$};
   \end{scope}
 
 \end{tikzpicture}

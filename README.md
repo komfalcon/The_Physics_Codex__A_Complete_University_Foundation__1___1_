@@ -20,4 +20,4 @@ Use `book_main.tex` from the repository root. See [BUILDING.md](BUILDING.md) for
 
 ## Publication status
 
-This repository is an in-progress manuscript. The 99-item diagram-review set is complete, but the broader physics, citation, pedagogical, and layout sign-offs remain unfinished; do not treat the current sources or PDF as a publication-certified edition. ISBN and other final publication metadata must be supplied by the author or publisher.
+This repository is an in-progress manuscript. The fresh 139-item diagram re-audit is complete, with 65 instructional figures corrected and checked after editing. The current 508-page A4 build succeeds, but retains TeX layout/glyph warnings; broader physics, citation, and pedagogical sign-offs and final publication decisions remain unfinished. Do not treat the current sources or PDF as a publication-certified edition. ISBN and other final publication metadata must be supplied by the author or publisher.

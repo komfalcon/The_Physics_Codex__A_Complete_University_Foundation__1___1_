@@ -82,12 +82,12 @@ joule (J) where $1\ \text{J} = 1\ \text{N\,m}$.
   % Angle
   \draw[->, dashed, gray] (1.75,0.8) -- ++(3,0);
   \draw[codexgold] (2.55,0.8) arc(0:26.6:0.8);
-  \node[codexgold, right] at (2.9,1.0) {$\theta$};
+  \node[codexgold, anchor=east] at (2.65,1.0) {$\theta$};
 
   % Horizontal component
   \draw[->, thick, codexblue, dashed]
     (1.75,0.8) -- ++(3,0)
-    node[below right]{$F\cos\theta$};
+    node[pos=0.7, above]{$F\cos\theta$};
 
   % Work formula
   \node[align=center, font=\small] at (4,-0.8)
@@ -343,7 +343,8 @@ or stretching the spring.
     {5*x} \closedcycle;
 
   % Annotation
-  \node[codexblue, font=\small] at (axis cs:2.5,8)
+  \node[codexblue, font=\small, fill=white, inner sep=2pt]
+    at (axis cs:1.7,22.5)
     {Area $= \frac{1}{2}kx^2 = E_{elastic}$};
 \end{axis}
 \end{tikzpicture}

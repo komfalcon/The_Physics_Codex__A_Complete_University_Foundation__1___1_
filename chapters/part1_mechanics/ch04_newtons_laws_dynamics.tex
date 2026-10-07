@@ -393,11 +393,11 @@ machine). Find: (a) the acceleration; (b) the tension.
 
   % Acceleration arrows
   \draw[->, thick, codexgreen, dashed]
-    (-0.5,-1.0) -- (-0.5,-0.5)
-    node[left, font=\small]{$a$ (up)};
+    (-2.35,-0.55) -- (-2.35,0.25)
+    node[midway, left, font=\small]{$a$ (up)};
   \draw[->, thick, codexgreen, dashed]
-    (0.5,-1.0) -- (0.5,-1.5)
-    node[right, font=\small]{$a$ (down)};
+    (2.35,0.25) -- (2.35,-0.55)
+    node[midway, right, font=\small]{$a$ (down)};
 \end{tikzpicture}
 \end{center}
 
@@ -445,10 +445,10 @@ Substituting into (2):
   \begin{scope}[rotate=31, shift={(2.5,0.15)}]
     \fill[codexblue!30] (0,0) rectangle (1,0.7);
     \node at (0.5,0.35) {$m$};
+    \coordinate (C) at (0.5,0.35);
   \end{scope}
 
   % Forces from centre of block
-  \coordinate (C) at (3.0, 1.5);
 
   % Weight
   \draw[->, very thick, codexred]
@@ -457,18 +457,22 @@ Substituting into (2):
 
   % Normal reaction (perpendicular to surface)
   \draw[->, very thick, codexblue]
-    (C) -- ++(-0.95, 1.56)
+    (C) -- ++(-0.79, 1.32)
     node[above left]{$R$};
 
-  % Component parallel to incline (down the slope)
+  % Weight components are drawn to scale for a 31-degree incline.
+  % mg sin(theta) points downhill; mg cos(theta) points into the plane.
   \draw[->, thick, codexgreen, dashed]
-    (C) -- ++(0.95,-0.57)
-    node[right, font=\small]{$mg\sin\theta$};
+    (C) -- ++(-0.79,-0.48)
+    node[below left, font=\small]{$mg\sin\theta$};
 
-  % Component perpendicular to incline
   \draw[->, thick, codexgold, dashed]
-    (C) -- ++(-0.57,-0.95)
-    node[left, font=\small]{$mg\cos\theta$};
+    (C) -- ++(0.79,-1.32)
+    node[below right, font=\small]{$mg\cos\theta$};
+
+  % Dashed closure shows that the components add to the vertical weight.
+  \draw[densely dashed, gray!60] (C) ++(-0.79,-0.48) -- ++(0.79,-1.32);
+  \draw[densely dashed, gray!60] (C) ++(0.79,-1.32) -- ++(-0.79,-0.48);
 \end{tikzpicture}
 \end{center}
 \end{diagbox}
@@ -613,20 +617,18 @@ at constant speed called the \textbf{terminal velocity}.
 
   % Terminal velocity line
   \addplot[codexred, thick, dashed, domain=0:10]{55};
-  \node[codexred, right] at (axis cs:9.5,55)
-    {$v_T$};
 
   % Annotation: steep initial gradient
   \draw[->, gray] (axis cs:1,20) -- (axis cs:0.5,10)
-    node[left, font=\tiny]{High initial $a$};
+    node[left, font=\scriptsize]{High initial $a$};
 
   % Annotation: gradient decreasing
   \draw[->, gray] (axis cs:4,45) -- (axis cs:5,50)
-    node[right, font=\tiny]{$a$ decreasing};
+    node[above, font=\scriptsize]{$a$ decreasing};
 
   % Annotation: flat at terminal
-  \draw[->, gray] (axis cs:8,53) -- (axis cs:9,55)
-    node[right, font=\tiny]{$a = 0$};
+  \draw[->, gray] (axis cs:7.5,52) -- (axis cs:8.5,54)
+    node[above left, font=\scriptsize]{$a = 0$};
 \end{axis}
 \end{tikzpicture}
 \end{center}

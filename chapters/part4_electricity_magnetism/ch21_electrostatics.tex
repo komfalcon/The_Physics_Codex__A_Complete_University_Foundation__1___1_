@@ -123,11 +123,6 @@ Like charges \textbf{repel}. Unlike charges
     \draw[->, very thick, codexblue, line width=2.5pt]
       (3.7,1.5) -- (2.7,1.5);
 
-    % Field lines between charges
-    \foreach \y in {1.0,1.5,2.0} {
-      \draw[->, codexgold!60, dashed]
-        (1.4,\y) -- (3.6,\y);
-    }
   \end{scope}
 
   % === LIKE CHARGES REPEL ===
@@ -200,31 +195,26 @@ Examples: silicon, germanium (Chapter 29).
     % Fur (left)
     \fill[brown!30] (0,0) rectangle (2.5,1.2);
     \draw[thick] (0,0) rectangle (2.5,1.2);
-    \node at (1.25,0.6) {Fur ($+$)};
-    \foreach \x in {0.3,0.7,1.1,1.5,1.9} {
-      \node[codexred, font=\bfseries] at (\x,1.0)
-        {$+$};
-    }
+    \node at (1.25,0.6) {Fur};
     % Rod (right)
     \fill[codexblue!20] (3.0,0) rectangle (5.5,1.2);
     \draw[thick] (3.0,0) rectangle (5.5,1.2);
-    \node at (4.25,0.6) {Rod ($-$)};
-    \foreach \x in {3.3,3.7,4.1,4.5,4.9} {
-      \node[codexblue, font=\bfseries] at (\x,1.0)
-        {$-$};
-    }
-    % Arrows showing electron transfer
-    \draw[->, thick, codexblue]
-      (2.8,0.8) -- (3.2,0.8);
-    \node[below, font=\tiny] at (3.0,0.2)
-      {Electrons transfer from fur to rod\\
-      Fur becomes $+$ve, Rod becomes $-$ve};
+    \node at (4.25,0.6) {Rod};
+    % Rubbing is shown without assuming a particular triboelectric pair.
+    \draw[<->, thick, gray]
+      (2.65,0.8) -- (2.95,0.8);
+    \node[above, font=\tiny] at (2.8,1.35) {rub};
+    \node[font=\tiny, align=center, text width=5.8cm] at (3.0,-0.4)
+      {Friction transfers electrons; direction depends\\
+      on the material pair};
   \end{scope}
 
   % === CONTACT ===
   \begin{scope}[shift={(0,2.5)}]
     \node[font=\bfseries] at (3.5,2.0)
       {2. Charging by Contact};
+    % Raise the contact spheres slightly to leave clear space above induction.
+    \begin{scope}[shift={(0,0.35)}]
     % Charged sphere
     \fill[codexred!40] (0.8,0.6) circle (0.7);
     \draw[thick] (0.8,0.6) circle (0.7);
@@ -244,60 +234,90 @@ Examples: silicon, germanium (Chapter 29).
     \node[font=\tiny] at (3.3,0.6) {Neutral};
 
     % Arrow
-    \draw[->, thick, codexred] (4.4,0.6) -- (5.3,0.6);
-    \node[above, font=\tiny] at (4.8,0.7) {separate};
+    \draw[->, thick, codexred] (4.4,0.6) -- (5.15,0.6);
+    \node[below, font=\tiny] at (4.55,0.0) {separate};
 
     % Both spheres share the positive charge after contact and separation.
-    \fill[codexred!30] (5.4,0.6) circle (0.45);
-    \draw[thick] (5.4,0.6) circle (0.45);
+    \fill[codexred!30] (5.6,0.6) circle (0.45);
+    \draw[thick] (5.6,0.6) circle (0.45);
     \foreach \angle in {0,90,180,270} {
       \node[codexred, font=\tiny]
-        at ({5.4+0.3*cos(\angle)},{0.6+0.3*sin(\angle)})
+        at ({5.6+0.3*cos(\angle)},{0.6+0.3*sin(\angle)})
         {$+$};
     }
-    \fill[codexred!30] (6.7,0.6) circle (0.45);
-    \draw[thick] (6.7,0.6) circle (0.45);
+    \fill[codexred!30] (6.9,0.6) circle (0.45);
+    \draw[thick] (6.9,0.6) circle (0.45);
     \foreach \angle in {0,90,180,270} {
       \node[codexred, font=\tiny]
-        at ({6.7+0.3*cos(\angle)},{0.6+0.3*sin(\angle)})
+        at ({6.9+0.3*cos(\angle)},{0.6+0.3*sin(\angle)})
         {$+$};
     }
+    \end{scope}
   \end{scope}
 
-  % === INDUCTION ===
+  % === INDUCTION: disconnect the ground before removing the rod ===
   \begin{scope}[shift={(0,0)}]
-    \node[font=\tiny\bfseries] at (4.0,2.0)
+    \node[font=\scriptsize\bfseries, align=center] at (4.0,2.15)
       {3. Charging by Induction (no contact)};
-    % Charged rod nearby
-    \fill[codexred!30] (-0.5,0.3) rectangle (0.0,1.3);
-    \foreach \y in {0.5,0.8,1.1} {
-      \node[codexred, font=\tiny] at (-0.25,\y) {$+$};
-    }
-    \node[left, font=\tiny] at (-0.6,0.8) {Charged\\rod};
 
-    % Neutral conductor with induced charges
-    \fill[gray!20] (0.8,0) rectangle (4.2,1.6);
-    \draw[thick] (0.8,0) rectangle (4.2,1.6);
-    % Negative induced charges (near rod)
-    \foreach \y in {0.3,0.6,0.9,1.2} {
-      \node[codexblue, font=\bfseries] at (1.1,\y) {$-$};
+    % Step 1: a nearby positive rod polarises a neutral conductor.
+    \node[font=\scriptsize, align=center, text width=1.7cm] at (0.9,1.55) {1. + rod\\near};
+    \fill[codexred!30] (0.0,0.55) rectangle (0.16,1.25);
+    \draw[thick] (0.0,0.55) rectangle (0.16,1.25);
+    \foreach \y in {0.68,0.90,1.12} {
+      \node[codexred, font=\tiny] at (0.08,\y) {$+$};
     }
-    % Positive induced charges (far end)
-    \foreach \y in {0.3,0.6,0.9,1.2} {
-      \node[codexred, font=\bfseries] at (3.9,\y) {$+$};
+    \fill[gray!20] (0.38,0.55) rectangle (1.48,1.25);
+    \draw[thick] (0.38,0.55) rectangle (1.48,1.25);
+    \foreach \y in {0.68,0.90,1.12} {
+      \node[codexblue, font=\tiny] at (0.55,\y) {$-$};
+      \node[codexred, font=\tiny] at (1.30,\y) {$+$};
     }
-    % Electrons flow from Earth into the conductor when it is grounded.
-    \draw[->, thick, codexblue] (5.0,0.8) -- (4.2,0.8)
-      node[pos=0.5, above, font=\tiny, fill=white, inner sep=1pt]
-        {$e^{-}$ from Earth};
-    \fill[gray!20] (5.8,0) rectangle (7.5,1.6);
-    \draw[thick] (5.8,0) rectangle (7.5,1.6);
-    \foreach \y in {0.3,0.6,0.9,1.2} {
-      \node[codexblue, font=\bfseries] at (6.0,\y)
-        {$-$};
+
+    % Step 2: ground the conductor while keeping the rod nearby.
+    \node[font=\scriptsize, align=center, text width=1.7cm] at (3.0,1.55) {2. Ground;\\rod stays};
+    \fill[codexred!30] (2.05,0.55) rectangle (2.21,1.25);
+    \draw[thick] (2.05,0.55) rectangle (2.21,1.25);
+    \foreach \y in {0.68,0.90,1.12} {
+      \node[codexred, font=\tiny] at (2.13,\y) {$+$};
     }
-    \node[below, font=\tiny] at (4.0,-0.2)
-      {Induction makes the conductor negative without contact};
+    \fill[gray!20] (2.43,0.55) rectangle (3.53,1.25);
+    \draw[thick] (2.43,0.55) rectangle (3.53,1.25);
+    \foreach \y in {0.68,0.90,1.12} {
+      \node[codexblue, font=\tiny] at (2.60,\y) {$-$};
+    }
+    \draw[thick] (3.53,0.90) -- (3.78,0.90) -- (3.78,0.35) -- (4.02,0.35);
+    \draw[->, thick, codexblue] (4.00,0.35) -- (3.57,0.35);
+    \draw[thick] (3.92,0.25) -- (4.12,0.25);
+    \draw[thick] (3.95,0.18) -- (4.09,0.18);
+    \draw[thick] (3.98,0.11) -- (4.06,0.11);
+    \node[font=\tiny, anchor=west] at (4.20,0.16) {Earth};
+
+    % Step 3: disconnect Earth first; the rod remains nearby.
+    \node[font=\tiny, align=center, text width=1.7cm] at (5.25,1.72) {3. Disconnect\\ground};
+    \fill[codexred!30] (4.42,0.55) rectangle (4.58,1.25);
+    \draw[thick] (4.42,0.55) rectangle (4.58,1.25);
+    \foreach \y in {0.68,0.90,1.12} {
+      \node[codexred, font=\tiny] at (4.50,\y) {$+$};
+    }
+    \fill[gray!20] (4.80,0.55) rectangle (5.90,1.25);
+    \draw[thick] (4.80,0.55) rectangle (5.90,1.25);
+    \node[codexblue, font=\scriptsize\bfseries] at (5.35,0.90) {$Q<0$};
+    \draw[thick] (5.90,0.90) -- (6.12,0.90);
+    \fill (6.12,0.90) circle (1.2pt);
+    \draw[thick] (6.12,0.90) -- (6.34,1.10);
+    \node[font=\tiny, align=center] at (6.10,0.55) {open\\ground};
+
+    % Step 4: remove the rod; excess charge redistributes over the conductor.
+    \node[font=\scriptsize, align=center, text width=1.7cm] at (7.55,1.55) {4. Remove rod};
+    \fill[gray!20] (6.85,0.55) rectangle (8.10,1.25);
+    \draw[thick] (6.85,0.55) rectangle (8.10,1.25);
+    \foreach \x in {7.05,7.35,7.65,7.95} {
+      \node[codexblue, font=\tiny] at (\x,1.18) {$-$};
+      \node[codexblue, font=\tiny] at (\x,0.62) {$-$};
+    }
+    \node[font=\tiny, align=center] at (7.45,-0.40)
+      {Excess electrons spread\\over the conductor};
   \end{scope}
 
 \end{tikzpicture}

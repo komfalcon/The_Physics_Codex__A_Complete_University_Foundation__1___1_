@@ -271,9 +271,11 @@ horizontal circle of radius $r = L\sin\theta$.
   \node[codexgold, right, font=\small] at (0.15,2.55)
     {$30°$};
 
-  % Radius
-  \draw[<->, dashed, gray] (0,0.9) -- (0.6,0.9);
-  \node[below, gray, font=\small] at (0.3,0.9)
+  % Radius: horizontal distance from the rotation axis to the bob.
+  \draw[densely dotted, gray] (0,1.961) -- (0,1.7);
+  \draw[densely dotted, gray] (0.6,1.961) -- (0.6,1.7);
+  \draw[<->, dashed, gray] (0,1.7) -- (0.6,1.7);
+  \node[below, gray, font=\small] at (0.3,1.7)
     {$r$};
 \end{tikzpicture}
 \end{center}
@@ -409,20 +411,21 @@ taut, $T_T = 0$):
   \fill (0,0) circle (2pt) node[right, font=\small]{O};
 
   % Bottom point
-  \fill[codexblue] (0,-2) circle (4pt)
-    node[below]{Bottom};
+  \fill[codexblue] (0,-2) circle (4pt);
+  \node[below, font=\small] at (-0.75,-2) {Bottom};
   \draw[->, very thick, codexred]
-    (0,-2) -- (0,-2+1.8) node[right, font=\small]{$T_B$};
+    (0,-2) -- (0,-0.7) node[right, font=\small]{$T_B$};
   \draw[->, very thick, codexblue]
     (0,-2) -- (0,-2-0.8) node[below, font=\small]{$mg$};
 
   % Top point
   \fill[codexgreen] (0,2) circle (4pt)
     node[above]{Top};
+  % The two inward forces are offset sideways so both arrows remain visible.
   \draw[->, very thick, codexred]
-    (0,2) -- (0,2-0.8) node[right, font=\small]{$T_T$};
+    (-0.18,2) -- (-0.18,1.0) node[left, font=\small]{$T_T$};
   \draw[->, very thick, codexblue]
-    (0,2) -- (0,2-0.5) node[right=0.1cm, font=\small]{$mg$};
+    (0.18,2) -- (0.18,1.5) node[right, font=\small]{$mg$};
 
   % Speed vectors
   \draw[->, very thick, codexgold]

@@ -310,8 +310,8 @@ motion. Two graphs are used routinely: the
   ytick={0,5,10,15,20,25,30},
   grid=major, grid style={gray!30},
  legend style={
-  at={(0.5,-0.22)},
-  anchor=north,
+  at={(0.5,1.12)},
+  anchor=south,
   legend columns=3,
   font=\small
 },
@@ -388,10 +388,11 @@ motion. Two graphs are used routinely: the
   \addplot[fill=codexred!15, opacity=0.5, domain=8:12]
     {20-5*(x-8)} \closedcycle;
 
-  % Gradient annotation
-  \draw[->, gray, dashed]
-    (axis cs:1,0) -- (axis cs:1,5)
-    node[right, font=\tiny]{gradient = $a$};
+  % Rise/run triangle: the slope of a v-t graph is acceleration.
+  \draw[dashed, gray, thick]
+    (axis cs:1,5) -- (axis cs:2,5) -- (axis cs:2,10);
+  \node[below, gray, font=\scriptsize] at (axis cs:1.5,5) {$\Delta t$};
+  \node[right, gray, font=\scriptsize] at (axis cs:2,7.5) {$\Delta v$};
 \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -598,6 +599,7 @@ independent of each other.}
   xmin=0, xmax=50, ymin=0, ymax=15,
   grid=major, grid style={gray!20},
   axis equal=false,
+  clip=false,
 ]
   % Trajectory: u=20, theta=45, g=10
   % x = 20cos45*t, y = 20sin45*t - 5t^2
@@ -607,7 +609,7 @@ independent of each other.}
     ({20*0.7071*\t}, {20*0.7071*\t - 5*\t*\t});
   \addlegendentry{$u=20$ m/s, $\theta=45°$}
 
-  % Velocity vectors at a few points
+  % Sample positions along the trajectory (not velocity vectors).
   \foreach \tt/\vx/\vy in {
     0.5/{7.07}/{7.07-5},
     1.0/{7.07}/{7.07-10},
@@ -620,6 +622,8 @@ independent of each other.}
       circle (1.5pt);}
     \temp
   }
+  \addlegendimage{only marks, mark=*, mark options={draw=codexred, fill=codexred}}
+  \addlegendentry{Sample positions}
 
   % Horizontal component arrow
   \draw[->, codexred, thick]
@@ -632,8 +636,8 @@ independent of each other.}
     {$H_{max}$};
 
   % Range annotation
-  \draw[<->, gray] (axis cs:0,-1.5) -- (axis cs:40,-1.5);
-  \node[below, gray, font=\small] at (axis cs:20,-1.5)
+  \draw[<->, gray] (axis cs:0,-3.2) -- (axis cs:40,-3.2);
+  \node[below, gray, font=\small] at (axis cs:20,-3.2)
     {Range $R$};
 \end{axis}
 \end{tikzpicture}

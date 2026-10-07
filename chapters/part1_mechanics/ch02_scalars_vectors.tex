@@ -354,7 +354,7 @@ hypotenuse. By Pythagoras:
   \draw[gray] (3.8,0) -- (3.8,0.2) -- (4,0.2);
   \draw[codexgold] (0.8,0) arc(0:36.87:0.8);
   \node[codexgold] at (1.15,0.28) {$\theta$};
-  \node at (2,-0.5) {\small $|\vect{A}| = \sqrt{A_x^2 + A_y^2}$};
+  \node at (2,-1.0) {\small $|\vect{A}| = \sqrt{A_x^2 + A_y^2}$};
 \end{tikzpicture}
 \end{center}
 \end{diagbox}
@@ -502,7 +502,7 @@ This is called the \textbf{head-to-tail} method.
     (0,0) -- (6,2) node[midway, above left]{$\vect{R} = \vect{A}+\vect{B}$};
   % Labels
   \fill[codexblue] (0,0) circle (2pt) node[left]{Tail of A};
-  \fill[codexred]  (6,2) circle (2pt) node[right]{Head of B};
+  \fill[codexred]  (6,2) circle (2pt) node[above right, xshift=2pt, yshift=2pt]{Head of B};
 \end{tikzpicture}
 \end{center}
 \end{diagbox}
@@ -602,7 +602,7 @@ system is in equilibrium.
     (P2) -- (P3) node[midway, right]{$\vect{F}_3$};
   \draw[->, thick, violet, line width=2pt]
     (P3) -- (1.0,4.5)
-    node[midway, left]{$\vect{F}_4$};
+    node[midway, above right, xshift=2pt, yshift=2pt]{$\vect{F}_4$};
 
   % Resultant
   \draw[->, thick, codexgreen, line width=2.5pt, dashed]
@@ -610,7 +610,7 @@ system is in equilibrium.
     node[midway, left]{$\vect{R}$};
 
   \fill (O) circle (2.5pt) node[left]{Start};
-  \fill (1.0,4.5) circle (2.5pt) node[right]{End};
+  \fill (1.0,4.5) circle (2.5pt) node[above]{End};
   
   \node at (4.5,-0.9) {\small Resultant = tail of $\vect{F}_1$
     to head of $\vect{F}_4$};
@@ -1057,7 +1057,7 @@ origin to $P$.
 
   % Vector from A to B
   \draw[->, thick, codexgreen, line width=2pt, dashed]
-    (A) -- (B) node[midway, below right]{$\vect{AB}$};
+    (A) -- (B) node[pos=0.55, below=11pt, fill=white, inner sep=1pt]{$\vect{AB}$};
 
   \fill (0,0) circle (3pt) node[below left]{$O$};
 \end{tikzpicture}
@@ -1268,10 +1268,10 @@ $45°$ with the vertical. Find the tension in each cable.
     (0,0) -- (0,-1.5) node[below]{$W = 400$ N};
   % Angles
   \draw[dashed, gray] (0,0) -- (0,2.5);
-  \draw[codexblue] (-0.1, 0.5) arc(90:122:0.5);
-  \node[left, codexblue, font=\small] at (-0.0,0.8)
+  \draw[codexblue] (0,0.5) arc(90:120:0.5);
+  \node[left, codexblue, font=\small] at (-0.65,0.55)
     {$30°$};
-  \draw[codexred] (0.1,0.5) arc(90:45:0.5);
+  \draw[codexred] (0,0.5) arc(90:45:0.5);
   \node[right, codexred, font=\small] at (0.0,0.8)
     {$45°$};
   \fill (0,0) circle (3pt);
@@ -1358,11 +1358,14 @@ with no direction.
 
   % Projection of A onto B
   \draw[dashed, gray] (3.5,2.5) -- (3.5,0);
+  % Offset the projection arrow below B's axis so both vectors are visible.
+  \draw[densely dotted, gray] (0,0) -- (0,-0.35);
+  \draw[densely dotted, gray] (3.5,0) -- (3.5,-0.35);
   \draw[->, thick, codexgreen, line width=2pt]
-    (0,0) -- (3.5,0)
-    node[below]{$A\cos\theta$ (projection of $\vect{A}$ onto $\vect{B}$)};
+    (0,-0.35) -- (3.5,-0.35)
+    node[below]{$A\cos\theta$};
 
-  \node at (2,-1.0)
+  \node at (2,-1.2)
     {\small $\vect{A}\cdot\vect{B}
     = B \times (A\cos\theta)
     = $ (magnitude of $\vect{B}$)
