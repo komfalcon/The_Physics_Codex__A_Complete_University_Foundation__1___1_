@@ -569,8 +569,8 @@ so $\cos\theta \approx 1$:
     \draw[codexblue, very thick]
       (0,2.8) .. controls (0.25,2.4) and (1.35,2.4) ..
       (1.6,2.8);
-    \draw[<->, codexred] (1.8,2.0) -- (1.8,2.7);
-    \node[right, codexred, font=\tiny] at (1.8,2.35)
+    \draw[<->, codexred] (1.8,2.0) -- (1.8,2.4);
+    \node[right, codexred, font=\tiny] at (1.8,2.2)
       {\shortstack{$h_1$}};
     \node[font=\tiny, align=center] at (0.8,5.5)
       {Wide\\$r_1$};
@@ -584,8 +584,8 @@ so $\cos\theta \approx 1$:
     \draw[codexblue, very thick]
       (0,3.5) .. controls (0.15,3.1) and (0.85,3.1) ..
       (1.0,3.5);
-    \draw[<->, codexred] (1.2,2.0) -- (1.2,3.4);
-    \node[right, codexred, font=\tiny] at (1.3,2.7)
+    \draw[<->, codexred] (1.2,2.0) -- (1.2,3.1);
+    \node[right, codexred, font=\tiny] at (1.3,2.55)
       {$h_2$};
     \node[font=\tiny, align=center] at (0.5,5.5)
       {Medium\\$r_2$};
@@ -599,8 +599,8 @@ so $\cos\theta \approx 1$:
     \draw[codexblue, very thick]
       (0,4.8) .. controls (0.06,4.4) and (0.44,4.4) ..
       (0.5,4.8);
-    \draw[<->, codexred] (0.7,2.0) -- (0.7,4.7);
-    \node[right, codexred, font=\tiny] at (0.78,3.35)
+    \draw[<->, codexred] (0.7,2.0) -- (0.7,4.4);
+    \node[right, codexred, font=\tiny] at (0.78,3.2)
       {\shortstack{$h_3$}};
     \node[font=\tiny, align=center] at (0.25,5.5)
       {Narrow\\$r_3$};
@@ -676,10 +676,10 @@ low viscosity (like water or air) flows easily.
 The coefficient of viscosity $\eta$ (eta) is defined
 through Newton's law of viscosity:
 \[
-  F = \eta A \frac{dv}{dx}
+  F = \eta A \frac{dv}{dy}
 \]
 where $F$ is the tangential force between fluid layers,
-$A$ is the area of contact, and $dv/dx$ is the
+$A$ is the area of contact, and $dv/dy$ is the
 velocity gradient (rate of change of velocity with
 distance perpendicular to flow).
 
@@ -727,7 +727,7 @@ N\,s\,m$^{-2}$.
   \draw[<->, codexred, dashed]
     (5.8,0.5) -- (5.8,2.5);
   \node[right, codexred, font=\tiny, align=left] at (5.9,1.5)
-    {velocity\\gradient\\$dv/dx$};
+    {velocity\\gradient\\$dv/dy$};
 
   % Labels
   \node[font=\small, align=center] at (4.5,-0.8)

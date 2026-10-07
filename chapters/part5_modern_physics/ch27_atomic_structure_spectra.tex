@@ -165,12 +165,12 @@ far outside. The atom is mostly empty space.
 
   % Gold nucleus (tiny dot)
   \fill[codexgold] (0.0,2.5) circle (5pt);
-  \node[above, font=\tiny] at (0.2,2.8)
-    {Nucleus};
+  \draw[gray, thin] (-0.7,0.65) -- (-0.05,2.35) -- (0.0,2.45);
+  \node[gray, font=\tiny] at (-1.0,0.5) {Nucleus};
 
   % Detector screen (circular arc)
   \draw[thick, gray, dashed] (0,2.5) circle (4cm);
-  \node[gray, font=\tiny] at (3.0,5.0)
+  \node[gray, font=\tiny] at (4.7,5.7)
     {Detector\\screen};
 
   % Conclusions box
@@ -310,7 +310,7 @@ when using SI equations ($E = hf$, $E = kT$, etc.).
     \draw[thick] (1.5,\y) -- (5.5,\y);
     \node[left, font=\small] at (1.4,\y)
       {$n=\n$};
-    \node[right, font=\small] at (5.6,\y)
+    \node[right, font=\small] at (9.0,\y)
       {$E=\E$ eV};
   }
 
@@ -440,11 +440,11 @@ This is the blackbody spectrum from Chapter 16.
       {Continuous spectrum (hot solid)};
     % Gradient bar from violet to red
     \foreach \x/\col in {
-      0.2/violet, 0.6/blue, 1.2/cyan, 2.0/green,
-      3.0/codexgold, 4.0/orange, 5.0/codexred,
-      5.8/codexred} {
+      0.0/violet, 0.775/blue, 1.55/cyan, 2.325/green,
+      3.1/codexgold, 3.875/orange, 4.65/codexred,
+      5.425/codexred} {
       % Keep \col a base color; apply the tint here.
-      \fill[\col!60] (\x,0) rectangle (\x+0.6,1.0);
+      \fill[\col!60] (\x,0) rectangle (\x+0.775,1.0);
     }
     \draw[thick] (0,0) rectangle (6.2,1.0);
     \node[below, font=\tiny] at (0.5,-0.1) {400 nm};
@@ -476,9 +476,9 @@ This is the blackbody spectrum from Chapter 16.
       {656};
     \node[above, cyan, font=\tiny] at (3.2,1.05)
       {486};
-    \node[above, blue, font=\tiny] at (2.0,1.05)
+    \node[above right, blue, font=\tiny] at (2.0,1.05)
       {434};
-    \node[above, violet, font=\tiny] at (1.4,1.05)
+    \node[above left, violet, font=\tiny] at (1.4,1.05)
       {410 nm};
   \end{scope}
 
@@ -488,11 +488,11 @@ This is the blackbody spectrum from Chapter 16.
       {Absorption spectrum (cool hydrogen)};
     % Rainbow background (approximate)
     \foreach \x/\col in {
-      0.2/violet, 0.6/blue, 1.2/cyan, 2.0/green,
-      3.0/codexgold, 4.0/orange, 5.0/codexred,
-      5.8/codexred} {
+      0.0/violet, 0.775/blue, 1.55/cyan, 2.325/green,
+      3.1/codexgold, 3.875/orange, 4.65/codexred,
+      5.425/codexred} {
       % Keep \col a base color; apply the tint here.
-      \fill[\col!60] (\x,0) rectangle (\x+0.6,1.0);
+      \fill[\col!60] (\x,0) rectangle (\x+0.775,1.0);
     }
     \draw[thick] (0,0) rectangle (6.2,1.0);
     % Dark lines at same positions as emission
@@ -503,8 +503,8 @@ This is the blackbody spectrum from Chapter 16.
     % Labels
     \node[below, font=\tiny] at (5.4,-0.1) {656};
     \node[below, font=\tiny] at (3.2,-0.1) {486};
-    \node[below, font=\tiny] at (2.0,-0.1) {434};
-    \node[below, font=\tiny] at (1.4,-0.1) {410 nm};
+    \node[below right, font=\tiny] at (2.0,-0.1) {434};
+    \node[below left, font=\tiny] at (1.4,-0.1) {410 nm};
   \end{scope}
 
   % Key observation
@@ -613,7 +613,7 @@ reverse potential needed to stop all emitted electrons:
     % Photocathode (metal surface)
     \fill[gray!50] (0.3,1.0) rectangle (1.0,4.0);
     \draw[thick] (0.3,1.0) rectangle (1.0,4.0);
-    \node[below, font=\tiny] at (0.65,0.8)
+    \node[below, font=\tiny] at (0.65,0.05)
       {Metal\\cathode};
 
     % Anode
@@ -660,8 +660,8 @@ reverse potential needed to stop all emitted electrons:
     xmin=0, xmax=10,
     ymin=-2, ymax=3,
     grid=major, grid style={gray!15},
-    xtick={0,3,5,7,10},
-    xticklabels={0,,$f_0$,,},
+    xtick={0,3,7,10},
+    xticklabels={0,$f_0$,,},
     ytick={-2,-1,0,1,2,3},
     yticklabels={,,0,,,},
   ]

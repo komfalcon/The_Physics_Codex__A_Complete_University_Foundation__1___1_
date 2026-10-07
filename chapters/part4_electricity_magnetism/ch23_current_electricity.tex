@@ -185,8 +185,9 @@ A component that obeys Ohm's Law is called
   ]
     \addplot[codexred, very thick, domain=0:5,
       samples=60]{2*sqrt(x)};
-    \node[codexred, font=\small, align=center]
-      at (axis cs:1.5,4.0)
+    \node[codexred, font=\tiny, align=center, fill=white,
+      inner sep=1pt]
+      at (axis cs:1.4,4.35)
       {Curve: $R$ increases\\with temperature};
   \end{axis}
 
@@ -212,8 +213,9 @@ A component that obeys Ohm's Law is called
     \node[codexgreen, font=\tiny, align=center]
       at (axis cs:1.0,3.5)
       {Conducts in\\one direction only};
-    \node[codexred, font=\tiny]
-      at (axis cs:-1.0,0.3) {Reverse bias:\\no current};
+    \node[codexred, font=\tiny, align=center, fill=white,
+      inner sep=1pt]
+      at (axis cs:-1.0,0.55) {Reverse bias:\\no current};
   \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -662,8 +664,8 @@ difference ``wasted'' inside the source.
 
   % Current arrow
   \draw[->, very thick, codexgold]
-    (1.75,2.65) -- (2.5,2.65)
-    node[right, font=\small]{$I$};
+    (3.7,2.5) -- (4.35,2.5)
+    node[above, font=\small]{$I$};
 
   % Voltage labels
   \draw[<->, codexblue, thick]

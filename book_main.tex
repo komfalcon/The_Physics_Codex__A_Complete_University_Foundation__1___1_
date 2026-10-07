@@ -258,6 +258,15 @@
 \inputifexists{back_matter/appendix_a_constants}
 \inputifexists{back_matter/answers}
 
+% -------------------- Back cover (full-bleed final page) --------------------
+\clearpage
+\thispagestyle{empty}
+\AddToShipoutPictureBG*{%
+  \AtPageLowerLeft{\includegraphics[width=\paperwidth,height=\paperheight]{back_cover.png}}%
+}
+\null\clearpage
+\ClearShipoutPictureBG
+
 \end{document}
 
 % (Archive note: there is extra pasted content below, after \end{document}.

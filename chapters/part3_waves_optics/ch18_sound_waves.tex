@@ -356,7 +356,7 @@ waveform. A rich musical tone contains many harmonics.
     yshift=-0.1cm,
     width=11cm, height=3cm,
     title={Quality: Different waveforms, same frequency},
-    xlabel={Time}, ylabel={},
+    xlabel={}, ylabel={},
     xmin=0, xmax=4*pi,
     ymin=-1.5, ymax=1.5,
     xtick=\empty, ytick=\empty,
@@ -371,6 +371,8 @@ waveform. A rich musical tone contains many harmonics.
       {0.7*sin(deg(2*x)) + 0.3*sin(deg(4*x))
       + 0.15*sin(deg(6*x))};
     \addlegendentry{Rich tone (harmonics added)};
+    \node[font=\tiny, anchor=south east, fill=white, inner sep=1pt]
+      at (axis cs:12,-1.35) {Time};
   \end{axis}
 \end{tikzpicture}
 \end{center}

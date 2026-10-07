@@ -458,7 +458,7 @@ $A_0 = \lambda N_0$ is the initial activity.
   xlabel={Time $t$ (in half-lives)},
   ylabel={Fraction remaining ($N/N_0$)},
   xmin=0, xmax=5,
-  ymin=0, ymax=1.05,
+  ymin=0, ymax=1.2,
   grid=major, grid style={gray!15},
   xtick={0,1,2,3,4,5},
   xticklabels={0,$t_{1/2}$,$2t_{1/2}$,$3t_{1/2}$,
@@ -745,7 +745,7 @@ to form the nucleus from scratch.
   \draw[->, thick, codexblue, dashed]
     (axis cs:2,1.1) -- (axis cs:20,7.4);
   \node[below, codexblue, font=\small, align=center]
-    at (axis cs:10,5.5)
+    at (axis cs:70,5.5)
     {Fusion: light $\to$ medium\\releases energy};
 
 \end{axis}
@@ -918,13 +918,13 @@ shielding to absorb neutrons and gamma radiation.
   % Hot coolant out
   \draw[->, very thick, codexred]
     (4.5,4.5) -- (6.5,4.5);
-  \node[above, codexred, font=\small] at (5.5,4.6)
+  \node[above, codexred, font=\tiny] at (5.5,4.9)
     {Hot coolant};
 
   % Cool coolant in
   \draw[->, very thick, codexblue]
     (6.5,1.5) -- (4.5,1.5);
-  \node[below, codexblue, font=\small] at (5.5,1.4)
+  \node[below, codexblue, font=\tiny] at (5.5,1.1)
     {Cool coolant};
 
   % === Heat exchanger ===
@@ -939,7 +939,7 @@ shielding to absorb neutrons and gamma radiation.
   \draw[codexblue, thick]
     (9.0,1.5) .. controls (9.0,2.5) and (7.0,2.5)
     .. (7.0,4.5);
-  \node[font=\tiny] at (8.0,3.0) {Steam\\generated};
+  \node[font=\tiny] at (8.0,5.3) {Steam\\generated};
 
   % Steam to turbine
   \draw[->, very thick, codexred!70]
@@ -962,14 +962,16 @@ shielding to absorb neutrons and gamma radiation.
   \node[right, codexgold, font=\small] at (15.6,5.0)
     {Electricity};
 
-  % Condenser (cooling water in)
+  % Turbine exhaust steam enters the condenser.
   \draw[->, gray] (12.25,4.0) -- (12.25,3.0);
-  \node[below, gray, font=\tiny] at (12.25,2.9)
-    {Condenser\\(cooling water)};
+  \node[right, gray, font=\tiny] at (12.35,3.0)
+    {Condenser};
 
-  % Return water to heat exchanger
+  % Condensate returns from the condenser to the heat exchanger.
   \draw[->, codexblue!60]
-    (9.5,1.0) -- (11.5,1.0) -- (11.5,4.0);
+    (12.25,3.0) -- (12.25,0.85) -- (9.5,0.85);
+  \node[below, codexblue!60, font=\tiny]
+    at (11.0,0.85) {Condensate return};
 
   % Shielding
   \draw[very thick, brown!70, dashed]

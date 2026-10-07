@@ -259,7 +259,7 @@ where:
   % Heat flow arrows through slab
   \foreach \y in {0.7,1.5,2.5,3.5,4.3} {
     \draw[->, very thick, codexgold]
-      (0.5,\y) -- (8.5,\y);
+      (3.2,\y) -- (5.8,\y);
   };
 
   % Thickness label
@@ -278,8 +278,9 @@ where:
   % Temperature gradient inside slab
   \draw[codexgold, very thick, dashed]
     (3,4.5) -- (6,1.2);
-  \node[codexgold, font=\tiny, rotate=-50]
-    at (4.5,3.3) {$\Delta T/L$ (gradient)};
+  \node[codexgold, font=\scriptsize, align=center,
+    fill=white, inner sep=1pt]
+    at (4.5,4.65) {$\Delta T/L$ (gradient)};
 
 \end{tikzpicture}
 \end{center}
@@ -435,7 +436,7 @@ car radiator fans, air conditioners).
     {Cool\\sinks};
   \node[codexred!70, font=\small] at (3.5,5.3)
     {Hot fluid spreads at top};
-  \node[codexblue!70, font=\small] at (3.5,-0.05)
+  \node[codexblue!70, font=\small] at (4.5,-0.05)
     {Cool fluid returns};
 
   % Molecule density illustration

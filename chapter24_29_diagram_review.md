@@ -2,14 +2,14 @@
 
 ## Summary
 
-All 26 active TikZ diagrams in Chapters 24–29 were checked against source and rendered PDF; source counts matched in every chapter. Following the forced 507-page build, nine diagrams pass, including the corrected Chapter 25 Fleming, charged-particle orbit and DC motor figures, plus the Chapter 29 p–n junction diagram. Seventeen findings remain: 15 medium issues and 2 low layout issues; this is not a publication sign-off.
+All 26 active TikZ diagrams in Chapters 24–29 were checked against source and rendered PDF; source counts matched in every chapter. Following the latest forced 508-page build, all 26 diagrams pass. The Chapter 24 and 26 wiring/label fixes, Chapter 25 direction corrections, and Chapter 27–29 label, symbol, and circuit fixes were visually checked. This diagram review is not a full publication sign-off.
 
 Page locators below are PDF pages. Source lines refer to the current chapter files at review time.
 
 ## Chapter 24 — Electrical Energy and Power
 
-- **High Voltage Transmission: Reducing Power Loss** — line 357, PDF p. 378. **Medium.** Grid and transformer labels collide; the local 11 kV label is crowded; the power station is disconnected from the step-up transformer. Reposition or shorten labels and add a connector between the station and transformer.
-- **Transformer Construction and Action** — line 486, PDF p. 379. **Medium.** Both flux arrows point downward, failing to show consistent closed circulation, and the flux label is too close to the equation. Reverse the lower arrow or draw a closed-loop path, and move the label clear.
+- **High Voltage Transmission: Reducing Power Loss** — line 357, PDF p. 378. **Pass after correction.** The power-station/step-up connection is continuous; grid, local-transformer, and voltage labels are separated and fit. Rebuilt and visually checked.
+- **Transformer Construction and Action** — line 486, PDF p. 379. **Pass after correction.** The flux is shown as a clockwise closed loop and its label is clear of the equation. Rebuilt and visually checked.
 
 ## Chapter 25 — Magnetism and Electromagnetism
 
@@ -22,34 +22,34 @@ Page locators below are PDF pages. Source lines refer to the current chapter fil
 ## Chapter 26 — Electromagnetic Induction
 
 - **Faraday’s Induction Experiments** — line 73, PDF p. 404. **Pass.** No issue found.
-- **Lenz’s Law: Direction of Induced Current** — line 278, PDF p. 406. **Medium.** The “Current…” and “Creates B field…” annotations overlap above both coils. Separate them or reflow them as aligned two-line labels.
-- **Motional EMF: Conductor Moving in a Field** — line 428, PDF p. 407. **Medium.** The external-circuit current arrow points from negative to positive; conventional current should flow from the positive end down the external rail. Reverse the rail arrow, clarify the prose, and move the rod-length label clear of the rod and field.
-- **AC Generator: Construction and Output** — line 645, PDF p. 409. **Medium.** The axle runs through the title, while graph phase annotations crowd the curve and tick labels. Move the title clear and enlarge or reposition the phase annotations.
+- **Lenz’s Law: Direction of Induced Current** — line 278, PDF p. 406. **Pass after correction.** Current and induced-field annotations are separated from the coils and magnets; the verified directions remain unchanged. Rebuilt and visually checked.
+- **Motional EMF: Conductor Moving in a Field** — line 428, PDF p. 407. **Pass after correction.** The external current is conventional (from the positive rod end down the rail), the caption agrees, and the rod-length label is clear of the rod/field. Rebuilt and visually checked.
+- **AC Generator: Construction and Output** — line 645, PDF p. 410. **Pass after correction.** The title is clear of the axle, and phase labels no longer crowd the graph curve or ticks. Rebuilt and visually checked.
 - **Eddy Currents in a Solid vs Laminated Core** — line 827, PDF p. 411. **Pass.** No issue found.
 
 ## Chapter 27 — Atomic Structure and Spectra
 
-- **Rutherford’s Gold Foil Experiment** — line 120, PDF p. 420. **Low.** The “Nucleus” label obscures the central beam/foil area, and nearby detector annotations are crowded. Offset the label with a leader and move the others away from ray paths.
-- **Energy Level Diagram of Hydrogen and Spectral Series** — line 297, PDF p. 422. **Medium.** Energy-value labels collide with the Balmer/Paschen annotations. Give values and series labels separate space, using leader lines or more spacing.
-- **Emission and Absorption Spectra Compared** — line 435, PDF p. 423. **Medium.** The 410 nm and 434 nm labels overlap; white gaps also make the “continuous” spectrum appear segmented. Stagger the labels and close the gaps, or identify the drawing as schematic.
-- **Photoelectric Effect: Experimental Setup and Graph** — line 603, PDF p. 425. **Medium.** The f₀ tick is at x=5, while the threshold point is at x=3. Align f₀ with the threshold point and move “Metal cathode” clear of the tube and wire.
+- **Rutherford’s Gold Foil Experiment** — line 120, PDF p. 420. **Pass after correction.** The nucleus label and detector annotations are clear of the beam/foil path; visually rechecked.
+- **Energy Level Diagram of Hydrogen and Spectral Series** — line 297, PDF p. 422. **Pass after correction.** Energy values and Balmer/Paschen annotations have separate, legible positions; visually rechecked.
+- **Emission and Absorption Spectra Compared** — line 435, PDF p. 423. **Pass after correction.** The wavelength labels are staggered and the continuous-spectrum band no longer reads as isolated segments; visually rechecked.
+- **Photoelectric Effect: Experimental Setup and Graph** — line 603, PDF p. 425. **Pass after correction.** The threshold label aligns with the threshold point and the cathode label is clear of the wire/tube; visually rechecked.
 
 ## Chapter 28 — Radioactivity and Nuclear Physics
 
 - **Alpha, Beta and Gamma in Electric and Magnetic Fields** — line 181, PDF p. 435. **Pass.** No issue found.
-- **Radioactive Decay Curve and Half-Lives** — line 456, PDF p. 438. **Low.** The N₀ label is clipped at the plot’s top edge. Move it below or to the right of the initial point, or add plot margin.
-- **Binding Energy per Nucleon vs Mass Number** — line 677, PDF p. 441. **Medium.** The fusion annotation is clipped at the left plot boundary. Move it inside the axes or shorten and reflow it.
-- **Pressurised Water Reactor (PWR)** — line 866, PDF p. 443. **Medium.** The return-water arrow points toward the turbine rather than back to the heat exchanger, and some callouts crowd flow lines. Redraw and label the return path in the correct direction; move callouts clear of the lines.
+- **Radioactive Decay Curve and Half-Lives** — line 456, PDF p. 438. **Pass after correction.** The initial `N₀` label is clear of the plot edge; visually rechecked.
+- **Binding Energy per Nucleon vs Mass Number** — line 677, PDF p. 441. **Pass after correction.** The fusion annotation is fully inside the plot; visually rechecked.
+- **Pressurised Water Reactor (PWR)** — line 866, PDF p. 443. **Pass after correction.** The coolant return arrow now points back to the heat exchanger and callouts are clear of the flow path; visually rechecked.
 
 ## Chapter 29 — Electronics
 
-- **n-type and p-type Silicon Crystals** — line 141, PDF p. 450. **Medium.** The two headings run together. Increase their horizontal separation or shorten/reposition them.
+- **n-type and p-type Silicon Crystals** — line 141, PDF p. 450. **Pass after correction.** The two headings have clear separation; visually rechecked.
 - **p-n Junction Diode: Forward and Reverse Bias** — line 271, PDF p. 451. **Pass after correction.** Forward conventional current now flows from battery positive through the p-side, junction and n-side to the negative terminal; reverse leakage is shown in the opposite direction across the junction. The 507-page rebuild was visually checked at print-page scale.
-- **Semiconductor Diode Symbol (Anode/Cathode labels)** — line 389, PDF p. 452. **Medium.** The Anode and Cathode labels overlap beneath the symbol. Move them apart and align each with its terminal.
-- **Half-Wave and Full-Wave Rectification Circuits and Waveforms** — line 432, PDF p. 452. **Medium.** The bridge does not use recognizable diode symbols, and its DC output is left open despite the described load. Draw four standard diodes and connect the output to a labelled load resistor; optionally show the smoothing capacitor.
-- **n-p-n Transistor as Switch and Amplifier** — line 648, PDF p. 454. **Medium.** Both panel titles collide with the +VCC labels. Move the headings or supply labels to provide clear separation.
-- **Op-Amp Configurations** — line 876, PDF p. 456. **Medium.** The Rf labels overlap both amplifier titles. Move the labels beside or below their feedback resistors, clear of the headings.
+- **Semiconductor Diode Symbol (Anode/Cathode labels)** — line 389, PDF p. 452. **Pass after correction.** Anode and cathode labels are separated and aligned with their terminals; visually rechecked.
+- **Half-Wave and Full-Wave Rectification Circuits and Waveforms** — line 432, PDF p. 452. **Pass after correction.** The bridge uses recognizable diode symbols and connects to a labelled load; visually rechecked.
+- **n-p-n Transistor as Switch and Amplifier** — line 648, PDF p. 454. **Pass after correction.** Panel titles and supply labels no longer collide; visually rechecked.
+- **Op-Amp Configurations** — line 876, PDF p. 456. **Pass after correction.** Feedback-resistor labels are now clear of the amplifier titles; visually rechecked.
 
 ## Review status
 
-The Fleming, charged-particle, DC motor, and p–n junction fixes were rebuilt and visually checked. No high-severity diagram issues remain in this range, but 15 medium and 2 low findings are still listed above. The broader book build still has missing-glyph and layout diagnostics; these changes are not a publication certification.
+All Chapter 24–29 diagram fixes were rebuilt and visually checked. No diagram findings remain in this range. The broader book build still has missing-glyph and layout diagnostics; this is not a publication certification.

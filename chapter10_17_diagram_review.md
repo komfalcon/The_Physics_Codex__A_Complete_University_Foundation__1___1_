@@ -1,6 +1,6 @@
 # The Physics Codex — Chapters 10–17 diagram review
 
-All 46 inventoried entries numbered 41–86 were checked against source and the rendered PDF. After the fixes below, 39 entries pass and seven minor issues remain: #53, #54, #57, #68, #73, #74 and #79. The previously identified major and moderate diagram/physics issues have been corrected and rechecked in the forced 507-page build. One inventory title was also corrected: #78 is the thermos-flask figure, not a comparison of heat-transfer mechanisms. Page numbers below are PDF pages; printed folios are in parentheses where supplied.
+All 46 inventoried entries numbered 41–86 were checked against source and the rendered PDF. Following the latest fixes, all 46 pass in the forced 508-page build; no diagram findings remain in this range. One inventory title was also corrected: #78 is the thermos-flask figure, not a comparison of heat-transfer mechanisms. Page numbers below are PDF pages; printed folios are in parentheses where supplied.
 
 ## Chapter 10 — Simple Machines
 
@@ -23,14 +23,14 @@ All 46 inventoried entries numbered 41–86 were checked against source and the 
 - **#50 Interior vs Surface Molecule: Intermolecular Forces** — `chapters/part2_fluids_thermal/ch12_surface_tension_viscosity_capillarity.tex:86–145`. **Pass.**
 - **#51 Excess Pressure: Drop vs Bubble** — `…:293–358`. **Pass after correction.** Bubble film fills are drawn before both surface outlines so both interfaces remain visible.
 - **#52 Capillary Rise and Fall: Water vs Mercury** — `…:440–519`. **Pass.**
-- **#53 Capillary Rise Formula: Narrower Tube Rises Higher** — `…:556–616`. **Minor issue remains.** Align each height arrow with the stated meniscus reference (normally the lowest point), or clarify that the arrow is schematic.
-- **#54 Laminar Flow: Velocity Profile in a Viscous Fluid** — `…:693–738`. **Minor issue remains.** Use an unambiguous transverse coordinate for the vertical gradient, such as `dv/dy`, or define the plotted transverse coordinate and apply it consistently.
+- **#53 Capillary Rise Formula: Narrower Tube Rises Higher** — `…:556–616`. **Pass after correction.** Height-arrow endpoints now align with the indicated meniscus reference; visually checked at print scale.
+- **#54 Laminar Flow: Velocity Profile in a Viscous Fluid** — `…:693–738`. **Pass after correction.** The transverse velocity gradient is consistently denoted `dv/dy`; visually checked at print scale.
 - **#55 Forces on a Sphere Falling Through Viscous Fluid** — `…:843–868`, PDF p. 196 (printed p. 175). **Pass after correction.** Weight is downward, upthrust and drag are upward, and the to-scale annotation matches `W = U + F_d`. Rebuilt and visually checked.
 - **#56 Laminar vs Turbulent Flow** — `…:960–1020`. **Pass.**
 
 ## Chapter 13 — Temperature and Thermal Expansion
 
-- **#57 Comparing Temperature Scales** — `chapters/part2_fluids_thermal/ch13_temperature_thermal_expansion.tex:156–219`. **Minor issue remains.** Kelvin and Celsius increments are equal; the schematic should not imply that Kelvin intervals are larger. Mark it as schematic or correct the graduation spacing.
+- **#57 Comparing Temperature Scales** — `chapters/part2_fluids_thermal/ch13_temperature_thermal_expansion.tex:156–219`. **Pass after correction.** Celsius/Kelvin intervals now have equal spacing and Fahrenheit intervals are proportional; visually checked at print scale.
 - **#58 Liquid-in-Glass Thermometer: Cross-Section** — `…:337–348`, PDF p. 206 (printed p. 185). **Pass after correction.** The duplicate tick-label loop was removed, leaving one readable set of scale values. Rebuilt and visually checked.
 - **#59 Thermometer Calibration** — `…:424–466`. **Pass.**
 - **#60 Molecular Origin of Thermal Expansion** — `…:538–567`, PDF p. 208 (printed p. 187). **Pass after correction.** The energy-level endpoints now meet the plotted Lennard-Jones-like curve at the displayed energies, with the high-temperature mean position to the right of the low-temperature mean. Rebuilt and visually checked.
@@ -44,7 +44,7 @@ All 46 inventoried entries numbered 41–86 were checked against source and the 
 - **#65 Charles’ Law: V–T Graph** — `…:235–273`, PDF p. 221 (printed p. 200). **Pass after correction.** Celsius coordinates and axis labels now agree, pressure/slope ordering is consistent, and the unsupported 0°C “real gas region” boundary was removed. Rebuilt and visually checked.
 - **#66 Kinetic Model: Gas Molecules in a Container** — `…:569–575`, PDF p. 225 (printed p. 204). **Pass after correction.** The label now defines pressure as normal force per unit area and gives `P=F_⊥/A`. Rebuilt and visually checked.
 - **#67 Maxwell–Boltzmann Speed Distribution** — `…:711–745`, PDF p. 227 (printed p. 206). **Pass after correction.** The distributions are normalized to unit area and fit within the plot. Rebuilt and visually checked.
-- **#68 PV/nRT vs P for Ideal and Real Gases** — `…:813–845`, PDF p. 228 (printed p. 207). **Minor issue remains.** The CO₂ curve exits above the plot at 600 atm; enlarge the vertical range or adjust the plotted endpoint to match the stated data.
+- **#68 PV/nRT vs P for Ideal and Real Gases** — `…:813–845`, PDF p. 228 (printed p. 207). **Pass after correction.** The vertical plot range now includes the CO₂ endpoint (about 1.54) at 600 atm; visually checked at print scale.
 
 ## Chapter 15 — Heat, Energy and Calorimetry
 
@@ -55,8 +55,8 @@ All 46 inventoried entries numbered 41–86 were checked against source and the 
 ## Chapter 16 — Heat Transfer
 
 - **#72 Conduction: Molecular Vibration Chain in a Solid** — `chapters/part2_fluids_thermal/ch16_heat_transfer.tex:91–172`, PDF p. 248 (printed p. 227). **Pass.**
-- **#73 Fourier’s Law: Heat Flow Through a Slab** — `…:239–286`, PDF p. 250 (printed p. 229). **Minor issue remains.** Route arrows clear of the “Hot/Cold side” labels and enlarge or simplify the tiny rotated gradient annotation.
-- **#74 Natural Convection Loop in a Liquid** — `…:394–454`, PDF p. 252 (printed p. 231). **Minor issue remains.** Separate the overlapping “Cool fluid returns” and “Heat source” labels.
+- **#73 Fourier’s Law: Heat Flow Through a Slab** — `…:239–286`, PDF p. 250 (printed p. 229). **Pass after correction.** Heat-flow arrows run within the slab, clear of the hot/cold labels; the temperature-gradient annotation is larger, horizontal and backed for contrast. Rebuilt and visually checked.
+- **#74 Natural Convection Loop in a Liquid** — `…:394–454`, PDF p. 252 (printed p. 231). **Pass after correction.** “Cool fluid returns” is repositioned clear of “Heat source.” Rebuilt and visually checked.
 - **#75 Sea Breeze and Land Breeze** — `…:464–536`, PDF p. 252 (printed p. 231). **Pass.**
 - **#76 Good and Poor Emitters/Absorbers of Radiation** — `…:555–641`, PDF p. 253 (printed p. 232). **Pass.**
 - **#77 The Greenhouse Effect** — `…:791–925`, PDF p. 255 (printed p. 234). **Pass after correction.** The short-wave, outgoing IR, greenhouse-gas, and atmospheric-window callouts have separate positions. The faint region label that still appeared behind the callouts was removed; the final rebuilt page was visually checked.
@@ -64,7 +64,7 @@ All 46 inventoried entries numbered 41–86 were checked against source and the 
 
 ## Chapter 17 — Wave Motion
 
-- **#79 Transverse vs Longitudinal Waves** — `chapters/part3_waves_optics/ch17_wave_motion.tex:98–177`, PDF p. 266 (printed p. 245). **Minor issue remains.** Move the “Direction of energy travel” label clear of the transverse waveform.
+- **#79 Transverse vs Longitudinal Waves** — `chapters/part3_waves_optics/ch17_wave_motion.tex:98–177`, PDF p. 266 (printed p. 245). **Pass after correction.** The energy-travel arrow and label now sit above the transverse waveform. Rebuilt and visually checked.
 - **#80 Wave Profile: Key Parameters Labelled** — `…:214–328`, PDF p. 267 (printed p. 246). **Pass.**
 - **#81 Wave Reflection** — `…:397–438`, PDF p. 268 (printed p. 247). **Pass.**
 - **#82 Diffraction Through a Gap** — `…:478–546`, PDF p. 269 (printed p. 248). **Pass after correction.** Headings no longer overlap, and gap-size labels were removed from the wavefronts. Rebuilt and visually checked.
@@ -73,4 +73,4 @@ All 46 inventoried entries numbered 41–86 were checked against source and the 
 - **#85 Harmonics on a String Fixed at Both Ends** — `…:794–867`, PDF p. 272 (printed p. 251). **Pass after correction.** Trough markers now sit on the actual extrema, and the Node/Antinode key is stacked on separate lines. Rebuilt and visually checked.
 - **#86 Harmonics in Open and Closed Pipes** — `…:903–1001`, PDF p. 273 (printed p. 252). **Pass after correction.** Pipe labels and harmonics fit within the panel at the reduced drawing scale; the n=3 closed-pipe node/antinode markers are correct.
 
-These results cover the specified diagram inventory, not a complete editorial, pedagogical, physics, or permissions sign-off. The full book builds to 507 pages, but its TeX log still contains missing-character and layout warnings; the book should not be described as publication-certified.
+These results cover the specified diagram inventory, not a complete editorial, pedagogical, physics, or permissions sign-off. With the supplied back cover included, the full book builds to 508 pages; its TeX log still contains missing-character and layout warnings, so the book should not be described as publication-certified.
