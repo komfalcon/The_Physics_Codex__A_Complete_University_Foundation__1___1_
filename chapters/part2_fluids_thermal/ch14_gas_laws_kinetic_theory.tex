@@ -114,11 +114,11 @@ of gas is inversely proportional to its pressure:
     title={$P$ vs $V$ (hyperbola)}
   ]
     \addplot[codexblue, very thick, domain=0.3:4.8,
-      samples=80]{1.0/x + 0.3};
+      samples=80]{1.0/x};
     \addplot[codexred, very thick, domain=0.5:4.8,
-      samples=80]{2.0/x + 0.3};
+      samples=80]{2.0/x};
     \addplot[codexgreen, very thick, domain=0.8:4.8,
-      samples=80]{3.5/x + 0.3};
+      samples=80]{3.5/x};
     \node[codexblue, font=\tiny] at (axis cs:0.7,2.5)
       {$T_1$};
     \node[codexred, font=\tiny] at (axis cs:0.9,3.5)
@@ -272,11 +272,6 @@ Using Celsius gives wrong answers.
   \node[codexgreen, font=\small]
     at (axis cs:535,5.0) {$P_2 > P_1$};
 
-  % Real gas region
-  \draw[gray, dashed, thick]
-    (axis cs:0,-0.1) -- (axis cs:0,11.5);
-  \node[gray, font=\tiny, rotate=90]
-    at (axis cs:-50,2.5) {Real gas region};
 
   % Annotation
   \node[align=center, font=\tiny, codexblue]

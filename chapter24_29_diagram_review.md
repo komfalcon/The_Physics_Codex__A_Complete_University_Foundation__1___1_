@@ -2,7 +2,7 @@
 
 ## Summary
 
-All 26 active TikZ diagrams in Chapters 24–29 were checked against source and rendered PDF; source counts matched in every chapter. Following the final 507-page build, seven diagrams pass, including the Chapter 25 Fleming left-hand-rule and Chapter 29 p–n junction diagrams after correction. Nineteen findings remain: 2 high-severity direction/construction issues, 15 medium issues, and 2 low layout issues. The unresolved issues remain listed below; this is not a publication sign-off.
+All 26 active TikZ diagrams in Chapters 24–29 were checked against source and rendered PDF; source counts matched in every chapter. Following the forced 507-page build, nine diagrams pass, including the corrected Chapter 25 Fleming, charged-particle orbit and DC motor figures, plus the Chapter 29 p–n junction diagram. Seventeen findings remain: 15 medium issues and 2 low layout issues; this is not a publication sign-off.
 
 Page locators below are PDF pages. Source lines refer to the current chapter files at review time.
 
@@ -16,8 +16,8 @@ Page locators below are PDF pages. Source lines refer to the current chapter fil
 - **Magnetic Field Patterns (bar magnet and unlike poles)** — line 93, PDF p. 390. **Pass.** No issue found.
 - **Magnetic Fields Around Current-Carrying Conductors** — line 182, PDF p. 390. **Pass.** No issue found.
 - **Fleming’s Left-Hand Rule** — line 387, PDF p. 392. **Pass after correction.** The final diagram shows magnetic field left, conventional current into the page, and force upward; the labels are legible. The 507-page PDF was visually checked at print-page scale.
-- **Circular Motion of a Charged Particle in a Magnetic Field** — line 546, PDF p. 394. **High.** For the positive charge shown, the stated field direction gives an outward/upward force, not the inward/downward force shown; the orbit direction is inconsistent as well. Change field markers or orbit direction consistently, and separate the force and radius labels.
-- **DC Motor schematic** — line 704, PDF p. 396. **High.** Force arrows are parallel to the field, implying zero magnetic force rather than motor torque. Show opposite into/out-of-page forces, or a clearly labelled three-dimensional view, consistent with field and coil currents.
+- **Circular Motion of a Charged Particle in a Magnetic Field** — line 546, PDF p. 394. **Pass after correction.** The field now points out of the page, consistent with the positive charge’s clockwise orbit and inward Lorentz force; the force label is separated from the radius annotation. Rebuilt and visually checked.
+- **DC Motor schematic** — line 704, PDF p. 396. **Pass after correction.** With the field from N to S and the shown opposed coil currents, the left and right forces are now marked out of and into the page, respectively, producing the displayed motor torque. Rebuilt and visually checked.
 
 ## Chapter 26 — Electromagnetic Induction
 
@@ -52,4 +52,4 @@ Page locators below are PDF pages. Source lines refer to the current chapter fil
 
 ## Review status
 
-The Fleming and p–n junction fixes were rebuilt and visually checked. High-severity issues remain in the charged-particle orbit and DC motor diagrams, as well as medium/low layout or content issues listed above. The broader book build still has missing-glyph and layout diagnostics; these changes are not a publication certification.
+The Fleming, charged-particle, DC motor, and p–n junction fixes were rebuilt and visually checked. No high-severity diagram issues remain in this range, but 15 medium and 2 low findings are still listed above. The broader book build still has missing-glyph and layout diagnostics; these changes are not a publication certification.

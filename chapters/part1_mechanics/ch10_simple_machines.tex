@@ -481,27 +481,26 @@ For an ideal pulley system:
 
   % MOVABLE PULLEY SYSTEM (VR = 2)
   \node[font=\bfseries, align=center] at (6,10.0) {One movable\\($VR=2$)};
-  % Fixed pulley
-  \draw[thick, fill=gray!30] (6,7.5) circle (0.4cm);
-  \fill (6,7.5) circle (2pt);
+  % Fixed pulley is offset so the free effort strand is distinct
+  \draw[thick, fill=gray!30] (6.8,7.5) circle (0.4cm);
+  \fill (6.8,7.5) circle (2pt);
   % Movable pulley
   \draw[thick, fill=gray!30] (6,5.8) circle (0.4cm);
   \fill (6,5.8) circle (2pt);
-  % Ropes
-  \draw[thick] (5.6,5.8) -- (5.6,7.5);  % left rope
-  \draw[thick] (6.4,5.8) -- (6.4,7.0);  % right rope (attached to ceiling)
-  \draw[thick] (5.6,7.5) -- (6.0,7.1);  % over fixed pulley
   % Ceiling
-  \fill[gray!30] (5.0,7.8) rectangle (7.0,8.1);
-  \draw[thick] (5.0,7.8) -- (7.0,7.8);
-  \draw[thick] (6.4,7.8) -- (6.4,7.0); % right support to ceiling
-  \draw[thick] (6.0,7.9) -- (6.0,8.6);  % visible effort rope
+  \fill[gray!30] (5.0,7.8) rectangle (8.0,8.1);
+  \draw[thick] (5.0,7.8) -- (8.0,7.8);
+  % Continuous rope: ceiling anchor, around movable pulley,
+  % up over fixed pulley, then down to the free effort end.
+  \draw[thick] (5.6,7.8) -- (5.6,5.8)
+    arc (180:360:0.4) -- (6.4,7.5)
+    arc (180:0:0.4) -- (7.2,6.2);
   % Load
   \fill[codexblue!40] (5.4,5.2) rectangle (6.6,5.6);
   \node at (6.0,5.4) {$L$};
   % Effort
   \draw[->, thick, codexred]
-    (6.0,8.3) -- (6.0,9.0) node[right]{$E = L/2$};
+    (7.2,6.8) -- (7.2,6.1) node[right]{$E = L/2$};
   % Labels
   \node[codexblue, font=\tiny] at (5.2,6.6) {1};
   \node[codexblue, font=\tiny] at (6.65,6.6) {2};

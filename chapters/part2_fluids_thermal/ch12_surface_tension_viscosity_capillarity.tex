@@ -323,13 +323,12 @@ outer). Both contribute to the contracting force:
   % === SOAP BUBBLE ===
   \begin{scope}[shift={(6,0)}]
     \node[font=\bfseries] at (2,4.8) {Soap Bubble};
-    % Outer surface
-    \draw[very thick, codexblue] (2,2) circle (2.0cm);
-    % Inner surface
-    \draw[very thick, codexblue!60] (2,2) circle (1.6cm);
     % Film between surfaces
     \fill[codexblue!20] (2,2) circle (2.0cm);
     \fill[white] (2,2) circle (1.6cm);
+    % Surface outlines are drawn after the fills to remain visible
+    \draw[very thick, codexblue] (2,2) circle (2.0cm);
+    \draw[very thick, codexblue!60] (2,2) circle (1.6cm);
     % Labels
     \node[codexblue, font=\tiny] at (3.5,3.6)
       {Outer surface};

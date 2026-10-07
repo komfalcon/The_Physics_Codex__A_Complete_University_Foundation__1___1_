@@ -819,27 +819,27 @@ concrete highways, and building structures.
   \begin{scope}[shift={(0,1.5)}]
     \node[font=\bfseries] at (4.5,2.3) {When heated: curves downward (brass expands more)};
     % Fixed end
-    \fill[gray!70] (-0.3,-0.2) rectangle (0,1.2);
-    \draw[thick] (-0.3,-0.2) rectangle (0,1.2);
-    % Curved brass (top, longer, on outside of curve)
+    \fill[gray!70] (-0.3,-0.6) rectangle (0,1.2);
+    \draw[thick] (-0.3,-0.6) rectangle (0,1.2);
+    % Curved brass (upper/outer, longer layer; free end bends downward)
     \draw[codexgold!80, very thick, fill=codexgold!50]
-      (0,0.5) .. controls (2,0.9) and (5,1.4) ..
-      (7,2.0) -- (7,1.5) ..
-      controls (5,0.9) and (2,0.4) ..
-      (0,0.0) -- cycle;
-    \node[codexgold, font=\tiny] at (3.5,1.0)
+      (0,1.0) .. controls (2,0.9) and (5,0.55) ..
+      (7,0.0) -- (7,-0.5) ..
+      controls (5,0.05) and (2,0.4) ..
+      (0,0.5) -- cycle;
+    \node[codexgold!60!black, font=\tiny, fill=white, inner sep=1pt] at (3.5,0.75)
       {Brass (outer, longer)};
-    % Curved steel (bottom, shorter, inside of curve)
+    % Curved steel (lower/inner, shorter layer)
     \draw[gray!60, very thick, fill=gray!40]
-      (0,0.0) .. controls (2,0.4) and (5,0.9) ..
-      (7,1.5) -- (7,1.1) ..
-      controls (5,0.5) and (2,0.1) ..
-      (0,-0.4) -- cycle;
-    \node[gray, font=\tiny] at (3.5,0.5)
+      (0,0.5) .. controls (2,0.4) and (5,0.05) ..
+      (7,-0.5) -- (7,-1.0) ..
+      controls (5,-0.45) and (2,-0.1) ..
+      (0,0.0) -- cycle;
+    \node[gray, font=\tiny, fill=white, inner sep=1pt] at (3.5,-0.75)
       {Steel (inner, shorter)};
     % Curvature arrow
     \draw[->, very thick, codexred]
-      (7.2,1.5) -- (7.2,0.5)
+      (7.2,0.0) -- (7.2,-0.8)
       node[right, align=center]{bends\\down};
   \end{scope}
 

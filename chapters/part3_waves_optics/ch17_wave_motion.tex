@@ -628,7 +628,7 @@ zero if $A_1 = A_2$).
     % Wave 2 (antiphase: add pi to phase)
     \draw[codexred, thick, domain=0:12, samples=80]
       plot ({\x},
-      {0.6*sin(deg(\x*0.52+180))+0.5});
+      {0.6*sin(deg(\x*0.52)+180)+0.5});
     \node[left, codexred, font=\tiny, align=center] at (0,0.5)
       {Wave 2\\(antiphase)};
 
@@ -715,16 +715,16 @@ $x = \lambda/4, 3\lambda/4, 5\lambda/4, \ldots$
   }
 
   % Wavelength labels
-  \draw[<->, codexgold, thick] (0,-1.15) -- (6.28,-1.15);
-  \node[below, codexgold] at (3.14,-1.25)
+  \draw[<->, codexgold, thick] (0,-1.65) -- (6.28,-1.65);
+  \node[below, codexgold] at (3.14,-1.75)
     {$\lambda/2$};
-  \draw[<->, codexgold, thick] (6.28,-1.15) -- (12.56,-1.15);
-  \node[below, codexgold] at (9.42,-1.25)
+  \draw[<->, codexgold, thick] (6.28,-1.65) -- (12.56,-1.65);
+  \node[below, codexgold] at (9.42,-1.75)
     {$\lambda/2$};
 
   % Node-antinode distance
-  \draw[<->, gray, thick] (0,-1.9) -- (3.14,-1.9);
-  \node[below, gray, font=\tiny] at (1.57,-2.0)
+  \draw[<->, gray, thick] (0,-2.35) -- (3.14,-2.35);
+  \node[below, gray, font=\tiny] at (1.57,-2.45)
     {$\lambda/4$};
 
   % Compact key, above the plotted extrema.
@@ -855,9 +855,9 @@ $\mu$ is the mass per unit length (kg\,m$^{-1}$).
   \node[above, gray] at (4,0.9) {$L$};
 
   % Legend
-  \node[codexred, font=\tiny, anchor=west] at (0,-0.3)
+  \node[codexred, font=\tiny, align=center] at (4,-0.45)
     {\ding{108} Node (N)};
-  \node[codexgreen, font=\tiny, anchor=east] at (8,-0.3)
+  \node[codexgreen, font=\tiny, align=center] at (4,-0.8)
     {\ding{108} Antinode (A)};
 
 \end{tikzpicture}
@@ -900,7 +900,7 @@ of length $2L$.
 
 \begin{diagbox}[Harmonics in Open and Closed Pipes]
 \begin{center}
-\begin{tikzpicture}[scale=0.9, font=\small]
+\begin{tikzpicture}[scale=0.8, font=\small]
 
   % --- OPEN PIPE ---
   \begin{scope}[shift={(0,0)}]

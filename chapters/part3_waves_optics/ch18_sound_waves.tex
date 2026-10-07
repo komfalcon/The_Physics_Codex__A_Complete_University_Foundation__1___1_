@@ -91,7 +91,7 @@ Sound cannot travel through a vacuum.
   \node[codexred, font=\tiny] at (-0.5,7.3)
     {compress};
   \node[codexblue, font=\tiny] at (1.2,7.3)
-    {rarefy};
+    {compress};
 
   % Compressions (C) and rarefactions (R) spreading right
   % Compression 1
@@ -783,8 +783,8 @@ than the wavelength cannot be resolved).
   % Transducer
   \fill[gray!60] (0,3.5) rectangle (1.5,4.5);
   \draw[thick] (0,3.5) rectangle (1.5,4.5);
-  \node[font=\small, align=center] at (0.75,4.0)
-    {Transducer\\(sends \& receives)};
+  \node[above, font=\tiny] at (0.75,4.5)
+    {Transducer};
 
   % Tissue layers
   \fill[codexblue!10] (1.5,0) rectangle (8,5);
@@ -801,12 +801,12 @@ than the wavelength cannot be resolved).
   % Ultrasound pulse
   \draw[->, very thick, codexblue]
     (1.5,4.0) -- (3.0,4.0)
-    node[above, midway, font=\tiny]{pulse};
+    node[above, midway, font=\tiny, fill=white, inner sep=1pt]{pulse};
 
   % Reflection 1
   \draw[->, thick, codexred, dashed]
     (3.0,3.8) -- (1.6,3.8)
-    node[above, midway, font=\tiny]{echo 1};
+    node[below, midway, font=\tiny, fill=white, inner sep=1pt]{echo 1};
 
   % Transmitted pulse continues
   \draw[->, thick, codexblue]
@@ -814,8 +814,8 @@ than the wavelength cannot be resolved).
 
   % Reflection 2
   \draw[->, thick, codexred, dashed]
-    (5.5,3.6) -- (1.6,3.6)
-    node[below, midway, font=\tiny]{echo 2};
+    (5.5,3.2) -- (1.6,3.2)
+    node[below, midway, font=\tiny, fill=white, inner sep=1pt]{echo 2};
 
   % Time of flight labels
   \draw[<->, gray] (1.6,1.5) -- (3.0,1.5);
@@ -824,7 +824,7 @@ than the wavelength cannot be resolved).
   \node[below, gray, font=\tiny] at (3.55,0.7) {$t_2$};
 
   % Depth formula
-  \node[font=\small, align=center] at (5,1.8)
+  \node[font=\small, align=center, fill=white, inner sep=2pt] at (7.0,1.8)
     {$d_1 = \frac{v \times t_1}{2}$\\[4pt]
     $d_2 = \frac{v \times t_2}{2}$};
 

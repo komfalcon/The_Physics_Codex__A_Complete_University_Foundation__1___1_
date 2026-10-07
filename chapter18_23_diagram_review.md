@@ -2,16 +2,16 @@
 
 ## Summary
 
-All 27 active TikZ diagrams across Chapters 18–23 were checked against their source and mapped to the rendered PDF. Following the final 507-page build, the Chapter 18 Doppler diagram, Chapter 19 mirror diagrams, Chapter 20 compound microscope, Chapter 21 charging sequence, and Chapter 22 series-capacitor diagram have been corrected and visually rechecked. The remaining status is 2 blockers, 4 major issues, 5 minor issues, and 16 passes; this six-chapter portion is not ready for publication until the blockers and major issues are resolved.
+All 27 active TikZ diagrams across Chapters 18–23 were checked against their source and mapped to the rendered PDF. Following the final forced 507-page build, the Chapter 18 tuning-fork and ultrasound diagrams, Chapter 19 mirror diagrams, Chapter 20 microscope and hypermetropia diagrams, Chapter 21 charging, field-pattern and electroscope figures, Chapter 22 series-capacitor diagram, and Chapter 23 Kirchhoff loop have been corrected and visually rechecked. The remaining status is 0 blockers, 0 major issues, 5 minor issues, and 22 passes; the remaining print-scale refinements are listed below.
 
 Page locators below give printed page first and PDF page second. Line numbers refer to the relevant chapter source at review time.
 
 ## Chapter 18 — Sound Waves
 
-- **Tuning Fork Producing Sound Waves** — lines 74–180; printed p. 261 / PDF p. 282. **Blocker.** The right prong moves toward the air on its right but is labeled “rarefy”; that motion produces compression. Reverse the arrow and label it as a rarefaction phase, or show the two-phase motion so the compression/rarefaction sequence is clear.
+- **Tuning Fork Producing Sound Waves** — lines 74–180; printed p. 261 / PDF p. 282. **Pass after correction.** The outward-moving right prong is labelled as producing compression in the air ahead of it. The final build was visually checked at print-page scale.
 - **Pitch, Loudness and Quality as Waveforms** — lines 305–375; printed p. 263 / PDF p. 284. **Minor.** The “Time” label collides with the quality-panel legend. Move the axis label or legend to separate them.
 - **Doppler Effect: Moving Source** — lines 551–595; printed p. 266 / PDF p. 287. **Pass after correction.** The prior concentric-wavefront sketch reversed the front/rear spacing and wavelength markers. It has been redrawn as a one-dimensional snapshot with compressed fronts ahead of the right-moving source, expanded fronts behind it, and observers/labels in the corresponding positions. The rebuilt PDF was visually checked at print-page scale; the corrected diagram is legible and consistent with the surrounding explanation.
-- **Medical Ultrasound Imaging: Principle** — lines 778–844; printed p. 269 / PDF p. 290. **Major.** The transducer label is partly obscured by the tissue fill, and pulse/echo and depth annotations crowd one another. Reserve a clear label area and reposition the annotations, then recheck at print scale.
+- **Medical Ultrasound Imaging: Principle** — lines 778–844; printed p. 269 / PDF p. 290. **Pass after correction.** The transducer name is above its filled body, outgoing pulse/echo labels are separated, and the depth equations sit clear of the organ-wall boundary. Checked in the final build.
 
 ## Chapter 19 — Light Reflection
 
@@ -26,15 +26,15 @@ Page locators below give printed page first and PDF page second. Line numbers re
 - **Total Internal Reflection: Three Cases** — lines 288–379; printed p. 291 / PDF p. 312. **Pass.** The below/at/above-critical-angle cases, media, rays, and normals are consistent and legible.
 - **Converging and Diverging Lenses** — lines 455–560; printed p. 292 / PDF p. 313. **Pass.** Lens profiles, focal points, ray directions, and virtual-focus extensions agree with the surrounding definitions and fit cleanly.
 - **The Compound Microscope: Ray Diagram** — lines 755–815; printed p. 296 / PDF p. 317. **Pass after correction.** The objective rays now meet at a real inverted intermediate image; the eyepiece rays diverge with collinear backward extensions meeting at the virtual image below the axis. The updated 507-page PDF was visually checked; labels and construction are consistent and legible at print-page scale.
-- **Short-sight (Myopia) and Long-sight (Hypermetropia)** — lines 933–1008; printed p. 297 / PDF p. 318. **Major.** In the hypermetropia panel, rays stop at the retina without reaching the marked focus behind it; the figure says “corrected by” but shows no correction. Extend the rays to the focus and either show the corrective lens and paths or revise the wording to say the paths are uncorrected.
+- **Short-sight (Myopia) and Long-sight (Hypermetropia)** — lines 933–1008; printed p. 297 / PDF p. 318. **Pass after correction.** Hypermetropia is explicitly shown as uncorrected, with the rays extended to the marked focus behind the retina; the corrective lens is not falsely depicted as present.
 
 ## Chapter 21 — Electrostatics
 
 - **Attraction and Repulsion of Charges** — lines 103–166; printed p. 307 / PDF p. 328. **Pass.** Force arrows and field-line directions agree with the charge signs and surrounding text.
 - **Three Methods of Charging** — lines 192–297; printed p. 308 / PDF p. 329. **Pass after correction.** The induction arrow shows electrons moving from Earth into the conductor, and both positively charged spheres appear after contact and separation. The final 507-page PDF was visually checked at print-page scale.
-- **Electric Field Patterns for Common Charge Configurations** — lines 491–583; printed p. 311 / PDF p. 332. **Major.** The dipole and uniform-field titles nearly collide, and the dipole title sits over field lines. Give the panels separate title space or stack them.
+- **Electric Field Patterns for Common Charge Configurations** — lines 491–583; printed p. 311 / PDF p. 332. **Pass after correction.** The dipole subheading is in the clear whitespace between the single-charge panels and lower dipole-field construction, separate from the parallel-plate title.
 - **Field Lines and Equipotentials for a Point Charge** — lines 667–707; printed p. 312 / PDF p. 333. **Pass.** Radial field lines, equipotential circles, and decreasing potential labels are consistent and legible.
-- **The Gold-Leaf Electroscope** — lines 769–845; printed p. 314 / PDF p. 335. **Major.** The “uncharged” leaves are drawn as a V despite the label saying they hang vertically. Draw the neutral leaves vertically and reserve the diverging shape for the charged panel.
+- **The Gold-Leaf Electroscope** — lines 769–845; printed p. 314 / PDF p. 335. **Pass after correction.** Neutral leaves hang parallel and vertically; divergence appears only in the charged panel.
 
 ## Chapter 22 — Capacitance
 
@@ -46,11 +46,11 @@ Page locators below give printed page first and PDF page second. Line numbers re
 
 - **I–V Characteristics: Ohmic and Non-ohmic** — lines 154–220; printed p. 338 / PDF p. 359. **Minor.** The filament and reverse-bias annotations are clipped or pressed into the axes. Move them inside the plot with padding, or outside the plot with more room.
 - **Resistance vs Temperature for Metal and NTC Thermistor** — lines 333–366; printed p. 340 / PDF p. 361. **Pass.** The qualitative curves, labels, and legend are consistent and legible.
-- **Applying Kirchhoff’s Laws** — lines 468–541; printed p. 342 / PDF p. 363. **Blocker.** The stated outer-loop equation includes E₂, although E₂ is on the inner branch, not that loop’s perimeter; the surrounding worked example repeats the mismatch. Correct loop membership, dashed path, equations, and accompanying example together.
+- **Applying Kirchhoff’s Laws** — lines 468–541; printed p. 342 / PDF p. 363. **Pass after correction.** The outer-loop equation now includes only E₁, R₁, and R₂; E₂ is drawn with its positive terminal at the bottom and appears only in the inner-loop equation. The worked example’s currents were recalculated to match. The final build was visually checked at print-page scale.
 - **Battery with Internal Resistance** — lines 627–688; printed p. 343 / PDF p. 364. **Minor.** The external-resistance label overlaps the current arrow at the top resistor. Move the label or arrow to a separate area.
 - **Potential Divider Circuit** — lines 754–802; printed p. 344 / PDF p. 365. **Pass.** The series resistors, output tap, voltage marker, and formula are consistent and clear.
 - **Wheatstone Bridge Circuit** — lines 867–949; printed p. 346 / PDF p. 367. **Pass.** The bridge topology, galvanometer, labels, and balance relation are consistent and legible.
 
 ## Review status
 
-The listed edits were rebuilt and visually checked at print-page scale. The remaining blockers are the Ch. 18 tuning-fork phase labels and Ch. 23 Kirchhoff outer-loop equation; the four unresolved major issues are documented beside their entries. The full book also retains missing-glyph and layout diagnostics, so a successful build does not constitute publication certification.
+The listed edits were rebuilt and visually checked at print-page scale. No blockers or major issues remain in this six-chapter diagram set; five minor layout refinements are still documented above. The full book also retains missing-glyph and layout diagnostics, so a successful build does not constitute publication certification.

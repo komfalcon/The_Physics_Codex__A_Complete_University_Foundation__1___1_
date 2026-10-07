@@ -228,9 +228,9 @@ Equating (assuming no heat losses):
   \draw[thick, codexred] (5.5,1.5) -- (5.5,2.5) -- (7.6,2.5);
 
   % Thermometer
-  \draw[thick] (4.0,3.2) -- (4.0,5.5);
-  \fill[codexred!60] (3.8,3.2) rectangle (4.2,3.6);
-  \node[right, font=\tiny] at (4.2,4.5) {Thermometer};
+  \draw[thick] (4.8,2.9) -- (4.8,5.5);
+  \fill[codexred!60] (4.6,2.7) rectangle (5.0,3.1);
+  \node[right, font=\tiny] at (5.0,4.5) {Thermometer};
 
   % Voltmeter connected in parallel across the heater terminals.
   \draw[thick] (2.5,5.0) -- (2.5,6.2) -- (3.8,6.2);
@@ -389,13 +389,13 @@ water, and calorimeter respectively.
     \node[codexgold, font=\small] at (2.0,4.0)
       {$\theta_f$ (common temperature)};
 
-    % Energy balance equation
-    \node[align=center, font=\small] at (2.0,5.3)
+    % Energy balance, reflowed to fit the panel
+    \node[align=center, font=\small] at (2.0,5.35)
       {Heat lost = Heat gained};
-    \node[align=center, font=\tiny, codexblue]
-      at (2.0,4.8)
-      {$m_sc_s(\theta_s-\theta_f)
-      = (m_wc_w+m_cc_c)(\theta_f-\theta_w)$};
+    \node[align=center, font=\tiny, codexblue, text width=3.5cm]
+      at (2.0,4.85)
+      {$m_sc_s(\theta_s-\theta_f)$\\
+      $=(m_wc_w+m_cc_c)(\theta_f-\theta_w)$};
   \end{scope}
 
 \end{tikzpicture}
