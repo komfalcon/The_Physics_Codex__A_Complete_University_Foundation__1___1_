@@ -392,8 +392,6 @@ thu\textbf{M}b = \textbf{M}otion.
     (-0.3,0) rectangle (0.3,2.5);
   \draw[very thick, codexblue, rounded corners]
     (-0.3,0) rectangle (0.3,2.5);
-  \node[codexblue, font=\bfseries\small]
-    at (0,1.25) {Motion};
   \draw[->, very thick, codexblue, line width=2pt]
     (0,2.5) -- (0,3.3);
   \node[above, codexblue] at (0,3.4) {$F$ (force)};
@@ -409,16 +407,16 @@ thu\textbf{M}b = \textbf{M}otion.
     (-2.5,1.8) -- (-3.3,1.8);
   \node[left, codexred] at (-3.4,1.8) {$\vect{B}$};
 
-  % Middle finger (into page = current, going right/down)
+  % Middle finger represents conventional current into the page.
   \fill[codexgreen!30, rounded corners]
     (0.3,0.8) rectangle (2.0,1.4);
   \draw[very thick, codexgreen, rounded corners]
     (0.3,0.8) rectangle (2.0,1.4);
   \node[codexgreen, font=\bfseries\small]
     at (1.15,1.1) {Current $I$};
-  \draw[->, very thick, codexgreen, line width=2pt]
-    (2.0,1.1) -- (2.8,1.1);
-  \node[right, codexgreen] at (2.9,1.1) {$I$};
+  \draw[very thick, codexgreen] (2.55,1.1) circle (0.2);
+  \node[codexgreen, font=\small] at (2.55,1.1) {$\otimes$};
+  \node[right, codexgreen, font=\tiny] at (2.82,1.1) {into page};
 
   % Palm base
   \fill[codexgold!20, rounded corners]

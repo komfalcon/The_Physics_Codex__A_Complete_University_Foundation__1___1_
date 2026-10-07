@@ -282,10 +282,11 @@ In every nuclear decay:
 \begin{itemize}[noitemsep]
   \item Total \textbf{nucleon number} $A$ is
   conserved (sum of mass numbers is constant).
-  \item Total \textbf{proton number} $Z$ is
-  conserved (sum of atomic numbers is constant).
+  \item The nuclear proton number $Z$ can change by one
+  in beta decay.
+  \item Total electric charge, including emitted beta
+  particles, is conserved.
   \item Total \textbf{energy-momentum} is conserved.
-  \item Total \textbf{charge} is conserved.
 \end{itemize}
 \end{lawbox}
 
@@ -339,15 +340,13 @@ to a neutron, emitting a positron and neutrino:
 \]
 Occurs when nucleus has too many protons.
 
-\textbf{Gamma emission:} After alpha or beta decay,
-the daughter nucleus is often left in an excited
-energy state. It releases excess energy as a gamma
-photon, without changing $A$ or $Z$:
+\textbf{Gamma emission:} A daughter nucleus produced by
+alpha or beta decay may be left in an excited state. It
+can release excess energy as a gamma photon, without
+changing $A$ or $Z$:
 \[
   {}^A_Z\text{X}^* \rightarrow {}^A_Z\text{X} + \gamma
 \]
-Gamma emission almost always accompanies alpha or
-beta decay.
 \end{definitionbox}
 
 \begin{examplebox}[28.1]
@@ -640,21 +639,31 @@ which corresponds to energy:
   1\ \text{u} \times c^2 = 931.5\ \text{MeV}
 \]
 
-Particle masses:
+Useful masses for nuclear calculations:
 \begin{itemize}[noitemsep]
   \item Proton: $m_p = 1.007276\ \text{u}$
   \item Neutron: $m_n = 1.008665\ \text{u}$
   \item Electron: $m_e = 0.000549\ \text{u}$
+  \item Neutral hydrogen-1 atom: $m({}^1_1\text{H}) = 1.007825\ \text{u}$
+  \item Neutral helium-4 atom: $m({}^4_2\text{He}) = 4.002603\ \text{u}$
 \end{itemize}
 \end{definitionbox}
 
 \begin{definitionbox}[Nuclear Binding Energy]
-The \textbf{mass defect} $\Delta m$ of a nucleus is
-the difference between the sum of the masses of its
-constituent nucleons and the actual mass of the nucleus:
+Using nuclear masses consistently, the \textbf{mass defect}
+$\Delta m$ is the sum of the constituent nucleon masses
+minus the nuclear mass:
 \[
-  \Delta m = Zm_p + (A-Z)m_n - m_{nucleus}
+  \Delta m = Zm_p + (A-Z)m_n - m_{\mathrm{nucleus}}
 \]
+If neutral atomic masses are used instead, use
+\[
+  \Delta m = Zm({}^1_1\text{H}) + (A-Z)m_n - m_{\mathrm{atom}}
+\]
+where $m({}^1_1\text{H})$ is the neutral hydrogen-1 atom
+mass and $m_{\mathrm{atom}}$ is the neutral nuclide atom
+mass. The electron masses then cancel, apart from small
+differences in electron-binding energies.
 The \textbf{binding energy} is the energy equivalent
 of this mass defect:
 \[
@@ -754,40 +763,41 @@ is released as kinetic energy and radiation.
 \stepcounter{workedexample}
 Calculate the binding energy of helium-4
 (${}^4_2\text{He}$) in MeV.\\
-Given: $m({}^4\text{He}) = 4.002602\ \text{u}$,
-$m_p = 1.007276\ \text{u}$,
-$m_n = 1.008665\ \text{u}$,
+Use neutral-atom masses:
+$m({}^1_1\text{H}) = 1.007825\ \text{u}$,
+$m_n = 1.008665\ \text{u}$, and
+$m({}^4_2\text{He}) = 4.002603\ \text{u}$.
 $1\ \text{u} = 931.5\ \text{MeV}/c^2$.
 \end{examplebox}
 
 \begin{solutionbox}
 Helium-4 has 2 protons and 2 neutrons.
 
-Mass of constituents:
+Mass of constituents, using the neutral-atomic-mass form:
 \[
-  m_{parts} = 2m_p + 2m_n
-  = 2(1.007276) + 2(1.008665)
-  = 2.014552 + 2.017330
-  = 4.031882\ \text{u}
+  m_{parts} = 2m({}^1_1\text{H}) + 2m_n
+  = 2(1.007825) + 2(1.008665)
+  = 2.015650 + 2.017330
+  = 4.032980\ \text{u}
 \]
 
 Mass defect:
 \[
-  \Delta m = m_{parts} - m({}^4\text{He})
-  = 4.031882 - 4.002602
-  = 0.029280\ \text{u}
+  \Delta m = m_{parts} - m({}^4_2\text{He})
+  = 4.032980 - 4.002603
+  = 0.030377\ \text{u}
 \]
 
 Binding energy:
 \[
   E_B = \Delta m \times 931.5\ \text{MeV/u}
-  = 0.029280 \times 931.5
-  = 27.28\ \text{MeV}
+  = 0.030377 \times 931.5
+  = 28.296\ \text{MeV}
 \]
 
 Binding energy per nucleon:
 \[
-  E_B/A = 27.28/4 = 6.82\ \text{MeV per nucleon}
+  E_B/A = 28.296/4 = 7.074\ \text{MeV per nucleon}
 \]
 
 This is significantly lower than iron ($8.8\ \text{MeV}$),

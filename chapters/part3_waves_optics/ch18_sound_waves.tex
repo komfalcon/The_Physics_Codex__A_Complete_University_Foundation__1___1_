@@ -550,42 +550,43 @@ Longer wavelength means lower frequency --- lower pitch.
 
 \begin{diagbox}[Doppler Effect: Moving Source]
 \begin{center}
-\begin{tikzpicture}[scale=0.95, font=\small]
+\begin{tikzpicture}[scale=0.8, font=\small]
+  % One-dimensional cross-section of wavefronts at a common instant.
+  % The source moves right, so successive fronts are closer ahead and
+  % farther apart behind it.
+  \fill[codexgreen] (4.6,0) circle (5pt);
+  \node[above, codexgreen, align=center] at (4.6,0.2)
+    {Observer A\\ahead; higher pitch};
 
-  % Observer A (front)
-  \fill[codexgreen] (-3.5,0) circle (6pt);
-  \node[left, codexgreen, align=left] at (-3.7,0) {Observer A\\(hears higher pitch)};
+  \fill[codexred] (-5.4,0) circle (5pt);
+  \node[below, codexred, align=center] at (-5.4,-0.2)
+    {Observer B\\behind; lower pitch};
 
-  % Observer B (rear)
-  \fill[codexred] (4.5,0) circle (6pt);
-  \node[right, codexred, align=left] at (4.7,0) {Observer B\\(hears lower pitch)};
+  % Compressed wavefront spacing in front of the source.
+  \foreach \x in {0.7,1.4,2.1} {
+    \draw[codexblue, thick] (\x,-0.65) -- (\x,0.65);
+  }
+  % Expanded wavefront spacing behind the source.
+  \foreach \x in {-1.4,-2.8,-4.2} {
+    \draw[codexblue, thick] (\x,-0.65) -- (\x,0.65);
+  }
 
-  % Source (moving right)
-  \fill[codexblue] (0,0) circle (8pt);
-  \node[above, codexblue] at (0,0.2) {Source};
-  \draw[->, very thick, codexblue] (0.2,0) -- (1.5,0)
+  % Current source position and direction of travel.
+  \fill[codexblue] (0,0) circle (6pt);
+  \node[above, codexblue] at (0,0.75) {Source};
+  \draw[->, very thick, codexblue] (0,1.35) -- (1.0,1.35)
     node[right, font=\small]{$v_s$};
 
-  % Wavefronts (compressed in front, stretched behind)
-  % Front wavefronts (closer together)
-  \draw[codexblue, thick] (-0.5,0) circle (0.5);
-  \draw[codexblue, thick] (-1.2,0) circle (1.2);
-  \draw[codexblue, thick] (-2.1,0) circle (2.1);
-  \draw[codexblue, thick] (-3.2,0) circle (3.2);
+  % Wavelengths are the separations between adjacent fronts.
+  \draw[<->, codexgreen, thick] (0.7,-1.0) -- (1.4,-1.0);
+  \node[below, codexgreen, font=\tiny] at (1.05,-1.0)
+    {$\lambda_{\mathrm{front}}$ (short)};
+  \draw[<->, codexred, thick] (-2.8,-1.0) -- (-1.4,-1.0);
+  \node[below, codexred, font=\tiny] at (-2.1,-1.0)
+    {$\lambda_{\mathrm{rear}}$ (long)};
 
-  % Label wavelengths
-  \draw[<->, codexgreen, thick] (-1.2,-1.0) -- (-0.5,-1.0);
-  \node[below, codexgreen, font=\tiny] at (-0.85,-1.1)
-    {$\lambda'$ (short)};
-
-  \draw[<->, codexred, thick] (1.2,-1.0) -- (3.2,-1.0);
-  \node[below, codexred, font=\tiny] at (2.2,-1.1)
-    {$\lambda''$ (long)};
-
-  % Arrow for source motion
-  \node[below, codexblue, font=\small] at (0,-2.5)
-    {Source moving to the right at speed $v_s$};
-
+  \node[font=\tiny, gray, align=center] at (0,-2.0)
+    {Schematic wavefront spacing at one instant};
 \end{tikzpicture}
 \end{center}
 \end{diagbox}

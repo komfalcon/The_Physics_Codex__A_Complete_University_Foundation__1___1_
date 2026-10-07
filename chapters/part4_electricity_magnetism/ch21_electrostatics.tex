@@ -247,12 +247,19 @@ Examples: silicon, germanium (Chapter 29).
     \draw[->, thick, codexred] (4.4,0.6) -- (5.3,0.6);
     \node[above, font=\tiny] at (4.8,0.7) {separate};
 
-    % Both charged
-    \fill[codexred!30] (5.8,0.6) circle (0.7);
-    \draw[thick] (5.8,0.6) circle (0.7);
+    % Both spheres share the positive charge after contact and separation.
+    \fill[codexred!30] (5.4,0.6) circle (0.45);
+    \draw[thick] (5.4,0.6) circle (0.45);
     \foreach \angle in {0,90,180,270} {
       \node[codexred, font=\tiny]
-        at ({5.8+0.4*cos(\angle)},{0.6+0.4*sin(\angle)})
+        at ({5.4+0.3*cos(\angle)},{0.6+0.3*sin(\angle)})
+        {$+$};
+    }
+    \fill[codexred!30] (6.7,0.6) circle (0.45);
+    \draw[thick] (6.7,0.6) circle (0.45);
+    \foreach \angle in {0,90,180,270} {
+      \node[codexred, font=\tiny]
+        at ({6.7+0.3*cos(\angle)},{0.6+0.3*sin(\angle)})
         {$+$};
     }
   \end{scope}
@@ -279,9 +286,10 @@ Examples: silicon, germanium (Chapter 29).
     \foreach \y in {0.3,0.6,0.9,1.2} {
       \node[codexred, font=\bfseries] at (3.9,\y) {$+$};
     }
-    % Earth the far end, remove earth, remove rod
-    \draw[->, thick, codexblue] (4.2,0.8) -- (5.0,0.8)
-      node[right, font=\tiny]{Earth\\(remove $+$)};
+    % Electrons flow from Earth into the conductor when it is grounded.
+    \draw[->, thick, codexblue] (5.0,0.8) -- (4.2,0.8)
+      node[pos=0.5, above, font=\tiny, fill=white, inner sep=1pt]
+        {$e^{-}$ from Earth};
     \fill[gray!20] (5.8,0) rectangle (7.5,1.6);
     \draw[thick] (5.8,0) rectangle (7.5,1.6);
     \foreach \y in {0.3,0.6,0.9,1.2} {

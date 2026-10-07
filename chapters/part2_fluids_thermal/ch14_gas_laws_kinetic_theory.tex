@@ -232,10 +232,10 @@ Using Celsius gives wrong answers.
 \begin{tikzpicture}
 \begin{axis}[
   width=10.5cm, height=6cm,
-  xlabel={Temperature $T$ (K)},
+  xlabel={Temperature $T$ (\textdegree C)},
   ylabel={Volume $V$},
   xmin=-300, xmax=600,
-  ymin=0, ymax=5,
+  ymin=0, ymax=11.5,
   grid=major, grid style={gray!15},
   xtick={-273,0,200,400},
   xticklabels={\shortstack{$0\,\text{K}$\\$-273\textdegree\text{C}$},$0\textdegree\text{C}$,$200\textdegree\text{C}$,$400\textdegree\text{C}$},
@@ -244,11 +244,11 @@ Using Celsius gives wrong answers.
   extra x tick labels={},
 ]
   % Three lines for three different pressures
-  \addplot[codexblue, very thick, domain=-273:550]
+  \addplot[codexblue, very thick, domain=0:550]
     {0.008*(x+273)};
-  \addplot[codexred, very thick, domain=-273:550]
+  \addplot[codexred, very thick, domain=0:550]
     {0.012*(x+273)};
-  \addplot[codexgreen, very thick, domain=-273:550]
+  \addplot[codexgreen, very thick, domain=0:550]
     {0.006*(x+273)};
 
   % Extrapolation to absolute zero (dashed)
@@ -266,21 +266,21 @@ Using Celsius gives wrong answers.
 
   % Pressure labels
   \node[codexblue, font=\small]
-    at (axis cs:480,3.2) {$P_1$};
+    at (axis cs:535,6.7) {$P_1$};
   \node[codexred, font=\small]
-    at (axis cs:400,4.5) {$P_2 > P_1$};
+    at (axis cs:535,9.8) {$P_3 < P_1$};
   \node[codexgreen, font=\small]
-    at (axis cs:480,2.3) {$P_3 < P_1$};
+    at (axis cs:535,5.0) {$P_2 > P_1$};
 
   % Real gas region
   \draw[gray, dashed, thick]
-    (axis cs:0,-0.1) -- (axis cs:0,5);
+    (axis cs:0,-0.1) -- (axis cs:0,11.5);
   \node[gray, font=\tiny, rotate=90]
     at (axis cs:-50,2.5) {Real gas region};
 
   % Annotation
-  \node[align=center, font=\small, codexblue]
-    at (axis cs:250,0.5)
+  \node[align=center, font=\tiny, codexblue]
+    at (axis cs:230,1.2)
     {\shortstack{All lines extrapolate to $V=0$\\at $T = -273\textdegree\text{C} = 0\,\text{K}$}};
 
 \end{axis}
@@ -571,8 +571,10 @@ in a volume of $10.0\ \text{L}$.\\
     \draw[->, thick, codexgreen!70]
       (7.0,\y) -- (7.5,\y);
   }
-  \node[right, codexgreen, font=\small] at (7.5,2.5)
-    {\shortstack{Net force on wall = Pressure}};
+  \node[right, align=left, codexgreen, font=\scriptsize] at (7.5,2.5)
+    {\shortstack{Pressure = normal force\\
+    per unit area\\
+    $P=F_{\perp}/A$}};
 
   % Temperature label
   \node[align=center, font=\small] at (3.5,-1.2)
@@ -710,19 +712,19 @@ where $M$ is the molar mass (kg\,mol$^{-1}$).
 \begin{tikzpicture}
 \begin{axis}[width=11cm, height=6cm,
   xlabel={Molecular speed $c$ (m\,s$^{-1}$)},
-  ylabel={Fraction of molecules},
+  ylabel={Probability density $\phi(c)$ (s\,m$^{-1}$)},
   xmin=0, xmax=1400, ymin=0, ymax=0.0035,
   grid=major, grid style={gray!15},
   ytick=\empty,
   xtick={0,200,400,600,800,1000,1200},
   legend pos=north east]
-  % Low T distribution (peak verified at x=sqrt(80000)=283 m/s)
+  % Unit-area low-T Maxwell–Boltzmann distribution (peak at sqrt(80000)).
   \addplot[codexblue, very thick, domain=0:1200, samples=150]
-    {1200 * x^2 * exp(-x^2/80000) * 3e-9};
+    {9.973557e-8 * x^2 * exp(-x^2/80000)};
   \addlegendentry{Low $T$}
-  % High T distribution (peak verified at x=sqrt(160000)=400 m/s)
+  % Unit-area high-T Maxwell–Boltzmann distribution (peak at sqrt(160000)).
   \addplot[codexred, very thick, domain=0:1400, samples=150]
-    {600 * x^2 * exp(-x^2/160000) * 3e-9};
+    {3.526185e-8 * x^2 * exp(-x^2/160000)};
   \addlegendentry{High $T$}
   % Low T c_mp: dashed blue line + rotated label on left side
   \draw[dashed, codexblue, thick] (axis cs:283,0) -- (axis cs:283,0.00285);
@@ -737,7 +739,7 @@ where $M$ is the molar mass (kg\,mol$^{-1}$).
   \draw[dash dot, codexgreen, line width=1.2pt] (axis cs:490,0) -- (axis cs:490,0.00155);
   \node[codexgreen, font=\tiny, rotate=90, anchor=south] at (axis cs:508,0.0008) {$c_{rms}$};
   % Area = 1 note (positioned left of the legend box)
-  \node[font=\tiny, gray, align=center] at (axis cs:1100,0.0028)
+  \node[font=\tiny, gray, align=center] at (axis cs:1080,0.0018)
     {Total area\\under each\\curve $= 1$};
   % Tail annotation (anchor and position kept inside the axis frame)
   \draw[->, gray, thick] (axis cs:850,0.0004) -- (axis cs:1000,0.0004);

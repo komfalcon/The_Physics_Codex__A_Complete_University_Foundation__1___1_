@@ -852,9 +852,6 @@ displaced volume).
   \node[font=\small, align=center, codexgreen]
     at (14.25,1.4)
     {$U = \rho_{fluid}\,V_{obj}\,g$\\(weight of displaced fluid)};
- 
-  % DEBUG grid
-  \draw[gray!30, very thin] (0,0) grid[step=1] (16.5,9);
 \end{tikzpicture}
 \end{center}
 \end{diagbox}
@@ -894,11 +891,11 @@ For a floating object:
   \fill[codexblue!80, opacity=0.5]
     (1,4.5) rectangle (2.8,5.0);
   \draw[->, codexgreen, thick]
-    (1.9,4.5) -- (1.9,3.8)
-    node[below, font=\tiny]{$U$};
+    (1.3,4.55) -- (1.3,5.45)
+    node[above, font=\tiny]{$U=W$};
   \draw[->, codexred, thick]
-    (1.9,5.5) -- (1.9,6.2)
-    node[above, font=\tiny]{$W$};
+    (2.5,5.45) -- (2.5,4.55)
+    node[below, font=\tiny]{$W=U$};
   \node[below, font=\small] at (1.9,2.3)
     {Floats};
   \node[below, font=\tiny, codexblue] at (1.9,3.0)
@@ -909,11 +906,11 @@ For a floating object:
   \draw[thick] (5,2.3) rectangle (7,3.5);
   \node at (6,2.9) {\small Submarine};
   \draw[->, codexgreen, thick]
-    (6,2.3) -- (6,1.5)
-    node[below, font=\tiny]{$U=W$};
+    (5.4,2.35) -- (5.4,3.25)
+    node[above, font=\tiny]{$U=W$};
   \draw[->, codexred, thick]
-    (6,3.5) -- (6,4.3)
-    node[above, font=\tiny]{$W=U$};
+    (6.6,3.45) -- (6.6,2.55)
+    node[below, font=\tiny]{$W=U$};
   \node[below, font=\small] at (6,0.1)
     {Neutrally buoyant};
   \node[below, font=\tiny, codexaccent] at (6,0.8)
@@ -924,11 +921,11 @@ For a floating object:
   \draw[thick] (9.5,0.2) rectangle (11,1.2);
   \node at (10.25,0.7) {\small Metal};
   \draw[->, codexgreen, thick]
-    (10.25,0.2) -- (10.25,-0.5)
-    node[below, font=\tiny]{$U$};
+    (9.65,0.2) -- (9.65,0.9)
+    node[above, font=\tiny]{$U$};
   \draw[->, codexred, thick, line width=2pt]
-    (10.25,1.2) -- (10.25,2.2)
-    node[above, font=\tiny]{$W > U$};
+    (10.85,1.2) -- (10.85,0.2)
+    node[below, font=\tiny]{$W > U$};
   \node[below, font=\small] at (10.25,-0.8)
     {Sinks};
   \node[below, font=\tiny, codexred] at (10.25,3.4)

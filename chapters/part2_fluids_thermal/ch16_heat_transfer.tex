@@ -825,7 +825,6 @@ without the atmosphere.
   % Bands: Space / Atmosphere / Surface
   %------------------------------------------------------------------
   \fill[black!3] (\xL,\yAtmT) rectangle (\xR,\ySpaceT);
-  \node[gray, font=\itshape] at ({(\xL+\xR)/2}, {\yAtmT+0.75*(\ySpaceT-\yAtmT)}) {Space};
 
   \path[band] (\xL,\yAtmB) rectangle (\xR,\yAtmT);
   \node[bandname, cyan!60!black] at ({(\xL+\xR)/2}, {(\yAtmB+\yAtmT)/2})
@@ -864,11 +863,11 @@ without the atmosphere.
 
   \draw[sw] (swTop) -- (swAtm);
   \draw[sw] (swAtm) -- (swSurf);
-  \node[ann] at ({\xSW+1.7},{\yAtmT+0.65}) {Incoming short-wave\\(mostly transmitted)};
+  \node[ann, anchor=east] at ({\xR-0.15},{\yAtmT+0.55}) {Incoming short-wave\\(mostly transmitted)};
 
   % Reflected short-wave to space (vertical, distinct from IR arrows)
   \draw[refl] (\xRefl,\yAtmT) -- (\xRefl,\ySpaceT);
-  \node[ann] at ({\xRefl+1.35},{\ySpaceT-0.75}) {Reflected\\short-wave};
+  \node[ann, anchor=west] at ({\xRefl+0.15},{\ySpaceT-0.75}) {Reflected\\short-wave};
 
   % Small cloud icon near the reflection (kept clear of labels)
   \begin{scope}[shift={({\xRefl-0.65},{\ySpaceT-1.75})}]
@@ -891,7 +890,7 @@ without the atmosphere.
 
   % Outgoing IR to space (originates at top of atmosphere band)
   \draw[lwthin] (\xLWup,\yAtmT) -- (\xLWup,\ySpaceT);
-  \node[ann] at ({\xLWup-1.9},{\ySpaceT-0.75}) {Outgoing\\IR to space};
+  \node[ann, anchor=west] at ({\xLWup+0.2},{\ySpaceT-0.75}) {Outgoing\\IR to space};
 
   % Back radiation (originates in atmosphere band; terminates at surface only)
   \draw[lw] (\xBack,\yAtmB) -- (\xBack,\ySurfT);
@@ -899,7 +898,7 @@ without the atmosphere.
 
   % Atmospheric window: surface IR escaping directly to space (distinct path)
   \draw[lwthin] (\xWin,\ySurfT) -- (\xWin,\ySpaceT);
-  \node[ann] at ({\xWin+1.55},{(\yAtmT+\ySpaceT)/2}) {Atmospheric\\window IR};
+  \node[ann, anchor=west] at ({\xWin+0.2},3.4) {Atmospheric\\window IR};
 
   %------------------------------------------------------------------
   % Caption (keep +33 K as the standard accepted mean-surface difference)

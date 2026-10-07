@@ -370,7 +370,7 @@ of length $\ell$, reducing the required force.
   \draw[<->, gray] (6.3,0) -- (6.3,3);
   \node[right, gray] at (6.4,1.5) {$h$};
   \draw[<->, gray] (0,-0.4) -- (6,-0.4);
-  \node[below, gray] at (3,-0.4) {$\ell \sin\theta = h$};
+  \node[below, gray] at (3,-0.4) {$\ell \cos\theta$};
 
   % Slope length
   \draw[<->, codexgold] (-0.2,0) -- (5.8,2.9);
@@ -491,11 +491,11 @@ For an ideal pulley system:
   \draw[thick] (5.6,5.8) -- (5.6,7.5);  % left rope
   \draw[thick] (6.4,5.8) -- (6.4,7.0);  % right rope (attached to ceiling)
   \draw[thick] (5.6,7.5) -- (6.0,7.1);  % over fixed pulley
-  \draw[thick] (6.0,7.9) -- (6.0,8.6);  % effort rope
   % Ceiling
   \fill[gray!30] (5.0,7.8) rectangle (7.0,8.1);
   \draw[thick] (5.0,7.8) -- (7.0,7.8);
   \draw[thick] (6.4,7.8) -- (6.4,7.0); % right support to ceiling
+  \draw[thick] (6.0,7.9) -- (6.0,8.6);  % visible effort rope
   % Load
   \fill[codexblue!40] (5.4,5.2) rectangle (6.6,5.6);
   \node at (6.0,5.4) {$L$};
@@ -763,7 +763,7 @@ $\eta = (MA/VR) \times 100\% < 100\%$ (always)
 $W_{out} \leq W_{in}$ always.
 
 \textbf{Lever classes:}
-1st (FEL between E-F-L);
+1st (F between E and L);
 2nd (L between E and F, $MA > 1$ always);
 3rd (E between F and L, $MA < 1$ always)
 

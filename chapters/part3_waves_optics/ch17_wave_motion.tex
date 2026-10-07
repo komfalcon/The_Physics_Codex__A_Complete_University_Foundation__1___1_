@@ -481,8 +481,8 @@ $\lambda > d$: significant spreading.
 
   % === Wide gap (little diffraction) ===
   \begin{scope}[shift={(0,0)}]
-    \node[font=\bfseries] at (4,5.5)
-      {Wide gap ($\lambda \ll d$): little diffraction};
+    \node[font=\bfseries\small, align=center, text width=4.7cm] at (4,7.1)
+      {Wide gap: little spreading};
 
     % Barrier
     \fill[gray!60] (3.5,-0.3) rectangle (4.5,2.2);
@@ -509,13 +509,14 @@ $\lambda > d$: significant spreading.
 
     % Gap label
     \draw[<->, gray] (4.7,2.2) -- (4.7,3.5);
-    \node[right, gray, font=\tiny] at (4.8,2.85) {$d \gg \lambda$};
+    \node[right, gray, font=\tiny, fill=white, inner sep=1pt]
+      at (4.8,2.85) {$d$};
   \end{scope}
 
   % === Narrow gap (strong diffraction) ===
   \begin{scope}[shift={(9.5,0)}]
-    \node[font=\bfseries, align=center] at (4,5.5)
-      {Narrow gap ($\lambda \approx d$): strong diffraction};
+    \node[font=\bfseries\small, align=center, text width=4.7cm] at (4,7.1)
+      {Narrow gap: strong spreading};
 
     % Barrier
     \fill[gray!60] (3.5,-0.3) rectangle (4.5,2.5);
@@ -538,7 +539,8 @@ $\lambda > d$: significant spreading.
 
     % Gap label
     \draw[<->, gray] (4.7,2.5) -- (4.7,3.1);
-    \node[right, gray, font=\tiny] at (4.8,2.8) {$d \approx \lambda$};
+    \node[right, gray, font=\tiny, fill=white, inner sep=1pt]
+      at (4.8,2.8) {$d$};
   \end{scope}
 
 \end{tikzpicture}
@@ -713,27 +715,23 @@ $x = \lambda/4, 3\lambda/4, 5\lambda/4, \ldots$
   }
 
   % Wavelength labels
-  \draw[<->, codexgold, thick] (0,-0.9) -- (6.28,-0.9);
-  \node[below, codexgold] at (3.14,-1.0)
+  \draw[<->, codexgold, thick] (0,-1.15) -- (6.28,-1.15);
+  \node[below, codexgold] at (3.14,-1.25)
     {$\lambda/2$};
-  \draw[<->, codexgold, thick] (6.28,-0.9) -- (12.56,-0.9);
-  \node[below, codexgold] at (9.42,-1.0)
+  \draw[<->, codexgold, thick] (6.28,-1.15) -- (12.56,-1.15);
+  \node[below, codexgold] at (9.42,-1.25)
     {$\lambda/2$};
 
   % Node-antinode distance
-  \draw[<->, gray, thick] (0,-1.6) -- (3.14,-1.6);
-  \node[below, gray, font=\tiny] at (1.57,-1.7)
+  \draw[<->, gray, thick] (0,-1.9) -- (3.14,-1.9);
+  \node[below, gray, font=\tiny] at (1.57,-2.0)
     {$\lambda/4$};
 
-  % Key features annotation
-  \node[codexred, font=\small] at (6.28,1.8)
+  % Compact key, above the plotted extrema.
+  \node[codexred, font=\tiny] at (6.28,2.25)
     {N = node (always zero displacement)};
-  \node[codexgreen, font=\small] at (6.28,1.4)
+  \node[codexgreen, font=\tiny] at (6.28,1.9)
     {A = antinode (maximum displacement)};
-  \node[font=\small] at (6.28,1.0)
-    {Node to node = $\lambda/2$};
-  \node[font=\small] at (6.28,0.6)
-    {Node to adjacent antinode = $\lambda/4$};
 
 \end{tikzpicture}
 \end{center}
@@ -825,7 +823,7 @@ $\mu$ is the mass per unit length (kg\,m$^{-1}$).
     \fill[codexred] (4,0.15) circle (4pt);
     \fill[codexred] (8,0.15) circle (4pt);
     \fill[codexgreen] (2,0.85) circle (4pt);
-    \fill[codexgreen] (6,0.85) circle (4pt);
+    \fill[codexgreen] (6,-0.55) circle (4pt);
     \node[right] at (8.3,0.5)
       {$\lambda_2 = L$, $f_2 = 2f_1$};
     \foreach \x in {0,4,8} {
@@ -846,7 +844,7 @@ $\mu$ is the mass per unit length (kg\,m$^{-1}$).
     \fill[codexred] (5.33,0.15) circle (4pt);
     \fill[codexred] (8,0.15) circle (4pt);
     \fill[codexgreen] (1.33,0.85) circle (4pt);
-    \fill[codexgreen] (4,0.85) circle (4pt);
+    \fill[codexgreen] (4,-0.55) circle (4pt);
     \fill[codexgreen] (6.67,0.85) circle (4pt);
     \node[right] at (8.3,0.5)
       {$\lambda_3 = 2L/3$, $f_3 = 3f_1$};
@@ -857,9 +855,9 @@ $\mu$ is the mass per unit length (kg\,m$^{-1}$).
   \node[above, gray] at (4,0.9) {$L$};
 
   % Legend
-  \node[codexred, font=\small] at (4.0,-0.3)
+  \node[codexred, font=\tiny, anchor=west] at (0,-0.3)
     {\ding{108} Node (N)};
-  \node[codexgreen, font=\small] at (6.0,-0.3)
+  \node[codexgreen, font=\tiny, anchor=east] at (8,-0.3)
     {\ding{108} Antinode (A)};
 
 \end{tikzpicture}
@@ -908,24 +906,36 @@ of length $2L$.
   \begin{scope}[shift={(0,0)}]
     \node[font=\bfseries, align=center] at (4,7.5)
       {Open Pipe};
+    \node[font=\tiny, gray] at (4,7.15)
+      {Air-displacement patterns (schematic)};
 
     % Pipe walls
     \draw[very thick, gray] (0,0) -- (0,7);
     \draw[very thick, gray] (8,0) -- (8,7);
 
-    % Harmonics (n = 1,2,3)
-    % (The earlier version used an invalid TikZ "at (..,..)" syntax in a \draw path.)
+    % Harmonics (n = 1,2,3). Both open ends are displacement antinodes.
     \foreach \n/\col/\ybase in {1/codexblue/6.0, 2/codexred/4.0, 3/codexgreen/2.0} {
       \draw[\col, very thick, domain=0:8, samples=80]
-        plot ({\x},{0.6*sin(deg(\x*\n*3.14159/8))+\ybase});
-      % Antinodes at ends
-      \fill[\col] (0,\ybase) circle (4pt);
-      \fill[\col] (8,\ybase) circle (4pt);
+        plot ({\x},{0.6*cos(deg(\x*\n*3.14159/8))+\ybase});
       \node[left, font=\tiny, text=\col] at (-0.2,\ybase)
         {$n=\n$};
-      \node[right, font=\tiny] at (8.2,\ybase)
-        {$f_\n = \n f_1$};
     }
+
+    % n=1: antinodes at both open ends, node at the centre.
+    \fill[codexgreen] (0,6.6) circle (4pt);
+    \fill[codexgreen] (8,5.4) circle (4pt);
+    \fill[codexred] (4,6.0) circle (4pt);
+    % n=2: antinodes at both ends and centre; nodes at quarter points.
+    \fill[codexgreen] (0,4.6) circle (4pt);
+    \fill[codexgreen] (4,3.4) circle (4pt);
+    \fill[codexgreen] (8,4.6) circle (4pt);
+    \foreach \x in {2,6} {\fill[codexred] (\x,4.0) circle (4pt);}
+    % n=3: four antinodes and three interior nodes.
+    \fill[codexgreen] (0,2.6) circle (4pt);
+    \fill[codexgreen] (2.67,1.4) circle (4pt);
+    \fill[codexgreen] (5.33,2.6) circle (4pt);
+    \fill[codexgreen] (8,1.4) circle (4pt);
+    \foreach \x in {1.33,4,6.67} {\fill[codexred] (\x,2.0) circle (4pt);}
 
     % Labels
     \node[below, font=\small] at (4,-0.3)
@@ -944,8 +954,8 @@ of length $2L$.
     % Closed end (left)
     \fill[gray!60] (-0.3,0) rectangle (0,7);
     \draw[very thick] (-0.3,0) rectangle (0,7);
-    \node[below, font=\tiny] at (0,-0.7) {Closed};
-    \node[below, font=\tiny] at (8,-0.7) {Open};
+    \node[below, font=\tiny] at (0,-1.0) {Closed};
+    \node[below, font=\tiny] at (8,-1.0) {Open};
 
     % n=1 (fundamental: quarter wave)
     \draw[codexblue, very thick, domain=0:8, samples=80]
@@ -954,30 +964,32 @@ of length $2L$.
     \fill[codexgreen] (8,6.7) circle (4pt);
     \node[left, font=\tiny, codexblue] at (-0.5,6.0)
       {$n=1$};
-    \node[right, font=\tiny] at (7.6,6.3)
+    \node[font=\tiny, align=center] at (6.1,6.9)
       {$f_1 = v/4L$};
 
     % n=3 (3rd harmonic: 3/4 wave)
     \draw[codexred, very thick, domain=0:8, samples=80]
       plot ({\x},{0.7*sin(deg(\x*4.71/8))+4.0});
     \fill[codexred] (0,4.0) circle (4pt);
-    \foreach \x in {2.67,5.33} {
-      \fill[codexred] (\x,4.0) circle (3pt);
-    }
-    \fill[codexgreen] (8,4.7) circle (4pt);
+    \fill[codexgreen] (2.67,4.7) circle (3pt);
+    \fill[codexred] (5.33,4.0) circle (3pt);
+    \fill[codexgreen] (8,3.3) circle (4pt);
     \node[left, font=\tiny, codexred] at (-0.5,4.0)
       {$n=3$};
-    \node[right, font=\tiny] at (7.6,4.3)
+    \node[font=\tiny, align=center] at (6.1,4.9)
       {$f_3 = 3f_1$};
 
     % n=5
     \draw[codexgreen, very thick, domain=0:8, samples=80]
       plot ({\x},{0.7*sin(deg(\x*7.85/8))+2.0});
     \fill[codexred] (0,2.0) circle (4pt);
+    \foreach \x in {3.2,6.4} {\fill[codexred] (\x,2.0) circle (3pt);}
+    \fill[codexgreen] (1.6,2.7) circle (3pt);
+    \fill[codexgreen] (4.8,1.3) circle (3pt);
     \fill[codexgreen] (8,2.7) circle (4pt);
     \node[left, font=\tiny, codexgreen] at (-0.5,2.0)
       {$n=5$};
-    \node[right, font=\tiny] at (7.6,2.3)
+    \node[font=\tiny, align=center] at (6.1,2.9)
       {$f_5 = 5f_1$\\only odd};
 
     \draw[<->, gray] (0,-0.5) -- (8,-0.5);
