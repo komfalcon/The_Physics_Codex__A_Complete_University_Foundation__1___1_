@@ -442,33 +442,27 @@ effective capacitance.
       {Series: $\frac{1}{C_s} = \frac{1}{C_1}
       + \frac{1}{C_2} + \frac{1}{C_3}$};
 
-    % Wire
-    \draw[very thick] (0,2.5) -- (1.0,2.5);
-    \draw[very thick] (9.5,2.5) -- (10.5,2.5);
+    % Continuous series path, with one connected wire between each section
+    \draw[very thick] (0,2.5) -- (1.75,2.5);
+    \draw[thick] (2.25,2.5) -- (4.75,2.5);
+    \draw[thick] (5.25,2.5) -- (7.75,2.5);
+    \draw[very thick] (8.25,2.5) -- (10.5,2.5);
 
-    % Three capacitors in series
-    \foreach \x/\label/\offset in {
-      1.0/$C_1$/0, 4.0/$C_2$/3.0, 7.0/$C_3$/6.0} {
-      \draw[thick] (\x+\offset,2.5) -- (\x+\offset+0.5,2.5);
+    % Three capacitors in series; each pair of plates is 0.5 units apart
+    \foreach \x/\label in {2/$C_1$,5/$C_2$,8/$C_3$} {
       \draw[very thick, codexblue]
-        (\x+\offset+0.5,2.1) -- (\x+\offset+0.5,2.9);
+        (\x-0.25,2.1) -- (\x-0.25,2.9);
       \draw[very thick, codexred]
-        (\x+\offset+1.0,2.1) -- (\x+\offset+1.0,2.9);
-      \draw[thick]
-        (\x+\offset+1.0,2.5) -- (\x+\offset+1.5,2.5);
-      \node[above, font=\small] at (\x+\offset+0.75,2.9)
-        {\label};
+        (\x+0.25,2.1) -- (\x+0.25,2.9);
+      \node[above, font=\small] at (\x,2.9) {\label};
     }
 
     % Voltage labels
     \node[left] at (-0.2,2.5) {$V$};
     \draw[->, gray] (-0.2,2.5) -- (0,2.5);
-    \node[below, gray, font=\tiny] at (2.75,2.1)
-      {$V_1$};
-    \node[below, gray, font=\tiny] at (5.75,2.1)
-      {$V_2$};
-    \node[below, gray, font=\tiny] at (8.75,2.1)
-      {$V_3$};
+    \node[below, gray, font=\tiny] at (2,2.1) {$V_1$};
+    \node[below, gray, font=\tiny] at (5,2.1) {$V_2$};
+    \node[below, gray, font=\tiny] at (8,2.1) {$V_3$};
 
     % Same Q annotation
     \node[codexgold, font=\small] at (5.25,3.5)

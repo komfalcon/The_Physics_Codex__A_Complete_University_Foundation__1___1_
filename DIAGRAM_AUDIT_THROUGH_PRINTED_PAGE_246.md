@@ -103,7 +103,7 @@ The inventory contains **86 TikZ blocks** across the included front matter and C
 | 75 | `chapters/part2_fluids_thermal/ch16_heat_transfer.tex` | 466–529 | 0 | Sea Breeze (Daytime) and Land Breeze (Night-time) | INVENTORIED — individual visual review still required |
 | 76 | `chapters/part2_fluids_thermal/ch16_heat_transfer.tex` | 557–639 | 0 | Good and Poor Emitters/Absorbers of Radiation | INVENTORIED — individual visual review still required |
 | 77 | `chapters/part2_fluids_thermal/ch16_heat_transfer.tex` | 793–924 | 0 | The Greenhouse Effect | INVENTORIED — individual visual review still required |
-| 78 | `chapters/part2_fluids_thermal/ch16_heat_transfer.tex` | 985–1023 | 0 | Comparing the Three Mechanisms | INVENTORIED — individual visual review still required |
+| 78 | `chapters/part2_fluids_thermal/ch16_heat_transfer.tex` | 985–1023 | 0 | Thermos-Flask Cross-Section | PASS — source/PDF review; comparison of heat-transfer mechanisms is a table, not this TikZ figure |
 | 79 | `chapters/part3_waves_optics/ch17_wave_motion.tex` | 100–175 | 0 | Transverse vs Longitudinal Waves | PASS — source/render review; no endpoint-scope issue observed |
 | 80 | `chapters/part3_waves_optics/ch17_wave_motion.tex` | 216–326 | 0 | Wave Profile: Key Parameters Labelled | PASS — source/render review; no endpoint-scope issue observed |
 | 81 | `chapters/part3_waves_optics/ch17_wave_motion.tex` | 399–436 | 0 | Wave Reflection | INVENTORIED — individual visual review still required |

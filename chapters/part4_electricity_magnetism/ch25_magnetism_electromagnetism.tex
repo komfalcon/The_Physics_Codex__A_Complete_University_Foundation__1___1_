@@ -392,8 +392,6 @@ thu\textbf{M}b = \textbf{M}otion.
     (-0.3,0) rectangle (0.3,2.5);
   \draw[very thick, codexblue, rounded corners]
     (-0.3,0) rectangle (0.3,2.5);
-  \node[codexblue, font=\bfseries\small]
-    at (0,1.25) {Motion};
   \draw[->, very thick, codexblue, line width=2pt]
     (0,2.5) -- (0,3.3);
   \node[above, codexblue] at (0,3.4) {$F$ (force)};
@@ -409,16 +407,16 @@ thu\textbf{M}b = \textbf{M}otion.
     (-2.5,1.8) -- (-3.3,1.8);
   \node[left, codexred] at (-3.4,1.8) {$\vect{B}$};
 
-  % Middle finger (into page = current, going right/down)
+  % Middle finger represents conventional current into the page.
   \fill[codexgreen!30, rounded corners]
     (0.3,0.8) rectangle (2.0,1.4);
   \draw[very thick, codexgreen, rounded corners]
     (0.3,0.8) rectangle (2.0,1.4);
   \node[codexgreen, font=\bfseries\small]
     at (1.15,1.1) {Current $I$};
-  \draw[->, very thick, codexgreen, line width=2pt]
-    (2.0,1.1) -- (2.8,1.1);
-  \node[right, codexgreen] at (2.9,1.1) {$I$};
+  \draw[very thick, codexgreen] (2.55,1.1) circle (0.2);
+  \node[codexgreen, font=\small] at (2.55,1.1) {$\otimes$};
+  \node[right, codexgreen, font=\tiny] at (2.82,1.1) {into page};
 
   % Palm base
   \fill[codexgold!20, rounded corners]
@@ -545,15 +543,15 @@ ratio.
 \begin{center}
 \begin{tikzpicture}[scale=1.0, font=\small]
 
-  % Background (field into page -- crosses)
+  % Background (field out of page -- dots)
   \fill[codexblue!8] (0,0) rectangle (8,6);
   \foreach \x in {0.8,1.6,...,7.2} {
     \foreach \y in {0.8,1.6,...,5.2} {
-      \node[codexblue!50, font=\tiny] at (\x,\y) {$\times$};
+      \node[codexblue!50, font=\tiny] at (\x,\y) {$\odot$};
     }
   }
   \node[codexblue, font=\small] at (6.5,5.5)
-    {$\vect{B}$ (into page)};
+    {$\vect{B}$ (out of page)};
 
   % Circular path of positive charge
   \draw[very thick, codexred]
@@ -571,7 +569,7 @@ ratio.
   \node[codexred, font=\small] at (5.5,5.65) {$v$};
   \draw[->, thick, codexgold]
     (4,5) -- (4,4)
-    node[right, font=\small]{$F = Bqv$ (inward)};
+    node[left, font=\scriptsize, align=right]{$F = Bqv$\\(inward)};
 
   % Radius
   \draw[<->, gray, thick] (4,3) -- (6,3);
@@ -727,14 +725,6 @@ to rotate.
   \draw[thick] (-1.0,5.0) -- (1.0,5.0);
   \draw[thick] (-1.0,1.0) -- (1.0,1.0);
 
-  % Force arrows on sides (Fleming's LHR)
-  \draw[->, very thick, codexgold, line width=2.5pt]
-    (-1.0,3.0) -- (-1.7,3.0)
-    node[left, yshift=4pt]{$F$};
-  \draw[->, very thick, codexgold, line width=2.5pt]
-    (1.0,3.0) -- (1.7,3.0)
-    node[right, yshift=4pt]{$F$};
-
   % Rotation arrow
   \draw[->, very thick, codexgreen, line width=2pt]
     (0,5.5) arc(0:-180:0.5);
@@ -762,6 +752,16 @@ to rotate.
     \draw[->, codexgold!50, dashed]
       (-2,\y) -- (2,\y);
   }
+  % With B from N to S, F = I x B: left side is out of page,
+  % right side is into page. The opposite forces create motor torque.
+  \node[codexgold, font=\Large, fill=white, inner sep=1pt]
+    at (-1.5,3.0) {$\odot$};
+  \node[codexgold, font=\tiny, fill=white, inner sep=1pt]
+    at (-1.5,2.55) {$F$ out};
+  \node[codexgold, font=\Large, fill=white, inner sep=1pt]
+    at (1.5,3.0) {$\otimes$};
+  \node[codexgold, font=\tiny, fill=white, inner sep=1pt]
+    at (1.5,2.55) {$F$ in};
   \node[below, font=\small] at (0,0.0)
     {\small The commutator reverses current every half-turn,\\
     keeping the torque in the same direction};

@@ -223,27 +223,23 @@ Equating (assuming no heat losses):
   \node[codexred, font=\tiny] at (4.0,1.0)
     {\shortstack{Heater coil\\(power $P = VI$)}};
 
-  % Heater wires
+  % Heater wires and main circuit: heater and ammeter are in series.
   \draw[thick, codexred] (2.5,1.5) -- (2.5,5.0);
-  \draw[thick, codexred] (5.5,1.5) -- (5.5,5.0);
+  \draw[thick, codexred] (5.5,1.5) -- (5.5,2.5) -- (7.6,2.5);
 
   % Thermometer
-  \draw[thick] (4.0,3.2) -- (4.0,5.5);
-  \fill[codexred!60] (3.8,3.2) rectangle (4.2,3.6);
-  \node[right, font=\tiny] at (4.2,4.5) {Thermometer};
+  \draw[thick] (4.8,2.9) -- (4.8,5.5);
+  \fill[codexred!60] (4.6,2.7) rectangle (5.0,3.1);
+  \node[right, font=\tiny] at (5.0,4.5) {Thermometer};
 
-  % Voltmeter (above)
-  \draw[thick] (2.5,5.0) -- (2.5,6.2)
-    -- (3.8,6.2);
-  \draw[thick] (5.5,5.0) -- (5.5,6.2)
-    -- (4.2,6.2);
+  % Voltmeter connected in parallel across the heater terminals.
+  \draw[thick] (2.5,5.0) -- (2.5,6.2) -- (3.8,6.2);
+  \draw[thick] (5.5,5.0) -- (5.5,6.2) -- (4.2,6.2);
   \fill[white] (3.8,5.8) rectangle (4.2,6.6);
   \draw[thick] (3.8,5.8) rectangle (4.2,6.6);
   \node[font=\tiny] at (4.0,6.2) {V};
 
-  % Ammeter (side)
-  \draw[thick] (6.5,2.5) -- (8.0,2.5);
-  \draw[thick] (5.5,5.0) -- (6.5,5.0) -- (6.5,2.5);
+  % Ammeter in series between the heater and supply return.
   \fill[white] (7.6,2.1) rectangle (8.4,2.9);
   \draw[thick] (7.6,2.1) rectangle (8.4,2.9);
   \node[font=\tiny] at (8.0,2.5) {A};
@@ -253,10 +249,10 @@ Equating (assuming no heat losses):
   \draw[thick] (8.0,4.0) rectangle (9.5,5.5);
   \node[font=\tiny, align=center] at (8.75,4.75)
     {Power\\supply};
-  \draw[thick] (8.75,5.5) -- (8.75,6.0)
-    -- (4.2,6.0);
-  \draw[thick] (8.75,4.0) -- (8.75,3.5)
-    -- (8.0,3.5) -- (8.0,2.5);
+  \draw[thick] (8.75,5.5) -- (8.75,6.9) -- (2.5,6.9) -- (2.5,5.0);
+  \draw[thick] (8.4,2.5) -- (8.75,2.5) -- (8.75,4.0);
+  \node[above right, font=\tiny] at (8.75,5.5) {$+$};
+  \node[below right, font=\tiny] at (8.75,4.0) {$-$};
 
   % Formula annotation
   \node[align=center, font=\small] at (4.0,-0.3)
@@ -393,13 +389,13 @@ water, and calorimeter respectively.
     \node[codexgold, font=\small] at (2.0,4.0)
       {$\theta_f$ (common temperature)};
 
-    % Energy balance equation
-    \node[align=center, font=\small] at (2.0,5.3)
+    % Energy balance, reflowed to fit the panel
+    \node[align=center, font=\small] at (2.0,5.35)
       {Heat lost = Heat gained};
-    \node[align=center, font=\tiny, codexblue]
-      at (2.0,4.8)
-      {$m_sc_s(\theta_s-\theta_f)
-      = (m_wc_w+m_cc_c)(\theta_f-\theta_w)$};
+    \node[align=center, font=\tiny, codexblue, text width=3.5cm]
+      at (2.0,4.85)
+      {$m_sc_s(\theta_s-\theta_f)$\\
+      $=(m_wc_w+m_cc_c)(\theta_f-\theta_w)$};
   \end{scope}
 
 \end{tikzpicture}
@@ -532,46 +528,49 @@ For water, $L_v \approx 6.7 \times L_f$.
 \begin{axis}[width=13cm, height=7.5cm,
   xlabel={Heat energy supplied $Q$ (kJ)},
   ylabel={Temperature $\theta$ (\textdegree C)},
-  xmin=0, xmax=3350,
+  xmin=0, xmax=3150,
   ymin=-30, ymax=130,
   grid=major, grid style={gray!15},
-  xtick={0,210,630,2890,3140},
+  xtick={0,500,1000,1500,2000,2500,3000},
   xticklabel style={font=\tiny, text width=0.7cm, align=center},
-  xticklabels={0,210,630,2890,3140},
   ytick={-20,0,20,40,60,80,100,120},
   clip=false]
-  % Phase 1: Heating ice
-  \addplot[codexblue, very thick, domain=0:210]{-20 + (20/210)*x};
+  % Cumulative heat intervals for 1 kg: ice warming 42 kJ,
+  % fusion 336 kJ, liquid warming 420 kJ, vaporisation 2260 kJ,
+  % then steam warming 40 kJ (using c_steam approximately 2.0 kJ kg^-1 K^-1).
+  % Phase 1: Heating ice from -20 to 0 C.
+  \addplot[codexblue, very thick, domain=0:42]{-20 + (20/42)*x};
   % Phase 2: Melting plateau
-  \addplot[codexblue!70, very thick, domain=210:630]{0};
+  \addplot[codexblue!70, very thick, domain=42:378]{0};
   % Phase 3: Heating water
-  \addplot[codexred, very thick, domain=630:2890]{(100/2260)*(x-630)};
+  \addplot[codexred, very thick, domain=378:798]{(100/420)*(x-378)};
   % Phase 4: Vaporising plateau
-  \addplot[codexred!70, very thick, domain=2890:3140]{100};
+  \addplot[codexred!70, very thick, domain=798:3058]{100};
   % Phase 5: Heating steam
-  \addplot[codexgold, very thick, domain=3140:3350]{100 + (20/210)*(x-3140)};
+  \addplot[codexgold, very thick, domain=3058:3098]{100 + (20/40)*(x-3058)};
 
   % === LEFT ZONE: compact single-line label in the open wedge, melting label raised clear ===
-  \node[codexblue, font=\tiny, align=left, anchor=west] at (axis cs:125,-11)
+  \node[codexblue, font=\tiny, align=left, anchor=west] at (axis cs:20,-11)
     {Heating ice\\
     $Q=mc_{ice}\Delta\theta$};
-  \node[codexblue!80, font=\small, align=center] at (axis cs:420,55)
-    {Melting\\(latent heat)\\$Q=mL_f$};
-  \draw[->, codexblue!50, thin] (axis cs:420,40) -- (axis cs:420,3);
-  \draw[<->, codexblue!70, thick] (axis cs:210,12) -- (axis cs:630,12);
-  \node[below, codexblue, font=\tiny] at (axis cs:420,12){$mL_f = 336$ kJ};
+  \node[codexblue!80, font=\small, align=center] at (axis cs:210,62)
+    {Melting};
+  \draw[->, codexblue!50, thin] (axis cs:210,48) -- (axis cs:210,3);
+  \draw[<->, codexblue!70, thick] (axis cs:42,12) -- (axis cs:378,12);
+  \node[below, codexblue, font=\tiny, fill=white] at (axis cs:250,12){$mL_f = 336$ kJ};
 
   % === CENTRE ===
-  \node[codexred, font=\small, align=center] at (axis cs:1760,50)
+  \node[codexred, font=\tiny, align=center] at (axis cs:600,106)
     {Heating liquid water\\$Q=mc_w\Delta\theta$};
+  \draw[->, codexred!70, thin] (axis cs:600,99) -- (axis cs:600,67);
 
   % === RIGHT ZONE: each element on its own row ===
-  \node[codexred!80, font=\tiny, align=left] at (axis cs:2955,52)
+  \node[codexred!80, font=\tiny, align=left] at (axis cs:1900,55)
     {Vaporising\\$Q=mL_v$};
-  \draw[->, codexred!70, thick] (axis cs:3005,62) -- (axis cs:3005,99);
-  \draw[<->, codexred!70, thick] (axis cs:2880,93) -- (axis cs:3130,93);
-  \node[below, codexred, font=\tiny] at (axis cs:3015,91){$mL_v = 2260$ kJ};
-  \node[codexgold, font=\tiny, anchor=west] at (axis cs:2750,118)
+  \draw[->, codexred!70, thick] (axis cs:1900,62) -- (axis cs:1900,99);
+  \draw[<->, codexred!70, thick] (axis cs:900,93) -- (axis cs:2950,93);
+  \node[below, codexred, font=\tiny] at (axis cs:1925,91){$mL_v = 2260$ kJ};
+  \node[codexgold, font=\tiny, anchor=east] at (axis cs:3050,118)
     {Vapour (steam)};
 
   % Temperature reference lines
@@ -581,7 +580,7 @@ For water, $L_v \approx 6.7 \times L_f$.
 \end{tikzpicture}
 \end{center}
 \small Heating 1 kg of water from $-20$\textdegree C
-(ice) to above $100$\textdegree C (steam). The two flat
+(ice) to $120$\textdegree C (steam). The two flat
 plateaux are where energy goes into breaking molecular
 bonds (latent heat) without raising temperature.
 Note how much longer the vaporisation plateau is ---

@@ -193,36 +193,28 @@ To find where a plane mirror forms an image:
     (8,0) -- (8,2.5);
   \node[right, codexred!70, align=center] at (8.1,1.25) {Image\\(virtual)};
 
-  % Ray 1: from top of object, hits mirror at 2.5 height
-  \draw[->, thick, codexblue]
-    (2,2.5) -- (5,2.5);
-  \draw[->, thick, codexred]
-    (5,2.5) -- (7,2.5);
-  \draw[dashed, codexred!50]
-    (5,2.5) -- (8,2.5);
+  % Ray 1: incident and reflected paths on the object side.
+  \draw[->, thick, codexblue] (2,2.5) -- (5,2.0);
+  \draw[->, thick, codexred] (5,2.0) -- (2,1.5);
+  % Dashed backward extension locates the virtual image.
+  \draw[dashed, codexred!50] (5,2.0) -- (8,2.5);
 
-  % Ray 2: from top of object, hits mirror at 1.0
-  \draw[->, thick, codexblue]
-    (2,2.5) -- (5,1.0);
-  % Reflect: angle in = angle out
-  % Incoming slope: (1.0-2.5)/(5-2) = -1.5/3 = -0.5
-  % Reflected slope: 0.5 (symmetric about normal)
-  \draw[->, thick, codexred]
-    (5,1.0) -- (7,2.0);
-  \draw[dashed, codexred!50]
-    (5,1.0) -- (8,2.5);
+  % Ray 2: a second incident ray reflects back to the left.
+  \draw[->, thick, codexblue] (2,2.5) -- (5,1.5);
+  \draw[->, thick, codexred] (5,1.5) -- (2,0.5);
+  \draw[dashed, codexred!50] (5,1.5) -- (8,2.5);
 
   % Distance markers
   \draw[<->, gray, thick] (2,-0.8) -- (5,-0.8);
-  \node[below, gray] at (3.5,-0.9) {$u$ (object distance)};
+  \node[below, gray, font=\small] at (3.5,-0.9) {$u$};
   \draw[<->, gray, thick] (5,-0.8) -- (8,-0.8);
-  \node[below, gray] at (6.5,-0.9) {$v$ (image distance)};
+  \node[below, gray, font=\small] at (6.5,-0.9) {$v$};
 
   % Equal distance annotation
-  \node[codexgold, font=\bfseries] at (5,-1.6)
+  \node[codexgold, font=\bfseries] at (5,-2.2)
     {$u = v$ \quad (image as far behind as object is in front)};
 
-  % Dashed image lines converging
+  % Apparent intersection of the backward extensions.
   \fill[codexred!40] (8,2.5) circle (4pt);
   \node[above, codexred, font=\tiny, align=center] at (8,2.55)
     {image of\\object tip};
@@ -293,119 +285,74 @@ when object is within the focal length.
 \begin{diagbox}[Concave and Convex Mirror Geometry]
 \begin{center}
 \begin{tikzpicture}[scale=0.9, font=\small]
-
-  % === CONCAVE MIRROR ===
+  % The pole P is the vertex of each mirror. C and F lie on the same
+  % principal axis, with |PC|=R and |PF|=f=R/2. Curves are spherical arcs.
   \begin{scope}[shift={(0,0)}]
-    \node[font=\bfseries, codexblue] at (3.5,4.0)
+    \node[font=\bfseries, codexblue] at (-2,4.15)
       {Concave Mirror};
 
-    % Mirror arc
+    % Concave reflecting surface faces the incident rays on the left.
     \draw[very thick, codexblue]
-      (4,0.5) arc(0:50:4 and 4);
-    \fill[gray!20]
-      (4,0.5) arc(0:50:4 and 4) -- (5.4,3.8)
-      arc(50:0:4.3 and 4.3) -- cycle;
-    % Hatching
-    \foreach \a in {0,5,...,50} {
-      \coordinate (p) at
-        ({4+4*cos(180-\a)},{4*sin(\a)});
-      \draw[gray!50, thin] (p)
-        -- ({4+4.4*cos(180-\a)},{4.4*sin(\a)});
+      plot[domain=0.5:3.5,samples=40]
+      ({-4+sqrt(16-(\x-2)^2)},\x);
+    \foreach \y in {0.7,1.1,1.5,1.9,2.3,2.7,3.1,3.4} {
+      \pgfmathsetmacro{\xh}{-4+sqrt(16-(\y-2)^2)}
+      \draw[gray!50, thin] (\xh,\y) -- ({\xh+0.22},\y+0.08);
     }
 
-    % Principal axis
-    \draw[dashed, gray] (0,2.0) -- (7,2.0);
-    \node[right, gray, font=\tiny] at (7,2.0)
-      {Principal axis};
+    \draw[dashed, gray] (-5.0,2) -- (1.5,2);
+    \fill[codexred] (-4,2) circle (3pt);
+    \node[above, codexred] at (-4,2.12) {$C$};
+    \fill[codexgold] (-2,2) circle (3pt);
+    \node[above, codexgold] at (-2,2.12) {$F$};
+    \fill[black] (0,2) circle (3pt);
+    \node[below, font=\tiny] at (0,1.88) {$P$};
 
-    % Centre of curvature
-    \fill[codexred] (4,2.0) circle (4pt);
-    \node[above, codexred, font=\small] at (4,2.1) {C};
+    \draw[<->, gray] (0,1.2) -- (-2,1.2);
+    \node[below, gray, font=\tiny] at (-1,1.12) {$f$};
+    \draw[<->, gray] (0,0.75) -- (-4,0.75);
+    \node[below, gray, font=\tiny] at (-2,0.65) {$R=2f$};
 
-    % Focal point
-    \fill[codexgold] (2.0,2.0) circle (4pt);
-    \node[above, codexgold, font=\small] at (2.0,2.1)
-      {F};
-
-    % Pole
-    \fill[black] (0.05,2.0) circle (3pt);
-    \node[below, black, font=\small] at (0.05,1.9)
-      {P};
-
-    % Focal length
-    \draw[<->, gray] (0.1,1.2) -- (2.0,1.2);
-    \node[below, gray, font=\tiny] at (1.05,1.1)
-      {$f$};
-
-    % Radius of curvature
-    \draw[<->, gray] (0.1,0.6) -- (4.0,0.6);
-    \node[below, gray, font=\tiny] at (2.05,0.5)
-      {$R = 2f$};
-
-    % Parallel rays converging to F
-    \foreach \h in {0.5,1.0,1.5,2.0,2.5,3.0,3.5} {
-      \draw[->, thick, codexblue!60]
-        (-0.5,\h) -- (0.05,\h);
+    % Two paraxial parallel rays strike the curved face and reflect through F.
+    \foreach \y in {1.4,2.6} {
+      \pgfmathsetmacro{\xh}{-4+sqrt(16-(\y-2)^2)}
+      \draw[->, thick, codexblue!60] (-4.8,\y) -- (\xh,\y);
+      \draw[->, thick, codexblue] (\xh,\y) -- (-2,2);
     }
-    \draw[->, thick, codexblue]
-      (0.05,3.5) -- (2.0,2.0);
-    \draw[->, thick, codexblue]
-      (0.05,0.5) -- (2.0,2.0);
-    \draw[->, thick, codexblue]
-      (0.05,2.0) -- (2.0,2.0);
   \end{scope}
 
-  % === CONVEX MIRROR ===
-  \begin{scope}[shift={(8.5,0)}]
-    \node[font=\bfseries, codexred] at (2.0,4.0)
+  \begin{scope}[shift={(8.2,0)}]
+    \node[font=\bfseries, codexred] at (2.1,4.15)
       {Convex Mirror};
 
-    % Mirror arc (reversed)
+    % Convex reflecting surface bulges toward the incident rays on the left.
     \draw[very thick, codexred]
-      (0,0.5) arc(180:130:4 and 4);
-    \fill[gray!20]
-      (0,0.5) arc(180:130:4 and 4) --
-      (-1.4,3.8) arc(130:180:4.3 and 4.3) -- cycle;
-
-    % Principal axis
-    \draw[dashed, gray] (-4,2.0) -- (3,2.0);
-
-    % Centre of curvature (behind mirror)
-    \fill[codexred!50] (-4,2.0) circle (4pt);
-    \node[below, codexred!70, font=\small] at (-4,1.9)
-      {C (virtual)};
-
-    % Focal point (virtual, behind mirror)
-    \fill[codexgold!70] (-2.0,2.0) circle (4pt);
-    \node[below, codexgold!80, font=\small]
-      at (-2.0,1.9) {F (virtual)};
-
-    % Pole
-    \fill[black] (0.05,2.0) circle (3pt);
-    \node[below, font=\small] at (0.05,1.9) {P};
-
-    % Parallel rays diverging
-    \foreach \h in {0.5,1.0,1.5,2.0,2.5,3.0,3.5} {
-      \draw[->, thick, codexred!50]
-        (3,\h) -- (0.05,\h);
+      plot[domain=0.5:3.5,samples=40]
+      ({4-sqrt(16-(\x-2)^2)},\x);
+    \foreach \y in {0.7,1.1,1.5,1.9,2.3,2.7,3.1,3.4} {
+      \pgfmathsetmacro{\xh}{4-sqrt(16-(\y-2)^2)}
+      \draw[gray!50, thin] (\xh,\y) -- ({\xh+0.22},\y+0.08);
     }
-    % Reflected rays diverge
-    \draw[->, thick, codexred]
-      (0.05,3.5) -- (2.0,3.8);
-    \draw[->, thick, codexred]
-      (0.05,0.5) -- (2.0,0.2);
-    \draw[->, thick, codexred]
-      (0.05,2.0) -- (2.0,2.0);
-    % Dashed extensions (virtual)
-    \draw[dashed, codexred!50]
-      (0.05,3.5) -- (-2.0,2.0);
-    \draw[dashed, codexred!50]
-      (0.05,0.5) -- (-2.0,2.0);
 
-    \node[codexred, font=\tiny, align=center] at (1.5,3.0)
-      {diverging\\reflected rays};
-    \draw[->, codexred, thin] (1.5,2.8)
-      -- (0.8,3.3);
+    \draw[dashed, gray] (-2,2) -- (5.2,2);
+    \fill[black] (0,2) circle (3pt);
+    \node[below, font=\tiny] at (0,1.88) {$P$};
+    \fill[codexgold!70] (2,2) circle (3pt);
+    \node[below, codexgold!80, font=\tiny] at (2,1.88) {$F$ (virtual)};
+    \fill[codexred!55] (4,2) circle (3pt);
+    \node[above left, codexred!70, align=right, font=\tiny]
+      at (4,2.12) {$C$\\(virtual)};
+
+    % Parallel incident rays reflect to the left and diverge. Their backward
+    % extensions behind the mirror meet at the virtual paraxial focus F.
+    \foreach \y/\yr in {1.4/0.83,2.6/3.17} {
+      \pgfmathsetmacro{\xh}{4-sqrt(16-(\y-2)^2)}
+      \draw[->, thick, codexred!55] (-1.8,\y) -- (\xh,\y);
+      \draw[->, thick, codexred] (\xh,\y) -- (-1.8,\yr);
+      \draw[dashed, codexred!50] (\xh,\y) -- (2,2);
+    }
+    \node[codexred, font=\tiny, align=center] at (-1.2,3.55)
+      {reflected rays\\diverge};
   \end{scope}
 
 \end{tikzpicture}
@@ -437,54 +384,41 @@ the centre of curvature C reflects back along itself
 \begin{diagbox}[Concave Mirror: Object Beyond C (Real, Inverted, Diminished)]
 \begin{center}
 \begin{tikzpicture}[scale=0.9, font=\small]
-
-  % Mirror arc
+  % Pole P=(0,3.5), centre C=(-4,3.5), and focus F=(-2,3.5).
+  % The object is beyond C; the image is between C and F.
   \draw[very thick, codexblue]
-    (8,0) arc(0:70:8 and 8);
+    plot[domain=0.5:6.5,samples=50]
+    ({-4+sqrt(16-(\x-3.5)^2)},\x);
+  \foreach \y in {0.7,1.1,1.5,1.9,2.3,2.7,3.1,3.5,3.9,4.3,4.7,5.1,5.5,5.9,6.3} {
+    \pgfmathsetmacro{\xh}{-4+sqrt(16-(\y-3.5)^2)}
+    \draw[gray!50,thin] (\xh,\y) -- ({\xh+0.2},\y+0.08);
+  }
 
-  % Principal axis
-  \draw[dashed, gray] (-1,3.5) -- (9,3.5);
+  \draw[dashed,gray] (-7,3.5) -- (1,3.5);
+  \fill[codexred] (-4,3.5) circle (3pt);
+  \node[below,codexred,font=\tiny] at (-4,3.38) {$C$};
+  \fill[codexgold] (-2,3.5) circle (3pt);
+  \node[below,codexgold,font=\tiny] at (-2,3.38) {$F$};
+  \fill[black] (0,3.5) circle (3pt);
+  \node[below,font=\tiny] at (0,3.38) {$P$};
 
-  % C and F
-  \fill[codexred] (4,3.5) circle (4pt)
-    node[below]{\small C};
-  \fill[codexgold] (2,3.5) circle (4pt)
-    node[below]{\small F};
-  \fill[black] (0.05,3.5) circle (3pt)
-    node[below]{\small P};
+  % Object beyond C and its diminished, inverted real image.
+  \draw[->,very thick,codexblue,line width=1.6pt] (-6,3.5) -- (-6,4.3);
+  \node[left,codexblue,font=\tiny] at (-6.1,4.05) {Object};
+  \draw[->,very thick,codexgreen,line width=1.6pt] (-2.95,3.5) -- (-2.95,3.1);
+  \fill[codexgreen] (-2.95,3.1) circle (3pt);
+  \node[below,codexgreen,fill=white,inner sep=1pt,font=\tiny]
+    at (-2.95,2.7) {Image (real, inverted)};
 
-  % Object (beyond C, at 5.5)
-  \draw[->, very thick, codexblue, line width=2pt]
-    (5.5,3.5) -- (5.5,5.5);
-  \node[above, codexblue] at (5.5,5.6) {Object};
+  % Ray 1: parallel to the axis, then reflected through F.
+  \pgfmathsetmacro{\xrayone}{-4+sqrt(16-(4.3-3.5)^2)}
+  \draw[->,thick,codexblue] (-6,4.3) -- (\xrayone,4.3);
+  \draw[->,thick,codexred] (\xrayone,4.3) -- (-3.5,2.875);
 
-  % Ray 1: parallel to axis from top of object
-  \draw[->, thick, codexblue]
-    (5.5,5.5) -- (0.3,5.5);
-  % Reflects through F
-  \draw[->, thick, codexred]
-    (0.3,5.5) -- (2.0,3.5);
-  \draw[codexred, thick] (2.0,3.5) -- (4.5,1.2);
-
-  % Ray 3: through C from top of object
-  \draw[->, thick, codexblue]
-    (5.5,5.5) -- (4.0,3.5);
-  % Reflects back through C
-  \draw[->, thick, codexred]
-    (4.0,3.5) -- (2.5,1.5);
-
-  % Image position (intersection)
-  \fill[codexgreen] (3.0,1.8) circle (4pt);
-  \draw[->, very thick, codexgreen, dashed,
-    line width=2pt]
-    (3.0,3.5) -- (3.0,1.8);
-  \node[right, codexgreen, align=left] at (3.1,2.6)
-    {Image\\(real, inverted,\\diminished)};
-
-  % Labels
-  \node[font=\tiny, align=center] at (1.0,6.5)
-    {Object beyond C $\implies$ image:\\
-    between F and C, real, inverted, diminished};
+  % Ray 2: directed through F, then reflected parallel to the axis.
+  \pgfmathsetmacro{\xraytwo}{-4+sqrt(16-(3.1-3.5)^2)}
+  \draw[->,thick,codexblue] (-6,4.3) -- (\xraytwo,3.1);
+  \draw[->,thick,codexred] (\xraytwo,3.1) -- (-4.8,3.1);
 
 \end{tikzpicture}
 \end{center}

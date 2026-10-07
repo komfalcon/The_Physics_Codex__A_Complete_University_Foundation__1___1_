@@ -338,10 +338,6 @@ Clinical & Mercury/galinstan volume &
   \foreach \x in {1,2,...,7} {
     \draw[thick] (\x+0.5, 0.62) -- (\x+0.5, 0.75);
   }
-  \foreach \x in {1,3,5,7} {
-    \node[above, font=\tiny] at (\x+0.5, 0.75)
-      {\pgfmathparse{int(\x*10+20)}\pgfmathresult};
-  }
   \node[above, font=\tiny] at (1.5,0.75) {10};
   \node[above, font=\tiny] at (3.5,0.75) {30};
   \node[above, font=\tiny] at (5.5,0.75) {50};
@@ -545,26 +541,26 @@ molecules increases. The solid expands.
     \draw[dashed, codexgold, thick]
       (axis cs:1.12,-2) -- (axis cs:1.12,-0.8);
     % Low temperature energy level
-    \addplot[codexgreen, thick, domain=0.95:1.34]{-0.65};
-    \fill[codexgreen] (axis cs:0.95,-0.65) circle (2pt);
-    \fill[codexgreen] (axis cs:1.34,-0.65) circle (2pt);
+    \addplot[codexgreen, thick, domain=1.063:1.218]{-0.65};
+    \fill[codexgreen] (axis cs:1.063,-0.65) circle (2pt);
+    \fill[codexgreen] (axis cs:1.218,-0.65) circle (2pt);
     \node[codexgreen, right, align=left, font=\tiny]
-      at (axis cs:1.35,-0.65) {Low $T$\\avg $r_1$};
+      at (axis cs:1.24,-0.65) {Low $T$\\avg $r_1$};
     % High temperature energy level
-    \addplot[codexred, thick, domain=0.88:1.75]{-0.3};
-    \fill[codexred] (axis cs:0.88,-0.3) circle (2pt);
-    \fill[codexred] (axis cs:1.75,-0.3) circle (2pt);
+    \addplot[codexred, thick, domain=1.027:1.377]{-0.3};
+    \fill[codexred] (axis cs:1.027,-0.3) circle (2pt);
+    \fill[codexred] (axis cs:1.377,-0.3) circle (2pt);
     \node[codexred, right, align=left, font=\tiny]
-      at (axis cs:1.76,-0.3) {High $T$\\avg $r_2 > r_1$};
+      at (axis cs:1.40,-0.3) {High $T$\\avg $r_2 > r_1$};
     % Arrows showing average positions (own well-separated rows below the frame)
     \draw[<->, codexgreen, dashed]
-      (axis cs:0.95,-1.15) -- (axis cs:1.34,-1.15);
+      (axis cs:1.063,-1.15) -- (axis cs:1.218,-1.15);
     \node[codexgreen, below, font=\tiny]
-      at (axis cs:1.145,-1.15) {$\langle r \rangle_1$};
+      at (axis cs:1.1405,-1.15) {$\langle r \rangle_1$};
     \draw[<->, codexred, dashed]
-      (axis cs:0.88,-1.25) -- (axis cs:1.75,-1.25);
+      (axis cs:1.027,-1.25) -- (axis cs:1.377,-1.25);
     \node[codexred, below, font=\tiny]
-      at (axis cs:1.315,-1.25) {$\langle r \rangle_2$};
+      at (axis cs:1.202,-1.25) {$\langle r \rangle_2$};
     % Note: asymmetric curve causes net expansion
     \node[align=center, font=\tiny, gray]
       at (axis cs:2.8,0.6)
@@ -823,27 +819,27 @@ concrete highways, and building structures.
   \begin{scope}[shift={(0,1.5)}]
     \node[font=\bfseries] at (4.5,2.3) {When heated: curves downward (brass expands more)};
     % Fixed end
-    \fill[gray!70] (-0.3,-0.2) rectangle (0,1.2);
-    \draw[thick] (-0.3,-0.2) rectangle (0,1.2);
-    % Curved brass (top, longer, on outside of curve)
+    \fill[gray!70] (-0.3,-0.6) rectangle (0,1.2);
+    \draw[thick] (-0.3,-0.6) rectangle (0,1.2);
+    % Curved brass (upper/outer, longer layer; free end bends downward)
     \draw[codexgold!80, very thick, fill=codexgold!50]
-      (0,0.5) .. controls (2,0.9) and (5,1.4) ..
-      (7,2.0) -- (7,1.5) ..
-      controls (5,0.9) and (2,0.4) ..
-      (0,0.0) -- cycle;
-    \node[codexgold, font=\tiny] at (3.5,1.0)
+      (0,1.0) .. controls (2,0.9) and (5,0.55) ..
+      (7,0.0) -- (7,-0.5) ..
+      controls (5,0.05) and (2,0.4) ..
+      (0,0.5) -- cycle;
+    \node[codexgold!60!black, font=\tiny, fill=white, inner sep=1pt] at (3.5,0.75)
       {Brass (outer, longer)};
-    % Curved steel (bottom, shorter, inside of curve)
+    % Curved steel (lower/inner, shorter layer)
     \draw[gray!60, very thick, fill=gray!40]
-      (0,0.0) .. controls (2,0.4) and (5,0.9) ..
-      (7,1.5) -- (7,1.1) ..
-      controls (5,0.5) and (2,0.1) ..
-      (0,-0.4) -- cycle;
-    \node[gray, font=\tiny] at (3.5,0.5)
+      (0,0.5) .. controls (2,0.4) and (5,0.05) ..
+      (7,-0.5) -- (7,-1.0) ..
+      controls (5,-0.45) and (2,-0.1) ..
+      (0,0.0) -- cycle;
+    \node[gray, font=\tiny, fill=white, inner sep=1pt] at (3.5,-0.75)
       {Steel (inner, shorter)};
     % Curvature arrow
     \draw[->, very thick, codexred]
-      (7.2,1.5) -- (7.2,0.5)
+      (7.2,0.0) -- (7.2,-0.8)
       node[right, align=center]{bends\\down};
   \end{scope}
 
@@ -1011,30 +1007,29 @@ over, and the density falls as in any ordinary liquid.
   xlabel={Temperature (\textdegree C)},
   ylabel={Density (kg\,m$^{-3}$)},
   xmin=-5, xmax=25,
-  ymin=998.0, ymax=1001.0,
+  ymin=996.5, ymax=1000.5,
   grid=major, grid style={gray!20},
   xtick={-4,0,4,8,12,16,20,24},
-  ytick={998.0,998.5,999.0,999.5,1000.0,1000.5},
-  clip=false,
+  ytick={997.0,997.5,998.0,998.5,999.0,999.5,1000.0,1000.5},
+  clip=true,
 ]
   % Ice region shading
-  \fill[cyan!10] (axis cs:-5,998.0) rectangle (axis cs:0,1001.0);
+  \fill[cyan!10] (axis cs:-5,996.5) rectangle (axis cs:0,1000.5);
   % Ice label
   \node[font=\tiny, align=center, cyan!60!black]
     at (axis cs:-2.5,998.4) {Ice\\$\rho < 1000$};
-  % Water density curve — peak verified at exactly 4°C:
-  % rho(T) = 999.840 + 0.066T - 0.00825T^2
-  % Peak: d/dT = 0.066 - 2(0.00825)T = 0 => T = 4.000°C exactly
-  % rho(4) = 999.840 + 0.264 - 0.132 = 999.972 kg/m^3 (real value)
+  % Empirical pure-water density fit (kg m^-3) for 0–25°C.
+  % It gives a maximum near 4°C and remains inside the plotted axis.
   \addplot[codexblue, very thick, domain=0:25, samples=100]
-    {999.840 + 0.066*x - 0.00825*x^2};
+    {999.842594 + 0.06793952*x - 0.00909529*x^2
+      + 0.0001001685*x^3 - 1.120083e-6*x^4 + 6.536332e-9*x^5};
   % Max density marker
   \addplot[only marks, mark=*, codexred, mark size=4pt]
-    coordinates {(4, 999.972)};
+    coordinates {(4, 999.975)};
   \draw[dashed, codexred, thick]
-    (axis cs:4,998.0) -- (axis cs:4,999.972);
+    (axis cs:4,996.5) -- (axis cs:4,999.975);
   \node[codexred, above right, font=\small, align=center]
-    at (axis cs:4,999.972) {Max density\\at 4\textdegree C};
+    at (axis cs:4,999.975) {Max density\\near 4\textdegree C};
   % Annotation arrows (nodes separated from draw so align= works cleanly)
   \draw[->, codexblue, thick]
     (axis cs:1,999.6) -- (axis cs:3.5,999.93);

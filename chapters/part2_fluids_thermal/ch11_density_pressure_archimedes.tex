@@ -507,57 +507,48 @@ depth point outward on all four sides.}
 \begin{center}
 \begin{tikzpicture}[scale=0.85]
 
-  % Connected vessels of different shapes
-  % Bottom connector
+  % Separate vessels: each has the same liquid and free-surface height.
+  % The equal-depth comparison is measured below those free surfaces.
+  \fill[codexaccent!20] (0.5,0.5) rectangle (2.0,4.5);
+  \draw[thick] (0.5,0.5) -- (0.5,4.5);
+  \draw[thick] (2.0,0.5) -- (2.0,4.5);
+  \draw[thick, codexaccent] (0.5,4.5) -- (2.0,4.5);
+  \draw[thick] (0.5,0.5) -- (2.0,0.5);
+  \node[above, font=\small] at (1.25,4.6) {Narrow};
+
+  \fill[codexaccent!20] (3.0,0.5) rectangle (6.5,4.5);
+  \draw[thick] (3.0,0.5) -- (3.0,4.5);
+  \draw[thick] (6.5,0.5) -- (6.5,4.5);
+  \draw[thick, codexaccent] (3.0,4.5) -- (6.5,4.5);
+  \draw[thick] (3.0,0.5) -- (6.5,0.5);
+  \node[above, font=\small] at (4.75,4.6) {Wide};
+
   \fill[codexaccent!20]
-    (0,0) -- (10,0) -- (10,0.5) -- (0,0.5) -- cycle;
+    (8.0,0.5) -- (7.5,4.5) -- (10.0,4.5) -- (9.5,0.5) -- cycle;
+  \draw[thick] (8.0,0.5) -- (7.5,4.5);
+  \draw[thick] (9.5,0.5) -- (10.0,4.5);
+  \draw[thick, codexaccent] (7.5,4.5) -- (10.0,4.5);
+  \draw[thick] (8.0,0.5) -- (9.5,0.5);
+  \node[above, font=\small] at (8.75,4.6) {Flared};
 
-  % Vessel 1 (narrow cylinder)
-  \fill[codexaccent!20] (0.5,0.5) rectangle (2,4);
-  \draw[thick] (0.5,0) -- (0.5,4);
-  \draw[thick] (2,0) -- (2,4);
-  \draw[thick, codexaccent] (0.5,4) -- (2,4);
-  \node[above, font=\small] at (1.25,4.1)
-    {Narrow};
-
-  % Vessel 2 (wide flat)
-  \fill[codexaccent!20] (3,0.5) rectangle (7,2.5);
-  \draw[thick] (3,0) -- (3,2.5);
-  \draw[thick] (7,0) -- (7,2.5);
-  \draw[thick, codexaccent] (3,2.5) -- (7,2.5);
-  \node[above, font=\small] at (5,2.6) {Wide};
-
-  % Vessel 3 (tapered)
-  \fill[codexaccent!20]
-    (8,0.5) -- (8,5) -- (9.5,5) -- (9.5,0.5) -- cycle;
-  \draw[thick] (8,0) -- (8,5);
-  \draw[thick] (9.5,0) -- (9.5,5);
-  \draw[thick, codexaccent] (8,5) -- (9.5,5);
-  \node[above, font=\small] at (8.75,5.1) {Tall};
-
-  % Bottom connector
-  \fill[codexaccent!20] (0,0) rectangle (10,0.5);
-  \draw[thick] (0,0) -- (10,0);
-  \draw[thick] (0,0.5) -- (10,0.5);
-
-  % Same level line
-  \draw[dashed, codexred, thick] (0,2.5) -- (10,2.5);
+  % Same depth h below each free surface (y=4.5 to y=2.5)
+  \draw[dashed, codexred, thick] (0.2,2.5) -- (10.0,2.5);
   \node[right, codexred, font=\small] at (10.1,2.5)
-    {Same depth $h$};
+    {Same depth};
+  \draw[<->, gray, thick] (2.35,2.5) -- (2.35,4.5);
+  \node[right, gray, font=\small] at (2.4,3.5) {$h$};
 
-  % Pressure arrows at the same level
-  \draw[->, codexred] (1.25,2.5) -- (0.6,2.5);
-  \draw[->, codexred] (1.25,2.5) -- (1.9,2.5);
-  \draw[->, codexred] (5,2.5) -- (4.2,2.5);
-  \draw[->, codexred] (5,2.5) -- (5.8,2.5);
-  \draw[->, codexred] (8.75,2.5) -- (8.1,2.5);
-  \draw[->, codexred] (8.75,2.5) -- (9.4,2.5);
+  % Pressure markers at the same depth in each separate vessel
+  \draw[->, codexred] (1.25,2.5) -- (0.65,2.5);
+  \draw[->, codexred] (1.25,2.5) -- (1.85,2.5);
+  \draw[->, codexred] (4.75,2.5) -- (4.15,2.5);
+  \draw[->, codexred] (4.75,2.5) -- (5.35,2.5);
+  \draw[->, codexred] (8.75,2.5) -- (8.15,2.5);
+  \draw[->, codexred] (8.75,2.5) -- (9.35,2.5);
 
-  \node[below, font=\small, align=center] at (5,-0.3)
-    {All three points at the same depth have
-    \textbf{identical pressure} $P = P_0 + \rho g h$,\\
-    regardless of the shape, width, or total volume
-    of water above them.};
+  \node[below, font=\small, align=center, text width=10cm] at (5,-0.3)
+    {At depth $h$ below each free surface, pressure is
+    $P = P_0 + \rho g h$ in all three vessels, regardless of shape.};
 
 \end{tikzpicture}
 \end{center}
@@ -687,7 +678,8 @@ force on the large piston.
   \fill[codexred!30] (7.2,5.7) rectangle (9.8,7.0);
   \draw[thick] (7.2,5.7) rectangle (9.8,7.0);
   \node at (8.5,6.3) {LOAD};
-  \node[font=\small] at (8.5,7.6) {$F_2 = F_1 \times A_2/A_1$};
+  \node[font=\small] at (8.5,7.6)
+    {$\Delta F_2 = \Delta P\,A_2 = F_1(A_2/A_1)$};
   \node[font=\small] at (8.5,8.2) {(Large force!)};
 
   % Pressure arrows in fluid
@@ -695,9 +687,9 @@ force on the large piston.
     1.25/2.0, 1.25/2.8}
     \fill[codexaccent] (\x,\y) circle (1.5pt);
 
-  % Equal pressure label
+  % Equal applied pressure increment label
   \node[codexaccent, font=\small] at (5,0.3)
-    {Same pressure $P$ throughout the fluid};
+    {Applied pressure increment $\Delta P$ is transmitted};
 
   % Area comparison
   \draw[<->, gray] (0.5,4.8) -- (2.0,4.8);
@@ -710,9 +702,11 @@ force on the large piston.
 \end{tikzpicture}
 \end{center}
 \small\textit{A small force $F_1$ applied to the small
-piston creates pressure $P = F_1/A_1$ throughout the
-fluid. The large piston receives the same pressure $P$,
-producing force $F_2 = PA_2 = F_1(A_2/A_1) \gg F_1$.}
+piston produces a pressure increment $\Delta P = F_1/A_1$,
+which is transmitted through the fluid by Pascal's principle.
+The ideal force increment on the large piston is
+$\Delta F_2 = \Delta P A_2 = F_1(A_2/A_1) \gg F_1$.
+Absolute pressure also varies with height in a static fluid.}
 \end{diagbox}
 
 \begin{examplebox}[11.4]
@@ -852,9 +846,6 @@ displaced volume).
   \node[font=\small, align=center, codexgreen]
     at (14.25,1.4)
     {$U = \rho_{fluid}\,V_{obj}\,g$\\(weight of displaced fluid)};
- 
-  % DEBUG grid
-  \draw[gray!30, very thin] (0,0) grid[step=1] (16.5,9);
 \end{tikzpicture}
 \end{center}
 \end{diagbox}
@@ -894,11 +885,11 @@ For a floating object:
   \fill[codexblue!80, opacity=0.5]
     (1,4.5) rectangle (2.8,5.0);
   \draw[->, codexgreen, thick]
-    (1.9,4.5) -- (1.9,3.8)
-    node[below, font=\tiny]{$U$};
+    (1.3,4.55) -- (1.3,5.45)
+    node[above, font=\tiny]{$U=W$};
   \draw[->, codexred, thick]
-    (1.9,5.5) -- (1.9,6.2)
-    node[above, font=\tiny]{$W$};
+    (2.5,5.45) -- (2.5,4.55)
+    node[below, font=\tiny]{$W=U$};
   \node[below, font=\small] at (1.9,2.3)
     {Floats};
   \node[below, font=\tiny, codexblue] at (1.9,3.0)
@@ -909,11 +900,11 @@ For a floating object:
   \draw[thick] (5,2.3) rectangle (7,3.5);
   \node at (6,2.9) {\small Submarine};
   \draw[->, codexgreen, thick]
-    (6,2.3) -- (6,1.5)
-    node[below, font=\tiny]{$U=W$};
+    (5.4,2.35) -- (5.4,3.25)
+    node[above, font=\tiny]{$U=W$};
   \draw[->, codexred, thick]
-    (6,3.5) -- (6,4.3)
-    node[above, font=\tiny]{$W=U$};
+    (6.6,3.45) -- (6.6,2.55)
+    node[below, font=\tiny]{$W=U$};
   \node[below, font=\small] at (6,0.1)
     {Neutrally buoyant};
   \node[below, font=\tiny, codexaccent] at (6,0.8)
@@ -924,11 +915,11 @@ For a floating object:
   \draw[thick] (9.5,0.2) rectangle (11,1.2);
   \node at (10.25,0.7) {\small Metal};
   \draw[->, codexgreen, thick]
-    (10.25,0.2) -- (10.25,-0.5)
-    node[below, font=\tiny]{$U$};
+    (9.65,0.2) -- (9.65,0.9)
+    node[above, font=\tiny]{$U$};
   \draw[->, codexred, thick, line width=2pt]
-    (10.25,1.2) -- (10.25,2.2)
-    node[above, font=\tiny]{$W > U$};
+    (10.85,1.2) -- (10.85,0.2)
+    node[below, font=\tiny]{$W > U$};
   \node[below, font=\small] at (10.25,-0.8)
     {Sinks};
   \node[below, font=\tiny, codexred] at (10.25,3.4)
