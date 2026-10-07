@@ -1346,6 +1346,26 @@ in a pipe closed at one end.
 apart, each emitting sound of frequency
 $680\ \text{Hz}$ in phase. Speed of sound
 $= 340\ \text{m\,s}^{-1}$.\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.82, font=\small]
+  % Setup only: no nodes or antinodes are shown, so the exercise remains open.
+  \fill[gray!25] (0.35,-0.35) rectangle (0.85,0.35);
+  \draw[thick] (0.35,-0.35) rectangle (0.85,0.35);
+  \fill[gray!25] (7.15,-0.35) rectangle (7.65,0.35);
+  \draw[thick] (7.15,-0.35) rectangle (7.65,0.35);
+  \node[above] at (0.60,0.38) {$S_1$};
+  \node[above] at (7.40,0.38) {$S_2$};
+  \draw[->, thick, codexgold] (1.1,0) -- (3.3,0);
+  \draw[->, thick, codexgold] (6.9,0) -- (4.7,0);
+  \node[above, font=\scriptsize] at (4.0,0.55)
+    {sound waves travel toward one another};
+  \draw[<->, thick] (0.60,-0.72) -- (7.40,-0.72)
+    node[midway, below] {$3.0\ \text{m}$};
+  \node[below, font=\scriptsize] at (4.0,-1.1)
+    {same frequency; sources in phase};
+\end{tikzpicture}
+\end{center}
+\small Setup schematic only; no standing-wave pattern is supplied.\\[4pt]
 (a) Explain why a standing wave is set up between
 the speakers.\\
 (b) Calculate the wavelength.\\

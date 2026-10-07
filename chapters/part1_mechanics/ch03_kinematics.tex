@@ -934,6 +934,20 @@ stations.\\
 river below. The splash is heard $2.8\ \text{s}$ after
 the rock is released. The speed of sound in air is
 $340\ \text{m\,s}^{-1}$ and $g = 10\ \text{m\,s}^{-2}$.\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.72,>=Stealth]
+  \draw[thick] (-0.2,2.0)--(2.0,2.0) node[right] {bridge};
+  \draw[thick,codexblue] (-0.2,0)--(2.5,0) node[right] {river};
+  \fill (0.65,1.93) circle (2pt) node[above] {release point};
+  \fill (0.65,0.05) circle (2pt) node[below] {splash};
+  \draw[->,very thick] (1.05,1.82)--(1.05,0.25)
+    node[midway,right] {$t_1$};
+  \draw[->,dashed,very thick,codexred] (0.65,0.15)--(0.65,1.82)
+    node[midway,left] {$t_2$};
+  \draw[<->] (1.7,0.08)--(1.7,1.92)
+    node[midway,right] {$H$};
+\end{tikzpicture}
+\end{center}
 (a) Write an equation relating the height $H$ of the
 bridge to the fall time $t_1$ and the sound travel
 time $t_2$, given that $t_1 + t_2 = 2.8\ \text{s}$.\\
@@ -947,6 +961,20 @@ equation).\\
 \textbf{B3.} A goalkeeper kicks a football from ground
 level at a speed of $22\ \text{m\,s}^{-1}$ at an angle
 of $35°$ above the horizontal. ($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.78,>=Stealth]
+  \draw[thick] (0,0)--(5.1,0) node[right] {ground};
+  \fill (0.45,0.12) circle (2pt) node[above left,xshift=-8mm] {goalkeeper};
+  \draw[->,very thick,codexblue] (0.45,0.15)--(1.65,1.0)
+    node[midway,above left] {$22\ \text{m\,s}^{-1}$};
+  \draw[dashed] (0.45,0.15)--(1.65,0.15);
+  \draw (0.95,0.15) arc[start angle=0,end angle=35,radius=0.5];
+  \draw[dotted] (3.75,0)--(3.75,0.95);
+  \draw[<->] (0.45,-0.28)--(3.75,-0.28)
+    node[midway,below] {$35\ \text{m}$};
+  \node[below] at (3.75,-0.53) {defender};
+\end{tikzpicture}
+\end{center}
 (a) Find the horizontal and vertical components of the
 initial velocity.\\
 (b) Calculate the maximum height reached.\\
@@ -963,6 +991,19 @@ over the defender?
 a rescue flare is fired \textit{vertically upward} at
 $30\ \text{m\,s}^{-1}$. Taking $g = 10\ \text{m\,s}^{-2}$
 and setting the base of the cliff as $y = 0$:
+\begin{center}
+\begin{tikzpicture}[scale=0.76,>=Stealth]
+  \draw[thick] (0,0)--(3.6,0) node[right] {sea level, $y=0$};
+  \draw[thick] (0,0)--(0,2.15)--(1.45,2.15)
+    node[right] {cliff top};
+  \fill (1.2,2.28) circle (2pt);
+  \draw[->,very thick,codexblue] (1.2,2.35)--(1.2,3.25)
+    node[above] {$30\ \text{m\,s}^{-1}$};
+  \draw[<->] (0.38,0.08)--(0.38,2.08)
+    node[midway,left] {$80\ \text{m}$};
+  \node[below] at (1.2,-0.18) {vertical launch above the sea};
+\end{tikzpicture}
+\end{center}
 (a) Write an equation for the height $y$ of the flare
 above sea level as a function of time.\\
 (b) Find the maximum height above sea level.\\

@@ -735,6 +735,16 @@ attached to a string and swings in a vertical circle
 of radius $1.2\ \text{m}$. At the lowest point of
 the circle it has speed $6.0\ \text{m\,s}^{-1}$.
 ($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.78,>=Stealth]
+  \draw[dashed,thick] (0,0) circle (1.2);
+  \fill (0,-1.2) circle (2.5pt) node[below] {lowest point};
+  \fill (0,1.2) circle (2.5pt) node[above] {highest point};
+  \draw[dotted] (0,0)--(0,-1.2);
+  \node[left] at (-0.04,-0.68) {$r=1.2\ \text{m}$};
+  \node[right] at (1.28,-0.95) {$6.0\ \text{m\,s}^{-1}$};
+\end{tikzpicture}
+\end{center}
 (a) Calculate the KE and GPE at the lowest point
 (take lowest point as reference level).\\
 (b) Using energy conservation, find the speed at
@@ -773,6 +783,20 @@ $800\ \text{N\,m}^{-1}$. The spring is initially
 uncompressed, and the ball falls $0.50\ \text{m}$
 before first touching the spring.
 ($g = 10\ \text{m\,s}^{-2}$)\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.78,>=Stealth]
+  \draw[thick] (-0.35,0)--(2.9,0);
+  \draw[thick]
+    (1.25,0.05)--(0.95,0.13)--(1.55,0.21)--(0.95,0.29)
+    --(1.55,0.37)--(0.95,0.45)--(1.55,0.53)--(0.95,0.61)
+    --(1.25,0.72);
+  \draw[thick] (0.82,0.72)--(1.68,0.72);
+  \filldraw[thick,fill=lightgray] (1.25,2.52) circle (0.34);
+  \draw[<->] (2.1,0.78)--(2.1,2.1)
+    node[midway,right] {$0.50\ \text{m}$};
+  \node[below] at (1.25,-0.28) {uncompressed spring};
+\end{tikzpicture}
+\end{center}
 (a) Find the speed of the ball just before it
 touches the spring.\\
 (b) Set up an energy equation for the moment of

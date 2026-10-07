@@ -1003,6 +1003,19 @@ calculate $P_L$.\\
 $P_{input} = P_{line loss} + P_L$.
 \hfill\ansref{Ch24-B2}
 
+\begin{center}
+\begin{tikzpicture}[scale=0.8,transform shape,font=\small,>=Stealth]
+  \node[draw,minimum width=3.2cm,minimum height=1.0cm,align=center] (src) at (0,1.5) {Kainji station ($220\,\text{kV}$)};
+  \node[draw,minimum width=2.5cm,minimum height=1.0cm,align=center] (load) at (8.5,1.5) {Lagos consumers};
+  \draw[thick] (1.6,1.9) -- (7.25,1.9);
+  \draw[thick] (7.25,1.1) -- (1.6,1.1);
+  \draw[->,thick] (2.0,1.9) -- (3.0,1.9) node[midway,above] {$I=500\,\text{A}$};
+  \draw[->,thick] (5.8,1.1) -- (4.8,1.1);
+  \node[font=\footnotesize,fill=white] at (4.4,1.48) {$R_{\text{line}}=60\,\Omega$};
+  \node[below,font=\footnotesize] at (4.4,0.65) {Total includes both conductors; find the voltage drop and power balance.};
+\end{tikzpicture}
+\end{center}
+
 \vspace{0.4cm}
 
 \textbf{B3.} A $240\ \text{V}$ to $12\ \text{V}$
@@ -1040,6 +1053,29 @@ find the secondary RMS voltage and the secondary
 peak voltage.
 \hfill\ansref{Ch24-B4}
 
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width=10cm,height=4.2cm,
+    xmin=0,xmax=0.04,ymin=-390,ymax=390,
+    xtick={0,0.01,0.02,0.03,0.04},
+    xticklabels={0,10,20,30,40},
+    scaled x ticks=false,
+    ytick={-325,0,325},
+    xlabel={time (ms)},ylabel={instantaneous voltage (V)},
+    axis lines=left,grid=major,
+    minor tick num=1,
+    tick label style={font=\footnotesize},
+    label style={font=\small},
+    clip=false
+  ]
+    \addplot[very thick,codexblue,domain=0:0.04,samples=160]
+      {325*sin(deg(100*pi*x))};
+  \end{axis}
+\end{tikzpicture}
+\par\footnotesize Reference waveform: peak $325\,\text{V}$, frequency $50\,\text{Hz}$; determine the requested RMS quantities yourself.
+\end{center}
+
 \vspace{0.4cm}
 
 \textbf{B5.} A house is wired with cables rated
@@ -1066,5 +1102,30 @@ and the fuse is rated $13\ \text{A}$, you can safely
 use up to $240 \times 13 = 3120\ \text{W}$. Explain
 whether this is correct, and identify any assumptions.
 \hfill\ansref{Ch24-B5}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.72,transform shape,font=\small,>=Stealth]
+  % The fuse and cord resistance are in series with the shared live feed.
+  \draw[thick] (0.5,0.45) -- (0.5,2.3);
+  \draw[thick] (0.5,3.25) -- (0.5,3.23);
+  \node[draw,minimum width=7mm,minimum height=3mm,inner sep=1pt] at (0.5,3.08) {$F$};
+  \draw[thick] (0.5,2.93) -- (0.5,2.79);
+  \node[draw,minimum width=7mm,minimum height=3mm,inner sep=1pt] at (0.5,2.64) {$R_c$};
+  \draw[thick] (0.5,2.49) -- (0.5,2.3);
+  \draw[thick] (7.0,0.45) -- (7.0,3.25);
+  \node[left] at (0.5,3.45) {$240\,\text{V}$};
+  \node[anchor=west,font=\scriptsize] at (0.95,3.08) {$13\,\text{A}$ fuse};
+  \node[anchor=west,font=\scriptsize] at (0.95,2.64) {cord $R_c=0.5\,\Omega$};
+  \node[right] at (7.0,3.0) {return};
+  \draw[->,thick] (1.4,3.45) -- (2.3,3.45) node[midway,above] {$I_{total}$};
+  \foreach \y/\name/\power in {2.3/Air fryer/1800 W,1.75/Microwave/900 W,1.2/Kettle/1200 W,0.65/Lamp/60 W} {
+    \draw[thick] (0.5,\y) -- (2.05,\y);
+    \draw[thick] (2.05,\y-0.22) rectangle (4.75,\y+0.22);
+    \node at (3.4,\y) {\name\space(\power)};
+    \draw[thick] (4.75,\y) -- (7.0,\y);
+  }
+  \node[below] at (3.75,0.12) {Four socket branches are in parallel and share the fused cord.};
+\end{tikzpicture}
+\end{center}
 
 \end{exercisebox}

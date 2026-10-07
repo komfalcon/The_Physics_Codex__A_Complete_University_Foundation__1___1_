@@ -1300,6 +1300,39 @@ electrically neutral even though it has more
 electrons than holes.
 \hfill\ansref{Ch29-B1}
 
+\begin{center}
+\begin{tikzpicture}[font=\footnotesize]
+  \draw[->,thick] (0.2,0.45) -- (0.2,2.55) node[above] {Energy};
+  \node[font=\bfseries] at (1.5,2.75) {Metal};
+  \draw[thick,fill=codexred!16] (0.6,0.7) rectangle (2.4,1.25);
+  \draw[thick,fill=codexblue!18] (0.6,1.05) rectangle (2.4,1.6);
+  \node at (1.5,0.87) {VB};
+  \node at (1.5,1.42) {CB};
+  \node[font=\bfseries] at (4.0,2.75) {Silicon};
+  \draw[thick,fill=codexred!16] (3.1,0.7) rectangle (4.9,1.05);
+  \draw[thick,fill=codexblue!18] (3.1,1.5) rectangle (4.9,1.85);
+  \node at (4.0,0.87) {VB};
+  \node at (4.0,1.67) {CB};
+  \node[font=\scriptsize] at (4.0,1.25) {small $E_g$};
+  \node[font=\bfseries] at (6.5,2.75) {Insulator};
+  \draw[thick,fill=codexred!16] (5.6,0.7) rectangle (7.4,1.05);
+  \draw[thick,fill=codexblue!18] (5.6,2.0) rectangle (7.4,2.35);
+  \node at (6.5,0.87) {VB};
+  \node at (6.5,2.17) {CB};
+  \node[font=\scriptsize] at (6.5,1.5) {large $E_g$};
+  \node[font=\bfseries] at (9.1,2.75) {$n$-type};
+  \draw[thick,fill=codexred!16] (8.2,0.7) rectangle (10.0,1.05);
+  \draw[thick,fill=codexblue!18] (8.2,1.5) rectangle (10.0,1.85);
+  \draw[dashed,thick,codexgold] (8.2,1.3) -- (10.0,1.3);
+  \node at (9.1,0.87) {VB};
+  \node at (9.1,1.67) {CB};
+  \node[font=\scriptsize,codexgold,fill=white,inner sep=1pt] at (9.1,1.3) {$E_D$};
+  \draw[->,thick,codexgold] (9.55,1.35) -- (9.55,1.48);
+  \node[font=\scriptsize] at (9.1,0.4) {fixed $D^+$};
+\end{tikzpicture}
+\par\smallskip\footnotesize VB = valence band; CB = conduction band. Energy gaps are schematic; compare the stated densities and charge neutrality yourself.
+\end{center}
+
 \vspace{0.4cm}
 
 \textbf{B2.} A full-wave bridge rectifier is
