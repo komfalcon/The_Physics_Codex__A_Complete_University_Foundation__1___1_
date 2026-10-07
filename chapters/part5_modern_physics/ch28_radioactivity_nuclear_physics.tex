@@ -1272,6 +1272,19 @@ ${}^{238}$U (Avogadro's number $= 6.02\times10^{23}$
 mol$^{-1}$, molar mass $= 238\ \text{g\,mol}^{-1}$).
 \hfill\ansref{Ch28-B1}
 
+\begin{center}
+\begin{tikzpicture}[font=\footnotesize,>=Stealth]
+  \node (u238) at (0.7,1.0) {${}^{238}_{92}\mathrm{U}$};
+  \node (th234) at (2.7,1.0) {${}^{234}_{90}\mathrm{Th}$};
+  \node[draw,minimum width=1.2cm,minimum height=0.45cm,inner sep=1pt] (d1) at (4.8,1.0) {?};
+  \node[draw,minimum width=1.2cm,minimum height=0.45cm,inner sep=1pt] (d2) at (7.0,1.0) {?};
+  \draw[->,thick] (u238.east) -- node[above] {$\alpha$} (th234.west);
+  \draw[->,thick] (th234.east) -- node[above] {$\beta^-$} (d1.west);
+  \draw[->,thick] (d1.east) -- node[above] {$\beta^-$} (d2.west);
+  \node at (3.9,0.25) {$A:\ 238-4n_\alpha=206\qquad Z:\ 92-2n_\alpha+n_{\beta^-}=82$};
+\end{tikzpicture}
+\end{center}
+
 \vspace{0.4cm}
 
 \textbf{B2.} A sample of radioactive iodine-131

@@ -679,6 +679,25 @@ in free fall}
 in space}
 \ansref{Ch8-A5}
 
+\begin{center}
+\begin{tikzpicture}[scale=0.85,>=Stealth,font=\small]
+  \draw[densely dashed,gray] (0,0) circle (2.0);
+  \fill[blue!12] (0,0) circle (0.82);
+  \draw[thick] (0,0) circle (0.82);
+  \node at (0,0) {Earth};
+  \draw[fill=gray!20] (1.78,-0.16) rectangle (2.22,0.16);
+  \fill (2,0) circle (0.045);
+  \node[anchor=west] at (2.30,-0.38) {\scriptsize ISS + astronaut};
+  \draw[->,thick,blue!65!black] (2,0.20) -- (2,0.80)
+    node[above] {$\vec{v}$};
+  \draw[->,thick,red!70!black] (1.78,-0.25) -- (1.05,-0.25)
+    node[midway,below] {$\vec{g}$};
+  \node[align=center] at (0,-2.48)
+    {\scriptsize Schematic, not to scale; both share orbital free fall.\\
+     Gravity still acts on both.};
+\end{tikzpicture}
+\end{center}
+
 \vspace{0.4cm}
 
 \textbf{A6.} The gravitational potential at a point
@@ -715,6 +734,20 @@ planet moves fastest:
 \mcoption{C}{At all points equally}
 \mcoption{D}{Only when its orbit is circular}
 \ansref{Ch8-A8}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.70,font=\small]
+  \draw[thick] (0,0) ellipse [x radius=2.6,y radius=2.25];
+  \fill[orange!85!black] (-1.30,0) circle (0.10);
+  \node[below] at (-1.30,-0.14) {\scriptsize Sun (focus)};
+  \fill[black] (-2.60,0) circle (0.055);
+  \fill[black] (2.60,0) circle (0.055);
+  \node[above left] at (-2.60,0.08) {\scriptsize P};
+  \node[above right] at (2.60,0.08) {\scriptsize Q};
+  \node[align=center] at (0,-2.65)
+    {\scriptsize The orbit is elliptical; compare the planet's distance from the Sun.};
+\end{tikzpicture}
+\end{center}
 
 \vspace{0.4cm}
 

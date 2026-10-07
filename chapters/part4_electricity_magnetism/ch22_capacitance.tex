@@ -934,6 +934,45 @@ parallel.\\
 charge on $C_3$.
 \hfill\ansref{Ch22-B2}
 
+\begin{center}
+\begin{tikzpicture}[scale=0.78,transform shape,font=\small]
+  % Supply rails and battery
+  \draw[thick] (0.6,0) -- (0.6,1.2);
+  \draw[thick] (0.6,1.8) -- (0.6,3);
+  \draw[very thick] (0.25,1.65) -- (0.95,1.65);
+  \draw[very thick] (0.4,1.35) -- (0.8,1.35);
+  \draw[thick] (0.6,3) -- (8.1,3);
+  \draw[thick] (0.6,0) -- (8.1,0);
+  \node[left] at (0.25,1.5) {$20\,\text{V}$};
+  % C1 and C2 are in parallel; that pair is in series with C3.
+  \draw[thick] (2.0,3) -- (2.0,2.35) -- (3.5,2.35);
+  \draw[thick] (2.0,2.35) -- (2.0,2.05);
+  \draw[thick] (3.5,2.35) -- (3.5,2.05);
+  \draw[thick] (1.78,2.05) -- (2.22,2.05);
+  \draw[thick] (1.78,1.85) -- (2.22,1.85);
+  \draw[thick] (3.28,2.05) -- (3.72,2.05);
+  \draw[thick] (3.28,1.85) -- (3.72,1.85);
+  \draw[thick] (2.0,1.85) -- (2.0,1.45);
+  \draw[thick] (3.5,1.85) -- (3.5,1.45);
+  \draw[thick] (2.0,1.45) -- (3.5,1.45);
+  \node[above,anchor=east] at (2.0,2.08) {$C_1=3\,\mu\text{F}$};
+  \node[above,anchor=west] at (3.5,2.08) {$C_2=6\,\mu\text{F}$};
+  \draw[thick] (2.75,1.45) -- (2.75,0.95);
+  \draw[thick] (2.5,0.95) -- (3.0,0.95);
+  \draw[thick] (2.5,0.75) -- (3.0,0.75);
+  \draw[thick] (2.75,0.75) -- (2.75,0);
+  \node[right] at (3.05,0.85) {$C_3=4\,\mu\text{F}$};
+  % C4 is a separate branch across the supply.
+  \draw[thick] (6.7,3) -- (6.7,1.9);
+  \draw[thick] (6.45,1.9) -- (6.95,1.9);
+  \draw[thick] (6.45,1.7) -- (6.95,1.7);
+  \draw[thick] (6.7,1.7) -- (6.7,0);
+  \node[right] at (7.05,1.8) {$C_4=8\,\mu\text{F}$};
+\end{tikzpicture}
+\par\smallskip
+\footnotesize $C_1$ and $C_2$ share both nodes; their parallel pair is in series with $C_3$, and this branch is in parallel with $C_4$.
+\end{center}
+
 \vspace{0.4cm}
 
 \textbf{B3.} A $1000\ \mu\text{F}$ capacitor is

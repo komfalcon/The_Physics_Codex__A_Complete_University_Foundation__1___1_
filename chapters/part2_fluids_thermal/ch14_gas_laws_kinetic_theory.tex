@@ -1053,6 +1053,30 @@ $9.5\times10^5\ \text{Pa}$, does the valve open?\\
 (d) The cylinder is left in a fire where the
 temperature reaches $300°\text{C}$. Calculate the
 pressure if no gas escapes. Comment on the danger.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,font=\scriptsize]
+  \draw[->] (0,0) -- (6.65,0) node[right] {$T$ (K)};
+  \draw[->] (0,0) -- (0,3.42) node[above] {$P$ (MPa)};
+  \foreach \y/\label in {1/0.5,2/1.0,3/1.5} {
+    \draw (-0.06,\y) -- (0.06,\y);
+    \node[left] at (-0.08,\y) {\label};
+  }
+  \draw[thick,dashed,red!75!black] (0,1.90) -- (6.00,1.90);
+  \node[fill=white,inner sep=1pt,anchor=west] at (6.12,1.90)
+    {$0.95$ MPa relief threshold};
+  \draw[thick,blue!65!black] (0.50,1.60) -- (6.00,3.08);
+  \fill[blue!65!black] (0.50,1.60) circle (0.055);
+  \fill[blue!65!black] (1.00,1.734) circle (0.055);
+  \fill[blue!65!black] (6.00,3.08) circle (0.055);
+  \node[fill=white,inner sep=1pt] at (3.35,2.84)
+    {fixed $n,V$: $P\propto T$};
+  \node[align=center,text width=8cm,anchor=north] at (3.3,-0.28)
+    {\scriptsize Points from left to right: $25°$C ($298$ K), $0.80$ MPa;
+    $50°$C ($323$ K), $0.867$ MPa; $300°$C ($573$ K), $1.54$ MPa.
+    Part (d) is the no-gas-escape case.};
+\end{tikzpicture}
+\end{center}
 \hfill\ansref{Ch14-B2}
 
 \vspace{0.4cm}

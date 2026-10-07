@@ -1197,6 +1197,24 @@ should have:
 $1.60$ is immersed in a liquid of refractive index
 $1.40$. A ray of light in the glass strikes the
 glass-liquid boundary at $50°$.\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.82, font=\small]
+  \fill[cyan!7] (-3,0) rectangle (3,2.6);
+  \fill[codexblue!12] (-3,-2.6) rectangle (3,0);
+  \draw[very thick] (-3,0) -- (3,0);
+  \node[gray, align=center] at (-2.0,1.9)
+    {Liquid\\$n=1.40$};
+  \node[gray, align=center] at (-2.0,-1.9)
+    {Glass\\$n=1.60$};
+  \draw[dashed, gray, thick] (0,-2.35) -- (0,2.35)
+    node[above] {Normal};
+  \draw[->, very thick, codexblue] (-1.85,-2.2) -- (0,0);
+  \draw[codexred, thick] (0,-0.7) arc (270:230:0.7);
+  \node[codexred] at (-0.7,-1.0) {$50°$};
+  \node[right, gray] at (0.1,-0.15) {Boundary};
+\end{tikzpicture}
+\end{center}
+\small Incident geometry only; the refracted path is not drawn.\\[4pt]
 (a) Calculate the critical angle for this
 glass-liquid interface.\\
 (b) Will total internal reflection occur at $50°$?\\

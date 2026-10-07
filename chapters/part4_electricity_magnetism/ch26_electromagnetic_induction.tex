@@ -1147,6 +1147,20 @@ self-inductance of the solenoid, referring to the
 formula $L = \mu_r\mu_0 N^2A/\ell$.
 \hfill\ansref{Ch26-B4}
 
+\begin{center}
+\begin{tikzpicture}[font=\small]
+  % Cross-section: nested windings share an axis normal to the page.
+  \draw[codexblue,very thick] (3.0,1.45) circle (0.78);
+  \draw[codexred,very thick] (3.0,1.45) circle (1.28);
+  \node[codexblue,anchor=east] at (1.25,2.55) {$S_1$};
+  \draw[->,thick,codexblue] (1.33,2.48) -- (2.38,2.0);
+  \node[codexred,anchor=west] at (4.75,2.55) {$S_2$};
+  \draw[->,thick,codexred] (4.67,2.48) -- (4.05,2.05);
+  \node at (3.0,1.45) {$\odot$};
+  \node[below] at (3.0,0.0) {Cross-section; shared axis is out of the page.};
+\end{tikzpicture}
+\end{center}
+
 \vspace{0.4cm}
 
 \textbf{B5.} An electric motor runs on a $240\ \text{V}$

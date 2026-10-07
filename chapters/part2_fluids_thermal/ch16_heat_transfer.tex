@@ -1266,6 +1266,34 @@ Inside temperature: $20°\text{C}$.
 Outside temperature: $0°\text{C}$.
 ($k_{glass} = 1.0\ \text{W\,m}^{-1}\text{K}^{-1}$,
 $k_{air} = 0.025\ \text{W\,m}^{-1}\text{K}^{-1}$)\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.8, font=\small]
+  % Cross-section only; pane and gap widths are proportional to thickness.
+  \fill[orange!15] (-1.3,0) rectangle (0,1.8);
+  \fill[gray!35] (0,0) rectangle (0.8,1.8);
+  \fill[cyan!14] (0.8,0) rectangle (3.2,1.8);
+  \fill[gray!35] (3.2,0) rectangle (4.0,1.8);
+  \fill[cyan!8] (4.0,0) rectangle (5.3,1.8);
+  \draw[thick] (-1.3,0) rectangle (5.3,1.8);
+  \draw[thick] (0,0) -- (0,1.8);
+  \draw[thick] (0.8,0) -- (0.8,1.8);
+  \draw[thick] (3.2,0) -- (3.2,1.8);
+  \draw[thick] (4.0,0) -- (4.0,1.8);
+  \node[align=center] at (-0.65,0.9) {Inside\\$20°\text{C}$};
+  \node[align=center, font=\scriptsize] at (0.4,0.9) {Glass};
+  \node[align=center] at (2.0,0.9) {Air gap};
+  \node[align=center, font=\scriptsize] at (3.6,0.9) {Glass};
+  \node[align=center] at (4.65,0.9) {Outside\\$0°\text{C}$};
+  \draw[<->, thick] (0,-0.35) -- (0.8,-0.35)
+    node[midway, below] {$4\ \text{mm}$};
+  \draw[<->, thick] (0.8,-0.35) -- (3.2,-0.35)
+    node[midway, below] {$12\ \text{mm}$};
+  \draw[<->, thick] (3.2,-0.35) -- (4.0,-0.35)
+    node[midway, below] {$4\ \text{mm}$};
+\end{tikzpicture}
+\end{center}
+\small Cross-section schematic; layer widths are proportional to thickness.
+\\[4pt]
 (a) Calculate the thermal resistance of each layer:
 inner glass, air gap, outer glass.\\
 (b) Calculate the total thermal resistance.\\

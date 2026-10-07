@@ -860,6 +860,17 @@ incline of angle $25°$. The coefficient of static
 friction is $0.45$ and kinetic friction is $0.35$.
 ($g = 10\ \text{m\,s}^{-2}$, sin$25° = 0.423$,
 cos$25° = 0.906$)\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.8,>=Stealth]
+  \draw[thick] (0,0)--(3.9,0)--(3.9,1.82)--cycle;
+  \begin{scope}[shift={(1.55,0.72)},rotate=25]
+    \draw[thick,fill=lightgray] (-0.34,0)--(0.34,0)--(0.34,0.5)--(-0.34,0.5)--cycle;
+  \end{scope}
+  \draw (0.7,0) arc[start angle=0,end angle=25,radius=0.7];
+  \node at (1.0,0.25) {$25°$};
+  \node[below] at (2.1,-0.3) {schematic setup; not a free-body diagram};
+\end{tikzpicture}
+\end{center}
 (a) Does the block slide? Justify using force
 comparison.\\
 (b) If a force of $20\ \text{N}$ acts down the incline,
@@ -874,6 +885,21 @@ acceleration without the extra force.
 horizontal frictionless table and $m_2 = 5.0\ \text{kg}$
 hanging over the edge, are connected by a light string
 over a smooth pulley at the edge of the table.\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.8,>=Stealth]
+  \draw[thick] (-0.35,1.15)--(2.35,1.15);
+  \draw[thick] (2.35,1.15)--(2.35,-1.15);
+  \draw[thick,fill=lightgray] (0.25,1.15) rectangle (1.15,1.68);
+  \node at (0.7,1.42) {$m_1$};
+  \draw[thick] (2.35,1.38) circle (0.22);
+  \draw[thick] (1.15,1.42)--(2.35,1.42);
+  \draw[thick] (2.57,1.15)--(2.57,-0.48);
+  \draw[thick,fill=lightgray] (2.22,-0.98) rectangle (2.92,-0.48);
+  \node at (2.57,-0.73) {$m_2$};
+  \node[below] at (0.9,0.82) {horizontal table};
+  \node[right] at (2.9,0.35) {pulley};
+\end{tikzpicture}
+\end{center}
 (a) Draw a free-body diagram for each mass.\\
 (b) Write Newton's second law equations for each mass.\\
 (c) Solve for the acceleration of the system.\\

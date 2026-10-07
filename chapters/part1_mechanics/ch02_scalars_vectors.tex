@@ -2146,6 +2146,17 @@ the hiker's total displacement from the starting point
 the ground. The tension in the string is $85\ \text{N}$.
 A horizontal wind also pushes the kite with a force of
 $30\ \text{N}$.\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.78,>=Stealth]
+  \draw[thick] (-0.35,0)--(1.0,0) node[right] {ground};
+  \fill (0,0) circle (2pt) node[below left] {anchor};
+  \draw[thick] (0,0)--(1.7,2.43);
+  \node[draw,fill=lightgray,minimum width=0.42cm,minimum height=0.28cm]
+    at (1.7,2.43) {kite};
+  \draw (0.55,0) arc[start angle=0,end angle=55,radius=0.55];
+  \node at (0.77,0.34) {$55°$};
+\end{tikzpicture}
+\end{center}
 (a) Find the horizontal and vertical components of the
 string tension.\\
 (b) Find the resultant of the string tension and the
@@ -2158,6 +2169,22 @@ wind force.\\
 \textbf{B3.} A boat that can travel at $5.0\ \text{m\,s}^{-1}$
 in still water needs to cross a river $120\ \text{m}$ wide.
 The river current flows at $3.0\ \text{m\,s}^{-1}$ due east.\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.75,>=Stealth]
+  \draw[thick] (-0.35,0)--(4.1,0);
+  \draw[thick] (-0.35,2.25)--(4.1,2.25);
+  \node[above] at (1.85,2.25) {north bank};
+  \node[below] at (1.85,0) {south bank};
+  \draw[densely dotted] (0.65,0.25)--(0.65,2.0);
+  \draw[<->] (0.25,0.08)--(0.25,2.15)
+    node[midway,left] {$120\ \text{m}$};
+  \draw[->,very thick,codexblue] (1.3,0.55)--(1.3,1.55);
+  \draw[->,very thick,codexred] (2.0,1.05)--(3.2,1.05)
+    node[midway,above] {current east};
+  \node[below right] at (3.2,1.05) {$E$};
+  \node[left] at (1.3,1.72) {$N$};
+\end{tikzpicture}
+\end{center}
 (a) If the boat points due north, what is its velocity
 relative to the riverbank (magnitude and direction)?\\
 (b) How far downstream does the boat land from its
@@ -2191,6 +2218,21 @@ by two cables attached to a horizontal beam. The left cable
 makes an angle of $40°$ with the horizontal and the right
 cable makes an angle of $55°$ with the horizontal.
 (Take $g = 10\ \text{m\,s}^{-2}$.)\\[4pt]
+\begin{center}
+\begin{tikzpicture}[scale=0.82,>=Stealth]
+  \coordinate (J) at (2.45,0);
+  \draw[thick] (-0.25,2)--(4.1,2) node[right] {beam};
+  \draw[thick] (J)--(0.066,2);
+  \draw[thick] (J)--(3.85,2);
+  \fill (J) circle (2pt);
+  \draw[densely dashed] (J)--(2.45,-0.35);
+  \node[draw,fill=lightgray,minimum width=0.85cm,minimum height=0.4cm]
+    at (2.45,-0.62) {sign};
+  \node[left] at (0.75,1.25) {$40°$};
+  \node[right] at (3.65,1.25) {$55°$};
+  \node[below] at (2.45,-1.03) {$50\ \text{kg}$};
+\end{tikzpicture}
+\end{center}
 (a) Draw a clear force diagram showing all forces on the
 junction point.\\
 (b) Write the equilibrium conditions ($\sum F_x = 0$ and
