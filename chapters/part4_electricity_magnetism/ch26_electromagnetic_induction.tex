@@ -295,7 +295,6 @@ nothing, which is impossible.
     \node[white, font=\bfseries] at (2.0,0.0) {N};
     \node[white, font=\bfseries] at (2.0,-1.0) {S};
     \draw[->, very thick, codexgold] (2.0,0.5) -- (2.0,1.3);
-    \node[right, codexgold] at (2.1,0.9) {approaching};
 
     % Increasing flux upward through coil
     \foreach \x in {1.5,2.0,2.5} {
@@ -309,13 +308,12 @@ nothing, which is impossible.
     % creates field opposing (downward) inside coil
     % By right hand rule: current flows clockwise (viewed from top)
     \draw[->, very thick, codexred]
-      (2.0,3.5) arc(0:270:0.8 and 0.3)
-      node[left, font=\tiny]{Induced\\current};
-    \node[above, codexred, font=\small] at (2.0,4.0)
-      {Current: clockwise (from top)};
-    \node[codexred, font=\tiny] at (2.0,4.5)
-      {Creates B field DOWNWARD inside coil\\
-      (opposing incoming N pole --- repels magnet)};
+      (2.0,3.5) arc(0:270:0.8 and 0.3);
+    \node[above, codexred, font=\tiny] at (2.0,4.45)
+      {Clockwise current (viewed from top)};
+    \node[anchor=west, codexred, font=\tiny, align=left]
+      at (4.0,3.2)
+      {$B_{ind}$ downward\\(opposes increasing flux)};
   \end{scope}
 
   % === MAGNET WITHDRAWING ===
@@ -337,7 +335,6 @@ nothing, which is impossible.
     \node[white, font=\bfseries] at (2.0,0.0) {S};
     \draw[->, very thick, codexgold]
       (2.0,1.3) -- (2.0,0.5);
-    \node[right, codexgold] at (2.1,0.9) {withdrawing};
 
     % Decreasing flux through coil
     \foreach \x in {1.5,2.0,2.5} {
@@ -350,13 +347,12 @@ nothing, which is impossible.
     % Induced current tries to maintain flux:
     % creates upward field, so anticlockwise (from top)
     \draw[->, very thick, codexblue]
-      (2.0,3.5) arc(0:-270:0.8 and 0.3)
-      node[left, font=\tiny]{Induced\\current};
-    \node[above, codexblue, font=\small] at (2.0,4.0)
-      {Current: anticlockwise (from top)};
-    \node[codexblue, font=\tiny] at (2.0,4.5)
-      {Creates B field UPWARD inside coil\\
-      (tries to maintain flux --- attracts magnet)};
+      (2.0,3.5) arc(0:-270:0.8 and 0.3);
+    \node[above, codexblue, font=\tiny] at (2.0,4.45)
+      {Anticlockwise current (viewed from top)};
+    \node[anchor=west, codexblue, font=\tiny, align=left]
+      at (4.0,3.2)
+      {$B_{ind}$ upward\\(opposes flux decrease)};
   \end{scope}
 
 \end{tikzpicture}
@@ -433,13 +429,14 @@ $\mathcal{E} = \Delta\Phi/\Delta t = BLv$.
       \node[gray!60, font=\small] at (\x,\y) {$\times$};
     }
   }
-  \node[gray, font=\small] at (1.5,5.0)
+  \node[gray, font=\small] at (1.5,5.35)
     {$\vect{B}$ (into page)};
 
   % Conducting rod (vertical, moving right)
   \draw[very thick, codexblue, line width=4pt]
     (3.0,0) -- (3.0,5.0);
-  \node[left, codexblue] at (2.8,2.5) {Rod (length $L$)};
+  \node[below, codexblue, font=\tiny] at (3.0,-0.35)
+    {Rod length $L$};
 
   % Velocity arrow (right)
   \draw[->, very thick, codexgold, line width=2pt]
@@ -476,17 +473,18 @@ $\mathcal{E} = \Delta\Phi/\Delta t = BLv$.
 
   % Current arrow in external circuit
   \draw[->, thick, codexred]
-    (0.5,3.5) -- (0.5,4.8);
+    (0.5,4.8) -- (0.5,3.5);
   \node[left, codexred, font=\tiny] at (0.4,4.2)
     {$I$};
 
 \end{tikzpicture}
 \end{center}
-\small The rod acts as a source of EMF. Current
-flows through the external circuit from $-$ to $+$
-(through the rod from bottom to top, following the
-force on positive charges). The rod is the ``battery''
-in this circuit.
+\small The rod acts as a source of EMF. Positive
+charges are driven upward, so the rod's top is $+$.
+Conventional current flows from $+$ to $-$ through
+the external circuit (down the left-hand branch), then
+through the rod from bottom to top. The rod is the
+``battery'' in this circuit.
 \end{diagbox}
 
 \begin{examplebox}[26.2]
@@ -646,7 +644,7 @@ where $\mathcal{E}_0 = NBA\omega$ is the \textbf{peak EMF}.
 
   % === GENERATOR DIAGRAM ===
   \begin{scope}[shift={(0,4)}]
-    \node[font=\bfseries] at (3.5,4.5)
+    \node[font=\bfseries] at (3.5,5.3)
       {AC Generator};
 
     % Magnets
@@ -724,15 +722,16 @@ where $\mathcal{E}_0 = NBA\omega$ is the \textbf{peak EMF}.
 
     % Mark where coil is parallel/perpendicular to field
     \fill[codexred] (axis cs:pi/2,1.0) circle (3pt);
-    \fill[codexred] (axis cs:3*pi/2,-1.0) circle (3pt);
-    \node[above, codexred, font=\tiny]
+    \node[above, codexred, font=\tiny, align=center,
+      text width=1.4cm, fill=white, inner sep=1pt]
       at (axis cs:pi/2,1.05)
-      {Coil parallel to $B$\\($\mathcal{E}$ max)};
+      {Coil $\parallel B$\\EMF max};
 
-    \fill[codexblue!60] (axis cs:pi,0) circle (3pt);
-    \node[above, codexblue, font=\tiny]
-      at (axis cs:pi,0.1)
-      {Coil $\perp$ to $B$\\($\mathcal{E} = 0$)};
+    \fill[codexblue!60] (axis cs:2*pi,0) circle (3pt);
+    \node[above, codexblue, font=\tiny, align=center,
+      text width=1.8cm, fill=white, inner sep=1pt]
+      at (axis cs:2*pi,1.05)
+      {Coil $\perp B$\\$\mathcal{E}=0$};
 
   \end{axis}
 

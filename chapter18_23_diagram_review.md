@@ -2,14 +2,14 @@
 
 ## Summary
 
-All 27 active TikZ diagrams across Chapters 18–23 were checked against their source and mapped to the rendered PDF. Following the final forced 507-page build, the Chapter 18 tuning-fork and ultrasound diagrams, Chapter 19 mirror diagrams, Chapter 20 microscope and hypermetropia diagrams, Chapter 21 charging, field-pattern and electroscope figures, Chapter 22 series-capacitor diagram, and Chapter 23 Kirchhoff loop have been corrected and visually rechecked. The remaining status is 0 blockers, 0 major issues, 5 minor issues, and 22 passes; the remaining print-scale refinements are listed below.
+All 27 active TikZ diagrams across Chapters 18–23 were checked against their source and mapped to the rendered PDF. Following the forced 508-page build, all five earlier minor layout findings were corrected: the Chapter 18 waveform time label, Chapter 20 partial-reflection label, Chapter 22 battery-voltage annotation, and two Chapter 23 I–V/internal-resistance labels. The corrected figures were visually rechecked at print scale. The current status is 27 passes and no remaining findings in this diagram set.
 
 Page locators below give printed page first and PDF page second. Line numbers refer to the relevant chapter source at review time.
 
 ## Chapter 18 — Sound Waves
 
 - **Tuning Fork Producing Sound Waves** — lines 74–180; printed p. 261 / PDF p. 282. **Pass after correction.** The outward-moving right prong is labelled as producing compression in the air ahead of it. The final build was visually checked at print-page scale.
-- **Pitch, Loudness and Quality as Waveforms** — lines 305–375; printed p. 263 / PDF p. 284. **Minor.** The “Time” label collides with the quality-panel legend. Move the axis label or legend to separate them.
+- **Pitch, Loudness and Quality as Waveforms** — lines 305–375; printed p. 263 / PDF p. 284. **Pass after correction.** “Time” is now placed in unused whitespace within the quality plot, clear of the legend; checked in the 508-page build.
 - **Doppler Effect: Moving Source** — lines 551–595; printed p. 266 / PDF p. 287. **Pass after correction.** The prior concentric-wavefront sketch reversed the front/rear spacing and wavelength markers. It has been redrawn as a one-dimensional snapshot with compressed fronts ahead of the right-moving source, expanded fronts behind it, and observers/labels in the corresponding positions. The rebuilt PDF was visually checked at print-page scale; the corrected diagram is legible and consistent with the surrounding explanation.
 - **Medical Ultrasound Imaging: Principle** — lines 778–844; printed p. 269 / PDF p. 290. **Pass after correction.** The transducer name is above its filled body, outgoing pulse/echo labels are separated, and the depth equations sit clear of the organ-wall boundary. Checked in the final build.
 
@@ -22,7 +22,7 @@ Page locators below give printed page first and PDF page second. Line numbers re
 
 ## Chapter 20 — Light Refraction and Optical Instruments
 
-- **Refraction at a Glass-Air Boundary** — lines 92–157; printed p. 289 / PDF p. 310. **Minor.** The partial-reflection label crowds the nearby angle annotation and dashed ray. Move it away from the angle and ray, or place it above the interface.
+- **Refraction at a Glass-Air Boundary** — lines 92–157; printed p. 289 / PDF p. 310. **Pass after correction.** The partial-reflection label is now above the ray and clear of the angle labels; checked in the 508-page build.
 - **Total Internal Reflection: Three Cases** — lines 288–379; printed p. 291 / PDF p. 312. **Pass.** The below/at/above-critical-angle cases, media, rays, and normals are consistent and legible.
 - **Converging and Diverging Lenses** — lines 455–560; printed p. 292 / PDF p. 313. **Pass.** Lens profiles, focal points, ray directions, and virtual-focus extensions agree with the surrounding definitions and fit cleanly.
 - **The Compound Microscope: Ray Diagram** — lines 755–815; printed p. 296 / PDF p. 317. **Pass after correction.** The objective rays now meet at a real inverted intermediate image; the eyepiece rays diverge with collinear backward extensions meeting at the virtual image below the axis. The updated 507-page PDF was visually checked; labels and construction are consistent and legible at print-page scale.
@@ -40,17 +40,17 @@ Page locators below give printed page first and PDF page second. Line numbers re
 
 - **Parallel Plate Capacitor: Geometry and Parameters** — lines 137–190; printed p. 323 / PDF p. 344. **Pass.** Plate polarity, field direction, dimensions, and capacitance relations match the surrounding derivation.
 - **Capacitors in Series and Parallel** — lines 402–478; printed p. 327 / PDF p. 348. **Pass after correction.** The series capacitors are placed on one continuous path, with each voltage label aligned to its capacitor section. The final 507-page PDF was visually checked at print-page scale.
-- **Charging and Discharging Curves** — lines 583–634; printed p. 329 / PDF p. 350. **Minor.** The right-edge V₀ annotation is clipped. Move it inside the plot or provide more right margin.
+- **Charging and Discharging Curves** — lines 583–634; printed p. 329 / PDF p. 350. **Pass after correction.** The vertical range includes the charging asymptote and the `V₀` note is inside the plotting frame; checked in the 508-page build.
 
 ## Chapter 23 — Current Electricity
 
-- **I–V Characteristics: Ohmic and Non-ohmic** — lines 154–220; printed p. 338 / PDF p. 359. **Minor.** The filament and reverse-bias annotations are clipped or pressed into the axes. Move them inside the plot with padding, or outside the plot with more room.
+- **I–V Characteristics: Ohmic and Non-ohmic** — lines 154–220; printed p. 338 / PDF p. 359. **Pass after correction.** The filament and reverse-bias annotations are inset within their axes with white backing and print-scale padding; checked in the 508-page build.
 - **Resistance vs Temperature for Metal and NTC Thermistor** — lines 333–366; printed p. 340 / PDF p. 361. **Pass.** The qualitative curves, labels, and legend are consistent and legible.
 - **Applying Kirchhoff’s Laws** — lines 468–541; printed p. 342 / PDF p. 363. **Pass after correction.** The outer-loop equation now includes only E₁, R₁, and R₂; E₂ is drawn with its positive terminal at the bottom and appears only in the inner-loop equation. The worked example’s currents were recalculated to match. The final build was visually checked at print-page scale.
-- **Battery with Internal Resistance** — lines 627–688; printed p. 343 / PDF p. 364. **Minor.** The external-resistance label overlaps the current arrow at the top resistor. Move the label or arrow to a separate area.
+- **Battery with Internal Resistance** — lines 627–688; printed p. 343 / PDF p. 364. **Pass after correction.** The current arrow is on a separate section of the external wire, clear of the resistor label; checked in the 508-page build.
 - **Potential Divider Circuit** — lines 754–802; printed p. 344 / PDF p. 365. **Pass.** The series resistors, output tap, voltage marker, and formula are consistent and clear.
 - **Wheatstone Bridge Circuit** — lines 867–949; printed p. 346 / PDF p. 367. **Pass.** The bridge topology, galvanometer, labels, and balance relation are consistent and legible.
 
 ## Review status
 
-The listed edits were rebuilt and visually checked at print-page scale. No blockers or major issues remain in this six-chapter diagram set; five minor layout refinements are still documented above. The full book also retains missing-glyph and layout diagnostics, so a successful build does not constitute publication certification.
+The listed edits were rebuilt and visually checked at print-page scale. No blockers, major issues, or minor diagram-layout findings remain in this six-chapter set. The full book retains missing-glyph and layout diagnostics, so a successful build does not constitute publication certification.

@@ -12,7 +12,7 @@ The manuscript comprises 29 chapters in five parts:
 4. **Electricity and Magnetism** — Chapters 21–26
 5. **Modern Physics** — Chapters 27–29
 
-The source tree also contains front matter, back matter, cover and author-image assets, and diagram-review notes.
+The source tree also contains front matter, back matter, true-PNG front and back cover assets, an author-image asset, and diagram-review notes. `book_main.tex` places both covers in the product build.
 
 ## Build
 
@@ -20,4 +20,4 @@ Use `book_main.tex` from the repository root. See [BUILDING.md](BUILDING.md) for
 
 ## Publication status
 
-This repository is an in-progress manuscript. Its diagram reviews and physics, citation, and pedagogical audits are being completed; do not treat the current sources or PDF as a publication-certified edition. ISBN and other final publication metadata must be supplied by the author or publisher.
+This repository is an in-progress manuscript. The 99-item diagram-review set is complete, but the broader physics, citation, pedagogical, and layout sign-offs remain unfinished; do not treat the current sources or PDF as a publication-certified edition. ISBN and other final publication metadata must be supplied by the author or publisher.

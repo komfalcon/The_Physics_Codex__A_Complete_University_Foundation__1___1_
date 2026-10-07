@@ -581,7 +581,7 @@ effectively fully discharged)
   xlabel={Time $t$ (in units of $\tau = RC$)},
   ylabel={Voltage $V$ (fraction of $V_0$)},
   xmin=0, xmax=5,
-  ymin=0, ymax=1.1,
+  ymin=0, ymax=1.2,
   grid=major, grid style={gray!15},
   xtick={0,1,2,3,4,5},
   xticklabels={$0$,$\tau$,$2\tau$,$3\tau$,$4\tau$,$5\tau$},
@@ -621,8 +621,8 @@ effectively fully discharged)
 
   % V0 line
   \addplot[black, dashed, domain=0:5]{1.0};
-  \node[right, black, font=\tiny]
-    at (axis cs:4.5,1.05) {$V_0$ (battery voltage)};
+  \node[black, font=\tiny, fill=white, inner sep=1pt]
+    at (axis cs:3.8,1.12) {$V_0$ (battery voltage)};
 
 \end{axis}
 \end{tikzpicture}

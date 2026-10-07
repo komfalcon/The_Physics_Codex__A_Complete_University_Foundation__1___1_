@@ -179,41 +179,43 @@ combine both relationships:
   \draw[dashed, gray] (1.3,0.5) -- (8.7,0.5);
 
   % --- Ice point ---
-  \draw[thick, codexblue] (0.7,3.5) -- (1.3,3.5);
-  \node[left, codexblue] at (0.7,3.5) {273.15 K};
-  \draw[thick, codexred] (4.7,3.5) -- (5.3,3.5);
-  \node[right, codexred] at (5.3,3.5) {0°C};
-  \draw[thick, codexgold] (8.7,3.5) -- (9.3,3.5);
-  \node[right, codexgold] at (9.3,3.5) {32°F};
-  \draw[dashed, gray] (1.3,3.5) -- (8.7,3.5);
-  \node[above, gray, font=\tiny] at (5,3.6)
+  \draw[thick, codexblue] (0.7,5.963) -- (1.3,5.963);
+  \node[left, codexblue] at (0.7,5.963) {273.15 K};
+  \draw[thick, codexred] (4.7,5.963) -- (5.3,5.963);
+  \node[right, codexred] at (5.3,5.963) {0°C};
+  \draw[thick, codexgold] (8.7,5.963) -- (9.3,5.963);
+  \node[right, codexgold] at (9.3,5.963) {32°F};
+  \draw[dashed, gray] (1.3,5.963) -- (8.7,5.963);
+  \node[above, gray, font=\tiny] at (5,6.063)
     {Ice point};
 
   % --- Body temperature ---
-  \draw[thick, codexblue] (0.7,5.2) -- (1.3,5.2);
-  \node[left, codexblue] at (0.7,5.2) {310.15 K};
-  \draw[thick, codexred] (4.7,5.2) -- (5.3,5.2);
-  \node[right, codexred] at (5.3,5.2) {37°C};
-  \draw[thick, codexgold] (8.7,5.2) -- (9.3,5.2);
-  \node[right, codexgold] at (9.3,5.2) {98.6°F};
-  \draw[dashed, gray] (1.3,5.2) -- (8.7,5.2);
-  \node[above, gray, font=\tiny] at (5,5.3)
+  \draw[thick, codexblue] (0.7,6.703) -- (1.3,6.703);
+  \node[left, codexblue] at (0.7,6.703) {310.15 K};
+  \draw[thick, codexred] (4.7,6.703) -- (5.3,6.703);
+  \node[right, codexred] at (5.3,6.703) {37°C};
+  \draw[thick, codexgold] (8.7,6.703) -- (9.3,6.703);
+  \node[right, codexgold] at (9.3,6.703) {98.6°F};
+  \draw[dashed, gray] (1.3,6.703) -- (8.7,6.703);
+  \node[above, gray, font=\tiny] at (5,6.803)
     {Body temp.};
 
   % --- Steam point ---
-  \draw[thick, codexblue] (0.7,7.0) -- (1.3,7.0);
-  \node[left, codexblue] at (0.7,7.0) {373.15 K};
-  \draw[thick, codexred] (4.7,7.0) -- (5.3,7.0);
-  \node[right, codexred] at (5.3,7.0) {100°C};
-  \draw[thick, codexgold] (8.7,7.0) -- (9.3,7.0);
-  \node[right, codexgold] at (9.3,7.0) {212°F};
-  \draw[dashed, gray] (1.3,7.0) -- (8.7,7.0);
-  \node[above, gray, font=\tiny] at (5,7.1)
+  \draw[thick, codexblue] (0.7,7.963) -- (1.3,7.963);
+  \node[left, codexblue] at (0.7,7.963) {373.15 K};
+  \draw[thick, codexred] (4.7,7.963) -- (5.3,7.963);
+  \node[right, codexred] at (5.3,7.963) {100°C};
+  \draw[thick, codexgold] (8.7,7.963) -- (9.3,7.963);
+  \node[right, codexgold] at (9.3,7.963) {212°F};
+  \draw[dashed, gray] (1.3,7.963) -- (8.7,7.963);
+  \node[above, gray, font=\tiny] at (5,8.063)
     {Steam point};
 
-  % Scale markings (K has larger intervals)
+  % Scale uses y=0.5+0.02*T(K); K and C have equal graduations.
   \foreach \y in {0.5,1.0,...,8.5} {
     \draw[gray!30] (0.8,\y) -- (1.2,\y);
+    \draw[gray!30] (4.8,\y) -- (5.2,\y);
+    \draw[gray!30] (8.8,\y) -- (9.2,\y);
   }
 
 \end{tikzpicture}
