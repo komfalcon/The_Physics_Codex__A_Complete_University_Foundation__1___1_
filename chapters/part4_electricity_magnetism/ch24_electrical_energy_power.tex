@@ -368,8 +368,9 @@ much less heat dissipation.
   % Step-up transformer
   \fill[codexblue!20] (2,0.5) rectangle (3.5,3.5);
   \draw[thick] (2,0.5) rectangle (3.5,3.5);
-  \node[codexblue, font=\tiny, align=center, text width=1.3cm]
-    at (2.75,2.0) {Step-up\\Transformer\\$11\ \text{kV}$\\
+  \node[codexblue, font=\scriptsize, align=center,
+    text width=1.3cm, inner xsep=1pt]
+    at (2.75,2.0) {Step-up\\Trans-\\former\\$11\ \text{kV}$\\
     $\to 400\ \text{kV}$};
 
   % Transmission line
@@ -377,7 +378,7 @@ much less heat dissipation.
   \draw[thick, gray, decorate,
     decoration={snake, amplitude=2pt}]
     (3.5,2.0) -- (8,2.0);
-  \node[above, gray, font=\tiny, align=center]
+  \node[above, text=black!70, font=\small, align=center]
     at (5.75,3.7) {High-voltage grid\\$400\ \text{kV}$, low current};
   \node[below, codexred, font=\small]
     at (5.75,1.85) {$P_{loss} = I^2R_{cable}$ (small)};
@@ -385,8 +386,9 @@ much less heat dissipation.
   % Step-down transformer (grid substation)
   \fill[codexred!20] (8,0.5) rectangle (9.5,3.5);
   \draw[thick] (8,0.5) rectangle (9.5,3.5);
-  \node[codexred, font=\tiny, align=center, text width=1.3cm]
-    at (8.75,2.0) {Step-down\\Transformer\\$400\ \text{kV}$\\
+  \node[codexred, font=\scriptsize, align=center,
+    text width=1.3cm, inner xsep=1pt]
+    at (8.75,2.0) {Step-down\\Trans-\\former\\$400\ \text{kV}$\\
     $\to 11\ \text{kV}$};
 
   % Local distribution
@@ -499,8 +501,12 @@ changing flux induces an EMF in the secondary coil
     (0,0) rectangle (7.0,5.5);
   \draw[very thick, gray]
     (1.0,0.5) rectangle (6.0,5.0);
-  \node[gray, font=\small] at (3.5,2.75)
+  \draw[->, gray, thick] (2.3,2.75) -- (1.0,2.75);
+  \node[gray, font=\small, align=center] at (3.5,2.75)
     {Iron core\\(laminated)};
+  \node[align=center, font=\footnotesize, text=black]
+    at (3.5,1.70)
+    {Instantaneous direction shown\\clockwise for this AC snapshot;\\flux reverses each half-cycle.};
 
   % Primary coil (left leg)
   \draw[codexblue, very thick, decorate,
@@ -555,7 +561,7 @@ changing flux induces an EMF in the secondary coil
     (6.75,4.75) -- (6.75,0.75);
   \draw[->, very thick, codexgold]
     (6.75,0.25) -- (0.25,0.25);
-  \node[above, codexgold, font=\tiny]
+  \node[above, text=black, font=\small\bfseries]
     at (3.5,0.45) {Magnetic flux $\Phi$};
 
   % Turns ratio
@@ -1120,9 +1126,9 @@ whether this is correct, and identify any assumptions.
   \draw[->,thick] (1.4,3.45) -- (2.3,3.45) node[midway,above] {$I_{total}$};
   \foreach \y/\name/\power in {2.3/Air fryer/1800 W,1.75/Microwave/900 W,1.2/Kettle/1200 W,0.65/Lamp/60 W} {
     \draw[thick] (0.5,\y) -- (2.05,\y);
-    \draw[thick] (2.05,\y-0.22) rectangle (4.75,\y+0.22);
-    \node at (3.4,\y) {\name\space(\power)};
-    \draw[thick] (4.75,\y) -- (7.0,\y);
+    \draw[thick] (2.05,\y-0.22) rectangle (5.95,\y+0.22);
+    \node at (4.0,\y) {\name\space(\power)};
+    \draw[thick] (5.95,\y) -- (7.0,\y);
   }
   \node[below] at (3.75,0.12) {Four socket branches are in parallel and share the fused cord.};
 \end{tikzpicture}

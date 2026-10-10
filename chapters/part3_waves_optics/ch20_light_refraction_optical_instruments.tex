@@ -1204,14 +1204,17 @@ glass-liquid boundary at $50°$.\\[4pt]
   \draw[very thick] (-3,0) -- (3,0);
   \node[gray, align=center] at (-2.0,1.9)
     {Liquid\\$n=1.40$};
-  \node[gray, align=center] at (-2.0,-1.9)
+  \node[gray, align=center] at (1.65,-1.8)
     {Glass\\$n=1.60$};
   \draw[dashed, gray, thick] (0,-2.35) -- (0,2.35)
     node[above] {Normal};
-  \draw[->, very thick, codexblue] (-1.85,-2.2) -- (0,0);
-  \draw[codexred, thick] (0,-0.7) arc (270:230:0.7);
-  \node[codexred] at (-0.7,-1.0) {$50°$};
-  \node[right, gray] at (0.1,-0.15) {Boundary};
+  % The incident angle is 50 degrees from the dashed normal.
+  \draw[->, very thick, codexblue] (-2.20,-1.85) -- (0,0);
+  \draw[codexred, thick] (0,-0.7) arc (270:220:0.7);
+  \node[codexred] at (-0.48,-1.04) {$50°$};
+  \draw[gray, thin] (0.55,0.03) -- (0.90,0.35);
+  \node[anchor=west, gray, fill=white, inner sep=1.2pt]
+    at (0.98,0.35) {Boundary};
 \end{tikzpicture}
 \end{center}
 \small Incident geometry only; the refracted path is not drawn.\\[4pt]

@@ -913,8 +913,10 @@ in front of the mirror. (Use $\tan\alpha = r/d$)
     node[midway, left] {$30\ \text{cm}$};
   \draw[<->, thick] (0,-1.62) -- (4,-1.62)
     node[midway, below] {$50\ \text{cm}$};
-  \draw[gray] (3.25,0) arc (180:163.3:0.75);
-  \node[gray] at (3.1,0.22) {$\alpha$};
+  \draw[gray] (4,0) ++(180:0.55) arc (180:163.3:0.55);
+  \node[gray] at (3.48,0.38) {$\alpha$};
+  \draw[gray, thick] (4,0) ++(163.3:1.05) arc (163.3:196.7:1.05);
+  \node[gray, fill=white, inner sep=1pt] at (2.72,0.08) {$2\alpha$};
 \end{tikzpicture}
 \end{center}
 \small Edge-ray geometry (schematic; not to scale).\\

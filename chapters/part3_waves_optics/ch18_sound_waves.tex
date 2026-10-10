@@ -1104,15 +1104,16 @@ ultrasound in soft tissue is $1540\ \text{m\,s}^{-1}$.\\[4pt]
   \fill[codexblue!10] (-1.2,-2.0) rectangle (4.2,1.3);
   \node[codexblue!70!black] at (3.0,0.8) {Soft tissue};
   \draw[very thick, gray] (-1.2,-1.0) -- (4.2,-1.0);
-  \node[gray, right] at (3.0,-0.85) {Organ boundary};
+  \draw[gray] (2.5,-1.0) -- (2.5,-1.35);
+  \node[gray, right] at (2.58,-1.5) {Organ boundary};
   \fill[gray!35] (-0.55,1.35) rectangle (0.55,1.75);
   \draw[thick] (-0.55,1.35) rectangle (0.55,1.75);
   \node[above] at (0,1.78) {Transducer};
-  \draw[->, very thick, codexblue] (-0.12,1.3) -- (-0.12,-0.75);
-  \draw[->, very thick, codexred] (0.18,-0.75) -- (0.18,1.3);
+  \draw[->, very thick, codexblue] (-0.12,1.3) -- (-0.12,-1.0);
+  \draw[->, very thick, codexred] (0.18,-1.0) -- (0.18,1.3);
   \node[left, codexblue, align=right] at (-0.2,0.25) {Pulse\\out};
   \node[right, codexred, align=left] at (0.25,0.25) {Echo\\back};
-  \draw[<->, thick, codexgold] (1.25,1.3) -- (1.25,-1.0)
+  \draw[<->, thick, codexgold] (1.9,1.3) -- (1.9,-1.0)
     node[midway, right] {$d$};
 \end{tikzpicture}
 \end{center}

@@ -141,8 +141,9 @@ a moving electric charge. It is represented by
 
     % Field lines between poles
     \draw[->, codexgold, thick]
-      (1.5,3.0) -- (3.5,3.0)
-      node[midway, above, font=\tiny]{field lines};
+      (1.5,3.0) -- (3.5,3.0);
+    \node[font=\small\bfseries, text=black] at (2.5,4.8)
+      {field lines};
     \draw[->, codexgold, thick]
       (1.5,2.8) .. controls (2.0,2.5) and (3.0,2.5)
       .. (3.5,2.8);
@@ -199,7 +200,7 @@ path.
 
     % Right-hand rule note
     \node[font=\tiny, align=center]
-      at (2.0,0.3)
+      at (2.0,-0.15)
       {Right-hand rule: thumb points\\
       in current direction, fingers\\
       curl in field direction};
@@ -214,15 +215,14 @@ path.
     \draw[very thick, gray!60]
       (0.3,3.4) -- (0.8,3.4) -- (1.3,3.4) -- (1.8,3.4) --
       (2.3,3.4) -- (2.8,3.4) -- (3.3,3.4) -- (3.8,3.4) -- (4.3,3.4);
+    % Internal field arrows sit behind the turns so the winding remains clear.
+    \foreach \y in {2.0,2.5,3.0} {
+      \draw[->, very thick, codexgold]
+        (0.55,\y) -- (4.05,\y);
+    }
     \foreach \x in {0.3,0.8,1.3,1.8,2.3,2.8,3.3,3.8,4.3} {
       \draw[very thick, codexblue]
         (\x,2.5) ellipse [x radius=0.14, y radius=0.9];
-    }
-
-    % Field lines inside (uniform, horizontal)
-    \foreach \y in {2.0,2.5,3.0} {
-      \draw[->, very thick, codexgold]
-        (0.0,\y) -- (4.7,\y);
     }
 
     % Field lines outside (looping)
@@ -236,7 +236,8 @@ path.
     \node[codexblue, font=\bfseries] at (-0.3,2.5) {S};
 
     % Field inside uniform label
-    \node[codexgold, font=\tiny] at (2.5,1.0)
+    \node[text=codexgold!40!black, font=\scriptsize, align=center]
+      at (2.5,1.0)
       {Uniform field inside\\$B = \mu_0 nI$};
 
     % Conventional current directions consistent with internal B to the right
@@ -400,16 +401,13 @@ thu\textbf{M}b = \textbf{M}otion.
     (-2.5,1.8) -- (-3.3,1.8);
   \node[left, codexred] at (-3.4,1.8) {$\vect{B}$};
 
-  % Middle finger represents conventional current into the page.
-  \fill[codexgreen!30, rounded corners]
-    (0.3,0.8) rectangle (2.0,1.4);
-  \draw[very thick, codexgreen, rounded corners]
-    (0.3,0.8) rectangle (2.0,1.4);
-  \node[codexgreen, font=\bfseries\small]
-    at (1.15,1.1) {Current $I$};
-  \draw[very thick, codexgreen] (2.55,1.1) circle (0.2);
-  \node[codexgreen, font=\small] at (2.55,1.1) {$\otimes$};
-  \node[right, codexgreen, font=\tiny] at (2.82,1.1) {into page};
+  % Middle finger is shown end-on: the cross marks current into the page.
+  \draw[very thick, codexgreen] (0.82,1.1) circle (0.42);
+  \draw[codexgreen, line width=2.5pt]
+    (0.60,0.88) -- (1.04,1.32)
+    (0.60,1.32) -- (1.04,0.88);
+  \node[right, codexgreen, font=\small, align=left]
+    at (1.35,1.1) {Current $I$\\into page};
 
   % Palm base
   \fill[codexgold!20, rounded corners]
@@ -417,12 +415,11 @@ thu\textbf{M}b = \textbf{M}otion.
   \draw[very thick, rounded corners]
     (-0.3,0) -- (-0.3,-1.5) -- (0.3,-1.5) -- (0.3,0);
 
-  % Labels
-  \node[font=\small, align=center]
+  % Plain legend for the three fingers and their directions.
+  \node[font=\small, align=center, text width=12.5cm]
     at (0,-2.3)
-    {\textbf{FBI} rule: \textbf{F}irst finger = \textbf{F}ield;
-    \textbf{B}ig finger (middle) = current;
-    thu\textbf{M}b = \textbf{M}otion};
+    {Index finger: field $\vect{B}$ (left);\\
+    middle finger: current $I$ (into page); thumb: force $F$ (up).};
 
 \end{tikzpicture}
 \end{center}
@@ -562,11 +559,13 @@ ratio.
   \node[codexred, font=\small] at (5.5,5.65) {$v$};
   \draw[->, thick, codexgold]
     (4,5) -- (4,4)
-    node[left, font=\scriptsize, align=right]{$F = Bqv$\\(inward)};
+    node[left, font=\scriptsize, align=right, text=codexgold!20!black,
+      fill=white, inner sep=1.5pt]{$F = Bqv$\\(inward)};
 
   % Radius
-  \draw[<->, gray, thick] (4,3) -- (6,3);
-  \node[above, gray] at (5,3.35) {$r = mv/Bq$};
+  \draw[<->, gray, thick] (4,3) -- (5.68,3);
+  \node[below, text=black, fill=white, inner sep=1.5pt]
+    at (4.5,2.85) {$r = mv/Bq$};
 
   % Charge label
   \fill[codexred!60] (4,5) circle (6pt);
@@ -706,12 +705,12 @@ to rotate.
   % Left side of coil (current down)
   \draw[very thick, codexblue, line width=3pt]
     (-1.0,1.0) -- (-1.0,5.0);
-  \node[above, codexblue, font=\tiny] at (-1.0,5.2)
+  \node[above, codexblue, font=\scriptsize\bfseries] at (-1.8,5.2)
     {current $\downarrow$};
   % Right side of coil (current up)
   \draw[very thick, codexred, line width=3pt]
     (1.0,1.0) -- (1.0,5.0);
-  \node[above, codexred, font=\tiny] at (1.0,5.2)
+  \node[above, codexred, font=\scriptsize\bfseries] at (1.8,5.2)
     {current $\uparrow$};
 
   % Top and bottom connections
@@ -720,21 +719,19 @@ to rotate.
   \draw[thick] (-1.0,1.0) -- (-0.2,0.9);
   \draw[thick] (1.0,1.0) -- (0.2,0.9);
 
-  % Rotation arrow
-  \draw[->, very thick, codexgreen, line width=2pt]
-    (0,5.5) arc(0:-180:0.5);
-  \node[above, codexgreen] at (-0.5,5.8) {Rotation};
-
   % Axle
   \draw[very thick, gray] (0,0.5) -- (0,6.5);
   \fill[gray] (0,3.0) circle (4pt);
+  \draw[thin, gray!70] (0.05,6.0) -- (0.25,6.0);
+  \node[anchor=west, font=\scriptsize\bfseries] at (0.30,6.0)
+    {axis of rotation};
 
   % Commutator (split ring)
   \fill[gray!40] (-0.4,0.5) rectangle (0.4,0.9);
   \fill[white] (0,0.5) rectangle (0,0.9);
   \draw[thick] (-0.4,0.5) rectangle (0.4,0.9);
-  \node[below, font=\tiny] at (0,0.3)
-    {Split-ring commutator};
+  \node[anchor=west, font=\tiny, align=left] at (0.95,0.10)
+    {Split-ring\\commutator};
 
   % Brushes
   \fill[gray!60] (-0.8,0.6) rectangle (-0.4,0.8);
@@ -760,11 +757,11 @@ to rotate.
   % right side is into page. The opposite forces create motor torque.
   \node[codexgold, font=\Large, fill=white, inner sep=1pt]
     at (-1.5,3.0) {$\odot$};
-  \node[codexgold, font=\tiny, fill=white, inner sep=1pt]
+  \node[codexgold!35!black, font=\scriptsize\bfseries, fill=white, inner sep=1pt]
     at (-1.5,2.55) {$F$ out};
   \node[codexgold, font=\Large, fill=white, inner sep=1pt]
     at (1.5,3.0) {$\otimes$};
-  \node[codexgold, font=\tiny, fill=white, inner sep=1pt]
+  \node[codexgold!35!black, font=\scriptsize\bfseries, fill=white, inner sep=1pt]
     at (1.5,2.55) {$F$ in};
   \node[below, font=\small, align=center] at (0,-1.45)
     {\small The commutator reverses current every half-turn,\\
@@ -997,8 +994,12 @@ fields}
     \node[font=\small] at (\x,2.75) {$\times$};
   }
   \node[above] at (2.5,2.95) {$\vect{B}$ into page};
-  \draw[thick] (4.2,0.5) -- (4.55,0.5) -- (4.55,2.35) -- (4.2,2.35);
-  \draw[<->,thick] (4.55,0.5) -- (4.55,2.35) node[midway,right] {$V_H$};
+  % Transverse Hall contacts connect around the sample, clear of the current exit.
+  \fill (3.55,2.35) circle (2pt);
+  \draw[thick] (3.55,2.35) -- (3.55,2.48) -- (5.35,2.48) -- (5.35,2.35);
+  \fill (3.55,0.5) circle (2pt);
+  \draw[thick] (3.55,0.5) -- (3.55,0.38) -- (5.35,0.38) -- (5.35,0.5);
+  \draw[<->,thick] (5.35,0.5) -- (5.35,2.35) node[midway,right] {$V_H$};
   \node[below] at (2.5,0.12) {measured polarity identifies carrier sign};
 \end{tikzpicture}
 \end{center}
@@ -1025,7 +1026,8 @@ maximum current $I$ is:
   \draw[thick] (L) -- (0.55,0.3) -- (1.8,0.3);
   \draw[thick] (4.2,0.3) -- (4.75,0.3) -- (R);
   \draw[thick] (1.8,2.15) rectangle (4.2,2.85);
-  \node at (3.0,2.5) {galvanometer $G$};
+  \node[font=\small,align=center,inner sep=0pt,scale=0.9] at (3.0,2.5)
+    {galvanometer\\$G$};
   \draw[thick] (1.8,-0.05) rectangle (4.2,0.65);
   \node at (3.0,0.3) {shunt $S$};
   \draw[->,thick] (-0.35,1.4) -- (0.5,1.4) node[midway,above] {$I$};

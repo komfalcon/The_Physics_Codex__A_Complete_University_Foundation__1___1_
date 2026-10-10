@@ -82,8 +82,8 @@ a coil.
       decoration={coil, aspect=0.5, segment length=5pt,
       amplitude=5pt}]
       (2.0,1.75) -- (5.0,1.75);
-    \draw[thick] (5.0,1.75) -- (6.0,1.75) -- (6.0,1.5);
-    \draw[thick] (7.0,1.5) -- (7.0,0.2) -- (2.0,0.2)
+    \draw[thick] (5.0,1.75) -- (5.92,1.75) -- (5.92,1.5);
+    \draw[thick] (7.08,1.5) -- (7.08,0.2) -- (2.0,0.2)
       -- (2.0,1.75);
 
     % Magnet (N end entering from left)
@@ -99,28 +99,28 @@ a coil.
       at (4.2,2.8) {Coil};
 
     % Galvanometer is inserted between the two circuit terminals.
-    \fill[white] (6.5,1.5) circle (0.5);
-    \draw[thick] (6.5,1.5) circle (0.5);
-    \node[font=\tiny] at (6.5,1.5) {G};
+    \fill[white] (6.5,1.5) circle (0.58);
+    \draw[thick] (6.5,1.5) circle (0.58);
+    \node[font=\scriptsize\bfseries] at (6.5,1.10) {G};
     % Needle deflects right
-    \draw[->, thick, codexred] (6.5,1.5) -- (6.9,1.7);
+    \draw[->, thick, codexred] (6.5,1.5) -- (6.94,1.75);
 
     \node[codexblue, font=\small] at (3.5,-0.8)
       {Needle deflects $\Rightarrow$ induced current};
   \end{scope}
 
   % === EXPERIMENT 2: Magnet held still ===
-  \begin{scope}[shift={(9.5,5)}]
-    \node[font=\bfseries] at (3.5,3.5)
-      {Magnet stationary $\Rightarrow$ no current};
+  \begin{scope}[shift={(7.8,5)}]
+    \node[font=\bfseries, align=center] at (3.5,3.5)
+      {Magnet stationary\\$\Rightarrow$ no current};
 
     % A two-terminal multi-turn winding; the galvanometer closes its circuit.
     \draw[very thick, gray, decorate,
       decoration={coil, aspect=0.5, segment length=5pt,
       amplitude=5pt}]
       (2.0,1.75) -- (5.0,1.75);
-    \draw[thick] (5.0,1.75) -- (6.0,1.75) -- (6.0,1.5);
-    \draw[thick] (7.0,1.5) -- (7.0,0.2) -- (2.0,0.2)
+    \draw[thick] (5.0,1.75) -- (5.92,1.75) -- (5.92,1.5);
+    \draw[thick] (7.08,1.5) -- (7.08,0.2) -- (2.0,0.2)
       -- (2.0,1.75);
 
     % Magnet static inside coil
@@ -135,11 +135,11 @@ a coil.
       at (4.2,2.8) {Coil};
 
     % Galvanometer is inserted between the two circuit terminals.
-    \fill[white] (6.5,1.5) circle (0.5);
-    \draw[thick] (6.5,1.5) circle (0.5);
-    \node[font=\tiny] at (6.5,1.5) {G};
+    \fill[white] (6.5,1.5) circle (0.58);
+    \draw[thick] (6.5,1.5) circle (0.58);
+    \node[font=\scriptsize\bfseries] at (6.5,1.10) {G};
     % Needle vertical (no deflection)
-    \draw[-, thick, gray] (6.5,1.5) -- (6.5,1.9);
+    \draw[-, thick, gray] (6.5,1.5) -- (6.5,2.02);
 
     \node[gray, font=\small] at (3.5,-0.8)
       {No deflection $\Rightarrow$ no current};
@@ -155,8 +155,8 @@ a coil.
       decoration={coil, aspect=0.5, segment length=5pt,
       amplitude=5pt}]
       (2.0,1.75) -- (5.0,1.75);
-    \draw[thick] (5.0,1.75) -- (6.0,1.75) -- (6.0,1.5);
-    \draw[thick] (7.0,1.5) -- (7.0,0.2) -- (2.0,0.2)
+    \draw[thick] (5.0,1.75) -- (5.92,1.75) -- (5.92,1.5);
+    \draw[thick] (7.08,1.5) -- (7.08,0.2) -- (2.0,0.2)
       -- (2.0,1.75);
 
     % Magnet withdrawing
@@ -172,11 +172,11 @@ a coil.
       at (4.2,2.8) {Coil};
 
     % Galvanometer is inserted between the two circuit terminals.
-    \fill[white] (6.5,1.5) circle (0.5);
-    \draw[thick] (6.5,1.5) circle (0.5);
-    \node[font=\tiny] at (6.5,1.5) {G};
+    \fill[white] (6.5,1.5) circle (0.58);
+    \draw[thick] (6.5,1.5) circle (0.58);
+    \node[font=\scriptsize\bfseries] at (6.5,1.10) {G};
     % Needle deflects left (opposite)
-    \draw[->, thick, codexblue] (6.5,1.5) -- (6.1,1.7);
+    \draw[->, thick, codexblue] (6.5,1.5) -- (6.06,1.75);
 
     \node[codexred, font=\small] at (3.5,-0.8)
       {Opposite deflection $\Rightarrow$ reversed current};
@@ -281,28 +281,31 @@ nothing, which is impossible.
     \draw[thick] (1.3,-1.5) rectangle (2.7,0.5);
     \node[white, font=\bfseries] at (2.0,0.0) {N};
     \node[white, font=\bfseries] at (2.0,-1.0) {S};
-    \draw[->, very thick, codexgold] (2.0,0.5) -- (2.0,1.3);
+    \draw[->, very thick, codexgold!35!black]
+      (2.2,0.55) -- (2.2,0.9);
 
     % Increasing flux upward through coil
     \foreach \x in {1.5,2.0,2.5} {
-      \draw[->, thick, codexblue!50]
+      \draw[->, very thick, codexblue!80!black]
         (\x,0.6) -- (\x,4.0);
     }
-    \node[right, codexblue!70, font=\tiny]
-      at (3.0,2.5) {Flux $\uparrow$\\(increasing)};
+    \node[right, black, font=\scriptsize\bfseries]
+      at (3.65,2.3) {Flux $\uparrow$\\(increasing)};
 
     % Induced current opposes increase:
     % creates field opposing (downward) inside coil
     % By right hand rule: current flows clockwise (viewed from top)
-    \draw[very thick, codexred]
+    \draw[very thick, codexred!80!black]
       (2.0,3.5) ellipse (1.5 and 0.5);
-    \draw[->, very thick, codexred]
-      (2.0,3.5) arc(0:270:1.5 and 0.5);
-    \node[above, codexred, font=\tiny] at (2.0,4.45)
+    \draw[->, very thick, codexred!80!black]
+      (3.5,3.5) arc(0:-135:1.5 and 0.5);
+    \node[above, codexred!70!black, font=\scriptsize\bfseries]
+      at (2.0,4.45)
       {Clockwise current (viewed from top)};
-    \node[anchor=west, codexred, font=\tiny, align=left]
-      at (4.0,3.2)
-      {$B_{ind}$ downward\\(opposes increasing flux)};
+    \node[anchor=west, codexred!70!black,
+      font=\scriptsize\bfseries, align=left]
+      at (3.65,3.55)
+      {$B_{ind}$ downward\\(opposes\\increasing flux)};
   \end{scope}
 
   % === MAGNET WITHDRAWING ===
@@ -322,28 +325,30 @@ nothing, which is impossible.
     \draw[thick] (1.3,-0.5) rectangle (2.7,1.5);
     \node[white, font=\bfseries] at (2.0,1.0) {N};
     \node[white, font=\bfseries] at (2.0,0.0) {S};
-    \draw[->, very thick, codexgold]
-      (2.0,1.3) -- (2.0,0.5);
+    \draw[->, very thick, codexgold!35!black]
+      (0.3,2.4) -- (0.3,1.65);
 
     % Decreasing flux through coil
     \foreach \x in {1.5,2.0,2.5} {
-      \draw[->, thick, codexblue!30, dashed]
+      \draw[->, very thick, codexblue!80!black, dashed]
         (\x,1.6) -- (\x,4.0);
     }
-    \node[right, codexblue!50, font=\tiny]
-      at (3.0,2.5) {Flux $\uparrow$\\(decreasing)};
+    \node[right, black, font=\scriptsize\bfseries]
+      at (3.65,2.3) {Flux $\uparrow$\\(decreasing)};
 
     % Induced current tries to maintain flux:
     % creates upward field, so anticlockwise (from top)
-    \draw[very thick, codexblue]
+    \draw[very thick, codexblue!80!black]
       (2.0,3.5) ellipse (1.5 and 0.5);
-    \draw[->, very thick, codexblue]
-      (2.0,3.5) arc(0:-270:1.5 and 0.5);
-    \node[above, codexblue, font=\tiny] at (2.0,4.45)
+    \draw[->, very thick, codexblue!80!black]
+      (3.5,3.5) arc(0:135:1.5 and 0.5);
+    \node[above, codexblue!70!black, font=\scriptsize\bfseries]
+      at (2.0,4.45)
       {Anticlockwise current (viewed from top)};
-    \node[anchor=west, codexblue, font=\tiny, align=left]
-      at (4.0,3.2)
-      {$B_{ind}$ upward\\(opposes flux decrease)};
+    \node[anchor=west, codexblue!70!black,
+      font=\scriptsize\bfseries, align=left]
+      at (3.65,3.55)
+      {$B_{ind}$ upward\\(opposes flux\\decrease)};
   \end{scope}
 
 \end{tikzpicture}
@@ -449,7 +454,7 @@ $\mathcal{E} = \Delta\Phi/\Delta t = BLv$.
   % EMF label
   \draw[<->, codexgreen, thick]
     (3.65,0.4) -- (3.65,4.6);
-  \node[right, codexgreen] at (3.85,2.5)
+  \node[right, codexgreen] at (3.85,2.0)
     {$\mathcal{E} = BLv$};
 
   % Rails (horizontal guide)
@@ -664,7 +669,7 @@ where $\mathcal{E}_0 = NBA\omega$ is the \textbf{peak EMF}.
     % Rotation arrow
     \draw[->, very thick, codexgreen, dashed]
       (3.5,2.5) arc(0:70:1.2);
-    \node[codexgreen, font=\small] at (3.0,4.0)
+    \node[codexgreen, font=\small] at (2.5,4.4)
       {$\omega$};
 
     % Axle
@@ -691,7 +696,7 @@ where $\mathcal{E}_0 = NBA\omega$ is the \textbf{peak EMF}.
     \draw[thick] (5.0,-0.3) -- (6.0,-0.3) -- (6.0,-1.5);
     \fill[white] (5.3,-1.5) rectangle (5.7,-2.0);
     \draw[thick] (5.3,-1.5) rectangle (5.7,-2.0);
-    \node[right, font=\tiny] at (5.8,-1.75) {External $R$};
+    \node[right, font=\tiny] at (6.15,-1.25) {External $R$};
     \draw[thick] (5.0,-2.0) -- (5.0,-1.5);
     \draw[thick] (6.0,-2.0) -- (6.0,-1.5);
     \draw[thick] (5.0,-2.0) -- (6.0,-2.0);
@@ -842,7 +847,9 @@ energy loss.
     \draw[->, very thick, codexred]
       (1.5,1.5) -- (3.5,1.5) -- (3.5,3.5)
       -- (1.5,3.5) -- (1.5,1.5);
-    \draw[->, thick, codexred!70]
+    \draw[thick, codexred!70,
+      postaction={decorate},
+      decoration={markings, mark=at position 0.375 with {\arrow{>}}}]
       (1.0,1.0) -- (4.0,1.0) -- (4.0,4.0)
       -- (1.0,4.0) -- (1.0,1.0);
     \node[codexred, font=\tiny, align=center] at (2.5,-0.85)
@@ -873,9 +880,9 @@ energy loss.
 
     % Small eddy currents (confined to thin sheets)
     \foreach \x in {0.6,1.1,1.6,2.1,2.6,3.1,3.6} {
-      \draw[->, thin, codexgreen]
-        (\x,1.5) -- (\x+0.2,1.5) -- (\x+0.2,3.5)
-        -- (\x,3.5) -- (\x,1.5);
+      \draw[->, semithick, codexgreen]
+        (\x-0.05,1.5) -- (\x+0.15,1.5) -- (\x+0.15,3.5)
+        -- (\x-0.05,3.5) -- (\x-0.05,1.5);
     }
     \node[codexgreen, font=\tiny, align=center] at (2.5,-0.85)
       {Small loops; lower total loss};

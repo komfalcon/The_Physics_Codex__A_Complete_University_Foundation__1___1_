@@ -207,10 +207,11 @@ Gamma & Weakly ionising & Not deflected &
       {$\alpha$ (toward $-$ plate)};
 
     % Gamma (straight through)
-    \draw[->, very thick, codexgold]
+    \draw[->, very thick, line width=1.3pt, codexgold!25!black]
       (1.2,3.25) -- (6.5,3.25);
-    \node[right, codexgold] at (6.6,3.25)
-      {$\gamma$ (undeflected)};
+    \node[anchor=west, text=codexgold!25!black,
+      font=\scriptsize\bfseries, fill=white, inner sep=0.5pt]
+      at (6.78,3.25) {\scalebox{0.8}[1]{$\gamma$ (undeflected)}};
 
     % Negative beta particles deflect toward the positive upper plate.
     \draw[->, very thick, codexblue]
@@ -220,9 +221,9 @@ Gamma & Weakly ionising & Not deflected &
 
     % Electric field arrows
     \foreach \x in {2,3,4,5,6} {
-      \draw[->, gray!50] (\x,5.5) -- (\x,1.0);
+      \draw[->, black!65, line width=0.8pt] (\x,5.5) -- (\x,1.0);
     }
-    \node[codexred, font=\tiny] at (2.0,5.3)
+    \node[codexred, font=\tiny] at (2.5,5.3)
       {$\vect{E}$};
   \end{scope}
 
@@ -236,10 +237,11 @@ Gamma & Weakly ionising & Not deflected &
     \draw[thick] (1.5,1.0) rectangle (6.5,5.5);
     \foreach \x in {2,3,4,5,6} {
       \foreach \y in {1.5,2.5,3.5,4.5} {
-        \node[gray!50, font=\small] at (\x,\y) {$\times$};
+        \node[black!65, font=\small\bfseries] at (\x,\y) {$\times$};
       }
     }
-    \node[gray, font=\tiny] at (2.0,5.2)
+    \node[black!75, font=\tiny\bfseries, fill=white, inner sep=1pt]
+      at (2.0,5.2)
       {$\vect{B}$ into page};
 
     % Source
@@ -254,9 +256,10 @@ Gamma & Weakly ionising & Not deflected &
       {$\alpha$ (large radius)};
 
     % Gamma (straight)
-    \draw[->, very thick, codexgold]
+    \draw[->, very thick, line width=1.3pt, codexgold!25!black]
       (1.2,3.25) -- (6.5,3.25);
-    \node[above, codexgold] at (5.0,3.35) {$\gamma$};
+    \node[below, text=codexgold!25!black, font=\small\bfseries,
+      fill=white, inner sep=1pt] at (5.0,3.25) {$\gamma$};
 
     % Beta-minus bends sharply downward (small radius, opposite charge)
     \draw[->, very thick, codexblue]
@@ -474,19 +477,19 @@ $A_0 = \lambda N_0$ is the initial activity.
     {exp(-0.693*x)};
 
   % Horizontal dashed lines at each half-life fraction
-  \addplot[dashed, codexred!50, domain=0:1]{0.5};
-  \addplot[dashed, codexred!50, domain=0:2]{0.25};
-  \addplot[dashed, codexred!50, domain=0:3]{0.125};
-  \addplot[dashed, codexred!50, domain=0:4]{0.0625};
+  \addplot[dashed, codexred!65, domain=0:1]{0.5};
+  \addplot[dashed, codexred!65, domain=0:2]{0.25};
+  \addplot[dashed, codexred!65, domain=0:3]{0.125};
+  \addplot[dashed, codexred!65, domain=0:4]{0.0625};
 
   % Vertical dashed lines
-  \draw[dashed, codexred!50]
+  \draw[dashed, codexred!65]
     (axis cs:1,0) -- (axis cs:1,0.5);
-  \draw[dashed, codexred!50]
+  \draw[dashed, codexred!65]
     (axis cs:2,0) -- (axis cs:2,0.25);
-  \draw[dashed, codexred!50]
+  \draw[dashed, codexred!65]
     (axis cs:3,0) -- (axis cs:3,0.125);
-  \draw[dashed, codexred!50]
+  \draw[dashed, codexred!65]
     (axis cs:4,0) -- (axis cs:4,0.0625);
 
   % Data points (use a pgfplots-native plot to avoid macro-scope issues)
@@ -495,19 +498,19 @@ $A_0 = \lambda N_0$ is the initial activity.
 
   % Annotations
   \node[above right, codexblue, font=\small]
-    at (axis cs:0,1.0) {$N_0$};
+    at (axis cs:0,1.0) {$1$};
   \node[right, codexblue, font=\small]
-    at (axis cs:1,0.52) {$N_0/2$};
+    at (axis cs:1,0.52) {$1/2$};
   \node[right, codexblue, font=\small]
-    at (axis cs:2,0.27) {$N_0/4$};
+    at (axis cs:2,0.27) {$1/4$};
   \node[right, codexblue, font=\small]
-    at (axis cs:3,0.14) {$N_0/8$};
+    at (axis cs:3,0.14) {$1/8$};
 
   % Table in corner
   \node[align=left, font=\tiny, fill=white,
     draw=gray, inner sep=4pt]
     at (axis cs:4,0.7)
-    {After $n$ half-lives:\\$N = N_0(1/2)^n$};
+    {After $n$ half-lives:\\$N/N_0=(1/2)^n$};
 
 \end{axis}
 \end{tikzpicture}
@@ -705,7 +708,7 @@ to form the nucleus from scratch.
     coordinates {(1,0) (2,1.11) (3,2.57) (4,7.07)};
   % H-1 at 0
   \fill[codexblue] (axis cs:1,0) circle (3pt);
-  \node[above, font=\tiny] at (axis cs:1,0.2)
+  \node[anchor=west, xshift=4pt, font=\tiny] at (axis cs:1,0.2)
     {$^1$H (0)};
   % He-4 at 7.07
   \fill[codexblue] (axis cs:4,7.07) circle (3pt);
@@ -719,8 +722,8 @@ to form the nucleus from scratch.
 
   % Peak at Fe-56
   \fill[codexred] (axis cs:56,8.8) circle (5pt);
-  \node[above, codexred, font=\small]
-    at (axis cs:56,8.85) {${}^{56}$Fe (most stable)};
+  \node[anchor=south west, codexred, font=\small]
+    at (axis cs:56,8.85) {Fe-56, near the iron-group peak};
 
   % Slow decline for heavy nuclei
   \addplot[codexblue, very thick, domain=56:240,
@@ -728,18 +731,20 @@ to form the nucleus from scratch.
     {8.8 - 1.23*(x-56)/182};
 
   % Key nuclei marked
-  \fill[codexgold] (axis cs:12,7.68) circle (3pt);
-  \node[below, codexgold, font=\tiny]
+  \filldraw[fill=codexgold!30!black, draw=black, line width=0.7pt]
+    (axis cs:12,7.68) circle (3pt);
+  \node[below, text=codexgold!25!black, font=\tiny\bfseries]
     at (axis cs:12,7.6) {${}^{12}$C};
-  \fill[codexgold] (axis cs:238,7.57) circle (3pt);
-  \node[below, codexgold, font=\tiny]
+  \filldraw[fill=codexgold!30!black, draw=black, line width=0.7pt]
+    (axis cs:238,7.57) circle (3pt);
+  \node[below, text=codexgold!25!black, font=\tiny\bfseries]
     at (axis cs:228,7.47) {${}^{238}$U};
 
   % Fission annotation
   \draw[->, thick, codexred, dashed]
     (axis cs:235,7.61) -- (axis cs:120,8.4);
-  \node[above, codexred, font=\small]
-    at (axis cs:160,8.1)
+  \node[align=center, codexred, font=\small]
+    at (axis cs:180,5.6)
     {Fission: heavy $\to$ medium\\releases energy};
 
   % Fusion annotation

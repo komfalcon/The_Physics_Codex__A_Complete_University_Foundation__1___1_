@@ -119,6 +119,9 @@ far outside. The atom is mostly empty space.
 \begin{center}
 \begin{tikzpicture}[scale=0.95, font=\small]
 
+  % Detector screen is drawn first so trajectories and labels remain visible.
+  \draw[thick, gray, dashed] (0,2.0) circle (4cm);
+
   % Alpha source
   \fill[gray!50] (-3.5,1.5) rectangle (-3.0,3.5);
   \draw[thick] (-3.5,1.5) rectangle (-3.0,3.5);
@@ -129,52 +132,53 @@ far outside. The atom is mostly empty space.
   \fill[codexgold!40] (-0.1,-0.5) rectangle (0.1,5.5);
   \draw[very thick, codexgold] (-0.1,-0.5) -- (-0.1,5.5);
   \draw[very thick, codexgold] (0.1,-0.5) -- (0.1,5.5);
-  \node[above, codexgold] at (0,5.6) {Gold foil};
+  \node[above, codexgold!80!black, fill=white, inner sep=1pt]
+    at (0,5.6) {Gold foil};
 
-  % Alpha beam (parallel rays from source)
+  % Alpha beam (parallel rays from source; stop before the foil).
   \foreach \y in {1.8,2.0,2.2,2.5,3.2} {
     \draw[->, thick, codexred]
       (-3.0,\y) -- (-0.2,\y);
   }
 
-  % Straight-through (most particles)
+  % Straight-through (most particles) reaches the detector screen.
   \draw[->, very thick, codexred!80]
-    (0.2,2.5) -- (4.0,2.5);
-  \node[right, codexred!80] at (4.1,2.5)
-    {Most: straight through};
+    (0.2,2.5) -- (3.9686,2.5);
+  \node[codexred!80, font=\small, fill=white, inner sep=1pt,
+    align=center] at (2.5,1.95)
+    {Most:\\straight through};
 
-  % Small-angle deflection (away from the positive nucleus)
-  \draw[->, thick, codexred!60]
-    (0.2,3.2) -- (4.0,4.2);
+  % Small-angle deflection (away from the positive nucleus).
+  \draw[->, very thick, codexred!80!black]
+    (0.2,3.2) -- (3.4341,4.0511);
 
   % Large-angle deflections: close approaches bend away from the nucleus.
-  \draw[->, thick, codexorange]
-    (0.2,2.2) -- (2.0,5.0);
-  \draw[->, thick, codexorange]
-    (0.2,1.8) -- (2.0,0.0);
-  \node[above, font=\tiny, codexorange] at (2.0,5.1)
+  \draw[->, very thick, codexorange!80!black]
+    (0.2,2.2) -- (2.2133,5.3318);
+  \draw[->, very thick, codexorange!80!black]
+    (0.2,1.8) -- (2.8284,-0.8284);
+  \node[above, font=\tiny, codexorange!80!black,
+    fill=white, inner sep=1pt] at (2.1,5.6)
     {Large deflection};
 
-  % Backscatter
+  % Backscatter points back toward the source and reaches the screen.
   \draw[->, very thick, codexblue]
-    (0.1,2.0) -- (-2.5,3.5);
+    (0.1,2.0) -- (-3.4395,4.0420);
   \node[above, codexblue, font=\small]
     at (-1.5,3.7) {Back-scatter\\($\sim$1 in 8000)};
 
   % Gold nucleus (tiny dot)
   \fill[codexgold] (0.0,2.0) circle (5pt);
-  \draw[gray, thin] (-0.7,0.65) -- (-0.05,1.85) -- (0.0,1.95);
-  \node[gray, font=\tiny] at (-1.0,0.5) {Nucleus};
+  \draw[black!65, thin] (-0.7,0.65) -- (-0.05,1.85) -- (0.0,1.95);
+  \node[black!75, font=\tiny] at (-1.0,0.5) {Nucleus};
 
-  % Detector screen (circular arc)
-  \draw[thick, gray, dashed] (0,2.0) circle (4cm);
-  \node[gray, font=\tiny] at (4.7,5.7)
+  \node[black!75, font=\tiny] at (4.7,5.7)
     {Detector\\screen};
 
-  % Conclusions box
+  % Conclusions box: shifted clear of the emerging rays and screen endpoints.
   \node[align=left, font=\small,
     draw=codexblue, rounded corners, fill=cyan!5,
-    inner sep=6pt] at (6.0,2.5)
+    text width=5.8cm, inner sep=6pt] at (7.35,2.5)
     {\textbf{Conclusions:}\\
     $\bullet$ Most passes straight through\\
     \quad $\Rightarrow$ atom is mostly empty space\\
@@ -294,7 +298,7 @@ when using SI equations ($E = hf$, $E = kT$, etc.).
 \begin{center}
 \begin{tikzpicture}[scale=1.0, font=\small]
 
-  % Energy levels (to scale approximately)
+  % Energy levels are schematic; vertical spacings are not to scale.
   % n=1: -13.6 eV; n=2: -3.4; n=3: -1.51; n=4: -0.85; n=5: -0.54; n=\infty: 0
 
   % Draw levels
@@ -358,8 +362,12 @@ when using SI equations ($E = hf$, $E = kT$, etc.).
   \draw[codexred, thick, decorate,
     decoration={brace, mirror, amplitude=4pt}]
     (3.4,3.5) -- (3.4,4.6);
-  \node[left, codexred, font=\tiny]
-    at (3.2,4.0) {H$\alpha$\\656 nm};
+  \node[right, codexred, font=\tiny, align=left]
+    at (3.85,3.1) {H$\alpha$\\656 nm};
+
+  % Make the qualitative vertical layout explicit for readers.
+  \node[font=\scriptsize, text=black!65, align=center]
+    at (7.3,2.2) {Schematic; vertical spacings\\not to scale};
 
 \end{tikzpicture}
 \end{center}
@@ -436,22 +444,25 @@ This is the blackbody spectrum from Chapter 16.
 \begin{center}
 \begin{tikzpicture}[scale=0.95, font=\small]
 
+  % Smooth spectrum built from adjoining color ramps.
+
   % === CONTINUOUS SPECTRUM ===
   \begin{scope}[shift={(0,5)}]
     \node[font=\bfseries] at (4.0,1.6)
       {Continuous spectrum (hot solid)};
-    % Gradient bar from violet to red
-    \foreach \x/\col in {
-      0.0/violet, 0.775/blue, 1.55/cyan, 2.325/green,
-      3.1/codexgold, 3.875/orange, 4.65/codexred,
-      5.425/codexred} {
-      % Keep \col a base color; apply the tint here.
-      \fill[\col!60] (\x,0) rectangle (\x+0.775,1.0);
-    }
+    % Smooth continuum rather than discrete-looking color blocks.
+    \shade[left color=violet!60, right color=blue!60] (0,0) rectangle (0.775,1.0);
+    \shade[left color=blue!60, right color=cyan!60] (0.775,0) rectangle (1.55,1.0);
+    \shade[left color=cyan!60, right color=green!60] (1.55,0) rectangle (2.325,1.0);
+    \shade[left color=green!60, right color=codexgold!60] (2.325,0) rectangle (3.1,1.0);
+    \shade[left color=codexgold!60, right color=orange!60] (3.1,0) rectangle (3.875,1.0);
+    \shade[left color=orange!60, right color=codexred!60] (3.875,0) rectangle (4.65,1.0);
+    \shade[left color=codexred!60, right color=codexred!60] (4.65,0) rectangle (5.425,1.0);
+    \shade[left color=codexred!60, right color=codexred!60] (5.425,0) rectangle (6.2,1.0);
     \draw[thick] (0,0) rectangle (6.2,1.0);
     \node[below, font=\tiny] at (0.5,-0.1) {400 nm};
     \node[below, font=\tiny] at (5.7,-0.1) {700 nm};
-    \node[below, font=\tiny] at (3.1,-0.1) {Wavelength};
+    \node[below, font=\tiny] at (3.1,-0.1) {Wavelength (nm)};
   \end{scope}
 
   % === EMISSION SPECTRUM ===
@@ -482,32 +493,33 @@ This is the blackbody spectrum from Chapter 16.
     \node[above right, blue, font=\tiny] at (0.70,1.05)
       {434};
     \node[above left, violet, font=\tiny] at (0.21,1.05)
-      {410 nm};
+      {410};
   \end{scope}
 
   % === ABSORPTION SPECTRUM ===
   \begin{scope}[shift={(0,0)}]
     \node[font=\bfseries] at (4.0,1.6)
       {Absorption spectrum (cool hydrogen)};
-    % Rainbow background (approximate)
-    \foreach \x/\col in {
-      0.0/violet, 0.775/blue, 1.55/cyan, 2.325/green,
-      3.1/codexgold, 3.875/orange, 4.65/codexred,
-      5.425/codexred} {
-      % Keep \col a base color; apply the tint here.
-      \fill[\col!60] (\x,0) rectangle (\x+0.775,1.0);
-    }
+    % Continuous rainbow background for absorption.
+    \shade[left color=violet!60, right color=blue!60] (0,0) rectangle (0.775,1.0);
+    \shade[left color=blue!60, right color=cyan!60] (0.775,0) rectangle (1.55,1.0);
+    \shade[left color=cyan!60, right color=green!60] (1.55,0) rectangle (2.325,1.0);
+    \shade[left color=green!60, right color=codexgold!60] (2.325,0) rectangle (3.1,1.0);
+    \shade[left color=codexgold!60, right color=orange!60] (3.1,0) rectangle (3.875,1.0);
+    \shade[left color=orange!60, right color=codexred!60] (3.875,0) rectangle (4.65,1.0);
+    \shade[left color=codexred!60, right color=codexred!60] (4.65,0) rectangle (5.425,1.0);
+    \shade[left color=codexred!60, right color=codexred!60] (5.425,0) rectangle (6.2,1.0);
     \draw[thick] (0,0) rectangle (6.2,1.0);
-    % Dark lines at same positions as emission
-    \fill[black] (5.21,0) rectangle (5.37,1.0);
-    \fill[black] (1.70,0) rectangle (1.86,1.0);
-    \fill[black] (0.62,0) rectangle (0.78,1.0);
-    \fill[black] (0.13,0) rectangle (0.29,1.0);
+    % Narrow dark lines centered at the same positions as emission
+    \fill[black] (5.26,0) rectangle (5.32,1.0);
+    \fill[black] (1.75,0) rectangle (1.81,1.0);
+    \fill[black] (0.67,0) rectangle (0.73,1.0);
+    \fill[black] (0.18,0) rectangle (0.24,1.0);
     % Labels
     \node[below, font=\tiny] at (5.29,-0.1) {656};
     \node[below, font=\tiny] at (1.78,-0.1) {486};
     \node[below right, font=\tiny] at (0.70,-0.1) {434};
-    \node[below left, font=\tiny] at (0.21,-0.1) {410 nm};
+    \node[below left, font=\tiny] at (0.21,-0.1) {410};
   \end{scope}
 
   % Key observation
@@ -610,19 +622,19 @@ reverse potential needed to stop all emitted electrons:
     % Vacuum tube
     \fill[cyan!5] (0.3,0.3) rectangle (5.7,4.7);
     \draw[thick] (0.3,0.3) rectangle (5.7,4.7);
-    \node[gray, font=\small] at (3.0,4.2)
+    \node[black!80, font=\small] at (3.0,4.2)
       {Evacuated tube};
 
     % Photocathode (metal surface)
     \fill[gray!50] (0.3,1.0) rectangle (1.0,4.0);
     \draw[thick] (0.3,1.0) rectangle (1.0,4.0);
-    \node[below, font=\tiny] at (0.65,0.05)
+    \node[font=\tiny, align=right, anchor=north east] at (0.92,0.05)
       {Metal\\cathode};
 
     % Anode
     \fill[gray!30] (4.8,1.5) rectangle (5.3,3.5);
     \draw[thick] (4.8,1.5) rectangle (5.3,3.5);
-    \node[below, font=\tiny] at (5.0,1.3)
+    \node[font=\fontsize{4.5}{5}\selectfont, anchor=east] at (4.9,1.3)
       {Anode};
 
     % Incident light
@@ -681,19 +693,20 @@ reverse potential needed to stop all emitted electrons:
     \fill[codexred] (axis cs:3,0) circle (3pt);
     \node[above right, codexred, font=\tiny, align=left,
       text width=1.9cm]
-      at (axis cs:3,0.1) {$f_0=3\times10^{14}\,\mathrm{Hz}$ threshold};
+      at (axis cs:3.1,1.25) {$f_0=3\times10^{14}\,\mathrm{Hz}$ threshold};
     % Work function annotation
-    \draw[<->, codexgold, thick]
-      (axis cs:0,-1.3) -- (axis cs:3,-1.3);
-    \node[below, codexgold, font=\tiny]
-      at (axis cs:1.5,-1.35) {$\phi=hf_0\approx1.24$ eV};
+    \draw[<->, codexgold!55!black, thick]
+      (axis cs:0.12,-1.43) -- (axis cs:3,-1.43);
+    \node[above, codexgold!55!black, font=\tiny, align=center, text width=1.4cm]
+      at (axis cs:2.8,-1.25) {$\phi=hf_0\approx1.24$ eV};
     % Extension of line to y-intercept
     \addplot[codexblue, dashed, domain=0:3]
       {0.4136*(x-3)};
-    \fill[codexgold] (axis cs:0,-1.2408) circle (3pt);
-    \node[left, codexgold, font=\tiny]
-      at (axis cs:0,-1.2408) {$y$-intercept $=-\phi\approx-1.24$ eV};
-    \node[gray, font=\tiny] at (axis cs:1.4,0.25) {No emission};
+    \fill[codexgold!55!black] (axis cs:0,-1.2408) circle (3pt);
+    \node[above right, codexgold!55!black, font=\tiny, align=left,
+      text width=2.2cm, fill=white, inner sep=1pt]
+      at (axis cs:2.6,-0.65) {$y$-intercept $=-\phi\approx-1.24$ eV};
+    \node[black!80, font=\tiny] at (axis cs:1.4,0.25) {No emission};
   \end{axis}
 
 \end{tikzpicture}

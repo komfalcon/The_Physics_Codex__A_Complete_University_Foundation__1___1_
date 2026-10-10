@@ -151,7 +151,7 @@ A component that obeys Ohm's Law is called
 \textbf{ohmic}. One that does not is \textbf{non-ohmic}.
 \end{lawbox}
 
-\begin{diagbox}[$I$-$V$ Characteristics: Ohmic and Non-ohmic]
+\begin{diagbox}[$I$-$V$ Curves: Ohmic and Non-ohmic (schematic; ranges illustrative)]
 \begin{center}
 \begin{tikzpicture}
   % Ohmic resistor
@@ -166,8 +166,6 @@ A component that obeys Ohm's Law is called
     title={Ohmic Resistor}
   ]
     \addplot[codexblue, very thick, domain=0:5]{x};
-    \node[codexblue, font=\small] at (axis cs:2,3.5)
-      {Straight line:\\$R = $ const};
   \end{axis}
 
   % Filament bulb
@@ -183,12 +181,10 @@ A component that obeys Ohm's Law is called
     xtick={0,1,2,3,4,5}, ytick={0,1,2,3,4,5},
     title={Filament Bulb (non-ohmic)}
   ]
-    \addplot[codexred, very thick, domain=0:5,
-      samples=60]{2*sqrt(x)};
-    \node[codexred, font=\tiny, align=center, fill=white,
-      inner sep=1pt]
-      at (axis cs:2.4,4.35)
-      {Curve: $R$ increases\\with temperature};
+    \addplot[codexred, very thick, smooth] coordinates {
+      (0,0) (0.25,0.72) (0.5,1.2) (1,1.88) (1.5,2.38)
+      (2,2.78) (2.5,3.1) (3,3.38) (4,3.86) (5,4.3)
+    };
   \end{axis}
 
   % Diode
@@ -199,24 +195,31 @@ A component that obeys Ohm's Law is called
     xshift=0.5cm,
     width=4.0cm, height=4.2cm,
     xlabel={$V$ (V)}, ylabel={$I$ (A)},
-    xmin=-2, xmax=3, ymin=-0.5, ymax=5,
+    xmin=-2, xmax=3, ymin=-0.3, ymax=5,
     grid=major, grid style={gray!15},
     xtick={-2,-1,0,1,2,3},
+    xticklabel style={font=\scriptsize},
     ytick={0,1,2,3,4,5},
-    title={Semiconductor Diode (non-ohmic)}
+    title={Diode (non-ohmic)}
   ]
-    % Forward bias (exponential)
-    \addplot[codexgreen, very thick, domain=0:2,
+    % Schematic forward-bias rise; the plotted range ends inside the axes.
+    \addplot[codexgreen, very thick, domain=0:1.5,
       samples=60]{0.5*(exp(1.5*x)-1)};
-    % Reverse bias (tiny current, then breakdown)
-    \addplot[codexgreen, very thick, domain=-2:0]{0};
-    \node[codexgreen, font=\tiny, align=center]
-      at (axis cs:1.0,3.5)
-      {Conducts in\\one direction only};
-    \node[codexred, font=\tiny, align=center, fill=white,
-      inner sep=1pt]
-      at (axis cs:-0.2,0.7) {Reverse bias:\\no current};
+    % Reverse leakage is negligible on this scale; breakdown is omitted.
+    \addplot[codexgreen, very thick, domain=-2:0]{-0.00001};
+    \node[codexgreen, font=\tiny, align=center,
+      text width=0.9cm, inner sep=0.5pt, anchor=east]
+      at (axis cs:2.8,4.45) {Forward\\bias};
   \end{axis}
+  \node[codexblue, font=\footnotesize, align=center,
+    text width=2.8cm, inner sep=1pt, anchor=north east, yshift=-1.1cm]
+    at (p1.south east) {Straight line;\\$R$ constant};
+  \node[codexred, font=\footnotesize, align=center,
+    text width=2.8cm, inner sep=1pt, anchor=north east, yshift=-1.1cm]
+    at (p2.south east) {$R$ rises as bulb\\warms};
+  \node[codexred, font=\footnotesize, align=center,
+    text width=3.6cm, inner sep=1pt, anchor=north east, yshift=-1.1cm]
+    at (p3.south east) {Reverse leakage\\negligible on this\\scale; breakdown\\omitted};
 \end{tikzpicture}
 \end{center}
 \end{diagbox}
@@ -332,39 +335,43 @@ Resistance decreases as light intensity increases.
 Light photons free more charge carriers.
 \end{defbox}
 
-\begin{diagbox}[Qualitative Resistance Trends with Temperature]
+\begin{diagbox}[Qualitative Normalized Resistance Trends]
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
-  width=10cm, height=6cm,
+  width=10cm, height=5cm,
   xlabel={Temperature $T$ (°C)},
-  ylabel={Relative resistance (arbitrary units)},
+  ylabel={Normalized resistance $R(T)/R(20^\circ\mathrm{C})$},
   xmin=0, xmax=120,
-  ymin=0, ymax=5,
+  ymin=0, ymax=2.5,
   grid=major, grid style={gray!15},
-  ytick={0,1,2,3,4,5},
+  ytick={0,0.5,1,1.5,2,2.5},
   xtick={0,20,40,60,80,100,120},
-  legend style={at={(0.5,-0.22)}, anchor=north, font=\tiny, /tikz/column 2/.style={column sep=4pt}},
 ]
-  % Metal: R increases linearly
+  % Each material is normalized to its own resistance at 20 degrees C.
   \addplot[codexblue, very thick, domain=0:120]
-    {1.0 + 0.025*x};
-  \addlegendentry{Metal conductor ($R$ increases)};
-
-  % NTC thermistor: R decreases steeply
+    {1.0 + 0.005*(x-20)};
   \addplot[codexred, very thick, domain=0:120,
     samples=80]
-    {4.0*exp(-0.04*x)};
-  \addlegendentry{NTC Thermistor ($R$ decreases rapidly)};
-
-  % Annotations
-  \node[codexblue, font=\small] at (axis cs:80,3.5)
-    {Metal: more vibrations,\\more collisions,\\higher $R$};
-  \node[codexred, font=\small] at (axis cs:60,1.5)
-    {Thermistor: more carriers\\freed by heat,\\lower $R$};
+    {exp(-0.04*(x-20))};
 \end{axis}
 \end{tikzpicture}
 \end{center}
+{\footnotesize\centering
+\textit{Each curve is normalized to its own resistance at $20^\circ\mathrm{C}$;
+absolute resistance values are not comparable.}\par}
+\smallskip
+\noindent
+\begin{minipage}[t]{0.48\linewidth}
+  \footnotesize\raggedright
+  \textcolor{codexblue}{\textbf{Metal:}} More lattice vibrations increase
+  electron scattering, so resistance rises with temperature.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+  \footnotesize\raggedright
+  \textcolor{codexred}{\textbf{NTC thermistor:}} Heating frees more charge
+  carriers, so resistance falls.
+\end{minipage}
 \end{diagbox}
 
 % ============================================================
@@ -513,7 +520,7 @@ zero (you return to the same potential).
   \draw[very thick, codexblue] (2.0,0.8) -- (3.0,0.8);
   \draw[very thick] (2.5,0.8) -- (2.5,1.1);
   \draw[very thick, codexred] (2.2,1.1) -- (2.8,1.1);
-  \node[below] at (2.5,0.4) {$\mathcal{E}_2$};
+  \node[right] at (3.15,0.95) {$\mathcal{E}_2$};
 
   % Current labels
   \draw[->, very thick, codexblue]
@@ -631,7 +638,7 @@ difference ``wasted'' inside the source.
   \draw[thick, dashed, gray]
     (0,-0.5) rectangle (3.5,1.5);
   \node[gray, font=\scriptsize, fill=white, inner sep=1pt]
-    at (1.75,1.2) {Real source};
+    at (0.9,1.2) {Real source};
 
   % External circuit: load R is in series with the real source.
   \draw[very thick] (0,0.5) -- (-1.0,0.5)
@@ -919,7 +926,7 @@ At balance, the unknown resistance $S$ can be found:
   \node[below left] at (A) {A};
   \node[above] at (B) {B};
   \node[below right] at (C) {C};
-  \node[below] at (D) {D};
+  \node[right] at (3.2,0) {D};
 
   % Balance condition.
   \node[align=center, font=\small] at (3,-1.0)
@@ -1258,39 +1265,52 @@ accurate value of EMF than a voltmeter would.
 
 \begin{center}
 \begin{tikzpicture}[scale=0.9,transform shape,font=\small,>=Stealth]
-  % Null comparison: a movable jockey selects a balance point on the wire.
-  \node[font=\bfseries] at (2.4,3.45) {Potentiometer};
-  \draw[thick] (0.3,2.65) -- (4.55,2.65);
+  % The jockey is shown at 40% of AB as a representative movable null point.
+  \node[font=\bfseries] at (2.4,3.78) {Potentiometer};
+  \draw[thick] (0.3,2.65) -- (2.0,2.65) -- (4.55,2.65);
   \draw[thick] (0.3,2.65) -- (0.3,0.55) -- (1.9,0.55);
   \node[draw,circle,minimum size=8mm,inner sep=1pt] at (2.3,0.55) {$4.0\,\text{V}$};
   \draw[thick] (2.7,0.55) -- (4.55,0.55) -- (4.55,2.65);
+  \node[fill=white,inner sep=0.6pt,font=\footnotesize] at (1.55,0.85) {$+$};
+  \node[fill=white,inner sep=0.6pt,font=\footnotesize] at (3.05,0.85) {$-$};
   \node[below left] at (0.3,2.65) {$A$};
   \node[below right] at (4.55,2.65) {$B$};
-  \node[above] at (2.4,2.65) {uniform wire AB, $100\,\text{cm}$};
+  \node[font=\footnotesize] at (2.4,3.26)
+    {uniform wire AB, $100\,\text{cm}$};
   \node[below] at (2.3,0.05) {driver cell};
+  % J lies at (2.0-0.3)/(4.55-0.3)=40% of AB; the arrows show it can slide.
+  \fill (2.0,2.65) circle (1.6pt);
+  \node[below left,font=\scriptsize] at (2.0,2.65) {$J$};
+  \draw[thin] (2.0,2.65) -- (2.0,2.95);
+  \draw[<->,thin] (1.72,2.95) -- (2.28,2.95);
+  \node[font=\tiny,align=center] at (3.8,2.0)
+    {movable J /\\null point};
   % Test cell and galvanometer connect A to the jockey.
   \draw[thick] (0.3,2.65) -- (0.3,1.55) -- (0.55,1.55);
   \node[draw,minimum width=1.2cm,minimum height=0.5cm,inner sep=1pt] at (1.15,1.55) {$E_1/E_2$};
   \node[above] at (0.55,1.82) {$+$};
   \node[above] at (1.75,1.82) {$-$};
-  \draw[thick] (1.75,1.55) -- (2.85,1.55);
-  \node[draw,circle,minimum size=6mm,inner sep=1pt] at (3.15,1.55) {$G$};
-  \draw[thick] (3.45,1.55) -- (3.85,1.55) -- (3.85,2.65);
-  \fill (3.85,2.65) circle (1.2pt);
-  \node[above right,font=\footnotesize] at (3.85,2.65) {$J$};
+  \draw[thick] (1.75,1.55) -- (2.4,1.55);
+  \node[draw,circle,minimum size=6mm,inner sep=1pt] at (2.7,1.55) {$G$};
+  \draw[thick] (3.0,1.55) -- (2.0,2.65);
   % Loaded cell: internal resistance and external load in one closed loop.
   \begin{scope}[shift={(5.5,0.15)}]
-    \node[font=\bfseries] at (1.7,3.3) {Cell under load};
+    \node[font=\bfseries] at (1.7,3.65) {Cell under load};
     \draw[thick] (0.4,0.5) -- (0.4,1.05);
     \node[draw,circle,minimum size=8mm,inner sep=1pt] at (0.4,1.45) {$E_2$};
+    \node[fill=white,inner sep=0.5pt,font=\footnotesize] at (0.88,1.83) {$+$};
+    \node[fill=white,inner sep=0.5pt,font=\footnotesize] at (0.88,1.05) {$-$};
     \draw[thick] (0.4,1.85) -- (0.4,2.4) -- (1.0,2.4);
     \draw[thick] (1.0,2.2) rectangle (2.0,2.6);
     \node at (1.5,2.4) {$r_2$};
     \draw[thick] (2.0,2.4) -- (3.0,2.4) -- (3.0,1.8);
     \draw[thick] (2.7,1.8) rectangle (3.3,0.9);
-    \node[right] at (3.35,1.35) {$R_L=5\,\Omega$};
+    \node[right,font=\footnotesize] at (3.38,2.06) {$R_L=5\,\Omega$};
+    \node[font=\footnotesize] at (3.4,1.8) {$+$};
+    \node[font=\footnotesize] at (3.4,0.9) {$-$};
+    \draw[<->,thin] (3.62,0.98) -- (3.62,1.72);
+    \node[right,font=\footnotesize] at (3.72,1.35) {$V_{T2}$};
     \draw[thick] (3.0,0.9) -- (3.0,0.5) -- (0.4,0.5);
-    \node[right] at (3.3,0.55) {$V_{T2}$ across load};
   \end{scope}
 \end{tikzpicture}
 \par\smallskip

@@ -139,9 +139,9 @@ Like charges \textbf{repel}. Unlike charges
 
     % Force arrows pointing AWAY from each other
     \draw[->, very thick, codexred, line width=2.5pt]
-      (1.3,1.5) -- (0.2,1.5);
+      (0.3,1.5) -- (-0.5,1.5);
     \draw[->, very thick, codexred, line width=2.5pt]
-      (3.7,1.5) -- (4.8,1.5);
+      (4.7,1.5) -- (5.5,1.5);
 
     % Two negative charges
     \fill[codexblue] (0.8,0.0) circle (0.5cm);
@@ -151,9 +151,9 @@ Like charges \textbf{repel}. Unlike charges
     \node[white, font=\bfseries] at (4.2,0.0) {$-$};
 
     \draw[->, very thick, codexblue, line width=2.5pt]
-      (1.3,0.0) -- (0.2,0.0);
+      (0.3,0.0) -- (-0.5,0.0);
     \draw[->, very thick, codexblue, line width=2.5pt]
-      (3.7,0.0) -- (4.8,0.0);
+      (4.7,0.0) -- (5.5,0.0);
   \end{scope}
 
 \end{tikzpicture}
@@ -238,18 +238,18 @@ Examples: silicon, germanium (Chapter 29).
     \node[below, font=\tiny] at (4.55,0.0) {separate};
 
     % Both spheres share the positive charge after contact and separation.
-    \fill[codexred!30] (5.6,0.6) circle (0.45);
-    \draw[thick] (5.6,0.6) circle (0.45);
+    \fill[codexred!30] (5.9,0.6) circle (0.7);
+    \draw[thick] (5.9,0.6) circle (0.7);
     \foreach \angle in {0,90,180,270} {
       \node[codexred, font=\tiny]
-        at ({5.6+0.3*cos(\angle)},{0.6+0.3*sin(\angle)})
+        at ({5.9+0.5*cos(\angle)},{0.6+0.5*sin(\angle)})
         {$+$};
     }
-    \fill[codexred!30] (6.9,0.6) circle (0.45);
-    \draw[thick] (6.9,0.6) circle (0.45);
+    \fill[codexred!30] (7.5,0.6) circle (0.7);
+    \draw[thick] (7.5,0.6) circle (0.7);
     \foreach \angle in {0,90,180,270} {
       \node[codexred, font=\tiny]
-        at ({6.9+0.3*cos(\angle)},{0.6+0.3*sin(\angle)})
+        at ({7.5+0.5*cos(\angle)},{0.6+0.5*sin(\angle)})
         {$+$};
     }
     \end{scope}
@@ -306,7 +306,7 @@ Examples: silicon, germanium (Chapter 29).
     \draw[thick] (5.90,0.90) -- (6.12,0.90);
     \fill (6.12,0.90) circle (1.2pt);
     \draw[thick] (6.12,0.90) -- (6.34,1.10);
-    \node[font=\tiny, align=center] at (6.10,0.55) {open\\ground};
+    \node[font=\tiny, align=center] at (6.40,0.24) {open\\ground};
 
     % Step 4: remove the rod; excess charge redistributes over the conductor.
     \node[font=\scriptsize, align=center, text width=1.7cm] at (7.55,1.55) {4. Remove rod};
@@ -564,17 +564,17 @@ lines} (lines of force). Rules for drawing field lines:
     \draw[->, thick, codexgold]
       (0.5,1.15) .. controls (1.5,0.0) and (3.5,0.0)
       .. (4.5,1.15);
-    \draw[->, thick, codexgold!70]
+    \draw[->, thick, codexgold!40!black]
       (0.85,1.9) .. controls (2.0,3.8) and (3.0,3.8)
       .. (4.15,1.9);
-    \draw[->, thick, codexgold!70]
+    \draw[->, thick, codexgold!40!black]
       (0.85,1.1) .. controls (2.0,-0.8) and (3.0,-0.8)
       .. (4.15,1.1);
   \end{scope}
 
   % === UNIFORM FIELD (parallel plates) ===
   \begin{scope}[shift={(7,0)}]
-    \node[font=\bfseries] at (2.5,4.5)
+    \node[font=\bfseries] at (3.3,4.5)
       {Uniform field (parallel plates)};
     % Plates
     \fill[codexred!40] (0,3.5) rectangle (5,4.0);
@@ -596,11 +596,11 @@ lines} (lines of force). Rules for drawing field lines:
       \draw[->, thick, codexgold]
         (\x,3.5) -- (\x,0.5);
     }
-    \node[right, font=\tiny, codexgold] at (5.1,2.0)
+    \node[right, font=\scriptsize, codexgold!40!black] at (5.1,2.0)
       {Uniform $E$\\(parallel lines,\\equal spacing)};
     % E field label
-    \node[codexgold, font=\small] at (2.5,2.0) {$\vect{E}$};
-    \draw[->, very thick, codexgold]
+    \node[codexgold!40!black, font=\small] at (2.5,2.0) {$\vect{E}$};
+    \draw[->, very thick, codexgold!40!black]
       (2.5,2.5) -- (2.5,1.5);
   \end{scope}
 
@@ -709,7 +709,7 @@ perpendicular to $\vect{E}$.
   \foreach \r/\label in {
     0.7/{$V_1$}, 1.2/{$V_2$}, 1.8/{$V_3$}} {
     \draw[codexblue, thick, dashed] (0,0) circle (\r);
-    \node[codexblue, font=\tiny] at (\r+0.2,0.15)
+    \node[codexblue, font=\scriptsize] at (\r+0.2,0.15)
       {\label};
   }
 
@@ -721,11 +721,11 @@ perpendicular to $\vect{E}$.
 
   % Key
   \draw[codexred!70, thick, ->] (3.0,1.0) -- (3.7,1.0);
-  \node[right, codexred!70, font=\tiny] at (3.8,1.0)
+  \node[right, codexred!40!black, font=\scriptsize] at (3.8,1.0)
     {Field lines};
   \draw[codexblue, thick, dashed]
     (3.0,0.4) arc(0:30:0.5);
-  \node[right, codexblue, font=\tiny] at (3.6,0.4)
+  \node[right, codexblue, font=\scriptsize] at (3.6,0.4)
     {Equipotentials};
 
 \end{tikzpicture}
@@ -801,8 +801,8 @@ across the gap.
   \draw[thick, gray!60] (5.0,0) -- (5.5,4.0);
   \draw[thick, gray!60] (1.0,0) -- (5.0,0);
   \draw[thick, gray!60] (0.5,4.0) -- (5.5,4.0);
-  \node[gray, font=\itshape, font=\small] at (3,0.5)
-    {Glass jar (insulating)};
+  \node[gray, font=\itshape, font=\small, text width=2.1cm, align=center] at (1.7,3.0)
+    {Glass jar\\\mbox{(insulating)}};
 
   % Metal rod
   \fill[gray!50] (2.8,1.5) rectangle (3.2,6.5);
@@ -820,9 +820,9 @@ across the gap.
     (2.92,1.5) -- (2.92,0.2);
   \draw[very thick, codexgold]
     (3.08,1.5) -- (3.08,0.2);
-  \node[below, codexgold] at (2.0,0.1)
+  \node[below, codexgold] at (2.0,-0.15)
     {Gold leaf};
-  \node[below, codexgold] at (4.0,0.1)
+  \node[below, codexgold] at (4.0,-0.15)
     {Gold leaf};
 
   % Charged version (leaves spread)
@@ -849,9 +849,9 @@ across the gap.
     }
     % Leaves spread apart
     \draw[very thick, codexgold]
-      (3.0,1.5) -- (1.8,-0.2);
+      (3.0,1.5) -- (1.8,0.2);
     \draw[very thick, codexgold]
-      (3.0,1.5) -- (4.2,-0.2);
+      (3.0,1.5) -- (4.2,0.2);
     % Charge on leaves
     \node[codexred, font=\bfseries] at (2.1,0.6)
       {$+$};
