@@ -46,25 +46,23 @@ By the end of this chapter, you should be able to:
 \section{Intuition: Energy from the Nucleus}
 % ============================================================
 
-The Sun converts $600$ million tonnes of hydrogen into
-helium \textit{every second}. In doing so, it releases
-energy equivalent to the annihilation of 4 million
-tonnes of matter per second via Einstein's formula
-$E = mc^2$. This energy has sustained life on Earth
-for 4.6 billion years and will continue for another
-5 billion.
+The Sun converts about 600 million tonnes of hydrogen into helium
+every second. About 4 million tonnes of that mass is turned into
+energy, as described by $E = mc^{2}$. This has powered the Sun for
+about 4.6 billion years, and it will keep going for roughly another
+5 billion. Life on Earth, about 3.5 to 4 billion years old, will
+likely end sooner, in roughly a billion years, as the Sun gradually
+brightens.
 
-On Earth, we have discovered how to release nuclear
-energy in controlled and uncontrolled ways. Nuclear
-weapons release energy in microseconds. Nuclear power
-stations release it over months and years. Both exploit
-the same fundamental physics: the extraordinarily large
-binding energy per nucleon in atomic nuclei.
+On Earth, nuclear weapons release energy in microseconds and nuclear
+power stations release it over months and years. Both work because
+the nuclei produced have a higher binding energy per nucleon than the
+nuclei they started from, and the difference in mass appears as
+energy.
 
-Radioactivity --- the spontaneous emission of radiation
-from unstable nuclei --- is the natural version of the
-same process. Understanding it is essential for medicine,
-energy generation, archaeology, and safety.
+Radioactivity, the spontaneous emission of radiation from unstable
+nuclei, is a natural example of nuclei moving to more stable
+arrangements.
 
 % ============================================================
 \section{Nuclear Structure}
@@ -909,6 +907,14 @@ shielding to absorb neutrons and gamma radiation.
     \draw[thick, codexgold] (\x,0.5) rectangle
       (\x+0.3,5.5);
   }
+  % Redraw the existing control rods over the coolant fill;
+  % their insertion depth and geometry remain unchanged.
+  \foreach \x in {0.9,1.5,2.1,2.7,3.3} {
+    \fill[codexblue!60] (\x,3.5) rectangle
+      (\x+0.2,6.5);
+    \draw[thick, codexblue] (\x,3.5) rectangle
+      (\x+0.2,6.5);
+  }
   % Compact key below the vessel keeps component labels clear of
   % the primary-coolant arrows in the reactor--exchanger gap.
   \node[draw=gray!50, fill=white, rounded corners, inner sep=2pt,
@@ -925,8 +931,9 @@ shielding to absorb neutrons and gamma radiation.
   % Cool coolant in
   \draw[->, very thick, codexblue]
     (6.5,1.5) -- (4.5,1.5);
-  \node[below, codexblue, font=\tiny] at (5.5,1.1)
-    {Cool coolant};
+  \node[anchor=north west, codexblue, font=\scriptsize,
+    align=left, text width=1.1cm] at (5.15,1.32)
+    {Cooled\\primary\\coolant};
 
   % === Heat exchanger ===
   \fill[gray!15] (6.5,0.5) rectangle (9.5,6.0);
@@ -949,15 +956,17 @@ shielding to absorb neutrons and gamma radiation.
   \draw[->, very thick, codexred]
     (8.5,2.5) .. controls (8.5,3.6) and (8.9,4.8) .. (9.5,5.0);
 
-  \node[font=\tiny, align=center, text width=1.2cm]
-    at (7.25,5.3) {Primary coolant};
-  \node[font=\tiny, align=center, text width=1.4cm]
-    at (8.75,5.3) {Secondary water/steam};
-  % Gold arrows show heat transfer only; the two fluid loops do not mix.
+  \node[font=\scriptsize, align=center, text width=1.0cm]
+    at (7.15,5.3)
+    {\scalebox{0.75}[1]{Primary}\\\scalebox{0.75}[1]{coolant}};
+  \node[anchor=east, font=\scriptsize, align=center, text width=1.2cm]
+    at (9.3,5.3)
+    {\scalebox{0.72}[1]{Secondary}\\\scalebox{0.65}[1]{water/steam}};
+  % Dark dashed arrows show heat transfer; the fluid loops do not mix.
   \foreach \y in {2.0,3.2,4.2} {
-    \draw[->, thick, dashed, codexgold] (7.7,\y) -- (8.3,\y);
+    \draw[->, very thick, dashed, black!80] (7.7,\y) -- (8.3,\y);
   }
-  \node[codexgold, font=\tiny] at (8.0,4.45) {Heat};
+  \node[black, font=\scriptsize\bfseries] at (8.0,4.45) {Heat};
 
   % Steam to turbine
   \draw[->, very thick, codexred!70]
@@ -975,26 +984,26 @@ shielding to absorb neutrons and gamma radiation.
   \node[font=\tiny] at (13.75,4.45) {Generator};
 
   % Electricity out
-  \draw[->, very thick, codexgold]
+  \draw[->, very thick, black!80]
     (14.5,5.0) -- (15.5,5.0);
-  \node[right, codexgold, font=\small] at (15.6,5.0)
+  \node[right, black, font=\small\bfseries] at (15.6,5.0)
     {Electricity};
 
   % Turbine exhaust steam enters the condenser.
-  \draw[->, gray] (12.25,4.0) -- (12.25,3.0);
-  \node[right, gray, font=\tiny] at (12.35,3.0)
+  \draw[->, very thick, black!80] (12.25,4.0) -- (12.25,3.0);
+  \node[right, black, font=\scriptsize\bfseries] at (12.35,3.0)
     {Condenser};
 
   % Condensate returns from the condenser to the heat exchanger.
-  \draw[->, codexblue!60]
+  \draw[->, very thick, black!80]
     (12.25,3.0) -- (12.25,0.85) -- (9.5,0.85);
-  \node[below, codexblue!60, font=\tiny]
-    at (11.0,0.85) {Condensate return};
+  \node[below, black, font=\scriptsize]
+    at (11.0,0.2) {Condensate return};
 
   % Shielding
-  \draw[very thick, brown!70, dashed]
+  \draw[very thick, black!70, dashed]
     (-0.5,-1.5) rectangle (5.0,7.5);
-  \node[brown!70, font=\tiny] at (-0.3,7.8)
+  \node[black, font=\scriptsize\bfseries] at (-0.3,8.1)
     {Concrete\\shielding};
 
 \end{tikzpicture}

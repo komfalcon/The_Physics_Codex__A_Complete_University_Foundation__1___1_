@@ -44,23 +44,20 @@ By the end of this chapter, you should be able to:
 \section{Intuition: The Transistor Changed Everything}
 % ============================================================
 
-Before December 1947, computers filled entire rooms,
-ran on hundreds of vacuum tubes (each the size of a
-light bulb), consumed kilowatts of power, and failed
-frequently as tubes burned out. On December 23, 1947,
-John Bardeen, Walter Brattain and William Shockley at
-Bell Labs demonstrated the first transistor.
+Before December 1947, computers filled entire rooms and ran on
+thousands of vacuum tubes. ENIAC used about 17,000 of them. They
+consumed kilowatts of power and failed frequently as tubes burned
+out. In December 1947, John Bardeen and Walter Brattain at Bell Labs,
+working in a group led by William Shockley, demonstrated the first
+transistor, made of germanium. Shockley's junction transistor
+followed in 1948.
 
-Sixty years later, a single silicon chip the size of
-a fingernail contains over a billion transistors. Your
-smartphone contains more computing power than all the
-computers that existed in 1960, combined.
+Today a silicon chip the size of a fingernail holds tens of billions
+of transistors, and your smartphone has far more computing power than
+all the computers of 1960 combined.
 
-The transistor is built from \textbf{semiconductor}
-material --- specifically silicon, engineered at the
-atomic level by introducing tiny concentrations of
-impurities. Understanding semiconductors means
-understanding why the modern world is possible.
+Modern transistors are built from silicon, engineered at the atomic
+level by adding tiny concentrations of impurities.
 
 % ============================================================
 \section{Semiconductors}
@@ -148,20 +145,20 @@ electrically neutral overall.
     % Silicon lattice (4x4 grid)
     \foreach \x in {0.5,1.5,2.5,3.5,4.5,5.5} {
       \foreach \y in {0.5,1.5,2.5,3.5,4.5} {
-        \fill[gray!40] (\x,\y) circle (0.3);
+        \fill[gray!65] (\x,\y) circle (0.3);
         \node[white, font=\tiny] at (\x,\y) {Si};
       }
     }
     % Bonds (horizontal)
     \foreach \x in {0.8,1.8,2.8,3.8,4.8} {
       \foreach \y in {0.5,1.5,2.5,3.5,4.5} {
-        \draw[gray!50, thin] (\x,\y) -- (\x+0.4,\y);
+        \draw[gray!65, semithick] (\x,\y) -- (\x+0.4,\y);
       }
     }
     % Bonds (vertical)
     \foreach \x in {0.5,1.5,2.5,3.5,4.5,5.5} {
       \foreach \y in {0.8,1.8,2.8,3.8} {
-        \draw[gray!50, thin] (\x,\y) -- (\x,\y+0.4);
+        \draw[gray!65, semithick] (\x,\y) -- (\x,\y+0.4);
       }
     }
 
@@ -189,18 +186,18 @@ electrically neutral overall.
     % Silicon lattice
     \foreach \x in {0.5,1.5,2.5,3.5,4.5,5.5} {
       \foreach \y in {0.5,1.5,2.5,3.5,4.5} {
-        \fill[gray!40] (\x,\y) circle (0.3);
+        \fill[gray!65] (\x,\y) circle (0.3);
         \node[white, font=\tiny] at (\x,\y) {Si};
       }
     }
     \foreach \x in {0.8,1.8,2.8,3.8,4.8} {
       \foreach \y in {0.5,1.5,2.5,3.5,4.5} {
-        \draw[gray!50, thin] (\x,\y) -- (\x+0.4,\y);
+        \draw[gray!65, semithick] (\x,\y) -- (\x+0.4,\y);
       }
     }
     \foreach \x in {0.5,1.5,2.5,3.5,4.5,5.5} {
       \foreach \y in {0.8,1.8,2.8,3.8} {
-        \draw[gray!50, thin] (\x,\y) -- (\x,\y+0.4);
+        \draw[gray!65, semithick] (\x,\y) -- (\x,\y+0.4);
       }
     }
 
@@ -266,7 +263,19 @@ Only a tiny \textbf{leakage current} flows (minority
 carriers). The diode is essentially \textbf{non-conducting}.
 \end{lawbox}
 
-\begin{diagbox}[$p$-$n$ Junction Diode: Forward and Reverse Bias]
+\begin{tcolorbox}[
+  enhanced,
+  parbox=false,
+  breakable=false,
+  colback=white,
+  colframe=black!40,
+  boxrule=0.6pt,
+  arc=2mm,
+  left=6pt,right=6pt,top=6pt,bottom=6pt,
+  title={$p$-$n$ Junction Diode: Forward and Reverse Bias},
+  fonttitle=\bfseries,
+  grow to right by=1.35cm
+]
 \begin{center}
 \begin{tikzpicture}[scale=0.9, font=\small]
 
@@ -289,7 +298,8 @@ carriers). The diode is essentially \textbf{non-conducting}.
     % $n$-type (right)
     \fill[codexblue!20] (3.5,1.5) rectangle (6.0,4.5);
     \draw[thick] (3.5,1.5) rectangle (6.0,4.5);
-    \node[codexblue, font=\small] at (4.75,3.5) {$n$-type};
+    \node[codexblue, font=\scriptsize, fill=white, inner sep=1pt]
+      at (4.75,4.30) {$n$-type};
     \foreach \x in {4.0,4.5,5.0,5.5} {
       \foreach \y in {2.0,2.5,3.0,3.5,4.0} {
         \fill[codexblue] (\x,\y) circle (3pt);
@@ -300,9 +310,9 @@ carriers). The diode is essentially \textbf{non-conducting}.
     \fill[gray!40] (2.5,1.5) rectangle (3.5,4.5);
     \draw[thick] (2.5,1.5) -- (2.5,4.5);
     \draw[thick] (3.5,1.5) -- (3.5,4.5);
-    \node[gray, font=\tiny, align=center, fill=white,
-      text width=0.85cm, inner sep=1pt]
-      at (3.0,4.15) {Narrow depletion};
+    \node[gray, font=\scriptsize, align=center, fill=white,
+      text width=1.25cm, inner sep=1pt]
+      at (3.0,4.15) {Narrow\\depletion};
 
     % Battery
     \draw[thick] (0,3.0) -- (-1.5,3.0);
@@ -349,9 +359,9 @@ carriers). The diode is essentially \textbf{non-conducting}.
     \fill[gray!40] (2.0,1.5) rectangle (4.0,4.5);
     \draw[thick] (2.0,1.5) -- (2.0,4.5);
     \draw[thick] (4.0,1.5) -- (4.0,4.5);
-    \node[gray, font=\tiny, align=center, fill=white,
-      text width=1.7cm, inner sep=1pt]
-      at (3.0,4.15) {Wide depletion region};
+    \node[gray, font=\scriptsize, align=center, fill=white,
+      text width=1.5cm, inner sep=1pt]
+      at (3.0,4.15) {Wide\\depletion\\region};
 
     % Battery (reversed polarity)
     \draw[thick] (0,3.0) -- (-1.5,3.0);
@@ -370,7 +380,7 @@ carriers). The diode is essentially \textbf{non-conducting}.
 
     % Tiny conventional leakage current is opposite to forward current,
     % from the n-side across the depletion region toward the p-side.
-    \draw[->, thin, gray]
+    \draw[->, line width=1.0pt, black!75]
       (4.1,3.0) -- (1.9,3.0);
     \node[gray, font=\small] at (3.0,5.0)
       {Tiny leakage current $\Rightarrow$ High resistance};
@@ -378,7 +388,7 @@ carriers). The diode is essentially \textbf{non-conducting}.
 
 \end{tikzpicture}
 \end{center}
-\end{diagbox}
+\end{tcolorbox}
 
 % ============================================================
 \section{The Semiconductor Diode}
@@ -444,7 +454,7 @@ reduces the ripple and gives a nearly constant DC.
 
   % HALF-WAVE
   \begin{scope}[shift={(0,5)}]
-    \node[font=\bfseries] at (3.5,2.5)
+    \node[font=\bfseries] at (3.5,3.1)
       {Half-Wave Rectifier};
     % AC input (simple representation)
     \draw[thick] (0,1.5) -- (0.5,1.5);
@@ -773,7 +783,7 @@ is $180°$ out of phase with input.
     \draw[thick] (2.8,0.8) -- (3.2,0.8);
 
     % Input (AC signal at base)
-    \draw[thick] (0,3.5) -- (1.5,3.5);
+    \draw[thick] (0.5,3.5) -- (1.5,3.5);
     \draw[codexblue, thick]
       (-0.5,3.5) sin (-0.25,4.0)
       cos (0,3.5) sin (0.25,3.0) cos (0.5,3.5);
