@@ -4,20 +4,15 @@
 
 - Replaced the ISBN placeholder in `front_matter/copyright.tex` with the registered ISBN **978-978-67-2377-8**.
 - Confirmed the ISBN-13 check digit is valid.
-- Prevented the unfinished foreword placeholder from entering the active `book_main.tex` build. The original `front_matter/foreword.tex` source is retained for completion when an invited writer supplies an approved foreword.
+- Confirmed the foreword supplied in `front_matter/foreword.tex` is included in the active `book_main.tex` build, with its remaining location and date placeholders removed.
 - Confirmed the active entry point is `book_main.tex`; `main.tex` is only a redirect and contains obsolete archived material after its redirect.
 - Confirmed the active source tree contains the 29 planned chapters, the existing front matter, answers, bibliography, author photo, and both cover assets.
 
 ## Remaining publication decisions or checks
 
-### 1. Foreword — outstanding authorial content
+### 1. Foreword — publication permission check
 
-`front_matter/foreword.tex` is not a completed foreword. It contains explicit instructions and placeholders for an invited educator or academic. It has therefore been excluded from the release build rather than allowing placeholder text to appear in the book. A final foreword requires:
-
-- the writer's approval of the text;
-- the writer's exact name, title, institution, city, and date;
-- permission to publish the contribution; and
-- reinclusion of the file in `book_main.tex` after approval.
+The foreword now contains named contributor details and is included in the active build. Before printing, confirm the contributor's approval of the final wording, credentials, attribution, and permission to publish.
 
 ### 2. Back-cover ISBN barcode — completed, printer proof still recommended
 
