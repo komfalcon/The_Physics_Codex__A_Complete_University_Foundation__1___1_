@@ -17,7 +17,7 @@ latexmk -pdf -outdir="$OUTDIR" -interaction=nonstopmode -halt-on-error -file-lin
   -pdflatex='pdflatex -no-shell-escape %O %S' book_main.tex
 ```
 
-The PDF will be written to `$OUTDIR/book_main.pdf`. Shell escape is disabled; do not enable it unless the build requirements are reviewed and explicitly warrant it.
+The PDF will be written to `$OUTDIR/book_main.pdf`. Shell escape is disabled; do not enable it unless the build requirements are reviewed and explicitly warrant it. The active source includes ISBN `978-978-67-2377-8`; the unfinished foreword placeholder is intentionally excluded until an approved contribution is supplied.
 
 ## Verified baseline
 
