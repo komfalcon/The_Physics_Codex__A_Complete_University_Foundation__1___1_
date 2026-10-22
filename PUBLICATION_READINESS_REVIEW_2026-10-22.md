@@ -19,9 +19,9 @@
 - permission to publish the contribution; and
 - reinclusion of the file in `book_main.tex` after approval.
 
-### 2. Back-cover ISBN barcode — verify with the publisher/printer
+### 2. Back-cover ISBN barcode — completed, printer proof still recommended
 
-The ISBN is now present in the copyright page. The back-cover artwork is a raster image, so this source review cannot verify whether a scannable ISBN-13 barcode is already embedded in the artwork. Before print, confirm that the back cover contains a correctly generated barcode for **9789786723778** and that the quiet zone and print contrast meet the printer's requirements. If it is absent, update `back_cover.png` with the barcode supplied by the publisher or printer.
+The back-cover placeholder barcode was replaced in `back_cover.png` with an ISBN-13 barcode for **9789786723778**, together with the printed text **ISBN 978-978-67-2377-8**. The edited artwork was visually checked and the placeholder label is gone. The printer should still verify barcode scanability, quiet zone, contrast, and final reproduction at proof size.
 
 ### 3. Build and PDF inspection
 
